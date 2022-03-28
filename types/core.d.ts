@@ -128,10 +128,12 @@ export interface Map {
 	disablePinchToZoom(): void
 	/**
 	 * 	是否允许通过手势旋转地图。
+	 * @deprecated gl版本不支持
 	 */
 	enableRotateGestures(): void
 	/**
-	 * 	是否允许通过手势倾斜地图。
+	 * 是否允许通过手势倾斜地图。
+	 * @deprecated gl版本不支持
 	 */
 	enableTiltGestures(): void
 	/**
