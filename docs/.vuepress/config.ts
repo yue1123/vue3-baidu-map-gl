@@ -6,9 +6,8 @@ const { resolve } = require('path')
 export default defineUserConfig<DefaultThemeOptions>({
 	// 站点配置
 	lang: 'en-US',
-	title: 'vue3-BmapGl',
-	description: 'Just playing around',
-
+	title: 'Vue3 BaiduMap GL',
+	description: '一套基于Vue 3.0和百度地图的地图组件。',
 	// 主题和它的配置
 	theme: '@vuepress/theme-default',
 	themeConfig: {
@@ -23,9 +22,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 				componentsPatterns: ['**/*.vue'],
 				getComponentName: (filename) => {
 					// 转驼峰
-					return camelize(
-						capitalize(filename.replace(/\/\w+\.vue$/, ''))
-					)
+					return camelize(capitalize(filename.replace(/\/\w+\.vue$/, '')))
 				}
 			}
 		]
