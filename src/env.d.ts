@@ -4,7 +4,7 @@ interface Window {
 	_BMap: any
 	BMapGL: import('../types').BMapGL
 	/**
-	 * 百度地图初始化方法
+	 * 百度地图jsonp初始化方法
 	 */
 	_initBMap: () => void
 }

@@ -3,9 +3,11 @@
 	"private": true,
 	"version": "0.0.0",
 	"scripts": {
-		"dev": "vite",
+		"dev": "vite --host",
 		"build": "vue-tsc --noEmit && vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"docs:dev": "vuepress dev docs",
+		"docs:build": "vuepress build docs"
 	},
 	"packageManager": "pnpm",
 	"dependencies": {
@@ -15,12 +17,22 @@
 		"@commitlint/cli": "^16.2.3",
 		"@commitlint/config-conventional": "^16.2.1",
 		"@vitejs/plugin-vue": "^2.2.0",
+		"@vuepress/plugin-register-components": "^2.0.0-beta.36",
 		"husky": "^7.0.4",
 		"less": "^4.1.2",
 		"typescript": "^4.5.4",
 		"vite": "^2.8.0",
-		"vue-tsc": "^0.29.8"
+		"vue-tsc": "^0.29.8",
+		"vuepress": "^2.0.0-beta.36"
 	},
+	"engines": {
+		"node": ">=12.0.0"
+	},
+	"keywords": [
+		"vue3",
+		"vue",
+		"vue3-baidu-map"
+	],
 	"husky": {
 		"hooks": {
 			"pre-commit": "echo commit",
