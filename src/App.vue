@@ -1,8 +1,10 @@
 <template>
-	<BaiduMap :enable-keyboard="false"></BaiduMap>
+	<BaiduMap ak="4stE857hYPHbEmgKhLiTAa0QbCIULHpm" :enable-keyboard="false">
+		<BmControl></BmControl>
+	</BaiduMap>
 </template>
 <script setup lang="ts">
-	import { BaiduMap } from './index'
+	import { BaiduMap, BmControl } from './index'
 </script>
 <style>
 	#app {

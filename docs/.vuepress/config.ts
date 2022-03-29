@@ -1,8 +1,12 @@
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 import { capitalize, camelize } from 'vue'
-const { resolve } = require('path')
+const { resolve, join } = require('path')
 
+console.log(
+	join(__dirname, '../../types/'),
+	'===================================='
+)
 export default defineUserConfig<DefaultThemeOptions>({
 	// 站点配置
 	lang: 'en-US',
@@ -11,9 +15,24 @@ export default defineUserConfig<DefaultThemeOptions>({
 	// 主题和它的配置
 	theme: '@vuepress/theme-default',
 	themeConfig: {
-		logo: 'https://vuejs.org/images/logo.png'
+		logo: 'https://vuejs.org/images/logo.png',
+		navbar: [
+			// NavbarItem
+			{
+				text: '文档',
+				link: '/foo/'
+			},
+			// NavbarGroup
+			{
+				text: '选择语言',
+				children: ['English', '简体中文']
+			},
+			{
+				text: '完整示例',
+				link: '/example/'
+			}
+		]
 	},
-
 	plugins: [
 		[
 			'@vuepress/register-components',
@@ -22,7 +41,9 @@ export default defineUserConfig<DefaultThemeOptions>({
 				componentsPatterns: ['**/*.vue'],
 				getComponentName: (filename) => {
 					// 转驼峰
-					return camelize(capitalize(filename.replace(/\/\w+\.vue$/, '')))
+					return camelize(
+						capitalize(filename.replace(/\/\w+\.vue$/, ''))
+					)
 				}
 			}
 		]

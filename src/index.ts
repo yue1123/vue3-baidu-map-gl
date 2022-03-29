@@ -1,6 +1,7 @@
 import { App, Plugin } from 'vue'
 
 import BaiduMap from './lib/components/baidu-map/index.vue'
+import BmControl from './lib/components/control/bm-control/index.vue'
 
 export type BaiduMapOptions = {
 	ak: string
@@ -11,6 +12,6 @@ const baiduMapInitPlugin: Plugin = {
 		app.provide('baiduMapAk', options.ak)
 	}
 }
-export { BaiduMap }
+export { BaiduMap, BmControl }
 
 export default baiduMapInitPlugin

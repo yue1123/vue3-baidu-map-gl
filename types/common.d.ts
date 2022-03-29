@@ -2,57 +2,57 @@ export enum ControlAnchor {
 	/**
 	 * 控件将定位到地图的右下角
 	 */
-	 'BMAP_ANCHOR_BOTTOM_RIGHT',
+	'BMAP_ANCHOR_BOTTOM_RIGHT' = 'BMAP_ANCHOR_BOTTOM_RIGHT',
 	/**
 	 * 控件将定位到地图的左下角
 	 */
-	'BMAP_ANCHOR_BOTTOM_LEFT',
+	'BMAP_ANCHOR_BOTTOM_LEFT' = 'BMAP_ANCHOR_BOTTOM_LEFT',
 	/**
 	 * 控件将定位到地图的右上角
 	 */
-	'BMAP_ANCHOR_TOP_RIGHT',
+	'BMAP_ANCHOR_TOP_RIGHT' = 'BMAP_ANCHOR_TOP_RIGHT',
 	/**
 	 * 控件将定位到地图的左上角
 	 */
-	'BMAP_ANCHOR_TOP_LEFT'
+	'BMAP_ANCHOR_TOP_LEFT' = 'BMAP_ANCHOR_TOP_LEFT'
 }
-
+export type _ControlAnchor = keyof typeof ControlAnchor
 export enum MapType {
 	/**
 	 * 此地图类型展示普通街道视图
 	 */
-	 'BMAP_NORMAL_MAP',
+	'B_NORMAL_MAP' = 'B_NORMAL_MAP',
 	/**
 	 * 此地图类型展示透视图像视图
 	 */
-	'BMAP_PERSPECTIVE_MAP',
-	/**
-	 * 此地图类型展示卫星视图
-	 */
-	 'BMAP_SATELLITE_MAP',
-	/**
-	 * 此地图类型展示卫星和路网的混合视图
-	 */
-	'BMAP_HYBRID_MAP'
+	'B_EARTH_MAP' = 'B_EARTH_MAP'
+	// /**
+	//  * 此地图类型展示卫星视图
+	//  */
+	// 'BMAP_SATELLITE_MAP' = 'BMAP_SATELLITE_MAP',
+	// /**
+	//  * 此地图类型展示卫星和路网的混合视图
+	//  */
+	// 'BMAP_HYBRID_MAP' = 'BMAP_HYBRID_MAP'
 }
-
+export type _MapType = keyof typeof MapType
 export enum NavigationControlType {
 	/**
 	 *  标准的平移缩放控件（包括平移、缩放按钮和滑块）
 	 */
-	 'BMAP_NAVIGATION_CONTROL_LARGE',
+	'BMAP_NAVIGATION_CONTROL_LARGE' = 'BMAP_NAVIGATION_CONTROL_LARGE',
 	/**
 	 *  仅包含平移和缩放按钮
 	 */
-	'BMAP_NAVIGATION_CONTROL_SMALL',
+	'BMAP_NAVIGATION_CONTROL_SMALL' = 'BMAP_NAVIGATION_CONTROL_SMALL',
 	/**
 	 *  仅包含平移按钮
 	 */
-	'BMAP_NAVIGATION_CONTROL_PAN',
+	'BMAP_NAVIGATION_CONTROL_PAN' = 'BMAP_NAVIGATION_CONTROL_PAN',
 	/**
 	 *  仅包含缩放按钮
 	 */
-	 'BMAP_NAVIGATION_CONTROL_ZOOM'
+	'BMAP_NAVIGATION_CONTROL_ZOOM' = 'BMAP_NAVIGATION_CONTROL_ZOOM'
 }
 
 /**
@@ -62,7 +62,7 @@ export enum TransitPolicy {
 	/**
 	 *  最少时间
 	 */
-'BMAP_TRANSIT_POLICY_LEAST_TIME',
+	'BMAP_TRANSIT_POLICY_LEAST_TIME',
 	/**
 	 *  最少换乘
 	 */
@@ -76,26 +76,24 @@ export enum TransitPolicy {
 	 */
 	'BMAP_TRANSIT_POLICY_AVOID_SUBWAYS'
 }
-
-
-  /**
-   * 驾车方案的策略配置
-   */
+export type _TransitPolicy = keyof typeof TransitPolicy
+/**
+ * 驾车方案的策略配置
+ */
 export enum DrivingPolicy {
-  /**
-   * 最少时间
-   */
-  'BMAP_DRIVING_POLICY_LEAST_TIME' ,
-  /**
-   * 最短距离
-   */
-	'BMAP_DRIVING_POLICY_LEAST_DISTANCE', 
-  /**
-   * 避开高速 
-   */  
-	'BMAP_DRIVING_POLICY_AVOID_HIGHWAYS',
+	/**
+	 * 最少时间
+	 */
+	'BMAP_DRIVING_POLICY_LEAST_TIME',
+	/**
+	 * 最短距离
+	 */
+	'BMAP_DRIVING_POLICY_LEAST_DISTANCE',
+	/**
+	 * 避开高速
+	 */
+	'BMAP_DRIVING_POLICY_AVOID_HIGHWAYS'
 }
-	
 
 // export enum MapTypeControlType {
 // 	/**
@@ -111,7 +109,6 @@ export enum DrivingPolicy {
 // 	 */
 // 	'BMAP_MAPTYPE_CONTROL_MAP'
 // }
-	
 
 export enum SymbolShapeType {
 	/**
