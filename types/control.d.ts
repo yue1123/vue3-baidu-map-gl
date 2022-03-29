@@ -1,5 +1,5 @@
-import { Size } from "./base"
-import { ControlAnchor } from "./common"
+import { Size } from './base'
+import { ControlAnchor, _LengthUnit } from './common'
 import { Map } from './core'
 /**
  * 此类是所有控件的基类，您可以通过此类来实现自定义控件。
@@ -50,4 +50,30 @@ export interface Control {
 	 * 判断控件的可见性
 	 */
 	isVisible(): Boolean
+}
+
+interface ScaleControlOptions {
+	/**
+	 * 控件停靠的位置
+	 */
+	anchor: ControlAnchor
+	/**
+	 * 控件的偏移值
+	 */
+	offset: Size
+}
+export interface ScaleControl extends Control {
+	/**
+	 *
+	 */
+	/**
+	 * 返回比例尺单位制
+	 */
+	getUnit(): _LengthUnit
+	/**
+	 * 设置比例尺单位制
+	 * @param unit
+	 */
+	setUnit(unit: _LengthUnit): void
+	new (opts?: ScaleControlOptions): ScaleControl
 }

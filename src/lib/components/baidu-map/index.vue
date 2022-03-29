@@ -1,28 +1,12 @@
 <template>
-	<div
-		id="baidu-map-container"
-		:style="{ width: props.width, height: props.height }"
-	></div>
+	<div id="baidu-map-container" :style="{ width: props.width, height: props.height }"></div>
 	<slot></slot>
 </template>
 
 <script setup lang="ts">
-	import {
-		inject,
-		defineProps,
-		withDefaults,
-		defineEmits,
-		watch,
-		ref,
-		defineExpose
-	} from 'vue'
-	import {
-		BMapGL,
-		Point,
-		MapOptions,
-		_MapType
-	} from '../../../../types/index.d'
-
+	import { inject, defineProps, withDefaults, defineEmits, watch, ref, defineExpose, provide, onMounted } from 'vue'
+	import { BMapGL, Point, MapOptions, _MapType } from 'types/index.d'
+	import { useEmits } from 'hooks/useEmits'
 	export interface Props extends MapOptions {
 		ak?: string
 		/**
@@ -102,11 +86,14 @@
 		 */
 		enableAutoResize?: boolean
 	}
+
 	let _BMapGL: BMapGL
 	let map = ref<BMapGL['Map']>()
 	// 是否初始化
 	let initd: boolean = false
+	// const vueEmit =
 	const emits = defineEmits(['onInitd'])
+	const { emit } = useEmits(emits)
 	const props = withDefaults(defineProps<Props>(), {
 		width: '100%',
 		height: '100vh',
@@ -128,9 +115,6 @@
 		enablePinchToZoom: true,
 		enableAutoResize: true
 	})
-	defineExpose({
-		map: () => map.value
-	})
 	// 监听props变化
 	watch(() => props.zoom, setZoom)
 	watch(() => props.center, setCenter)
@@ -142,28 +126,27 @@
 	watch(() => props.enablePinchToZoom, setPinchToZoom)
 	watch(() => props.enableAutoResize, setAutoResize)
 	watch(() => props.mapType, setMapType)
-
+	// defineExpose({
+	// 	map: () => map.value
+	// })
 	const ak = props.ak || inject('baiduMapAk')
 	// 获取地图SDK Script
 	function getMapScriptAsync() {
 		if (!window._BMap) {
 			window._BMap = {}
-			window._BMap.scriptLoader = new Promise<BMapGL>(
-				(resolve, reject) => {
-					const script: HTMLScriptElement =
-						document.createElement('script')
-					window._initBMap = () => {
-						resolve(window.BMapGL)
-						window.document.body.removeChild(script)
-					}
-					script.src = `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=_initBMap`
-					script.type = 'text/javascript'
-					script.defer = true
-					script.async = true
-					script.onerror = reject
-					document.body.appendChild(script)
+			window._BMap.scriptLoader = new Promise<BMapGL>((resolve, reject) => {
+				const script: HTMLScriptElement = document.createElement('script')
+				window._initBMap = () => {
+					resolve(window.BMapGL)
+					window.document.body.removeChild(script)
 				}
-			)
+				script.src = `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=_initBMap`
+				script.type = 'text/javascript'
+				script.defer = true
+				script.async = true
+				script.onerror = reject
+				document.body.appendChild(script)
+			})
 			return window._BMap.scriptLoader
 		} else {
 			return Promise.resolve(window.BMapGL)
@@ -178,7 +161,8 @@
 			initMapOptions()
 			if (!initd) {
 				initd = true
-				emits('onInitd')
+				emit('onInitd', map.value)
+				// emitter.emit('onInitd')
 			}
 		})
 	}
@@ -228,10 +212,7 @@
 		if (typeof props.center === 'string') {
 			map.value!.centerAndZoom(props.center)
 		} else {
-			map.value!.centerAndZoom(
-				genPoint(props.center.lng, props.center.lat),
-				props.zoom
-			)
+			map.value!.centerAndZoom(genPoint(props.center.lng, props.center.lat), props.zoom)
 		}
 	}
 	/**
@@ -246,57 +227,39 @@
 	}
 	// 设置地图是否可拖动
 	function setDragging(enableDragging: boolean): void {
-		enableDragging
-			? map.value!.enableDragging()
-			: map.value!.disableDragging()
+		enableDragging ? map.value!.enableDragging() : map.value!.disableDragging()
 	}
 	// 设置地图惯性拖拽
 	function setInertialDragging(enableInertialDragging: boolean) {
-		enableInertialDragging
-			? map.value!.enableInertialDragging()
-			: map.value!.disableInertialDragging()
+		enableInertialDragging ? map.value!.enableInertialDragging() : map.value!.disableInertialDragging()
 	}
 	// 设置地图是否可滚轮缩放
 	function setScrollWheelZoom(enableScrollWheelZoom: boolean) {
-		enableScrollWheelZoom
-			? map.value!.enableScrollWheelZoom()
-			: map.value!.disableScrollWheelZoom()
+		enableScrollWheelZoom ? map.value!.enableScrollWheelZoom() : map.value!.disableScrollWheelZoom()
 	}
 	// 设置地图是否可连续缩放
 	function setContinuousZoom(enableContinuousZoom: boolean): void {
-		enableContinuousZoom
-			? map.value!.enableContinuousZoom()
-			: map.value!.disableContinuousZoom()
+		enableContinuousZoom ? map.value!.enableContinuousZoom() : map.value!.disableContinuousZoom()
 	}
 	// 设置地图是否可缩放至中心点
 	function setResizeOnCenter(enableResizeOnCenter: boolean): void {
-		enableResizeOnCenter
-			? map.value!.enableResizeOnCenter()
-			: map.value!.disableResizeOnCenter()
+		enableResizeOnCenter ? map.value!.enableResizeOnCenter() : map.value!.disableResizeOnCenter()
 	}
 	// 设置地图是否可双击缩放
 	function setDoubleClickZoom(enableDoubleClickZoom: boolean): void {
-		enableDoubleClickZoom
-			? map.value!.enableDoubleClickZoom()
-			: map.value!.disableDoubleClickZoom()
+		enableDoubleClickZoom ? map.value!.enableDoubleClickZoom() : map.value!.disableDoubleClickZoom()
 	}
 	// 设置地图是否可键盘操作
 	function setKeyboard(enableKeyboard: boolean): void {
-		enableKeyboard
-			? map.value!.enableKeyboard()
-			: map.value!.disableKeyboard()
+		enableKeyboard ? map.value!.enableKeyboard() : map.value!.disableKeyboard()
 	}
 	// 设置地图是否可手势缩放
 	function setPinchToZoom(enablePinchToZoom: boolean): void {
-		enablePinchToZoom
-			? map.value!.enablePinchToZoom()
-			: map.value!.disablePinchToZoom()
+		enablePinchToZoom ? map.value!.enablePinchToZoom() : map.value!.disablePinchToZoom()
 	}
 	// 设置地图是否自动适应窗口大小
 	function setAutoResize(enableAutoResize: boolean): void {
-		enableAutoResize
-			? map.value!.enableAutoResize()
-			: map.value!.disableAutoResize()
+		enableAutoResize ? map.value!.enableAutoResize() : map.value!.disableAutoResize()
 	}
 	init()
 </script>

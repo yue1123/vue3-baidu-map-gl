@@ -95,6 +95,17 @@ export enum DrivingPolicy {
 	'BMAP_DRIVING_POLICY_AVOID_HIGHWAYS'
 }
 
+export enum LengthUnit {
+	/**
+	 * 公制单位
+	 */
+	BMAP_UNIT_METRIC = 'BMAP_UNIT_IMPERIAL',
+	/**
+	 * 英制单位
+	 */
+	BMAP_UNIT_IMPERIAL = 'BMAP_UNIT_IMPERIAL'
+}
+export type _LengthUnit = keyof typeof LengthUnit
 // export enum MapTypeControlType {
 // 	/**
 // 	 * 按钮水平方式展示，默认采用此类型展示

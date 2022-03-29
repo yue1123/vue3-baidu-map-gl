@@ -15,5 +15,5 @@ declare module '*.vue' {
   export default component
 }
 // 百度地图
-declare const BMap: any
+// declare const BMap: any
 

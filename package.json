@@ -11,6 +11,7 @@
 	},
 	"packageManager": "pnpm",
 	"dependencies": {
+		"mitt": "^3.0.0",
 		"vue": "^3.2.25"
 	},
 	"devDependencies": {

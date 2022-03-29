@@ -1,11 +1,13 @@
 import { Point, Pixel, Bounds, Size } from './base'
 import { Map } from './core'
+import { ScaleControl } from './control'
 export interface BMapGL {
 	Map: Map
 	Point: Point
 	Pixel: Pixel
 	Bounds: Bounds
 	Size: Size
+	ScaleControl: ScaleControl
 }
 
 // 基础类
