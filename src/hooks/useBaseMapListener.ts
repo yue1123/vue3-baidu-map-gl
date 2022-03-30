@@ -1,6 +1,6 @@
 import mitt from 'mitt'
 
-import { BMapGL } from 'types/index.d'
+import { BMapGL } from 'types/main.d'
 type Events = {
 	initd: BMapGL['Map']
 }

@@ -57,7 +57,7 @@ export interface Control {
 	isVisible(): Boolean
 }
 
-interface ScaleControlOptions {
+interface ControlOptions {
 	/**
 	 * 控件停靠的位置
 	 */
@@ -69,9 +69,6 @@ interface ScaleControlOptions {
 }
 export interface ScaleControl extends Control {
 	/**
-	 *
-	 */
-	/**
 	 * 返回比例尺单位制
 	 */
 	getUnit(): LengthUnitValue
@@ -80,5 +77,11 @@ export interface ScaleControl extends Control {
 	 * @param unit
 	 */
 	setUnit(unit: LengthUnit): void
-	new (opts?: ScaleControlOptions): ScaleControl
+	new (opts?: ControlOptions): ScaleControl
+}
+
+
+
+export interface ZoomControl extends Control {
+	new (opts?: ControlOptions): ZoomControl
 }

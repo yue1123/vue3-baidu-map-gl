@@ -2,11 +2,8 @@ import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 import { capitalize, camelize } from 'vue'
 const { resolve, join } = require('path')
+const root = process.cwd()
 
-console.log(
-	join(__dirname, '../../types/'),
-	'===================================='
-)
 export default defineUserConfig<DefaultThemeOptions>({
 	// 站点配置
 	lang: 'en-US',
@@ -33,6 +30,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 			}
 		]
 	},
+
 	plugins: [
 		[
 			'@vuepress/register-components',
@@ -41,11 +39,18 @@ export default defineUserConfig<DefaultThemeOptions>({
 				componentsPatterns: ['**/*.vue'],
 				getComponentName: (filename) => {
 					// 转驼峰
-					return camelize(
-						capitalize(filename.replace(/\/\w+\.vue$/, ''))
-					)
+					return camelize(capitalize(filename.replace(/\/\w+\.vue$/, '')))
 				}
 			}
 		]
-	]
+	],
+	bundlerConfig: {
+		root,
+		resolve: {
+			alias: {
+				hooks: join(root, 'src/hooks'),
+				types: join(root, 'src/types')  
+			}
+		}
+	}
 })

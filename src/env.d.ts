@@ -2,19 +2,15 @@
 
 interface Window {
 	_BMap: any
-	BMapGL: import('../types').BMapGL
+	BMapGL: import('../types/main.d').BMapGL
 	/**
 	 * 百度地图jsonp初始化方法
 	 */
 	_initBMap: () => void
-  [key: string]: any
+	[key: string]: any
 }
 declare module '*.vue' {
   import type { DefineComponent } from 'vue'
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
   const component: DefineComponent<{}, {}, any>
   export default component
 }
-// 百度地图
-// declare const BMap: any
-

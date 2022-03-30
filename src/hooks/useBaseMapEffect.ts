@@ -1,6 +1,6 @@
-import { ref, onUnmounted } from 'vue'
+import { onUnmounted } from 'vue'
 import useBaseMapListener from './useBaseMapListener'
-import { BMapGL } from 'types/index.d'
+import { BMapGL } from 'types/main.d'
 let _map: BMapGL['Map'] | null = null
 function useBaseMapEffect(cal: (map: BMapGL['Map']) => void | VoidFunction) {
 	const { on } = useBaseMapListener()
@@ -16,7 +16,6 @@ function useBaseMapEffect(cal: (map: BMapGL['Map']) => void | VoidFunction) {
 	}
 
 	onUnmounted(() => {
-		// console.log('我卸载', onUnmountedCal)
 		onUnmountedCal && onUnmountedCal()
 	})
 	return { map: _map }

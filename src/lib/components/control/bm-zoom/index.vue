@@ -5,7 +5,7 @@
 <script setup lang="ts">
 	import { defineProps, withDefaults, watch } from 'vue'
 	import useBaseMapEffect from 'hooks/useBaseMapEffect'
-	import { LengthUnit, ControlAnchor, _LengthUnit, _ControlAnchor } from 'types/common.d'
+	import { ControlAnchor, _LengthUnit, _ControlAnchor } from 'types/common.d'
 	import { BMapGL } from 'types/main.d'
 	export interface BmScaleOptions {
 		/**
@@ -19,32 +19,19 @@
 			x: number
 			y: number
 		}
-		/**
-		 * 比例尺单位制
-		 */
-		unit?: _LengthUnit
 	}
 	const props = withDefaults(defineProps<BmScaleOptions>(), {
 		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
-		offset: () => ({ x: 83, y: 18 }),
-		unit: 'BMAP_UNIT_IMPERIAL'
+		offset: () => ({ x: 83, y: 18 })
 	})
-	let scaleCtrl: BMapGL['ScaleControl']
+	let zoomControl: BMapGL['ZoomControl']
 	useBaseMapEffect((map) => {
-		scaleCtrl = new window.BMapGL.ScaleControl({
+		zoomControl = new window.BMapGL.ZoomControl({
 			offset: new window.BMapGL.Size(props.offset.x, props.offset.y),
 			anchor: ControlAnchor[props.anchor]
 		})
-		setUnit()
-		map.addControl(scaleCtrl)
-		return () => map.removeControl(scaleCtrl)
+		map.addControl(zoomControl)
+		return () => map.removeControl(zoomControl)
 	})
-	// 监听比例尺单位变化
-	watch(() => props.unit, setUnit)
-	/**
-	 * 设置比例尺单位制
-	 */
-	function setUnit() {
-		scaleCtrl.setUnit(LengthUnit[props.unit])
-	}
+  function a(){}
 </script>

@@ -5,12 +5,13 @@
 			<!-- <BmControl></BmControl> -->
 			<!-- </BmControl> -->
 		</BmControl>
-		<BmScale v-if="show"></BmScale>
+		<BmScale v-if="show" anchor="BMAP_ANCHOR_TOP_LEFT"></BmScale>
+    <BmZoom v-if="show"></BmZoom>
 	</BaiduMap>
 </template>
 <script setup lang="ts">
 	import { ref } from 'vue'
-	import { BaiduMap, BmControl, BmScale } from './index'
+	import { BaiduMap, BmControl, BmScale, BmZoom } from './index'
 
 	const show = ref<boolean>(true)
 
@@ -22,7 +23,7 @@
 		show.value = !show.value
 	}
 
-  (window as any).toggle = cal
+	;(window as any).toggle = cal
 </script>
 <style>
 	#app {
