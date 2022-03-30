@@ -1,39 +1,41 @@
 export enum ControlAnchor {
 	/**
-	 * 控件将定位到地图的右下角
-	 */
-	'BMAP_ANCHOR_BOTTOM_RIGHT' = 'BMAP_ANCHOR_BOTTOM_RIGHT',
-	/**
-	 * 控件将定位到地图的左下角
-	 */
-	'BMAP_ANCHOR_BOTTOM_LEFT' = 'BMAP_ANCHOR_BOTTOM_LEFT',
-	/**
 	 * 控件将定位到地图的右上角
 	 */
-	'BMAP_ANCHOR_TOP_RIGHT' = 'BMAP_ANCHOR_TOP_RIGHT',
+	'B_ANCHOR_TOP_RIGHT' = 0,
 	/**
 	 * 控件将定位到地图的左上角
 	 */
-	'BMAP_ANCHOR_TOP_LEFT' = 'BMAP_ANCHOR_TOP_LEFT'
+	'BMAP_ANCHOR_TOP_LEFT' = 1,
+	/**
+	 * 控件将定位到地图的左下角
+	 */
+	'BMAP_ANCHOR_BOTTOM_LEFT' = 2,
+	/**
+	 * 控件将定位到地图的右下角
+	 */
+	'BMAP_ANCHOR_BOTTOM_RIGHT' = 3
 }
+
 export type _ControlAnchor = keyof typeof ControlAnchor
 export enum MapType {
+	// FIXME: 和文档名字统一
 	/**
 	 * 此地图类型展示普通街道视图
 	 */
-	'B_NORMAL_MAP' = 'B_NORMAL_MAP',
+	'BMAP_NORMAL_MAP' = 'B_NORMAL_MAP',
 	/**
 	 * 此地图类型展示透视图像视图
 	 */
-	'B_EARTH_MAP' = 'B_EARTH_MAP'
+	'BMAP_EARTH_MAP' = 'B_EARTH_MAP'
 	// /**
 	//  * 此地图类型展示卫星视图
 	//  */
-	// 'BMAP_SATELLITE_MAP' = 'BMAP_SATELLITE_MAP',
+	// 'BMAP_SATELLITE_MAP' = 'B_SATELLITE_MAP',
 	// /**
 	//  * 此地图类型展示卫星和路网的混合视图
 	//  */
-	// 'BMAP_HYBRID_MAP' = 'BMAP_HYBRID_MAP'
+	// 'BMAP_HYBRID_MAP' = 'B_HYBRID_MAP'
 }
 export type _MapType = keyof typeof MapType
 export enum NavigationControlType {
@@ -99,12 +101,15 @@ export enum LengthUnit {
 	/**
 	 * 公制单位
 	 */
-	BMAP_UNIT_METRIC = 'BMAP_UNIT_IMPERIAL',
+	BMAP_UNIT_METRIC = 'metric',
 	/**
 	 * 英制单位
 	 */
-	BMAP_UNIT_IMPERIAL = 'BMAP_UNIT_IMPERIAL'
+	BMAP_UNIT_IMPERIAL = 'us'
 }
+
+export type LengthUnitValue = LengthUnit.BMAP_UNIT_METRIC | LengthUnit.BMAP_UNIT_IMPERIAL
+
 export type _LengthUnit = keyof typeof LengthUnit
 // export enum MapTypeControlType {
 // 	/**

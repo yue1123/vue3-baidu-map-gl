@@ -1,7 +1,7 @@
 // import { Bounds, Point } from '../types1/base/common'
 
 import { Bounds, Pixel, Point, Size } from './base'
-import { _MapType } from './common'
+import { MapType, _MapType } from './common'
 import { Control } from './control'
 import { InfoWindow, Overlay } from './overlay'
 
@@ -317,7 +317,7 @@ export interface Map {
 	/**
 	 * 设置地图类型
 	 */
-	setMapType(mapTypeId: _MapType): void
+	setMapType(mapTypeId: MapType): void
 	/**
 	 * 将视图切换到指定的缩放等级，中心点坐标不变。
 	 * @description 注意：当有信息窗口在地图上打开时，地图缩放将保证信息窗口所在的坐标位置不动。可选配置参数包括'noAnimation：boolean'是否禁用动画效果；'callback:function'动画结束后会调用此方法，如果没有动画则立即调用；'zoomCenter：Point'缩放中心点，默认以地图中心点为基准缩放

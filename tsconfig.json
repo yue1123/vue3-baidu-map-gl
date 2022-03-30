@@ -10,11 +10,12 @@
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"lib": ["esnext", "dom"],
+		// "preserveConstEnums": true,
 		"baseUrl": "./",
 		"importHelpers": true,
 		"paths": {
 			"types/*": ["types/*"],
-      "hooks/*": ["src/hooks/*"],
+			"hooks/*": ["src/hooks/*"]
 		}
 	},
 	"include": [
@@ -23,7 +24,7 @@
 		"src/**/*.d.ts",
 		"src/**/*.tsx",
 		"src/**/*.vue",
-    "src/**/**/*.vue",
+		"src/**/**/*.vue",
 		"types/*.ts"
 	],
 	"references": [

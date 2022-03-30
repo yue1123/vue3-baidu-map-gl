@@ -8,7 +8,7 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			hooks: join(__dirname, 'src/hooks/'),
-			types: join(__dirname, './', 'types/')
+			types: join(__dirname, './types/')
 		}
 	},
 	build: {

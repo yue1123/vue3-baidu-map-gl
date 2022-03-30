@@ -121,11 +121,11 @@ export interface Size {
 	/**
 	 * 宽度
 	 */
-	width: Number
+	width: number
 	/**
 	 * 宽度
 	 */
-	height: Number
+	height: number
 	/**
 	 * 当且仅当此矩形中的宽度和高度都等于其他矩形的宽度和高度时，返回true
 	 * @param {Size} other 另一个矩形区域大小
@@ -135,5 +135,5 @@ export interface Size {
 	 * @param {number} width 宽度
 	 * @param {number} height 高度
 	 */
-	new (width: Number, height: Number): Size
+	new (width: number, height: number): Size
 }
