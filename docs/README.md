@@ -18,8 +18,8 @@ features:
 <button @click="count++">点我！</button>
 
 <select name="" id="" v-model="type">
-  <option value="B_NORMAL_MAP">B_NORMAL_MAP</option>
-  <option value="B_EARTH_MAP">B_EARTH_MAP</option>
+  <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
+  <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
 </select>
 
 <script setup>
@@ -27,7 +27,7 @@ import { ref } from 'vue'
 const msg = 'Markdown 中的 Vue'
 const mouseScroll = ref(true)
 const count = ref(10)
-const type = ref('B_NORMAL_MAP')
+const type = ref('BMAP_NORMAL_MAP')
 </script>
 
 <style>
