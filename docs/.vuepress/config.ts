@@ -39,7 +39,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 							link: '/guide/install'
 						},
 						{
-							text: '快速上手',
+							text: '快速上手'
 						}
 					]
 				}
@@ -60,9 +60,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 				componentsPatterns: ['**/*.vue'],
 				getComponentName: (filename) => {
 					// 转驼峰
-					return camelize(
-						capitalize(filename.replace(/\/\w+\.vue$/, ''))
-					)
+					return camelize(capitalize(filename.replace(/\/\w+\.vue$/, '')))
 				}
 			}
 		]
@@ -70,5 +68,8 @@ export default defineUserConfig<DefaultThemeOptions>({
 	alias: {
 		hooks: join(root, 'src/hooks'),
 		types: join(root, 'types')
+	},
+	bundlerConfig: {
+		base: './'
 	}
 })

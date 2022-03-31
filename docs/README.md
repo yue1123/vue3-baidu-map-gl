@@ -28,6 +28,15 @@ const msg = 'Markdown 中的 Vue'
 const mouseScroll = ref(true)
 const count = ref(10)
 const type = ref('BMAP_NORMAL_MAP')
+function syncCenterAndZoom(a) {
+  console.log(a)
+}
+function onReady(map){
+  console.log('我已准备就绪',map)
+}
+function onUnload(){
+  console.log('我卸载了')
+}
 </script>
 
 <style>
@@ -37,4 +46,4 @@ const type = ref('BMAP_NORMAL_MAP')
 </style>
 
 {{type}}
-<baidu-map ak="4stE857hYPHbEmgKhLiTAa0QbCIULHpm" :mapType="type" :enableScrollWheelZoom="mouseScroll" :zoom="count"/>
+<baidu-map ak="4stE857hYPHbEmgKhLiTAa0QbCIULHpm" :mapType="type" @unload="onUnload" @initd="onReady" @aaa="syncCenterAndZoom" @mouseover="syncCenterAndZoom" :enableScrollWheelZoom="mouseScroll" :zoom="count"/>
