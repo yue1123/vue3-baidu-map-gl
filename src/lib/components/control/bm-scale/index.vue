@@ -7,6 +7,7 @@
 	import useBaseMapEffect from 'hooks/useBaseMapEffect'
 	import { LengthUnit, ControlAnchor, _LengthUnit, _ControlAnchor } from 'types/common.d'
 	import { BMapGL } from 'types/main.d'
+	import useLife from 'hooks/useLife'
 	export interface BmScaleOptions {
 		/**
 		 * 控件的停靠位置
@@ -24,6 +25,7 @@
 		 */
 		unit?: _LengthUnit
 	}
+	const { ready } = useLife()
 	const props = withDefaults(defineProps<BmScaleOptions>(), {
 		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
 		offset: () => ({ x: 83, y: 18 }),
@@ -37,6 +39,7 @@
 		})
 		setUnit()
 		map.addControl(scaleCtrl)
+    ready(map)
 		return () => map.removeControl(scaleCtrl)
 	})
 	// 监听比例尺单位变化

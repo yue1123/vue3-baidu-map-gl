@@ -1,18 +1,24 @@
 <template>
-	<BaiduMap ak="4stE857hYPHbEmgKhLiTAa0QbCIULHpm" mapType="BMAP_NORMAL_MAP" :enable-keyboard="false">
+	<BaiduMap
+		ak="4stE857hYPHbEmgKhLiTAa0QbCIULHpm"
+		mapType="BMAP_NORMAL_MAP"
+		:enable-keyboard="false"
+	>
 		<BmControl>
 			<!-- <BmControl> -->
 			<!-- <BmControl></BmControl> -->
 			<!-- </BmControl> -->
 		</BmControl>
-		<BmScale v-if="show" anchor="BMAP_ANCHOR_TOP_LEFT"></BmScale>
-    <BmZoom v-if="show"></BmZoom>
+		<BmScale @initd="ready" v-if="show" anchor="BMAP_ANCHOR_TOP_LEFT"></BmScale>
+		<BmZoom v-if="show"></BmZoom>
 	</BaiduMap>
 </template>
 <script setup lang="ts">
 	import { ref } from 'vue'
 	import { BaiduMap, BmControl, BmScale, BmZoom } from './index'
-
+	function ready(map: any) {
+		console.log(map)
+	}
 	const show = ref<boolean>(true)
 
 	// setTimeout(() => {

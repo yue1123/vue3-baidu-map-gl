@@ -1,9 +1,5 @@
 <template>
-	<div
-		id="baidu-map-container"
-		:style="{ width: props.width, height: props.height }"
-    @mouseover="syncCenterAndZoom"
-	/>
+	<div id="baidu-map-container" :style="{ width: props.width, height: props.height }" />
 	<slot></slot>
 </template>
 
@@ -15,13 +11,15 @@
 		defineEmits,
 		watch,
 		ref,
-    getCurrentInstance
+		getCurrentInstance,
+		onMounted
 	} from 'vue'
 	import { _MapType, MapType } from 'types/common.d'
 	import { BMapGL } from 'types/main.d'
 	import { MapOptions } from 'types/core.d'
 	import { Point } from 'types/base.d'
 	import useBaseMapListener from 'hooks/useBaseMapListener'
+	import useLife from 'hooks/useLife'
 	export interface Props extends MapOptions {
 		ak?: string
 		/**
@@ -107,9 +105,10 @@
 	// 是否初始化
 	let initd: boolean = false
 	// const vueEmit =
-	const $emits = defineEmits(['initd'])
+	// const $emits = defineEmits(['initd'])
 	// 地图初始化的发布
-	const { emit } = useBaseMapListener()
+	const { ready } = useLife('initd')
+	// const { emit } = useBaseMapListener()
 	const props = withDefaults(defineProps<Props>(), {
 		width: '100%',
 		height: '100vh',
@@ -145,22 +144,19 @@
 	function getMapScriptAsync() {
 		if (!window._BMap) {
 			window._BMap = {}
-			window._BMap.scriptLoader = new Promise<BMapGL>(
-				(resolve, reject) => {
-					const script: HTMLScriptElement =
-						document.createElement('script')
-					window._initBMap = () => {
-						resolve(window.BMapGL)
-						window.document.body.removeChild(script)
-					}
-					script.src = `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=_initBMap`
-					script.type = 'text/javascript'
-					script.defer = true
-					script.async = true
-					script.onerror = reject
-					document.body.appendChild(script)
+			window._BMap.scriptLoader = new Promise<BMapGL>((resolve, reject) => {
+				const script: HTMLScriptElement = document.createElement('script')
+				window._initBMap = () => {
+					resolve(window.BMapGL)
+					window.document.body.removeChild(script)
 				}
-			)
+				script.src = `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=_initBMap`
+				script.type = 'text/javascript'
+				script.defer = true
+				script.async = true
+				script.onerror = reject
+				document.body.appendChild(script)
+			})
 			return window._BMap.scriptLoader
 		} else {
 			return Promise.resolve(window.BMapGL)
@@ -175,8 +171,7 @@
 			initMapOptions()
 			if (!initd) {
 				initd = true
-				$emits('initd', map.value)
-				emit('initd', map.value)
+        ready(map.value) 
 			}
 		})
 	}
@@ -226,10 +221,7 @@
 		if (typeof props.center === 'string') {
 			map.value!.centerAndZoom(props.center)
 		} else {
-			map.value!.centerAndZoom(
-				genPoint(props.center.lng, props.center.lat),
-				props.zoom
-			)
+			map.value!.centerAndZoom(genPoint(props.center.lng, props.center.lat), props.zoom)
 		}
 	}
 	/**
@@ -244,9 +236,7 @@
 	}
 	// 设置地图是否可拖动
 	function setDragging(enableDragging: boolean): void {
-		enableDragging
-			? map.value!.enableDragging()
-			: map.value!.disableDragging()
+		enableDragging ? map.value!.enableDragging() : map.value!.disableDragging()
 	}
 	// 设置地图惯性拖拽
 	function setInertialDragging(enableInertialDragging: boolean) {
@@ -280,28 +270,18 @@
 	}
 	// 设置地图是否可键盘操作
 	function setKeyboard(enableKeyboard: boolean): void {
-		enableKeyboard
-			? map.value!.enableKeyboard()
-			: map.value!.disableKeyboard()
+		enableKeyboard ? map.value!.enableKeyboard() : map.value!.disableKeyboard()
 	}
 	// 设置地图是否可手势缩放
 	function setPinchToZoom(enablePinchToZoom: boolean): void {
-		enablePinchToZoom
-			? map.value!.enablePinchToZoom()
-			: map.value!.disablePinchToZoom()
+		enablePinchToZoom ? map.value!.enablePinchToZoom() : map.value!.disablePinchToZoom()
 	}
 	// 设置地图是否自动适应窗口大小
 	function setAutoResize(enableAutoResize: boolean): void {
-		enableAutoResize
-			? map.value!.enableAutoResize()
-			: map.value!.disableAutoResize()
+		enableAutoResize ? map.value!.enableAutoResize() : map.value!.disableAutoResize()
 	}
 
-	function syncCenterAndZoom(a: any) {
-		console.log(a)
-	}
 	init()
-  console.log(getCurrentInstance());
 </script>
 
 <style lang="less" scoped></style>
