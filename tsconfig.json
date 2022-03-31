@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es2015",
     "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -9,8 +9,38 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"]
+    "isolatedModules":true,
+    "lib": [
+      "ESNext",
+      "dom",
+      "ESNext.Promise"
+    ],
+    "types": [
+      "vite/client"
+    ],
+    "suppressImplicitAnyIndexErrors": true,
+    "baseUrl": "./",
+    "importHelpers": true,
+    "paths": {
+      "hooks/*": [
+        "src/hooks/*"
+      ],
+      "types/*": [
+        "types/*"
+      ],
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/*.vue",
+    "types/*.d.ts",
+    "vite.config.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

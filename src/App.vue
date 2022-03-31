@@ -1,21 +1,45 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+	<BaiduMap
+		ak="4stE857hYPHbEmgKhLiTAa0QbCIULHpm"
+		mapType="BMAP_NORMAL_MAP"
+		:enable-keyboard="false"
+	>
+		<BmControl>
+			<!-- <BmControl> -->
+			<!-- <BmControl></BmControl> -->
+			<!-- </BmControl> -->
+		</BmControl>
+		<BmScale @initd="ready" v-if="show" anchor="BMAP_ANCHOR_TOP_LEFT"></BmScale>
+		<BmZoom v-if="show"></BmZoom>
+	</BaiduMap>
 </template>
+<script setup lang="ts">
+	import { ref } from 'vue'
+	import { BaiduMap, BmControl, BmScale, BmZoom } from './index'
+	function ready(map: any) {
+		console.log(map)
+	}
+	const show = ref<boolean>(true)
 
+	// setTimeout(() => {
+	// 	show.value = false
+	//   console.log('yingcang');
+	// }, 5000)
+	const cal = () => {
+		show.value = !show.value
+	}
+
+	;(window as any).toggle = cal
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+	#app {
+		font-family: Avenir, Helvetica, Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-align: center;
+		color: #2c3e50;
+	}
+	body {
+		margin: 0;
+	}
 </style>
