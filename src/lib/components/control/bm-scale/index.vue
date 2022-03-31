@@ -27,9 +27,9 @@
 	}
 	const { ready } = useLife()
 	const props = withDefaults(defineProps<BmScaleOptions>(), {
-		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
+		anchor: 'BMAP_ANCHOR_BOTTOM_LEFT',
 		offset: () => ({ x: 83, y: 18 }),
-		unit: 'BMAP_UNIT_IMPERIAL'
+		unit: 'BMAP_UNIT_METRIC'
 	})
 	let scaleCtrl: BMapGL['ScaleControl']
 	useBaseMapEffect((map) => {

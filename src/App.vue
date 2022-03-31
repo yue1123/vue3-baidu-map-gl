@@ -1,15 +1,11 @@
 <template>
-	<BaiduMap
-		ak="4stE857hYPHbEmgKhLiTAa0QbCIULHpm"
-		mapType="BMAP_NORMAL_MAP"
-		:enable-keyboard="false"
-	>
+	<BaiduMap ak="4stE857hYPHbEmgKhLiTAa0QbCIULHpm" mapType="BMAP_NORMAL_MAP" :enable-keyboard="false" @initd="ready1">
 		<BmControl>
 			<!-- <BmControl> -->
 			<!-- <BmControl></BmControl> -->
 			<!-- </BmControl> -->
 		</BmControl>
-		<BmScale @initd="ready" v-if="show" anchor="BMAP_ANCHOR_TOP_LEFT"></BmScale>
+		<BmScale @initd="ready" v-if="show"></BmScale>
 		<BmZoom v-if="show"></BmZoom>
 	</BaiduMap>
 </template>
@@ -17,7 +13,10 @@
 	import { ref } from 'vue'
 	import { BaiduMap, BmControl, BmScale, BmZoom } from './index'
 	function ready(map: any) {
-		console.log(map)
+		console.log(map, '我是组件')
+	}
+	function ready1(map: any) {
+		console.log(map, '我是map实例')
 	}
 	const show = ref<boolean>(true)
 
