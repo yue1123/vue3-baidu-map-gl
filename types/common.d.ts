@@ -2,7 +2,7 @@ export enum ControlAnchor {
 	/**
 	 * 控件将定位到地图的右上角
 	 */
-	'B_ANCHOR_TOP_RIGHT' = 0,
+	'BMAP_ANCHOR_TOP_RIGHT' = 0,
 	/**
 	 * 控件将定位到地图的左上角
 	 */

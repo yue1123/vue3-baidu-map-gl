@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-	import { defineProps, withDefaults, watch } from 'vue'
+	import { defineProps, withDefaults, watch, defineEmits } from 'vue'
 	import useBaseMapEffect from 'hooks/useBaseMapEffect'
 	import { LengthUnit, ControlAnchor, _LengthUnit, _ControlAnchor } from 'types/common.d'
 	import { BMapGL } from 'types/main.d'
@@ -39,7 +39,7 @@
 		})
 		setUnit()
 		map.addControl(scaleCtrl)
-    ready(map)
+		ready(map)
 		return () => map.removeControl(scaleCtrl)
 	})
 	// 监听比例尺单位变化

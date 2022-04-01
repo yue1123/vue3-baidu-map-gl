@@ -1,10 +1,5 @@
 import { Size } from './base'
-import {
-	ControlAnchor,
-	LengthUnit,
-	_LengthUnit,
-	LengthUnitValue
-} from './common'
+import { ControlAnchor, _ControlAnchor, LengthUnit, _LengthUnit, LengthUnitValue } from './common'
 import { Map } from './core'
 /**
  * 此类是所有控件的基类，您可以通过此类来实现自定义控件。
@@ -55,6 +50,7 @@ export interface Control {
 	 * 判断控件的可见性
 	 */
 	isVisible(): Boolean
+	new (): Control
 }
 
 interface ControlOptions {
@@ -80,8 +76,21 @@ export interface ScaleControl extends Control {
 	new (opts?: ControlOptions): ScaleControl
 }
 
-
-
 export interface ZoomControl extends Control {
 	new (opts?: ControlOptions): ZoomControl
 }
+
+// control组件公共props
+// export interface baseBmControlOptions {
+// 	/**
+// 	 * 控件的停靠位置
+// 	 */
+// 	anchor?: _ControlAnchor
+// 	/**
+// 	 * 控件的偏移值
+// 	 */
+// 	offset?: {
+// 		x: number
+// 		y: number
+// 	}
+// }

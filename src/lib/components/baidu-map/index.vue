@@ -105,7 +105,6 @@
 	// 是否初始化
 	let initd: boolean = false
 	// const vueEmit =
-	// const $emits = defineEmits(['initd'])
 	// 地图初始化的发布
 	const { ready } = useLife('initd')
 	// const { emit } = useBaseMapListener()
@@ -125,6 +124,7 @@
 		enablePinchToZoom: true,
 		enableAutoResize: true
 	})
+	defineEmits(['initd'])
 	// 监听props变化
 	watch(() => props.zoom, setZoom)
 	watch(() => props.center, setCenter)
@@ -171,7 +171,7 @@
 			initMapOptions()
 			if (!initd) {
 				initd = true
-        ready(map.value) 
+				ready(map.value)
 			}
 		})
 	}
@@ -228,6 +228,7 @@
 	 * 设置缩放级别
 	 */
 	function setZoom(zoom: number): void {
+		console.log(zoom)
 		map.value!.setZoom(zoom)
 	}
 	// 设置地图类型
