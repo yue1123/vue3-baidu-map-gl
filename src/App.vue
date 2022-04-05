@@ -6,16 +6,14 @@
 		:zoom="zoom"
 		@initd="ready1"
 	>
-		<BmControl>
-			<!-- <BmControl> -->
+		
+	</BaiduMap>
+  <!-- <BmControl>
 			<div>'123123123</div>
-			<!-- <BmControl></BmControl> -->
-			<!-- </BmControl> -->
 		</BmControl>
 		<button @click="handleZoom">放大</button>
 		<BmScale anchor="BMAP_ANCHOR_BOTTOM_RIGHT" @initd="ready" v-if="show"></BmScale>
-		<BmZoom v-if="show"></BmZoom>
-	</BaiduMap>
+		<BmZoom v-if="show"></BmZoom> -->
 </template>
 <script setup lang="ts">
 	import { ref } from 'vue'
