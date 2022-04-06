@@ -1,12 +1,23 @@
 <template>
-	<div id="baidu-map-container" style="overflow: hidden" :style="{ width: props.width, height: props.height }" />
+	<div
+		id="baidu-map-container"
+		style="overflow: hidden"
+		:style="{ width: props.width, height: props.height }"
+	/>
 	<slot></slot>
 </template>
 
 <script setup lang="ts">
-	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted } from 'vue'
+	import {
+		inject,
+		defineProps,
+		withDefaults,
+		defineEmits,
+		watch,
+		onMounted,
+		onUnmounted
+	} from 'vue'
 	import useLife from 'hooks/useLife'
-	// import { MapType } from 'types/common'
 	export interface Props {
 		ak?: string
 		/**
@@ -40,6 +51,8 @@
 		 * 缩放级别
 		 */
 		zoom?: number
+		heading?: number
+		tilt?: number
 		/**
 		 * 地图允许展示的最小级别
 		 */
@@ -106,6 +119,10 @@
 		center: () => ({ lat: 39.915185, lng: 116.403901 }),
 		mapType: 'BMAP_NORMAL_MAP',
 		zoom: 19,
+		maxZoom: 21,
+		minZoom: 0,
+		heading: 0,
+		tilt: 0,
 		enableDragging: true,
 		enableInertialDragging: true,
 		enableScrollWheelZoom: true,
@@ -116,7 +133,7 @@
 		enablePinchToZoom: true,
 		enableAutoResize: true
 	})
-	defineEmits(['initd'])
+	defineEmits(['initd', 'unload'])
 	// 监听props变化
 	watch(() => props.zoom, setZoom)
 	watch(() => props.center, setCenter)
@@ -128,9 +145,6 @@
 	watch(() => props.enablePinchToZoom, setPinchToZoom)
 	watch(() => props.enableAutoResize, setAutoResize)
 	watch(() => props.mapType, setMapType)
-	// defineExpose({
-	// 	map: () => map
-	// })
 	const ak = props.ak || inject('baiduMapAk')
 	// 获取地图SDK Script
 	function getMapScriptAsync() {
@@ -156,17 +170,21 @@
 	// 初始化地图
 	function init() {
 		getMapScriptAsync().then(() => {
-			map = new BMapGL.Map('baidu-map-container')
+			const { minZoom, maxZoom, mapType, enableAutoResize } = props
+			map = new BMapGL.Map('baidu-map-container', {
+				minZoom,
+				maxZoom,
+				mapType: window[mapType], 
+				enableAutoResize
+			})
 			setCenterAanZoom()
 			initMapOptions()
-			// map.setHeading(64.5)
-			// map.setTilt(73)
 			if (!initd) {
 				initd = true
-				ready(map)
+				ready(map) 
 			}
-			map!.setHeading(64.5)
-			map!.setTilt(73)
+			map!.setHeading(0)
+			map!.setTilt(0)
 		})
 	}
 	// 设置地图属性
@@ -181,8 +199,10 @@
 			enableKeyboard,
 			enablePinchToZoom,
 			enableAutoResize,
-			mapType
+			mapType,
+			zoom
 		} = props
+		setZoom(zoom)
 		setDragging(enableDragging)
 		setInertialDragging(enableInertialDragging)
 		setScrollWheelZoom(enableScrollWheelZoom)
@@ -215,21 +235,18 @@
 		if (typeof props.center === 'string') {
 			map!.centerAndZoom(props.center)
 		} else {
-			map!.centerAndZoom(new window.BMapGL.Point(116.28019, 40.049191), 19) // 初始化地图,设置中心点坐标和地图级别
-			// map!.centerAndZoom(genPoint(props.center.lng, props.center.lat), props.zoom)
-		}
+			map!.centerAndZoom(genPoint(props.center.lng, props.center.lat), props.zoom)
+		} 
 	}
 	/**
 	 * 设置缩放级别
 	 */
 	function setZoom(zoom: number): void {
-		console.log(zoom)
 		map!.setZoom(zoom)
 	}
 	// 设置地图类型
 	function setMapType(mapType: _MapType): void {
-		// console.log(MapType)
-		map!.setMapType(window[props.mapType])
+		map!.setMapType(window[mapType])
 	}
 	// 设置地图是否可拖动
 	function setDragging(enableDragging: boolean): void {

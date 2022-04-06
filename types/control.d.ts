@@ -1,5 +1,4 @@
 /// <reference path="./base.d.ts" />
-/// <reference path="./maptype.d.ts" />
 /// <reference path="./overlay.d.ts" />
 declare namespace BMapGL {
     class Control {

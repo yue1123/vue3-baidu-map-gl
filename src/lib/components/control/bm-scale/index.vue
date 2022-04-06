@@ -5,8 +5,6 @@
 <script setup lang="ts">
 	import { defineProps, withDefaults, watch, defineEmits } from 'vue'
 	import useBaseMapEffect from 'hooks/useBaseMapEffect'
-	import { LengthUnit, ControlAnchor, _LengthUnit, _ControlAnchor } from 'types/common.d'
-	import { BMapGL } from 'types/main.d'
 	import useLife from 'hooks/useLife'
 	export interface BmScaleOptions {
 		/**
@@ -31,11 +29,12 @@
 		offset: () => ({ x: 83, y: 18 }),
 		unit: 'BMAP_UNIT_METRIC'
 	})
-	let scaleCtrl: BMapGL['ScaleControl']
+	let scaleCtrl: BMapGL.ScaleControl
+  defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {
 		scaleCtrl = new window.BMapGL.ScaleControl({
 			offset: new window.BMapGL.Size(props.offset.x, props.offset.y),
-			anchor: ControlAnchor[props.anchor]
+			anchor: window[props.anchor]
 		})
 		setUnit()
 		map.addControl(scaleCtrl)
@@ -48,6 +47,6 @@
 	 * 设置比例尺单位制
 	 */
 	function setUnit() {
-		scaleCtrl.setUnit(LengthUnit[props.unit])
+		scaleCtrl.setUnit(window[props.unit])
 	}
 </script>

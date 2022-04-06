@@ -1,5 +1,4 @@
 /// <reference path="./base.d.ts" />
-/// <reference path="./maptype.d.ts" />
 /// <reference path="./panorama.d.ts" />
 /// <reference path="./common.d.ts" />
 
