@@ -1,11 +1,17 @@
-# Vue 3 + Typescript + Vite
+# Vue BaiduMap gl
+基于百度地图JavaScript GL版API封装的Vue3组件库 施工中🚧
+<div style="display:flex;justify-content:center;">
+  <img src='./docs/.vuepress/public/logo.png' style="width:220px;">
+</div>
+<br />
 
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+[![GitHub license](https://img.shields.io/github/license/yue1123/img-previewer?style=flat-square)](https://github.com/yue1123/img-previewer/blob/main/LICENSE)
 
-## Recommended IDE Setup
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## todo list
 
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+- [x] 基础地图
+- [x] 地图控件
+- [ ] 地图覆盖物
+- [ ] 地图插件
+- [ ] 自定义地图样式
