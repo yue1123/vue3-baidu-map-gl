@@ -26,6 +26,7 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			hooks: join(root, 'src/hooks/'),
+			utils: join(root, 'src/utils/'),
 			types: join(root, 'types/')
 		}
 	},

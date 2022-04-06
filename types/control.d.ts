@@ -2,20 +2,56 @@
 /// <reference path="./overlay.d.ts" />
 declare namespace BMapGL {
     class Control {
-        constructor();
-        defaultAnchor: ControlAnchor;
-        defaultOffset: Size;
-        initialize(map: Map): HTMLElement;
-        setAnchor(anchor: ControlAnchor): void;
-        getAnchor(): ControlAnchor;
-        setOffset(offset: Size): void;
-        getOffset(): Size;
-        show(): void;
-        hide(): void;
-        isVisible(): boolean;
-        /** 自定义Control在add之后立马能读取到Container, 内置Control不能 */
-        getContainer(): HTMLElement | undefined;
-    }
+			constructor()
+			/**
+			 * 控件默认的停靠位置。自定义控件时需要提供此属性，作为控件的默认停靠位置
+			 */
+			defaultAnchor: ControlAnchor
+			/**
+			 * 控件默认的位置偏移值。自定义控件时需要提供此属性，作为控件的默认偏移位置
+			 */
+			defaultOffset: Size
+			/**
+			 * 抽象方法。调用Map.addControl()方法添加控件时将调用此方法，从而实现该控件的初始化。
+			 * 自定义控件时需要实现此方法，并将元素的DOM元素在该方法中返回。
+			 * DOM元素需要添加到地图的容器中，使用map.getContainer:()
+			 * @param {Map} map
+			 */
+			initialize(map: Map): HTMLElement
+			/**
+			 * 设置控件停靠的位置
+			 * @param {ControlAnchor} anchor
+			 */
+			setAnchor(anchor: ControlAnchor): void
+			/**
+			 * 返回控件停靠的位置
+			 */
+			getAnchor(): ControlAnchor
+			/**
+			 * 设置控件停靠的偏移量
+			 * @param {Size} offset
+			 */
+			setOffset(offset: Size): void
+			/**
+			 * 返回控件停靠的偏移量
+			 */
+			getOffset(): Size
+			/**
+			 * 显示控件
+			 */
+			show(): void
+			/**
+			 * 隐藏控件
+			 */
+			hide(): void
+			/**
+			 * 判断控件的可见性
+			 */
+			isVisible(): Boolean
+
+			/** 自定义Control在add之后立马能读取到Container, 内置Control不能 */
+			getContainer(): HTMLElement | undefined
+		}
     interface NavigationControlOptions {
         anchor?: ControlAnchor;
         offset?: Size;
@@ -24,21 +60,45 @@ declare namespace BMapGL {
         enableGeolocation?: boolean;
     }
     interface ScaleControlOptions {
-        anchor?: ControlAnchor;
-        offset?: Size;
-    }
+			/**
+			 * 控件停靠的位置
+			 */
+			anchor?: ControlAnchor
+			/**
+			 * 控件的偏移值
+			 */
+			offset?: Size
+		}
     interface CopyrightControlOptions {
-        anchor?: ControlAnchor;
-        offset?: Size;
-    }
+			/**
+			 * 控件停靠的位置
+			 */
+			anchor?: ControlAnchor
+			/**
+			 * 控件的偏移值
+			 */
+			offset?: Size
+		}
     interface ZoomControlOptions {
-        anchor?: ControlAnchor;
-        offset?: Size;
-    }
+			/**
+			 * 控件停靠的位置
+			 */
+			anchor?: ControlAnchor
+			/**
+			 * 控件的偏移值
+			 */
+			offset?: Size
+		}
     interface NavigationControl3DOptions {
-        anchor?: ControlAnchor;
-        offset?: Size;
-    }
+			/**
+			 * 控件停靠的位置
+			 */
+			anchor?: ControlAnchor
+			/**
+			 * 控件的偏移值
+			 */
+			offset?: Size
+		}
     type ControlAnchor = number;
     class OverviewMapControl extends Control {
         constructor(opts: OverviewMapControlOptions);
@@ -76,10 +136,17 @@ declare namespace BMapGL {
     }
     type NavigationControlType = number;
     class ScaleControl extends Control {
-        constructor(opts?: ScaleControlOptions);
-        getUnit(): LengthUnit;
-        setUnit(unit: LengthUnit): void;
-    }
+			constructor(opts?: ScaleControlOptions)
+			/**
+			 * 返回比例尺单位制
+			 */
+			getUnit(): LengthUnitValue
+			/**
+			 * 设置比例尺单位制
+			 * @param unit
+			 */
+			setUnit(unit: LengthUnit): void
+		}
     interface Copyright {
         id?: number;
         content?: string;
@@ -107,23 +174,3 @@ declare namespace BMapGL {
         constructor(opts?: NavigationControl3DOptions);
     }
 }
-declare const BMAP_UNIT_METRIC: BMapGL.LengthUnit;
-declare const BMAP_UNIT_IMPERIAL: BMapGL.LengthUnit;
-
-declare const BMAP_ANCHOR_TOP_LEFT: BMapGL.ControlAnchor;
-declare const BMAP_ANCHOR_TOP_RIGHT: BMapGL.ControlAnchor;
-declare const BMAP_ANCHOR_BOTTOM_LEFT: BMapGL.ControlAnchor;
-declare const BMAP_ANCHOR_BOTTOM_RIGHT: BMapGL.ControlAnchor;
-
-declare const BMAP_NAVIGATION_CONTROL_LARGE: BMapGL.NavigationControlType;
-declare const BMAP_NAVIGATION_CONTROL_SMALL: BMapGL.NavigationControlType;
-declare const BMAP_NAVIGATION_CONTROL_PAN: BMapGL.NavigationControlType;
-declare const BMAP_NAVIGATION_CONTROL_ZOOM: BMapGL.NavigationControlType;
-
-declare const BMAP_MAPTYPE_CONTROL_HORIZONTAL: BMapGL.MapTypeControlType;
-declare const BMAP_MAPTYPE_CONTROL_DROPDOWN: BMapGL.MapTypeControlType;
-declare const BMAP_MAPTYPE_CONTROL_MAP: BMapGL.MapTypeControlType;
-
-declare const BMAP_STATUS_PERMISSION_DENIED: BMapGL.StatusCode;
-declare const BMAP_STATUS_SERVICE_UNAVAILABLE: BMapGL.StatusCode;
-declare const BMAP_STATUS_TIMEOUT: BMapGL.StatusCode;

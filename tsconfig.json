@@ -28,6 +28,9 @@
       "types/*": [
         "types/*"
       ],
+      "utils/*": [
+        "src/utils/*"
+      ],
     }
   },
   "include": [

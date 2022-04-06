@@ -3,6 +3,9 @@
 /// <reference path="./common.d.ts" />
 
 declare namespace BMapGL {
+  /**
+   * 地图核心组件
+   */
 	class Map {
 		constructor(container: string | HTMLElement, opts?: MapOptions)
 		/**
