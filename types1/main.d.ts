@@ -1,7 +1,6 @@
 import { Point, Pixel, Bounds, Size } from './base.d'
 import { Map } from './core.d'
-import { ScaleControl, ZoomControl } from './control.d'
-
+import { Control, ScaleControl, ZoomControl } from './control.d'
 
 export type BMapGL = {
 	Map: Map
@@ -9,6 +8,7 @@ export type BMapGL = {
 	Pixel: Pixel
 	Bounds: Bounds
 	Size: Size
+	Control: Control
 	ScaleControl: ScaleControl
 	ZoomControl: ZoomControl
 }
@@ -23,4 +23,3 @@ export type BMapGL = {
 // export * from './control.d'
 // // 公共类型
 // export * from './common.d'
-

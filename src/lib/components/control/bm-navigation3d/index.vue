@@ -22,14 +22,15 @@
 		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
 		offset: () => ({ x: 83, y: 18 })
 	})
-	let zoomControl: BMapGL.ZoomControl
+
+	let navigation3dControl: BMapGL.NavigationControl3D
 	defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {
-		zoomControl = new window.BMapGL.ZoomControl({
+		navigation3dControl = new window.BMapGL.NavigationControl3D({
 			offset: new window.BMapGL.Size(props.offset.x, props.offset.y),
 			anchor: window[props.anchor]
 		})
-		map.addControl(zoomControl)
-		return () => map.removeControl(zoomControl)
+		map.addControl(navigation3dControl)
+		return () => map.removeControl(navigation3dControl)
 	})
 </script>

@@ -1,8 +1,8 @@
-export enum ControlAnchor {
+declare enum ControlAnchor {
 	/**
 	 * 控件将定位到地图的右上角
 	 */
-	'B_ANCHOR_TOP_RIGHT' = 0,
+	'BMAP_ANCHOR_TOP_RIGHT' = 0,
 	/**
 	 * 控件将定位到地图的左上角
 	 */
@@ -17,8 +17,8 @@ export enum ControlAnchor {
 	'BMAP_ANCHOR_BOTTOM_RIGHT' = 3
 }
 
-export type _ControlAnchor = keyof typeof ControlAnchor
-export enum MapType {
+declare type _ControlAnchor = keyof typeof ControlAnchor
+declare enum MapType {
 	// FIXME: 和文档名字统一
 	/**
 	 * 此地图类型展示普通街道视图
@@ -29,8 +29,8 @@ export enum MapType {
 	 */
 	'BMAP_EARTH_MAP' = 'B_EARTH_MAP'
 }
-export type _MapType = keyof typeof MapType
-export enum NavigationControlType {
+declare type _MapType = keyof typeof MapType
+declare enum NavigationControlType {
 	/**
 	 *  标准的平移缩放控件（包括平移、缩放按钮和滑块）
 	 */
@@ -52,7 +52,7 @@ export enum NavigationControlType {
 /**
  * 市内公交方案换乘策略
  */
-export enum TransitPolicy {
+declare enum TransitPolicy {
 	/**
 	 *  最少时间
 	 */
@@ -70,11 +70,11 @@ export enum TransitPolicy {
 	 */
 	'BMAP_TRANSIT_POLICY_AVOID_SUBWAYS'
 }
-export type _TransitPolicy = keyof typeof TransitPolicy
+declare type _TransitPolicy = keyof typeof TransitPolicy
 /**
  * 驾车方案的策略配置
  */
-export enum DrivingPolicy {
+declare enum DrivingPolicy {
 	/**
 	 * 最少时间
 	 */
@@ -89,7 +89,7 @@ export enum DrivingPolicy {
 	'BMAP_DRIVING_POLICY_AVOID_HIGHWAYS'
 }
 
-export enum LengthUnit {
+declare enum LengthUnit {
 	/**
 	 * 公制单位
 	 */
@@ -100,7 +100,6 @@ export enum LengthUnit {
 	BMAP_UNIT_IMPERIAL = 'us'
 }
 
-export type LengthUnitValue = LengthUnit.BMAP_UNIT_METRIC | LengthUnit.BMAP_UNIT_IMPERIAL
+declare type LengthUnitValue = LengthUnit.BMAP_UNIT_METRIC | LengthUnit.BMAP_UNIT_IMPERIAL
 
-export type _LengthUnit = keyof typeof LengthUnit
-
+declare type _LengthUnit = keyof typeof LengthUnit

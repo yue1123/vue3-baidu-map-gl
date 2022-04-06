@@ -3,6 +3,23 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 const root = process.cwd()
 // https://vitejs.dev/config/
+
+// function myPlugin() {
+// 	return {
+// 		name: 'transform-file',
+// 		// options(op) {
+// 		// 	console.log(op, '=======op========')
+// 		// },
+// 		transform(src) {
+//       console.log('--------------------------------------');
+// 			console.log(src)
+//       console.log('--------------------------------------')
+// 		}
+// 		// buildStart(options) {
+// 		// 	console.log(options, '=======op2========')
+// 		// }
+// 	}
+// }
 export default defineConfig({
 	root,
 	plugins: [vue({})],

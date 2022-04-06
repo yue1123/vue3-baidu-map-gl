@@ -1,87 +1,129 @@
-import { Size } from './base'
-import {
-	ControlAnchor,
-	LengthUnit,
-	_LengthUnit,
-	LengthUnitValue
-} from './common'
-import { Map } from './core'
-/**
- * 此类是所有控件的基类，您可以通过此类来实现自定义控件。
- */
-export interface Control {
-	/**
-	 * 控件默认的停靠位置。自定义控件时需要提供此属性，作为控件的默认停靠位置
-	 */
-	defaultAnchor: ControlAnchor
-	/**
-	 * 控件默认的位置偏移值。自定义控件时需要提供此属性，作为控件的默认偏移位置
-	 */
-	defaultOffset: Size
-	/**
-	 * 抽象方法。调用Map.addControl()方法添加控件时将调用此方法，从而实现该控件的初始化。
-	 * 自定义控件时需要实现此方法，并将元素的DOM元素在该方法中返回。
-	 * DOM元素需要添加到地图的容器中，使用map.getContainer:()
-	 * @param {Map} map
-	 */
-	initialize(map: Map): HTMLElement
-	/**
-	 * 设置控件停靠的位置
-	 * @param {ControlAnchor} anchor
-	 */
-	setAnchor(anchor: ControlAnchor): void
-	/**
-	 * 返回控件停靠的位置
-	 */
-	getAnchor(): ControlAnchor
-	/**
-	 * 设置控件停靠的偏移量
-	 * @param {Size} offset
-	 */
-	setOffset(offset: Size): void
-	/**
-	 * 返回控件停靠的偏移量
-	 */
-	getOffset(): Size
-	/**
-	 * 显示控件
-	 */
-	show(): void
-	/**
-	 * 隐藏控件
-	 */
-	hide(): void
-	/**
-	 * 判断控件的可见性
-	 */
-	isVisible(): Boolean
+/// <reference path="./base.d.ts" />
+/// <reference path="./overlay.d.ts" />
+declare namespace BMapGL {
+    class Control {
+        constructor();
+        defaultAnchor: ControlAnchor;
+        defaultOffset: Size;
+        initialize(map: Map): HTMLElement;
+        setAnchor(anchor: ControlAnchor): void;
+        getAnchor(): ControlAnchor;
+        setOffset(offset: Size): void;
+        getOffset(): Size;
+        show(): void;
+        hide(): void;
+        isVisible(): boolean;
+        /** 自定义Control在add之后立马能读取到Container, 内置Control不能 */
+        getContainer(): HTMLElement | undefined;
+    }
+    interface NavigationControlOptions {
+        anchor?: ControlAnchor;
+        offset?: Size;
+        type?: NavigationControlType;
+        showZoomInfo?: boolean;
+        enableGeolocation?: boolean;
+    }
+    interface ScaleControlOptions {
+        anchor?: ControlAnchor;
+        offset?: Size;
+    }
+    interface CopyrightControlOptions {
+        anchor?: ControlAnchor;
+        offset?: Size;
+    }
+    interface ZoomControlOptions {
+        anchor?: ControlAnchor;
+        offset?: Size;
+    }
+    interface NavigationControl3DOptions {
+        anchor?: ControlAnchor;
+        offset?: Size;
+    }
+    type ControlAnchor = number;
+    class OverviewMapControl extends Control {
+        constructor(opts: OverviewMapControlOptions);
+        changeView(): void;
+        setSize(size: Size): void;
+        getSize(): Size;
+        onviewchanged: (event: { type: string, target: any, isOpen: boolean }) => void;
+        onviewchanging: (event: { type: string, target: any }) => void;
+    }
+    type LengthUnit = string;
+    class MapTypeControl extends Control {
+        constructor(opts?: MapTypeControlOptions);
+    }
+    class NavigationControl extends Control {
+        constructor(opts?: NavigationControlOptions);
+        getType(): NavigationControlOptions;
+        setType(type: NavigationControlType): void;
+    }
+    interface OverviewMapControlOptions {
+        anchor?: ControlAnchor;
+        offset?: Size;
+        size?: Size;
+        isOpen?: boolean;
+    }
+    class CopyrightControl extends Control {
+        constructor(opts?: CopyrightControlOptions);
+        addCopyright(copyright: Copyright): void;
+        removeCopyright(id: number): void;
+        getCopyright(id: number): Copyright;
+        getCopyrightCollection(): Copyright[];
+    }
+    interface MapTypeControlOptions {
+        type?: MapTypeControlType;
+        mapTypes?: MapType[];
+    }
+    type NavigationControlType = number;
+    class ScaleControl extends Control {
+        constructor(opts?: ScaleControlOptions);
+        getUnit(): LengthUnit;
+        setUnit(unit: LengthUnit): void;
+    }
+    interface Copyright {
+        id?: number;
+        content?: string;
+        bounds?: Bounds;
+    }
+    type MapTypeControlType = number;
+    class GeolocationControl extends Control {
+        constructor(opts?: GeolocationControlOptions);
+    }
+    interface GeolocationControlOptions {
+        anchor?: ControlAnchor;
+        offset?: Size;
+        showAddressBar?: boolean;
+        enableAutoLocation?: boolean;
+        locationIcon?: Icon;
+    }
+    type StatusCode = number;
+    class PanoramaControl extends Control {
+        constructor();
+    }
+    class ZoomControl extends Control {
+        constructor(opts?: ZoomControlOptions);
+    }
+    class NavigationControl3D extends Control {
+        constructor(opts?: NavigationControl3DOptions);
+    }
 }
+declare const BMAP_UNIT_METRIC: BMapGL.LengthUnit;
+declare const BMAP_UNIT_IMPERIAL: BMapGL.LengthUnit;
 
-interface ControlOptions {
-	/**
-	 * 控件停靠的位置
-	 */
-	anchor?: ControlAnchor
-	/**
-	 * 控件的偏移值
-	 */
-	offset?: Size
-}
-export interface ScaleControl extends Control {
-	/**
-	 * 返回比例尺单位制
-	 */
-	getUnit(): LengthUnitValue
-	/**
-	 * 设置比例尺单位制
-	 * @param unit
-	 */
-	setUnit(unit: LengthUnit): void
-	new (opts?: ControlOptions): ScaleControl
-}
+declare const BMAP_ANCHOR_TOP_LEFT: BMapGL.ControlAnchor;
+declare const BMAP_ANCHOR_TOP_RIGHT: BMapGL.ControlAnchor;
+declare const BMAP_ANCHOR_BOTTOM_LEFT: BMapGL.ControlAnchor;
+declare const BMAP_ANCHOR_BOTTOM_RIGHT: BMapGL.ControlAnchor;
 
+declare const BMAP_NAVIGATION_CONTROL_LARGE: BMapGL.NavigationControlType;
+declare const BMAP_NAVIGATION_CONTROL_SMALL: BMapGL.NavigationControlType;
+declare const BMAP_NAVIGATION_CONTROL_PAN: BMapGL.NavigationControlType;
+declare const BMAP_NAVIGATION_CONTROL_ZOOM: BMapGL.NavigationControlType;
 
+declare const BMAP_MAPTYPE_CONTROL_HORIZONTAL: BMapGL.MapTypeControlType;
+declare const BMAP_MAPTYPE_CONTROL_DROPDOWN: BMapGL.MapTypeControlType;
+declare const BMAP_MAPTYPE_CONTROL_MAP: BMapGL.MapTypeControlType;
 
-export interface ZoomControl extends Control {
-	new (opts?: ControlOptions): ZoomControl
-}
+declare const BMAP_STATUS_PERMISSION_DENIED: BMapGL.StatusCode;
+declare const BMAP_STATUS_SERVICE_UNAVAILABLE: BMapGL.StatusCode;
+declare const BMAP_STATUS_TIMEOUT: BMapGL.StatusCode;
