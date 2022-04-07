@@ -153,7 +153,7 @@
 			window._BMap.scriptLoader = new Promise<void>((resolve, reject) => {
 				const script: HTMLScriptElement = document.createElement('script')
 				window._initBMap = () => {
-					resolve(window.BMapGL)
+					resolve()
 					window.document.body.removeChild(script)
 				}
 				script.src = `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=_initBMap`
@@ -164,7 +164,7 @@
 			})
 			return window._BMap.scriptLoader
 		} else {
-			return Promise.resolve(window.BMapGL)
+			return Promise.resolve()
 		}
 	}
 	// 初始化地图
@@ -174,14 +174,14 @@
 			map = new BMapGL.Map('baidu-map-container', {
 				minZoom,
 				maxZoom,
-				mapType: window[mapType], 
+				mapType: window[mapType],
 				enableAutoResize
 			})
 			setCenterAanZoom()
 			initMapOptions()
 			if (!initd) {
 				initd = true
-				ready(map) 
+				ready(map)
 			}
 			map!.setHeading(0)
 			map!.setTilt(0)
@@ -236,7 +236,7 @@
 			map!.centerAndZoom(props.center)
 		} else {
 			map!.centerAndZoom(genPoint(props.center.lng, props.center.lat), props.zoom)
-		} 
+		}
 	}
 	/**
 	 * 设置缩放级别
