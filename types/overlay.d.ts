@@ -57,7 +57,9 @@ declare namespace BMapGL {
 		[x: string]: any
 	}
 	type SymbolShapeType = number
-	interface PolylineOptions {
+
+
+  interface controlCommonOptions {
 		/**
 		 * @default #000000
 		 * 折线颜色
@@ -100,7 +102,10 @@ declare namespace BMapGL {
 		 * 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果，可以设置成false，默认为true
 		 */
 		clip: boolean
-	}
+  }
+	type PolylineOptions = controlCommonOptions
+	type PolygonOptions = controlCommonOptions
+	type CircleOptions = controlCommonOptions
 	interface GroundOverlayOptions {
 		opacity?: number
 		imageURL?: string
@@ -225,7 +230,7 @@ declare namespace BMapGL {
 		 * @default false
 		 */
 		// show: boolean
-    
+
 		position: Point
 		/**
 		 * 是否开启信息窗口打开时地图自动移动（默认开启）
@@ -347,17 +352,6 @@ declare namespace BMapGL {
 		 */
 		enableCloseOnClick: boolean
 	}
-	interface PolygonOptions {
-		strokeColor?: string
-		fillColor?: string
-		strokeWeight?: number
-		strokeOpacity?: number
-		fillOpacity?: number
-		strokeStyle?: string
-		enableMassClear?: boolean
-		enableEditing?: boolean
-		enableClicking?: boolean
-	}
 	type ShapeType = number
 	interface Icon extends Overlay {
 		anchor: Size
@@ -454,17 +448,6 @@ declare namespace BMapGL {
 		offset?: Size
 		position?: Point
 		enableMassClear?: boolean
-	}
-	interface CircleOptions {
-		strokeColor?: string
-		fillColor?: string
-		strokeWeight?: number
-		strokeOpacity?: number
-		fillOpacity?: number
-		strokeStyle?: string
-		enableMassClear?: boolean
-		enableEditing?: boolean
-		enableClicking?: boolean
 	}
 	interface Hotspot extends Overlay {
 		setPosition(position: Point): void
