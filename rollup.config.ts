@@ -1,28 +1,83 @@
-// rollup.config.js
-import resolve from 'rollup-plugin-node-resolve'
-import vue from 'rollup-plugin-vue'
-import babel from '@rollup/plugin-babel'
-import typescript from '@rollup/plugin-typescript'
-const config = {
-	input: './src/index.ts', // 必须，入口文件
-	output: {
-		// 必须，输出文件 (如果要输出多个，可以是一个数组)
-		exports: 'named', // 输出多个文件
-		globals: {
-			vue: 'Vue' // 告诉rollup全局变量Vue即是vue
+// // rollup.config.js
+const resolve = require( 'rollup-plugin-node-resolve')
+const { terser } = require('rollup-plugin-terser')
+const { uglify } = require('rollup-plugin-uglify')
+const pkg = require('./package')
+const fs = require('fs')
+const path = require('path')
+const vue  = require('rollup-plugin-vue')
+const typescript = require('rollup-plugin-typescript')
+
+
+const deps = Object.keys(pkg.dependencies || {})
+
+
+// /packages/button/rollup.config.js
+// import { terser } from 'rollup-plugin-terser'
+const readDirectory = (dir) => {
+	//递归目录结构
+	const list = fs.readdirSync(dir)
+	const ret = []
+	list.forEach((filename) => {
+		const dist = path.resolve(dir, filename)
+		const stat = fs.statSync(dist)
+		if (stat.isFile()) {
+			if (filename === 'index.vue' || filename.endsWith('.ts')) {
+				ret.push(dist)
+			}
+		} else {
+			ret.push(...readDirectory(dist))
 		}
-	},
-	plugins: [
-		// 引入的插件在这里配置
-		typescript(),
-		vue({
-			exposeFilename: true
-		}),
-		resolve(),
-		babel({
-			exclude: '**/node_modules/**'
-		})
-	]
+	})
+	return ret
 }
 
-export default config
+const componentsBuild = readDirectory(path.resolve(__dirname, './src/lib/components')).map((component) => {
+	return {
+		external(id) {
+			if (/^mitt/.test(id)) {
+				return false
+			}
+			return /^vue/.test(id) || /hooks/.test(id) || deps.some((k) => new RegExp('^' + k).test(id))
+		},
+		// 入口
+		input: component,
+		// 出口
+		output: [
+			{
+				// 必须，输出文件 (如果要输出多个，可以是一个数组)
+				exports: 'named', // 输出多个文件
+				file: component.replace('src', 'dist').replace('.vue', '.js'), // 必须，输出文件
+				format: 'es'
+			}
+		],
+		// 插件
+		plugins: [resolve(), vue(), typescript()]
+	}
+})
+console.log(readDirectory(path.resolve(__dirname, './src/hooks')))
+const hooksBuild = readDirectory(path.resolve(__dirname, './src/hooks')).map((hooks) => {
+	return {
+		external(id) {
+			if (/^mitt/.test(id)) {
+				return false
+			}
+			return /^vue/.test(id) || /hooks/.test(id) || deps.some((k) => new RegExp('^' + k).test(id))
+		},
+		// 入口
+		input: hooks,
+		// 出口
+		output: [
+			{
+				// 必须，输出文件 (如果要输出多个，可以是一个数组)
+				exports: 'named', // 输出多个文件
+				file: hooks.replace('src', 'dist').replace('.ts', '.js'), // 必须，输出文件
+				format: 'es'
+			}
+		],
+		// 插件
+		plugins: [resolve(), typescript()]
+	}
+})
+
+module.exports = [...componentsBuild, ...hooksBuild]
