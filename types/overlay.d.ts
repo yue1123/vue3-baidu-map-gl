@@ -58,13 +58,48 @@ declare namespace BMapGL {
 	}
 	type SymbolShapeType = number
 	interface PolylineOptions {
+		/**
+		 * @default #000000
+		 * 折线颜色
+		 */
 		strokeColor?: string
+		/**
+		 * 折线的宽度，以像素为单位
+		 */
 		strokeWeight?: number
+		/**
+		 * 折线的透明度，取值范围0 - 1
+		 */
 		strokeOpacity?: number
+		/**
+		 * 折线的样式
+		 */
 		strokeStyle?: string
+		/**
+		 * @default true
+		 * 是否在调用map.clearOverlays清除此覆盖物，默认为true
+		 */
 		enableMassClear?: boolean
+		/**
+		 * @default false
+		 * 是否启用线编辑，默认为false
+		 */
 		enableEditing?: boolean
+		/**
+		 * @default true
+		 * 是否响应点击事件，默认为true
+		 */
 		enableClicking?: boolean
+		/**
+		 * @default false
+		 * 是否开启大地线模式，true时，两点连线将以大地线的形式。默认为false
+		 */
+		geodesic: boolean
+		/**
+		 * @default true
+		 * 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果，可以设置成false，默认为true
+		 */
+		clip: boolean
 	}
 	interface GroundOverlayOptions {
 		opacity?: number

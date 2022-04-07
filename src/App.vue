@@ -8,12 +8,15 @@
 		enableDragging
 		:minZoom="10"
 	>
-		<BmControl style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
+		<BmControl
+			style="display: flex; background-color: #f90; padding: 10px"
+			:offset="{ x: 0, y: 0 }"
+		>
 			<button @click="handleZoomOut">缩小1</button>
 			<button @click="handleZoomIn">放大fasdf</button>
 		</BmControl>
 		<BmNavigation3d />
-		<Marker
+		<BmMarker
 			:position="{
 				lng: 116.404,
 				lat: 39.925
@@ -21,21 +24,14 @@
 			icon="../docs/.vuepress/public/logo.png"
 			dragging
 		/>
-		<Marker
+		<BmMarker
 			:position="{
 				lng: 116.404,
 				lat: 39.926
 			}"
 		/>
-		<Marker
-			:position="{
-				lng: 116.404,
-				lat: 39.927
-			}"
-			dragging
-		/>
-		<Label
-			content="nihao"
+		<BmLabel
+			content="123123"
 			:position="{
 				lng: 116.404,
 				lat: 39.937
@@ -51,13 +47,28 @@
 				fontFamily: '微软雅黑'
 			}"
 		/>
+		<BmPolyline
+			:path="polylinePath"
+			stroke-color="#f90"
+			:stroke-opacity="1"
+			:stroke-weight="10"
+		></BmPolyline>
 		<!-- <BmScale @initd="ready" v-if="show"></BmScale>
 		<BmZoom v-if="show"></BmZoom> -->
 	</BaiduMap>
 </template>
 <script setup lang="ts">
 	import { ref } from 'vue'
-	import { BaiduMap, BmControl, BmScale, BmZoom, BmNavigation3d, Marker, Label } from './index'
+	import {
+		BaiduMap,
+		BmControl,
+		BmScale,
+		BmZoom,
+		BmNavigation3d,
+		BmMarker,
+		BmLabel,
+		BmPolyline
+	} from './index'
 	function ready(map: any) {
 		console.log(map, '我是组件')
 	}
@@ -66,7 +77,11 @@
 	}
 	const zoom = ref(16)
 	const show = ref<boolean>(true)
-
+	const polylinePath = [
+		{ lng: 116.404, lat: 39.915 },
+		{ lng: 116.405, lat: 39.92 },
+		{ lng: 116.423493, lat: 39.907445 }
+	]
 	// setTimeout(() => {
 	// 	show.value = false
 	//   console.log('yingcang');
