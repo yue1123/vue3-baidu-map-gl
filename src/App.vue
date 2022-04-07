@@ -47,12 +47,28 @@
 				fontFamily: '微软雅黑'
 			}"
 		/>
-		<BmPolyline
+		<BmCircle
+			stroke-style="dashed"
+			:center="{
+				lng: 116.406,
+				lat: 39.937
+			}"
+			:radius="300"
+			editing
+		/>
+		<!-- <BmPolyline
 			:path="polylinePath"
 			stroke-color="#f90"
 			:stroke-opacity="1"
 			:stroke-weight="10"
-		></BmPolyline>
+		></BmPolyline> -->
+		<BmPolygon
+			:path="polylinePath"
+			stroke-color="#f90"
+			:stroke-opacity="1"
+			:stroke-weight="10"
+			editing
+		></BmPolygon>
 		<!-- <BmScale @initd="ready" v-if="show"></BmScale>
 		<BmZoom v-if="show"></BmZoom> -->
 	</BaiduMap>
@@ -67,7 +83,9 @@
 		BmNavigation3d,
 		BmMarker,
 		BmLabel,
-		BmPolyline
+		BmPolyline,
+		BmPolygon,
+		BmCircle
 	} from './index'
 	function ready(map: any) {
 		console.log(map, '我是组件')
