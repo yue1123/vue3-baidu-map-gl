@@ -18,7 +18,7 @@
 		onUnmounted
 	} from 'vue'
 	import useLife from 'hooks/useLife'
-	export interface Props {
+	export interface BaiduMapProps {
 		ak?: string
 		/**
 		 * 地图显示宽度
@@ -113,7 +113,7 @@
 	let initd: boolean = false
 	// 地图初始化的发布
 	const { ready } = useLife('initd')
-	const props = withDefaults(defineProps<Props>(), {
+	const props = withDefaults(defineProps<BaiduMapProps>(), {
 		width: '100%',
 		height: '100vh',
 		center: () => ({ lat: 39.915185, lng: 116.403901 }),

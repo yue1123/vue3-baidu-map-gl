@@ -4,7 +4,7 @@
 <script setup lang="ts">
 	import { defineProps, withDefaults } from 'vue'
 	import useBaseMapEffect from 'hooks/useBaseMapEffect'
-	export interface CircleProps {
+	export interface BmCircleProps {
 		/**
 		 * 折线的节点坐标数组
 		 */
@@ -65,7 +65,7 @@
 		 */
 		clip?: boolean
 	}
-	const props = withDefaults(defineProps<CircleProps>(), {
+	const props = withDefaults(defineProps<BmCircleProps>(), {
 		strokeColor: '#000',
 		strokeWeight: 2,
 		strokeOpacity: 1,

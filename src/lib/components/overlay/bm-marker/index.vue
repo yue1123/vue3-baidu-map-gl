@@ -6,24 +6,8 @@
 	import { defineProps, withDefaults } from 'vue'
 	import useBaseMapEffect from 'hooks/useBaseMapEffect'
 	import { isString } from 'utils/index'
-  // TODO: 完善组件的属性动态监听设置
-	interface iconObj {
-		anchor?: {
-			x: number
-			y: number
-		}
-		imageOffset?: {
-			x: number
-			y: number
-		}
-		imageSize: {
-			width: number
-			height: number
-		}
-		imageUrl: string
-		printImageUrl?: string
-	}
-	interface Props {
+	// TODO: 完善组件的属性动态监听设置
+	export interface BmMarkerProps {
 		position: {
 			/**
 			 * 地理经度
@@ -44,7 +28,24 @@
 		/**
 		 * 标注所用的图标对象
 		 */
-		icon?: string | iconObj
+		icon?:
+			| string
+			| {
+					anchor?: {
+						x: number
+						y: number
+					}
+					imageOffset?: {
+						x: number
+						y: number
+					}
+					imageSize: {
+						width: number
+						height: number
+					}
+					imageUrl: string
+					printImageUrl?: string
+			  }
 		/**
 		 * @default true
 		 * 是否在调用map.clearOverlays清除此覆盖物，默认为true
@@ -78,7 +79,7 @@
 		 */
 		title?: string
 	}
-	const props = withDefaults(defineProps<Props>(), {
+	const props = withDefaults(defineProps<BmMarkerProps>(), {
 		offset: () => ({
 			x: 0,
 			y: 0
@@ -93,8 +94,18 @@
 	})
 	let marker: BMapGL.Marker
 	useBaseMapEffect((map: BMapGL.Map) => {
-		const { position, offset, icon, massClear, dragging, clicking, raiseOnDrag, draggingCursor, rotation, title } =
-			props
+		const {
+			position,
+			offset,
+			icon,
+			massClear,
+			dragging,
+			clicking,
+			raiseOnDrag,
+			draggingCursor,
+			rotation,
+			title
+		} = props
 		const options: BMapGL.MarkerOptions = {
 			offset: new BMapGL.Size(offset.x, offset.y),
 			enableMassClear: massClear,
@@ -123,7 +134,11 @@
 				if (printImageUrl) {
 					iconOptions.printImageUrl = printImageUrl
 				}
-				options.icon = new BMapGL.Icon(imageUrl, new BMapGL.Size(imageSize.width, imageSize.height), iconOptions)
+				options.icon = new BMapGL.Icon(
+					imageUrl,
+					new BMapGL.Size(imageSize.width, imageSize.height),
+					iconOptions
+				)
 			}
 		}
 		marker = new BMapGL.Marker(new BMapGL.Point(position.lng, position.lat), options)

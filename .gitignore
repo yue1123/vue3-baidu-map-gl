@@ -26,3 +26,6 @@ dist-ssr
 # vuepress docs
 .temp
 .cache
+
+
+types/src

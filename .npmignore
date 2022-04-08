@@ -1,1 +1,9 @@
 .husky
+docs
+node_modules
+src
+.git
+index.html
+pnpm-lock.yaml
+rollup.config.ts
+vite.config.ts

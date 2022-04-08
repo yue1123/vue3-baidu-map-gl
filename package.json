@@ -1,9 +1,9 @@
 {
-	"name": "vue3-bmap-gl",
+	"name": "vue3-baidu-map-gl",
 	"version": "0.0.0-beta.1",
 	"scripts": {
 		"dev": "vite --host",
-		"build": "vue-tsc --noEmit && vite build",
+		"build": "vue-tsc && vite build",
 		"preview": "vite preview",
 		"docs:dev": "vuepress dev docs",
 		"docs:build": "vuepress build docs",
@@ -45,7 +45,8 @@
 	"keywords": [
 		"vue3",
 		"vue",
-		"vue3-baidu-map-gl"
+		"vue3-baidu-map-gl",
+    "vue3-bmap-gl"
 	],
 	"husky": {
 		"hooks": {

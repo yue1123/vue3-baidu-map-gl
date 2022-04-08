@@ -1,5 +1,5 @@
 <template>
-	<BaiduMap
+	<baidu-map
 		:ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
 		mapType="BMAP_NORMAL_MAP"
 		:enable-keyboard="false"
@@ -71,22 +71,23 @@
 		></BmPolygon>
 		<!-- <BmScale @initd="ready" v-if="show"></BmScale>
 		<BmZoom v-if="show"></BmZoom> -->
-	</BaiduMap>
+	</baidu-map>
 </template>
 <script setup lang="ts">
+	// import { BaiduMap } from './index'
 	import { ref } from 'vue'
-	import {
-		BaiduMap,
-		BmControl,
-		BmScale,
-		BmZoom,
-		BmNavigation3d,
-		BmMarker,
-		BmLabel,
-		BmPolyline,
-		BmPolygon,
-		BmCircle
-	} from './index'
+	// import {
+	// 	BaiduMap,
+	// 	BmControl,
+	// 	BmScale,
+	// 	BmZoom,
+	// 	BmNavigation3d,
+	// 	BmMarker,
+	// 	BmLabel,
+	// 	BmPolyline,
+	// 	BmPolygon,
+	// 	BmCircle
+	// } from './index'
 	function ready(map: any) {
 		console.log(map, '我是组件')
 	}

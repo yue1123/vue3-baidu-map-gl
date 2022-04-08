@@ -3,7 +3,7 @@
 	import { defineProps, withDefaults } from 'vue'
 	import useBaseMapEffect from 'hooks/useBaseMapEffect'
   // TODO: 完善组件的属性动态监听设置
-	interface Props {
+	interface BmLabelProps {
 		/**
 		 * 文本标注信息
 		 */
@@ -35,7 +35,7 @@
 			[k in keyof CSSStyleDeclaration]?: any
 		}
 	}
-	const props = withDefaults(defineProps<Props>(), {
+	const props = withDefaults(defineProps<BmLabelProps>(), {
 		offset: () => ({
 			x: 0,
 			y: 0

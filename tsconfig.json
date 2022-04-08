@@ -1,52 +1,39 @@
 {
-  "compilerOptions": {
-    "target": "es2015",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": [
-      "ESNext",
-      "dom",
-      "ESNext.Promise"
-    ],
-    "types": [
-      "vite/client"
-    ],
-    "suppressImplicitAnyIndexErrors": true,
-    "baseUrl": "./",
-    "importHelpers": true,
-    "paths": {
-      "hooks/*": [
-        "src/hooks/*"
-      ],
-      "types/*": [
-        "types/*"
-      ],
-      "utils/*": [
-        "src/utils/*"
-      ]
-    }
-  },
-  "include": [
-    "src/*.ts",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/**/**/*.vue",
-    "src/*.vue",
-    "types/*.d.ts",
-    "vite.config.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "files": [
-    "./types/index.d.ts"
-  ]
+	"compilerOptions": {
+		"target": "es2015",
+		"useDefineForClassFields": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"strict": true,
+		"jsx": "preserve",
+		"sourceMap": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"declaration": true,
+		"declarationDir": "./dist/types",
+		"emitDeclarationOnly": true,
+		"lib": ["ESNext", "dom", "ESNext.Promise"],
+		"types": ["vite/client"],
+		"suppressImplicitAnyIndexErrors": true,
+		"baseUrl": "./",
+		"importHelpers": true,
+		"paths": {
+			"hooks/*": ["src/hooks/*"],
+			"types/*": ["types/*"],
+			"utils/*": ["src/utils/*"]
+		}
+	},
+	"include": [
+		"src/*.ts",
+		"src/**/*.ts",
+		"src/**/*.d.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue",
+		"src/**/**/*.vue",
+		"src/*.vue",
+		"types/*.d.ts",
+		"vite.config.ts"
+	],
+	"exclude": ["node_modules"],
+	"files": ["./types/index.d.ts"]
 }
