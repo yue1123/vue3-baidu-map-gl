@@ -10,7 +10,7 @@
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"declaration": true,
-		"declarationDir": "./dist/types",
+		"declarationDir": "./types",
 		"emitDeclarationOnly": true,
 		"lib": ["ESNext", "dom", "ESNext.Promise"],
 		"types": ["vite/client"],
@@ -19,7 +19,7 @@
 		"importHelpers": true,
 		"paths": {
 			"hooks/*": ["src/hooks/*"],
-			"types/*": ["types/*"],
+			"types/*": ["src/types/*"],
 			"utils/*": ["src/utils/*"]
 		}
 	},

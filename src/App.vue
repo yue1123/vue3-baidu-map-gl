@@ -76,18 +76,18 @@
 <script setup lang="ts">
 	// import { BaiduMap } from './index'
 	import { ref } from 'vue'
-	// import {
-	// 	BaiduMap,
-	// 	BmControl,
-	// 	BmScale,
-	// 	BmZoom,
-	// 	BmNavigation3d,
-	// 	BmMarker,
-	// 	BmLabel,
-	// 	BmPolyline,
-	// 	BmPolygon,
-	// 	BmCircle
-	// } from './index'
+	import {
+		BaiduMap,
+		BmControl,
+		BmScale,
+		BmZoom,
+		BmNavigation3d,
+		BmMarker,
+		BmLabel,
+		BmPolyline,
+		BmPolygon,
+		BmCircle
+	} from 'vue3-baidu-map-gl'
 	function ready(map: any) {
 		console.log(map, '我是组件')
 	}

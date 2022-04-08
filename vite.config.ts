@@ -4,7 +4,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 const root = process.cwd()
 
-
 import fs from 'fs/promises'
 import { createFilter } from '@rollup/pluginutils'
 import { normalizePath } from 'vite'
@@ -45,7 +44,9 @@ const genDTypes = (): Plugin => {
 			if (/\.vue(\?.*type=script.*)$/.test(id)) {
 				const filePath = resolve(root, normalizePath(id.split('?')[0]))
 
-				sourceFiles.push(project.createSourceFile(filePath + (/lang.ts/.test(id) ? '.ts' : '.js'), code))
+				sourceFiles.push(
+					project.createSourceFile(filePath + (/lang.ts/.test(id) ? '.ts' : '.js'), code)
+				)
 			} else if (/\.ts$/.test(id)) {
 				const filePath = resolve(root, normalizePath(id))
 
@@ -75,11 +76,6 @@ const genDTypes = (): Plugin => {
 	}
 }
 
-
-
-
-
-
 export default defineConfig({
 	root,
 	plugins: [
@@ -98,8 +94,8 @@ export default defineConfig({
 		outDir: './dist',
 		lib: {
 			entry: resolve(__dirname, 'src/index.ts'),
-			name: 'MyLib'
-			// fileName: (format) => `my-lib.${format}.js`
+			name: 'MyLib',
+			formats: ['cjs', 'es', 'umd']
 		},
 		rollupOptions: {
 			// 确保外部化处理那些你不想打包进库的依赖

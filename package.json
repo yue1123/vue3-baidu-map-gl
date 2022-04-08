@@ -1,6 +1,16 @@
 {
 	"name": "vue3-baidu-map-gl",
-	"version": "0.0.0-beta.1",
+	"version": "0.0.0-beta.2",
+	"main": "./dist/vue3-baidu-map-gl.cjs.js",
+	"typings": "./types/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/vue3-baidu-map-gl.es.js",
+			"require": "./dist/vue3-baidu-map-gl.cjs.js",
+			"types": "./types/index.d.ts"
+		},
+		"./package.json": "./package.json"
+	},
 	"scripts": {
 		"dev": "vite --host",
 		"build": "vue-tsc && vite build",
@@ -46,7 +56,7 @@
 		"vue3",
 		"vue",
 		"vue3-baidu-map-gl",
-    "vue3-bmap-gl"
+		"vue3-bmap-gl"
 	],
 	"husky": {
 		"hooks": {

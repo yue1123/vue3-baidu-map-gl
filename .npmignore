@@ -5,5 +5,8 @@ src
 .git
 index.html
 pnpm-lock.yaml
+commitlint.config.js
+.npmrc
+.npmignore
 rollup.config.ts
 vite.config.ts
