@@ -10,3 +10,5 @@ commitlint.config.js
 .npmignore
 rollup.config.ts
 vite.config.ts
+.vscode
+README.md
