@@ -14,7 +14,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 	// 主题和它的配置
 	theme: '@vuepress/theme-default',
 	dest: 'docs/dist',
-	base: '/vue3-baidu-map-gl/',
+	base: '/vue3-baidu-map-gl/dist/',
 	themeConfig: {
 		logo: 'https://vuejs.org/images/logo.png',
 		navbar: [
