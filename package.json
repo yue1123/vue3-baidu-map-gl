@@ -1,12 +1,12 @@
 {
 	"name": "vue3-baidu-map-gl",
-	"version": "0.0.0-beta.4",
+	"version": "0.0.0-beta.7",
 	"main": "./dist/index.js",
-	"typings": "./types/index.d.ts",
+	"typings": "./lib/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./lib/index.js",
-			"types": "./types/index.d.ts"
+			"types": "./lib/index.d.ts"
 		},
 		"./package.json": "./package.json"
 	},
@@ -52,6 +52,8 @@
 	"keywords": [
 		"vue3",
 		"vue",
+		"baidu map",
+		"baidu map gl",
 		"vue3-baidu-map-gl",
 		"vue3-bmap-gl"
 	],

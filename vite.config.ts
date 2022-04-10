@@ -7,13 +7,6 @@ const root = process.cwd()
 export default defineConfig({
 	root,
 	plugins: [vue(), nodeResolve()],
-	resolve: {
-		alias: {
-			hooks: join(root, 'src/hooks/'),
-			utils: join(root, 'src/utils/'),
-			types: join(root, 'types/')
-		}
-	},
 	build: {
 		outDir: './lib',
 		lib: {

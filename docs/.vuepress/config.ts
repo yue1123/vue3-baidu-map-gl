@@ -3,9 +3,9 @@ import type { DefaultThemeOptions } from 'vuepress'
 import { capitalize, camelize } from 'vue'
 const { resolve, join } = require('path')
 const root = process.cwd()
+const comNameReg = /(\w+\-\w+)/
 
 import sidebarConfig from './sidebar.config'
-
 export default defineUserConfig<DefaultThemeOptions>({
 	// 站点配置
 	lang: 'en-US',
@@ -14,7 +14,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 	// 主题和它的配置
 	theme: '@vuepress/theme-default',
 	dest: 'docs/dist',
-	base: '/vue3-baidu-map-gl/dist/',
+	base: process.env.NODE_ENV === 'development' ? '/' : '/vue3-baidu-map-gl/dist/',
 	themeConfig: {
 		logo: 'https://vuejs.org/images/logo.png',
 		navbar: [
@@ -59,10 +59,16 @@ export default defineUserConfig<DefaultThemeOptions>({
 			'@vuepress/register-components',
 			{
 				componentsDir: resolve(__dirname, '../../src/components'),
-				componentsPatterns: ['**/*.vue'],
-				getComponentName: (filename) => {
+				componentsPatterns: ['**/*.vue', '**/**/*.vue'],
+				getComponentName: (filename: string) => {
 					// 转驼峰
-					return camelize(capitalize(filename.replace(/\/\w+\.vue$/, '')))
+					// let comName = filename
+					// if (filename.indexOf('/') > -1) {
+					// 	comName = filename.split('/')[1]
+					// }
+					const name = camelize(capitalize(comNameReg.exec(filename)[0]))
+					console.log(name)
+					return name
 				}
 			}
 		]
@@ -70,5 +76,5 @@ export default defineUserConfig<DefaultThemeOptions>({
 	alias: {
 		hooks: join(root, 'src/hooks'),
 		types: join(root, 'types')
-	},
+	}
 })

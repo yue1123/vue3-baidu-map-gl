@@ -1,4 +1,4 @@
-import { withInstall } from 'utils/withInstall'
+import { withInstall } from '../../../utils/withInstall'
 import _BmControl from './index.vue'
 
 export const BmControl = withInstall(_BmControl)

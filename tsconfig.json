@@ -19,6 +19,7 @@
 		// "importHelpers": true,
 	},
 	"include": [
+    "src/index.ts",
 		"src/hooks/*.ts",
     "src/utils/*.ts",
 		"src/components/**/*.vue",
@@ -26,6 +27,9 @@
     "types/*.d.ts",
     "src/env.d.ts",
 	],
-	"exclude": ["node_modules"],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ],
 	"files": ["./types/index.d.ts"]
 }
