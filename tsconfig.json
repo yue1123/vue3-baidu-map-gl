@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es2015",
+		"target": "es2019",
 		"useDefineForClassFields": true,
 		"module": "esnext",
 		"moduleResolution": "node",
@@ -10,29 +10,21 @@
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"declaration": true,
-		"declarationDir": "./types",
+		"declarationDir": "./lib",
 		"emitDeclarationOnly": true,
 		"lib": ["ESNext", "dom", "ESNext.Promise"],
 		"types": ["vite/client"],
 		"suppressImplicitAnyIndexErrors": true,
 		"baseUrl": "./",
-		"importHelpers": true,
-		"paths": {
-			"hooks/*": ["src/hooks/*"],
-			"types/*": ["src/types/*"],
-			"utils/*": ["src/utils/*"]
-		}
+		// "importHelpers": true,
 	},
 	"include": [
-		"src/*.ts",
-		"src/**/*.ts",
-		"src/**/*.d.ts",
-		"src/**/*.tsx",
-		"src/**/*.vue",
-		"src/**/**/*.vue",
-		"src/*.vue",
-		"types/*.d.ts",
-		"vite.config.ts"
+		"src/hooks/*.ts",
+    "src/utils/*.ts",
+		"src/components/**/*.vue",
+    "src/components/**/*.ts",
+    "types/*.d.ts",
+    "src/env.d.ts",
 	],
 	"exclude": ["node_modules"],
 	"files": ["./types/index.d.ts"]
