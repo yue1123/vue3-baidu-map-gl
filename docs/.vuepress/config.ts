@@ -56,7 +56,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 		[
 			'@vuepress/register-components',
 			{
-				componentsDir: resolve(__dirname, '../../src/lib/components'),
+				componentsDir: resolve(__dirname, '../../src/components'),
 				componentsPatterns: ['**/*.vue'],
 				getComponentName: (filename) => {
 					// 转驼峰

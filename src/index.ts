@@ -1,15 +1,14 @@
 import { App } from 'vue'
-
-import BaiduMap from './lib/components/baidu-map'
-import BmControl from './lib/components/control/bm-control'
-import BmScale from './lib/components/control/bm-scale'
-import BmZoom from './lib/components/control/bm-zoom'
-import BmNavigation3d from './lib/components/control/bm-navigation3d'
-import BmMarker from './lib/components/overlay/bm-marker'
-import BmLabel from './lib/components/overlay/bm-label'
-import BmPolyline from './lib/components/overlay/bm-polyline'
-import BmPolygon from './lib/components/overlay/bm-polygon'
-import BmCircle from './lib/components/overlay/bm-circle'
+import BaiduMap from './components/baidu-map'
+import BmControl from './components/control/bm-control'
+import BmScale from './components/control/bm-scale'
+import BmZoom from './components/control/bm-zoom'
+import BmNavigation3d from './components/control/bm-navigation3d'
+import BmMarker from './components/overlay/bm-marker'
+import BmLabel from './components/overlay/bm-label'
+import BmPolyline from './components/overlay/bm-polyline'
+import BmPolygon from './components/overlay/bm-polygon'
+import BmCircle from './components/overlay/bm-circle'
 
 const components = [
 	{

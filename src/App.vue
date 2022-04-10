@@ -87,7 +87,7 @@
 		BmPolyline,
 		BmPolygon,
 		BmCircle
-	} from 'vue3-baidu-map-gl'
+	} from './index'
 	function ready(map: any) {
 		console.log(map, '我是组件')
 	}
