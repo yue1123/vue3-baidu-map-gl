@@ -1,0 +1,1 @@
+function u(e){return{all:e=e||new Map,on:function(i,n){var t=e.get(i);t?t.push(n):e.set(i,[n])},off:function(i,n){var t=e.get(i);t&&(n?t.splice(t.indexOf(n)>>>0,1):e.set(i,[]))},emit:function(i,n){var t=e.get(i);t&&t.slice().map(function(o){o(n)}),(t=e.get("*"))&&t.slice().map(function(o){o(i,n)})}}}const f=u();function c(){return{emit:f.emit,on:f.on,off:f.off}}export{c as u};
