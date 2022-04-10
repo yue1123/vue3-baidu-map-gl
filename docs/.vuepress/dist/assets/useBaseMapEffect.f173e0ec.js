@@ -1,0 +1,1 @@
+import{a}from"./app.b8e7ffde.js";import{u}from"./useBaseMapListener.78d0f7c1.js";let n=null;function m(o){const{on:s}=u();let e;return n?e=o(n):s("initd",t=>{n=t,e=o(t)}),a(()=>{e&&e()}),{map:n}}export{m as u};
