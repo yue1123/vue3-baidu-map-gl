@@ -13,7 +13,8 @@ export default defineUserConfig<DefaultThemeOptions>({
 	description: '一套基于Vue 3.0和百度地图的地图组件。',
 	// 主题和它的配置
 	theme: '@vuepress/theme-default',
-  dest:'docs/dist',
+	dest: 'docs/dist',
+	base: '/vue3-baidu-map-gl/',
 	themeConfig: {
 		logo: 'https://vuejs.org/images/logo.png',
 		navbar: [
@@ -70,7 +71,4 @@ export default defineUserConfig<DefaultThemeOptions>({
 		hooks: join(root, 'src/hooks'),
 		types: join(root, 'types')
 	},
-	bundlerConfig: {
-		base: './'
-	}
 })
