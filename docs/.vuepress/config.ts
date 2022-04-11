@@ -6,6 +6,7 @@ const root = process.cwd()
 const comNameReg = /(\w+\-\w+)/
 
 import sidebarConfig from './sidebar.config'
+console.log(process.env.NODE_ENV)
 export default defineUserConfig<DefaultThemeOptions>({
 	// 站点配置
 	lang: 'en-US',
