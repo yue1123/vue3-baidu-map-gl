@@ -12,8 +12,7 @@
 <script setup lang="ts">
 	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted } from 'vue'
 	import useLife from '../../hooks/useLife'
-	import { Callback, baseMap } from '../../utils/eventsList'
-	import bindEvents from '../../utils/bindEvents'
+	import bindEvents, { Callback } from '../../utils/bindEvents'
 	export interface BaiduMapProps {
 		ak?: string
 		/**
@@ -161,7 +160,43 @@
 		enablePinchToZoom: true,
 		enableAutoResize: true
 	})
-	const vueEmits = defineEmits([...baseMap])
+	const vueEmits = defineEmits([
+		'initd',
+		'unload',
+		'click',
+		'dblclick',
+		'rightclick',
+		'rightdblclick',
+		'maptypechange',
+		'mousemove',
+		'mouseover',
+		'mouseout',
+		'movestart',
+		'moving',
+		'moveend',
+		'zoomstart',
+		'zoomend',
+		'addoverlay',
+		'addcontrol',
+		'removecontrol',
+		'removeoverlay',
+		'clearoverlays',
+		'dragstart',
+		'dragging',
+		'dragend',
+		'addtilelayer',
+		'removetilelayer',
+		'load',
+		'resize',
+		'hotspotclick',
+		'hotspotover',
+		'hotspotout',
+		'tilesloaded',
+		'touchstart',
+		'touchmove',
+		'touchend',
+		'longpress'
+	])
 	const ak = props.ak || inject('baiduMapAk')
 	// 监听props变化
 	watch(() => props.zoom, setZoom)
