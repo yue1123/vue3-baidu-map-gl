@@ -33,7 +33,7 @@ const componentsBuild = readDirectory(path.resolve(__dirname, './src/components'
 			if (/^mitt/.test(id)) {
 				return false
 			}
-			return /^vue/.test(id) || /hooks/.test(id) || deps.some((k) => new RegExp('^' + k).test(id))
+			return /^vue/.test(id) || /hooks/.test(id) || /utils/.test(id) || deps.some((k) => new RegExp('^' + k).test(id))
 		},
 		// 入口
 		input: component,
