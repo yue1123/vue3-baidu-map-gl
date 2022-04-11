@@ -29,16 +29,16 @@
 		offset: () => ({ x: 83, y: 18 })
 	})
 	defineEmits(['initd', 'unload'])
-	useBaseMapEffect((mapInstance: BMapGL.Map) => {
+	useBaseMapEffect((map: BMapGL.Map) => {
 		if (!controlContainer.value) return
 		const customControl = new window.BMapGL.Control()
 		customControl.defaultAnchor = window[props.anchor]
 		customControl.defaultOffset = new window.BMapGL.Size(props.offset!.x, props.offset!.y)
-		customControl.initialize = (map: BMapGL.Map) => {
-			return map.getContainer().appendChild(controlContainer.value as Node) as HTMLElement
+		customControl.initialize = (_map: BMapGL.Map) => {
+			return _map.getContainer().appendChild(controlContainer.value as Node) as HTMLElement
 		}
-		mapInstance.addControl(customControl)
-		ready(mapInstance)
-		return () => mapInstance.removeControl(customControl)
+		map.addControl(customControl)
+		ready(map)
+		return () => map.removeControl(customControl)
 	})
 </script>

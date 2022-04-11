@@ -6,6 +6,8 @@
 	import { defineProps, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import { isString } from '../../../utils/index'
+	import bindEvents, { Callback } from '../../../utils/bindEvents'
+	import useLife from '../../..//hooks/useLife'
 	// TODO: 完善组件的属性动态监听设置
 	export interface BmMarkerProps {
 		position: {
@@ -78,6 +80,19 @@
 		 * 鼠标移到marker上的显示内容
 		 */
 		title?: string
+		onClick?: Callback
+		onDblclick?: Callback
+		onMousedown?: Callback
+		onMouseup?: Callback
+		onMouseout?: Callback
+		onMouseover?: Callback
+		onRemove?: Callback
+		onInfowindowclose?: Callback
+		onInfowindowopen?: Callback
+		onDragstart?: Callback
+		onDragging?: Callback
+		onDragend?: Callback
+		onRightclick?: Callback
 	}
 	const props = withDefaults(defineProps<BmMarkerProps>(), {
 		offset: () => ({
@@ -92,20 +107,28 @@
 		rotation: 0,
 		title: ''
 	})
+	const vueEmits = defineEmits([
+		'initd',
+		'unload',
+		'click',
+		'dblclick',
+		'mousedown',
+		'mouseup',
+		'mouseout',
+		'mouseover',
+		'remove',
+		'infowindowclose',
+		'infowindowopen',
+		'dragstart',
+		'dragging',
+		'dragend',
+		'rightclick'
+	])
+	const { ready } = useLife()
 	let marker: BMapGL.Marker
 	useBaseMapEffect((map: BMapGL.Map) => {
-		const {
-			position,
-			offset,
-			icon,
-			massClear,
-			dragging,
-			clicking,
-			raiseOnDrag,
-			draggingCursor,
-			rotation,
-			title
-		} = props
+		const { position, offset, icon, massClear, dragging, clicking, raiseOnDrag, draggingCursor, rotation, title } =
+			props
 		const options: BMapGL.MarkerOptions = {
 			offset: new BMapGL.Size(offset.x, offset.y),
 			enableMassClear: massClear,
@@ -134,16 +157,14 @@
 				if (printImageUrl) {
 					iconOptions.printImageUrl = printImageUrl
 				}
-				options.icon = new BMapGL.Icon(
-					imageUrl,
-					new BMapGL.Size(imageSize.width, imageSize.height),
-					iconOptions
-				)
+				options.icon = new BMapGL.Icon(imageUrl, new BMapGL.Size(imageSize.width, imageSize.height), iconOptions)
 			}
 		}
 		marker = new BMapGL.Marker(new BMapGL.Point(position.lng, position.lat), options)
 		// 在地图上添加点标记
 		map.addOverlay(marker)
+		ready(map)
+		bindEvents(props, vueEmits, marker)
 		return () => {
 			map.removeOverlay(marker)
 		}

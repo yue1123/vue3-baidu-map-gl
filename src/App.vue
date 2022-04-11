@@ -4,15 +4,10 @@
 		mapType="BMAP_NORMAL_MAP"
 		:enable-keyboard="false"
 		:zoom="zoom"
-		@initd="ready1"
 		enableDragging
 		:minZoom="10"
-		@dblclick="handleClick"
 	>
-		<!-- <BmControl
-			style="display: flex; background-color: #f90; padding: 10px"
-			:offset="{ x: 0, y: 0 }"
-		>
+		<BmControl style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
 			<button @click="handleZoomOut">缩小1</button>
 			<button @click="handleZoomIn">放大fasdf</button>
 		</BmControl>
@@ -56,22 +51,11 @@
 			}"
 			:radius="300"
 			editing
-		/> -->
-		<!-- <BmPolyline
-			:path="polylinePath"
-			stroke-color="#f90"
-			:stroke-opacity="1"
-			:stroke-weight="10"
-		></BmPolyline> -->
-		<!-- <BmPolygon
-			:path="polylinePath"
-			stroke-color="#f90"
-			:stroke-opacity="1"
-			:stroke-weight="10"
-			editing
-		></BmPolygon> -->
-		<!-- <BmScale @initd="ready" v-if="show"></BmScale>
-		<BmZoom v-if="show"></BmZoom> -->
+		/>
+		<BmPolyline :path="polylinePath" stroke-color="#f90" :stroke-opacity="1" :stroke-weight="10" editing></BmPolyline>
+		<BmPolygon :path="polylinePath" stroke-color="#f90" :stroke-opacity="1" :stroke-weight="10" editing></BmPolygon>
+		<BmScale v-if="show"></BmScale>
+		<BmZoom v-if="show"></BmZoom>
 	</baidu-map>
 </template>
 <script setup lang="ts">

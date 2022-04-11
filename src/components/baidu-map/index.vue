@@ -1,10 +1,5 @@
 <template>
-	{{ $attrs }}
-	<div
-		id="baidu-map-container"
-		style="overflow: hidden"
-		:style="{ width: props.width, height: props.height }"
-	/>
+	<div id="baidu-map-container" style="overflow: hidden" :style="{ width: props.width, height: props.height }" />
 
 	<slot></slot>
 </template>
@@ -15,18 +10,9 @@
 	}
 </script>
 <script setup lang="ts">
-	import {
-		inject,
-		defineProps,
-		withDefaults,
-		defineEmits,
-		watch,
-		onMounted,
-		onUnmounted,
-		getCurrentInstance
-	} from 'vue'
+	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted } from 'vue'
 	import useLife from '../../hooks/useLife'
-	import { Callback } from '../../utils/eventsList'
+	import { Callback, baseMap } from '../../utils/eventsList'
 	import bindEvents from '../../utils/bindEvents'
 	export interface BaiduMapProps {
 		ak?: string
@@ -175,7 +161,7 @@
 		enablePinchToZoom: true,
 		enableAutoResize: true
 	})
-	const vueEmits = defineEmits(['initd', 'unload', 'click', 'dblclick', 'mousemove'])
+	const vueEmits = defineEmits([...baseMap])
 	const ak = props.ak || inject('baiduMapAk')
 	// 监听props变化
 	watch(() => props.zoom, setZoom)
@@ -350,5 +336,3 @@
 		map?.destroy()
 	})
 </script>
-
-<style lang="less" scoped></style>

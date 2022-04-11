@@ -4,6 +4,8 @@
 <script setup lang="ts">
 	import { defineProps, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
+	import bindEvents, { Callback } from '../../../utils/bindEvents'
+	import useLife from '../../..//hooks/useLife'
 	export interface BmCircleProps {
 		/**
 		 * 折线的节点坐标数组
@@ -64,6 +66,14 @@
 		 * 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果，可以设置成false，默认为true
 		 */
 		clip?: boolean
+		onClick?: Callback
+		onDblclick?: Callback
+		onMousedown?: Callback
+		onMouseup?: Callback
+		onMouseout?: Callback
+		onMouseover?: Callback
+		onRemove?: Callback
+		onLineupdate?: Callback
 	}
 	const props = withDefaults(defineProps<BmCircleProps>(), {
 		strokeColor: '#000',
@@ -76,7 +86,19 @@
 		geodesic: false,
 		clip: true
 	})
-
+	const vueEmits = defineEmits([
+		'initd',
+		'unload',
+		'click',
+		'dblclick',
+		'mousedown',
+		'mouseup',
+		'mouseout',
+		'mouseover',
+		'remove',
+		'lineupdate'
+	])
+	const { ready } = useLife()
 	useBaseMapEffect((map: BMapGL.Map) => {
 		const {
 			center,
@@ -104,6 +126,8 @@
 			clip
 		})
 		map.addOverlay(circle)
+		ready(map)
+		bindEvents(props, vueEmits, circle)
 		return () => {
 			map.removeOverlay(circle)
 		}

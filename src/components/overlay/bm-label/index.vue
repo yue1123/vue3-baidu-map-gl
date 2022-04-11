@@ -2,7 +2,9 @@
 <script setup lang="ts">
 	import { defineProps, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  // TODO: 完善组件的属性动态监听设置
+	import bindEvents, { Callback } from '../../../utils/bindEvents'
+	import useLife from '../../..//hooks/useLife'
+	// TODO: 完善组件的属性动态监听设置
 	interface BmLabelProps {
 		/**
 		 * 文本标注信息
@@ -34,6 +36,14 @@
 		style?: {
 			[k in keyof CSSStyleDeclaration]?: any
 		}
+		onClick?: Callback
+		onDblclick?: Callback
+		onMousedown?: Callback
+		onMouseup?: Callback
+		onMouseout?: Callback
+		onMouseover?: Callback
+		onRemove?: Callback
+		onRightclick?: Callback
 	}
 	const props = withDefaults(defineProps<BmLabelProps>(), {
 		offset: () => ({
@@ -42,6 +52,19 @@
 		}),
 		massClear: true
 	})
+	const vueEmits = defineEmits([
+		'initd',
+		'unload',
+		'click',
+		'dblclick',
+		'mousedown',
+		'mouseup',
+		'mouseout',
+		'mouseover',
+		'remove',
+		'rightclick'
+	])
+	const { ready } = useLife()
 	let label: BMapGL.Label
 	useBaseMapEffect((map: BMapGL.Map) => {
 		const { content, position, offset, massClear, style } = props
@@ -56,6 +79,8 @@
 			label.setStyle(style)
 		}
 		map.addOverlay(label)
+		ready(map)
+		bindEvents(props, vueEmits, label)
 		// 在地图上添加点标记
 		return () => {
 			map.removeOverlay(label)
