@@ -7,8 +7,9 @@
 		@initd="ready1"
 		enableDragging
 		:minZoom="10"
+		@dblclick="handleClick"
 	>
-		<BmControl
+		<!-- <BmControl
 			style="display: flex; background-color: #f90; padding: 10px"
 			:offset="{ x: 0, y: 0 }"
 		>
@@ -55,20 +56,20 @@
 			}"
 			:radius="300"
 			editing
-		/>
+		/> -->
 		<!-- <BmPolyline
 			:path="polylinePath"
 			stroke-color="#f90"
 			:stroke-opacity="1"
 			:stroke-weight="10"
 		></BmPolyline> -->
-		<BmPolygon
+		<!-- <BmPolygon
 			:path="polylinePath"
 			stroke-color="#f90"
 			:stroke-opacity="1"
 			:stroke-weight="10"
 			editing
-		></BmPolygon>
+		></BmPolygon> -->
 		<!-- <BmScale @initd="ready" v-if="show"></BmScale>
 		<BmZoom v-if="show"></BmZoom> -->
 	</baidu-map>
@@ -88,6 +89,9 @@
 		BmPolygon,
 		BmCircle
 	} from './index'
+	function handleClick(e: any) {
+		console.log(e)
+	}
 	function ready(map: any) {
 		console.log(map, '我是组件')
 	}

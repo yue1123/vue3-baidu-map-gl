@@ -6,8 +6,8 @@ export default function useLife(initdEventName?: string) {
 	const { on, emit, off } = useBaseMapListener()
 	let eventKey = initdEventName || `__initd__${uid}`
 
-	on(eventKey, (map) => {
-		VueEmit('initd', map)
+	on(eventKey, (instance) => {
+		VueEmit('initd', instance)
 	})
 
 	onUnmounted(() => {

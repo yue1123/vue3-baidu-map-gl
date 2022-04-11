@@ -1,7 +1,7 @@
 import mitt from 'mitt'
 
 type Events = {
-	initd: BMapGL.Map
+	initd: unknown
 	unload: any
 	[prop: string]: any
 }

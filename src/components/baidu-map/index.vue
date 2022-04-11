@@ -1,12 +1,19 @@
 <template>
+	{{ $attrs }}
 	<div
 		id="baidu-map-container"
 		style="overflow: hidden"
 		:style="{ width: props.width, height: props.height }"
 	/>
+
 	<slot></slot>
 </template>
 
+<script lang="ts">
+	export default {
+		inheritAttrs: false
+	}
+</script>
 <script setup lang="ts">
 	import {
 		inject,
@@ -15,9 +22,12 @@
 		defineEmits,
 		watch,
 		onMounted,
-		onUnmounted
+		onUnmounted,
+		getCurrentInstance
 	} from 'vue'
 	import useLife from '../../hooks/useLife'
+	import { Callback } from '../../utils/eventsList'
+	import bindEvents from '../../utils/bindEvents'
 	export interface BaiduMapProps {
 		ak?: string
 		/**
@@ -106,8 +116,40 @@
 		 * 启用自动适应容器尺寸变化，默认启用
 		 */
 		enableAutoResize?: boolean
+		onClick?: Callback
+		onDblclick?: Callback
+		onRightclick?: Callback
+		onRightdblclick?: Callback
+		onMaptypechange?: Callback
+		onMousemove?: Callback
+		onMouseover?: Callback
+		onMouseout?: Callback
+		onMovestart?: Callback
+		onMoving?: Callback
+		onMoveend?: Callback
+		onZoomstart?: Callback
+		onZoomend?: Callback
+		onAddoverlay?: Callback
+		onAddcontrol?: Callback
+		onRemovecontrol?: Callback
+		onRemoveoverlay?: Callback
+		onClearoverlays?: Callback
+		onDragstart?: Callback
+		onDragging?: Callback
+		onDragend?: Callback
+		onAddtilelayer?: Callback
+		onRemovetilelayer?: Callback
+		onLoad?: Callback
+		onResize?: Callback
+		onHotspotclick?: Callback
+		onHotspotover?: Callback
+		onHotspotout?: Callback
+		onTilesloaded?: Callback
+		onTouchstart?: Callback
+		onTouchmove?: Callback
+		onTouchend?: Callback
+		onLongpress?: Callback
 	}
-
 	let map: BMapGL.Map
 	// 是否初始化
 	let initd: boolean = false
@@ -133,9 +175,12 @@
 		enablePinchToZoom: true,
 		enableAutoResize: true
 	})
-	defineEmits(['initd', 'unload'])
+	const vueEmits = defineEmits(['initd', 'unload', 'click', 'dblclick', 'mousemove'])
+	const ak = props.ak || inject('baiduMapAk')
 	// 监听props变化
 	watch(() => props.zoom, setZoom)
+	watch(() => props.tilt, setTilt)
+	watch(() => props.heading, setHeading)
 	watch(() => props.center, setCenter)
 	watch(() => props.enableScrollWheelZoom, setScrollWheelZoom)
 	watch(() => props.enableContinuousZoom, setContinuousZoom)
@@ -145,7 +190,6 @@
 	watch(() => props.enablePinchToZoom, setPinchToZoom)
 	watch(() => props.enableAutoResize, setAutoResize)
 	watch(() => props.mapType, setMapType)
-	const ak = props.ak || inject('baiduMapAk')
 	// 获取地图SDK Script
 	function getMapScriptAsync() {
 		if (!window._BMap) {
@@ -179,12 +223,11 @@
 			})
 			setCenterAanZoom()
 			initMapOptions()
+			bindEvents(props, vueEmits, map)
 			if (!initd) {
 				initd = true
 				ready(map)
 			}
-			map!.setHeading(0)
-			map!.setTilt(0)
 		})
 	}
 	// 设置地图属性
@@ -200,9 +243,13 @@
 			enablePinchToZoom,
 			enableAutoResize,
 			mapType,
-			zoom
+			zoom,
+			tilt,
+			heading
 		} = props
 		setZoom(zoom)
+		setTilt(tilt)
+		setHeading(heading)
 		setDragging(enableDragging)
 		setInertialDragging(enableInertialDragging)
 		setScrollWheelZoom(enableScrollWheelZoom)
@@ -247,6 +294,12 @@
 	// 设置地图类型
 	function setMapType(mapType: _MapType): void {
 		map!.setMapType(window[mapType])
+	}
+	function setHeading(heading: number): void {
+		map!.setHeading(heading)
+	}
+	function setTilt(tilt: number): void {
+		map!.setTilt(tilt)
 	}
 	// 设置地图是否可拖动
 	function setDragging(enableDragging: boolean): void {

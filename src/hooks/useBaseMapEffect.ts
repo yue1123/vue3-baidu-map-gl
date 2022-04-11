@@ -9,8 +9,8 @@ function useBaseMapEffect(cal: (map: BMapGL.Map) => void | VoidFunction) {
 		onUnmountedCal = cal(_map)
 	} else {
 		on('initd', (map) => {
-			_map = map
-			onUnmountedCal = cal(map)
+			_map = map as BMapGL.Map
+			onUnmountedCal = cal(_map)
 		})
 	}
 
