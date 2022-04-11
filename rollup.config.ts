@@ -1,7 +1,6 @@
 // // rollup.config.js
 const resolve = require('rollup-plugin-node-resolve')
 const { terser } = require('rollup-plugin-terser')
-const { uglify } = require('rollup-plugin-uglify')
 const pkg = require('./package')
 const fs = require('fs')
 const path = require('path')
@@ -10,8 +9,6 @@ const typescript = require('rollup-plugin-typescript')
 
 const deps = Object.keys(pkg.dependencies || {})
 
-// /packages/button/rollup.config.js
-// import { terser } from 'rollup-plugin-terser'
 const readDirectory = (dir) => {
 	//递归目录结构
 	const list = fs.readdirSync(dir)
