@@ -198,6 +198,9 @@
 	watch(() => props.tilt, setTilt)
 	watch(() => props.heading, setHeading)
 	watch(() => props.center, setCenter)
+	watch(() => props.enableDragging, setDragging)
+	watch(() => props.enableInertialDragging, setInertialDragging)
+  
 	watch(() => props.enableScrollWheelZoom, setScrollWheelZoom)
 	watch(() => props.enableContinuousZoom, setContinuousZoom)
 	watch(() => props.enableResizeOnCenter, setResizeOnCenter)
@@ -319,6 +322,7 @@
 	}
 	// 设置地图是否可拖动
 	function setDragging(enableDragging: boolean): void {
+		console.log(enableDragging)
 		enableDragging ? map!.enableDragging() : map!.disableDragging()
 	}
 	// 设置地图惯性拖拽
