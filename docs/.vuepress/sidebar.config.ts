@@ -1,16 +1,13 @@
-const sidebarConfig = {
-	'/guide/': [
-		{
-			text: 'Guide',
-			children: ['/guide/README.md', '/guide/getting-started.md']
-		}
-	],
-	'/reference/': [
-		{
-			text: 'Reference',
-			children: ['/reference/cli.md', '/reference/config.md']
-		}
-	]
-}
+const sidebarConfig = [
+	{
+		text: '指南',
+		children: [
+			{
+				text: '快速上手',
+				link: '/zh/guide/quick-start/'
+			}
+		]
+	}
+]
 
 export default sidebarConfig

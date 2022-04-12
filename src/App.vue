@@ -52,7 +52,7 @@
 			:radius="300"
 			editing
 		/>
-		<BmPolyline :path="polylinePath" stroke-color="#f90" :stroke-opacity="1" :stroke-weight="10" editing></BmPolyline>
+		<BmPolyline stroke-style="dashed" :path="polylinePath" @lineupdate="handleClick" stroke-color="#f90" :stroke-opacity="1" :stroke-weight="10" editing></BmPolyline>
 		<BmPolygon :path="polylinePath" stroke-color="#f90" :stroke-opacity="1" :stroke-weight="10" editing></BmPolygon>
 		<BmScale v-if="show"></BmScale>
 		<BmZoom v-if="show"></BmZoom>

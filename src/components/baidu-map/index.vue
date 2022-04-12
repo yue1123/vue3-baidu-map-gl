@@ -4,11 +4,6 @@
 	<slot></slot>
 </template>
 
-<script lang="ts">
-	export default {
-		inheritAttrs: false
-	}
-</script>
 <script setup lang="ts">
 	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted } from 'vue'
 	import useLife from '../../hooks/useLife'
