@@ -1,5 +1,5 @@
 <template>
-	<baidu-map
+	<Map
 		:ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
 		mapType="BMAP_NORMAL_MAP"
 		:enable-keyboard="false"
@@ -7,12 +7,12 @@
 		enableDragging
 		:minZoom="10"
 	>
-		<BmControl style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
+		<Control style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
 			<button @click="handleZoomOut">缩小1</button>
 			<button @click="handleZoomIn">放大fasdf</button>
-		</BmControl>
-		<BmNavigation3d />
-		<BmMarker
+		</Control>
+		<Navigation3d />
+		<Marker
 			:position="{
 				lng: 116.404,
 				lat: 39.925
@@ -20,13 +20,13 @@
 			icon="../docs/.vuepress/public/logo.png"
 			dragging
 		/>
-		<BmMarker
+		<Marker
 			:position="{
 				lng: 116.404,
 				lat: 39.926
 			}"
 		/>
-		<BmLabel
+		<Label
 			content="123123"
 			:position="{
 				lng: 116.404,
@@ -43,7 +43,7 @@
 				fontFamily: '微软雅黑'
 			}"
 		/>
-		<BmCircle
+		<Circle
 			stroke-style="dashed"
 			:center="{
 				lng: 116.406,
@@ -52,27 +52,24 @@
 			:radius="300"
 			editing
 		/>
-		<BmPolyline stroke-style="dashed" :path="polylinePath" @lineupdate="handleClick" stroke-color="#f90" :stroke-opacity="1" :stroke-weight="10" editing></BmPolyline>
-		<BmPolygon :path="polylinePath" stroke-color="#f90" :stroke-opacity="1" :stroke-weight="10" editing></BmPolygon>
-		<BmScale v-if="show"></BmScale>
-		<BmZoom v-if="show"></BmZoom>
-	</baidu-map>
+		<Polyline
+			stroke-style="dashed"
+			:path="polylinePath"
+			@lineupdate="handleClick"
+			stroke-color="#f90"
+			:stroke-opacity="1"
+			:stroke-weight="10"
+			editing
+		></Polyline>
+		<Polygon :path="polylinePath" stroke-color="#f90" :stroke-opacity="1" :stroke-weight="10" editing></Polygon>
+		<Scale v-if="show"></Scale>
+		<Zoom v-if="show"></Zoom>
+	</Map>
 </template>
 <script setup lang="ts">
 	// import { BaiduMap } from './index'
 	import { ref } from 'vue'
-	import {
-		BaiduMap,
-		BmControl,
-		BmScale,
-		BmZoom,
-		BmNavigation3d,
-		BmMarker,
-		BmLabel,
-		BmPolyline,
-		BmPolygon,
-		BmCircle
-	} from './index'
+	// import { Map, Control, Scale, Zoom, Navigation3d, Marker, Label, Polyline, Polygon, Circle } from './index'
 	function handleClick(e: any) {
 		console.log(e)
 	}

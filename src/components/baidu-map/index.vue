@@ -324,7 +324,6 @@
 	}
 	// 设置地图是否可拖动
 	function setDragging(enableDragging: boolean): void {
-		console.log(enableDragging)
 		enableDragging ? map!.enableDragging() : map!.disableDragging()
 	}
 	// 设置地图惯性拖拽
