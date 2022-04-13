@@ -4,7 +4,9 @@
 	<slot></slot>
 </template>
 
+
 <script setup lang="ts">
+  // FIXME: props 属性名字统一, 去掉enable
 	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted } from 'vue'
 	import useLife from '../../hooks/useLife'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
@@ -137,10 +139,10 @@
 	const { ready } = useLife('initd')
 	const props = withDefaults(defineProps<BaiduMapProps>(), {
 		width: '100%',
-		height: '100vh',
+		height: '400px',
 		center: () => ({ lat: 39.915185, lng: 116.403901 }),
 		mapType: 'BMAP_NORMAL_MAP',
-		zoom: 19,
+		zoom: 16,
 		maxZoom: 21,
 		minZoom: 0,
 		heading: 0,

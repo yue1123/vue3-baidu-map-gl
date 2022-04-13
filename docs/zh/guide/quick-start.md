@@ -4,7 +4,7 @@
 
 基于百度地图JavaScript GL版API封装的Vue3组件库。提供了大部分常用的组件,如果这些组件不能满足你的需求,你也可以根据hooks提供的接口自定义组件。
 
-## :four_leaf_clover: 特性
+## :sparkles: 特性
 - 自动加载百度地图 SDK,你只管使用。
 - 使用 Typescript 编写，完善度组件代码提示。
 - 不依赖任何第三方组件。
