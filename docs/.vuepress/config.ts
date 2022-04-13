@@ -118,8 +118,8 @@ export default defineUserConfig<DefaultThemeOptions>({
 					// if (filename.indexOf('/') > -1) {
 					// 	comName = filename.split('/')[1]
 					// }
-					const name = camelize(capitalize(comNameReg.exec(filename)[0]))
-					console.log(name)
+          const comName = comNameReg.exec(filename)[0]!
+					const name = camelize(capitalize(comName.split('-')[1]))
 					return name
 				}
 			}

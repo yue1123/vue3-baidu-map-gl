@@ -44,7 +44,7 @@ app.mount('#app')
 ### 按需引入
 ```vue{12}
 <template>
-  <baidu-map
+  <Map
 		ak="百度地图ak"
 		mapType="BMAP_NORMAL_MAP"
 		:enable-keyboard="false"
@@ -54,7 +54,7 @@ app.mount('#app')
 </template>
 
 <script setup lang="ts">
-import { BaiduMap, BmControl, BmScale, BmZoom,} from 'vue3-baidu-map-gl'
+import { Map, Control, Scale, Zoom,} from 'vue3-baidu-map-gl'
 </script>
 
 ```
