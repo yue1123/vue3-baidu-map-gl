@@ -1,0 +1,1 @@
+const t={key:"v-6750500c",path:"/zh/control/navigation3d.html",title:"Navigation3d 3D\u89C6\u89D2\u5BFC\u822A\u63A7\u4EF6",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1649867833e3,contributors:[{name:"\u82B1\u5F00\u534A\u4EA9\u5730",email:"2572468699@qq.com",commits:1}]},filePathRelative:"zh/control/navigation3d.md"};export{t as data};

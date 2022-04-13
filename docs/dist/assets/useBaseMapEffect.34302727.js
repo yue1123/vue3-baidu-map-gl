@@ -1,1 +1,0 @@
-import{a as s}from"./app.913fd071.js";import{a as i}from"./useLife.eae0cdfe.js";let e=null;function u(o){const{on:t}=i();let n;return e?n=o(e):t("initd",a=>{e=a,n=o(e)}),s(()=>{n&&n()}),{map:e}}export{u};

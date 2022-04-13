@@ -1,0 +1,1 @@
+const e={key:"v-4d6f90ac",path:"/zh/overlay/label.html",title:"Label \u6587\u672C\u6807\u6CE8",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1649867833e3,contributors:[{name:"\u82B1\u5F00\u534A\u4EA9\u5730",email:"2572468699@qq.com",commits:1}]},filePathRelative:"zh/overlay/label.md"};export{e as data};

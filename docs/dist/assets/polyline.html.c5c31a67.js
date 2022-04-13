@@ -1,0 +1,1 @@
+import{_ as e,b as o,c as t,e as a,q as n}from"./app.4f254d64.js";const s={},c={id:"polyline-\u6298\u7EBF",tabindex:"-1"},_=a("a",{class:"header-anchor",href:"#polyline-\u6298\u7EBF","aria-hidden":"true"},"#",-1),r=n(" Polyline \u6298\u7EBF"),l=[_,r];function i(d,h){return o(),t("h1",c,l)}var p=e(s,[["render",i],["__file","polyline.html.vue"]]);export{p as default};
