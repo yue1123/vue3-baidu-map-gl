@@ -1,1 +1,0 @@
-import{_ as e,b as r,c as a,e as t,q as s}from"./app.4f254d64.js";const c={},o={id:"marker-\u70B9\u6807\u6CE8",tabindex:"-1"},_=t("a",{class:"header-anchor",href:"#marker-\u70B9\u6807\u6CE8","aria-hidden":"true"},"#",-1),n=s(" Marker \u70B9\u6807\u6CE8"),d=[_,n];function h(i,m){return r(),a("h1",o,d)}var l=e(c,[["render",h],["__file","marker.html.vue"]]);export{l as default};
