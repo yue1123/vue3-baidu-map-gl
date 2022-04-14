@@ -30,8 +30,9 @@
 		unit: 'BMAP_UNIT_METRIC'
 	})
 	let scaleCtrl: BMapGL.ScaleControl
-  defineEmits(['initd', 'unload'])
+	defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {
+		console.log('初始化', map)
 		scaleCtrl = new window.BMapGL.ScaleControl({
 			offset: new window.BMapGL.Size(props.offset.x, props.offset.y),
 			anchor: window[props.anchor]

@@ -4,10 +4,9 @@
 	<slot></slot>
 </template>
 
-
 <script setup lang="ts">
-  // FIXME: props 属性名字统一, 去掉enable
-	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted } from 'vue'
+	// FIXME: props 属性名字统一, 去掉enable
+	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted, nextTick } from 'vue'
 	import useLife from '../../hooks/useLife'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
 	export interface BaiduMapProps {
@@ -202,7 +201,6 @@
 	watch(() => props.center, setCenter)
 	watch(() => props.enableDragging, setDragging)
 	watch(() => props.enableInertialDragging, setInertialDragging)
-  
 	watch(() => props.enableScrollWheelZoom, setScrollWheelZoom)
 	watch(() => props.enableContinuousZoom, setContinuousZoom)
 	watch(() => props.enableResizeOnCenter, setResizeOnCenter)
@@ -247,7 +245,9 @@
 			bindEvents(props, vueEmits, map)
 			if (!initd) {
 				initd = true
-				ready(map)
+				setTimeout(() => {
+					ready(map)
+				}, 500)
 			}
 		})
 	}

@@ -10,6 +10,7 @@ import Polyline from './components/overlay/bm-polyline'
 import Polygon from './components/overlay/bm-polygon'
 import Circle from './components/overlay/bm-circle'
 
+import useBaseMapEffect from './hooks/useBaseMapEffect'
 const components = [
 	{
 		name: 'baidu-map',
@@ -61,7 +62,7 @@ const install = (app: App) => {
 }
 
 // 局部注册
-export { Map, Control, Scale, Zoom, Navigation3d, Marker, Label, Polyline, Polygon, Circle, install }
+export { Map, Control, Scale, Zoom, Navigation3d, Marker, Label, Polyline, Polygon, Circle, install, useBaseMapEffect }
 
 export default {
 	install
