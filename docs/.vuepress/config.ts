@@ -1,12 +1,12 @@
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 import { capitalize, camelize } from 'vue'
+import heads from './head'
 const { resolve, join } = require('path')
 const root = process.cwd()
 const comNameReg = /(\w+\-\w+)/
 
 import sidebarConfig from './sidebar.config'
-console.log(process.env.NODE_ENV)
 export default defineUserConfig<DefaultThemeOptions>({
 	// 主题和它的配置
 	theme: '@vuepress/theme-default',
@@ -24,19 +24,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 			description: '一套基于Vue 3.0和百度地图的地图组件。'
 		}
 	},
-	head: [
-		[
-			'link',
-			{
-				rel: 'icon',
-				type: 'image/png',
-				sizes: '16x16',
-				href: `https://vuejs.org/images/logo.png`
-			}
-		],
-		['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
-		['meta', { name: 'theme-color', content: '#3eaf7c' }]
-	],
+	head: heads,
 	themeConfig: {
 		sidebarDepth: 6,
 		docsDir: 'docs',
@@ -118,7 +106,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 					// if (filename.indexOf('/') > -1) {
 					// 	comName = filename.split('/')[1]
 					// }
-          const comName = comNameReg.exec(filename)[0]!
+					const comName = comNameReg.exec(filename)[0]!
 					const name = camelize(capitalize(comName.split('-')[1]))
 					return name
 				}

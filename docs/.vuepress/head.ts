@@ -1,0 +1,32 @@
+import type { HeadConfig } from 'vuepress'
+const heads: HeadConfig[] = [
+	[
+		'link',
+		{
+			rel: 'icon',
+			type: 'image/png',
+			sizes: '16x16',
+			href: `https://vuejs.org/images/logo.png`
+		}
+	],
+	['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
+	['meta', { name: 'theme-color', content: '#3eaf7c' }]
+]
+
+if (process.env.NODE_ENV === 'production') {
+	heads.push([
+		'script',
+		{},
+		`
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e4de65f9c92f179b3e32b0c28b0e299b";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        `
+	])
+}
+
+export default heads
