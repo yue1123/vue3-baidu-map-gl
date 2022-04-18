@@ -1,5 +1,5 @@
 <template>
-	<div ref="controlContainer">
+	<div ref="controlContainer" v-show="show">
 		<slot></slot>
 	</div>
 </template>
@@ -23,7 +23,7 @@
 	}
 	const controlContainer = ref<HTMLDivElement>()
 	const { ready } = useLife()
-  
+	const show = ref<boolean>(false)
 	const props = withDefaults(defineProps<baseBmControlOptions>(), {
 		anchor: 'BMAP_ANCHOR_TOP_LEFT',
 		offset: () => ({ x: 83, y: 18 })
@@ -35,6 +35,7 @@
 		customControl.defaultAnchor = window[props.anchor]
 		customControl.defaultOffset = new window.BMapGL.Size(props.offset!.x, props.offset!.y)
 		customControl.initialize = (_map: BMapGL.Map) => {
+			show.value = true
 			return _map.getContainer().appendChild(controlContainer.value as Node) as HTMLElement
 		}
 		map.addControl(customControl)

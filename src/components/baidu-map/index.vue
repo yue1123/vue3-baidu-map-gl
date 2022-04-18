@@ -1,14 +1,19 @@
 <template>
-	<div id="baidu-map-container" style="overflow: hidden" :style="{ width: props.width, height: props.height }" />
+	<div id="baidu-map-container" :style="{ width: props.width, height: props.height }">
+		<div class="loading">
+			{{ !initd ? 'map loading...' : '' }}
+		</div>
+	</div>
 
 	<slot></slot>
 </template>
 
 <script setup lang="ts">
 	// FIXME: props 属性名字统一, 去掉enable
-	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted, nextTick } from 'vue'
+	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted, provide, nextTick } from 'vue'
 	import useLife from '../../hooks/useLife'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
+
 	export interface BaiduMapProps {
 		ak?: string
 		/**
@@ -131,7 +136,7 @@
 		onTouchend?: Callback
 		onLongpress?: Callback
 	}
-	let map: BMapGL.Map
+	let map: BMapGL.Map = null!
 	// 是否初始化
 	let initd: boolean = false
 	// 地图初始化的发布
@@ -230,6 +235,7 @@
 			return Promise.resolve()
 		}
 	}
+
 	// 初始化地图
 	function init() {
 		getMapScriptAsync().then(() => {
@@ -245,9 +251,7 @@
 			bindEvents(props, vueEmits, map)
 			if (!initd) {
 				initd = true
-				setTimeout(() => {
-					ready(map)
-				}, 500)
+				nextTick(() => ready(map))
 			}
 		})
 	}
@@ -370,4 +374,17 @@
 	onUnmounted(() => {
 		map?.destroy()
 	})
+	provide('getMapInstance', () => map)
 </script>
+<style>
+	#baidu-map-container {
+		position: relative;
+		overflow: hidden;
+	}
+	.loading {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%, -50%);
+	}
+</style>
