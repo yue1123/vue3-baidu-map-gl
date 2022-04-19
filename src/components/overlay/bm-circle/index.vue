@@ -8,7 +8,7 @@
 	import useLife from '../../..//hooks/useLife'
 	export interface BmCircleProps {
 		/**
-		 * 折线的节点坐标数组
+		 * 圆形中心点经纬度
 		 */
 		center: {
 			/**
@@ -21,26 +21,35 @@
 			lat: number
 		}
 		/**
-		 * 半径，以像素为单位
+		 * 半径，以米为单位
 		 */
 		radius: number
 		/**
 		 * @default #000000
-		 * 折线颜色
+		 * 描边的颜色，同CSS颜色
 		 */
 		strokeColor?: string
 		/**
-		 * 折线的宽度，以像素为单位
-		 */
-		strokeWeight?: number
-		/**
-		 * 折线的透明度，取值范围0 - 1
+		 * 描边的透明度，取值范围0 - 1
 		 */
 		strokeOpacity?: number
 		/**
+		 * 面填充颜色，同CSS颜色
+		 */
+		fillColor: string
+
+		/**
+		 * 面填充的透明度，范围0-1
+		 */
+		fillOpacity: number
+		/**
+		 * 描边的宽度，单位为像素
+		 */
+		strokeWeight?: number
+		/**
 		 * 折线的样式
 		 */
-		strokeStyle?: 'solid' | 'dashed'
+		strokeStyle?: 'solid' | 'dashed' | 'dotted'
 		/**
 		 * @default true
 		 * 是否在调用map.clearOverlays清除此覆盖物，默认为true
@@ -79,6 +88,8 @@
 		strokeColor: '#000',
 		strokeWeight: 2,
 		strokeOpacity: 1,
+		fillColor: '#fff',
+		fillOpacity: 0.3,
 		strokeStyle: 'solid',
 		massClear: true,
 		editing: false,
@@ -104,8 +115,10 @@
 			center,
 			radius,
 			strokeColor,
-			strokeWeight,
 			strokeOpacity,
+			fillColor,
+			fillOpacity,
+			strokeWeight,
 			strokeStyle,
 			massClear,
 			editing,
@@ -123,7 +136,9 @@
 			enableEditing: editing,
 			enableClicking: clicking,
 			geodesic: geodesic,
-			clip
+			clip,
+			fillOpacity,
+			fillColor
 		})
 		map.addOverlay(circle)
 		ready(map)
