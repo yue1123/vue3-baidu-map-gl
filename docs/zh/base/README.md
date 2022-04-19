@@ -69,11 +69,11 @@ import { Map } from 'vue3-baidu-map-gl'
 ## 静态组件 props
 
 
-| 参数                   | 说明                                                                                                                                                                          | 类型                                | 可选值              | 默认值          |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ------------------- | --------------- |
-| ak                     | 百度地图 ak [申请ak](../guide/quick-start.html#申请ak)                                                                                                                        | string                              |                     |                 |
-| width                  | 地图显示宽度                                                                                                                                                                  | string / number                     |                     | 100%            |
-| height                 | 地图显示高度                                                                                                                                                                  | string / number                     |                     | 400px           |
+| 参数   | 说明                                                   | 类型            | 可选值 | 默认值 |
+| ------ | ------------------------------------------------------ | --------------- | ------ | ------ |
+| ak     | 百度地图 ak [申请ak](../guide/quick-start.html#申请ak) | string          |        |        |
+| width  | 地图显示宽度                                           | string / number |        | 100%   |
+| height | 地图显示高度                                           | string / number |        | 400px  |
 
 
 ## 动态组件 Props
@@ -106,38 +106,38 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ## 组件事件
 
-| 参数              | 说明                                                                                             | 类型                                                                                       |
-| ----------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| click           | 左键单击地图时触发此事件。 当双击时，产生的事件序列为： click click dblclick                     | (event: {type: string, target: any, point: Point, pixel: Pixel, overlay: Overlay }): void; |
-| dblclick        | 鼠标双击地图时会触发此事件                                                                       | (event: {type: string, target: any, pixel: Pixel, point: Point }): void;                   |
-| rightclick      | 右键单击地图时触发此事件。 当双击时，产生的事件序列为： rightclick rightclick rightdblclick      | (event: {type: string, target: any, point: Point, pixel: Pixel, overlay: Overlay }): void; |
-| rightdblclick   | 右键双击地图时触发此事件                                                                         | (event: {type: string, target: any, point: Point, pixel: Pixel, overlay: Overlay }): void; |
-| maptypechange   | 地图类型发生变化时触发此事件                                                                     | (event: {type: string, target: any }): void;                                               |
-| mousemove       | 鼠标在地图区域移动过程中触发此事件                                                               | (event: {type: string, target: any, point: Point, pixel: Pixel, overlay: Overlay }): void; |
-| mouseover       | 鼠标移入地图区域时触发此事件                                                                     | (event: {type: string, target: any }): void;                                               |
-| mouseout        | 鼠标移出地图区域时触发此事件                                                                     | (event: {type: string, target: any }): void;                                               |
-| movestart       | 地图移动开始时触发此事件                                                                         | (event: {type: string, target: any }): void;                                               |
-| moving          | 地图移动过程中触发此事件                                                                         | (event: {type: string, target: any }): void;                                               |
-| moveend         | 地图移动结束时触发此事件                                                                         | (event: {type: string, target: any }): void;                                               |
-| zoomstart       | 地图更改缩放级别开始时触发触发此事件                                                             | (event: {type: string, target: any }): void;                                               |
-| zoomend         | 地图更改缩放级别结束时触发触发此事件                                                             | (event: {type: string, target: any }): void;                                               |
-| addoverlay      | 当组件 BmOverlay 被挂载到地图中时会触发此事件                                                    | (event: {type: string, target: any }): void;                                               |
-| removeoverlay   | 当组件 BmOverlay 被移除时会触发此事件                                                            | (event: {type: string, target: any }): void;                                               |
-| addcontrol      | 当组件 BmControl 被挂载到地图中时会触发此事件                                                    | (event: {type: string, target: any }): void;                                               |
-| removecontrol   | 当组件 BmControl 被移除时会触发此事件                                                            | (event: {type: string, target: any }): void;                                               |
-| clearoverlays   | 当使用 Map.clearOverlays() 方法一次性移除全部覆盖物时会触发此事件                                | (event: {type: string, target: any }): void;                                               |
-| dragstart       | 开始拖拽地图时触发                                                                               | (event: {type: string, target: any, pixel: Pixel, point: Point }): void;                   |
-| dragging        | 拖拽地图过程中触发                                                                               | (event: {type: string, target: any, pixel: Pixel, point: Point }): void;                   |
-| dragend         | 停止拖拽地图时触发                                                                               | (event: {type: string, target: any, pixel: Pixel, point: Point }): void;                   |
-| addtilelayer    | 添加一个自定义地图图层时触发此事件                                                               | (event: {type: string, target: any }): void;                                               |
-| removetilelayer | 移除一个自定义地图图层时触发此事件                                                               | (event: {type: string, target: any }): void;                                               |
-| load            | 调用 Map.centerAndZoom()方法时会触发此事件。这表示位置、缩放层级已经确定，但可能还在载入地图图块 | (event: {type: string, target: any, pixel: Pixel, point: Point, zoom: number }): void;     |
-| resize          | 地图可视区域大小发生变化时会触发此事件                                                           | (event: {type: string, target: any, size: Size }): void;                                   |
-| hotspotclick    | 点击热区时触发此事件                                                                             | (event: {type: string, target: any, spots: HotspotOptions }): void;                        |
-| hotspotover     | 鼠标移至热区时触发此事件                                                                         | (event: {type: string, target: any, spots: HotspotOptions }): void;                        |
-| hotspotout      | 鼠标移出热区时触发此事件                                                                         | (event: {type: string, target: any, spots: HotspotOptions }): void;                        |
-| tilesloaded     | 当地图所有图块完成加载时触发此事件                                                               | (event: {type: string, target: any }): void;                                               |
-| touchstart      | 触摸开始时触发此事件，仅适用移动设备                                                             | (event: {type: string, target: any, point: Point, pixel}): void;                           |
-| touchmove       | 触摸移动时触发此事件，仅适用移动设备                                                             | (event: {type: string, target: any, point: Point, pixel}): void;                           |
-| touchend        | 触摸结束时触发此事件，仅适用移动设备                                                             | (event: {type: string, target: any, point: Point, pixel}): void;                           |
-| longpress       | 长按事件，仅适用移动设备                                                                         | (event: {type: string, target: any, point: Point, pixel}): void;                           |
+| 事件名          | 说明                                                                                             | 类型                 |
+| --------------- | ------------------------------------------------------------------------------------------------ | -------------------- |
+| click           | 左键单击地图时触发此事件。 当双击时，产生的事件序列为： click click dblclick                     | ((e: Event) => void) |
+| dblclick        | 鼠标双击地图时会触发此事件                                                                       | ((e: Event) => void) |
+| rightclick      | 右键单击地图时触发此事件。 当双击时，产生的事件序列为： rightclick rightclick rightdblclick      | ((e: Event) => void) |
+| rightdblclick   | 右键双击地图时触发此事件                                                                         | ((e: Event) => void) |
+| maptypechange   | 地图类型发生变化时触发此事件                                                                     | ((e: Event) => void) |
+| mousemove       | 鼠标在地图区域移动过程中触发此事件                                                               | ((e: Event) => void) |
+| mouseover       | 鼠标移入地图区域时触发此事件                                                                     | ((e: Event) => void) |
+| mouseout        | 鼠标移出地图区域时触发此事件                                                                     | ((e: Event) => void) |
+| movestart       | 地图移动开始时触发此事件                                                                         | ((e: Event) => void) |
+| moving          | 地图移动过程中触发此事件                                                                         | ((e: Event) => void) |
+| moveend         | 地图移动结束时触发此事件                                                                         | ((e: Event) => void) |
+| zoomstart       | 地图更改缩放级别开始时触发触发此事件                                                             | ((e: Event) => void) |
+| zoomend         | 地图更改缩放级别结束时触发触发此事件                                                             | ((e: Event) => void) |
+| addoverlay      | 当组件 BmOverlay 被挂载到地图中时会触发此事件                                                    | ((e: Event) => void) |
+| removeoverlay   | 当组件 BmOverlay 被移除时会触发此事件                                                            | ((e: Event) => void) |
+| addcontrol      | 当组件 BmControl 被挂载到地图中时会触发此事件                                                    | ((e: Event) => void) |
+| removecontrol   | 当组件 BmControl 被移除时会触发此事件                                                            | ((e: Event) => void) |
+| clearoverlays   | 当使用 Map.clearOverlays() 方法一次性移除全部覆盖物时会触发此事件                                | ((e: Event) => void) |
+| dragstart       | 开始拖拽地图时触发                                                                               | ((e: Event) => void) |
+| dragging        | 拖拽地图过程中触发                                                                               | ((e: Event) => void) |
+| dragend         | 停止拖拽地图时触发                                                                               | ((e: Event) => void) |
+| addtilelayer    | 添加一个自定义地图图层时触发此事件                                                               | ((e: Event) => void) |
+| removetilelayer | 移除一个自定义地图图层时触发此事件                                                               | ((e: Event) => void) |
+| load            | 调用 Map.centerAndZoom()方法时会触发此事件。这表示位置、缩放层级已经确定，但可能还在载入地图图块 | ((e: Event) => void) |
+| resize          | 地图可视区域大小发生变化时会触发此事件                                                           | ((e: Event) => void) |
+| hotspotclick    | 点击热区时触发此事件                                                                             | ((e: Event) => void) |
+| hotspotover     | 鼠标移至热区时触发此事件                                                                         | ((e: Event) => void) |
+| hotspotout      | 鼠标移出热区时触发此事件                                                                         | ((e: Event) => void) |
+| tilesloaded     | 当地图所有图块完成加载时触发此事件                                                               | ((e: Event) => void) |
+| touchstart      | 触摸开始时触发此事件，仅适用移动设备                                                             | ((e: Event) => void) |
+| touchmove       | 触摸移动时触发此事件，仅适用移动设备                                                             | ((e: Event) => void) |
+| touchend        | 触摸结束时触发此事件，仅适用移动设备                                                             | ((e: Event) => void) |
+| longpress       | 长按事件，仅适用移动设备                                                                         | ((e: Event) => void) |

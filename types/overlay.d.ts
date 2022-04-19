@@ -105,7 +105,17 @@ declare namespace BMapGL {
   }
 	type PolylineOptions = controlCommonOptions
 	type PolygonOptions = controlCommonOptions
-	type CircleOptions = controlCommonOptions
+	type CircleOptions = controlCommonOptions & {
+		/**
+		 * 面填充颜色，同CSS颜色
+		 */
+		fillColor: string
+
+		/**
+		 * 面填充的透明度，范围0-1
+		 */
+		fillOpacity: number
+	}
 	interface GroundOverlayOptions {
 		opacity?: number
 		imageURL?: string

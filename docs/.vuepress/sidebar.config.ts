@@ -5,7 +5,7 @@ const sidebarConfig = [
 	},
 	{
 		text: '基础',
-		children: ['/zh/base']
+		children: ['/zh/base', '/zh/base/com-events']
 	},
 	{
 		text: '控件',
@@ -13,7 +13,13 @@ const sidebarConfig = [
 	},
 	{
 		text: '覆盖物',
-		children: ['/zh/overlay/circle', '/zh/overlay/label', '/zh/overlay/marker', '/zh/overlay/polygon', '/zh/overlay/polyline']
+		children: [
+			'/zh/overlay/circle',
+			'/zh/overlay/label',
+			'/zh/overlay/marker',
+			'/zh/overlay/polygon',
+			'/zh/overlay/polyline'
+		]
 	}
 ]
 
