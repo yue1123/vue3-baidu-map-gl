@@ -58,41 +58,24 @@ export default defineUserConfig<DefaultThemeOptions>({
 				// a11y
 				openInNewWindow: '在新窗口打开',
 				toggleDarkMode: '切换夜间模式',
-				toggleSidebar: '切换侧边栏'
+				toggleSidebar: '切换侧边栏',
+				navbar: [
+					{
+						text: '指南',
+						link: '/zh/guide/quick-start'
+					},
+					{
+						text: 'github',
+						link: 'https://github.com/yue1123/vue3-baidu-map-gl'
+					}
+				],
+				sidebar: sidebarConfig
 			}
 		},
 		// },
 
 		// themeConfig: {
-		logo: 'https://vuejs.org/images/logo.png',
-		navbar: [
-			{
-				text: '指南',
-				link: 'guide/quick-start'
-			},
-			// {
-			// 	text: '选择语言',
-			// 	children: [
-			// 		{
-			// 			text: 'English',
-			// 			link: '/'
-			// 		},
-			// 		{
-			// 			text: '简体中文',
-			// 			link: '/zh'
-			// 		}
-			// 	]
-			// },
-			{
-				text: '完整示例',
-				link: '/example/'
-			},
-			{
-				text: 'github',
-				link: 'https://github.com/yue1123/vue3-baidu-map-gl'
-			}
-		],
-		sidebar: sidebarConfig
+		logo: 'https://vuejs.org/images/logo.png'
 	},
 	plugins: [
 		[

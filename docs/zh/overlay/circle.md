@@ -9,7 +9,7 @@ import { Circle } from 'vue3-baidu-map-gl'
 | 参数          | 说明                                                 | 类型                        | 可选值                  | 默认值     |
 | ------------- | ---------------------------------------------------- | --------------------------- | ----------------------- | ---------- |
 | center        | 圆形中心点经纬度                                     | { lng: number, lat: number} |                         | `required` |
-| radius        | 圆形的半径，单位为米                                 | {x: number, y: number }     |                         | `required` |
+| radius        | 圆形的半径，单位为米                                 | number                      |                         | `required` |
 | strokeColor   | 描边的颜色，同CSS颜色                                | string                      |                         | `#000`     |
 | strokeOpacity | 描边的透明度，范围0-1                                | number                      | 0-1                     | 1          |
 | fillColor     | 面填充颜色，同CSS颜色                                | string                      |                         | `#fff`     |
@@ -33,7 +33,7 @@ import { Circle } from 'vue3-baidu-map-gl'
 | mouseout   | 鼠标指针移出该覆盖物事件的回调函数                                             | ((e: Event) => void) |
 | mouseover  | 鼠标指针移入该覆盖物事件的回调函数                                             | ((e: Event) => void) |
 | remove     | 该覆盖物被移除的回调函数                                                       | ((e: Event) => void) |
-| lineupdate | 圆形被编辑后的回调函数                                                         | ((e: Event) => void) |
+| lineupdate | 覆盖物被编辑后的回调函数                                                       | ((e: Event) => void) |
 
 ## 组件实例
 <div>
