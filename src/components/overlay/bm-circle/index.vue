@@ -36,12 +36,12 @@
 		/**
 		 * 面填充颜色，同CSS颜色
 		 */
-		fillColor: string
+		fillColor?: string
 
 		/**
 		 * 面填充的透明度，范围0-1
 		 */
-		fillOpacity: number
+		fillOpacity?: number
 		/**
 		 * 描边的宽度，单位为像素
 		 */
