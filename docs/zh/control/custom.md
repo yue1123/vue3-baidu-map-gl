@@ -62,6 +62,7 @@ button{
 <Map
   :minZoom="3"
   :zoom="zoom"
+  :enableScrollWheelZoom="false"
   height="400px"
 >
   <Control style="display: flex; background-color: #fff; padding: 10px" :offset="{ x: 0, y: 0 }">
@@ -71,7 +72,6 @@ button{
 </Map>
 
 <script setup lang="ts">
-  import {Map, Control} from 'vue3-baidu-map-gl'
   import { ref } from 'vue'
   const zoom = ref(10)
   function handleZoomOut() {
