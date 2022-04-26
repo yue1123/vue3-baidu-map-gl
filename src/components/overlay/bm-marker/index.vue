@@ -76,17 +76,17 @@
 		 * @default true
 		 * 是否在调用map.clearOverlays清除此覆盖物，默认为true
 		 */
-		massClear?: boolean
+		enableMassClear?: boolean
 		/**
 		 * @default false
 		 * 是否启用拖拽，默认为false
 		 */
-		dragging?: boolean
+		enableDragging?: boolean
 		/**
 		 * @default true
 		 * 是否响应点击事件。默认为true
 		 */
-		clicking?: boolean
+		enableClicking?: boolean
 		/**
 		 * @default false
 		 * 拖拽标注时，标注是否开启离开地图表面效果。默认为false
@@ -124,9 +124,9 @@
 			x: 0,
 			y: 0
 		}),
-		massClear: true,
-		dragging: false,
-		clicking: true,
+		enableMassClear: true,
+		enableDragging: false,
+		enableClicking: true,
 		raiseOnDrag: false,
 		draggingCursor: 'pointer',
 		rotation: 0,
@@ -202,13 +202,23 @@
 	}
 	useBaseMapEffect((map: BMapGL.Map) => {
 		const defaultIcons: any = getDefaultIcons()
-		const { position, offset, icon, massClear, dragging, clicking, raiseOnDrag, draggingCursor, rotation, title } =
-			props
+		const {
+			position,
+			offset,
+			icon,
+			enableMassClear,
+			enableDragging,
+			enableClicking,
+			raiseOnDrag,
+			draggingCursor,
+			rotation,
+			title
+		} = props
 		const options: BMapGL.MarkerOptions = {
 			offset: new BMapGL.Size(offset.x, offset.y),
-			enableMassClear: massClear,
-			enableDragging: dragging,
-			enableClicking: clicking,
+			enableMassClear,
+			enableDragging,
+			enableClicking,
 			raiseOnDrag,
 			draggingCursor,
 			rotation,
@@ -232,7 +242,11 @@
 				if (printImageUrl) {
 					iconOptions.printImageUrl = printImageUrl
 				}
-				options.icon = new BMapGL.Icon(imageUrl, new BMapGL.Size(imageSize.width, imageSize.height), iconOptions)
+				options.icon = new BMapGL.Icon(
+					imageUrl,
+					new BMapGL.Size(imageSize.width, imageSize.height),
+					iconOptions
+				)
 			}
 		}
 		marker = new BMapGL.Marker(new BMapGL.Point(position.lng, position.lat), options)

@@ -32,7 +32,7 @@
 		 * 是否可清除
 		 * 是否在调用map.clearOverlays清除此覆盖物，默认为true
 		 */
-		massClear?: boolean
+		enableMassClear?: boolean
 		style?: {
 			[k in keyof CSSStyleDeclaration]?: any
 		}
@@ -50,7 +50,7 @@
 			x: 0,
 			y: 0
 		}),
-		massClear: true
+		enableMassClear: true
 	})
 	const vueEmits = defineEmits([
 		'initd',
@@ -67,11 +67,11 @@
 	const { ready } = useLife()
 	let label: BMapGL.Label
 	useBaseMapEffect((map: BMapGL.Map) => {
-		const { content, position, offset, massClear, style } = props
+		const { content, position, offset, enableMassClear, style } = props
 		const options: BMapGL.LabelOptions = {
 			position: new BMapGL.Point(position.lng, position.lat),
 			offset: new BMapGL.Size(offset.x, offset.y),
-			enableMassClear: massClear
+			enableMassClear
 		}
 		label = new BMapGL.Label(content, options)
 		// 自定义文本标注样式

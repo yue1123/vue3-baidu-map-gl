@@ -1,7 +1,6 @@
-<template>
-	<div></div>
-</template>
+<template></template>
 <script setup lang="ts">
+	// TODO: 增加自动聚焦视野的配置autoViewport
 	import { defineProps, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
@@ -37,22 +36,31 @@
 		/**
 		 * 折线的样式
 		 */
-		strokeStyle?: 'solid' | 'dashed'
+		strokeStyle?: 'solid' | 'dashed' | 'dotted'
+		/**
+		 * 面填充颜色，同CSS颜色
+		 */
+		fillColor?: string
+
+		/**
+		 * 面填充的透明度，范围0-1
+		 */
+		fillOpacity?: number
 		/**
 		 * @default true
 		 * 是否在调用map.clearOverlays清除此覆盖物，默认为true
 		 */
-		massClear?: boolean
+		enableMassClear?: boolean
 		/**
 		 * @default false
 		 * 是否启用线编辑，默认为false
 		 */
-		editing?: boolean
+		enableEditing?: boolean
 		/**
 		 * @default true
 		 * 是否响应点击事件，默认为true
 		 */
-		clicking?: boolean
+		enableClicking?: boolean
 		/**
 		 * @default false
 		 * 是否开启大地线模式，true时，两点连线将以大地线的形式。默认为false
@@ -77,6 +85,8 @@
 		strokeWeight: 2,
 		strokeOpacity: 1,
 		strokeStyle: 'solid',
+		fillColor: '#fff',
+		fillOpacity: 0.3,
 		massClear: true,
 		editing: false,
 		clicking: true,
@@ -97,18 +107,31 @@
 	])
 	const { ready } = useLife()
 	useBaseMapEffect((map: BMapGL.Map) => {
-		const { strokeColor, strokeWeight, strokeOpacity, strokeStyle, massClear, editing, clicking, geodesic, clip } =
-			props
+		const {
+			strokeColor,
+			strokeWeight,
+			strokeOpacity,
+			strokeStyle,
+			fillOpacity,
+			fillColor,
+			enableMassClear,
+			enableEditing,
+			enableClicking,
+			geodesic,
+			clip
+		} = props
 		const pathPoints = props.path.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
 		const polygon = new BMapGL.Polygon(pathPoints, {
 			strokeColor,
 			strokeWeight,
 			strokeOpacity,
 			strokeStyle,
-			enableMassClear: massClear,
-			enableEditing: editing,
-			enableClicking: clicking,
-			geodesic: geodesic,
+			fillOpacity,
+			fillColor,
+			enableMassClear,
+			enableEditing,
+			enableClicking,
+			geodesic,
 			clip
 		})
 		map.addOverlay(polygon)

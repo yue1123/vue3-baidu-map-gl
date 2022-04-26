@@ -59,12 +59,12 @@
 		 * @default false
 		 * 是否启用线编辑，默认为false
 		 */
-		editing?: boolean
+		enableEditing?: boolean
 		/**
 		 * @default true
 		 * 是否响应点击事件，默认为true
 		 */
-		clicking?: boolean
+		enableClicking?: boolean
 		/**
 		 * @default false
 		 * 是否开启大地线模式，true时，两点连线将以大地线的形式。默认为false
@@ -92,8 +92,8 @@
 		fillOpacity: 0.3,
 		strokeStyle: 'solid',
 		massClear: true,
-		editing: false,
-		clicking: true,
+		enableEditing: false,
+		enableClicking: true,
 		geodesic: false,
 		clip: true
 	})
@@ -120,9 +120,9 @@
 			fillOpacity,
 			strokeWeight,
 			strokeStyle,
-			massClear,
-			editing,
-			clicking,
+			enableMassClear,
+			enableEditing,
+			enableClicking,
 			geodesic,
 			clip
 		} = props
@@ -132,9 +132,9 @@
 			strokeWeight,
 			strokeOpacity,
 			strokeStyle,
-			enableMassClear: massClear,
-			enableEditing: editing,
-			enableClicking: clicking,
+			enableMassClear,
+			enableEditing,
+			enableClicking,
 			geodesic: geodesic,
 			clip,
 			fillOpacity,
