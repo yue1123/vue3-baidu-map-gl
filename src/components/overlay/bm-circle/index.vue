@@ -54,7 +54,7 @@
 		 * @default true
 		 * 是否在调用map.clearOverlays清除此覆盖物，默认为true
 		 */
-		massClear?: boolean
+		enableMassClear?: boolean
 		/**
 		 * @default false
 		 * 是否启用线编辑，默认为false
@@ -91,7 +91,7 @@
 		fillColor: '#fff',
 		fillOpacity: 0.3,
 		strokeStyle: 'solid',
-		massClear: true,
+		enableMassClear: true,
 		enableEditing: false,
 		enableClicking: true,
 		geodesic: false,

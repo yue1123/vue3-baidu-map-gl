@@ -59,7 +59,7 @@ declare namespace BMapGL {
 	type SymbolShapeType = number
 
 
-  interface controlCommonOptions {
+  interface overlayCommonOptions {
 		/**
 		 * @default #000000
 		 * 折线颜色
@@ -103,9 +103,19 @@ declare namespace BMapGL {
 		 */
 		clip: boolean
   }
-	type PolylineOptions = controlCommonOptions
-	type PolygonOptions = controlCommonOptions
-	type CircleOptions = controlCommonOptions & {
+	type PolylineOptions = overlayCommonOptions 
+	type PolygonOptions = overlayCommonOptions & {
+		/**
+		 * 面填充颜色，同CSS颜色
+		 */
+		fillColor: string
+
+		/**
+		 * 面填充的透明度，范围0-1
+		 */
+		fillOpacity: number
+	}
+	type CircleOptions = overlayCommonOptions & {
 		/**
 		 * 面填充颜色，同CSS颜色
 		 */

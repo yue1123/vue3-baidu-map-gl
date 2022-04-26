@@ -1,6 +1,10 @@
 <template>
-	<div id="baidu-map-container" :style="{ width: props.width, height: props.height }">
-		<div class="loading">
+	<div
+		id="baidu-map-container"
+		:style="{ width: props.width, height: props.height }"
+		style="position: relative; overflow: hidden"
+	>
+		<div style="position: absolute; top: 50%; left: 50%; transform: translateY(-50%, -50%)">
 			{{ !initd ? 'map loading...' : '' }}
 		</div>
 	</div>
@@ -10,7 +14,17 @@
 
 <script setup lang="ts">
 	// FIXME: props 属性名字统一, 去掉enable
-	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted, provide, nextTick } from 'vue'
+	import {
+		inject,
+		defineProps,
+		withDefaults,
+		defineEmits,
+		watch,
+		onMounted,
+		onUnmounted,
+		provide,
+		nextTick
+	} from 'vue'
 	import useLife from '../../hooks/useLife'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
 
@@ -376,15 +390,3 @@
 	})
 	provide('getMapInstance', () => map)
 </script>
-<style>
-	#baidu-map-container {
-		position: relative;
-		overflow: hidden;
-	}
-	.loading {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translateY(-50%, -50%);
-	}
-</style>
