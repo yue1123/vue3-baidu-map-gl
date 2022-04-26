@@ -13,11 +13,11 @@ export default defineUserConfig<DefaultThemeOptions>({
 	dest: 'docs/dist',
 	base: process.env.NODE_ENV === 'development' ? '/' : '/vue3-baidu-map-gl/dist/',
 	locales: {
-		'/': {
-			lang: 'en-US',
-			title: 'Vue3 BaiduMap GL',
-			description: 'A set of map components based on Vue 3.0 and Baidu Maps.'
-		},
+		// '/': {
+		// 	lang: 'en-US',
+		// 	title: 'Vue3 BaiduMap GL',
+		// 	description: 'A set of map components based on Vue 3.0 and Baidu Maps.'
+		// },
 		'/zh/': {
 			lang: 'zh-CN',
 			title: 'Vue3 BaiduMap GL',
