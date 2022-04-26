@@ -1,6 +1,6 @@
 # Vue3 BaiduMap gl
 
-基于百度地图 JavaScript GL 版 API 封装的 Vue3 组件库 施工中 🚧
+基于百度地图 JavaScript GL 版 API 封装的 Vue3 组件库
 
 <img src='./docs/.vuepress/public/logo.png' style="border-radius:48px;overflow:hidden; width:220px;">
 <br />
