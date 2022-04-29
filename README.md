@@ -26,9 +26,7 @@ pnpm add vue3-baidu-map-gl
 ### Usage
 ```vue
 <template>
-	<Map
-		ak="YOUR_AK"
-	/>
+	<Map ak="YOUR_AK" />
 </template>
 
 <script setup lang="ts">
