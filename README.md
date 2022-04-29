@@ -9,13 +9,31 @@
 [![GitHub license](https://img.shields.io/github/license/yue1123/img-previewer?style=flat-square)](https://github.com/yue1123/img-previewer/blob/main/LICENSE)
 <img src="https://img.shields.io/github/package-json/v/yue1123/vue3-baidu-map-gl?color=f90&style=flat-square" alt="GitHub package.json version (subfolder of monorepo)">
 
-# 使用
+## Documentation
+[https://yue1123.github.io/vue3-baidu-map-gl/dist/zh](https://yue1123.github.io/vue3-baidu-map-gl/dist/zh)
+
+## Get started
+
+### installation
 ```shell
 npm i vue3-baidu-map-gl
 # or
 yarn add vue3-baidu-map-gl
 # or
 pnpm add vue3-baidu-map-gl
+```
+
+### Usage
+```vue
+<template>
+	<Map
+		ak="YOUR_AK"
+	/>
+</template>
+
+<script setup lang="ts">
+  import Map from 'vue3-baidu-map-gl';
+</script>
 ```
 
 ## todo list
@@ -26,4 +44,6 @@ pnpm add vue3-baidu-map-gl
 -   [ ] 地图插件
 -   [ ] 自定义地图样式
 
+## License
+[MIT licenses](https://opensource.org/licenses/MIT)
 ❤️开源不易❤️,点个star支持一下吧
