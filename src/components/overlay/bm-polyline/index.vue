@@ -98,6 +98,7 @@
 	])
 	const { ready } = useLife()
 	useBaseMapEffect((map: BMapGL.Map) => {
+    if(!props.path.length) return
 		const {
 			strokeColor,
 			strokeWeight,
