@@ -4,7 +4,7 @@ heroImage: /logo.png
 heroText: Vue3 BaiduMap GL
 actions:
    - text: get started
-     link: /en/guide/quick-start
+     link: /guide/quick-start
 features:
    - title: Based on Vue3 + Ts
      details: future-proof, better performance, better experience, better component type hints

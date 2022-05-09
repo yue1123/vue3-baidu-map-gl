@@ -80,13 +80,13 @@ simple_red , simple_blue , loc_red , loc_blue , start , end , location , red1 , 
   <Marker
 			:position="{ lat: 39.915185, lng: 116.400901 }"
 			:icon="{
-        imageUrl: '/logo.png',
+        imageUrl: 'https://yue1123.github.io/vue3-baidu-map-gl/dist/logo.png',
         imageSize: {
           width: 100,
           height: 100
         },
       }"
-			dragging
+			enableDragging
 		/>
 </Map>
 </div>

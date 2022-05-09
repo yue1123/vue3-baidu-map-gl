@@ -39,9 +39,11 @@ pnpm add vue3-baidu-map-gl
 -   [x] 基础地图
 -   [x] 地图控件
 -   [x] 地图覆盖物
+-   [ ] 多实例
 -   [ ] 地图插件
 -   [ ] 自定义地图样式
 
 ## License
 [MIT licenses](https://opensource.org/licenses/MIT)
-❤️开源不易❤️,点个star支持一下吧
+
+❤️用心制作❤️,开源不易,点个star支持一下吧
