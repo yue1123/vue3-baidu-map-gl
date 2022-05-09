@@ -6,7 +6,7 @@ const { resolve, join } = require('path')
 const root = process.cwd()
 const comNameReg = /(\w+\-\w+)/
 
-import sidebarConfig from './sidebar.config'
+import sidebarConfigZh from './sidebar.config.zh'
 export default defineUserConfig<DefaultThemeOptions>({
 	// 主题和它的配置
 	theme: '@vuepress/theme-default',
@@ -69,7 +69,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 						link: 'https://github.com/yue1123/vue3-baidu-map-gl'
 					}
 				],
-				sidebar: sidebarConfig
+				sidebar: sidebarConfigZh
 			}
 		},
 		// },
