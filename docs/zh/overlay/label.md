@@ -11,7 +11,6 @@ import { Label } from 'vue3-baidu-map-gl'
 | 参数            | 说明                                      | 类型                        | 可选值 | 默认值     |
 | --------------- | ----------------------------------------- | --------------------------- | ------ | ---------- |
 | content         | 设置文本标注的内容                        | string                      |        | `required` |
-| position        | 文本标注的坐标                            | { lng: number, lat: number} |        | `required` |
 | offset          | 文本标注的像素偏移                        | {x: number, y: number }     |        |            |
 | enableMassClear | 是否在调用 map.clearOverlays 清除此覆盖物 | boolean                     |        | true       |
 | style           | 设置文本标注的样式                        | css style object            |        |            |
@@ -19,6 +18,11 @@ import { Label } from 'vue3-baidu-map-gl'
 ::: tip
 style 可以是任何符合规范的 css 样式,样式属性需使用驼峰命名法
 :::
+## 动态组件 Props
+
+| 参数            | 说明                                      | 类型                        | 可选值 | 默认值     |
+| --------------- | ----------------------------------------- | --------------------------- | ------ | ---------- |
+| position        | 文本标注的坐标                            | { lng: number, lat: number} |        | `required` |
 
 ## 组件事件
 
