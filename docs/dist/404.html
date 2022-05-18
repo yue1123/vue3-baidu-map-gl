@@ -3,7 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="generator" content="VuePress 2.0.0-beta.41">
+    <meta name="generator" content="VuePress 2.0.0-beta.38">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
     <link rel="icon" type="image/png" sizes="16x16" href="/logo.png"><meta name="msapplication-TileColor" content="#3eaf7c"><meta name="theme-color" content="#3eaf7c"><script>
         var _hmt = _hmt || [];
         (function() {
@@ -13,11 +31,11 @@
           s.parentNode.insertBefore(hm, s);
         })();
         </script><title></title><meta name="description" content="">
-    <link rel="modulepreload" href="/vue3-baidu-map-gl/dist/assets/app.ef18f2ef.js"><link rel="modulepreload" href="/vue3-baidu-map-gl/dist/assets/404.html.0c8252b8.js"><link rel="modulepreload" href="/vue3-baidu-map-gl/dist/assets/plugin-vue_export-helper.21dcd24c.js"><link rel="modulepreload" href="/vue3-baidu-map-gl/dist/assets/404.html.beaa804c.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/index.html.635aa429.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/index.html.929f79b2.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/com-events.html.9123f8d7.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/index.html.dbf71f33.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/custom.html.540b45c3.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/navigation3d.html.bf02e3dd.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/scale.html.febb0ef9.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/zoom.html.9bdf9c1f.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/circle.html.8c31e812.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/label.html.788dbe7d.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/marker.html.306a11b1.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/polygon.html.303e590d.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/polyline.html.1663fd69.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/quick-start.html.f3dd6c4a.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/index.html.0319d1c3.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/index.html.1e73f129.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/com-events.html.2a731f9d.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/index.html.93c19024.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/custom.html.ee882e9a.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/navigation3d.html.432ebcd8.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/scale.html.0fa53bbc.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/zoom.html.34ba3701.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/circle.html.6f6306c3.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/label.html.5ee8ba85.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/marker.html.39ae214a.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/polygon.html.c3324ac8.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/polyline.html.a2504083.js"><link rel="prefetch" href="/vue3-baidu-map-gl/dist/assets/quick-start.html.f4eca16b.js">
-    <link rel="stylesheet" href="/vue3-baidu-map-gl/dist/assets/style.a69cc72e.css">
+    <link rel="modulepreload" href="/vue3-baidu-map-gl/dist/assets/app.b4148f53.js"><link rel="modulepreload" href="/vue3-baidu-map-gl/dist/assets/404.html.f166316b.js"><link rel="modulepreload" href="/vue3-baidu-map-gl/dist/assets/404.html.cc4004d8.js">
+    <link rel="stylesheet" href="/vue3-baidu-map-gl/dist/assets/style.a4df7bdc.css">
   </head>
   <body>
-    <div id="app"><!--[--><404></404><!--]--></div>
-    <script type="module" src="/vue3-baidu-map-gl/dist/assets/app.ef18f2ef.js" defer></script>
+    <div id="app"><!--[--><div class="theme-container"><div class="theme-default-content"><h1>404</h1><blockquote>That&#39;s a Four-Oh-Four.</blockquote><a href="/vue3-baidu-map-gl/dist/" class="">Take me home</a></div></div><!----><!--]--></div>
+    <script type="module" src="/vue3-baidu-map-gl/dist/assets/app.b4148f53.js" defer></script>
   </body>
 </html>
