@@ -7,25 +7,23 @@
 		enableDragging
 		:minZoom="10"
 	>
-		<Control style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
+		<Control
+			style="display: flex; background-color: #f90; padding: 10px"
+			:offset="{ x: 0, y: 0 }"
+		>
 			<button @click="handleZoomOut">缩小1</button>
 			<button @click="handleZoomIn">放大fasdf</button>
 		</Control>
 		<Navigation3d />
-		<Marker
+		<!-- <Marker
 			:position="{
 				lng: 116.404,
 				lat: 39.925
 			}"
 			icon="../docs/.vuepress/public/logo.png"
 			dragging
-		/>
-		<Marker
-			:position="{
-				lng: 116.404,
-				lat: 39.926
-			}"
-		/>
+		/> -->
+		<Marker :position="position" />
 		<Label
 			content="123123"
 			:position="{
@@ -61,7 +59,13 @@
 			:stroke-weight="10"
 			editing
 		></Polyline>
-		<Polygon :path="polylinePath" stroke-color="#f90" :stroke-opacity="1" :stroke-weight="10" editing></Polygon>
+		<!-- <Polygon
+			:path="polylinePath"
+			stroke-color="#f90"
+			:stroke-opacity="1"
+			:stroke-weight="10"
+			editing
+		></Polygon> -->
 		<Scale v-if="show"></Scale>
 		<Zoom v-if="show"></Zoom>
 	</Map>
@@ -81,11 +85,11 @@
 	}
 	const zoom = ref(16)
 	const show = ref<boolean>(true)
-	const polylinePath = [
+	const polylinePath = ref([
 		{ lng: 116.404, lat: 39.915 },
 		{ lng: 116.405, lat: 39.92 },
 		{ lng: 116.423493, lat: 39.907445 }
-	]
+	])
 	// setTimeout(() => {
 	// 	show.value = false
 	//   console.log('yingcang');
@@ -102,6 +106,17 @@
 		show.value = !show.value
 	}
 
+	const position = ref({
+		lng: 116.404,
+		lat: 39.937
+	})
+	const key = ref()
+	// setInterval(() => {
+	// 	console.log('gaib')
+	// 	// key.value = Math.random() * 0.01
+	// 	// polylinePath.value.push({ lng: 116.423493, lat: 39.907445 + key.value })
+	// 	// position.value.lng += 0.0001
+	// }, 1000)
 	;(window as any).toggle = cal
 </script>
 <style>

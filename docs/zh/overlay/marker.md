@@ -10,7 +10,6 @@ import { Marker } from 'vue3-baidu-map-gl'
 
 | 参数            | 说明                                                                                                                     | 类型                        | 可选值                      | 默认值     |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------- | --------------------------- | ---------- |
-| position        | 标注点的坐标                                                                                                             | { lng: number, lat: number} |                             | `required` |
 | offset          | 标注点的像素偏移                                                                                                         | {x: number, y: number }     |                             |            |
 | icon            | 标注点的图标。可使用默认图标,也可[自定义图标](#自定义图标)                                                               | string                      | simple_red / simple_blue... |            |
 | title           | 鼠标移到 marker 上的显示内容                                                                                             | string                      |                             |            |
@@ -21,6 +20,11 @@ import { Marker } from 'vue3-baidu-map-gl'
 | enableDragging  | 是否启用拖拽                                                                                                             | boolean                     |                             | true       |
 | enableClicking  | 是否响应点击事件                                                                                                         | boolean                     |                             | true       |
 
+## 动态组件 Props
+
+| 参数            | 说明                                                                                                                     | 类型                        | 可选值                      | 默认值     |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------- | --------------------------- | ---------- |
+| position        | 标注点的坐标                                                                                                             | { lng: number, lat: number} |                             | `required` |
 ## 默认图标可选值
 
 simple_red , simple_blue , loc_red , loc_blue , start , end , location , red1 , red2 , red3 , red4 , red5 , red6 , red7 , red8 , red9 , red10 , blue1 , blue2 , blue3 , blue4 , blue5 , blue6 , blue7 , blue8 , blue9 , blue10

@@ -62,8 +62,24 @@ const install = (app: App) => {
 }
 
 // 局部注册
-export { Map, Control, Scale, Zoom, Navigation3d, Marker, Label, Polyline, Polygon, Circle, install, useBaseMapEffect }
+export {
+	Map,
+	Control,
+	Scale,
+	Zoom,
+	Navigation3d,
+	Marker,
+	Label,
+	Polyline,
+	Polygon,
+	Circle,
+	install,
+	useBaseMapEffect
+}
 
 export default {
 	install
 }
+
+// TODO: 导出点的ts类型
+// FIXME: marker 图片无法显示

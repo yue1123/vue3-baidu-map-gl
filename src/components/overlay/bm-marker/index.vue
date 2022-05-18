@@ -1,7 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
-	import { defineProps, withDefaults } from 'vue'
+	import { defineProps, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import { isString } from '../../../utils/index'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
@@ -200,62 +200,77 @@
 
 		return icons
 	}
+
 	useBaseMapEffect((map: BMapGL.Map) => {
-		const defaultIcons: any = getDefaultIcons()
-		const {
-			position,
-			offset,
-			icon,
-			enableMassClear,
-			enableDragging,
-			enableClicking,
-			raiseOnDrag,
-			draggingCursor,
-			rotation,
-			title
-		} = props
-		const options: BMapGL.MarkerOptions = {
-			offset: new BMapGL.Size(offset.x, offset.y),
-			enableMassClear,
-			enableDragging,
-			enableClicking,
-			raiseOnDrag,
-			draggingCursor,
-			rotation,
-			title
-		}
-		if (icon) {
-			if (isString(icon) && defaultIcons[icon as string]) {
-				options.icon = defaultIcons[icon as string]
-			} else {
-				// @ts-ignore
-				const { anchor, imageOffset, imageSize, imageUrl, printImageUrl } = props.icon
-				const iconOptions: BMapGL.IconOptions = {
-					imageSize: new BMapGL.Size(imageSize.width, imageSize.height)
-				}
-				if (anchor) {
-					iconOptions.anchor = new BMapGL.Size(anchor.x, anchor.y)
-				}
-				if (imageOffset) {
-					iconOptions.imageOffset = new BMapGL.Size(imageOffset.x, imageOffset.y)
-				}
-				if (printImageUrl) {
-					iconOptions.printImageUrl = printImageUrl
-				}
-				options.icon = new BMapGL.Icon(
-					imageUrl,
-					new BMapGL.Size(imageSize.width, imageSize.height),
-					iconOptions
-				)
-			}
-		}
-		marker = new BMapGL.Marker(new BMapGL.Point(position.lng, position.lat), options)
-		// 在地图上添加点标记
-		map.addOverlay(marker)
-		ready(map)
-		bindEvents(props, vueEmits, marker)
-		return () => {
+		const cal = () => {
 			map.removeOverlay(marker)
 		}
+		const init = () => {
+			const defaultIcons: any = getDefaultIcons()
+			const {
+				position,
+				offset,
+				icon,
+				enableMassClear,
+				enableDragging,
+				enableClicking,
+				raiseOnDrag,
+				draggingCursor,
+				rotation,
+				title
+			} = props
+			const options: BMapGL.MarkerOptions = {
+				offset: new BMapGL.Size(offset.x, offset.y),
+				enableMassClear,
+				enableDragging,
+				enableClicking,
+				raiseOnDrag,
+				draggingCursor,
+				rotation,
+				title
+			}
+			if (icon) {
+				if (isString(icon) && defaultIcons[icon as string]) {
+					options.icon = defaultIcons[icon as string]
+				} else {
+					// @ts-ignore
+					const { anchor, imageOffset, imageSize, imageUrl, printImageUrl } = props.icon
+					const iconOptions: BMapGL.IconOptions = {
+						imageSize: new BMapGL.Size(imageSize.width, imageSize.height)
+					}
+					if (anchor) {
+						iconOptions.anchor = new BMapGL.Size(anchor.x, anchor.y)
+					}
+					if (imageOffset) {
+						iconOptions.imageOffset = new BMapGL.Size(imageOffset.x, imageOffset.y)
+					}
+					if (printImageUrl) {
+						iconOptions.printImageUrl = printImageUrl
+					}
+					options.icon = new BMapGL.Icon(
+						imageUrl,
+						new BMapGL.Size(imageSize.width, imageSize.height),
+						iconOptions
+					)
+				}
+			}
+			marker = new BMapGL.Marker(new BMapGL.Point(position.lng, position.lat), options)
+			// 在地图上添加点标记
+			map.addOverlay(marker)
+      bindEvents(props, vueEmits, marker)
+		}
+		watch(
+			() => props.position,
+			() => {
+				cal()
+				init()
+			},
+			{
+				deep: true
+			}
+		)
+		init()
+		ready(map)
+		return cal
 	})
 </script>
