@@ -1,7 +1,7 @@
 <template></template>
 <script setup lang="ts">
 	// TODO: 增加自动聚焦视野的配置autoViewport
-	import { defineProps, watch, withDefaults } from 'vue'
+	import { defineProps, watch, withDefaults, defineEmits } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
