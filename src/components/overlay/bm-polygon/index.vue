@@ -1,7 +1,7 @@
 <template></template>
 <script setup lang="ts">
 	// TODO: 增加自动聚焦视野的配置autoViewport
-	import { defineProps, withDefaults } from 'vue'
+	import { defineProps, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
@@ -106,39 +106,54 @@
 		'lineupdate'
 	])
 	const { ready } = useLife()
+	let polygon: BMapGL.Polygon
 	useBaseMapEffect((map: BMapGL.Map) => {
-		const {
-			strokeColor,
-			strokeWeight,
-			strokeOpacity,
-			strokeStyle,
-			fillOpacity,
-			fillColor,
-			enableMassClear,
-			enableEditing,
-			enableClicking,
-			geodesic,
-			clip
-		} = props
-		const pathPoints = props.path.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
-		const polygon = new BMapGL.Polygon(pathPoints, {
-			strokeColor,
-			strokeWeight,
-			strokeOpacity,
-			strokeStyle,
-			fillOpacity,
-			fillColor,
-			enableMassClear,
-			enableEditing,
-			enableClicking,
-			geodesic,
-			clip
-		})
-		map.addOverlay(polygon)
-		ready(map)
-		bindEvents(props, vueEmits, polygon)
-		return () => {
+		const cal = () => {
 			map.removeOverlay(polygon)
 		}
+		const init = () => {
+			const {
+				strokeColor,
+				strokeWeight,
+				strokeOpacity,
+				strokeStyle,
+				fillOpacity,
+				fillColor,
+				enableMassClear,
+				enableEditing,
+				enableClicking,
+				geodesic,
+				clip
+			} = props
+			const pathPoints = props.path.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
+			polygon = new BMapGL.Polygon(pathPoints, {
+				strokeColor,
+				strokeWeight,
+				strokeOpacity,
+				strokeStyle,
+				fillOpacity,
+				fillColor,
+				enableMassClear,
+				enableEditing,
+				enableClicking,
+				geodesic,
+				clip
+			})
+			map.addOverlay(polygon)
+			bindEvents(props, vueEmits, polygon)
+		}
+		watch(
+			() => props.path,
+			() => {
+				cal()
+				init()
+			},
+			{
+				deep: true
+			}
+		)
+		init()
+		ready(map)
+		return cal
 	})
 </script>

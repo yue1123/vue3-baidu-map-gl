@@ -2,7 +2,7 @@
 	<div></div>
 </template>
 <script setup lang="ts">
-	import { defineProps, withDefaults } from 'vue'
+	import { defineProps, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
@@ -110,41 +110,56 @@
 		'lineupdate'
 	])
 	const { ready } = useLife()
+	let circle: BMapGL.Circle
 	useBaseMapEffect((map: BMapGL.Map) => {
-		const {
-			center,
-			radius,
-			strokeColor,
-			strokeOpacity,
-			fillColor,
-			fillOpacity,
-			strokeWeight,
-			strokeStyle,
-			enableMassClear,
-			enableEditing,
-			enableClicking,
-			geodesic,
-			clip
-		} = props
-		const centerPoint = new BMapGL.Point(center.lng, center.lat)
-		const circle = new BMapGL.Circle(centerPoint, radius, {
-			strokeColor,
-			strokeWeight,
-			strokeOpacity,
-			strokeStyle,
-			enableMassClear,
-			enableEditing,
-			enableClicking,
-			geodesic: geodesic,
-			clip,
-			fillOpacity,
-			fillColor
-		})
-		map.addOverlay(circle)
-		ready(map)
-		bindEvents(props, vueEmits, circle)
-		return () => {
+		const cal = () => {
 			map.removeOverlay(circle)
 		}
+		const init = () => {
+			const {
+				center,
+				radius,
+				strokeColor,
+				strokeOpacity,
+				fillColor,
+				fillOpacity,
+				strokeWeight,
+				strokeStyle,
+				enableMassClear,
+				enableEditing,
+				enableClicking,
+				geodesic,
+				clip
+			} = props
+			const centerPoint = new BMapGL.Point(center.lng, center.lat)
+			circle = new BMapGL.Circle(centerPoint, radius, {
+				strokeColor,
+				strokeWeight,
+				strokeOpacity,
+				strokeStyle,
+				enableMassClear,
+				enableEditing,
+				enableClicking,
+				geodesic: geodesic,
+				clip,
+				fillOpacity,
+				fillColor
+			})
+			map.addOverlay(circle)
+      bindEvents(props, vueEmits, circle)
+		}
+		watch(
+			() => props.center,
+			() => {
+				cal()
+				init()
+			},
+			{
+				deep: true
+			}
+		)
+		init()
+		ready(map)
+		return cal
 	})
 </script>

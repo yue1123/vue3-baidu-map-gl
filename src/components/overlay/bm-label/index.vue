@@ -1,11 +1,11 @@
 <template></template>
 <script setup lang="ts">
-	import { defineProps, withDefaults } from 'vue'
+	import { defineProps, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
 	// TODO: 完善组件的属性动态监听设置
-	interface BmLabelProps {
+	export interface BmLabelProps {
 		/**
 		 * 文本标注信息
 		 */
@@ -67,23 +67,37 @@
 	const { ready } = useLife()
 	let label: BMapGL.Label
 	useBaseMapEffect((map: BMapGL.Map) => {
-		const { content, position, offset, enableMassClear, style } = props
-		const options: BMapGL.LabelOptions = {
-			position: new BMapGL.Point(position.lng, position.lat),
-			offset: new BMapGL.Size(offset.x, offset.y),
-			enableMassClear
-		}
-		label = new BMapGL.Label(content, options)
-		// 自定义文本标注样式
-		if (style) {
-			label.setStyle(style)
-		}
-		map.addOverlay(label)
-		ready(map)
-		bindEvents(props, vueEmits, label)
-		// 在地图上添加点标记
-		return () => {
+		const cal = () => {
 			map.removeOverlay(label)
 		}
+		const init = () => {
+			const { content, position, offset, enableMassClear, style } = props
+			const options: BMapGL.LabelOptions = {
+				position: new BMapGL.Point(position.lng, position.lat),
+				offset: new BMapGL.Size(offset.x, offset.y),
+				enableMassClear
+			}
+			label = new BMapGL.Label(content, options)
+			// 自定义文本标注样式
+			if (style) {
+				label.setStyle(style)
+			}
+			map.addOverlay(label)
+      bindEvents(props, vueEmits, label)
+		}
+		watch(
+			() => props.position,
+			() => {
+				cal()
+				init()
+			},
+			{
+				deep: true
+			}
+		)
+		init()
+		ready(map)
+		// 在地图上添加点标记
+		return cal
 	})
 </script>

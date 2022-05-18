@@ -3,7 +3,7 @@
 </template>
 <script setup lang="ts">
 	// TODO: 增加自动聚焦视野的配置autoViewport
-	import { defineProps, withDefaults } from 'vue'
+	import { defineProps, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { type Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
@@ -97,35 +97,50 @@
 		'lineupdate'
 	])
 	const { ready } = useLife()
+	let polyline: BMapGL.Polyline
 	useBaseMapEffect((map: BMapGL.Map) => {
-		const {
-			strokeColor,
-			strokeWeight,
-			strokeOpacity,
-			strokeStyle,
-			enableMassClear,
-			enableEditing,
-			enableClicking,
-			geodesic,
-			clip
-		} = props
-		const pathPoints = props.path.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
-		const polyline = new BMapGL.Polyline(pathPoints, {
-			strokeColor,
-			strokeWeight,
-			strokeOpacity,
-			strokeStyle,
-			enableMassClear,
-			enableEditing,
-			enableClicking,
-			geodesic,
-			clip
-		})
-		map.addOverlay(polyline)
-		ready(map)
-		bindEvents(props, vueEmits, polyline)
-		return () => {
+		const cal = () => {
 			map.removeOverlay(polyline)
 		}
+		const init = () => {
+			const {
+				strokeColor,
+				strokeWeight,
+				strokeOpacity,
+				strokeStyle,
+				enableMassClear,
+				enableEditing,
+				enableClicking,
+				geodesic,
+				clip
+			} = props
+			const pathPoints = props.path.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
+			polyline = new BMapGL.Polyline(pathPoints, {
+				strokeColor,
+				strokeWeight,
+				strokeOpacity,
+				strokeStyle,
+				enableMassClear,
+				enableEditing,
+				enableClicking,
+				geodesic,
+				clip
+			})
+			map.addOverlay(polyline)
+      bindEvents(props, vueEmits, polyline)
+		}
+		watch(
+			() => props.path,
+			() => {
+				cal()
+				init()
+			},
+			{
+				deep: true
+			}
+		)
+		init()
+		ready(map)
+		return cal
 	})
 </script>
