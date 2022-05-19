@@ -6,72 +6,47 @@
 	import { isString } from '../../../utils/index'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
-	// TODO: 完善组件的属性动态监听设置
-	export interface BmMarkerProps {
-		position: {
-			/**
-			 * 地理经度
-			 */
-			lng: number
-			/**
-			 * 地理纬度
-			 */
-			lat: number
-		}
+	import useMarkerDefaultIcons, { MarkerDefaultIcons } from '../../../hooks/useMarkerDefaultIcons'
+	export interface MarkerPosition {
 		/**
-		 * 标注的位置偏移值
+		 * 地理经度
 		 */
-		offset?: {
+		lng: number
+		/**
+		 * 地理纬度
+		 */
+		lat: number
+	}
+	export interface MarkerOffset {
+		x: number
+		y: number
+	}
+	export type MarkerCustomIcon = {
+		anchor?: {
 			x: number
 			y: number
 		}
+		imageOffset?: {
+			x: number
+			y: number
+		}
+		imageSize: {
+			width: number
+			height: number
+		}
+		imageUrl: string
+		printImageUrl?: string
+	}
+	export interface BmMarkerProps {
+		position: MarkerPosition
+		/**
+		 * 标注的位置偏移值
+		 */
+		offset?: MarkerOffset
 		/**
 		 * 标注所用的图标对象
 		 */
-		icon?:
-			| 'simple_red'
-			| 'simple_blue'
-			| 'loc_red'
-			| 'loc_blue'
-			| 'start'
-			| 'end'
-			| 'location'
-			| 'red1'
-			| 'red2'
-			| 'red3'
-			| 'red4'
-			| 'red5'
-			| 'red6'
-			| 'red7'
-			| 'red8'
-			| 'red9'
-			| 'red10'
-			| 'blue1'
-			| 'blue2'
-			| 'blue3'
-			| 'blue4'
-			| 'blue5'
-			| 'blue6'
-			| 'blue7'
-			| 'blue8'
-			| 'blue9'
-			| 'blue10'
-			| {
-					anchor?: {
-						x: number
-						y: number
-					}
-					imageOffset?: {
-						x: number
-						y: number
-					}
-					imageSize: {
-						width: number
-						height: number
-					}
-					imageUrl: string
-					printImageUrl?: string
-			  }
+		icon?: MarkerDefaultIcons | MarkerCustomIcon
 		/**
 		 * @default true
 		 * 是否在调用map.clearOverlays清除此覆盖物，默认为true
@@ -151,73 +126,23 @@
 	])
 	const { ready } = useLife()
 	let marker: BMapGL.Marker
-	function getDefaultIcons() {
-		const defaultIconUrl = '//mapopen.bj.bcebos.com/cms/react-bmap/markers_new2x_fbb9e99.png'
-		let icons = {
-			simple_red: new BMapGL.Icon(defaultIconUrl, new BMapGL.Size(42 / 2, 66 / 2), {
-				imageOffset: new BMapGL.Size(454 / 2, 378 / 2),
-				imageSize: new BMapGL.Size(600 / 2, 600 / 2)
-			}),
-			simple_blue: new BMapGL.Icon(defaultIconUrl, new BMapGL.Size(42 / 2, 66 / 2), {
-				imageOffset: new BMapGL.Size(454 / 2, 450 / 2),
-				imageSize: new BMapGL.Size(600 / 2, 600 / 2)
-			}),
-			loc_red: new BMapGL.Icon(defaultIconUrl, new BMapGL.Size(46 / 2, 70 / 2), {
-				imageOffset: new BMapGL.Size(400 / 2, 378 / 2),
-				imageSize: new BMapGL.Size(600 / 2, 600 / 2)
-			}),
-			loc_blue: new BMapGL.Icon(defaultIconUrl, new BMapGL.Size(46 / 2, 70 / 2), {
-				imageOffset: new BMapGL.Size(400 / 2, 450 / 2),
-				imageSize: new BMapGL.Size(600 / 2, 600 / 2)
-			}),
-			start: new BMapGL.Icon(defaultIconUrl, new BMapGL.Size(50 / 2, 80 / 2), {
-				imageOffset: new BMapGL.Size(400 / 2, 278 / 2),
-				imageSize: new BMapGL.Size(600 / 2, 600 / 2)
-			}),
-			end: new BMapGL.Icon(defaultIconUrl, new BMapGL.Size(50 / 2, 80 / 2), {
-				imageOffset: new BMapGL.Size(450 / 2, 278 / 2),
-				imageSize: new BMapGL.Size(600 / 2, 600 / 2)
-			}),
-			location: new BMapGL.Icon(defaultIconUrl, new BMapGL.Size(28 / 2, 40 / 2), {
-				imageOffset: new BMapGL.Size(248 / 2, 466 / 2),
-				imageSize: new BMapGL.Size(600 / 2, 600 / 2)
-			})
-		}
-
-		for (let i = 1; i <= 10; i++) {
-			icons['red' + i] = new BMapGL.Icon(defaultIconUrl, new BMapGL.Size(42 / 2, 66 / 2), {
-				imageOffset: new BMapGL.Size((42 / 2) * (i - 1), 0),
-				imageSize: new BMapGL.Size(600 / 2, 600 / 2)
-			})
-		}
-
-		for (let i = 1; i <= 10; i++) {
-			icons['blue' + i] = new BMapGL.Icon(defaultIconUrl, new BMapGL.Size(42 / 2, 66 / 2), {
-				imageOffset: new BMapGL.Size((42 / 2) * (i - 1), 132 / 2),
-				imageSize: new BMapGL.Size(600 / 2, 600 / 2)
-			})
-		}
-
-		return icons
-	}
 
 	useBaseMapEffect((map: BMapGL.Map) => {
 		const cal = () => {
 			map.removeOverlay(marker)
 		}
 		const init = () => {
-			const defaultIcons: any = getDefaultIcons()
 			const {
 				position,
 				offset,
-				icon,
 				enableMassClear,
 				enableDragging,
 				enableClicking,
 				raiseOnDrag,
 				draggingCursor,
 				rotation,
-				title
+				title,
+				icon
 			} = props
 			const options: BMapGL.MarkerOptions = {
 				offset: new BMapGL.Size(offset.x, offset.y),
@@ -226,51 +151,69 @@
 				enableClicking,
 				raiseOnDrag,
 				draggingCursor,
-				rotation,
 				title
 			}
 			if (icon) {
-				if (isString(icon) && defaultIcons[icon as string]) {
-					options.icon = defaultIcons[icon as string]
-				} else {
-					// @ts-ignore
-					const { anchor, imageOffset, imageSize, imageUrl, printImageUrl } = props.icon
-					const iconOptions: BMapGL.IconOptions = {
-						imageSize: new BMapGL.Size(imageSize.width, imageSize.height)
-					}
-					if (anchor) {
-						iconOptions.anchor = new BMapGL.Size(anchor.x, anchor.y)
-					}
-					if (imageOffset) {
-						iconOptions.imageOffset = new BMapGL.Size(imageOffset.x, imageOffset.y)
-					}
-					if (printImageUrl) {
-						iconOptions.printImageUrl = printImageUrl
-					}
-					options.icon = new BMapGL.Icon(
-						imageUrl,
-						new BMapGL.Size(imageSize.width, imageSize.height),
-						iconOptions
-					)
-				}
+				options.icon = getIconConfig()
 			}
 			marker = new BMapGL.Marker(new BMapGL.Point(position.lng, position.lat), options)
+			setRotation(rotation)
 			// 在地图上添加点标记
 			map.addOverlay(marker)
-      bindEvents(props, vueEmits, marker)
+			bindEvents(props, vueEmits, marker)
 		}
-		watch(
-			() => props.position,
-			() => {
-				cal()
-				init()
-			},
-			{
-				deep: true
-			}
-		)
+		// 监听值变化
+		watch(() => props.position, setPosition, { deep: true })
+		watch(() => props.icon, setIcon, { deep: true })
+		watch(() => props.offset, setOffset, { deep: true })
+		watch(() => props.enableDragging, setDragging)
+		watch(() => props.enableDragging, setMassClear)
+		watch(() => props.rotation, setRotation)
+
 		init()
 		ready(map)
 		return cal
 	})
+	// 获取图标配置
+	function getIconConfig(): BMapGL.Icon {
+		const defaultIcons = useMarkerDefaultIcons()
+		const { icon } = props
+		if (isString(icon) && defaultIcons[icon as string]) {
+			return defaultIcons[icon as string]
+		} else {
+			// @ts-ignore
+			const { anchor, imageOffset, imageSize, imageUrl, printImageUrl } = props.icon
+			const iconOptions: BMapGL.IconOptions = {
+				imageSize: new BMapGL.Size(imageSize.width, imageSize.height)
+			}
+			if (anchor) {
+				iconOptions.anchor = new BMapGL.Size(anchor.x, anchor.y)
+			}
+			if (imageOffset) {
+				iconOptions.imageOffset = new BMapGL.Size(imageOffset.x, imageOffset.y)
+			}
+			if (printImageUrl) {
+				iconOptions.printImageUrl = printImageUrl
+			}
+			return new BMapGL.Icon(imageUrl, new BMapGL.Size(imageSize.width, imageSize.height), iconOptions)
+		}
+	}
+	function setPosition(position: MarkerPosition) {
+		marker.setPosition(new BMapGL.Point(position.lng, position.lat))
+	}
+	function setIcon() {
+		marker.setIcon(getIconConfig())
+	}
+	function setDragging(enableDragging: boolean): void {
+		enableDragging ? marker!.enableDragging() : marker!.disableDragging()
+	}
+	function setMassClear(enableMassClear: boolean): void {
+		enableMassClear ? marker!.enableMassClear() : marker!.disableMassClear()
+	}
+	function setOffset(offset: MarkerOffset) {
+		marker.setOffset(new BMapGL.Size(offset.x, offset.y))
+	}
+	function setRotation(rotation: number) {
+		marker.setRotation(rotation)
+	}
 </script>

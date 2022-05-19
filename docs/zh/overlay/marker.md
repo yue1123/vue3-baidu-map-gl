@@ -8,25 +8,26 @@ import { Marker } from 'vue3-baidu-map-gl'
 
 ## 静态组件 Props
 
-| 参数            | 说明                                                                                                                     | 类型                        | 可选值                      | 默认值     |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------- | --------------------------- | ---------- |
-| offset          | 标注点的像素偏移                                                                                                         | {x: number, y: number }     |                             |            |
-| icon            | 标注点的图标。可使用默认图标,也可[自定义图标](#自定义图标)                                                               | string                      | simple_red / simple_blue... |            |
-| title           | 鼠标移到 marker 上的显示内容                                                                                             | string                      |                             |            |
-| rotation        | 旋转角度                                                                                                                 | number                      |                             |            |
-| draggingCursor  | 拖拽标注时的鼠标指针样式。此属性值需遵循 CSS 的[cursor](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)属性规范 | string                      |                             |            |
-| raiseOnDrag     | 拖拽标注时，标注是否开启离开地图表面效果                                                                                 | boolean                     |                             | false      |
-| enableMassClear | 是否在调用 map.clearOverlays 清除此覆盖物                                                                                | boolean                     |                             | true       |
-| enableDragging  | 是否启用拖拽                                                                                                             | boolean                     |                             | true       |
-| enableClicking  | 是否响应点击事件                                                                                                         | boolean                     |                             | true       |
+| 参数           | 说明                                                                                                                     | 类型    | 可选值 | 默认值 |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------ | ------- | ------ | ------ |
+| title          | 鼠标移到 marker 上的显示内容                                                                                             | string  |        |        |
+| draggingCursor | 拖拽标注时的鼠标指针样式。此属性值需遵循 CSS 的[cursor](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)属性规范 | string  |        |        |
+| raiseOnDrag    | 拖拽标注时，标注是否开启离开地图表面效果                                                                                 | boolean |        | false  |
+| enableClicking | 是否响应点击事件                                                                                                         | boolean |        | true   |
 
 ## 动态组件 Props
 
-| 参数            | 说明                                                                                                                     | 类型                        | 可选值                      | 默认值     |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------- | --------------------------- | ---------- |
-| position        | 标注点的坐标                                                                                                             | { lng: number, lat: number} |                             | `required` |
+| 参数            | 说明                                                       | 类型                        | 可选值                      | 默认值     |
+| --------------- | ---------------------------------------------------------- | --------------------------- | --------------------------- | ---------- |
+| position        | 标注点的坐标                                               | { lng: number, lat: number} |                             | `required` |
+| offset          | 标注点的像素偏移                                           | {x: number, y: number }     |                             |            |
+| icon            | 标注点的图标。可使用默认图标,也可[自定义图标](#自定义图标) | string                      | simple_red / simple_blue... |            |
+| rotation        | 旋转角度                                                   | number                      |                             |            |
+| enableDragging  | 是否启用拖拽                                               | boolean                     |                             | true       |
+| enableMassClear | 是否在调用 map.clearOverlays 清除此覆盖物                  | boolean                     |                             | true       |
 ## 默认图标可选值
 
+![https://mapopen.bj.bcebos.com/cms/react-bmap/markers_new2x_fbb9e99.png](https://mapopen.bj.bcebos.com/cms/react-bmap/markers_new2x_fbb9e99.png)
 simple_red , simple_blue , loc_red , loc_blue , start , end , location , red1 , red2 , red3 , red4 , red5 , red6 , red7 , red8 , red9 , red10 , blue1 , blue2 , blue3 , blue4 , blue5 , blue6 , blue7 , blue8 , blue9 , blue10
 
 ## 自定义图标

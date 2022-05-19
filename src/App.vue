@@ -7,10 +7,7 @@
 		enableDragging
 		:minZoom="10"
 	>
-		<Control
-			style="display: flex; background-color: #f90; padding: 10px"
-			:offset="{ x: 0, y: 0 }"
-		>
+		<Control style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
 			<button @click="handleZoomOut">缩小1</button>
 			<button @click="handleZoomIn">放大fasdf</button>
 		</Control>
@@ -23,7 +20,7 @@
 			icon="../docs/.vuepress/public/logo.png"
 			dragging
 		/> -->
-		<Marker :position="position" />
+		<Marker :icon="markerIcon" :position="position" :rotation="180"/>
 		<Label
 			content="123123"
 			:position="{
@@ -111,12 +108,21 @@
 		lat: 39.937
 	})
 	const key = ref()
-	// setInterval(() => {
-	// 	console.log('gaib')
-	// 	// key.value = Math.random() * 0.01
-	// 	// polylinePath.value.push({ lng: 116.423493, lat: 39.907445 + key.value })
-	// 	// position.value.lng += 0.0001
-	// }, 1000)
+	let index = 0
+	const icon = ['simple_blue', 'simple_red', 'loc_red']
+	const markerIcon = ref(icon[index])
+	setInterval(() => {
+		console.log('gaib')
+		if (index < 2) {
+			index++
+		} else {
+			index = 0
+		}
+		// markerIcon.value = icon[index]
+		// key.value = Math.random() * 0.01
+		// polylinePath.value.push({ lng: 116.423493, lat: 39.907445 + key.value })
+		position.value.lng += 0.0001
+	}, 1000)
 	;(window as any).toggle = cal
 </script>
 <style>
