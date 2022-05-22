@@ -6,25 +6,25 @@ import { Circle } from 'vue3-baidu-map-gl'
 ```
 
 ## 静态组件 Props
-| 参数          | 说明                                                 | 类型                        | 可选值                  | 默认值     |
-| ------------- | ---------------------------------------------------- | --------------------------- | ----------------------- | ---------- |
-| radius        | 圆形的半径，单位为米                                 | number                      |                         | `required` |
-| strokeColor   | 描边的颜色，同CSS颜色                                | string                      |                         | `#000`     |
-| strokeOpacity | 描边的透明度，范围0-1                                | number                      | 0-1                     | 1          |
-| fillColor     | 面填充颜色，同CSS颜色                                | string                      |                         | `#fff`     |
-| fillOpacity   | 面填充的透明度，范围0-1                              | number                      | 0-1                     | 0.3        |
-| strokeWeight  | 描边的宽度，单位为像素                               | number                      |                         | 2          |
-| strokeStyle   | 描边的样式，为实线、虚线、或者点状线                 | string                      | solid / dashed / dotted | solid      |
-| enableMassClear     | 是否在调用map.clearOverlays清除此覆盖物              | boolean                     |                         | true       |
-| enableEditing       | 是否启用线编辑                                       | boolean                     |                         | false      |
-| enableClicking      | 是否响应点击事件                                     | boolean                     |                         | true       |
-| geodesic      | 是否开启大地线模式，true时，两点连线将以大地线的形式 | boolean                     |                         | false      |
-| clip          | 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果 | boolean                     |                         | true       |
+| 参数           | 说明                                                 | 类型    | 可选值 | 默认值 |
+| -------------- | ---------------------------------------------------- | ------- | ------ | ------ |
+| enableClicking | 是否响应点击事件                                     | boolean |        | true   |
+| geodesic       | 是否开启大地线模式，true时，两点连线将以大地线的形式 | boolean |        | false  |
+| clip           | 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果 | boolean |        | true   |
 
 ## 动态组件 Props
-| 参数          | 说明                                                 | 类型                        | 可选值                  | 默认值     |
-| ------------- | ---------------------------------------------------- | --------------------------- | ----------------------- | ---------- |
-| center        | 圆形中心点经纬度                                     | { lng: number, lat: number} |                         | `required` |
+| 参数            | 说明                                    | 类型                        | 可选值                  | 默认值     |
+| --------------- | --------------------------------------- | --------------------------- | ----------------------- | ---------- |
+| center          | 圆形中心点经纬度                        | { lng: number, lat: number} |                         | `required` |
+| radius          | 圆形的半径，单位为米                    | number                      |                         | `required` |
+| strokeColor     | 描边的颜色，同CSS颜色                   | string                      |                         | `#000`     |
+| strokeOpacity   | 描边的透明度，范围0-1                   | number                      | 0-1                     | 1          |
+| fillColor       | 面填充颜色，同CSS颜色                   | string                      |                         | `#fff`     |
+| fillOpacity     | 面填充的透明度，范围0-1                 | number                      | 0-1                     | 0.3        |
+| strokeWeight    | 描边的宽度，单位为像素                  | number                      |                         | 2          |
+| strokeStyle     | 描边的样式，为实线、虚线、或者点状线    | string                      | solid / dashed / dotted | solid      |
+| enableMassClear | 是否在调用map.clearOverlays清除此覆盖物 | boolean                     |                         | true       |
+| enableEditing   | 是否启用线编辑                          | boolean                     |                         | false      |
 
 ## 组件事件
 | 事件名     | 说明                                                                           | 类型                 |
