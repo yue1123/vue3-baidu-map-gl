@@ -99,6 +99,7 @@
 	const { ready } = useLife()
 	let polyline: BMapGL.Polyline
 	useBaseMapEffect((map: BMapGL.Map) => {
+		if (!props.path.length) return
 		const cal = () => {
 			map.removeOverlay(polyline)
 		}
@@ -129,18 +130,69 @@
 			map.addOverlay(polyline)
 			bindEvents(props, vueEmits, polyline)
 		}
+
+		// 监听值变化
 		watch(
 			() => props.path,
-			() => {
-				cal()
-				init()
-			},
+			() => setPath,
 			{
 				deep: true
 			}
 		)
+		watch(
+			() => props.strokeColor,
+			() => setStrokeColor
+		)
+		watch(
+			() => props.strokeOpacity,
+			() => setStrokeOpacity
+		)
+		watch(
+			() => props.strokeWeight,
+			() => setStrokeWeight
+		)
+		watch(
+			() => props.strokeStyle,
+			() => setStrokeStyle
+		)
+		watch(
+			() => props.enableMassClear,
+			() => setMassClear
+		)
+		watch(
+			() => props.enableEditing,
+			() => setEditing
+		)
+
 		init()
 		ready(map)
 		return cal
 	})
+
+	function pathPointsToMapPoints(pathPoints: PolylinePath[]) {
+		return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
+	}
+
+	function setPath(path: PolylinePath[]) {
+		polyline.setPath(pathPointsToMapPoints(path))
+	}
+
+	function setStrokeColor(color: string): void {
+		polyline.setStrokeColor(color)
+	}
+	function setStrokeOpacity(opacity: number): void {
+		polyline.setStrokeOpacity(opacity)
+	}
+	function setStrokeWeight(weight: number): void {
+		polyline.setStrokeWeight(weight)
+	}
+	function setStrokeStyle(style: 'solid' | 'dashed' | 'dotted'): void {
+		polyline.setStrokeStyle(style)
+	}
+	function setMassClear(enableMassClear: boolean): void {
+		enableMassClear ? polyline!.enableMassClear() : polyline!.disableMassClear()
+	}
+	function setEditing(enableEditing: boolean): void {
+		enableEditing ? polyline!.enableEditing() : polyline!.disableEditing()
+	}
 </script>

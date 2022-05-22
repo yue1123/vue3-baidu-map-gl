@@ -167,7 +167,7 @@
 		watch(() => props.icon, setIcon, { deep: true })
 		watch(() => props.offset, setOffset, { deep: true })
 		watch(() => props.enableDragging, setDragging)
-		watch(() => props.enableDragging, setMassClear)
+		watch(() => props.enableMassClear, setMassClear)
 		watch(() => props.rotation, setRotation)
 
 		init()

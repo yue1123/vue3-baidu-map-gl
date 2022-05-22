@@ -108,11 +108,13 @@
 	const { ready } = useLife()
 	let polygon: BMapGL.Polygon
 	useBaseMapEffect((map: BMapGL.Map) => {
+		if (!props.path.length) return
 		const cal = () => {
 			map.removeOverlay(polygon)
 		}
 		const init = () => {
 			const {
+				path,
 				strokeColor,
 				strokeWeight,
 				strokeOpacity,
@@ -125,7 +127,7 @@
 				geodesic,
 				clip
 			} = props
-			const pathPoints = props.path.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
+			const pathPoints = pathPointsToMapPoints(path)
 			polygon = new BMapGL.Polygon(pathPoints, {
 				strokeColor,
 				strokeWeight,
@@ -142,18 +144,82 @@
 			map.addOverlay(polygon)
 			bindEvents(props, vueEmits, polygon)
 		}
+
+		// 监听值变化
 		watch(
 			() => props.path,
-			() => {
-				cal()
-				init()
-			},
+			() => setPath,
 			{
 				deep: true
 			}
 		)
+		watch(
+			() => props.strokeColor,
+			() => setStrokeColor
+		)
+		watch(
+			() => props.strokeOpacity,
+			() => setStrokeOpacity
+		)
+		watch(
+			() => props.fillColor,
+			() => setFillColor
+		)
+		watch(
+			() => props.fillOpacity,
+			() => setFillOpacity
+		)
+		watch(
+			() => props.strokeWeight,
+			() => setStrokeWeight
+		)
+		watch(
+			() => props.strokeStyle,
+			() => setStrokeStyle
+		)
+		watch(
+			() => props.enableMassClear,
+			() => setMassClear
+		)
+		watch(
+			() => props.enableEditing,
+			() => setEditing
+		)
+
 		init()
 		ready(map)
 		return cal
 	})
+	function pathPointsToMapPoints(pathPoints: PolygonPath[]) {
+		return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
+	}
+
+	function setPath(path: PolygonPath[]) {
+    polygon.setPath(pathPointsToMapPoints(path))
+  }
+
+	function setStrokeColor(color: string): void {
+		polygon.setStrokeColor(color)
+	}
+	function setFillColor(color: string): void {
+		polygon.setFillColor(color)
+	}
+	function setStrokeOpacity(opacity: number): void {
+		polygon.setStrokeOpacity(opacity)
+	}
+	function setFillOpacity(opacity: number): void {
+		polygon.setFillOpacity(opacity)
+	}
+	function setStrokeWeight(weight: number): void {
+		polygon.setStrokeWeight(weight)
+	}
+	function setStrokeStyle(style: 'solid' | 'dashed' | 'dotted'): void {
+		polygon.setStrokeStyle(style)
+	}
+	function setMassClear(enableMassClear: boolean): void {
+		enableMassClear ? polygon!.enableMassClear() : polygon!.disableMassClear()
+	}
+	function setEditing(enableEditing: boolean): void {
+		enableEditing ? polygon!.enableEditing() : polygon!.disableEditing()
+	}
 </script>

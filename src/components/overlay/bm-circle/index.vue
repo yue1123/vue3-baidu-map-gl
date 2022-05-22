@@ -6,20 +6,21 @@
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
+	export type CircleCenter = {
+		/**
+		 * 地理经度
+		 */
+		lng: number
+		/**
+		 * 地理纬度
+		 */
+		lat: number
+	}
 	export interface BmCircleProps {
 		/**
 		 * 圆形中心点经纬度
 		 */
-		center: {
-			/**
-			 * 地理经度
-			 */
-			lng: number
-			/**
-			 * 地理纬度
-			 */
-			lat: number
-		}
+		center: CircleCenter
 		/**
 		 * 半径，以米为单位
 		 */
@@ -140,26 +141,59 @@
 				enableMassClear,
 				enableEditing,
 				enableClicking,
-				geodesic: geodesic,
+				geodesic,
 				clip,
 				fillOpacity,
 				fillColor
 			})
 			map.addOverlay(circle)
-      bindEvents(props, vueEmits, circle)
+			bindEvents(props, vueEmits, circle)
 		}
-		watch(
-			() => props.center,
-			() => {
-				cal()
-				init()
-			},
-			{
-				deep: true
-			}
-		)
+    // 监听值变化
+		watch(() => props.center, () => setCenter, { deep: true })
+    watch(() => props.radius, () => setRadius)
+    watch(() => props.strokeColor, () => setStrokeColor)
+    watch(() => props.strokeOpacity, () => setStrokeOpacity)
+    watch(() => props.fillColor, () => setFillColor)
+    watch(() => props.fillOpacity, () => setFillOpacity)
+    watch(() => props.strokeWeight, () => setStrokeWeight)
+    watch(() => props.strokeStyle, () => setStrokeStyle)
+    watch(() => props.enableMassClear, () => setMassClear)
+    watch(() => props.enableEditing, () => setEditing)
+    
 		init()
 		ready(map)
 		return cal
 	})
+  
+	function setRadius(radius: number): void {
+		circle.setRadius(radius)
+	}
+	function setCenter(center: CircleCenter): void {
+		circle.setCenter(new BMapGL.Point(center.lng, center.lat))
+	}
+	function setStrokeColor(color: string): void {
+		circle.setStrokeColor(color)
+	}
+	function setFillColor(color: string): void {
+		circle.setFillColor(color)
+	}
+	function setStrokeOpacity(opacity: number): void {
+		circle.setStrokeOpacity(opacity)
+	}
+	function setFillOpacity(opacity: number): void {
+		circle.setFillOpacity(opacity)
+	}
+	function setStrokeWeight(weight: number): void {
+		circle.setStrokeWeight(weight)
+	}
+	function setStrokeStyle(style: 'solid' | 'dashed' | 'dotted'): void {
+		circle.setStrokeStyle(style)
+	}
+  function setMassClear(enableMassClear: boolean): void {
+		enableMassClear ? circle!.enableMassClear() : circle!.disableMassClear()
+	}
+  function setEditing(enableEditing: boolean): void {
+    enableEditing ? circle!.enableEditing() : circle!.disableEditing()
+  }
 </script>
