@@ -1,0 +1,65 @@
+name: 自动部署
+# 触发脚本的条件，develop分支push代码的时候
+on:
+  push:
+    branches:
+      - main
+# 要执行的任务
+jobs:
+  # 任务名称
+  build:
+    # runs-on 指定job任务运行所需要的虚拟机环境（必填）
+    runs-on: ubuntu-latest
+    # 任务步骤
+    steps:
+      # 获取源码
+      - name: 迁出代码
+        # 使用action库  actions/checkout获取源码
+        uses: actions/checkout@master
+
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.32.3
+      - name: Use Node.js 16.0.0
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.0.0
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+
+
+      # # 安装node
+      # - name: 安装node.js
+      #   # 使用action库 actions/setup-node 安装node
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: 16
+
+      # 打包
+      - name: build
+        run: pnpm run docs:build
+
+      - name: Deploy
+        # 使用别人写好的一个 action
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          # 这里的 ACCESS_TOKEN 名字需要和下文中的相对应
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # 打包后的文件部署到哪个分支上
+          BRANCH: gh-pages
+          # 打包后的文件在哪里
+          FOLDER: dist
+
+      # 上传打包文件到远程服务器
+      # - name: 上传文件到远程服务器
+      #   uses: zhenyuWang/Upload-File-Action@v1.0.1
+      #   with:
+      #     username: "登录远程服务器的用户名"
+      #     server: "远程服务器ip"
+      #     port: "22"
+      #     ssh_private_key: ${{ secrets.私钥}}
+      #     # 要上传文件所在目录
+      #     local_path: "./dist/*"
+      #     # 远程服务器目标路径
+      #     target_path: "/usr/local/nginx/html/xxx"

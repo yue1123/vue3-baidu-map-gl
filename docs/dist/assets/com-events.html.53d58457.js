@@ -1,1 +1,0 @@
-const e={key:"v-743432fe",path:"/zh/base/com-events.html",title:"\u5168\u5C40\u7EC4\u4EF6\u4E8B\u4EF6",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],git:{updatedTime:1650384928e3,contributors:[{name:"\u82B1\u5F00\u534A\u4EA9\u5730",email:"2572468699@qq.com",commits:1}]},filePathRelative:"zh/base/com-events.md"};export{e as data};

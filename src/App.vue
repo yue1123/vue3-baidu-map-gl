@@ -45,7 +45,7 @@
 				lat: 39.937
 			}"
 			:radius="300"
-			editing
+			enableEditing
 		/>
 		<Polyline
 			stroke-style="dashed"
@@ -54,7 +54,7 @@
 			stroke-color="#f90"
 			:stroke-opacity="1"
 			:stroke-weight="10"
-			editing
+			enableEditing
 		></Polyline>
 		<!-- <Polygon
 			:path="polylinePath"

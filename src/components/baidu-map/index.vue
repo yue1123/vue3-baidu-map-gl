@@ -14,17 +14,7 @@
 
 <script setup lang="ts">
 	// FIXME: props 属性名字统一, 去掉enable
-	import {
-		inject,
-		defineProps,
-		withDefaults,
-		defineEmits,
-		watch,
-		onMounted,
-		onUnmounted,
-		provide,
-		nextTick
-	} from 'vue'
+	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted, provide, nextTick } from 'vue'
 	import useLife from '../../hooks/useLife'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
 
@@ -213,21 +203,6 @@
 		'longpress'
 	])
 	const ak = props.ak || inject('baiduMapAk')
-	// 监听props变化
-	watch(() => props.zoom, setZoom)
-	watch(() => props.tilt, setTilt)
-	watch(() => props.heading, setHeading)
-	watch(() => props.center, setCenter)
-	watch(() => props.enableDragging, setDragging)
-	watch(() => props.enableInertialDragging, setInertialDragging)
-	watch(() => props.enableScrollWheelZoom, setScrollWheelZoom)
-	watch(() => props.enableContinuousZoom, setContinuousZoom)
-	watch(() => props.enableResizeOnCenter, setResizeOnCenter)
-	watch(() => props.enableDoubleClickZoom, setDoubleClickZoom)
-	watch(() => props.enableKeyboard, setKeyboard)
-	watch(() => props.enablePinchToZoom, setPinchToZoom)
-	watch(() => props.enableAutoResize, setAutoResize)
-	watch(() => props.mapType, setMapType)
 	// 获取地图SDK Script
 	function getMapScriptAsync() {
 		if (!window._BMap) {
@@ -262,12 +237,30 @@
 			})
 			setCenterAanZoom()
 			initMapOptions()
+      startWatchProps()
 			bindEvents(props, vueEmits, map)
 			if (!initd) {
 				initd = true
 				nextTick(() => ready(map))
 			}
 		})
+	}
+	function startWatchProps() {
+		// 监听props变化
+		watch(() => props.zoom, setZoom)
+		watch(() => props.tilt, setTilt)
+		watch(() => props.heading, setHeading)
+		watch(() => props.center, setCenter)
+		watch(() => props.enableDragging, setDragging)
+		watch(() => props.enableInertialDragging, setInertialDragging)
+		watch(() => props.enableScrollWheelZoom, setScrollWheelZoom)
+		watch(() => props.enableContinuousZoom, setContinuousZoom)
+		watch(() => props.enableResizeOnCenter, setResizeOnCenter)
+		watch(() => props.enableDoubleClickZoom, setDoubleClickZoom)
+		watch(() => props.enableKeyboard, setKeyboard)
+		watch(() => props.enablePinchToZoom, setPinchToZoom)
+		watch(() => props.enableAutoResize, setAutoResize)
+		watch(() => props.mapType, setMapType)
 	}
 	// 设置地图属性
 	function initMapOptions() {
