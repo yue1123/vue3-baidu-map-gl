@@ -4,7 +4,7 @@
 		:style="{ width: props.width, height: props.height }"
 		style="position: relative; overflow: hidden"
 	>
-		<div style="position: absolute; top: 50%; left: 50%; transform: translateY(-50%, -50%)">
+		<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
 			{{ !initd ? 'map loading...' : '' }}
 		</div>
 	</div>
