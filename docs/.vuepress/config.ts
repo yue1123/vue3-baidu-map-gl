@@ -11,7 +11,7 @@ export default defineUserConfig<DefaultThemeOptions>({
 	// 主题和它的配置
 	theme: '@vuepress/theme-default',
 	dest: 'docs/dist',
-	base: process.env.NODE_ENV === 'development' ? '/' : '/vue3-baidu-map-gl/dist/',
+	base: process.env.NODE_ENV === 'development' ? '/' : '/vue3-baidu-map-gl/',
 	locales: {
 		// '/': {
 		// 	lang: 'en-US',
