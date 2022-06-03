@@ -132,37 +132,15 @@
 		}
 
 		// 监听值变化
-		watch(
-			() => props.path,
-			() => setPath,
-			{
-				deep: true
-			}
-		)
-		watch(
-			() => props.strokeColor,
-			() => setStrokeColor
-		)
-		watch(
-			() => props.strokeOpacity,
-			() => setStrokeOpacity
-		)
-		watch(
-			() => props.strokeWeight,
-			() => setStrokeWeight
-		)
-		watch(
-			() => props.strokeStyle,
-			() => setStrokeStyle
-		)
-		watch(
-			() => props.enableMassClear,
-			() => setMassClear
-		)
-		watch(
-			() => props.enableEditing,
-			() => setEditing
-		)
+		watch(() => props.path, setPath, {
+			deep: true
+		})
+		watch(() => props.strokeColor, setStrokeColor)
+		watch(() => props.strokeOpacity, setStrokeOpacity)
+		watch(() => props.strokeWeight, setStrokeWeight)
+		watch(() => props.strokeStyle, setStrokeStyle)
+		watch(() => props.enableMassClear, setMassClear)
+		watch(() => props.enableEditing, setEditing)
 
 		init()
 		ready(map)

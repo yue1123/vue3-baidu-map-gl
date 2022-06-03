@@ -96,11 +96,11 @@
 		}
 
 		// 监听值变化
-		watch(() => props.position, () => setPosition,{ deep: true })
-    watch(() => props.offset, () => setOffset, { deep: true })
-    watch(() => props.style, () => setStyle, { deep: true })
-    watch(() => props.content, () => setContent)
-    watch(() => props.enableMassClear, () => setMassClear)
+		watch(() => props.position, setPosition, { deep: true })
+		watch(() => props.offset, setOffset, { deep: true })
+		watch(() => props.style, setStyle, { deep: true })
+		watch(() => props.content, setContent)
+		watch(() => props.enableMassClear, setMassClear)
 
 		init()
 		ready(map)
