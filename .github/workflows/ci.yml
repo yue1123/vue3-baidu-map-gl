@@ -22,11 +22,11 @@ jobs:
           version: 6.32.3
       - name: Use Node.js 16.0.0
         uses: actions/setup-node@v2
-        with:
+        with: 
           node-version: 16.13.1
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm install 
+        run: pnpm install
 
 
       # # 安装node
