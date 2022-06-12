@@ -10,7 +10,7 @@
 <img src="https://img.shields.io/github/package-json/v/yue1123/vue3-baidu-map-gl?color=f90&style=flat-square" alt="GitHub package.json version (subfolder of monorepo)">
 
 ## Documentation
-[https://yue1123.github.io/vue3-baidu-map-gl/dist/zh](https://yue1123.github.io/vue3-baidu-map-gl/dist/zh)
+[https://yue1123.github.io/vue3-baidu-map-gl/zh](https://yue1123.github.io/vue3-baidu-map-gl/zh)
 
 ## Get started
 
