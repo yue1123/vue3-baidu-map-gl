@@ -16,7 +16,6 @@
 		"docs:build": "vuepress build docs",
 		"build:es": "vue-tsc && rollup -c"
 	},
-	"packageManager": "pnpm",
 	"dependencies": {
 		"mitt": "^3.0.0",
 		"vue": "^3.2.31"
@@ -29,7 +28,7 @@
 		"@rollup/plugin-commonjs": "^21.0.3",
 		"@types/ws": "^8.5.3",
 		"@vitejs/plugin-vue": "^2.2.0",
-		"@vuepress/plugin-register-components": "^2.0.0-beta.36",
+		"@vuepress/plugin-register-components": "2.0.0-beta.36",
 		"husky": "^7.0.4",
 		"rollup": "^2.70.1",
 		"rollup-plugin-css-porter": "^1.0.2",
@@ -43,7 +42,9 @@
 		"vue-tsc": "^0.33.9",
 		"vuepress": "2.0.0-beta.36"
 	},
+	"packageManager": "pnpm",
 	"engines": {
+		"pnpm": "<=7.0.0",
 		"node": ">=12.0.0"
 	},
 	"keywords": [
