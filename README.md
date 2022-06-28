@@ -46,4 +46,4 @@ pnpm add vue3-baidu-map-gl
 ## License
 [MIT licenses](https://opensource.org/licenses/MIT)
 
-❤️用心制作❤️,开源不易,点个star支持一下吧
+❤️用心制作❤️，开源不易，点个star支持一下吧
