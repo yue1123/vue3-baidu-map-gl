@@ -12,12 +12,13 @@
 	},
 	"scripts": {
 		"dev": "vite --host",
-		"docs:dev": "vuepress dev docs",
-		"docs:build": "vuepress build docs",
-		"build:es": "vue-tsc && rollup -c"
+		"build:es": "vue-tsc && rollup -c",
+		"docs:dev": "vitepress dev docs",
+		"docs:build": "vitepress build docs"
 	},
 	"dependencies": {
 		"mitt": "^3.0.0",
+		"vitepress": "^1.0.0-alpha.4",
 		"vue": "^3.2.31"
 	},
 	"devDependencies": {
