@@ -17,12 +17,10 @@ export default defineConfig({
 			{
 				text: '指南',
 				link: '/zh/guide/quick-start'
-			},
-			{
-				text: 'github',
-				link: 'https://github.com/yue1123/vue3-baidu-map-gl'
 			}
-		]
+		],
+		socialLinks: [{ icon: 'github', link: 'https://github.com/yue1123/vue3-baidu-map-gl' }],
+		sidebar: sidebarConfigZh
 	}
 })
 
