@@ -237,7 +237,7 @@
 			})
 			setCenterAanZoom()
 			initMapOptions()
-      startWatchProps()
+			startWatchProps()
 			bindEvents(props, vueEmits, map)
 			if (!initd) {
 				initd = true
@@ -250,7 +250,9 @@
 		watch(() => props.zoom, setZoom)
 		watch(() => props.tilt, setTilt)
 		watch(() => props.heading, setHeading)
-		watch(() => props.center, setCenter)
+		watch(() => props.center, setCenter, {
+			deep: true
+		})
 		watch(() => props.enableDragging, setDragging)
 		watch(() => props.enableInertialDragging, setInertialDragging)
 		watch(() => props.enableScrollWheelZoom, setScrollWheelZoom)
