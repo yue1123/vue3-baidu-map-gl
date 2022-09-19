@@ -2,15 +2,32 @@
 
 地图核心对象，地图控件、覆盖物、图层等需作为其子组件，以获得 map 的实例化对象
 
-```ts:no-line-numbers
+```ts
 import { Map } from 'vue3-baidu-map-gl'
 ```
 
-```html:no-line-numbers
-<Map :minZoom="10" height="400px" mapType="BMAP_NORMAL_MAP" />
+```html
+<map :minZoom="10" height="400px" mapType="BMAP_NORMAL_MAP" />
 ```
 
 ## 基础综合示例
+
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import { Map } from '../../../src/components/baidu-map/index.ts'
+  const type = ref('BMAP_NORMAL_MAP')
+  const mapSetting = ref({
+    enableDragging: true,
+    enableInertialDragging: true,
+    enableScrollWheelZoom: false,
+    enableContinuousZoom: true,
+    enableResizeOnCenter: true,
+    enableDoubleClickZoom: false,
+    enableKeyboard: true,
+    enablePinchToZoom: true,
+    enableAutoResize: true
+  })
+</script>
 
 <br/>
 <div>
@@ -50,33 +67,16 @@ import { Map } from 'vue3-baidu-map-gl'
 />
 </div>
 
-<script setup lang="ts">
-  import { ref } from 'vue'
-  const type = ref('BMAP_NORMAL_MAP')
-  const mapSetting = ref({
-    enableDragging: true,
-    enableInertialDragging: true,
-    enableScrollWheelZoom: false,
-    enableContinuousZoom: true,
-    enableResizeOnCenter: true,
-    enableDoubleClickZoom: false,
-    enableKeyboard: true,
-    enablePinchToZoom: true,
-    enableAutoResize: true
-  })
-</script>
-
 ## 静态组件 props
 
-
-| 参数   | 说明                                                   | 类型            | 可选值 | 默认值 |
-| ------ | ------------------------------------------------------ | --------------- | ------ | ------ |
-| ak     | 百度地图 ak [申请ak](../guide/quick-start.html#申请ak) | string          |        |        |
-| width  | 地图显示宽度                                           | string / number |        | 100%   |
-| height | 地图显示高度                                           | string / number |        | 400px  |
-
+| 参数   | 说明                                                    | 类型            | 可选值 | 默认值 |
+| ------ | ------------------------------------------------------- | --------------- | ------ | ------ |
+| ak     | 百度地图 ak [申请 ak](../guide/quick-start.html#申请ak) | string          |        |        |
+| width  | 地图显示宽度                                            | string / number |        | 100%   |
+| height | 地图显示高度                                            | string / number |        | 400px  |
 
 ## 动态组件 Props
+
 | 参数                   | 说明                                                                                                                                                                          | 类型                                | 可选值              | 默认值          |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ------------------- | --------------- |
 | center                 | 地图默认中心点,可使用城市名,如:北京市，也可以使用对象如 {lng: 121.424333, lat: 31.228604} 表示经纬度。                                                                        | string / {lng: number, lat: number} |                     | 北京市          |
@@ -94,6 +94,7 @@ import { Map } from 'vue3-baidu-map-gl'
 | enableKeyboard         | 启用键盘操作,键盘的上、下、左、右键可连续移动地图。同时按下其中两个键可使地图进行对角移动。PgUp、PgDn、Home 和 End 键会使地图平移其 1/2 的大小。 +、-键会使地图放大或缩小一级 | boolean                             | -                   | true            |
 | enablePinchToZoom      | 启用双指缩放地图。                                                                                                                                                            | boolean                             | -                   | true            |
 | enableAutoResize       | 启用自动适应容器尺寸变化                                                                                                                                                      | boolean                             | -                   | true            |
+
 ## mapType
 
 | 值              | 描述                       |

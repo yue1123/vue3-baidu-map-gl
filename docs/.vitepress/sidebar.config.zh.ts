@@ -1,30 +1,42 @@
 const sidebarConfig = {
-	'/zh/guide': [
+	'/': [
 		{
 			text: '指南',
 			items: [
 				{
 					text: '快速开始',
-					link: '/zh/guide/quick-start'
+					link: '/zh/guide/'
 				}
 			]
-		}
-	],
-	'/zh/base': [
+		},
 		{
 			text: '基础',
 			items: [
 				{
 					text: 'Map 地图',
-					link: '/zh/base'
+					link: '/zh/base/'
 				},
 				{
 					text: '全局组件事件',
-					link: '/zh/base/com-events'
+					link: '/zh/base/com-events/'
 				}
 			]
 		}
 	]
+	// 	{
+	// 		text: '基础',
+	// 		items: [
+	// 			{
+	// 				text: 'Map 地图',
+	// 				link: '/zh/base'
+	// 			},
+	// 			{
+	// 				text: '全局组件事件',
+	// 				link: '/zh/base/com-events'
+	// 			}
+	// 		]
+	// 	}
+	// ]
 	// {
 	// 	text: '基础',
 	// 	items: ['/zh/base', '/zh/base/com-events']

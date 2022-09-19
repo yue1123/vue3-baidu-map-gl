@@ -9,18 +9,25 @@ const comNameReg = /(\w+\-\w+)/
 import sidebarConfigZh from './sidebar.config.zh'
 export default defineConfig({
 	lang: 'en-US',
-	title: 'VitePress',
+	title: 'Vue3 BaiduMap GL',
 	description: 'Vite & Vue powered static site generator.',
 
 	themeConfig: {
 		nav: [
 			{
 				text: '指南',
-				link: '/zh/guide/quick-start'
+				link: '/zh/guide/'
 			}
 		],
+		localeLinks: {
+			text: '简体中文',
+			items: [
+				// { text: 'English', link: '/es' }
+			]
+		},
 		socialLinks: [{ icon: 'github', link: 'https://github.com/yue1123/vue3-baidu-map-gl' }],
 		sidebar: sidebarConfigZh
+			
 	}
 })
 
