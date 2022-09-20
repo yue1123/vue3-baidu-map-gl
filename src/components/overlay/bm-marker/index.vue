@@ -182,7 +182,7 @@
 			return defaultIcons[icon as string]
 		} else {
 			// @ts-ignore
-			const { anchor, imageOffset, imageSize, imageUrl, printImageUrl } = props.icon
+			const { anchor, imageOffset, imageSize, imageUrl, printImageUrl } = icon as MarkerCustomIcon
 			const iconOptions: BMapGL.IconOptions = {
 				imageSize: new BMapGL.Size(imageSize.width, imageSize.height)
 			}
