@@ -29,7 +29,7 @@ import { Polyline } from 'vue3-baidu-map-gl'
 </Map>
 </div>
 
-::: detail 点击查看代码
+::: details 点击查看代码
 ```html
 <Map :minZoom="3" height="400px">
 	<Polyline
