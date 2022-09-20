@@ -2,7 +2,7 @@
 
 基于百度地图 JavaScript GL 版 API 封装的 Vue3 组件库
 
-<img src='./docs/.vitepress/public/logo.png' style="border-radius:48px;overflow:hidden; width:220px;">
+<img src='./docs/public/logo.png' style="border-radius:48px;overflow:hidden; width:220px;">
 <br />
 <br />
 
