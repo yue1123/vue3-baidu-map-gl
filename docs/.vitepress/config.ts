@@ -7,6 +7,7 @@ export default defineConfig({
 	title: 'Vue3 BaiduMap GL',
 	description: 'Vite & Vue powered static site generator.',
 	lastUpdated: true,
+	base: process.env.NODE_ENV === 'development' ? '/' : '/vue3-baidu-map-gl/',
 	themeConfig: {
 		nav: [
 			{
