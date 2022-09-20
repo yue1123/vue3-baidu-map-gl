@@ -49,7 +49,7 @@ jobs:
           # 打包后的文件部署到哪个分支上
           BRANCH: gh-pages
           # 打包后的文件在哪里
-          FOLDER: docs/dist
+          FOLDER: docs/.vitepress/dist
 
       # 上传打包文件到远程服务器
       # - name: 上传文件到远程服务器
