@@ -1,4 +1,4 @@
-import type { HeadConfig } from 'vuepress'
+import type { HeadConfig } from 'vitepress'
 const heads: HeadConfig[] = [
 	[
 		'link',

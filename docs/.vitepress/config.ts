@@ -1,13 +1,14 @@
 import { defineConfig } from 'vitepress'
 import heads from './head'
-
 import sidebarConfigZh from './sidebar.config.zh'
+
 export default defineConfig({
-	lang: 'en-US',
+	lang: 'zh-CN',
 	title: 'Vue3 BaiduMap GL',
 	description: 'Vite & Vue powered static site generator.',
 	lastUpdated: true,
-	base: process.env.NODE_ENV === 'development' ? '/' : '/vue3-baidu-map-gl/',
+	base: '/vue3-baidu-map-gl/',
+	head: heads,
 	themeConfig: {
 		nav: [
 			{
