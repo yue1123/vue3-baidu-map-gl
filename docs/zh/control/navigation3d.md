@@ -1,7 +1,7 @@
 # Navigation3d 3D视角导航控件
 地图3D控件，可以控制地图的旋转、倾斜，默认位于地图右下角
 
-```ts:no-line-numbers
+```ts
 import { Navigation3d } from 'vue3-baidu-map-gl'
 ```
 
@@ -33,7 +33,7 @@ import { Navigation3d } from 'vue3-baidu-map-gl'
 </div>
 
 
-```vue:no-line-numbers
+```html
 <Map
   :minZoom="3" 
   height="400px"

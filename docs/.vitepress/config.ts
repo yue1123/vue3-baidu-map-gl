@@ -1,17 +1,12 @@
 import { defineConfig } from 'vitepress'
-// import type { DefaultThemeOptions } from 'vitepress'
-import { capitalize, camelize } from 'vue'
 import heads from './head'
-const { resolve, join } = require('path')
-const root = process.cwd()
-const comNameReg = /(\w+\-\w+)/
 
 import sidebarConfigZh from './sidebar.config.zh'
 export default defineConfig({
 	lang: 'en-US',
 	title: 'Vue3 BaiduMap GL',
 	description: 'Vite & Vue powered static site generator.',
-
+	lastUpdated: true,
 	themeConfig: {
 		nav: [
 			{
@@ -25,9 +20,17 @@ export default defineConfig({
 				// { text: 'English', link: '/es' }
 			]
 		},
+		algolia: {
+			appId: 'AUOZL3KYUR',
+			apiKey: 'cec98517c1e6c63a4b54d5d0f0469fab',
+			indexName: 'vue3-baidu-map-gl'
+		},
 		socialLinks: [{ icon: 'github', link: 'https://github.com/yue1123/vue3-baidu-map-gl' }],
-		sidebar: sidebarConfigZh
-			
+		sidebar: sidebarConfigZh,
+		editLink: {
+			pattern: 'https://github.com/yue1123/vue3-baidu-map-gl/edit/main/docs/:path',
+			text: 'Edit this page on GitHub'
+		}
 	}
 })
 

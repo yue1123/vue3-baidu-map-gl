@@ -1,7 +1,7 @@
 # Scale 比例尺控件
 比例尺控件,默认显示在地图左下角
 
-```ts:no-line-numbers
+```ts
 import { Scale } from 'vue3-baidu-map-gl'
 ```
 
@@ -44,7 +44,7 @@ import { Scale } from 'vue3-baidu-map-gl'
 </div>
 
 
-```vue:no-line-numbers
+```html
 <Map
   :minZoom="3" 
   height="400px"

@@ -14,7 +14,6 @@ import { Map } from 'vue3-baidu-map-gl'
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { BaiduMap } from '../../../src/components/baidu-map/index.ts'
   const type = ref('BMAP_NORMAL_MAP')
   const mapSetting = ref({
     enableDragging: true,
@@ -51,7 +50,7 @@ import { Map } from 'vue3-baidu-map-gl'
   </select>
   <br/>
   <br/>
-  <BaiduMap
+  <Map
     :ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
     :minZoom="3"
     height="400px"
@@ -70,16 +69,16 @@ import { Map } from 'vue3-baidu-map-gl'
 
 | 参数   | 说明                                    | 类型            | 可选值 | 默认值 |
 | ------ | --------------------------------------- | --------------- | ------ | ------ |
-| ak     | 百度地图 ak [申请 ak](../guide/#申请ak) | string          |        |        |
-| width  | 地图显示宽度                            | string / number |        | 100%   |
-| height | 地图显示高度                            | string / number |        | 400px  |
+| ak     | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`          |        |        |
+| width  | 地图显示宽度                            | `string / number` |        | 100%   |
+| height | 地图显示高度                            | `string / number` |        | 400px  |
 
 
 ## 动态组件 Props
 
 | 参数                   | 说明                                                                                                                                                                          | 类型                                  | 默认值 |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------ |
-| center                 | 地图默认中心点,可使用城市名,如:北京市，也可以使用对象如 {lng: 121.424333, lat: 31.228604} 表示经纬度。                                                                        | `string / {lng: number, lat: number}` |        | 北京市 |
+| center                 | 地图默认中心点,可使用城市名,如:北京市，也可以使用对象如 `{lng: 121.424333, lat: 31.228604}` 表示经纬度。                                                                        | `string / {lng: number, lat: number}` |        | 北京市 |
 | heading                | 地图旋转角度                                                                                                                                                                  | `number`                              | 0      |
 | tilt                   | 地图倾斜角度                                                                                                                                                                  | `number`                              | 0      |
 | minZoom                | 地图允许展示的最小级别                                                                                                                                                        | `number`                              | 0      |

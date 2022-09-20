@@ -1,7 +1,7 @@
 # Zoom 缩放控件
 缩放控件，默认位于地图右下角
 
-```ts:no-line-numbers
+```ts
 import { Zoom } from 'vue3-baidu-map-gl'
 ```
 
@@ -33,7 +33,7 @@ import { Zoom } from 'vue3-baidu-map-gl'
 </div>
 
 
-```vue:no-line-numbers
+```html
 <Map
   :minZoom="3" 
   height="400px"
