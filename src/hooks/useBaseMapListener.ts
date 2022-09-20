@@ -7,7 +7,6 @@ type Events = {
 }
 
 const emitter = mitt<Events>()
-window.emitter = emitter
 function useBaseMapListener() {
 	return {
 		emit: emitter.emit,
