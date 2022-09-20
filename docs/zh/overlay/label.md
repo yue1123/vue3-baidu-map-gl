@@ -6,6 +6,52 @@
 import { Label } from 'vue3-baidu-map-gl'
 ```
 
+## 组件实例
+
+<div>
+<Map
+  :minZoom="3"
+  height="400px"
+>
+  <Label
+    content="欢迎使用百度地图GL版Vue3组件库"
+    :position="{lng: 116.404, lat: 39.915 }"
+    :style="{
+      color:'#fff',
+      backgroundColor: '#f90',
+      border: 'none',
+      borderRadius: '3px',
+      padding: '5px 10px',
+      fontSize: '16px'
+    }"
+  />
+</Map>
+</div>
+
+::: details 点击查看代码
+```html
+<Map :minZoom="3" height="400px">
+	<Label
+		content="欢迎使用百度地图GL版Vue3组件库"
+		:position="{lng: 116.404, lat: 39.915 }"
+		:style="{
+      color:'#fff',
+      backgroundColor: '#f90',
+      border: 'none',
+      borderRadius: '3px',
+      padding: '5px 10px',
+      fontSize: '16px'
+    }"
+	/>
+</Map>
+
+<script setup lang="ts">
+import { Map, Label } from 'vue3-baidu-map-gl'
+</script>
+```
+:::
+
+
 ## 动态组件 Props
 
 | 参数            | 说明                                      | 类型                           | 默认值     |
@@ -32,47 +78,3 @@ style 可以是任何符合规范的 css 样式，样式属性需使用驼峰命
 | mouseover  | 鼠标指针移入该覆盖物事件的回调函数                                             | ` ((e: Event) => void)` |
 | remove     | 该覆盖物被移除的回调函数                                                       | ` ((e: Event) => void)` |
 | lineupdate | 覆盖物被编辑后的回调函数                                                       | ` ((e: Event) => void)` |
-
-## 组件实例
-
-<div>
-<Map
-  :ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
-  :minZoom="3"
-  height="400px"
->
-  <Label
-    content="欢迎使用百度地图GL版Vue3组件库"
-    :position="{lng: 116.404, lat: 39.915 }"
-    :style="{
-      color:'#fff',
-      backgroundColor: '#f90',
-      border: 'none',
-      borderRadius: '3px',
-      padding: '5px 10px',
-      fontSize: '16px'
-    }"
-  />
-</Map>
-</div>
-
-```html
-<map :minZoom="3" height="400px">
-	<label
-		content="欢迎使用百度地图GL版Vue3组件库"
-		:position="{lng: 116.404, lat: 39.915 }"
-		:style="{
-      color:'#fff',
-      backgroundColor: '#f90',
-      border: 'none',
-      borderRadius: '3px',
-      padding: '5px 10px',
-      fontSize: '16px'
-    }"
-	/>
-</map>
-
-<script setup lang="ts">
-	import { Map, Label } from 'vue3-baidu-map-gl'
-</script>
-```
