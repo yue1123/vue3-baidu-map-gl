@@ -150,22 +150,22 @@
 			bindEvents(props, vueEmits, circle)
 		}
     // 监听值变化
-		watch(() => props.center, () => setCenter, { deep: true })
-    watch(() => props.radius, () => setRadius)
-    watch(() => props.strokeColor, () => setStrokeColor)
-    watch(() => props.strokeOpacity, () => setStrokeOpacity)
-    watch(() => props.fillColor, () => setFillColor)
-    watch(() => props.fillOpacity, () => setFillOpacity)
-    watch(() => props.strokeWeight, () => setStrokeWeight)
-    watch(() => props.strokeStyle, () => setStrokeStyle)
-    watch(() => props.enableMassClear, () => setMassClear)
-    watch(() => props.enableEditing, () => setEditing)
-    
+		watch(() => props.center,  setCenter, { deep: true })
+    watch(() => props.radius,  setRadius)
+    watch(() => props.strokeColor,  setStrokeColor)
+    watch(() => props.strokeOpacity,  setStrokeOpacity)
+    watch(() => props.fillColor,  setFillColor)
+    watch(() => props.fillOpacity,  setFillOpacity)
+    watch(() => props.strokeWeight,  setStrokeWeight)
+    watch(() => props.strokeStyle,  setStrokeStyle)
+    watch(() => props.enableMassClear,  setMassClear)
+    watch(() => props.enableEditing,  setEditing)
+
 		init()
 		ready(map)
 		return cal
 	})
-  
+
 	function setRadius(radius: number): void {
 		circle.setRadius(radius)
 	}

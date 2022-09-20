@@ -237,7 +237,7 @@
 			})
 			setCenterAanZoom()
 			initMapOptions()
-      startWatchProps()
+			startWatchProps()
 			bindEvents(props, vueEmits, map)
 			if (!initd) {
 				initd = true
@@ -250,7 +250,9 @@
 		watch(() => props.zoom, setZoom)
 		watch(() => props.tilt, setTilt)
 		watch(() => props.heading, setHeading)
-		watch(() => props.center, setCenter)
+		watch(() => props.center, setCenterAanZoom, {
+			deep: true
+		})
 		watch(() => props.enableDragging, setDragging)
 		watch(() => props.enableInertialDragging, setInertialDragging)
 		watch(() => props.enableScrollWheelZoom, setScrollWheelZoom)
@@ -296,16 +298,6 @@
 	// 生产一个地理位置坐标点
 	function genPoint(lng: number, lat: number): BMapGL.Point {
 		return new BMapGL.Point(lng, lat)
-	}
-	/**
-	 * 设置中心点
-	 */
-	function setCenter(): void {
-		if (typeof props.center === 'string') {
-			map!.setCenter(props.center)
-		} else {
-			map!.setCenter(genPoint(props.center.lng, props.center.lat))
-		}
 	}
 	/**
 	 * 设置中心点和缩放级别

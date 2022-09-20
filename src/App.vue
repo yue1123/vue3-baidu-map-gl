@@ -5,6 +5,7 @@
 		:enable-keyboard="false"
 		:zoom="zoom"
 		enableDragging
+    :center="position"
 		:minZoom="10"
 	>
 		<Control style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
@@ -20,7 +21,7 @@
 			icon="../docs/.vuepress/public/logo.png"
 			dragging
 		/> -->
-		<Marker :icon="markerIcon" :position="position" :rotation="180"/>
+		<!-- <Marker :icon="markerIcon" :position="position" :rotation="180"/> -->
 		<Label
 			content="123123"
 			:position="{
@@ -87,6 +88,7 @@
 		{ lng: 116.405, lat: 39.92 },
 		{ lng: 116.423493, lat: 39.907445 }
 	])
+  console.log(show);
 	// setTimeout(() => {
 	// 	show.value = false
 	//   console.log('yingcang');
@@ -111,18 +113,18 @@
 	let index = 0
 	const icon = ['simple_blue', 'simple_red', 'loc_red']
 	const markerIcon = ref(icon[index])
-	setInterval(() => {
-		console.log('gaib')
-		if (index < 2) {
-			index++
-		} else {
-			index = 0
-		}
-		// markerIcon.value = icon[index]
-		// key.value = Math.random() * 0.01
-		// polylinePath.value.push({ lng: 116.423493, lat: 39.907445 + key.value })
-		position.value.lng += 0.0001
-	}, 1000)
+	// setInterval(() => {
+	// 	console.log('gaib')
+	// 	if (index < 2) {
+	// 		index++
+	// 	} else {
+	// 		index = 0
+	// 	}
+	// 	// markerIcon.value = icon[index]
+	// 	// key.value = Math.random() * 0.01
+	// 	// polylinePath.value.push({ lng: 116.423493, lat: 39.907445 + key.value })
+	// 	position.value.lng += 0.0001
+	// }, 1000)
 	;(window as any).toggle = cal
 </script>
 <style>

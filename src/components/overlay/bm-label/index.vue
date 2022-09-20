@@ -98,7 +98,11 @@
 		// 监听值变化
 		watch(() => props.position, setPosition, { deep: true })
 		watch(() => props.offset, setOffset, { deep: true })
-		watch(() => props.style, setStyle, { deep: true })
+		watch(
+			() => props.style,
+			(style) => setStyle(),
+			{ deep: true }
+		)
 		watch(() => props.content, setContent)
 		watch(() => props.enableMassClear, setMassClear)
 
@@ -110,8 +114,8 @@
 	function setPosition(position: LabelPosition) {
 		label.setPosition(new BMapGL.Point(position.lng, position.lat))
 	}
-	function setStyle(styles: LabelStyle): void {
-		label.setStyle(styles)
+	function setStyle(styles?: LabelStyle): void {
+		label.setStyle(styles ? styles : {})
 	}
 	function setContent(content: string): void {
 		label.setContent(content)

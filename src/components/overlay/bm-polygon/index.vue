@@ -188,10 +188,10 @@
 	function setStrokeStyle(style: 'solid' | 'dashed' | 'dotted'): void {
 		polygon.setStrokeStyle(style)
 	}
-	function setMassClear(enableMassClear: boolean): void {
+	function setMassClear(enableMassClear?: boolean): void {
 		enableMassClear ? polygon!.enableMassClear() : polygon!.disableMassClear()
 	}
-	function setEditing(enableEditing: boolean): void {
+	function setEditing(enableEditing?: boolean): void {
 		enableEditing ? polygon!.enableEditing() : polygon!.disableEditing()
 	}
 </script>
