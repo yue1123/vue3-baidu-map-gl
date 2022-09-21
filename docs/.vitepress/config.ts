@@ -27,6 +27,10 @@ export default defineConfig({
 			apiKey: 'cec98517c1e6c63a4b54d5d0f0469fab',
 			indexName: 'vue3-baidu-map-gl'
 		},
+		footer: {
+			message: 'Released under the MIT License.',
+			copyright: 'Copyright © 2022-present dh'
+		},
 		socialLinks: [{ icon: 'github', link: 'https://github.com/yue1123/vue3-baidu-map-gl' }],
 		sidebar: sidebarConfigZh,
 		editLink: {
