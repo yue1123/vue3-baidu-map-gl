@@ -60,7 +60,7 @@ import { Marker } from 'vue3-baidu-map-gl'
 	<Marker
 		:position="{ lat: 39.915185, lng: 116.400901 }"
 		:icon="{
-      imageUrl: '/logo.png',
+      imageUrl: '../../public/logo.png',
       imageSize: {
         width: 100,
         height: 100
