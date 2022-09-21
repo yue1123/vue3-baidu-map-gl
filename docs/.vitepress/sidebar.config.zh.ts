@@ -18,6 +18,10 @@ const sidebarConfig = {
 					link: '/zh/base/'
 				},
 				{
+					text: '多实例',
+					link: '/zh/base/multiple-instances'
+				},
+				{
 					text: '全局组件事件',
 					link: '/zh/base/com-events'
 				}
