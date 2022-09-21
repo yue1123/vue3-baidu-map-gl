@@ -5,7 +5,7 @@
 import { Control } from 'vue3-baidu-map-gl'
 ```
 
-## 组件实例
+## 组件示例
 <div>
 <Map
   :minZoom="3"

@@ -66,6 +66,7 @@
 		></Polygon> -->
 		<Scale v-if="show"></Scale>
 		<Zoom v-if="show"></Zoom>
+		<CityList />
 	</Map>
 </template>
 <script setup lang="ts">

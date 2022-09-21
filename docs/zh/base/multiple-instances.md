@@ -29,7 +29,7 @@
   })
 </script>
 
-## 实例 1
+## 示例 1
 
 <div>
   <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom"/>鼠标缩放
@@ -67,7 +67,7 @@
   />
 </div>
 
-## 实例 2
+## 示例 2
 
 <div>
   <input type="checkbox" v-model="mapSetting1.enableScrollWheelZoom"/>鼠标缩放

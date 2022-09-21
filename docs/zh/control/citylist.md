@@ -5,7 +5,7 @@
 import { CityList } from 'vue3-baidu-map-gl'
 ```
 
-## 组件实例
+## 组件示例
 <div>
   <Map
     :minZoom="3"
@@ -14,6 +14,10 @@ import { CityList } from 'vue3-baidu-map-gl'
     <CityList />
   </Map>
 </div>
+
+::: warning
+组件示例样式被 vitepress 样式影响，请参考官方示例为准
+:::
 
 
 ::: details 点击查看代码
