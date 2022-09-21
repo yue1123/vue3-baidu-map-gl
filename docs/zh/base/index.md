@@ -7,7 +7,7 @@ import { Map } from 'vue3-baidu-map-gl'
 ```
 
 ```html
-<map :minZoom="10" height="400px" mapType="BMAP_NORMAL_MAP" />
+<Map :minZoom="10" height="400px" mapType="BMAP_NORMAL_MAP" />
 ```
 
 ## 基础综合示例
