@@ -3,13 +3,13 @@ import Map from './components/baidu-map'
 import Control from './components/control/bm-control'
 import Scale from './components/control/bm-scale'
 import Zoom from './components/control/bm-zoom'
+import CityList from './components/control/bm-city-list'
 import Navigation3d from './components/control/bm-navigation3d'
 import Marker from './components/overlay/bm-marker'
 import Label from './components/overlay/bm-label'
 import Polyline from './components/overlay/bm-polyline'
 import Polygon from './components/overlay/bm-polygon'
 import Circle from './components/overlay/bm-circle'
-
 // import useMarkerDefaultIcons from './hooks/useMarkerDefaultIcons'
 
 interface InitOptions {
@@ -31,6 +31,10 @@ const components = [
 	{
 		name: 'bm-zoom',
 		com: Zoom
+	},
+	{
+		name: 'bm-city-list',
+		com: CityList
 	},
 	{
 		name: 'bm-navigation3d',
@@ -79,6 +83,7 @@ export {
 	Polyline,
 	Polygon,
 	Circle,
+	CityList,
 	install
 	// useMarkerDefaultIcons
 }

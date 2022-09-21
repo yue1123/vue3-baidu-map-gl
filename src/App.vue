@@ -5,7 +5,7 @@
 		:enable-keyboard="false"
 		:zoom="zoom"
 		enableDragging
-    :center="position"
+		:center="position"
 		:minZoom="10"
 	>
 		<Control style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
@@ -88,7 +88,7 @@
 		{ lng: 116.405, lat: 39.92 },
 		{ lng: 116.423493, lat: 39.907445 }
 	])
-  console.log(show);
+	console.log(show)
 	// setTimeout(() => {
 	// 	show.value = false
 	//   console.log('yingcang');
