@@ -5,8 +5,7 @@ export default {
 	...DefaultTheme,
 	enhanceApp(ctx) {
 		const { app } = ctx
-		const { VITE_APP_BAIDU_MAP_AK } = import.meta.env
-		app.use(baiduMapInit, { ak: VITE_APP_BAIDU_MAP_AK })
+		app.use(baiduMapInit, { ak: '4stE857hYPHbEmgKhLiTAa0QbCIULHpm' })
 		// // if (process.env.NODE_ENV === 'production') {
 		// router.beforeEach((to, from, next) => {
 		// 	console.log('object', to, form)
