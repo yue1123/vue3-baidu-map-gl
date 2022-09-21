@@ -149,17 +149,17 @@
 			map.addOverlay(circle)
 			bindEvents(props, vueEmits, circle)
 		}
-    // 监听值变化
-		watch(() => props.center,  setCenter, { deep: true })
-    watch(() => props.radius,  setRadius)
-    watch(() => props.strokeColor,  setStrokeColor)
-    watch(() => props.strokeOpacity,  setStrokeOpacity)
-    watch(() => props.fillColor,  setFillColor)
-    watch(() => props.fillOpacity,  setFillOpacity)
-    watch(() => props.strokeWeight,  setStrokeWeight)
-    watch(() => props.strokeStyle,  setStrokeStyle)
-    watch(() => props.enableMassClear,  setMassClear)
-    watch(() => props.enableEditing,  setEditing)
+		// 监听值变化
+		watch(() => props.center, setCenter, { deep: true })
+		watch(() => props.radius, setRadius)
+		watch(() => props.strokeColor, setStrokeColor)
+		watch(() => props.strokeOpacity, setStrokeOpacity)
+		watch(() => props.fillColor, setFillColor)
+		watch(() => props.fillOpacity, setFillOpacity)
+		watch(() => props.strokeWeight, setStrokeWeight)
+		watch(() => props.strokeStyle, setStrokeStyle)
+		watch(() => props.enableMassClear, setMassClear)
+		watch(() => props.enableEditing, setEditing)
 
 		init()
 		ready(map)
@@ -190,11 +190,10 @@
 	function setStrokeStyle(style: 'solid' | 'dashed' | 'dotted'): void {
 		circle.setStrokeStyle(style)
 	}
-  function setMassClear(enableMassClear: boolean): void {
+	function setMassClear(enableMassClear: boolean): void {
 		enableMassClear ? circle!.enableMassClear() : circle!.disableMassClear()
 	}
-  function setEditing(enableEditing: boolean): void {
-    console.log(enableEditing);
-    enableEditing ? circle!.enableEditing() : circle!.disableEditing()
-  }
+	function setEditing(enableEditing: boolean): void {
+		enableEditing ? circle!.enableEditing() : circle!.disableEditing()
+	}
 </script>

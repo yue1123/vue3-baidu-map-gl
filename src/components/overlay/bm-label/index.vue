@@ -75,10 +75,6 @@
 	])
 	const { ready } = useLife()
 	let label: BMapGL.Label
-	console.log('订阅')
-	onMounted(() => {
-		console.log('label 挂载')
-	})
 	useBaseMapEffect((map: BMapGL.Map) => {
 		console.log(map)
 		const cal = () => {

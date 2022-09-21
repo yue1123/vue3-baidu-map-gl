@@ -374,7 +374,6 @@
 	}
 
 	onMounted(() => {
-		console.log('map 挂载')
 		init()
 	})
 	/**
@@ -385,10 +384,6 @@
 	onUnmounted(() => {
 		map?.destroy()
 	})
-	provide('getMapInstance', () => {
-		console.log('map', map)
-		console.log('initd', initd)
-		return map
-	})
+	provide('getMapInstance', () => map)
 	provide('parentUidGetter', getCurrentInstance()?.uid)
 </script>
