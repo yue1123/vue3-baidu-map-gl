@@ -52,6 +52,7 @@ app.use(baiduMapInit, { ak: '百度地图ak' })
 app.mount('#app')
 ```
 ### 按需引入
+如果你用不到所有组件,更推荐使用这种方式引入组件, 可以缩小构建体积
 ```vue{12}
 <template>
   <Map

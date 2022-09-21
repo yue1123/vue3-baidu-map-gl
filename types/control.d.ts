@@ -173,4 +173,16 @@ declare namespace BMapGL {
     class NavigationControl3D extends Control {
         constructor(opts?: NavigationControl3DOptions);
     }
+    interface CityListControlOptions {
+			anchor?: ControlAnchor
+			offset?: Size
+			expand?: boolean
+			onChangeBefore?: Callback
+			onChangeAfter?: Callback
+			onChangeSuccess?: Callback
+		}
+		class CityListControl extends Control {
+			constructor(opts?: CityListControlOptions)
+		}
+    
 }

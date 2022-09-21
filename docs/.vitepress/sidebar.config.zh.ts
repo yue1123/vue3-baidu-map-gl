@@ -36,6 +36,10 @@ const sidebarConfig = {
 					link: '/zh/control/custom'
 				},
 				{
+					text: 'CityList 城市列表',
+					link: '/zh/control/citylist'
+				},
+				{
 					text: 'Navigation3d 3D视角导航控件',
 					link: '/zh/control/navigation3d'
 				},
