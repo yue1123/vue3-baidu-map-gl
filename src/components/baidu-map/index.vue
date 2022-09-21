@@ -14,7 +14,18 @@
 
 <script setup lang="ts">
 	// FIXME: props 属性名字统一, 去掉enable
-	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted, provide, nextTick } from 'vue'
+	import {
+		inject,
+		defineProps,
+		withDefaults,
+		defineEmits,
+		watch,
+		onMounted,
+		onUnmounted,
+		provide,
+		nextTick,
+		getCurrentInstance
+	} from 'vue'
 	import useLife from '../../hooks/useLife'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
 
@@ -144,7 +155,7 @@
 	// 是否初始化
 	let initd: boolean = false
 	// 地图初始化的发布
-	const { ready } = useLife('initd')
+	const { ready } = useLife()
 	const props = withDefaults(defineProps<BaiduMapProps>(), {
 		width: '100%',
 		height: '400px',
@@ -363,6 +374,7 @@
 	}
 
 	onMounted(() => {
+		console.log('map 挂载')
 		init()
 	})
 	/**
@@ -373,5 +385,10 @@
 	onUnmounted(() => {
 		map?.destroy()
 	})
-	provide('getMapInstance', () => map)
+	provide('getMapInstance', () => {
+		console.log('map', map)
+		console.log('initd', initd)
+		return map
+	})
+	provide('parentUidGetter', getCurrentInstance()?.uid)
 </script>

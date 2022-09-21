@@ -5,6 +5,33 @@
 import { Scale } from 'vue3-baidu-map-gl'
 ```
 
+## 组件实例
+<div>
+<Map
+  :ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
+  :minZoom="3"
+  height="400px"
+>
+  <Scale />
+</Map>
+</div>
+
+
+::: details 点击查看代码
+```html
+<Map
+  :minZoom="3" 
+  height="400px"
+>
+  <Scale />
+</Map>
+
+<script setup lang="ts">
+import { Map, Scale } from 'vue3-baidu-map-gl'
+</script>
+```
+:::
+
 ## 静态组件 Props
 | 参数   | 说明           | 类型                    | 可选值            | 默认值                  |
 | ------ | -------------- | ----------------------- | ----------------- | ----------------------- |
@@ -32,27 +59,3 @@ import { Scale } from 'vue3-baidu-map-gl'
 | BMAP_UNIT_METRIC   | 公尺 |
 | BMAP_UNIT_IMPERIAL | 英尺 |
 
-## 组件实例
-<div>
-<Map
-  :ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
-  :minZoom="3"
-  height="400px"
->
-  <Scale />
-</Map>
-</div>
-
-
-```html
-<Map
-  :minZoom="3" 
-  height="400px"
->
-  <Scale />
-</Map>
-
-<script setup lang="ts">
-import {Map, Scale} from 'vue3-baidu-map-gl'
-</script>
-```

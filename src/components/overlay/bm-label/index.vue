@@ -1,6 +1,6 @@
 <template></template>
 <script setup lang="ts">
-	import { defineProps, watch, withDefaults } from 'vue'
+	import { defineProps, onMounted, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
@@ -75,7 +75,12 @@
 	])
 	const { ready } = useLife()
 	let label: BMapGL.Label
+	console.log('订阅')
+	onMounted(() => {
+		console.log('label 挂载')
+	})
 	useBaseMapEffect((map: BMapGL.Map) => {
+		console.log(map)
 		const cal = () => {
 			map.removeOverlay(label)
 		}

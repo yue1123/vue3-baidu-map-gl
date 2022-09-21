@@ -6,6 +6,76 @@
 import { Marker } from 'vue3-baidu-map-gl'
 ```
 
+## 组件实例
+
+<div>
+<Map
+  :minZoom="3"
+  height="400px"
+>
+  <Marker
+    :position="{ lat: 39.915185, lng: 116.403901 }"
+    icon="start"
+  />
+  <Marker
+    :position="{ lat: 39.915185, lng: 116.404901 }"
+    icon="end"
+  />
+  <Marker
+    :position="{ lat: 39.915185, lng: 116.405901 }"
+    icon="red1"
+  />
+  <Marker
+    :position="{ lat: 39.915185, lng: 116.406901 }"
+    icon="simple_red"
+  />
+  <Marker
+			:position="{ lat: 39.915185, lng: 116.400901 }"
+			:icon="{
+        imageUrl: '/logo.png',
+        imageSize: {
+          width: 100,
+          height: 100
+        },
+      }"
+			enableDragging
+		/>
+</Map>
+</div>
+
+拖动图片试试
+ ::: details 点击查看代码
+
+```html
+<Map :minZoom="3" height="400px">
+	<!-- 起点图标 -->
+	<Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="start" />
+	<!-- 终点图标 -->
+	<Marker :position="{ lat: 39.915185, lng: 116.404901 }" icon="end" />
+	<!-- 红色图标1 -->
+	<Marker :position="{ lat: 39.915185, lng: 116.405901 }" icon="red1" />
+	<!-- 红色图标2 -->
+	<Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="simple_red" />
+	<!-- 自定义图标 -->
+	<Marker
+		:position="{ lat: 39.915185, lng: 116.400901 }"
+		:icon="{
+      imageUrl: '/logo.png',
+      imageSize: {
+        width: 100,
+        height: 100
+      },
+    }"
+		dragging
+	/>
+</Map>
+
+<script setup lang="ts">
+import { Map, Maker } from 'vue3-baidu-map-gl'
+</script>
+```
+ :::
+
 ## 静态组件 Props
 
 | 参数 | 说明 | 类型 | 默认值 |
@@ -58,72 +128,3 @@ simple_red , simple_blue , loc_red , loc_blue , start , end , location , red1 , 
 | dragging        | 覆盖物拖拽中事件的回调函数                                                         | `((e: Event) => void)` |
 | dragend         | 拖拽覆盖物结束事件的回调函数                                                       | `((e: Event) => void)` |
 | rightclick      | 鼠标右键单击事件的回调函数                                                         | `((e: Event) => void)` |
-
-## 组件实例
-
-<div>
-<Map
-  :ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
-  :minZoom="3"
-  height="400px"
->
-  <Marker
-    :position="{ lat: 39.915185, lng: 116.403901 }"
-    icon="start"
-  />
-  <Marker
-    :position="{ lat: 39.915185, lng: 116.404901 }"
-    icon="end"
-  />
-  <Marker
-    :position="{ lat: 39.915185, lng: 116.405901 }"
-    icon="red1"
-  />
-  <Marker
-    :position="{ lat: 39.915185, lng: 116.406901 }"
-    icon="simple_red"
-  />
-  <Marker
-			:position="{ lat: 39.915185, lng: 116.400901 }"
-			:icon="{
-        imageUrl: 'https://yue1123.github.io/vue3-baidu-map-gl/dist/logo.png',
-        imageSize: {
-          width: 100,
-          height: 100
-        },
-      }"
-			enableDragging
-		/>
-</Map>
-</div>
-
-拖动图片试试
-
-```html
-<map :minZoom="3" height="400px">
-	<!-- 起点图标 -->
-	<Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="start" />
-	<!-- 终点图标 -->
-	<Marker :position="{ lat: 39.915185, lng: 116.404901 }" icon="end" />
-	<!-- 红色图标1 -->
-	<Marker :position="{ lat: 39.915185, lng: 116.405901 }" icon="red1" />
-	<!-- 红色图标2 -->
-	<Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="simple_red" />
-	<!-- 自定义图标 -->
-	<Marker
-		:position="{ lat: 39.915185, lng: 116.400901 }"
-		:icon="{
-      imageUrl: '/logo.png',
-      imageSize: {
-        width: 100,
-        height: 100
-      },
-    }"
-		dragging
-	/>
-</map>
-
-<script setup lang="ts">
-	import { Map, Maker } from 'vue3-baidu-map-gl'
-</script>
-```

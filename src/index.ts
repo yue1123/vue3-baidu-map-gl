@@ -10,7 +10,11 @@ import Polyline from './components/overlay/bm-polyline'
 import Polygon from './components/overlay/bm-polygon'
 import Circle from './components/overlay/bm-circle'
 
-import useBaseMapEffect from './hooks/useBaseMapEffect'
+// import useMarkerDefaultIcons from './hooks/useMarkerDefaultIcons'
+
+interface InitOptions {
+	ak?: string
+}
 const components = [
 	{
 		name: 'baidu-map',
@@ -54,11 +58,13 @@ const components = [
 	}
 ]
 // 全局注册
-const install = (app: App) => {
+const install = (app: App, options?: InitOptions) => {
+	const { ak } = options || {}
 	components.forEach((item: any) => {
 		item.com.name = item.name
 		app.use(item.com)
 	})
+	ak && app.provide('baiduMapAk', ak)
 }
 
 // 局部注册
@@ -73,8 +79,8 @@ export {
 	Polyline,
 	Polygon,
 	Circle,
-	install,
-	useBaseMapEffect
+	install
+	// useMarkerDefaultIcons
 }
 
 export default {

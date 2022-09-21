@@ -6,6 +6,43 @@
 import { Circle } from 'vue3-baidu-map-gl'
 ```
 
+## 组件实例
+
+<div>
+<Map
+  :minZoom="3"
+  height="400px"
+>
+  <Circle
+    stroke-style="dashed"
+    :center="{ lat: 39.915185, lng: 116.403901 }"
+    :radius="300"
+    enableEditing
+  />
+</Map>
+</div>
+
+::: details 点击查看代码
+```html
+<Map
+  :minZoom="3"
+  height="400px"
+>
+  <Circle
+    stroke-style="dashed"
+    :center="{ lat: 39.915185, lng: 116.403901 }"
+    :radius="300"
+    enableEditing
+  />
+</Map>
+
+<script setup lang="ts">
+import { Map, Circle } from 'vue3-baidu-map-gl'
+</script>
+```
+:::
+
+
 ## 静态组件 Props
 
 | 参数           | 说明                                                     | 类型      | 默认值  |
@@ -41,38 +78,3 @@ import { Circle } from 'vue3-baidu-map-gl'
 | mouseover  | 鼠标指针移入该覆盖物事件的回调函数                                                    | `((e: Event) => void) ` |
 | remove     | 该覆盖物被移除的回调函数                                                              | `((e: Event) => void) ` |
 | lineupdate | 覆盖物被编辑后的回调函数                                                              | `((e: Event) => void) ` |
-
-## 组件实例
-
-<div>
-<Map
-  :ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
-  :minZoom="3"
-  height="400px"
->
-  <Circle
-    stroke-style="dashed"
-    :center="{ lat: 39.915185, lng: 116.403901 }"
-    :radius="300"
-    enableEditing
-  />
-</Map>
-</div>
-
-```html
-<map :minZoom="3" height="400px">
-	<Circle
-		stroke-style="dashed"
-		:center="{
-      lng: 116.406,
-      lat: 39.937
-    }"
-		:radius="300"
-		enableEditing
-	/>
-</map>
-
-<script setup lang="ts">
-	import { Map, Circle } from 'vue3-baidu-map-gl'
-</script>
-```
