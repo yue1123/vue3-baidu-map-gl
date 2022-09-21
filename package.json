@@ -14,7 +14,8 @@
 		"dev": "vite --host",
 		"build:es": "vue-tsc && rollup -c",
 		"docs:dev": "vitepress dev docs",
-		"docs:build": "vitepress build docs"
+		"docs:build": "vitepress build docs",
+		"fix-dot": "fixdot docs/zh/base/* docs/zh/control/* docs/zh/guide/* docs/zh/overlay/* docs/index.md -d -p"
 	},
 	"dependencies": {
 		"mitt": "^3.0.0",

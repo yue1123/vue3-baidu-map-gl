@@ -1,5 +1,5 @@
 # Control 自定义控件
-根据地图 `Map` 组件提供的Props, 或者地图实例,自定义控件
+根据地图 `Map` 组件提供的Props，或者地图实例，自定义控件
 
 ```ts
 import { Control } from 'vue3-baidu-map-gl'

@@ -47,7 +47,7 @@
   <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
   <br/>
   <br/>
-  地图类型: <select name="" id="" v-model="mapSetting.type">
+  地图类型：<select name="" id="" v-model="mapSetting.type">
     <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
     <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
   </select>
@@ -85,7 +85,7 @@
   <input type="checkbox" v-model="mapSetting1.enableContinuousZoom"/>双击平滑缩放效果
   <br/>
   <br/>
-  地图类型: <select name="" id="" v-model="mapSetting1.type">
+  地图类型：<select name="" id="" v-model="mapSetting1.type">
     <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
     <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
   </select>
@@ -123,7 +123,7 @@
   <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
   <br/>
   <br/>
-  地图类型: <select name="" id="" v-model="mapSetting.type">
+  地图类型：<select name="" id="" v-model="mapSetting.type">
     <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
     <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
   </select>
@@ -158,7 +158,7 @@
   <input type="checkbox" v-model="mapSetting1.enableContinuousZoom"/>双击平滑缩放效果
   <br/>
   <br/>
-  地图类型: <select name="" id="" v-model="mapSetting1.type">
+  地图类型：<select name="" id="" v-model="mapSetting1.type">
     <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
     <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
   </select>

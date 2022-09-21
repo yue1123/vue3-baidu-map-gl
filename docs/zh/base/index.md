@@ -44,7 +44,7 @@ import { Map } from 'vue3-baidu-map-gl'
   <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
   <br/>
   <br/>
-  地图类型: <select name="" id="" v-model="type">
+  地图类型：<select name="" id="" v-model="type">
     <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
     <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
   </select>
@@ -82,7 +82,7 @@ import { Map } from 'vue3-baidu-map-gl'
   <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
   <br/>
   <br/>
-  地图类型: <select name="" id="" v-model="type">
+  地图类型：<select name="" id="" v-model="type">
     <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
     <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
   </select>
@@ -133,7 +133,7 @@ import { Map } from 'vue3-baidu-map-gl'
 
 | 参数                   | 说明                                                                                                                                                                          | 类型                                  | 默认值 |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------ |
-| center                 | 地图默认中心点,可使用城市名,如:北京市，也可以使用对象如 `{lng: 121.424333, lat: 31.228604}` 表示经纬度。                                                                        | `string / {lng: number, lat: number}` |        | 北京市 |
+| center                 | 地图默认中心点，可使用城市名，如：北京市，也可以使用对象如 `{lng: 121.424333, lat: 31.228604}` 表示经纬度。                                                                        | `string / {lng: number, lat: number}` |        | 北京市 |
 | heading                | 地图旋转角度                                                                                                                                                                  | `number`                              | 0      |
 | tilt                   | 地图倾斜角度                                                                                                                                                                  | `number`                              | 0      |
 | minZoom                | 地图允许展示的最小级别                                                                                                                                                        | `number`                              | 0      |
@@ -143,7 +143,7 @@ import { Map } from 'vue3-baidu-map-gl'
 | enableContinuousZoom   | 开启双击平滑缩放效果                                                                                                                                                          | `boolean`                             | true   |
 | enableResizeOnCenter   | 开启图区 resize 中心点不变                                                                                                                                                    | `boolean`                             | true   |
 | enableDoubleClickZoom  | 启用地图双击缩放，左键双击放大、右键双击缩小                                                                                                                                  | `boolean`                             | false  |
-| enableKeyboard         | 启用键盘操作,键盘的上、下、左、右键可连续移动地图。同时按下其中两个键可使地图进行对角移动。PgUp、PgDn、Home 和 End 键会使地图平移其 1/2 的大小。 +、-键会使地图放大或缩小一级                | `boolean`                                            | true   |
+| enableKeyboard         | 启用键盘操作，键盘的上、下、左、右键可连续移动地图。同时按下其中两个键可使地图进行对角移动。PgUp、PgDn、Home 和 End 键会使地图平移其 1/2 的大小。 +、-键会使地图放大或缩小一级                | `boolean`                                            | true   |
 | enablePinchToZoom      | 启用双指缩放地图。                                                                                                                                                            | ` boolean  `                          | true   |
 | enableAutoResize       | 启用自动适应容器尺寸变化                                                                                                                                                      | `boolean  `                           | true   |
 
