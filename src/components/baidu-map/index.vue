@@ -251,7 +251,6 @@
 	function init() {
 		getMapScriptAsync().then(() => {
 			const { minZoom, maxZoom, mapType, enableAutoResize } = props
-			console.log(BMapGL)
 			map = new BMapGL.Map(mapContainerId, {
 				minZoom,
 				maxZoom,
