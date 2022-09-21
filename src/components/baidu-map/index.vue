@@ -1,10 +1,18 @@
 <template>
 	<div
-		id="baidu-map-container"
+		:id="mapContainerId"
 		:style="{ width: props.width, height: props.height }"
-		style="position: relative; overflow: hidden"
+		style="background: #f1f1f1; position: relative; overflow: hidden"
 	>
-		<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+		<div
+			style="
+				color: #999;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			"
+		>
 			{{ !initd ? 'map loading...' : '' }}
 		</div>
 	</div>
@@ -156,6 +164,8 @@
 	let initd: boolean = false
 	// 地图初始化的发布
 	const { ready } = useLife()
+	const uid = getCurrentInstance()?.uid
+	const mapContainerId = 'baidu-map-container' + uid
 	const props = withDefaults(defineProps<BaiduMapProps>(), {
 		width: '100%',
 		height: '400px',
@@ -232,7 +242,8 @@
 			})
 			return window._BMap.scriptLoader
 		} else {
-			return Promise.resolve()
+			// return Promise.resolve()
+			return window._BMap.scriptLoader
 		}
 	}
 
@@ -240,7 +251,8 @@
 	function init() {
 		getMapScriptAsync().then(() => {
 			const { minZoom, maxZoom, mapType, enableAutoResize } = props
-			map = new BMapGL.Map('baidu-map-container', {
+			console.log(BMapGL)
+			map = new BMapGL.Map(mapContainerId, {
 				minZoom,
 				maxZoom,
 				mapType: window[mapType],
@@ -385,5 +397,5 @@
 		map?.destroy()
 	})
 	provide('getMapInstance', () => map)
-	provide('parentUidGetter', getCurrentInstance()?.uid)
+	provide('parentUidGetter', uid)
 </script>
