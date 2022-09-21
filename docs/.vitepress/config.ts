@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import heads from './head'
 import sidebarConfigZh from './sidebar.config.zh'
+import { version } from '../../package.json'
 
 export default defineConfig({
 	lang: 'zh-CN',
@@ -14,6 +15,10 @@ export default defineConfig({
 			{
 				text: '指南',
 				link: '/zh/guide/'
+			},
+			{
+				text: `v${version}`,
+				items: [{ text: '历史版本', link: 'https://github.com/yue1123/vue3-baidu-map-gl/releases' }]
 			}
 		],
 		localeLinks: {
