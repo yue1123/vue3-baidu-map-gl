@@ -37,10 +37,8 @@
 			customControl.initialize = (_map: BMapGL.Map) => {
 				return _map.getContainer().appendChild(controlContainer.value as Node) as HTMLElement
 			}
-			// nextTick(() => {
 			map.addControl(customControl)
 			ready(map)
-			// })
 			return () => map.removeControl(customControl)
 		})
 	})
