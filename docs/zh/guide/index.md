@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/github/package-json/v/yue1123/vue3-baidu-map-gl?color=f90&style=flat-square" alt="" style="margin-left:10px">
 </div>
 
-基于百度地图JavaScript GL版API封装的Vue3组件库。提供了大部分常用的组件，如果这些组件不能满足你的需求，你也可以根据hooks提供的接口自定义组件。
+基于百度地图JavaScript GL版API封装的Vue3组件库。提供了大部分常用的组件，如果这些组件不能满足你的需求，你也可以根据组件initd事件返回的地图实例自定义。
 
 ## :sparkles: 特性
 - 自动加载百度地图 SDK，你需关注组件使用。
