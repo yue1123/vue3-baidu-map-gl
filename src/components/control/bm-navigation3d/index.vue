@@ -26,8 +26,8 @@
 	let navigation3dControl: BMapGL.NavigationControl3D
 	defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {
-		navigation3dControl = new window.BMapGL.NavigationControl3D({
-			offset: new window.BMapGL.Size(props.offset.x, props.offset.y),
+		navigation3dControl = new BMapGL.NavigationControl3D({
+			offset: new BMapGL.Size(props.offset.x, props.offset.y),
 			anchor: window[props.anchor]
 		})
 		map.addControl(navigation3dControl)

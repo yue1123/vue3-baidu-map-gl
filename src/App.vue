@@ -8,11 +8,14 @@
 		:center="position"
 		:minZoom="10"
 	>
-		<Control style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
+		<!-- <Control style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
 			<button @click="handleZoomOut">缩小1</button>
 			<button @click="handleZoomIn">放大fasdf</button>
-		</Control>
+		</Control> -->
 		<Navigation3d />
+		<Navigation />
+		<!-- <Location></Location> -->
+
 		<!-- <Marker
 			:position="{
 				lng: 116.404,
@@ -22,7 +25,7 @@
 			dragging
 		/> -->
 		<!-- <Marker :icon="markerIcon" :position="position" :rotation="180"/> -->
-		<Label
+		<!-- <Label
 			content="123123"
 			:position="{
 				lng: 116.404,
@@ -56,7 +59,7 @@
 			:stroke-opacity="1"
 			:stroke-weight="10"
 			enableEditing
-		></Polyline>
+		></Polyline> -->
 		<!-- <Polygon
 			:path="polylinePath"
 			stroke-color="#f90"
@@ -64,9 +67,9 @@
 			:stroke-weight="10"
 			editing
 		></Polygon> -->
-		<Scale v-if="show"></Scale>
-		<Zoom v-if="show"></Zoom>
-		<CityList />
+		<!-- <Scale v-if="show"></Scale> -->
+		<!-- <Zoom v-if="show"></Zoom> -->
+		<!-- <CityList /> -->
 	</Map>
 </template>
 <script setup lang="ts">

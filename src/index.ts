@@ -4,6 +4,8 @@ import Control from './components/control/bm-control'
 import Scale from './components/control/bm-scale'
 import Zoom from './components/control/bm-zoom'
 import CityList from './components/control/bm-city-list'
+import Location from './components/control/bm-location'
+import Navigation from './components/control/bm-navigation'
 import Navigation3d from './components/control/bm-navigation3d'
 import Marker from './components/overlay/bm-marker'
 import Label from './components/overlay/bm-label'
@@ -37,9 +39,17 @@ const components = [
 		com: CityList
 	},
 	{
+		name: 'bm-location',
+		com: Location
+	},
+	{
 		name: 'bm-navigation3d',
 		com: Navigation3d
 	},
+	// {
+	// 	name: 'bm-navigation',
+	// 	com: Navigation
+	// },
 	{
 		name: 'bm-marker',
 		com: Marker

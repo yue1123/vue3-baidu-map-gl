@@ -30,24 +30,6 @@ declare enum MapType {
 	'BMAP_EARTH_MAP' = 'B_EARTH_MAP'
 }
 declare type _MapType = keyof typeof MapType
-declare enum NavigationControlType {
-	/**
-	 *  标准的平移缩放控件（包括平移、缩放按钮和滑块）
-	 */
-	'BMAP_NAVIGATION_CONTROL_LARGE' = 'BMAP_NAVIGATION_CONTROL_LARGE',
-	/**
-	 *  仅包含平移和缩放按钮
-	 */
-	'BMAP_NAVIGATION_CONTROL_SMALL' = 'BMAP_NAVIGATION_CONTROL_SMALL',
-	/**
-	 *  仅包含平移按钮
-	 */
-	'BMAP_NAVIGATION_CONTROL_PAN' = 'BMAP_NAVIGATION_CONTROL_PAN',
-	/**
-	 *  仅包含缩放按钮
-	 */
-	'BMAP_NAVIGATION_CONTROL_ZOOM' = 'BMAP_NAVIGATION_CONTROL_ZOOM'
-}
 
 /**
  * 市内公交方案换乘策略
@@ -103,3 +85,29 @@ declare enum LengthUnit {
 declare type LengthUnitValue = LengthUnit.BMAP_UNIT_METRIC | LengthUnit.BMAP_UNIT_IMPERIAL
 
 declare type _LengthUnit = keyof typeof LengthUnit
+
+/**
+ * NavigationControl控件的类型
+ */
+declare enum NavigationControlType {
+	/**
+	 * 标准的平移缩放控件（包括平移、缩放按钮和滑块）
+	 */
+	BMAP_NAVIGATION_CONTROL_LARGE = 0,
+	/**
+	 * 仅包含平移和缩放按钮
+	 */
+	BMAP_NAVIGATION_CONTROL_SMALL = 1,
+	/**
+	 * 仅包含平移按钮
+	 */
+	BMAP_NAVIGATION_CONTROL_PAN = 2,
+	/**
+	 * 仅包含缩放按钮
+	 */
+	BMAP_NAVIGATION_CONTROL_ZOOM = 3,
+	/**
+	 *
+	 */
+	BMAP_NAVIGATION_CONTROL_ANIM = 4
+}

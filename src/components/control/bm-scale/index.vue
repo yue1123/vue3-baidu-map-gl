@@ -32,8 +32,8 @@
 	let scaleCtrl: BMapGL.ScaleControl
 	defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {
-		scaleCtrl = new window.BMapGL.ScaleControl({
-			offset: new window.BMapGL.Size(props.offset.x, props.offset.y),
+		scaleCtrl = new BMapGL.ScaleControl({
+			offset: new BMapGL.Size(props.offset.x, props.offset.y),
 			anchor: window[props.anchor]
 		})
 		setUnit()

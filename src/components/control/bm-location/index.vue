@@ -3,10 +3,10 @@
 </template>
 
 <script setup lang="ts">
-	import { defineProps, withDefaults, watch, defineEmits } from 'vue'
+	import { defineProps, withDefaults, defineEmits } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import useLife from '../../../hooks/useLife'
-	export interface BmCityListOptions {
+	export interface BmLocationOptions {
 		/**
 		 * 控件的停靠位置
 		 */
@@ -18,27 +18,21 @@
 			x: number
 			y: number
 		}
-		/**
-		 * 列表是否展开
-		 */
-		expand?: boolean
 	}
 	const { ready } = useLife()
-	const props = withDefaults(defineProps<BmCityListOptions>(), {
-		anchor: 'BMAP_ANCHOR_TOP_LEFT',
-		offset: () => ({ x: 18, y: 18 }),
-		expand: false
+	const props = withDefaults(defineProps<BmLocationOptions>(), {
+		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
+		offset: () => ({ x: 18, y: 18 })
 	})
-	let cityListControl: BMapGL.CityListControl
+	let locationControl: BMapGL.LocationControl
 	defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {
-		cityListControl = new BMapGL.CityListControl({
-			expand: props.expand,
+		locationControl = new BMapGL.LocationControl({
 			offset: new BMapGL.Size(props.offset.x, props.offset.y),
 			anchor: window[props.anchor]
 		})
-		map.addControl(cityListControl)
+		map.addControl(locationControl)
 		ready(map)
-		return () => map.removeControl(cityListControl)
+		return () => map.removeControl(locationControl)
 	})
 </script>
