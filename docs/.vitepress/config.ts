@@ -17,8 +17,26 @@ export default defineConfig({
 				link: '/zh/guide/'
 			},
 			{
+				text: '相关链接',
+				items: [
+					{
+						text: '百度拾取坐标系统',
+						link: 'https://api.map.baidu.com/lbsapi/getpoint/index.html'
+					},
+					{
+						text: '百度地图JSAPI WebGL v1.0类参考',
+						link: 'https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_webgl_1_0.html#a2b7'
+					}
+				]
+			},
+			{
 				text: `v${version}`,
-				items: [{ text: '历史版本', link: 'https://github.com/yue1123/vue3-baidu-map-gl/releases' }]
+				items: [
+					{
+						text: '历史版本',
+						link: 'https://github.com/yue1123/vue3-baidu-map-gl/releases'
+					}
+				]
 			}
 		],
 		localeLinks: {
