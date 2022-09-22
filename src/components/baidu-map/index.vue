@@ -4,17 +4,19 @@
 		:style="{ width: props.width, height: props.height }"
 		style="background: #f1f1f1; position: relative; overflow: hidden"
 	>
-		<div
-			style="
-				color: #999;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-			"
-		>
-			{{ !initd ? 'map loading...' : '' }}
-		</div>
+		<slot name="loading" v-bind:loading="!initd">
+			<div
+				style="
+					color: #999;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				"
+			>
+				{{ !initd ? 'map loading...' : '' }}
+			</div>
+		</slot>
 	</div>
 
 	<slot></slot>
@@ -159,6 +161,7 @@
 		onTouchend?: Callback
 		onLongpress?: Callback
 	}
+	console.log(window, window.name)
 	let map: BMapGL.Map = null!
 	// 是否初始化
 	let initd: boolean = false
