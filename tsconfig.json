@@ -18,13 +18,13 @@
 		"baseUrl": "./"
 	},
 	"include": [
-    "src/index.ts",
-		"src/hooks/*.ts",
-    "src/utils/*.ts",
-		"src/components/**/*.vue",
-    "src/components/**/*.ts",
+    "package/index.ts",
+		"package/hooks/*.ts",
+    "package/utils/*.ts",
+		"package/components/**/*.vue",
+    "package/components/**/*.ts",
     "types/*.d.ts",
-    "src/env.d.ts",
+    "package/env.d.ts",
 	],
   "exclude": [
     "node_modules",

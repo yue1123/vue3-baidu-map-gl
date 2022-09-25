@@ -38,13 +38,13 @@
 		 * 标注的位置偏移值
 		 */
 		offset?: LabelOffset
+    style?: LabelStyle
 		/**
 		 * @default true
 		 * 是否可清除
 		 * 是否在调用map.clearOverlays清除此覆盖物，默认为true
 		 */
 		enableMassClear?: boolean
-		style?: LabelStyle
 		onClick?: Callback
 		onDblclick?: Callback
 		onMousedown?: Callback
@@ -59,7 +59,7 @@
 			x: 0,
 			y: 0
 		}),
-		enableMassClear: true
+		enableMassClear: true,
 	})
 	const vueEmits = defineEmits([
 		'initd',
@@ -110,8 +110,8 @@
 	function setPosition(position: LabelPosition) {
 		label.setPosition(new BMapGL.Point(position.lng, position.lat))
 	}
-	function setStyle(styles: LabelStyle): void {
-		label.setStyle(styles)
+	function setStyle(styles?: LabelStyle): void {
+		if (styles) label.setStyle(styles)
 	}
 	function setContent(content: string): void {
 		label.setContent(content)

@@ -14,7 +14,8 @@
 		"dev": "vite --host",
 		"build:es": "vue-tsc && rollup -c",
 		"docs:dev": "vitepress dev docs",
-		"docs:build": "vitepress build docs"
+		"docs:build": "vitepress build docs",
+		"link:pnpm": "pnpm link --global"
 	},
 	"dependencies": {
 		"mitt": "^3.0.0",
