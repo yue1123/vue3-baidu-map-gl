@@ -6,7 +6,7 @@
 	import { defineProps, withDefaults, watch, defineEmits } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import useLife from '../../../hooks/useLife'
-	export interface BmScaleOptions {
+	export interface BmCityListOptions {
 		/**
 		 * 控件的停靠位置
 		 */
@@ -19,34 +19,26 @@
 			y: number
 		}
 		/**
-		 * 比例尺单位制
+		 * 列表是否展开
 		 */
-		unit?: _LengthUnit
+		expand?: boolean
 	}
 	const { ready } = useLife()
-	const props = withDefaults(defineProps<BmScaleOptions>(), {
-		anchor: 'BMAP_ANCHOR_BOTTOM_LEFT',
-		offset: () => ({ x: 83, y: 18 }),
-		unit: 'BMAP_UNIT_METRIC'
+	const props = withDefaults(defineProps<BmCityListOptions>(), {
+		anchor: 'BMAP_ANCHOR_TOP_LEFT',
+		offset: () => ({ x: 18, y: 18 }),
+		expand: false
 	})
-	let scaleCtrl: BMapGL.ScaleControl
+	let cityListControl: BMapGL.CityListControl
 	defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {
-		scaleCtrl = new BMapGL.ScaleControl({
+		cityListControl = new BMapGL.CityListControl({
+			expand: props.expand,
 			offset: new BMapGL.Size(props.offset.x, props.offset.y),
 			anchor: window[props.anchor]
 		})
-		setUnit()
-		map.addControl(scaleCtrl)
+		map.addControl(cityListControl)
 		ready(map)
-		return () => map.removeControl(scaleCtrl)
+		return () => map.removeControl(cityListControl)
 	})
-	// 监听比例尺单位变化
-	watch(() => props.unit, setUnit)
-	/**
-	 * 设置比例尺单位制
-	 */
-	function setUnit() {
-		scaleCtrl.setUnit(window[props.unit])
-	}
 </script>

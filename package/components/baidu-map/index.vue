@@ -1,12 +1,22 @@
 <template>
 	<div
-		id="baidu-map-container"
+		:id="mapContainerId"
 		:style="{ width: props.width, height: props.height }"
-		style="position: relative; overflow: hidden"
+		style="background: #f1f1f1; position: relative; overflow: hidden"
 	>
-		<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-			{{ !initd ? 'map loading...' : '' }}
-		</div>
+		<slot name="loading" v-bind:loading="!initd">
+			<div
+				style="
+					color: #999;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				"
+			>
+				{{ !initd ? 'map loading...' : '' }}
+			</div>
+		</slot>
 	</div>
 
 	<slot></slot>
@@ -14,7 +24,18 @@
 
 <script setup lang="ts">
 	// FIXME: props 属性名字统一, 去掉enable
-	import { inject, defineProps, withDefaults, defineEmits, watch, onMounted, onUnmounted, provide, nextTick } from 'vue'
+	import {
+		inject,
+		defineProps,
+		withDefaults,
+		defineEmits,
+		watch,
+		onMounted,
+		onUnmounted,
+		provide,
+		nextTick,
+		getCurrentInstance
+	} from 'vue'
 	import useLife from '../../hooks/useLife'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
 
@@ -140,11 +161,14 @@
 		onTouchend?: Callback
 		onLongpress?: Callback
 	}
+	console.log(window, window.name)
 	let map: BMapGL.Map = null!
 	// 是否初始化
 	let initd: boolean = false
 	// 地图初始化的发布
-	const { ready } = useLife('initd')
+	const { ready } = useLife()
+	const uid = getCurrentInstance()?.uid
+	const mapContainerId = 'baidu-map-container' + uid
 	const props = withDefaults(defineProps<BaiduMapProps>(), {
 		width: '100%',
 		height: '400px',
@@ -221,7 +245,8 @@
 			})
 			return window._BMap.scriptLoader
 		} else {
-			return Promise.resolve()
+			// return Promise.resolve()
+			return window._BMap.scriptLoader
 		}
 	}
 
@@ -229,7 +254,7 @@
 	function init() {
 		getMapScriptAsync().then(() => {
 			const { minZoom, maxZoom, mapType, enableAutoResize } = props
-			map = new BMapGL.Map('baidu-map-container', {
+			map = new BMapGL.Map(mapContainerId, {
 				minZoom,
 				maxZoom,
 				mapType: window[mapType],
@@ -237,7 +262,7 @@
 			})
 			setCenterAanZoom()
 			initMapOptions()
-      startWatchProps()
+			startWatchProps()
 			bindEvents(props, vueEmits, map)
 			if (!initd) {
 				initd = true
@@ -250,7 +275,9 @@
 		watch(() => props.zoom, setZoom)
 		watch(() => props.tilt, setTilt)
 		watch(() => props.heading, setHeading)
-		watch(() => props.center, setCenter)
+		watch(() => props.center, setCenterAanZoom, {
+			deep: true
+		})
 		watch(() => props.enableDragging, setDragging)
 		watch(() => props.enableInertialDragging, setInertialDragging)
 		watch(() => props.enableScrollWheelZoom, setScrollWheelZoom)
@@ -296,16 +323,6 @@
 	// 生产一个地理位置坐标点
 	function genPoint(lng: number, lat: number): BMapGL.Point {
 		return new BMapGL.Point(lng, lat)
-	}
-	/**
-	 * 设置中心点
-	 */
-	function setCenter(): void {
-		if (typeof props.center === 'string') {
-			map!.setCenter(props.center)
-		} else {
-			map!.setCenter(genPoint(props.center.lng, props.center.lat))
-		}
 	}
 	/**
 	 * 设置中心点和缩放级别
@@ -382,4 +399,5 @@
 		map?.destroy()
 	})
 	provide('getMapInstance', () => map)
+	provide('parentUidGetter', uid)
 </script>

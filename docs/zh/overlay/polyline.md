@@ -6,6 +6,52 @@
 import { Polyline } from 'vue3-baidu-map-gl'
 ```
 
+## 组件示例
+
+<div>
+<Map
+  :ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
+  :minZoom="3"
+  height="400px"
+>
+  <Polyline 
+    :path="[
+      { lng: 116.404, lat: 39.915 },
+      { lng: 116.404, lat: 39.92 },
+      { lng: 116.410, lat: 39.92 },
+      { lng: 116.410, lat: 39.915 },
+	  ]" 
+    stroke-color="#000"
+    :stroke-opacity="1"
+    :stroke-weight="5"
+    enableEditing
+  />
+</Map>
+</div>
+
+::: details 点击查看代码
+```html
+<Map :minZoom="3" height="400px">
+	<Polyline
+		:path="[
+      { lng: 116.404, lat: 39.915 },
+      { lng: 116.404, lat: 39.92 },
+      { lng: 116.410, lat: 39.92 },
+      { lng: 116.410, lat: 39.915 },
+	  ]"
+		stroke-color="#000"
+		:stroke-opacity="1"
+		:stroke-weight="5"
+		enableEditing
+	/>
+</Map>
+
+<script setup lang="ts">
+import { Map, Polyline } from 'vue3-baidu-map-gl'
+</script>
+```
+:::
+
 ## 静态组件 Props
 
 | 参数           | 说明                                                       | 类型      | 可选值 | 默认值  |
@@ -21,18 +67,11 @@ import { Polyline } from 'vue3-baidu-map-gl'
 | path            | 多边形的坐标数组                            | `{ lng: number, lat: number}[]` |                           | `required` |
 | strokeColor     | 描边的颜色，同 CSS 颜色                     | `string`                        |                           | `#000000`  |
 | strokeWeight    | 描边的宽度，单位为像素                      | `string`                        |                           | `2`        |
-| strokeOpacity   | 描边的透明度，范围 `0-1`                      | ` number`                       |                           | ` 1`       |
+| strokeOpacity   | 描边的透明度，范围 `0-1`                    | ` number`                       |                           | ` 1`       |
 | strokeStyle     | 描边的样式，为实线、虚线、或者点状线        | `string`                        | `solid / dashed / dotted` |            |
 | enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                       |                           | `true `    |
 | enableEditing   | 开启可编辑模式                              | `boolean`                       |                           | `false `   |
 
-<!--
-## PolygonPath
-
-| 参数 | 说明     | 类型   |
-| ---- | -------- | ------ |
-| lng  | 地理经度 | number |
-| lat  | 地理纬度 | number | -->
 
 ## 组件事件
 
@@ -46,45 +85,3 @@ import { Polyline } from 'vue3-baidu-map-gl'
 | mouseover  | 鼠标指针移入该覆盖物事件的回调函数                                             | ((e: Event) => void) |
 | remove     | 该覆盖物被移除的回调函数                                                       | ((e: Event) => void) |
 | lineupdate | 覆盖物被编辑后的回调函数                                                       | ((e: Event) => void) |
-
-## 组件实例
-
-<div>
-<Map
-  :ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
-  :minZoom="3"
-  height="400px"
->
-  <Polyline 
-    :path="[
-      { lng: 116.404, lat: 39.915 },
-      { lng: 116.405, lat: 39.92 },
-      { lng: 116.423493, lat: 39.907445 }
-	  ]" 
-    stroke-color="#f90"
-    :stroke-opacity="1"
-    :stroke-weight="5"
-    enableEditing
-  />
-</Map>
-</div>
-
-```html
-<map :minZoom="3" height="400px">
-	<Polyline
-		:path="[
-      { lng: 116.404, lat: 39.915 },
-      { lng: 116.405, lat: 39.92 },
-      { lng: 116.423493, lat: 39.907445 }
-	  ]"
-		stroke-color="#f90"
-		:stroke-opacity="1"
-		:stroke-weight="5"
-		enableEditing
-	/>
-</map>
-
-<script setup lang="ts">
-	import { Map, Polyline } from 'vue3-baidu-map-gl'
-</script>
-```

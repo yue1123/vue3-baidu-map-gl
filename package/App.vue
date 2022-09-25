@@ -5,13 +5,17 @@
 		:enable-keyboard="false"
 		:zoom="zoom"
 		enableDragging
+		:center="position"
 		:minZoom="10"
 	>
-		<Control style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
+		<!-- <Control style="display: flex; background-color: #f90; padding: 10px" :offset="{ x: 0, y: 0 }">
 			<button @click="handleZoomOut">缩小1</button>
 			<button @click="handleZoomIn">放大fasdf</button>
-		</Control>
+		</Control> -->
 		<Navigation3d />
+		<Navigation />
+		<!-- <Location></Location> -->
+
 		<!-- <Marker
 			:position="{
 				lng: 116.404,
@@ -20,8 +24,8 @@
 			icon="../docs/.vuepress/public/logo.png"
 			dragging
 		/> -->
-		<Marker :icon="markerIcon" :position="position" :rotation="180"/>
-		<Label
+		<!-- <Marker :icon="markerIcon" :position="position" :rotation="180"/> -->
+		<!-- <Label
 			content="123123"
 			:position="{
 				lng: 116.404,
@@ -55,7 +59,7 @@
 			:stroke-opacity="1"
 			:stroke-weight="10"
 			enableEditing
-		></Polyline>
+		></Polyline> -->
 		<!-- <Polygon
 			:path="polylinePath"
 			stroke-color="#f90"
@@ -63,8 +67,9 @@
 			:stroke-weight="10"
 			editing
 		></Polygon> -->
-		<Scale v-if="show"></Scale>
-		<Zoom v-if="show"></Zoom>
+		<!-- <Scale v-if="show"></Scale> -->
+		<!-- <Zoom v-if="show"></Zoom> -->
+		<!-- <CityList /> -->
 	</Map>
 </template>
 <script setup lang="ts">
@@ -87,6 +92,7 @@
 		{ lng: 116.405, lat: 39.92 },
 		{ lng: 116.423493, lat: 39.907445 }
 	])
+	console.log(show)
 	// setTimeout(() => {
 	// 	show.value = false
 	//   console.log('yingcang');
@@ -111,22 +117,71 @@
 	let index = 0
 	const icon = ['simple_blue', 'simple_red', 'loc_red']
 	const markerIcon = ref(icon[index])
-	setInterval(() => {
-		console.log('gaib')
-		if (index < 2) {
-			index++
-		} else {
-			index = 0
-		}
-		// markerIcon.value = icon[index]
-		// key.value = Math.random() * 0.01
-		// polylinePath.value.push({ lng: 116.423493, lat: 39.907445 + key.value })
-		position.value.lng += 0.0001
-	}, 1000)
+	// setInterval(() => {
+	// 	console.log('gaib')
+	// 	if (index < 2) {
+	// 		index++
+	// 	} else {
+	// 		index = 0
+	// 	}
+	// 	// markerIcon.value = icon[index]
+	// 	// key.value = Math.random() * 0.01
+	// 	// polylinePath.value.push({ lng: 116.423493, lat: 39.907445 + key.value })
+	// 	position.value.lng += 0.0001
+	// }, 1000)
 	;(window as any).toggle = cal
 </script>
 <style>
 	* {
 		margin: 0;
+	}
+	.spinner {
+		width: 60px;
+		height: 60px;
+
+		position: relative;
+		margin: 100px auto;
+	}
+
+	.double-bounce1,
+	.double-bounce2 {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background-color: #42b883;
+		opacity: 0.6;
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		-webkit-animation: bounce 2s infinite ease-in-out;
+		animation: bounce 2s infinite ease-in-out;
+	}
+
+	.double-bounce2 {
+		-webkit-animation-delay: -1s;
+		animation-delay: -1s;
+	}
+
+	@-webkit-keyframes bounce {
+		0%,
+		100% {
+			-webkit-transform: scale(0);
+		}
+		50% {
+			-webkit-transform: scale(1);
+		}
+	}
+
+	@keyframes bounce {
+		0%,
+		100% {
+			transform: scale(0);
+			-webkit-transform: scale(0);
+		}
+		50% {
+			transform: scale(1);
+			-webkit-transform: scale(1);
+		}
 	}
 </style>

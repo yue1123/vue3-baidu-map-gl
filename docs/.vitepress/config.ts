@@ -1,17 +1,42 @@
 import { defineConfig } from 'vitepress'
 import heads from './head'
-
 import sidebarConfigZh from './sidebar.config.zh'
+import { version } from '../../package.json'
+
 export default defineConfig({
-	lang: 'en-US',
+	lang: 'zh-CN',
 	title: 'Vue3 BaiduMap GL',
 	description: 'Vite & Vue powered static site generator.',
 	lastUpdated: true,
+	base: '/vue3-baidu-map-gl/',
+	head: heads,
 	themeConfig: {
 		nav: [
 			{
 				text: '指南',
 				link: '/zh/guide/'
+			},
+			{
+				text: '相关链接',
+				items: [
+					{
+						text: '百度拾取坐标系统',
+						link: 'https://api.map.baidu.com/lbsapi/getpoint/index.html'
+					},
+					{
+						text: '百度地图JSAPI WebGL v1.0类参考',
+						link: 'https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_webgl_1_0.html#a2b7'
+					}
+				]
+			},
+			{
+				text: `v${version}`,
+				items: [
+					{
+						text: '历史版本',
+						link: 'https://github.com/yue1123/vue3-baidu-map-gl/releases'
+					}
+				]
 			}
 		],
 		localeLinks: {
@@ -24,6 +49,10 @@ export default defineConfig({
 			appId: 'AUOZL3KYUR',
 			apiKey: 'cec98517c1e6c63a4b54d5d0f0469fab',
 			indexName: 'vue3-baidu-map-gl'
+		},
+		footer: {
+			message: 'Released under the MIT License.',
+			copyright: 'Copyright © 2022-present dh'
 		},
 		socialLinks: [{ icon: 'github', link: 'https://github.com/yue1123/vue3-baidu-map-gl' }],
 		sidebar: sidebarConfigZh,

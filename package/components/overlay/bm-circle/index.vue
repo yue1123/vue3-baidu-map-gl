@@ -194,7 +194,6 @@
 		enableMassClear ? circle!.enableMassClear() : circle!.disableMassClear()
 	}
 	function setEditing(enableEditing: boolean): void {
-		console.log(enableEditing)
 		enableEditing ? circle!.enableEditing() : circle!.disableEditing()
 	}
 </script>

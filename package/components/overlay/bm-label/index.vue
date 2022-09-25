@@ -1,6 +1,6 @@
 <template></template>
 <script setup lang="ts">
-	import { defineProps, watch, withDefaults } from 'vue'
+	import { defineProps, onMounted, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
@@ -76,6 +76,7 @@
 	const { ready } = useLife()
 	let label: BMapGL.Label
 	useBaseMapEffect((map: BMapGL.Map) => {
+		console.log(map)
 		const cal = () => {
 			map.removeOverlay(label)
 		}
@@ -98,7 +99,11 @@
 		// 监听值变化
 		watch(() => props.position, setPosition, { deep: true })
 		watch(() => props.offset, setOffset, { deep: true })
-		watch(() => props.style, setStyle, { deep: true })
+		watch(
+			() => props.style,
+			(style) => setStyle(),
+			{ deep: true }
+		)
 		watch(() => props.content, setContent)
 		watch(() => props.enableMassClear, setMassClear)
 

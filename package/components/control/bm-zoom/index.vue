@@ -27,8 +27,8 @@
 	let zoomControl: BMapGL.ZoomControl
 	defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {
-		zoomControl = new window.BMapGL.ZoomControl({
-			offset: new window.BMapGL.Size(props.offset.x, props.offset.y),
+		zoomControl = new BMapGL.ZoomControl({
+			offset: new BMapGL.Size(props.offset.x, props.offset.y),
 			anchor: window[props.anchor]
 		})
 		map.addControl(zoomControl)
