@@ -161,7 +161,6 @@
 		onTouchend?: Callback
 		onLongpress?: Callback
 	}
-	console.log(window, window.name)
 	let map: BMapGL.Map = null!
 	// 是否初始化
 	let initd: boolean = false
@@ -243,11 +242,8 @@
 				script.onerror = reject
 				document.body.appendChild(script)
 			})
-			return window._BMap.scriptLoader
-		} else {
-			// return Promise.resolve()
-			return window._BMap.scriptLoader
 		}
+    return window._BMap.scriptLoader
 	}
 
 	// 初始化地图
