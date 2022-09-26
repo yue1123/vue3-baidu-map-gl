@@ -1,7 +1,7 @@
 const sidebarConfig = {
 	'/zh/': [
 		{
-			text: '指南',
+			text: '开发指南',
 			items: [
 				{
 					text: '快速开始',

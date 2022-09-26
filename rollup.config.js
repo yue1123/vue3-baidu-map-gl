@@ -27,6 +27,7 @@ const readDirectory = (dir) => {
 	return ret
 }
 
+const componentsBuildPlugins = [resolve(), vue({ isWebComponent: true, compileTemplate: true }), typescript()]
 const componentsBuild = readDirectory(path.resolve(__dirname, './package/components')).map((component) => {
 	return {
 		external(id) {
@@ -47,7 +48,7 @@ const componentsBuild = readDirectory(path.resolve(__dirname, './package/compone
 			}
 		],
 		// 插件
-		plugins: [resolve(), vue({ css: true, compileTemplate: true }), typescript()]
+		plugins: componentsBuildPlugins
 	}
 })
 const hooksBuild = readDirectory(path.resolve(__dirname, './package/hooks')).map((hooks) => {

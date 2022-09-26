@@ -1,34 +1,43 @@
 {
-	"compilerOptions": {
-		"target": "ES2016",
-		"useDefineForClassFields": true,
-		"module": "esnext", 
-		"moduleResolution": "node",
-		"strict": true,
-		"jsx": "preserve",
-		"sourceMap": true,
-		"resolveJsonModule": true,
-		"esModuleInterop": true,
-		"declaration": true,
-		"declarationDir": "./lib",
-		"emitDeclarationOnly": true,
-		"lib": ["ESNext", "dom", "ESNext.Promise"],
-		"types": ["vite/client"],
-		"suppressImplicitAnyIndexErrors": true,
-		"baseUrl": "./"
-	},
-	"include": [
+  "compilerOptions": {
+    "target": "ES2016",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "declarationDir": "./lib",
+    "emitDeclarationOnly": true,
+    "lib": [
+      "ESNext",
+      "dom",
+      "ESNext.Promise"
+    ],
+    "types": [
+      "vite/client",
+      "vitest/globals"
+    ],
+    "suppressImplicitAnyIndexErrors": true,
+    "baseUrl": "./"
+  },
+  "include": [
     "package/index.ts",
-		"package/hooks/*.ts",
+    "package/hooks/*.ts",
     "package/utils/*.ts",
-		"package/components/**/*.vue",
+    "package/components/**/*.vue",
     "package/components/**/*.ts",
     "types/*.d.ts",
-    "package/env.d.ts",
-	],
+    "package/env.d.ts", "package/components/bm-map/index.spec.tsx",
+  ],
   "exclude": [
     "node_modules",
     "lib"
   ],
-	"files": ["./types/index.d.ts"]
+  "files": [
+    "./types/index.d.ts"
+  ]
 }

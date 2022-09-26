@@ -1,7 +1,7 @@
 {
 	"name": "vue3-baidu-map-gl",
 	"version": "0.0.12",
-	"main": "./dist/index.js",
+	"main": "./lib/index.js",
 	"typings": "./lib/index.d.ts",
 	"exports": {
 		".": {
@@ -11,16 +11,16 @@
 		"./package.json": "./package.json"
 	},
 	"scripts": {
-		"dev": "vite --host",
+		"dev": "rollup -c",
 		"build:es": "vue-tsc && rollup -c",
 		"docs:dev": "vitepress dev docs",
+		"test": "vitest",
 		"docs:build": "vitepress build docs",
 		"link:pnpm": "pnpm link --global",
 		"fix-dot": "fixdot docs/zh/base/* docs/zh/control/* docs/zh/guide/* docs/zh/overlay/* docs/index.md -d -p"
 	},
 	"dependencies": {
 		"mitt": "^3.0.0",
-		"vitepress": "^1.0.0-alpha.4",
 		"vue": "^3.2.31"
 	},
 	"devDependencies": {
@@ -31,8 +31,11 @@
 		"@rollup/plugin-commonjs": "^21.0.3",
 		"@types/ws": "^8.5.3",
 		"@vitejs/plugin-vue": "^2.2.0",
+		"@vitejs/plugin-vue-jsx": "^2.0.1",
+		"@vue/test-utils": "^2.0.2",
 		"@vuepress/plugin-register-components": "2.0.0-beta.36",
 		"husky": "^7.0.4",
+		"jsdom": "^20.0.0",
 		"rollup": "^2.70.1",
 		"rollup-plugin-css-porter": "^1.0.2",
 		"rollup-plugin-node-resolve": "^5.2.0",
@@ -41,7 +44,9 @@
 		"rollup-plugin-vue": "^6.0.0",
 		"tslib": "^2.4.0",
 		"typescript": "^4.6.3",
-		"vite": "^2.9.1",
+		"vite": "3.0.0",
+		"vitepress": "1.0.0-alpha.4",
+		"vitest": "^0.23.4",
 		"vue-tsc": "^0.33.9",
 		"vuepress": "2.0.0-beta.36"
 	},
