@@ -43,3 +43,8 @@
 		})
 	})
 </script>
+<script lang="ts">
+	export default {
+		name: 'BmControl'
+	}
+</script>

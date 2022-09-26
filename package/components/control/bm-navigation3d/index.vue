@@ -35,3 +35,8 @@
 		return () => map.removeControl(navigation3dControl)
 	})
 </script>
+<script lang="ts">
+	export default {
+		name: 'BmNavigation3d'
+	}
+</script>

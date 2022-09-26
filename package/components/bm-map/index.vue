@@ -5,15 +5,7 @@
 		style="background: #f1f1f1; position: relative; overflow: hidden"
 	>
 		<slot name="loading" v-bind:loading="!initd">
-			<div
-				style="
-					color: #999;
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-				"
-			>
+			<div style="color: #999; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
 				{{ !initd ? 'map loading...' : '' }}
 			</div>
 		</slot>
@@ -23,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-	// FIXME: props 属性名字统一, 去掉enable
 	import {
 		inject,
 		defineProps,
@@ -40,7 +31,7 @@
 	import bindEvents, { Callback } from '../../utils/bindEvents'
 
 	export interface BaiduMapProps {
-		ak?: string
+		ak: string
 		/**
 		 * 地图显示宽度
 		 */
@@ -226,6 +217,7 @@
 		'longpress'
 	])
 	const ak = props.ak || inject('baiduMapAk')
+	if (!ak) console.warn('missing required props: ak')
 	// 获取地图SDK Script
 	function getMapScriptAsync() {
 		if (!window._BMap) {
@@ -243,7 +235,7 @@
 				document.body.appendChild(script)
 			})
 		}
-    return window._BMap.scriptLoader
+		return window._BMap.scriptLoader
 	}
 
 	// 初始化地图
@@ -396,4 +388,9 @@
 	})
 	provide('getMapInstance', () => map)
 	provide('parentUidGetter', uid)
+</script>
+<script lang="ts">
+	export default {
+		name: 'BmMap'
+	}
 </script>

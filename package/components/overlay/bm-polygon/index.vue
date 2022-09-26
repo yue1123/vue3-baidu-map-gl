@@ -195,3 +195,8 @@
 		enableEditing ? polygon!.enableEditing() : polygon!.disableEditing()
 	}
 </script>
+<script lang="ts">
+	export default {
+		name: 'BmPolygon'
+	}
+</script>

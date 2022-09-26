@@ -197,3 +197,8 @@
 		enableEditing ? circle!.enableEditing() : circle!.disableEditing()
 	}
 </script>
+<script lang="ts">
+	export default {
+		name: 'BmCircle'
+	}
+</script>

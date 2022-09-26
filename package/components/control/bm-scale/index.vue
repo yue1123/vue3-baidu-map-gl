@@ -50,3 +50,8 @@
 		scaleCtrl.setUnit(window[props.unit])
 	}
 </script>
+<script lang="ts">
+	export default {
+		name: 'BmScale'
+	}
+</script>

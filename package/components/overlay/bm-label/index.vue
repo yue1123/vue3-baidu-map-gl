@@ -128,3 +128,8 @@
 		enableMassClear ? label!.enableMassClear() : label!.disableMassClear()
 	}
 </script>
+<script lang="ts">
+	export default {
+		name: 'BmLabel'
+	}
+</script>

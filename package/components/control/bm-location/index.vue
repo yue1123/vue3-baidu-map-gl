@@ -36,3 +36,8 @@
 		return () => map.removeControl(locationControl)
 	})
 </script>
+<script lang="ts">
+	export default {
+		name: 'BmLocation'
+	}
+</script>

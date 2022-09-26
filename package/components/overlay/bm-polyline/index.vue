@@ -174,3 +174,8 @@
 		enableEditing ? polyline!.enableEditing() : polyline!.disableEditing()
 	}
 </script>
+<script lang="ts">
+	export default {
+		name: 'BmPolyline'
+	}
+</script>

@@ -42,3 +42,8 @@
 		return () => map.removeControl(cityListControl)
 	})
 </script>
+<script lang="ts">
+	export default {
+		name: 'BmCityList'
+	}
+</script>
