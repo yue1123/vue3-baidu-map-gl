@@ -30,8 +30,8 @@
 	defineEmits(['initd', 'unload'])
 	onMounted(() => {
 		useBaseMapEffect((map: BMapGL.Map) => {
-			const customControl = new BMapGL.Control()
 			if (!controlContainer.value) return
+			const customControl = new BMapGL.Control()
 			customControl.defaultAnchor = window[props.anchor]
 			customControl.defaultOffset = new BMapGL.Size(props.offset!.x, props.offset!.y)
 			customControl.initialize = (_map: BMapGL.Map) => {
