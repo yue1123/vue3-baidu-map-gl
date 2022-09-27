@@ -1,7 +1,7 @@
 <template></template>
 <script setup lang="ts">
-	// TODO: 增加自动聚焦视野的配置autoViewport
-	import { defineProps, watch, withDefaults, defineEmits } from 'vue'
+	// TODO: 更新 isBoundary,autoCenter 相关文档
+	import { defineProps, inject, watch, withDefaults, defineEmits, nextTick } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
@@ -15,16 +15,25 @@
 		 */
 		lat: number
 	}
+	export type NonEmptyArray<T> = [T, ...T[]]
 	export interface PolygonProps {
 		/**
 		 * 折线的节点坐标数组
 		 */
-		path: PolygonPath[]
+		path: NonEmptyArray<PolygonPath> | NonEmptyArray<string>
+		/**
+		 * 是否是
+		 */
+		isBoundary?: boolean
 		/**
 		 * @default #000000
 		 * 折线颜色
 		 */
 		strokeColor?: string
+		/**
+		 * 自动根据多边形居中
+		 */
+		autoCenter?: boolean
 		/**
 		 * 折线的宽度，以像素为单位
 		 */
@@ -91,7 +100,8 @@
 		editing: false,
 		clicking: true,
 		geodesic: false,
-		clip: true
+		clip: true,
+		autoCenter: true
 	})
 	const vueEmits = defineEmits([
 		'initd',
@@ -106,13 +116,18 @@
 		'lineupdate'
 	])
 	const { ready } = useLife()
+	const injectBaseMapSetCenterAndZoom = inject('baseMapSetCenterAndZoom') as (center: {
+		lng: number
+		lat: number
+	}) => void
+
 	let polygon: BMapGL.Polygon
 	useBaseMapEffect((map: BMapGL.Map) => {
-		if (!props.path.length) return
 		const cal = () => {
-			map.removeOverlay(polygon)
+			polygon && map.removeOverlay(polygon)
 		}
 		const init = () => {
+			if (!props.path.length) return
 			const {
 				path,
 				strokeColor,
@@ -125,9 +140,10 @@
 				enableEditing,
 				enableClicking,
 				geodesic,
-				clip
+				clip,
+				isBoundary
 			} = props
-			const pathPoints = pathPointsToMapPoints(path)
+			const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as PolygonPath[])
 			polygon = new BMapGL.Polygon(pathPoints, {
 				strokeColor,
 				strokeWeight,
@@ -143,31 +159,51 @@
 			})
 			map.addOverlay(polygon)
 			bindEvents(props, vueEmits, polygon)
+			syncMapCenter()
+			watch(() => props.strokeColor, setStrokeColor)
+			watch(() => props.strokeOpacity, setStrokeOpacity)
+			watch(() => props.fillColor, setFillColor)
+			watch(() => props.fillOpacity, setFillOpacity)
+			watch(() => props.strokeWeight, setStrokeWeight)
+			watch(() => props.strokeStyle, setStrokeStyle)
+			watch(() => props.enableMassClear, setMassClear)
+			watch(() => props.enableEditing, setEditing)
 		}
-
-		// 监听值变化
-		watch(() => props.path, setPath, {
+		init()
+		// 监听值变化, 初始为空时不会初始化, 不为空值时初始化
+		watch(() => props.path, polygon ? setPath : init, {
 			deep: true
 		})
-		watch(() => props.strokeColor, setStrokeColor)
-		watch(() => props.strokeOpacity, setStrokeOpacity)
-		watch(() => props.fillColor, setFillColor)
-		watch(() => props.fillOpacity, setFillOpacity)
-		watch(() => props.strokeWeight, setStrokeWeight)
-		watch(() => props.strokeStyle, setStrokeStyle)
-		watch(() => props.enableMassClear, setMassClear)
-		watch(() => props.enableEditing, setEditing)
-
-		init()
 		ready(map)
 		return cal
 	})
+
+	function syncMapCenter() {
+		nextTick(() => {
+			// 自动设置中心点
+			if (props.autoCenter) {
+				// 获取中心点
+				try {
+					const center = polygon.getBounds()?.getCenter()
+					injectBaseMapSetCenterAndZoom(center)
+				} catch (e) {
+					console.warn('set center error', e)
+				}
+			}
+		})
+	}
+
 	function pathPointsToMapPoints(pathPoints: PolygonPath[]) {
 		return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
 	}
 
-	function setPath(path: PolygonPath[]) {
-		polygon.setPath(pathPointsToMapPoints(path))
+	function setPath(path: PolygonPath[] | string[]) {
+		if (props.isBoundary) {
+			polygon.setPath(path as string[])
+		} else {
+			polygon.setPath(pathPointsToMapPoints(path as PolygonPath[]))
+		}
+		syncMapCenter()
 	}
 
 	function setStrokeColor(color: string): void {
