@@ -44,6 +44,10 @@ const sidebarConfig = {
 					link: '/zh/control/navigation3d'
 				},
 				{
+					text: 'Copyright 版权',
+					link: '/zh/control/copyright'
+				},
+				{
 					text: 'Scale 比例尺控件',
 					link: '/zh/control/scale'
 				},

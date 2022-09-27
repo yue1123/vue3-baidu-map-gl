@@ -1,0 +1,85 @@
+<template>
+	<div ref="copyrightContainer" style="display: none">
+		<slot></slot>
+	</div>
+</template>
+
+<script setup lang="ts">
+	import { defineProps, withDefaults, defineEmits, onMounted, ref, getCurrentInstance, onUpdated } from 'vue'
+	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
+	import useLife from '../../../hooks/useLife'
+	import copyrightControlPosCacheMap from './copyrightControlPosCacheMap'
+	export interface CopyrightControlOptions {
+		/**
+		 * 控件的停靠位置
+		 */
+		anchor?: _ControlAnchor
+		/**
+		 * 控件的偏移值
+		 */
+		offset?: {
+			x: number
+			y: number
+		}
+	}
+	const props = withDefaults(defineProps<CopyrightControlOptions>(), {
+		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
+		offset: () => ({ x: 83, y: 18 })
+	})
+	const { ready } = useLife()
+	const { anchor, offset } = props
+	const copyrightContainer = ref<HTMLDivElement>()
+	let copyrightControl: BMapGL.CopyrightControl
+	const uid = getCurrentInstance()?.uid
+
+	defineEmits(['initd', 'unload'])
+	onMounted(() => {
+		useBaseMapEffect((map: BMapGL.Map) => {
+			if (!copyrightContainer.value) return
+			let mapBounds = map.getBounds()
+			// 同一位置的 copyright 应该调用 addCopyright,防止多个 copyright 重叠
+			if (!(copyrightControl = copyrightControlPosCacheMap[anchor])) {
+				copyrightControl = new BMapGL.CopyrightControl({
+					offset: new BMapGL.Size(offset.x, offset.y),
+					anchor: window[anchor]
+				})
+				copyrightControlPosCacheMap[anchor] = copyrightControl
+				map.addControl(copyrightControl)
+			}
+			copyrightControl.addCopyright({
+				id: uid,
+				content: copyrightContainer.value.innerHTML,
+				bounds: mapBounds
+			})
+
+			ready(map)
+			return () => {
+				const cacheCopyright = copyrightControlPosCacheMap[anchor]
+				const getCopyrightCollection = cacheCopyright?.getCopyrightCollection?.bind(cacheCopyright)
+
+				if (getCopyrightCollection && getCopyrightCollection()?.length > 1) {
+					cacheCopyright.removeCopyright(uid!)
+				} else {
+					map.removeControl(cacheCopyright)
+					Reflect.deleteProperty(copyrightControlPosCacheMap, anchor)
+				}
+			}
+		})
+	})
+	onUpdated(() => {
+		if (!copyrightControl) return
+		let copyright = copyrightControl?.getCopyright(uid!)
+		if (copyright?.content !== copyrightContainer.value?.innerHTML) {
+			copyrightControl.addCopyright({
+				id: uid,
+				content: copyrightContainer.value?.innerHTML,
+				bounds: copyright.bounds
+			})
+		}
+	})
+</script>
+<script lang="ts">
+	export default {
+		name: 'BmCopyright'
+	}
+</script>
