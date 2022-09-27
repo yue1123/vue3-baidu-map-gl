@@ -6,7 +6,36 @@
 	import { isString } from '../../../utils/index'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLife from '../../..//hooks/useLife'
-	import useMarkerDefaultIcons, { MarkerDefaultIcons } from '../../../hooks/useMarkerDefaultIcons'
+	import useMarkerDefaultIcons from '../../../hooks/useMarkerDefaultIcons'
+  export type MarkerDefaultIcons = 
+	'simple_red'
+	| 'simple_blue'
+	| 'loc_red'
+	| 'loc_blue'
+	| 'start'
+	| 'end'
+	| 'location'
+	| 'red1'
+	| 'red2'
+	| 'red3'
+	| 'red4'
+	| 'red5'
+	| 'red6'
+	| 'red7'
+	| 'red8'
+	| 'red9'
+	| 'red10'
+	| 'blue1'
+	| 'blue2'
+	| 'blue3'
+	| 'blue4'
+	| 'blue5'
+	| 'blue6'
+	| 'blue7'
+	| 'blue8'
+	| 'blue9'
+	| 'blue10'
+
 	export interface MarkerPosition {
 		/**
 		 * 地理经度
@@ -46,7 +75,7 @@
 		/**
 		 * 标注所用的图标对象
 		 */
-		icon?: MarkerDefaultIcons | MarkerCustomIcon
+		icon?: MarkerCustomIcon | MarkerDefaultIcons
 		/**
 		 * @default true
 		 * 是否在调用map.clearOverlays清除此覆盖物，默认为true
