@@ -31,7 +31,7 @@
 	import bindEvents, { Callback } from '../../utils/bindEvents'
 
 	export interface BaiduMapProps {
-		ak: string
+		ak?: string
 		/**
 		 * 地图显示宽度
 		 */
@@ -164,14 +164,14 @@
 		height: '400px',
 		center: () => ({ lat: 39.915185, lng: 116.403901 }),
 		mapType: 'BMAP_NORMAL_MAP',
-		zoom: 16,
+		zoom: 14,
 		maxZoom: 21,
 		minZoom: 0,
 		heading: 0,
 		tilt: 0,
 		enableDragging: true,
 		enableInertialDragging: true,
-		enableScrollWheelZoom: true,
+		enableScrollWheelZoom: false,
 		enableContinuousZoom: true,
 		enableResizeOnCenter: true,
 		enableDoubleClickZoom: false,
@@ -219,7 +219,7 @@
 	const ak = props.ak || inject('baiduMapAk')
 	if (!ak) console.warn('missing required props: ak')
 	// 获取地图SDK Script
-	function getMapScriptAsync() {
+	function getMapScriptAsync(): Promise<void> {
 		if (!window._BMap) {
 			window._BMap = {}
 			window._BMap.scriptLoader = new Promise<void>((resolve, reject) => {
@@ -240,30 +240,34 @@
 
 	// 初始化地图
 	function init() {
-		getMapScriptAsync().then(() => {
-			const { minZoom, maxZoom, mapType, enableAutoResize } = props
-			map = new BMapGL.Map(mapContainerId, {
-				minZoom,
-				maxZoom,
-				mapType: window[mapType],
-				enableAutoResize
+		getMapScriptAsync()
+			.then(() => {
+				const { minZoom, maxZoom, mapType, enableAutoResize, center } = props
+				map = new BMapGL.Map(mapContainerId, {
+					minZoom,
+					maxZoom,
+					mapType: window[mapType],
+					enableAutoResize
+				})
+				setCenterAndZoom(center)
+				initMapOptions()
+				startWatchProps()
+				bindEvents(props, vueEmits, map)
+				if (!initd) {
+					initd = true
+					nextTick(() => ready(map))
+				}
 			})
-			setCenterAanZoom()
-			initMapOptions()
-			startWatchProps()
-			bindEvents(props, vueEmits, map)
-			if (!initd) {
-				initd = true
-				nextTick(() => ready(map))
-			}
-		})
+			.catch((err: any) => {
+				console.warn(err)
+			})
 	}
 	function startWatchProps() {
 		// 监听props变化
 		watch(() => props.zoom, setZoom)
 		watch(() => props.tilt, setTilt)
 		watch(() => props.heading, setHeading)
-		watch(() => props.center, setCenterAanZoom, {
+		watch(() => props.center, setCenterAndZoom, {
 			deep: true
 		})
 		watch(() => props.enableDragging, setDragging)
@@ -315,11 +319,11 @@
 	/**
 	 * 设置中心点和缩放级别
 	 */
-	function setCenterAanZoom(): void {
-		if (typeof props.center === 'string') {
-			map!.centerAndZoom(props.center)
+	function setCenterAndZoom(center: { lng: number; lat: number } | string): void {
+		if (typeof center === 'string') {
+			map!.centerAndZoom(center)
 		} else {
-			map!.centerAndZoom(genPoint(props.center.lng, props.center.lat), props.zoom)
+			map!.centerAndZoom(genPoint(center.lng, center.lat), props.zoom)
 		}
 	}
 	/**
@@ -388,6 +392,7 @@
 	})
 	provide('getMapInstance', () => map)
 	provide('parentUidGetter', uid)
+	provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) => setCenterAndZoom(_center))
 </script>
 <script lang="ts">
 	export default {
