@@ -19,15 +19,18 @@ declare enum ControlAnchor {
 
 declare type _ControlAnchor = keyof typeof ControlAnchor
 declare enum MapType {
-	// FIXME: 和文档名字统一
 	/**
 	 * 此地图类型展示普通街道视图
 	 */
 	'BMAP_NORMAL_MAP' = 'B_NORMAL_MAP',
 	/**
-	 * 此地图类型展示透视图像视图
+	 * 地球模式
 	 */
-	'BMAP_EARTH_MAP' = 'B_EARTH_MAP'
+	'BMAP_EARTH_MAP' = 'B_EARTH_MAP',
+	/**
+	 * 普通卫星图
+	 */
+	'BMAP_SATELLITE_MAP' = 'B_SATELLITE_MAP'
 }
 declare type _MapType = keyof typeof MapType
 

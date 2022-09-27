@@ -41,9 +41,10 @@ import { Map } from 'vue3-baidu-map-gl'
   <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
   <br/>
   <br/>
-  地图类型：<select name="" id="" v-model="type">
-    <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
-    <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
+  地图类型：<select class="mySelect" name="" id="" v-model="type">
+    <option value="BMAP_NORMAL_MAP">常规地图 BMAP_NORMAL_MAP</option>
+    <option value="BMAP_EARTH_MAP">地球模式 BMAP_EARTH_MAP</option>
+    <option value="BMAP_SATELLITE_MAP">卫星图 BMAP_EARTH_MAP</option>
   </select>
   <br/>
   <br/>
@@ -124,37 +125,39 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ## 静态组件 props
 
-| 参数   | 说明                                    | 类型              | 可选值 | 默认值 |
-| ------ | --------------------------------------- | ----------------- | ------ | ------ |
-| ak     | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`          |        |        |
-| width  | 地图显示宽度                            | `string / number` |        | 100%   |
-| height | 地图显示高度                            | `string / number` |        | 400px  |
+| 参数    | 说明                                    | 类型              | 可选值     | 默认值  |
+| ------- | --------------------------------------- | ----------------- | ---------- | ------- |
+| ak      | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`          | `required` |         |
+| width   | 地图显示宽度                            | `string / number` |            | `100%`  |
+| height  | 地图显示高度                            | `string / number` |            | `400px` |
+| minZoom | 地图允许展示的最小级别                  | `number`          | `0-21`     | `0`     |
+| maxZoom | 地图允许展示的最大级别                  | `number`          | `0-21`     | `21`    |
 
 ## 动态组件 Props
 
-| 参数                   | 说明                                                                                                                                                                           | 类型                                  | 默认值 |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ------ | 
-| center                 | 地图默认中心点，可使用城市名，如：北京市，也可以使用对象如 `{lng: 121.424333, lat: 31.228604}` 表示经纬度。                                                                    | `string / {lng: number, lat: number}` |        | 北京市 |
-| heading                | 地图旋转角度                                                                                                                                                                   | `number`                              | 0      |
-| tilt                   | 地图倾斜角度                                                                                                                                                                   | `number`                              | 0      |
-| minZoom                | 地图允许展示的最小级别                                                                                                                                                         | `number`                              | 0      |
-| enableDragging         | 启用地图拖拽                                                                                                                                                                   | `boolean`                             | true   |
-| enableInertialDragging | 启用地图惯性拖拽                                                                                                                                                               | `boolean`                             | true   |
-| enableScrollWheelZoom  | 允许地图可被鼠标滚轮缩放                                                                                                                                                       | `boolean`                             | true   |
-| enableContinuousZoom   | 开启双击平滑缩放效果                                                                                                                                                           | `boolean`                             | true   |
-| enableResizeOnCenter   | 开启图区 resize 中心点不变                                                                                                                                                     | `boolean`                             | true   |
-| enableDoubleClickZoom  | 启用地图双击缩放，左键双击放大、右键双击缩小                                                                                                                                   | `boolean`                             | false  |
-| enableKeyboard         | 启用键盘操作，键盘的上、下、左、右键可连续移动地图。同时按下其中两个键可使地图进行对角移动。PgUp、PgDn、Home 和 End 键会使地图平移其 1/2 的大小。 +、-键会使地图放大或缩小一级                   | `boolean`                             | true   |
-| enablePinchToZoom      | 启用双指缩放地图。                                                                                                                                                             | `boolean `                            | true   |
-| enableAutoResize       | 启用自动适应容器尺寸变化                                                                                                                                                       | `boolean `                            | true   |
+| 参数                   | 说明                                                                                                                                                                           | 类型                                  | 默认值  |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ------- |
+| center                 | 地图默认中心点，可使用城市名，如：北京市，也可以使用对象如 `{lng: 121.424333, lat: 31.228604}` 表示经纬度。                                                                    | `string / {lng: number, lat: number}` |         | `北京市` |
+| heading                | 地图旋转角度                                                                                                                                                                   | `number`                              | `0`     |
+| tilt                   | 地图倾斜角度                                                                                                                                                                   | `number`                              | `0 `    |
+| zoom                   | 地图缩放级别                                                                                                                                                                   | `number`                              | `14`    |
+| enableDragging         | 启用地图拖拽                                                                                                                                                                   | `boolean`                             | `true`  |
+| enableInertialDragging | 启用地图惯性拖拽                                                                                                                                                               | `boolean`                             | `true`  |
+| enableScrollWheelZoom  | 允许地图可被鼠标滚轮缩放                                                                                                                                                       | `boolean`                             | `false` |
+| enableContinuousZoom   | 开启双击平滑缩放效果                                                                                                                                                           | `boolean`                             | `true`  |
+| enableResizeOnCenter   | 开启图区 resize 中心点不变                                                                                                                                                     | `boolean`                             | `true`  |
+| enableDoubleClickZoom  | 启用地图双击缩放，左键双击放大、右键双击缩小                                                                                                                                   | `boolean`                             | `false` |
+| enableKeyboard         | 启用键盘操作，键盘的上、下、左、右键可连续移动地图。同时按下其中两个键可使地图进行对角移动。PgUp、PgDn、Home 和 End 键会使地图平移其 1/2 的大小。 +、-键会使地图放大或缩小一级 | `boolean`                             | `true`  |
+| enablePinchToZoom      | 启用双指缩放地图。                                                                                                                                                             | `boolean `                            | `true`  |
+| enableAutoResize       | 启用自动适应容器尺寸变化                                                                                                                                                       | `boolean `                            | `true`  |
 
 ## mapType
 
-| 值              | 描述                       |
-| --------------- | -------------------------- |
-| BMAP_NORMAL_MAP | 此地图类型展示普通街道视图 |
-| BMAP_EARTH_MAP  | 此地图类型展示地球卫星视图 |
-
+| 值                 | 描述         |
+| ------------------ | ------------ |
+| BMAP_NORMAL_MAP    | 标准地图     |
+| BMAP_EARTH_MAP     | 地球模式     |
+| BMAP_SATELLITE_MAP | 普通卫星地图 |
 ## 组件事件
 
 | 事件名          | 说明                                                                                             | 类型                   |
