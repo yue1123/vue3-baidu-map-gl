@@ -10,7 +10,6 @@ import { Navigation3d } from 'vue3-baidu-map-gl'
 ## 组件示例
 <div>
 <Map
-  :ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
   :minZoom="3"
   height="400px"
 >

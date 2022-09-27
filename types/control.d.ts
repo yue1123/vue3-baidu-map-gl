@@ -52,13 +52,6 @@ declare namespace BMapGL {
 		/** 自定义Control在add之后立马能读取到Container, 内置Control不能 */
 		getContainer(): HTMLElement | undefined
 	}
-	interface NavigationControlOptions {
-		anchor?: ControlAnchor
-		offset?: Size
-		type?: any
-		showZoomInfo?: boolean
-		enableGeolocation?: boolean
-	}
 	interface ScaleControlOptions {
 		/**
 		 * 控件停靠的位置
@@ -111,11 +104,6 @@ declare namespace BMapGL {
 	type LengthUnit = string
 	class MapTypeControl extends Control {
 		constructor(opts?: MapTypeControlOptions)
-	}
-	class NavigationControl extends Control {
-		constructor(opts?: NavigationControlOptions)
-		getType(): NavigationControlOptions
-		setType(type: NavigationControlType): void
 	}
 	interface OverviewMapControlOptions {
 		anchor?: ControlAnchor

@@ -16,7 +16,8 @@ import { CityList } from 'vue3-baidu-map-gl'
 </div>
 
 ::: warning
-组件示例样式被 vitepress 样式影响，请参考官方示例为准
+组件示例样式被 vitepress 样式影响，实际使用不受影响，请参考官方示例为准
+https://lbs.baidu.com/jsdemo.htm#cCityList
 :::
 
 
