@@ -16,7 +16,7 @@ import { Copyright } from 'vue3-baidu-map-gl'
 >
   <Copyright anchor="BMAP_ANCHOR_TOP_RIGHT" v-if="show">
     <div style="display: flex; align-items:flex-end;">
-      <img width='40' src="./../../dist/logo.png" alt="">
+      <img width='40' src="https://s1.ax1x.com/2022/09/29/xmTpcT.png" alt="">
       @我是自定义版权控件呀
     </div>
   </Copyright>
