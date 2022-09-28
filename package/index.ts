@@ -13,6 +13,11 @@ import Polyline from './components/overlay/bm-polyline'
 import Polygon from './components/overlay/bm-polygon'
 import Circle from './components/overlay/bm-circle'
 // import useMarkerDefaultIcons from './hooks/useMarkerDefaultIcons'
+
+// hooks
+
+export * from './hooks/useAreaBoundary'
+
 interface InitOptions {
 	ak?: string
 }
@@ -81,19 +86,7 @@ const install = (app: App, options?: InitOptions) => {
 }
 
 // 局部注册
-export {
-	Map,
-	Control,
-	Scale,
-	Zoom,
-	Navigation3d,
-	Marker,
-	Label,
-	Polyline,
-	Polygon,
-	Circle,
-	CityList,
-}
+export { Map, Control, Scale, Zoom, Navigation3d, Marker, Label, Polyline, Polygon, Circle, CityList }
 
 export default install
 

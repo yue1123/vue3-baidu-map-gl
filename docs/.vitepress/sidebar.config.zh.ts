@@ -86,6 +86,16 @@ const sidebarConfig = {
 					link: '/zh/overlay/polyline'
 				}
 			]
+		},
+		{
+			text: 'hooks',
+			collapsible: true,
+			items: [
+				{
+					text: 'useAreaBoundary',
+					link: '/zh/hooks/useAreaBoundary'
+				}
+			]
 		}
 	]
 }
