@@ -9,23 +9,26 @@ import { Polygon } from 'vue3-baidu-map-gl'
 ## 组件示例
 
 <div>
-<Map
-  :minZoom="3"
-  height="400px"
->
-  <Polygon 
-    :path="[
-      { lng: 116.404, lat: 39.915 },
-      { lng: 116.405, lat: 39.92 },
-      { lng: 116.410, lat: 39.92 },
-	  ]" 
-    stroke-color="#000"
-    :stroke-opacity="1"
-    :stroke-weight="5"
-    enableEditing
-  />
-</Map>
+  <Map
+    :minZoom="3"
+    height="400px"
+  >
+    <Polygon 
+      :path="[
+        { lng: 116.387112, lat: 39.920977 },
+        { lng: 116.385243, lat: 39.913063 },
+        { lng: 116.394226, lat: 39.917988 },
+        { lng: 116.401772, lat: 39.921364 },
+        { lng: 116.41248, lat: 39.92789 }
+      ]"
+      stroke-color="#000"
+      fillColor="#f90"
+      :stroke-opacity="0.4"
+      :stroke-weight="1"
+    />
+  </Map>
 </div>
+
 
 ::: details 点击查看代码
 ```html
@@ -49,27 +52,132 @@ import { Map, Polygon } from 'vue3-baidu-map-gl'
 ```
 :::
 
+## 镂空面绘制 / 行政区域边界
+
+结合 [`useAreaBoundary`](../hooks/useAreaBoundary) hooks, 并通过指定 `props.isBoundary` 为 `true` 实现行政区域显示效果
+
+<div>
+  地区：
+  <select class="mySelect no-m-t" v-model="area">
+    <option value="北京市">北京市</option>
+    <option value="顺义区">北京市顺义区</option>
+    <option value="四川">四川</option>
+    <option value="成都">成都</option>
+  </select>
+  <Map
+    :minZoom="3"
+    :zoom="zoom"
+    height="400px"
+    enableScrollWheelZoom
+  >
+    <Polygon 
+      :key="area"
+      @initd="handleInitd"
+      isBoundary
+      :path="point" 
+      stroke-color="#000"
+      fillColor='blue'
+      :stroke-weight="1"
+    />
+  </Map>
+</div>
+
+::: details 点击查看代码
+```html
+<div>
+  地区：
+  <select v-model="area">
+    <option value="北京市">北京市</option>
+    <option value="顺义区">北京市顺义区</option>
+    <option value="四川">四川</option>
+    <option value="成都">成都</option>
+  </select>
+  <Map
+    :minZoom="3"
+    :zoom="zoom"
+    height="400px"
+    enableScrollWheelZoom
+  >
+    <Polygon 
+      :key="area"
+      @initd="handleInitd"
+      isBoundary
+      :path="point" 
+      stroke-color="#000"
+      fillColor='blue'
+      :stroke-weight="1"
+    />
+  </Map>
+</div>
+
+
+<script setup lang="ts">
+  import { ref, watch } from 'vue'
+  import { useAreaBoundary } from 'vue3-baidu-map-gl'
+  const zoom = ref<number>(11)
+  const area = ref<string>('四川')
+  const areaZoomMap = {
+    北京市: 9,
+    顺义区: 11,
+    四川: 7,
+    成都: 9,
+  }
+
+  const { isLoading, boundaries: point, get } = useAreaBoundary(() => {
+    zoom.value = areaZoomMap[area.value]
+  })  
+
+  function handleInitd(){
+    get(area.value)
+  }
+  watch(() => area.value, get)
+</script>
+```
+:::
+
+<script setup lang="ts">
+  import { ref, watch } from 'vue'
+  import { useAreaBoundary } from '../../../package/index.ts'
+  const zoom = ref<number>(11)
+  const area = ref<string>('四川')
+  const areaZoomMap = {
+    北京市: 9,
+    顺义区: 11,
+    四川: 7,
+    成都: 9,
+  }
+
+  const { isLoading, boundaries: point, get } = useAreaBoundary(() => {
+    zoom.value = areaZoomMap[area.value]
+  })  
+
+  function handleInitd(){
+    get(area.value)
+  }
+  watch(() => area.value, get)
+</script>
 ## 静态组件 Props
 
 | 参数           | 说明                                                       | 类型       | 默认值   |
 | -------------- | ---------------------------------------------------------- | ---------- | -------- |
-| enableClicking | 是否响应点击事件                                           | `boolean ` | `true `  |
-| geodesic       | 是否开启大地线模式，true 时，两点连线将以大地线的形式。    | `boolean ` | `false ` |
 | clip           | 是否进行跨经度 180 度裁剪，绘制跨精度 180 时为了优化效果， | `boolean ` | `true `  |
+| geodesic       | 是否开启大地线模式，true 时，两点连线将以大地线的形式。    | `boolean ` | `false ` |
+| isBoundary     | 是否是行政区域的边界多边形                                 | `boolean ` | `false ` |
+| enableClicking | 是否响应点击事件                                           | `boolean ` | `true `  |
 
 ## 动态组件 Props
 
-| 参数            | 说明                                      | 类型                             | 可选值                    | 默认值     |
-| --------------- | ----------------------------------------- | -------------------------------- | ------------------------- | ---------- |
-| path            | 多边形的坐标数组                          | ` { lng: number, lat: number}[]` |                           | `required` |
-| strokeColor     | 描边的颜色，同 CSS 颜色                   | `string`                         |                           | `#000000`  |
-| strokeWeight    | 描边的宽度，单位为像素                    | `string `                        |                           | `2 `       |
-| strokeOpacity   | 描边的透明度，范围 0-1                    | `number `                        |                           | `1 `       |
-| strokeStyle     | 描边的样式，为实线、虚线、或者点状线      | `string `                        | `solid / dashed / dotted` |            |
-| fillColor       | 面填充颜色，同 CSS 颜色                   | `string `                        |                           | `#fff`     |
-| fillOpacity     | 面填充的透明度，范围 0-1                  | `number `                        | `0-1`                     | `0.3 `     |
+| 参数            | 说明                                        | 类型                             | 可选值                    | 默认值     |
+| --------------- | ------------------------------------------- | -------------------------------- | ------------------------- | ---------- |
+| path            | 多边形的坐标数组                            | ` { lng: number, lat: number}[]` |                           | `required` |
+| strokeColor     | 描边的颜色，同 CSS 颜色                     | `string`                         |                           | `#000000`  |
+| strokeWeight    | 描边的宽度，单位为像素                      | `string `                        |                           | `2 `       |
+| strokeOpacity   | 描边的透明度，范围 0-1                      | `number `                        |                           | `1 `       |
+| strokeStyle     | 描边的样式，为实线、虚线、或者点状线        | `string `                        | `solid / dashed / dotted` |            |
+| fillColor       | 面填充颜色，同 CSS 颜色                     | `string `                        |                           | `#fff`     |
+| fillOpacity     | 面填充的透明度，范围 0-1                    | `number `                        | `0-1`                     | `0.3 `     |
 | enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                        |                           | ` true`    |
-| enableEditing   | 开启可编辑模式                            | `boolean `                       |                           | `false `   |
+| enableEditing   | 开启可编辑模式                              | `boolean `                       |                           | `false `   |
 
 ## 组件事件
 
