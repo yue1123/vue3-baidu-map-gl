@@ -1,31 +1,30 @@
-import { flushPromises, mount } from '@vue/test-utils'
-import Vue from 'vue'
+// @ts-nocheck
+import { mount } from '@vue/test-utils'
 import Map from './index.vue'
+import { describe, it, expect } from 'vitest'
 
 describe('Map components test cases', async () => {
 	it('Map should be define', () => {
 		expect(Map).toBeDefined()
 	})
-	const initdCal = () => {
-    console.log(123)
-  }
-	const map = (<Map ak='123' onInitd={initdCal} />) as any
+
+	const map = (<Map ak='123' />) as any
+	const wrapper = mount(map)
 	it('props with default', () => {
-		const wrapper = mount(map)
 		expect(wrapper.props()).toEqual({
 			ak: '123',
 			width: '100%',
 			height: '400px',
 			center: { lat: 39.915185, lng: 116.403901 },
 			mapType: 'BMAP_NORMAL_MAP',
-			zoom: 16,
+			zoom: 14,
+			maxZoom: 21,
+			minZoom: 0,
 			heading: 0,
 			tilt: 0,
-			minZoom: 0,
-			maxZoom: 21,
 			enableDragging: true,
 			enableInertialDragging: true,
-			enableScrollWheelZoom: true,
+			enableScrollWheelZoom: false,
 			enableContinuousZoom: true,
 			enableResizeOnCenter: true,
 			enableDoubleClickZoom: false,
@@ -35,7 +34,6 @@ describe('Map components test cases', async () => {
 		})
 	})
 	it('map loading text', () => {
-		const wrapper = mount(map as any)
 		expect(wrapper.text()).toBe('map loading...')
 	})
 
@@ -47,6 +45,7 @@ describe('Map components test cases', async () => {
 				}}
 			</Map>
 		) as any
+
 		const wrapper = mount(MapWithCustomLoading)
 		expect(wrapper.text()).toBe('loading...')
 	})
