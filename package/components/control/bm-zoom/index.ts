@@ -1,11 +1,11 @@
 import { withInstall } from '../../../utils/withInstall'
-import _BmControl from './index.vue'
+import _BmZoom from './index.vue'
 
-export const BmControl = withInstall(_BmControl)
-export default BmControl
+export const BmZoom = withInstall(_BmZoom)
+export default BmZoom
 
 declare module 'vue' {
 	export interface GlobalComponents {
-		BmControl: typeof BmControl
+		BmZoom: typeof BmZoom
 	}
 }
