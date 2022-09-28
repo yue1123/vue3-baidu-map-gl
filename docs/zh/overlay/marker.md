@@ -37,7 +37,7 @@ import { Marker } from 'vue3-baidu-map-gl'
   <Marker
 			:position="{ lat: 39.915185, lng: 116.400901 }"
 			:icon="{
-        imageUrl: '/logo.png',
+        imageUrl: 'https://s1.ax1x.com/2022/09/29/xmTpcT.png',
         imageSize: {
           width: 100,
           height: 100
@@ -65,7 +65,7 @@ import { Marker } from 'vue3-baidu-map-gl'
 	<Marker
 		:position="{ lat: 39.915185, lng: 116.400901 }"
 		:icon="{
-      imageUrl: '../../public/logo.png',
+      imageUrl: 'https://s1.ax1x.com/2022/09/29/xmTpcT.png',
       imageSize: {
         width: 100,
         height: 100
