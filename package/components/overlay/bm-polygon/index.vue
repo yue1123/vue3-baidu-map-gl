@@ -22,7 +22,7 @@
 		 */
 		path: NonEmptyArray<PolygonPath> | NonEmptyArray<string>
 		/**
-		 * 是否是
+		 * 是否是行政区域绘制
 		 */
 		isBoundary?: boolean
 		/**
@@ -144,6 +144,7 @@
 				isBoundary
 			} = props
 			const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as PolygonPath[])
+			if (!pathPoints) return
 			polygon = new BMapGL.Polygon(pathPoints, {
 				strokeColor,
 				strokeWeight,
