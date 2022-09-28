@@ -6,7 +6,7 @@
 	import { defineProps, watch, withDefaults, defineEmits } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
-	import useLife from '../../..//hooks/useLife'
+	import useLifeCycle from '../../..//hooks/useLifeCycle'
 	export interface PolylinePath {
 		/**
 		 * 地理经度
@@ -96,7 +96,7 @@
 		'remove',
 		'lineupdate'
 	])
-	const { ready } = useLife()
+	const { ready } = useLifeCycle()
 	let polyline: BMapGL.Polyline
 	useBaseMapEffect((map: BMapGL.Map) => {
 		if (!props.path.length) return

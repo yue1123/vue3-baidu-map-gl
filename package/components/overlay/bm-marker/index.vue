@@ -5,7 +5,7 @@
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import { isString } from '../../../utils/index'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
-	import useLife from '../../..//hooks/useLife'
+	import useLifeCycle from '../../..//hooks/useLifeCycle'
 	import useMarkerDefaultIcons from '../../../hooks/useMarkerDefaultIcons'
   export type MarkerDefaultIcons = 
 	'simple_red'
@@ -153,7 +153,7 @@
 		'dragend',
 		'rightclick'
 	])
-	const { ready } = useLife()
+	const { ready } = useLifeCycle()
 	let marker: BMapGL.Marker
 
 	useBaseMapEffect((map: BMapGL.Map) => {

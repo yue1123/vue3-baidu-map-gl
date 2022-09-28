@@ -27,7 +27,7 @@
 		nextTick,
 		getCurrentInstance
 	} from 'vue'
-	import useLife from '../../hooks/useLife'
+	import useLifeCycle from '../../hooks/useLifeCycle'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
 
 	export interface BaiduMapProps {
@@ -156,7 +156,7 @@
 	// 是否初始化
 	let initd: boolean = false
 	// 地图初始化的发布
-	const { ready } = useLife()
+	const { ready } = useLifeCycle()
 	const uid = getCurrentInstance()?.uid
 	const mapContainerId = 'baidu-map-container' + uid
 	const props = withDefaults(defineProps<BaiduMapProps>(), {

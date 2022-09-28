@@ -4,7 +4,7 @@
 	import { defineProps, inject, watch, withDefaults, defineEmits, nextTick } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
-	import useLife from '../../..//hooks/useLife'
+	import useLifeCycle from '../../..//hooks/useLifeCycle'
 	export interface PolygonPath {
 		/**
 		 * 地理经度
@@ -115,7 +115,7 @@
 		'remove',
 		'lineupdate'
 	])
-	const { ready } = useLife()
+	const { ready } = useLifeCycle()
 	const injectBaseMapSetCenterAndZoom = inject('baseMapSetCenterAndZoom') as (center: {
 		lng: number
 		lat: number

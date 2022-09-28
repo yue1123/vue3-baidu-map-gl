@@ -3,7 +3,7 @@
 	import { defineProps, onMounted, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
-	import useLife from '../../..//hooks/useLife'
+	import useLifeCycle from '../../..//hooks/useLifeCycle'
 	// TODO: 完善组件的属性动态监听设置
 	export type LabelPosition = {
 		/**
@@ -73,7 +73,7 @@
 		'remove',
 		'rightclick'
 	])
-	const { ready } = useLife()
+	const { ready } = useLifeCycle()
 	let label: BMapGL.Label
 	useBaseMapEffect((map: BMapGL.Map) => {
 		console.log(map)

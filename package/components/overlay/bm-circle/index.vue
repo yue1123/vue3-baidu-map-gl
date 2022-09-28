@@ -5,7 +5,7 @@
 	import { defineProps, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
-	import useLife from '../../..//hooks/useLife'
+	import useLifeCycle from '../../..//hooks/useLifeCycle'
 	export type CircleCenter = {
 		/**
 		 * 地理经度
@@ -110,7 +110,7 @@
 		'remove',
 		'lineupdate'
 	])
-	const { ready } = useLife()
+	const { ready } = useLifeCycle()
 	let circle: BMapGL.Circle
 	useBaseMapEffect((map: BMapGL.Map) => {
 		const cal = () => {

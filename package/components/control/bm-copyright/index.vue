@@ -7,7 +7,7 @@
 <script setup lang="ts">
 	import { defineProps, withDefaults, defineEmits, onMounted, ref, getCurrentInstance, onUpdated } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-	import useLife from '../../../hooks/useLife'
+	import useLifeCycle from '../../../hooks/useLifeCycle'
 	import copyrightControlPosCacheMap from './copyrightControlPosCacheMap'
 	export interface CopyrightControlOptions {
 		/**
@@ -26,7 +26,7 @@
 		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
 		offset: () => ({ x: 83, y: 18 })
 	})
-	const { ready } = useLife()
+	const { ready } = useLifeCycle()
 	const { anchor, offset } = props
 	const copyrightContainer = ref<HTMLDivElement>()
 	let copyrightControl: BMapGL.CopyrightControl

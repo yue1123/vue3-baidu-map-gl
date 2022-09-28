@@ -4,7 +4,7 @@
 <script setup lang="ts">
 	import { defineProps, withDefaults, defineEmits } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-	import useLife from '../../../hooks/useLife'
+	import useLifeCycle from '../../../hooks/useLifeCycle'
 	export interface baseBmControlOptions {
 		/**
 		 * 控件的停靠位置
@@ -22,7 +22,7 @@
 		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
 		offset: () => ({ x: 83, y: 18 })
 	})
-	const { ready } = useLife()
+	const { ready } = useLifeCycle()
 	let navigation3dControl: BMapGL.NavigationControl3D
 	defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {

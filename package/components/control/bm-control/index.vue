@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 	import { ref, defineProps, withDefaults, nextTick, onMounted } from 'vue'
-	import useLife from '../../../hooks/useLife'
+	import useLifeCycle from '../../../hooks/useLifeCycle'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	export interface baseBmControlOptions {
 		/**
@@ -22,7 +22,7 @@
 		}
 	}
 	const controlContainer = ref<HTMLDivElement>()
-	const { ready } = useLife()
+	const { ready } = useLifeCycle()
 	const props = withDefaults(defineProps<baseBmControlOptions>(), {
 		anchor: 'BMAP_ANCHOR_TOP_LEFT',
 		offset: () => ({ x: 83, y: 18 })

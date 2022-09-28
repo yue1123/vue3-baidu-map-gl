@@ -5,7 +5,7 @@
 <script setup lang="ts">
 	import { defineProps, withDefaults, watch, defineEmits } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-	import useLife from '../../../hooks/useLife'
+	import useLifeCycle from '../../../hooks/useLifeCycle'
 	export interface BmScaleOptions {
 		/**
 		 * 控件的停靠位置
@@ -23,7 +23,7 @@
 		 */
 		unit?: _LengthUnit
 	}
-	const { ready } = useLife()
+	const { ready } = useLifeCycle()
 	const props = withDefaults(defineProps<BmScaleOptions>(), {
 		anchor: 'BMAP_ANCHOR_BOTTOM_LEFT',
 		offset: () => ({ x: 83, y: 18 }),

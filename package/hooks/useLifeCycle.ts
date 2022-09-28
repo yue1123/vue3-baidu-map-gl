@@ -1,7 +1,7 @@
 import { onUnmounted, getCurrentInstance } from 'vue'
 import useBaseMapListener from './useBaseMapListener'
 
-export default function useLife() {
+export default function useLifeCycle() {
 	const { uid, emit: VueEmit } = getCurrentInstance()!
 	const { on, emit, off } = useBaseMapListener()
 	let eventKey = `__initd__${uid}`
