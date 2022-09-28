@@ -22,16 +22,27 @@ yarn add vue3-baidu-map-gl
 # or
 pnpm add vue3-baidu-map-gl
 ```
-
 ### Usage
+按需导入
 ```vue
 <template>
   <Map ak="YOUR_AK" />
 </template>
 
 <script setup lang="ts">
-  import Map from 'vue3-baidu-map-gl';
+  import { Map } from 'vue3-baidu-map-gl';
 </script>
+```
+
+完整引入
+```ts
+import { createApp } from 'vue'
+import App from './App.vue'
+import baiduMapInit from 'vue3-baidu-map-gl'
+
+const app = createApp(App)
+app.use(baiduMapInit, { ak: 'YOUR_AK' })
+app.mount('#app')
 ```
 
 ## todo list
@@ -40,8 +51,8 @@ pnpm add vue3-baidu-map-gl
 -   [x] 地图控件
 -   [x] 地图覆盖物
 -   [x] 多实例
+-   [x] 自定义地图样式
 -   [ ] 地图插件
--   [ ] 自定义地图样式
 
 ## License
 [MIT licenses](https://opensource.org/licenses/MIT)
