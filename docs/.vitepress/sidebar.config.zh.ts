@@ -18,6 +18,10 @@ const sidebarConfig = {
 					link: '/zh/base/'
 				},
 				{
+					text: '个性化地图',
+					link: '/zh/base/custom'
+				},
+				{
 					text: '多实例',
 					link: '/zh/base/multiple-instances'
 				},

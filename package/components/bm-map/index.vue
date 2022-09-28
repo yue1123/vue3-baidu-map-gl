@@ -4,7 +4,7 @@
 		:style="{ width: props.width, height: props.height }"
 		style="background: #f1f1f1; position: relative; overflow: hidden"
 	>
-		<slot name="loading" v-bind:loading="!initd">
+		<slot name="loading" v-bind:isLoading="!initd">
 			<div style="color: #999; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
 				{{ !initd ? 'map loading...' : '' }}
 			</div>
@@ -73,6 +73,20 @@
 		 * 地图允许展示的最大级别
 		 */
 		maxZoom?: number
+
+		/**
+		 * 个性化地图
+		 */
+		mapStyleId?: string
+		mapStyleJson?: {
+			featureType: string
+			elementType: string
+			stylers: {
+				visibility: string
+				color: string
+			}
+		}[]
+
 		/**
 		 * @default true
 		 * 启用地图拖拽，默认启用
@@ -251,6 +265,7 @@
 				})
 				setCenterAndZoom(center)
 				initMapOptions()
+				initCustomStyle()
 				startWatchProps()
 				bindEvents(props, vueEmits, map)
 				if (!initd) {
@@ -262,14 +277,34 @@
 				console.warn(err)
 			})
 	}
+
+	// 个性化地图
+	function initCustomStyle() {
+		if (props.mapStyleId) {
+			map.setMapStyleV2({
+				styleId: props.mapStyleId
+			})
+			return
+		} else if (props.mapStyleJson) {
+			console.log('json')
+			map.setMapStyleV2({
+				styleJson: props.mapStyleJson
+			})
+		}
+	}
+	// 监听props变化
 	function startWatchProps() {
-		// 监听props变化
 		watch(() => props.zoom, setZoom)
 		watch(() => props.tilt, setTilt)
 		watch(() => props.heading, setHeading)
 		watch(() => props.center, setCenterAndZoom, {
 			deep: true
 		})
+		watch(() => props.mapStyleId, initCustomStyle)
+		watch(() => props.mapStyleJson, initCustomStyle, {
+			deep: true
+		})
+		watch(() => props.mapType, setMapType)
 		watch(() => props.enableDragging, setDragging)
 		watch(() => props.enableInertialDragging, setInertialDragging)
 		watch(() => props.enableScrollWheelZoom, setScrollWheelZoom)
@@ -279,7 +314,6 @@
 		watch(() => props.enableKeyboard, setKeyboard)
 		watch(() => props.enablePinchToZoom, setPinchToZoom)
 		watch(() => props.enableAutoResize, setAutoResize)
-		watch(() => props.mapType, setMapType)
 	}
 	// 设置地图属性
 	function initMapOptions() {
