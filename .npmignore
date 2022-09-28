@@ -8,7 +8,7 @@ pnpm-lock.yaml
 commitlint.config.js
 .npmrc
 .npmignore
-rollup.config.ts
+rollup.config.js
 vite.config.ts
 .vscode
 README.md
