@@ -30,10 +30,9 @@
 		"@rollup/plugin-babel": "^5.3.1",
 		"@rollup/plugin-commonjs": "^21.0.3",
 		"@types/ws": "^8.5.3",
-		"@vitejs/plugin-vue": "^2.2.0",
+		"@vitejs/plugin-vue": "3.1.0",
 		"@vitejs/plugin-vue-jsx": "^2.0.1",
 		"@vue/test-utils": "^2.0.2",
-		"@vuepress/plugin-register-components": "2.0.0-beta.36",
 		"husky": "^7.0.4",
 		"jsdom": "^20.0.0",
 		"rollup": "^2.70.1",
@@ -47,8 +46,7 @@
 		"vite": "3.0.0",
 		"vitepress": "1.0.0-alpha.4",
 		"vitest": "^0.23.4",
-		"vue-tsc": "^0.33.9",
-		"vuepress": "2.0.0-beta.36"
+		"vue-tsc": "0.40.13"
 	},
 	"pnpm": {
 		"peerDependencyRules": {

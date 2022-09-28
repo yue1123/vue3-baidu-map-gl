@@ -28,6 +28,5 @@ dist-ssr
 .cache
 
 
-types
 lib
 .env

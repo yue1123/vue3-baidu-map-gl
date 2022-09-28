@@ -5,7 +5,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -31,8 +31,8 @@
     "package/components/**/*.vue",
     "package/components/**/*.ts",
     "types/*.d.ts",
-    "package/env.d.ts", "package/components/bm-map/index.spec.tsx",
-  ],
+    "package/env.d.ts"
+, "package/components/bm-map/index.spec.tsx"  ],
   "exclude": [
     "node_modules",
     "lib"
