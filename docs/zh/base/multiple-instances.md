@@ -32,19 +32,33 @@
 ## 示例 1
 
 <div>
-  <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom"/>鼠标缩放
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom"/>鼠标缩放
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enableDragging"/>拖拽
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableDragging"/>拖拽
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enableInertialDragging"/>惯性拖拽
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableInertialDragging"/>惯性拖拽
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enablePinchToZoom"/>双指缩放地图
+  <label>
+    <input type="checkbox" v-model="mapSetting.enablePinchToZoom"/>双指缩放地图
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enableKeyboard"/>键盘操作
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableKeyboard"/>键盘操作
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enableDoubleClickZoom"/>双击缩放，左键双击放大、右键双击缩小
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableDoubleClickZoom"/>双击缩放，左键双击放大、右键双击缩小
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
+  </label>
   <br/>
   <br/>
   地图类型：<select name="" id="" v-model="mapSetting.type">
@@ -70,19 +84,33 @@
 ## 示例 2
 
 <div>
-  <input type="checkbox" v-model="mapSetting1.enableScrollWheelZoom"/>鼠标缩放
+  <label>
+    <input type="checkbox" v-model="mapSetting1.enableScrollWheelZoom"/>鼠标缩放
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting1.enableDragging"/>拖拽
+  <label>
+    <input type="checkbox" v-model="mapSetting1.enableDragging"/>拖拽
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting1.enableInertialDragging"/>惯性拖拽
+  <label>
+    <input type="checkbox" v-model="mapSetting1.enableInertialDragging"/>惯性拖拽
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting1.enablePinchToZoom"/>双指缩放地图
+  <label>
+    <input type="checkbox" v-model="mapSetting1.enablePinchToZoom"/>双指缩放地图
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting1.enableKeyboard"/>键盘操作
+  <label>
+    <input type="checkbox" v-model="mapSetting1.enableKeyboard"/>键盘操作
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting1.enableDoubleClickZoom"/>双击缩放，左键双击放大、右键双击缩小
+  <label>
+    <input type="checkbox" v-model="mapSetting1.enableDoubleClickZoom"/>双击缩放，左键双击放大、右键双击缩小
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting1.enableContinuousZoom"/>双击平滑缩放效果
+  <label>
+    <input type="checkbox" v-model="mapSetting1.enableContinuousZoom"/>双击平滑缩放效果
+  </label>
   <br/>
   <br/>
   地图类型：<select name="" id="" v-model="mapSetting1.type">
