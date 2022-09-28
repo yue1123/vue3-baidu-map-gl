@@ -26,19 +26,33 @@ import { Map } from 'vue3-baidu-map-gl'
 </script>
 
 <div>
-  <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom"/>鼠标缩放
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom"/>鼠标缩放
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enableDragging"/>拖拽
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableDragging"/>拖拽
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enableInertialDragging"/>惯性拖拽
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableInertialDragging"/>惯性拖拽
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enablePinchToZoom"/>双指缩放地图
+  <label>
+    <input type="checkbox" v-model="mapSetting.enablePinchToZoom"/>双指缩放地图
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enableKeyboard"/>键盘操作
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableKeyboard"/>键盘操作
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enableDoubleClickZoom"/>双击缩放，左键双击放大、右键双击缩小
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableDoubleClickZoom"/>双击缩放，左键双击放大、右键双击缩小
+  </label>
   <br/>
-  <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
+  </label>
   <br/>
   <br/>
   地图类型：<select class="mySelect" name="" id="" v-model="type">
@@ -66,42 +80,53 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ```html
 <div>
-	<input type="checkbox" v-model="mapSetting.enableScrollWheelZoom" />鼠标缩放
-	<br />
-	<input type="checkbox" v-model="mapSetting.enableDragging" />拖拽
-	<br />
-	<input type="checkbox" v-model="mapSetting.enableInertialDragging" />惯性拖拽
-	<br />
-	<input type="checkbox" v-model="mapSetting.enablePinchToZoom" />双指缩放地图
-	<br />
-	<input type="checkbox" v-model="mapSetting.enableKeyboard" />键盘操作
-	<br />
-	<input
-		type="checkbox"
-		v-model="mapSetting.enableDoubleClickZoom"
-	/>双击缩放，左键双击放大、右键双击缩小
-	<br />
-	<input type="checkbox" v-model="mapSetting.enableContinuousZoom" />双击平滑缩放效果
-	<br />
-	<br />
-	地图类型：<select name="" id="" v-model="type">
-		<option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
-		<option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
-	</select>
-	<br />
-	<br />
-	<map
-		:minZoom="3"
-		height="400px"
-		:mapType="type"
-		:enableDragging="mapSetting.enableDragging"
-		:enableInertialDragging="mapSetting.enableInertialDragging"
-		:enableScrollWheelZoom="mapSetting.enableScrollWheelZoom"
-		:enableContinuousZoom="mapSetting.enableContinuousZoom"
-		:enableDoubleClickZoom="mapSetting.enableDoubleClickZoom"
-		:enableKeyboard="mapSetting.enableKeyboard"
-		:enablePinchToZoom="mapSetting.enablePinchToZoom"
-	/>
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom"/>鼠标缩放
+  </label>
+  <br/>
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableDragging"/>拖拽
+  </label>
+  <br/>
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableInertialDragging"/>惯性拖拽
+  </label>
+  <br/>
+  <label>
+    <input type="checkbox" v-model="mapSetting.enablePinchToZoom"/>双指缩放地图
+  </label>
+  <br/>
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableKeyboard"/>键盘操作
+  </label>
+  <br/>
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableDoubleClickZoom"/>双击缩放，左键双击放大、右键双击缩小
+  </label>
+  <br/>
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
+  </label>
+  <br />
+  <br />
+  地图类型：<select name="" id="" v-model="type">
+    <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
+    <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
+  </select>
+  <br />
+  <br />
+  <map
+    :minZoom="3"
+    height="400px"
+    :mapType="type"
+    :enableDragging="mapSetting.enableDragging"
+    :enableInertialDragging="mapSetting.enableInertialDragging"
+    :enableScrollWheelZoom="mapSetting.enableScrollWheelZoom"
+    :enableContinuousZoom="mapSetting.enableContinuousZoom"
+    :enableDoubleClickZoom="mapSetting.enableDoubleClickZoom"
+    :enableKeyboard="mapSetting.enableKeyboard"
+    :enablePinchToZoom="mapSetting.enablePinchToZoom"
+  />
 </div>
 
 <script setup lang="ts">

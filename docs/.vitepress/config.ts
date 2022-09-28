@@ -52,13 +52,13 @@ export default defineConfig({
 		},
 		footer: {
 			message: 'Released under the MIT License.',
-			copyright: 'Copyright © 2022-present dh'
+			copyright: 'Copyright © 2022-present dh and all contributors'
 		},
 		socialLinks: [{ icon: 'github', link: 'https://github.com/yue1123/vue3-baidu-map-gl' }],
 		sidebar: sidebarConfigZh,
 		editLink: {
 			pattern: 'https://github.com/yue1123/vue3-baidu-map-gl/edit/main/docs/:path',
-			text: 'Edit this page on GitHub'
+			text: 'Suggest changes to this page'
 		}
 	}
 })

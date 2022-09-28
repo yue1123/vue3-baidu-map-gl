@@ -11,26 +11,26 @@
 
 ## 示例样式 1 -- 眼眸主题
 <div>
-  <Map width="100%" mapStyleId='980161f3645989feac25a0da15da4178'></Map>
+  <Map enableScrollWheelZoom mapStyleId='980161f3645989feac25a0da15da4178'></Map>
 </div>
 
 ::: details 点击查看代码
 ```html
   <div>
-    <Map width="100%" mapStyleId='your styleId'></Map>
+    <Map enableScrollWheelZoom mapStyleId='your styleId'></Map>
   </div>
 ```
 :::
 
 ## 示例样式 2 -- 赛博朋克
 <div>
-  <Map width="100%" mapStyleId='0f3219e982947931ae2893345940df80'></Map>
+  <Map enableScrollWheelZoom mapStyleId='0f3219e982947931ae2893345940df80'></Map>
 </div>
 
 ::: details 点击查看代码
 ```html
   <div>
-    <Map width="100%" mapStyleId='your styleId'></Map>
+    <Map enableScrollWheelZoom mapStyleId='your styleId'></Map>
   </div>
 ```
 :::

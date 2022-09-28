@@ -11,8 +11,13 @@ import { Marker } from 'vue3-baidu-map-gl'
 <div>
 <Map
   :minZoom="3"
+  :zoom='16'
   height="400px"
 >
+  <Marker
+    :position="{ lat: 39.918184, lng: 116.403901 }"
+    enableDragging
+  />
   <Marker
     :position="{ lat: 39.915185, lng: 116.403901 }"
     icon="start"

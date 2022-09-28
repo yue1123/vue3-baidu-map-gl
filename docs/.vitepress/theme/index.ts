@@ -1,11 +1,12 @@
 import DefaultTheme from 'vitepress/theme'
 import baiduMapInit from '../../../package/index'
+import '../styles/main.css'
 
 export default {
 	...DefaultTheme,
 	enhanceApp(ctx) {
 		const { app } = ctx
-		app.use(baiduMapInit, { ak: '4stE857hYPHbEmgKhLiTAa0QbCIULHpm' })
+		app.use(baiduMapInit, { ak: 'cwHsf5i2fAQAlijOyELx5COtkFhItaSm' })
 		// // if (process.env.NODE_ENV === 'production') {
 		// router.beforeEach((to, from, next) => {
 		// 	console.log('object', to, form)
@@ -21,3 +22,4 @@ export default {
 		// console.log(app, router)
 	}
 }
+// E4805d16520de693a3fe707cdc962045

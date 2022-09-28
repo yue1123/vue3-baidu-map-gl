@@ -10,7 +10,6 @@ import { Polyline } from 'vue3-baidu-map-gl'
 
 <div>
 <Map
-  :ak="'4stE857hYPHbEmgKhLiTAa0QbCIULHpm'"
   :minZoom="3"
   :zoom="16"
   height="400px"

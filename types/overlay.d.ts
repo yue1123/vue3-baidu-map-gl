@@ -58,8 +58,7 @@ declare namespace BMapGL {
 	}
 	type SymbolShapeType = number
 
-
-  interface overlayCommonOptions {
+	interface overlayCommonOptions {
 		/**
 		 * @default #000000
 		 * 折线颜色
@@ -102,8 +101,8 @@ declare namespace BMapGL {
 		 * 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果，可以设置成false，默认为true
 		 */
 		clip: boolean
-  }
-	type PolylineOptions = overlayCommonOptions 
+	}
+	type PolylineOptions = overlayCommonOptions
 	type PolygonOptions = overlayCommonOptions & {
 		/**
 		 * 面填充颜色，同CSS颜色
@@ -299,6 +298,7 @@ declare namespace BMapGL {
 	}
 	interface Polygon extends Overlay {
 		setPath(path: Point[]): void
+		setPath(path: string[]): void
 		getPath(): Point[]
 		setStrokeColor(color: string): void
 		getStrokeColor(): string
@@ -332,7 +332,7 @@ declare namespace BMapGL {
 		onlineupdate: (event: { type: string; target: any }) => void
 	}
 	class Polygon {
-		constructor(points: Point[], opts?: PolygonOptions)
+		constructor(points: Point[] | string[], opts?: PolygonOptions)
 	}
 	interface PointCollectionOption {
 		shape?: ShapeType
