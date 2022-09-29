@@ -25,14 +25,14 @@
     "baseUrl": "./"
   },
   "include": [
-    "package/index.ts",
-    "package/hooks/*.ts",
-    "package/utils/*.ts",
-    "package/components/**/*.vue",
-    "package/components/**/*.ts",
+    "packages/index.ts",
+    "packages/hooks/*.ts",
+    "packages/utils/*.ts",
+    "packages/components/**/*.vue",
+    "packages/components/**/*.ts",
     "types/*.d.ts",
-    "package/env.d.ts"
-, "package/components/bm-map/index.spec.tsx"  ],
+    "packages/env.d.ts"
+, "packages/components/bm-map/index.spec.tsx"  ],
   "exclude": [
     "node_modules",
     "lib"

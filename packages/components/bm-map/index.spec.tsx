@@ -8,8 +8,11 @@ describe('Map components test cases', async () => {
 		expect(Map).toBeDefined()
 	})
 
-	const map = (<Map ak='123' />) as any
-	const wrapper = mount(map)
+	const wrapper = mount(Map, {
+		props: {
+			ak: '123'
+		}
+	})
 	it('props with default', () => {
 		expect(wrapper.props()).toEqual({
 			ak: '123',
@@ -38,15 +41,14 @@ describe('Map components test cases', async () => {
 	})
 
 	it('custom map Loading text', () => {
-		const MapWithCustomLoading = (
-			<Map ak='11123'>
-				{{
-					loading: () => [<div>loading...</div>]
-				}}
-			</Map>
-		) as any
-
-		const wrapper = mount(MapWithCustomLoading)
+		const wrapper = mount(Map, {
+			props: {
+				ak: '123'
+			},
+			slots: {
+				loading: 'loading...'
+			}
+		})
 		expect(wrapper.text()).toBe('loading...')
 	})
 })

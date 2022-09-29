@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
-import baiduMapInit from '../../../package/index'
+import baiduMapInit from '../../../packages/index'
 import '../styles/main.css'
 
 export default {

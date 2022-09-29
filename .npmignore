@@ -1,7 +1,7 @@
 .husky
 docs
 node_modules
-package
+packages
 .git
 index.html
 pnpm-lock.yaml

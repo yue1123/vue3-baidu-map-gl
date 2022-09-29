@@ -137,7 +137,7 @@ import { Map, Polygon } from 'vue3-baidu-map-gl'
 
 <script setup lang="ts">
   import { ref, watch } from 'vue'
-  import { useAreaBoundary } from '../../../package/index.ts'
+  import { useAreaBoundary } from '../../../packages/index.ts'
   const zoom = ref<number>(11)
   const area = ref<string>('四川')
   const areaZoomMap = {
