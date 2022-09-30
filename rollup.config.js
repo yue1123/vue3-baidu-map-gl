@@ -1,6 +1,6 @@
 const resolve = require('rollup-plugin-node-resolve')
 const { terser } = require('rollup-plugin-terser')
-const pkg = require('./packages')
+const pkg = require('./package')
 const fs = require('fs')
 const path = require('path')
 const vue = require('rollup-plugin-vue')

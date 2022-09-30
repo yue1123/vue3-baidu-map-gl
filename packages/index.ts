@@ -1,4 +1,7 @@
-import { App, defineAsyncComponent } from 'vue'
+import { App } from 'vue'
+import { PluginsList } from './utils/pluginLoader'
+
+// components
 import Map from './components/bm-map'
 import Control from './components/control/bm-control'
 import Scale from './components/control/bm-scale'
@@ -12,14 +15,13 @@ import Label from './components/overlay/bm-label'
 import Polyline from './components/overlay/bm-polyline'
 import Polygon from './components/overlay/bm-polygon'
 import Circle from './components/overlay/bm-circle'
-// import useMarkerDefaultIcons from './hooks/useMarkerDefaultIcons'
-
 // hooks
-
 export * from './hooks/useAreaBoundary'
+export * from './hooks/useTrackAnimation'
 
 interface InitOptions {
 	ak?: string
+	plugins?: PluginsList
 }
 const components = [
 	{
@@ -77,18 +79,29 @@ const components = [
 ]
 // 全局注册
 const install = (app: App, options?: InitOptions) => {
-	const { ak } = options || {}
+	const { ak, plugins } = options || {}
 	components.forEach((item: any) => {
 		item.com.name = item.name
 		app.use(item.com)
 	})
+
+	app.provide('baiduMapPlugins', plugins || [])
 	ak && app.provide('baiduMapAk', ak)
 }
 
 // 局部注册
-export { Map, Control, Scale, Zoom, Navigation3d, Marker, Label, Polyline, Polygon, Circle, CityList }
+export {
+	Map,
+	Control,
+	Scale,
+	Zoom,
+	Navigation3d,
+	Marker,
+	Label,
+	Polyline,
+	Polygon,
+	Circle,
+	CityList
+}
 
 export default install
-
-// TODO: 导出点的ts类型
-// FIXME: marker 图片无法显示

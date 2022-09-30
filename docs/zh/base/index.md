@@ -80,53 +80,46 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ```html
 <div>
-  <label>
-    <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom"/>鼠标缩放
-  </label>
-  <br/>
-  <label>
-    <input type="checkbox" v-model="mapSetting.enableDragging"/>拖拽
-  </label>
-  <br/>
-  <label>
-    <input type="checkbox" v-model="mapSetting.enableInertialDragging"/>惯性拖拽
-  </label>
-  <br/>
-  <label>
-    <input type="checkbox" v-model="mapSetting.enablePinchToZoom"/>双指缩放地图
-  </label>
-  <br/>
-  <label>
-    <input type="checkbox" v-model="mapSetting.enableKeyboard"/>键盘操作
-  </label>
-  <br/>
-  <label>
-    <input type="checkbox" v-model="mapSetting.enableDoubleClickZoom"/>双击缩放，左键双击放大、右键双击缩小
-  </label>
-  <br/>
-  <label>
-    <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
-  </label>
-  <br />
-  <br />
-  地图类型：<select name="" id="" v-model="type">
-    <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
-    <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
-  </select>
-  <br />
-  <br />
-  <map
-    :minZoom="3"
-    height="400px"
-    :mapType="type"
-    :enableDragging="mapSetting.enableDragging"
-    :enableInertialDragging="mapSetting.enableInertialDragging"
-    :enableScrollWheelZoom="mapSetting.enableScrollWheelZoom"
-    :enableContinuousZoom="mapSetting.enableContinuousZoom"
-    :enableDoubleClickZoom="mapSetting.enableDoubleClickZoom"
-    :enableKeyboard="mapSetting.enableKeyboard"
-    :enablePinchToZoom="mapSetting.enablePinchToZoom"
-  />
+	<label> <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom" />鼠标缩放 </label>
+	<br />
+	<label> <input type="checkbox" v-model="mapSetting.enableDragging" />拖拽 </label>
+	<br />
+	<label> <input type="checkbox" v-model="mapSetting.enableInertialDragging" />惯性拖拽 </label>
+	<br />
+	<label> <input type="checkbox" v-model="mapSetting.enablePinchToZoom" />双指缩放地图 </label>
+	<br />
+	<label> <input type="checkbox" v-model="mapSetting.enableKeyboard" />键盘操作 </label>
+	<br />
+	<label>
+		<input
+			type="checkbox"
+			v-model="mapSetting.enableDoubleClickZoom"
+		/>双击缩放，左键双击放大、右键双击缩小
+	</label>
+	<br />
+	<label>
+		<input type="checkbox" v-model="mapSetting.enableContinuousZoom" />双击平滑缩放效果
+	</label>
+	<br />
+	<br />
+	地图类型：<select name="" id="" v-model="type">
+		<option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
+		<option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
+	</select>
+	<br />
+	<br />
+	<map
+		:minZoom="3"
+		height="400px"
+		:mapType="type"
+		:enableDragging="mapSetting.enableDragging"
+		:enableInertialDragging="mapSetting.enableInertialDragging"
+		:enableScrollWheelZoom="mapSetting.enableScrollWheelZoom"
+		:enableContinuousZoom="mapSetting.enableContinuousZoom"
+		:enableDoubleClickZoom="mapSetting.enableDoubleClickZoom"
+		:enableKeyboard="mapSetting.enableKeyboard"
+		:enablePinchToZoom="mapSetting.enablePinchToZoom"
+	/>
 </div>
 
 <script setup lang="ts">
@@ -146,17 +139,19 @@ import { Map } from 'vue3-baidu-map-gl'
 	})
 </script>
 ```
+
 :::
 
 ## 静态组件 props
 
-| 参数    | 说明                                    | 类型              | 可选值     | 默认值  |
-| ------- | --------------------------------------- | ----------------- | ---------- | ------- |
-| ak      | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`          | `required` |         |
-| width   | 地图显示宽度                            | `string / number` |            | `100%`  |
-| height  | 地图显示高度                            | `string / number` |            | `400px` |
-| minZoom | 地图允许展示的最小级别                  | `number`          | `0-21`     | `0`     |
-| maxZoom | 地图允许展示的最大级别                  | `number`          | `0-21`     | `21`    |
+| 参数    | 说明                                    | 类型               | 可选值           | 默认值  |
+| ------- | --------------------------------------- | ------------------ | ---------------- | ------- |
+| ak      | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`           | `required`       |         |
+| width   | 地图显示宽度                            | `string / number`  |                  | `100%`  |
+| height  | 地图显示高度                            | `string / number`  |                  | `400px` |
+| minZoom | 地图允许展示的最小级别                  | `number`           | `0-21`           | `0`     |
+| maxZoom | 地图允许展示的最大级别                  | `number`           | `0-21`           | `21`    |
+| plugins | 需要注册的插件                          | ['TrackAnimation'] | `TrackAnimation` |         |
 
 ## 动态组件 Props
 
@@ -167,8 +162,8 @@ import { Map } from 'vue3-baidu-map-gl'
 | tilt                   | 地图倾斜角度                                                                                                                                                                   | `number`                              | `0 `              |
 | mapType                | 地图类型 [mapType](#地图类型)                                                                                                                                                  | `string`                              | `BMAP_NORMAL_MAP` |
 | zoom                   | 地图缩放级别                                                                                                                                                                   | `number`                              | `14`              |
-| mapStyleId             | 个性化地图样式ID  [详见](./custom)                                                                                                                                             | `string`                              |                   |
-| mapStyleJson           | 个性化地图样式Json    [详见](./custom)                                                                                                                                         | `{featureType: string...}[]`          |                   |
+| mapStyleId             | 个性化地图样式 ID [详见](./custom)                                                                                                                                             | `string`                              |                   |
+| mapStyleJson           | 个性化地图样式 Json [详见](./custom)                                                                                                                                           | `{featureType: string...}[]`          |                   |
 | enableDragging         | 启用地图拖拽                                                                                                                                                                   | `boolean`                             | `true`            |
 | enableInertialDragging | 启用地图惯性拖拽                                                                                                                                                               | `boolean`                             | `true`            |
 | enableScrollWheelZoom  | 允许地图可被鼠标滚轮缩放                                                                                                                                                       | `boolean`                             | `false`           |
@@ -234,64 +229,64 @@ import { Map } from 'vue3-baidu-map-gl'
 默认情况下，地图加载中效果是`map loading...`。如果不能满足你的需求，你可以通过提供`loading`具名作用域插槽来自定义地图加载中显示效果，在地图未完成加载前`isLoading`为 false，完成后为`true`
 
 ```html
-<Map>
+<map>
 	<template #loading="{ isLoading }">
 		<div class="spinner" v-if="isLoading">
 			<div class="double-bounce1"></div>
 			<div class="double-bounce2"></div>
 		</div>
 	</template>
-</Map>  
+</map>
 
 <style lang="css">
-  .spinner {
-    width: 60px;
-    height: 60px;
+	.spinner {
+		width: 60px;
+		height: 60px;
 
-    position: relative;
-    margin: 100px auto;
-  }
+		position: relative;
+		margin: 100px auto;
+	}
 
-  .double-bounce1,
-  .double-bounce2 {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: #42b883;
-    opacity: 0.6;
-    position: absolute;
-    top: 0;
-    left: 0;
+	.double-bounce1,
+	.double-bounce2 {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background-color: #42b883;
+		opacity: 0.6;
+		position: absolute;
+		top: 0;
+		left: 0;
 
-    -webkit-animation: bounce 2s infinite ease-in-out;
-    animation: bounce 2s infinite ease-in-out;
-  }
+		-webkit-animation: bounce 2s infinite ease-in-out;
+		animation: bounce 2s infinite ease-in-out;
+	}
 
-  .double-bounce2 {
-    -webkit-animation-delay: -1s;
-    animation-delay: -1s;
-  }
+	.double-bounce2 {
+		-webkit-animation-delay: -1s;
+		animation-delay: -1s;
+	}
 
-  @-webkit-keyframes bounce {
-    0%,
-    100% {
-      -webkit-transform: scale(0);
-    }
-    50% {
-      -webkit-transform: scale(1);
-    }
-  }
+	@-webkit-keyframes bounce {
+		0%,
+		100% {
+			-webkit-transform: scale(0);
+		}
+		50% {
+			-webkit-transform: scale(1);
+		}
+	}
 
-  @keyframes bounce {
-    0%,
-    100% {
-      transform: scale(0);
-      -webkit-transform: scale(0);
-    }
-    50% {
-      transform: scale(1);
-      -webkit-transform: scale(1);
-    }
-  }
+	@keyframes bounce {
+		0%,
+		100% {
+			transform: scale(0);
+			-webkit-transform: scale(0);
+		}
+		50% {
+			transform: scale(1);
+			-webkit-transform: scale(1);
+		}
+	}
 </style>
 ```

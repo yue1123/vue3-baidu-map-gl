@@ -6,7 +6,10 @@ export default {
 	...DefaultTheme,
 	enhanceApp(ctx) {
 		const { app } = ctx
-		app.use(baiduMapInit, { ak: 'cwHsf5i2fAQAlijOyELx5COtkFhItaSm' })
+		app.use(baiduMapInit, {
+			ak: 'cwHsf5i2fAQAlijOyELx5COtkFhItaSm',
+			plugins: ['TrackAnimation']
+		})
 		// // if (process.env.NODE_ENV === 'production') {
 		// router.beforeEach((to, from, next) => {
 		// 	console.log('object', to, form)

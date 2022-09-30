@@ -94,6 +94,10 @@ const sidebarConfig = {
 				{
 					text: 'useAreaBoundary',
 					link: '/zh/hooks/useAreaBoundary'
+				},
+				{
+					text: 'useTrackAnimation',
+					link: '/zh/hooks/useTrackAnimation'
 				}
 			]
 		}

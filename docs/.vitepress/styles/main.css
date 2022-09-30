@@ -85,7 +85,7 @@ img.resizable-img {
   background-color: var(--vp-custom-block-details-bg);
   padding: 5px 15px;
   text-decoration: none;
-  margin: 16px 0;
+  margin: 16px 16px 16px 0;
 }
 
 .myButton.no-m-t {
