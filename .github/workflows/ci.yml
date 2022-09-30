@@ -30,7 +30,7 @@ jobs:
 
       # 打包
       - name: build
-        run: pnpm run docs:build
+        run: pnpm run docs:build & exit
 
       - name: Deploy
         # 使用别人写好的一个 action
