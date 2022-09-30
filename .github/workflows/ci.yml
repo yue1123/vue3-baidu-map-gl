@@ -19,22 +19,14 @@ jobs:
 
       - uses: pnpm/action-setup@v2.0.1
         with:
-          version: 6.32.3
+          version: 7.12.2
       - name: Use Node.js 16.0.0
         uses: actions/setup-node@v2
         with: 
-          node-version: 16.13.1
+          node-version: 16.17.1
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-
-
-      # # 安装node
-      # - name: 安装node.js
-      #   # 使用action库 actions/setup-node 安装node
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: 16
 
       # 打包
       - name: build
