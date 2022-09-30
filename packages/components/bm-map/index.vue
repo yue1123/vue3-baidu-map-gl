@@ -5,7 +5,15 @@
 		style="background: #f1f1f1; position: relative; overflow: hidden"
 	>
 		<slot name="loading" v-bind:isLoading="!initd">
-			<div style="color: #999; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+			<div
+				style="
+					color: #999;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				"
+			>
 				{{ !initd ? 'map loading...' : '' }}
 			</div>
 		</slot>
@@ -29,7 +37,8 @@
 	} from 'vue'
 	import useLifeCycle from '../../hooks/useLifeCycle'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
-
+	import getScriptAsync from '../../utils/getScriptAsync'
+	import { initPlugins, PluginsList } from '../../utils/pluginLoader'
 	export interface BaiduMapProps {
 		ak?: string
 		/**
@@ -86,7 +95,10 @@
 				color: string
 			}
 		}[]
-
+		/**
+		 * 插件
+		 */
+		plugins?: PluginsList
 		/**
 		 * @default true
 		 * 启用地图拖拽，默认启用
@@ -196,6 +208,7 @@
 	const vueEmits = defineEmits([
 		'initd',
 		'unload',
+		'pluginReady',
 		'click',
 		'dblclick',
 		'rightclick',
@@ -231,30 +244,16 @@
 		'longpress'
 	])
 	const ak = props.ak || inject('baiduMapAk')
+	const plugins = props.plugins || inject('baiduMapPlugins')
 	if (!ak) console.warn('missing required props: ak')
-	// 获取地图SDK Script
-	function getMapScriptAsync(): Promise<void> {
-		if (!window._BMap) {
-			window._BMap = {}
-			window._BMap.scriptLoader = new Promise<void>((resolve, reject) => {
-				const script: HTMLScriptElement = document.createElement('script')
-				window._initBMap = () => {
-					resolve()
-					window.document.body.removeChild(script)
-				}
-				script.src = `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=_initBMap`
-				script.type = 'text/javascript'
-				script.defer = true
-				script.onerror = reject
-				document.body.appendChild(script)
-			})
-		}
-		return window._BMap.scriptLoader
-	}
 
 	// 初始化地图
 	function init() {
-		getMapScriptAsync()
+		getScriptAsync({
+			src: `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=_initBMap`,
+			addCalToWindow: true,
+			key: '_initBMap'
+		})
 			.then(() => {
 				const { minZoom, maxZoom, mapType, enableAutoResize, center } = props
 				map = new BMapGL.Map(mapContainerId, {
@@ -271,6 +270,16 @@
 				if (!initd) {
 					initd = true
 					nextTick(() => ready(map))
+					// 加载插件
+					if (plugins && plugins.length) {
+						Promise.all(initPlugins(plugins).map((loader) => loader()))
+							.then(() => {
+								vueEmits('pluginReady')
+							})
+							.catch((err) => {
+								console.warn('plugins load error', err)
+							})
+					}
 				}
 			})
 			.catch((err: any) => {
@@ -424,9 +433,15 @@
 	onUnmounted(() => {
 		map?.destroy()
 	})
+	defineExpose({
+		// 父组件获取map实例方法
+		getMapInstance: () => map
+	})
 	provide('getMapInstance', () => map)
 	provide('parentUidGetter', uid)
-	provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) => setCenterAndZoom(_center))
+	provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) =>
+		setCenterAndZoom(_center)
+	)
 </script>
 <script lang="ts">
 	export default {

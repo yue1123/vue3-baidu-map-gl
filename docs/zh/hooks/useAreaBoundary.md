@@ -39,12 +39,25 @@
 ```ts
 import { Ref } from 'vue';
 export declare type AreaBoundary = string[];
+/**
+ * 获取地图区域边界
+ * @param cal 获取成功后的回调函数
+ * @returns { isLoading, boundaries, get }
+ */
 export declare function useAreaBoundary(cal?: (boundaries: Ref<AreaBoundary>) => void): {
-    // 是否加载中
-    isLoading: Ref<boolean>;
-    // 区域边界数据
-    boundaries: Ref<AreaBoundary>;
-    // 获取区域边界方法
-    get: (area: string) => void;
+  /**
+   * 是否加载中
+   */
+  isLoading: Ref<boolean>;
+  /**
+   * 区域边界数据
+   */
+  boundaries: Ref<string[]>;
+  /**
+   * 获取指定区域边界
+   * @param {string} area 区域名
+   * @example get('北京市')
+   */
+  get: (area: string) => void;
 };
 ```
