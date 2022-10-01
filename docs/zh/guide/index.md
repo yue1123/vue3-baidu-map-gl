@@ -41,7 +41,7 @@ pnpm add vue3-baidu-map-gl
 
 ### 完整引入
 
-在 main.ts(或是 main.js)中引入
+在 `main.ts`(或是 `main.js`)中引入
 
 ```ts{3,6}
 import { createApp } from 'vue'

@@ -23,7 +23,7 @@ yarn add vue3-baidu-map-gl
 pnpm add vue3-baidu-map-gl
 ```
 ### Usage
-按需导入
+按需引入
 ```vue
 <template>
   <Map ak="YOUR_AK" />
@@ -52,7 +52,8 @@ app.mount('#app')
 -   [x] 地图覆盖物
 -   [x] 多实例
 -   [x] 自定义地图样式
--   [ ] 地图插件
+-   [x] 地图插件
+    -   [x] 轨迹动画插件 
 
 ## License
 [MIT licenses](https://opensource.org/licenses/MIT)
