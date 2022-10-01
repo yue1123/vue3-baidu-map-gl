@@ -29,8 +29,6 @@ jobs:
         run: | 
           pnpm run docs:build
           echo -e ‘\003’
-
-      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
