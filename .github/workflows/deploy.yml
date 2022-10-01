@@ -1,10 +1,10 @@
-name: CI
+name: Deploy
 on:
   push:
     branches:
       - main
 jobs:
-  build:
+  deploy:
     timeout-minutes: 20
     runs-on: ubuntu-latest
     steps:
