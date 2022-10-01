@@ -37,9 +37,11 @@ const show = ref<boolean>(true)
 function toggle(){     
   show.value = !show.value
 } 
-setInterval(() => {
-  count.value ++ 
-}, 1000); 
+if(typeof window !== 'undefined'){
+  setInterval(() => {
+    count.value ++ 
+  }, 1000); 
+}
 </script>
 
 
