@@ -1,36 +1,26 @@
 name: Deploy
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
-    timeout-minutes: 20
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
         with:
-          fetch-depth: 0
-
-      - uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7
-
-      - name: Set node version to 16
-        uses: actions/setup-node@v3
-        with: 
           node-version: 16
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+          cache: yarn
+      - run: yarn install --frozen-lockfile
 
       - name: Build
-        run: pnpm run docs:build
+        run: yarn docs:build
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: docs/.vitepress/dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/.vitepress/dist
