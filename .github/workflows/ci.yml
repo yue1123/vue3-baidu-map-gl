@@ -8,27 +8,22 @@ jobs:
     timeout-minutes: 20
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with: 
+          node-version: 16
 
       - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7
 
-      - name: Set node version to 16
-        uses: actions/setup-node@v3
-        with: 
-          node-version: 16
-          cache: pnpm
-
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install
 
       - name: Build
         run: | 
           pnpm run docs:build &
-          echo -e ‘\003’
+          exit 1
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
