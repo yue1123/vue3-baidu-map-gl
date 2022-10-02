@@ -1,28 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ES2016",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "react-jsx",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "declaration": true,
-    "declarationDir": "./lib",
-    "emitDeclarationOnly": true,
-    "lib": [
-      "ESNext",
-      "dom",
-      "ESNext.Promise"
-    ],
-    "types": [
-      "vite/client",
-      "vitest/globals"
-    ],
-    "suppressImplicitAnyIndexErrors": true,
-    "baseUrl": "./"
+		"target": "ES2016",
+		"useDefineForClassFields": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"strict": true,
+		"jsx": "react-jsx",
+		"sourceMap": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"declaration": true,
+		"declarationDir": "./lib",
+		"emitDeclarationOnly": true,
+		"skipLibCheck": true, // TODO https://github.com/vuejs/core/issues/6554
+		"lib": ["ESNext", "dom", "ESNext.Promise"],
+		"types": ["vite/client", "vitest/globals"],
+		"suppressImplicitAnyIndexErrors": true,
+		"baseUrl": "./"
   },
   "include": [
     "packages/index.ts",

@@ -4,8 +4,9 @@ export type WithInstall<T> = T & {
 	install(app: App): void
 }
 
-export function withInstall<T>(options: T) {
-	;(options as Record<string, unknown>).install = (app: App) => {
+export function withInstall(options: any) {
+	type Component = typeof options
+	;(options as Record<string, any>).install = (app: App) => {
 		const { name } = options as unknown as { name: string }
 		// 短横线命名
 		app.component(name, options)
@@ -17,5 +18,5 @@ export function withInstall<T>(options: T) {
 		}
 	}
 
-	return options as WithInstall<T>
+	return options as WithInstall<Component>
 }

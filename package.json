@@ -72,5 +72,30 @@
 			"pre-commit": "echo commit",
 			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
 		}
+	},
+	"lint-staged": {
+		"*.js": [
+			"prettier --write",
+			"eslint --fix"
+		],
+		"*.ts": [
+			"prettier --write",
+			"eslint --fix"
+		],
+		"*.tsx": [
+			"prettier --write",
+			"eslint --fix"
+		],
+		"*.vue": [
+			"prettier --parser=vue --write",
+			"eslint --fix"
+		],
+		"*.css": [
+			"prettier --write"
+		],
+		"*.md": [
+			"prettier --write --parser markdown --prose-wrap never",
+			"eslint --fix"
+		]
 	}
 }
