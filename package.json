@@ -2,6 +2,7 @@
 	"name": "vue3-baidu-map-gl",
 	"version": "0.0.14",
 	"main": "./lib/index.js",
+	"module": "./lib/index.js",
 	"typings": "./lib/index.d.ts",
 	"exports": {
 		".": {
@@ -17,11 +18,15 @@
 		"test": "vitest",
 		"docs:build": "vitepress build docs",
 		"link:pnpm": "pnpm link --global",
-		"fix-dot": "fixdot docs/zh/base/* docs/zh/control/* docs/zh/guide/* docs/zh/overlay/* docs/index.md -d -p"
+		"fix-dot": "fixdot docs/zh/base/* docs/zh/control/* docs/zh/guide/* docs/zh/overlay/* docs/index.md -d -p",
+		"gen-volar-dts": "esbuild scripts/gen-component-declaration.js --bundle --platform=node | node"
 	},
 	"dependencies": {
 		"mitt": "^3.0.0",
 		"vue": "3.2.37"
+	},
+	"peerDependencies": {
+		"vue": "^3.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.9",
@@ -32,6 +37,7 @@
 		"@types/ws": "^8.5.3",
 		"@vitejs/plugin-vue": "3.1.0",
 		"@vue/test-utils": "^2.0.2",
+		"esbuild": "^0.15.10",
 		"husky": "^7.0.4",
 		"jsdom": "^20.0.0",
 		"rollup": "^2.70.1",
