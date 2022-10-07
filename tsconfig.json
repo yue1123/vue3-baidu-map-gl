@@ -1,37 +1,40 @@
 {
-  "compilerOptions": {
-		"target": "ES2016",
+	"compilerOptions": {
+		"target": "ES6",
 		"useDefineForClassFields": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"strict": true,
-		"jsx": "react-jsx",
-		"sourceMap": true,
 		"resolveJsonModule": true,
-		"esModuleInterop": true,
-		"declaration": true,
-		"declarationDir": "./lib",
-		"emitDeclarationOnly": true,
 		"skipLibCheck": true, // TODO https://github.com/vuejs/core/issues/6554
-		"lib": ["ESNext", "dom", "ESNext.Promise"],
 		"types": ["vite/client", "vitest/globals"],
 		"suppressImplicitAnyIndexErrors": true,
-		"baseUrl": "./"
-  },
-  "include": [
-    "packages/index.ts",
-    "packages/hooks/*.ts",
-    "packages/utils/*.ts",
-    "packages/components/**/*.vue",
-    "packages/components/**/*.ts",
-    "types/*.d.ts",
-    "packages/env.d.ts"
-, "packages/components/bm-map/index.spec.tsx"  ],
-  "exclude": [
-    "node_modules",
-    "lib"
-  ],
-  "files": [
-    "./types/index.d.ts"
-  ]
+		"baseUrl": "./packages",
+		"rootDir": "./packages",
+		"strict": true,
+		"strictNullChecks": true,
+		"jsx": "preserve",
+		"jsxFactory": "h",
+		"jsxFragmentFactory": "Fragment",
+		"noImplicitAny": true,
+		"noUnusedLocals": false,
+		"module": "ES6",
+		"moduleResolution": "Node",
+		"declaration": true,
+		"forceConsistentCasingInFileNames": true,
+		"composite": true,
+		"esModuleInterop": true,
+		"lib": ["ESNext", "DOM"],
+		"outDir": "./lib"
+	},
+	"include": [
+		"packages/index.ts",
+		"packages/components.ts",
+		"packages/hooks/*.ts",
+		"packages/utils/*.ts",
+		"packages/components/**/*.vue",
+		"packages/components/**/*.ts",
+		"packages/components/**/*.tsx",
+		"types/*.d.ts",
+		"packages/env.d.ts"
+	],
+	"exclude": ["node_modules", "lib"],
+	"files": ["./types/index.d.ts"]
 }

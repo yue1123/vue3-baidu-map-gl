@@ -1,119 +1,72 @@
-const resolve = require('rollup-plugin-node-resolve')
-const { terser } = require('rollup-plugin-terser')
-const pkg = require('./package')
-const fs = require('fs')
 const path = require('path')
+const merge = require('deepmerge')
+const { defineConfig } = require('rollup')
+const nodeResolve = require('@rollup/plugin-node-resolve').default
+const babel = require('@rollup/plugin-babel').default
+const replace = require('@rollup/plugin-replace')
+const commonjs = require('@rollup/plugin-commonjs')
+const esbuild = require('rollup-plugin-esbuild').default
+const { terser } = require('rollup-plugin-terser')
 const vue = require('rollup-plugin-vue')
-const typescript = require('rollup-plugin-typescript')
 
-const deps = Object.keys(pkg.dependencies || {})
+const extensions = ['.mjs', '.js', '.json', '.ts', '.vue']
 
-const readDirectory = (dir) => {
-	//递归目录结构
-	const list = fs.readdirSync(dir)
-	const ret = []
-
-	list.forEach((filename) => {
-		const dist = path.resolve(dir, filename)
-		const stat = fs.statSync(dist)
-		if (stat.isFile()) {
-			if (filename === 'index.vue' || filename.endsWith('.ts')) {
-				ret.push(dist)
-			}
-		} else {
-			ret.push(...readDirectory(dist))
+const baseConfig = defineConfig({
+	input: path.resolve('./packages/index.ts'),
+	plugins: [
+		nodeResolve({ extensions }),
+		vue(),
+		esbuild({
+			tsconfig: path.resolve(__dirname, 'tsconfig.json'),
+			target: 'esnext',
+			sourceMap: true
+		}),
+		babel({
+			extensions,
+			babelHelpers: 'bundled'
+		}),
+		commonjs()
+	],
+	external: ['vue'],
+	output: {
+		name: 'vue3-baidu-map-gl',
+		format: 'umd',
+		exports: 'named',
+		globals: {
+			vue: 'Vue'
 		}
-	})
-	return ret
-}
-
-const componentsBuildPlugins = [resolve(), vue({ isWebComponent: true, compileTemplate: true }), typescript()]
-const componentsBuild = readDirectory(path.resolve(__dirname, './packages/components')).map((component) => {
-	return {
-		external(id) {
-			if (/^mitt/.test(id)) {
-				return false
-			}
-			return /^vue/.test(id) || /hooks/.test(id) || /utils/.test(id) || deps.some((k) => new RegExp('^' + k).test(id))
-		},
-		// 入口
-		input: component,
-		// 出口
-		output: [
-			{
-				// 必须，输出文件 (如果要输出多个，可以是一个数组)
-				exports: 'named', // 输出多个文件
-				file: component.replace('packages', 'lib').replace('.vue', '.js').replace('.ts', '.js'), // 必须，输出文件
-				format: 'es'
-			}
-		],
-		// 插件
-		plugins: componentsBuildPlugins
-	}
-})
-const hooksBuild = readDirectory(path.resolve(__dirname, './packages/hooks')).map((hooks) => {
-	return {
-		external(id) {
-			if (/^mitt/.test(id)) {
-				return false
-			}
-			return (
-				id.startsWith('./') || /^vue/.test(id) || /hooks/.test(id) || deps.some((k) => new RegExp('^' + k).test(id))
-			)
-		},
-		// 入口
-		input: hooks,
-		// 出口
-		output: [
-			{
-				// 必须，输出文件 (如果要输出多个，可以是一个数组)
-				exports: 'named', // 输出多个文件
-				file: hooks.replace('packages', 'lib').replace('.ts', '.js'), // 必须，输出文件
-				format: 'es'
-			}
-		],
-		// 插件
-		plugins: [resolve(), typescript()]
-	}
-})
-const utilsBuild = readDirectory(path.resolve(__dirname, './packages/utils')).map((utils) => {
-	return {
-		external(id) {
-			if (/^mitt/.test(id)) {
-				return false
-			}
-			return /^vue/.test(id) || /hooks/.test(id) || deps.some((k) => new RegExp('^' + k).test(id))
-		},
-		// 入口
-		input: utils,
-		// 出口
-		output: [
-			{
-				// 必须，输出文件 (如果要输出多个，可以是一个数组)
-				exports: 'named', // 输出多个文件
-				file: utils.replace('packages', 'lib').replace('.ts', '.js'), // 必须，输出文件
-				format: 'es'
-			}
-		],
-		// 插件
-		plugins: [resolve(), typescript()]
 	}
 })
 
-const buildIndex = [
-	{
-		external: () => true,
-		// 入口
-		input: './packages/index.ts',
-		// 出口
-		output: {
-			// 必须，输出文件 (如果要输出多个，可以是一个数组)
-			exports: 'named', // 输出多个文件
-			file: './lib/index.js', // 必须，输出文件
-			format: 'es'
-		},
-		// 插件
-		plugins: [resolve(), typescript()]
+const devConfig = defineConfig({
+	plugins: [
+		replace({
+			values: {
+				__DEV__: JSON.stringify(true),
+				'process.env.NODE_ENV': JSON.stringify('development')
+			},
+			preventAssignment: true
+		})
+	],
+	output: {
+		file: path.resolve('dist/index.js')
 	}
-]
-module.exports = [...componentsBuild, ...hooksBuild, ...utilsBuild, ...buildIndex]
+})
+
+const prodConfig = defineConfig({
+	plugins: [
+		replace({
+			values: {
+				__DEV__: JSON.stringify(false),
+				'process.env.NODE_ENV': JSON.stringify('production')
+			},
+			preventAssignment: true
+		}),
+		terser()
+	],
+	output: {
+		file: path.resolve('dist/index.prod.js')
+	}
+})
+
+module.exports = [merge(baseConfig, devConfig), merge(baseConfig, prodConfig)]
