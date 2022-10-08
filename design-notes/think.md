@@ -12,8 +12,20 @@ if(typeof window !== 'undefined'){
 }
 ```
 
-## 2022.20.3 
+## 2022.10.3 
 为什么开源组件Vue组件库喜欢用tsx?
 我暂且浅薄的认为有两个原因：
 1. 可以有利于打包一个组件一个文件夹这种结构代码，tsx可以直接通过`tsc`编译，`.vue`单文件组件就不行，因为他需要编译器处理
 2. 更加的灵活，ts 类型更方便导出，代码更可控
+
+## 2022.10.8
+如何去掉打包后vue组件配置中__file?
+`rollup-plugin-vue`源码: 
+```js
+if (!isProduction) {
+  output.push(`script.__file = ${JSON.stringify(shortFilePath)}`);
+} else if (options.exposeFilename) {
+  output.push(`script.__file = ${JSON.stringify(path_1.default.basename(shortFilePath))}`);
+}
+```
+rollup 打包组件库指定环境: `cross-env NODE_ENV=production rollup -c`
