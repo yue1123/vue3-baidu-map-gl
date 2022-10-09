@@ -1,10 +1,9 @@
 // The file is not designed to run directly. `cwd` should be project root.
-import path  from 'path'
+import path from 'path'
 import fs from 'fs-extra'
-import process  from 'process'
-import * as globalComponents from '../lib/components'
+import process from 'process'
+import * as globalComponents from '../es/index'
 
-console.log(globalComponents, globalComponents.default)
 const TYPE_ROOT = process.cwd()
 
 // XButton is for tsx type checking, shouldn't be exported
@@ -19,10 +18,7 @@ function parseComponentsDeclaration(code) {
 		return {}
 	}
 	return Object.fromEntries(
-		Array.from(code.matchAll(/(?<!\/\/)\s+\s+['"]?(.+?)['"]?:\s(.+?)\n/g)).map((i) => [
-			i[1],
-			i[2]
-		])
+		Array.from(code.matchAll(/(?<!\/\/)\s+\s+['"]?(.+?)['"]?:\s(.+?)\n/g)).map((i) => [i[1], i[2]])
 	)
 }
 
@@ -30,8 +26,9 @@ async function generateComponentsType() {
 	const components = {}
 	Object.keys(globalComponents).forEach((key) => {
 		const entry = `typeof import('vue3-baidu-map-gl')['${key}']`
-		if (key.startsWith('N') && !excludeComponents.includes(key)) {
+		if (key !== 'default' && key.indexOf('use') === -1 && !excludeComponents.includes(key)) {
 			components[key] = entry
+			components[`Bm${key}`] = entry
 		}
 	})
 	const originalContent = exist(path.resolve(TYPE_ROOT, 'volar.d.ts'))

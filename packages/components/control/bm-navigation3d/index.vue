@@ -5,7 +5,7 @@
 	import { defineProps, withDefaults, defineEmits } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import useLifeCycle from '../../../hooks/useLifeCycle'
-	export interface baseBmControlOptions {
+	export interface Navigation3dProps {
 		/**
 		 * 控件的停靠位置
 		 */
@@ -18,7 +18,7 @@
 			y: number
 		}
 	}
-	const props = withDefaults(defineProps<baseBmControlOptions>(), {
+	const props = withDefaults(defineProps<Navigation3dProps>(), {
 		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
 		offset: () => ({ x: 83, y: 18 })
 	})

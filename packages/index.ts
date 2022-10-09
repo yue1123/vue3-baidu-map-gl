@@ -1,95 +1,65 @@
 import { App } from 'vue'
 import { PluginsList } from './utils/pluginLoader'
 
-// components
-import Map from './components/bm-map'
-import Control from './components/control/bm-control'
-import Scale from './components/control/bm-scale'
-import Zoom from './components/control/bm-zoom'
-import CityList from './components/control/bm-city-list'
-import Location from './components/control/bm-location'
-import Copyright from './components/control/bm-copyright'
-import Navigation3d from './components/control/bm-navigation3d'
-import Marker from './components/overlay/bm-marker'
-import Label from './components/overlay/bm-label'
-import Polyline from './components/overlay/bm-polyline'
-import Polygon from './components/overlay/bm-polygon'
-import Circle from './components/overlay/bm-circle'
-// hooks
-export * from './hooks/useAreaBoundary'
-export * from './hooks/useTrackAnimation'
-
+declare module 'vue' {
+	interface ComponentCustomProperties {
+		$baiduMapAk: string
+		$baiduMapPlugins: PluginsList
+	}
+}
 interface InitOptions {
 	ak?: string
 	plugins?: PluginsList
 }
-const components = [
-	{
-		name: 'baidu-map',
-		com: Map
-	},
-	{
-		name: 'bm-control',
-		com: Control
-	},
-	{
-		name: 'bm-scale',
-		com: Scale
-	},
-	{
-		name: 'bm-zoom',
-		com: Zoom
-	},
-	{
-		name: 'bm-city-list',
-		com: CityList
-	},
-	{
-		name: 'bm-location',
-		com: Location
-	},
-	{
-		name: 'bm-navigation3d',
-		com: Navigation3d
-	},
-	{
-		name: 'bm-copyright',
-		com: Copyright
-	},
-	{
-		name: 'bm-marker',
-		com: Marker
-	},
-	{
-		name: 'bm-label',
-		com: Label
-	},
-	{
-		name: 'bm-polyline',
-		com: Polyline
-	},
-	{
-		name: 'bm-polygon',
-		com: Polygon
-	},
-	{
-		name: 'bm-circle',
-		com: Circle
-	}
+// hooks
+export * from './hooks/useAreaBoundary'
+export * from './hooks/useTrackAnimation'
+
+// components
+import Map from './components/bm-map/index.vue'
+import Control from './components/control/bm-control/index.vue'
+import Scale from './components/control/bm-scale/index.vue'
+import Zoom from './components/control/bm-zoom/index.vue'
+import CityList from './components/control/bm-city-list/index.vue'
+import Location from './components/control/bm-location/index.vue'
+import Copyright from './components/control/bm-copyright/index.vue'
+import Navigation3d from './components/control/bm-navigation3d/index.vue'
+import Marker from './components/overlay/bm-marker/index.vue'
+import Label from './components/overlay/bm-label/index.vue'
+import Polyline from './components/overlay/bm-polyline/index.vue'
+import Polygon from './components/overlay/bm-polygon/index.vue'
+import Circle from './components/overlay/bm-circle/index.vue'
+
+const componentsList = [
+	Map,
+	Control,
+	Scale,
+	Zoom,
+	Navigation3d,
+	Marker,
+	Copyright,
+	Location,
+	Label,
+	Polyline,
+	Polygon,
+	Circle,
+	CityList
 ]
-// 全局注册
-const install = (app: App, options?: InitOptions) => {
-	const { ak, plugins } = options || {}
-	components.forEach((item: any) => {
-		item.com.name = item.name
-		app.use(item.com)
-	})
 
-	app.provide('baiduMapPlugins', plugins || [])
-	ak && app.provide('baiduMapAk', ak)
+// global register
+const vue3BaiduMapGl = {
+	install: (app: App, options?: InitOptions) => {
+		const { ak, plugins } = options || {}
+		for (const component of componentsList) {
+			const name = component.name
+			app.component(name, component)
+			app.component(name.replace('Bm', ''), component)
+		}
+		app.config.globalProperties.$baiduMapPlugins = plugins || []
+		ak && (app.config.globalProperties.$baiduMapAk = ak)
+	},
+	version: '__VERSION__'
 }
-
-// 局部注册
 export {
 	Map,
 	Control,
@@ -97,6 +67,8 @@ export {
 	Zoom,
 	Navigation3d,
 	Marker,
+	Copyright,
+	Location,
 	Label,
 	Polyline,
 	Polygon,
@@ -104,4 +76,4 @@ export {
 	CityList
 }
 
-export default install
+export default vue3BaiduMapGl

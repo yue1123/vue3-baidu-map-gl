@@ -1,19 +1,11 @@
 <template>
 	<div
 		:id="mapContainerId"
-		:style="{ width: props.width, height: props.height }"
+		:style="{ width: width, height: height }"
 		style="background: #f1f1f1; position: relative; overflow: hidden"
 	>
 		<slot name="loading" v-bind:isLoading="!initd">
-			<div
-				style="
-					color: #999;
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-				"
-			>
+			<div style="color: #999; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
 				{{ !initd ? 'map loading...' : '' }}
 			</div>
 		</slot>
@@ -39,9 +31,10 @@
 	import bindEvents, { Callback } from '../../utils/bindEvents'
 	import getScriptAsync from '../../utils/getScriptAsync'
 	import { initPlugins, PluginsList } from '../../utils/pluginLoader'
+	import { isString } from '../../utils'
 	export interface BaiduMapProps {
 		ak?: string
-		/**
+		/**sss
 		 * 地图显示宽度
 		 */
 		width?: string | number
@@ -183,7 +176,7 @@
 	let initd: boolean = false
 	// 地图初始化的发布
 	const { ready } = useLifeCycle()
-	const uid = getCurrentInstance()?.uid
+	const { uid, proxy } = getCurrentInstance()!
 	const mapContainerId = 'baidu-map-container' + uid
 	const props = withDefaults(defineProps<BaiduMapProps>(), {
 		width: '100%',
@@ -205,6 +198,8 @@
 		enablePinchToZoom: true,
 		enableAutoResize: true
 	})
+	const width = isString(props.width) ? props.width : `${props.width}px`
+	const height = isString(props.height) ? props.height : `${props.height}px`
 	const vueEmits = defineEmits([
 		'initd',
 		'unload',
@@ -243,8 +238,8 @@
 		'touchend',
 		'longpress'
 	])
-	const ak = props.ak || inject('baiduMapAk')
-	const plugins = props.plugins || inject('baiduMapPlugins')
+	const ak = props.ak || proxy!.$baiduMapAk
+	const plugins = props.plugins || proxy!.$baiduMapPlugins
 	if (!ak) console.warn('missing required props: ak')
 
 	// 初始化地图
@@ -439,9 +434,7 @@
 	})
 	provide('getMapInstance', () => map)
 	provide('parentUidGetter', uid)
-	provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) =>
-		setCenterAndZoom(_center)
-	)
+	provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) => setCenterAndZoom(_center))
 </script>
 <script lang="ts">
 	export default {

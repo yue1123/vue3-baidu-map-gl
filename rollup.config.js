@@ -1,39 +1,49 @@
 const path = require('path')
 const merge = require('deepmerge')
 const { defineConfig } = require('rollup')
-const nodeResolve = require('@rollup/plugin-node-resolve').default
+const resolve = require('rollup-plugin-node-resolve')
 const babel = require('@rollup/plugin-babel').default
 const replace = require('@rollup/plugin-replace')
-const commonjs = require('@rollup/plugin-commonjs')
-const esbuild = require('rollup-plugin-esbuild').default
 const { terser } = require('rollup-plugin-terser')
+const externals = require('rollup-plugin-node-externals').default
 const vue = require('rollup-plugin-vue')
+const typescript = require('rollup-plugin-typescript')
 
-const extensions = ['.mjs', '.js', '.json', '.ts', '.vue']
+const pkg = require('./package.json')
 
 const baseConfig = defineConfig({
 	input: path.resolve('./packages/index.ts'),
 	plugins: [
-		nodeResolve({ extensions }),
-		vue(),
-		esbuild({
-			tsconfig: path.resolve(__dirname, 'tsconfig.json'),
-			target: 'esnext',
-			sourceMap: true
+		externals({
+			devDeps: false
+		}),
+		replace({
+			values: {
+				__VERSION__: pkg.version
+			},
+			preventAssignment: true
+		}),
+		typescript(),
+		vue({ exposeFilename: false, css: false }),
+		resolve({
+			customResolveOptions: {
+				moduleDirectory: 'node_modules'
+			},
+			rootDir: path.join(__dirname, '.'),
+			browser: true
 		}),
 		babel({
-			extensions,
+			exclude: 'node_modules/**',
 			babelHelpers: 'bundled'
-		}),
-		commonjs()
+		})
 	],
-	external: ['vue'],
 	output: {
-		name: 'vue3-baidu-map-gl',
+		name: 'Vue3baiduMapGl',
 		format: 'umd',
 		exports: 'named',
 		globals: {
-			vue: 'Vue'
+			vue: 'Vue',
+			mitt: 'mitt'
 		}
 	}
 })
@@ -69,4 +79,30 @@ const prodConfig = defineConfig({
 	}
 })
 
-module.exports = [merge(baseConfig, devConfig), merge(baseConfig, prodConfig)]
+const componentFileReg = /vue_type_script_setup_true_lang/
+const libConfig = defineConfig({
+	input: [
+		path.resolve('./packages/index.ts'),
+		path.resolve('./packages/create.ts')
+	],
+	output: {
+		dir: './es',
+		format: 'es',
+		preserveModules: true,
+		entryFileNames: (chunk) => {
+			if (componentFileReg.test(chunk.name)) {
+				return `index.vue.js`
+			}
+			return `${chunk.name}.js`
+		}
+	}
+})
+
+module.exports = [
+	// dev umd output
+	merge(baseConfig, devConfig),
+	// prod umd output
+	merge(baseConfig, prodConfig),
+	// lib output
+	merge(baseConfig, libConfig)
+]

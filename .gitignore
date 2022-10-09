@@ -27,6 +27,6 @@ dist-ssr
 .temp
 .cache
 
-
 lib
+es
 .env

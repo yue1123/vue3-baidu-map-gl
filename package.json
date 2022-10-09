@@ -1,26 +1,30 @@
 {
 	"name": "vue3-baidu-map-gl",
+	"description": "A Vue 3 baidu map gl Component Library. ",
 	"version": "0.0.14",
-	"main": "./lib/index.js",
-	"module": "./lib/index.js",
-	"typings": "./lib/index.d.ts",
-	"exports": {
-		".": {
-			"import": "./lib/index.js",
-			"types": "./lib/index.d.ts"
-		},
-		"./package.json": "./package.json"
-	},
+	"main": "es/index.js",
+	"module": "es/index.js",
+	"types": "es/index.d.ts",
+	"unpkg": "dist/index.prod.js",
+	"jsdelivr": "dist/index.prod.js",
+	"author": "yue1123",
+	"license": "MIT",
+	"files": [
+		"es",
+		"dist",
+		"volar.d.ts",
+		"README.md"
+	],
 	"scripts": {
-		"dev": "rollup -c",
-		"build": "rimraf lib dist && tsc -b --force && rollup -c",
+		"clean": "rimraf es dist",
+		"dev": "cross-env NODE_ENV=development & pnpm clean && rollup -c",
+		"build": "pnpm clean && vue-tsc && cross-env NODE_ENV=production rollup -c && rimraf *.tsbuildinfo && pnpm gen-volar-dts",
 		"docs:dev": "vitepress dev docs",
 		"test": "vitest",
 		"docs:build": "vitepress build docs",
 		"link:pnpm": "pnpm link --global",
 		"fix-dot": "fixdot docs/zh/base/* docs/zh/control/* docs/zh/guide/* docs/zh/overlay/* docs/index.md -d -p",
-		"gen-volar-dts": "esbuild scripts/gen-component-declaration.js --bundle --platform=node | node",
-		"build:package": "tsc -b --force tsconfig.esm.json && node scripts/pre-build/pre-cjs-build.js && tsc -b --force tsconfig.cjs.json && rollup -c && pnpm run test:umd && node scripts/post-build && rimraf {es,lib}/*.tsbuildinfo"
+		"gen-volar-dts": "esbuild scripts/gen-component-declaration.js --bundle --platform=node | node"
 	},
 	"dependencies": {
 		"mitt": "^3.0.0",
@@ -40,6 +44,7 @@
 		"@types/ws": "^8.5.3",
 		"@vitejs/plugin-vue": "3.1.0",
 		"@vue/test-utils": "^2.0.2",
+		"cross-env": "^7.0.3",
 		"deepmerge": "^4.2.2",
 		"esbuild": "^0.15.10",
 		"husky": "^7.0.4",
@@ -48,17 +53,20 @@
 		"rollup": "^2.70.1",
 		"rollup-plugin-css-porter": "^1.0.2",
 		"rollup-plugin-esbuild": "^4.10.1",
+		"rollup-plugin-node-externals": "^5.0.0",
 		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-plugin-terser": "^7.0.2",
 		"rollup-plugin-typescript": "^1.0.1",
+		"rollup-plugin-typescript2": "^0.34.1",
 		"rollup-plugin-vue": "^6.0.0",
 		"tslib": "^2.4.0",
 		"typescript": "^4.6.3",
 		"vite": "3.1.4",
 		"vitepress": "1.0.0-alpha.4",
 		"vitest": "^0.23.4",
-		"vue-tsc": "0.40.13"
+		"vue-tsc": "^1.0.0"
 	},
+	"sideEffects": false,
 	"pnpm": {
 		"peerDependencyRules": {
 			"ignoreMissing": [
