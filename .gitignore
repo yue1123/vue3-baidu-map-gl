@@ -30,3 +30,4 @@ dist-ssr
 lib
 es
 .env
+./volar.d.ts
