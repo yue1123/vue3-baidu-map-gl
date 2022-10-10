@@ -1,11 +1,36 @@
 const sidebarConfig = {
 	'/zh/': [
 		{
-			text: '开发指南',
+			text: '介绍',
 			items: [
 				{
-					text: '快速开始',
+					text: 'vue3-baidu-map-gl',
 					link: '/zh/guide/'
+				}
+			]
+		},
+		{
+			text: '指南',
+			items: [
+				{
+					text: '安装',
+					link: '/zh/guide/install'
+				},
+				{
+					text: '申请 ak',
+					link: '/zh/guide/ak'
+				},
+				{
+					text: '在 SFC 中使用',
+					link: '/zh/guide/usage-sfc'
+				},
+				{
+					text: '使用 UMD',
+					link: '/zh/guide/usage-umd'
+				},
+				{
+					text: 'ak与插件配置',
+					link: '/zh/guide/config'
 				}
 			]
 		},
@@ -36,7 +61,7 @@ const sidebarConfig = {
 			collapsible: true,
 			items: [
 				{
-					text: 'Control 自定义控件',
+					text: 'Control 自定义',
 					link: '/zh/control/custom'
 				},
 				{
@@ -44,7 +69,7 @@ const sidebarConfig = {
 					link: '/zh/control/citylist'
 				},
 				{
-					text: 'Navigation3d 3D视角导航控件',
+					text: 'Navigation3d 3D视角导航',
 					link: '/zh/control/navigation3d'
 				},
 				{
@@ -52,12 +77,16 @@ const sidebarConfig = {
 					link: '/zh/control/copyright'
 				},
 				{
-					text: 'Scale 比例尺控件',
+					text: 'Scale 比例尺',
 					link: '/zh/control/scale'
 				},
 				{
-					text: 'Zoom 缩放控件',
+					text: 'Zoom 缩放',
 					link: '/zh/control/zoom'
+				},
+				{
+					text: 'Location 定位',
+					link: '/zh/control/location'
 				}
 			]
 		},
