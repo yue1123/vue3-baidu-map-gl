@@ -29,3 +29,23 @@ if (!isProduction) {
 }
 ```
 rollup 打包组件库指定环境: `cross-env NODE_ENV=production rollup -c`
+
+
+## 2022.10.10
+`app.use(vue3BaiduMapGl)`同时兼容 umd 和 es
+
+只需要在默认导出插件配置项的同时导出单独的`install`和`version`
+```
+const vue3BaiduMapGl = {
+	install: (app: App, options?: InitOptions) => {
+    // ....
+	},
+	version: '1.0.0'
+}
+// export for es
+export default vue3BaiduMapGl
+
+// export for umd
+export const install = vue3BaiduMapGl.install
+export const version = vue3BaiduMapGl.version
+```
