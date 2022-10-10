@@ -11,7 +11,7 @@ hero:
   image:
     src: /logo.png
     alt: Vue3 BaiduMap GL
-  actions:a
+  actions:
     - theme: brand
       text: 开始使用
       link: /zh/guide/
