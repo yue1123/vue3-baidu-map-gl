@@ -1,7 +1,7 @@
 {
 	"name": "vue3-baidu-map-gl",
 	"description": "A Vue 3 baidu map gl Component Library. ",
-	"version": "0.0.14",
+	"version": "0.0.18",
 	"main": "es/index.js",
 	"module": "es/index.js",
 	"types": "es/index.d.ts",
@@ -9,16 +9,26 @@
 	"jsdelivr": "dist/index.prod.js",
 	"author": "yue1123",
 	"license": "MIT",
+	"exports": {
+    "./es": "./es/index.js",
+    "./*": "./*",
+		".": {
+			"import": "./es/index.js",
+			"types": "./es/index.d.ts"
+		},
+		"./package.json": "./package.json"
+	},
 	"files": [
 		"es",
 		"dist",
+		"types",
 		"volar.d.ts",
 		"README.md"
 	],
 	"scripts": {
 		"clean": "rimraf es dist",
-		"dev": "cross-env NODE_ENV=development & pnpm clean && rollup -c",
-		"build": "pnpm clean && vue-tsc && cross-env NODE_ENV=production rollup -c && rimraf *.tsbuildinfo && pnpm gen-volar-dts",
+		"dev": "pnpm clean && rollup -c",
+		"build": "pnpm clean && vue-tsc && rollup -c && rimraf *.tsbuildinfo && pnpm gen-volar-dts",
 		"docs:dev": "vitepress dev docs",
 		"test": "vitest",
 		"docs:build": "vitepress build docs",
@@ -28,7 +38,7 @@
 	},
 	"dependencies": {
 		"mitt": "^3.0.0",
-		"vue": "3.2.37"
+		"vue": "^3.2.40"
 	},
 	"peerDependencies": {
 		"vue": "^3.0.0"
@@ -44,7 +54,6 @@
 		"@types/ws": "^8.5.3",
 		"@vitejs/plugin-vue": "3.1.0",
 		"@vue/test-utils": "^2.0.2",
-		"cross-env": "^7.0.3",
 		"deepmerge": "^4.2.2",
 		"esbuild": "^0.15.10",
 		"husky": "^7.0.4",

@@ -8,8 +8,9 @@ const { terser } = require('rollup-plugin-terser')
 const externals = require('rollup-plugin-node-externals').default
 const vue = require('rollup-plugin-vue')
 const typescript = require('rollup-plugin-typescript')
-
 const pkg = require('./package.json')
+
+const packageBuild = require('./scripts/build-package.js')
 
 const baseConfig = defineConfig({
 	input: path.resolve('./packages/index.ts'),
@@ -24,14 +25,8 @@ const baseConfig = defineConfig({
 			preventAssignment: true
 		}),
 		typescript(),
-		vue({ exposeFilename: false, css: false }),
-		resolve({
-			customResolveOptions: {
-				moduleDirectory: 'node_modules'
-			},
-			rootDir: path.join(__dirname, '.'),
-			browser: true
-		}),
+		vue(),
+		resolve(),
 		babel({
 			exclude: 'node_modules/**',
 			babelHelpers: 'bundled'
@@ -42,59 +37,21 @@ const baseConfig = defineConfig({
 		format: 'umd',
 		exports: 'named',
 		globals: {
-			vue: 'Vue',
-			mitt: 'mitt'
+			vue: 'Vue'
 		}
 	}
 })
 
 const devConfig = defineConfig({
-	plugins: [
-		replace({
-			values: {
-				__DEV__: JSON.stringify(true),
-				'process.env.NODE_ENV': JSON.stringify('development')
-			},
-			preventAssignment: true
-		})
-	],
 	output: {
 		file: path.resolve('dist/index.js')
 	}
 })
 
 const prodConfig = defineConfig({
-	plugins: [
-		replace({
-			values: {
-				__DEV__: JSON.stringify(false),
-				'process.env.NODE_ENV': JSON.stringify('production')
-			},
-			preventAssignment: true
-		}),
-		terser()
-	],
+	plugins: [terser()],
 	output: {
 		file: path.resolve('dist/index.prod.js')
-	}
-})
-
-const componentFileReg = /vue_type_script_setup_true_lang/
-const libConfig = defineConfig({
-	input: [
-		path.resolve('./packages/index.ts'),
-		path.resolve('./packages/create.ts')
-	],
-	output: {
-		dir: './es',
-		format: 'es',
-		preserveModules: true,
-		entryFileNames: (chunk) => {
-			if (componentFileReg.test(chunk.name)) {
-				return `index.vue.js`
-			}
-			return `${chunk.name}.js`
-		}
 	}
 })
 
@@ -104,5 +61,5 @@ module.exports = [
 	// prod umd output
 	merge(baseConfig, prodConfig),
 	// lib output
-	merge(baseConfig, libConfig)
+	...packageBuild
 ]
