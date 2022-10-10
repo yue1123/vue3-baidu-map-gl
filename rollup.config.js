@@ -5,19 +5,15 @@ const resolve = require('rollup-plugin-node-resolve')
 const babel = require('@rollup/plugin-babel').default
 const replace = require('@rollup/plugin-replace')
 const { terser } = require('rollup-plugin-terser')
-const externals = require('rollup-plugin-node-externals').default
+// const externals = require('rollup-plugin-node-externals').default
 const vue = require('rollup-plugin-vue')
 const typescript = require('rollup-plugin-typescript')
 const pkg = require('./package.json')
 
-const packageBuild = require('./scripts/build-package.js')
-
 const baseConfig = defineConfig({
+	external: ['vue'],
 	input: path.resolve('./packages/index.ts'),
 	plugins: [
-		externals({
-			devDeps: false
-		}),
 		replace({
 			values: {
 				__VERSION__: pkg.version
@@ -49,7 +45,15 @@ const devConfig = defineConfig({
 })
 
 const prodConfig = defineConfig({
-	plugins: [terser()],
+	plugins: [
+		replace({
+			values: {
+				'process.env.NODE_ENV': JSON.stringify('production')
+			},
+			preventAssignment: true
+		}),
+		terser()
+	],
 	output: {
 		file: path.resolve('dist/index.prod.js')
 	}
@@ -60,6 +64,4 @@ module.exports = [
 	merge(baseConfig, devConfig),
 	// prod umd output
 	merge(baseConfig, prodConfig),
-	// lib output
-	...packageBuild
 ]

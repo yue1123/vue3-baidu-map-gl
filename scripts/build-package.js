@@ -1,5 +1,4 @@
 const resolve = require('rollup-plugin-node-resolve')
-const { terser } = require('rollup-plugin-terser')
 const pkg = require('../package.json')
 const babel = require('@rollup/plugin-babel').default
 const fs = require('fs')
@@ -7,6 +6,7 @@ const path = require('path')
 const replace = require('@rollup/plugin-replace')
 const vue = require('rollup-plugin-vue')
 const typescript = require('rollup-plugin-typescript')
+
 
 const deps = Object.keys(pkg.dependencies || {})
 const outDir = 'es'
@@ -40,7 +40,6 @@ const componentsBuildCommonPlugins = [
 		babelHelpers: 'bundled'
 	})
 ]
-console.log(pkg.version)
 const tsBuildCommonPlugins = [
 	replace({
 		values: {

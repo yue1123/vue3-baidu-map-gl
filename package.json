@@ -1,7 +1,7 @@
 {
 	"name": "vue3-baidu-map-gl",
 	"description": "A Vue 3 baidu map gl Component Library. ",
-	"version": "0.0.18",
+	"version": "0.0.20",
 	"main": "es/index.js",
 	"module": "es/index.js",
 	"types": "es/index.d.ts",
@@ -10,8 +10,8 @@
 	"author": "yue1123",
 	"license": "MIT",
 	"exports": {
-    "./es": "./es/index.js",
-    "./*": "./*",
+		"./es": "./es/index.js",
+		"./*": "./*",
 		".": {
 			"import": "./es/index.js",
 			"types": "./es/index.d.ts"
@@ -28,7 +28,7 @@
 	"scripts": {
 		"clean": "rimraf es dist",
 		"dev": "pnpm clean && rollup -c",
-		"build": "pnpm clean && vue-tsc && rollup -c && rimraf *.tsbuildinfo && pnpm gen-volar-dts",
+		"build": "pnpm clean && vue-tsc && rollup -c --environment NODE_ENV:production && rollup -c ./scripts/build-package.js && rimraf *.tsbuildinfo && pnpm gen-volar-dts",
 		"docs:dev": "vitepress dev docs",
 		"test": "vitest",
 		"docs:build": "vitepress build docs",
