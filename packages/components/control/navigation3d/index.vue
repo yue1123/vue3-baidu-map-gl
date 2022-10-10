@@ -1,12 +1,11 @@
 <template>
-	<div></div>
 </template>
 
 <script setup lang="ts">
 	import { defineProps, withDefaults, defineEmits } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import useLifeCycle from '../../../hooks/useLifeCycle'
-	export interface BmLocationOptions {
+	export interface Navigation3dProps {
 		/**
 		 * 控件的停靠位置
 		 */
@@ -19,25 +18,25 @@
 			y: number
 		}
 	}
-	const { ready } = useLifeCycle()
-	const props = withDefaults(defineProps<BmLocationOptions>(), {
+	const props = withDefaults(defineProps<Navigation3dProps>(), {
 		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
-		offset: () => ({ x: 18, y: 18 })
+		offset: () => ({ x: 83, y: 18 })
 	})
-	let locationControl: BMapGL.LocationControl
+	const { ready } = useLifeCycle()
+	let navigation3dControl: BMapGL.NavigationControl3D
 	defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {
-		locationControl = new BMapGL.LocationControl({
+		navigation3dControl = new BMapGL.NavigationControl3D({
 			offset: new BMapGL.Size(props.offset.x, props.offset.y),
 			anchor: window[props.anchor]
 		})
-		map.addControl(locationControl)
+		map.addControl(navigation3dControl)
 		ready(map)
-		return () => map.removeControl(locationControl)
+		return () => map.removeControl(navigation3dControl)
 	})
 </script>
 <script lang="ts">
 	export default {
-		name: 'BmLocation'
+		name: 'BNavigation3d'
 	}
 </script>

@@ -130,6 +130,6 @@
 </script>
 <script lang="ts">
 	export default {
-		name: 'BmLabel'
+		name: 'BLabel'
 	}
 </script>

@@ -234,6 +234,6 @@
 </script>
 <script lang="ts">
 	export default {
-		name: 'BmPolygon'
+		name: 'BPolygon'
 	}
 </script>

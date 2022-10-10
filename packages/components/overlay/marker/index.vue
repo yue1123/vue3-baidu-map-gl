@@ -248,6 +248,6 @@
 </script>
 <script lang="ts">
 	export default {
-		name: 'BmMarker'
+		name: 'BMarker'
 	}
 </script>

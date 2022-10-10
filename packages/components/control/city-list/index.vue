@@ -44,6 +44,6 @@
 </script>
 <script lang="ts">
 	export default {
-		name: 'BmCityList'
+		name: 'BCityList'
 	}
 </script>

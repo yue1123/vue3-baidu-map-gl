@@ -6,7 +6,7 @@
 	import { defineProps, withDefaults, defineEmits } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import useLifeCycle from '../../../hooks/useLifeCycle'
-	export interface BmZoomProps {
+	export interface BmLocationOptions {
 		/**
 		 * 控件的停靠位置
 		 */
@@ -19,25 +19,25 @@
 			y: number
 		}
 	}
-	const props = withDefaults(defineProps<BmZoomProps>(), {
-		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
-		offset: () => ({ x: 83, y: 18 })
-	})
 	const { ready } = useLifeCycle()
-	let zoomControl: BMapGL.ZoomControl
+	const props = withDefaults(defineProps<BmLocationOptions>(), {
+		anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
+		offset: () => ({ x: 18, y: 18 })
+	})
+	let locationControl: BMapGL.LocationControl
 	defineEmits(['initd', 'unload'])
 	useBaseMapEffect((map) => {
-		zoomControl = new BMapGL.ZoomControl({
+		locationControl = new BMapGL.LocationControl({
 			offset: new BMapGL.Size(props.offset.x, props.offset.y),
 			anchor: window[props.anchor]
 		})
-		map.addControl(zoomControl)
+		map.addControl(locationControl)
 		ready(map)
-		return () => map.removeControl(zoomControl)
+		return () => map.removeControl(locationControl)
 	})
 </script>
 <script lang="ts">
 	export default {
-		name: 'BmZoom'
+		name: 'BLocation'
 	}
 </script>

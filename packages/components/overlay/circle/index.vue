@@ -2,12 +2,11 @@
 	<div></div>
 </template>
 <script setup lang="ts">
-	// TODO: 增加自动聚焦视野的配置autoViewport
-	import { defineProps, watch, withDefaults, defineEmits } from 'vue'
+	import { defineProps, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLifeCycle from '../../..//hooks/useLifeCycle'
-	export interface PolylinePath {
+	export type CircleCenter = {
 		/**
 		 * 地理经度
 		 */
@@ -17,24 +16,37 @@
 		 */
 		lat: number
 	}
-	export interface PolylineProps {
+	export interface BmCircleProps {
 		/**
-		 * 折线的节点坐标数组
+		 * 圆形中心点经纬度
 		 */
-		path: PolylinePath[]
+		center: CircleCenter
+		/**
+		 * 半径，以米为单位
+		 */
+		radius: number
 		/**
 		 * @default #000000
-		 * 折线颜色
+		 * 描边的颜色，同CSS颜色
 		 */
 		strokeColor?: string
 		/**
-		 * 折线的宽度，以像素为单位
-		 */
-		strokeWeight?: number
-		/**
-		 * 折线的透明度，取值范围0 - 1
+		 * 描边的透明度，取值范围0 - 1
 		 */
 		strokeOpacity?: number
+		/**
+		 * 面填充颜色，同CSS颜色
+		 */
+		fillColor?: string
+
+		/**
+		 * 面填充的透明度，范围0-1
+		 */
+		fillOpacity?: number
+		/**
+		 * 描边的宽度，单位为像素
+		 */
+		strokeWeight?: number
 		/**
 		 * 折线的样式
 		 */
@@ -73,10 +85,12 @@
 		onRemove?: Callback
 		onLineupdate?: Callback
 	}
-	const props = withDefaults(defineProps<PolylineProps>(), {
+	const props = withDefaults(defineProps<BmCircleProps>(), {
 		strokeColor: '#000',
 		strokeWeight: 2,
 		strokeOpacity: 1,
+		fillColor: '#fff',
+		fillOpacity: 0.3,
 		strokeStyle: 'solid',
 		enableMassClear: true,
 		enableEditing: false,
@@ -97,17 +111,20 @@
 		'lineupdate'
 	])
 	const { ready } = useLifeCycle()
-	let polyline: BMapGL.Polyline
+	let circle: BMapGL.Circle
 	useBaseMapEffect((map: BMapGL.Map) => {
-		if (!props.path.length) return
 		const cal = () => {
-			map.removeOverlay(polyline)
+			map.removeOverlay(circle)
 		}
 		const init = () => {
 			const {
+				center,
+				radius,
 				strokeColor,
-				strokeWeight,
 				strokeOpacity,
+				fillColor,
+				fillOpacity,
+				strokeWeight,
 				strokeStyle,
 				enableMassClear,
 				enableEditing,
@@ -115,8 +132,8 @@
 				geodesic,
 				clip
 			} = props
-			const pathPoints = props.path.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
-			polyline = new BMapGL.Polyline(pathPoints, {
+			const centerPoint = new BMapGL.Point(center.lng, center.lat)
+			circle = new BMapGL.Circle(centerPoint, radius, {
 				strokeColor,
 				strokeWeight,
 				strokeOpacity,
@@ -125,18 +142,20 @@
 				enableEditing,
 				enableClicking,
 				geodesic,
-				clip
+				clip,
+				fillOpacity,
+				fillColor
 			})
-			map.addOverlay(polyline)
-			bindEvents(props, vueEmits, polyline)
+			map.addOverlay(circle)
+			bindEvents(props, vueEmits, circle)
 		}
-
 		// 监听值变化
-		watch(() => props.path, setPath, {
-			deep: true
-		})
+		watch(() => props.center, setCenter, { deep: true })
+		watch(() => props.radius, setRadius)
 		watch(() => props.strokeColor, setStrokeColor)
 		watch(() => props.strokeOpacity, setStrokeOpacity)
+		watch(() => props.fillColor, setFillColor)
+		watch(() => props.fillOpacity, setFillOpacity)
 		watch(() => props.strokeWeight, setStrokeWeight)
 		watch(() => props.strokeStyle, setStrokeStyle)
 		watch(() => props.enableMassClear, setMassClear)
@@ -147,35 +166,39 @@
 		return cal
 	})
 
-	function pathPointsToMapPoints(pathPoints: PolylinePath[]) {
-		return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
+	function setRadius(radius: number): void {
+		circle.setRadius(radius)
 	}
-
-	function setPath(path: PolylinePath[]) {
-		polyline.setPath(pathPointsToMapPoints(path))
+	function setCenter(center: CircleCenter): void {
+		circle.setCenter(new BMapGL.Point(center.lng, center.lat))
 	}
-
 	function setStrokeColor(color: string): void {
-		polyline.setStrokeColor(color)
+		circle.setStrokeColor(color)
+	}
+	function setFillColor(color: string): void {
+		circle.setFillColor(color)
 	}
 	function setStrokeOpacity(opacity: number): void {
-		polyline.setStrokeOpacity(opacity)
+		circle.setStrokeOpacity(opacity)
+	}
+	function setFillOpacity(opacity: number): void {
+		circle.setFillOpacity(opacity)
 	}
 	function setStrokeWeight(weight: number): void {
-		polyline.setStrokeWeight(weight)
+		circle.setStrokeWeight(weight)
 	}
 	function setStrokeStyle(style: 'solid' | 'dashed' | 'dotted'): void {
-		polyline.setStrokeStyle(style)
+		circle.setStrokeStyle(style)
 	}
 	function setMassClear(enableMassClear: boolean): void {
-		enableMassClear ? polyline!.enableMassClear() : polyline!.disableMassClear()
+		enableMassClear ? circle!.enableMassClear() : circle!.disableMassClear()
 	}
 	function setEditing(enableEditing: boolean): void {
-		enableEditing ? polyline!.enableEditing() : polyline!.disableEditing()
+		enableEditing ? circle!.enableEditing() : circle!.disableEditing()
 	}
 </script>
 <script lang="ts">
 	export default {
-		name: 'BmPolyline'
+		name: 'BCircle'
 	}
 </script>

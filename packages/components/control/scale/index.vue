@@ -52,6 +52,6 @@
 </script>
 <script lang="ts">
 	export default {
-		name: 'BmScale'
+		name: 'BScale'
 	}
 </script>

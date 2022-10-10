@@ -45,6 +45,6 @@
 </script>
 <script lang="ts">
 	export default {
-		name: 'BmControl'
+		name: 'BControl'
 	}
 </script>

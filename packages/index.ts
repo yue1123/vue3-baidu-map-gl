@@ -16,19 +16,19 @@ export * from './hooks/useAreaBoundary'
 export * from './hooks/useTrackAnimation'
 
 // components
-import Map from './components/bm-map/index.vue'
-import Control from './components/control/bm-control/index.vue'
-import Scale from './components/control/bm-scale/index.vue'
-import Zoom from './components/control/bm-zoom/index.vue'
-import CityList from './components/control/bm-city-list/index.vue'
-import Location from './components/control/bm-location/index.vue'
-import Copyright from './components/control/bm-copyright/index.vue'
-import Navigation3d from './components/control/bm-navigation3d/index.vue'
-import Marker from './components/overlay/bm-marker/index.vue'
-import Label from './components/overlay/bm-label/index.vue'
-import Polyline from './components/overlay/bm-polyline/index.vue'
-import Polygon from './components/overlay/bm-polygon/index.vue'
-import Circle from './components/overlay/bm-circle/index.vue'
+import Map from './components/map/index.vue'
+import Control from './components/control/control/index.vue'
+import Scale from './components/control/scale/index.vue'
+import Zoom from './components/control/zoom/index.vue'
+import CityList from './components/control/city-list/index.vue'
+import Location from './components/control/location/index.vue'
+import Copyright from './components/control/copyright/index.vue'
+import Navigation3d from './components/control/navigation3d/index.vue'
+import Marker from './components/overlay/marker/index.vue'
+import Label from './components/overlay/label/index.vue'
+import Polyline from './components/overlay/polyline/index.vue'
+import Polygon from './components/overlay/polygon/index.vue'
+import Circle from './components/overlay/circle/index.vue'
 
 const componentsList = [
 	Map,
@@ -53,13 +53,17 @@ const vue3BaiduMapGl = {
 		for (const component of componentsList) {
 			const name = component.name
 			app.component(name, component)
-			app.component(name.replace('Bm', ''), component)
+			app.component(name.replace('B', ''), component)
 		}
 		app.config.globalProperties.$baiduMapPlugins = plugins || []
 		ak && (app.config.globalProperties.$baiduMapAk = ak)
 	},
 	version: '__VERSION__'
 }
+// for umd
+export const install = vue3BaiduMapGl.install
+export const version = vue3BaiduMapGl.version
+
 export {
 	Map,
 	Control,
@@ -75,5 +79,5 @@ export {
 	Circle,
 	CityList
 }
-
 export default vue3BaiduMapGl
+

@@ -80,6 +80,6 @@
 </script>
 <script lang="ts">
 	export default {
-		name: 'BmCopyright'
+		name: 'BCopyright'
 	}
 </script>
