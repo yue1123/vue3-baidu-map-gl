@@ -38,14 +38,14 @@ pnpm add vue3-baidu-map-gl
 ```ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import baiduMapInit from 'vue3-baidu-map-gl'
+import baiduMap from 'vue3-baidu-map-gl'
 
 const app = createApp(App)
-app.use(baiduMapInit, { ak: 'YOUR_AK' })
+app.use(baiduMap, { ak: 'YOUR_AK' })
 app.mount('#app')
 ```
 
 ## License
 [MIT licenses](https://opensource.org/licenses/MIT)
 
-❤️用心制作❤️，开源不易，点个star支持一下吧
+❤️用心制作❤️，开源不易，点亮star是支持更新的最大动力✌🏻
