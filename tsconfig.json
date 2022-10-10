@@ -20,7 +20,8 @@
     ],
     "types": [
       "vite/client",
-      "vitest/globals"
+      "vitest/globals",
+      "./volar"
     ],
     "suppressImplicitAnyIndexErrors": true,
     "baseUrl": "./"

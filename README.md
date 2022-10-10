@@ -45,16 +45,6 @@ app.use(baiduMapInit, { ak: 'YOUR_AK' })
 app.mount('#app')
 ```
 
-## todo list
-
--   [x] 基础地图
--   [x] 地图控件
--   [x] 地图覆盖物
--   [x] 多实例
--   [x] 自定义地图样式
--   [x] 地图插件
-    -   [x] 轨迹动画插件 
-
 ## License
 [MIT licenses](https://opensource.org/licenses/MIT)
 
