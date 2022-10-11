@@ -28,6 +28,10 @@ export default defineConfig({
 						link: 'https://lbsyun.baidu.com/index.php?title=%E9%A6%96%E9%A1%B5'
 					},
 					{
+						text: '个性化地图编辑器',
+						link: 'https://lbsyun.baidu.com/index.php?title=open/custom'
+					},
+					{
 						text: '百度地图JSAPI WebGL v1.0类参考',
 						link: 'https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_webgl_1_0.html#a2b7'
 					}

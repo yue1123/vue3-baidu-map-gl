@@ -61,9 +61,10 @@
   </label>
   <br/>
   <br/>
-  地图类型：<select name="" id="" v-model="mapSetting.type">
-    <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
-    <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
+  地图类型：<select class="mySelect"  name="" id="" v-model="mapSetting.type">
+    <option value="BMAP_NORMAL_MAP">常规地图 BMAP_NORMAL_MAP</option>
+    <option value="BMAP_EARTH_MAP">地球模式 BMAP_EARTH_MAP</option>
+    <option value="BMAP_SATELLITE_MAP">卫星图 BMAP_EARTH_MAP</option>
   </select>
   <br/>
   <br/>
@@ -113,9 +114,10 @@
   </label>
   <br/>
   <br/>
-  地图类型：<select name="" id="" v-model="mapSetting1.type">
-    <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
-    <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
+  地图类型：<select class="mySelect"  name="" id="" v-model="mapSetting1.type">
+    <option value="BMAP_NORMAL_MAP">常规地图 BMAP_NORMAL_MAP</option>
+    <option value="BMAP_EARTH_MAP">地球模式 BMAP_EARTH_MAP</option>
+    <option value="BMAP_SATELLITE_MAP">卫星图 BMAP_EARTH_MAP</option>
   </select>
   <br/>
   <br/>

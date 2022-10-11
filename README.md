@@ -45,6 +45,29 @@ app.use(baiduMap, { ak: 'YOUR_AK' })
 app.mount('#app')
 ```
 
+## todo 
+-   [x] 基础地图
+-   [x] 地图控件
+-   [x] 地图覆盖物
+-   [x] 多实例
+-   [x] 自定义地图样式
+-   [x] 地图插件
+    -   [x] 轨迹动画插件 
+-   [] 覆盖物
+  -   [] 带高度的点
+  -   [] 贝塞尔曲线
+  -   [] 彩虹渐变线
+  -   [] 3d 棱柱
+-   [] 叠加层
+  -   [] 地面图片叠加层
+  -   [] canvas 叠加层
+  -   [] video 叠加层
+  -   [] 路况叠加层
+-   [] 信息窗口
+-   [] 右键菜单
+-   [] 大地路线书
+-   [] 3d 视角动画
+-   [] 三维模型
 ## License
 [MIT licenses](https://opensource.org/licenses/MIT)
 

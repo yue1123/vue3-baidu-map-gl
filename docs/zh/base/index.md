@@ -63,8 +63,15 @@ import { Map } from 'vue3-baidu-map-gl'
   <br/>
   <br/>
   <Map
-    :minZoom="3"
     height="400px"
+    :heading="64.5"
+    :tilt="73"
+    :center="{
+      lng:116.280190,
+      lat:40.049191
+    }"
+    :zoom="19"
+    :minZoom="3"
     :mapType="type"
     :enableDragging="mapSetting.enableDragging"
     :enableInertialDragging="mapSetting.enableInertialDragging"
