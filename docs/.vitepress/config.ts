@@ -33,7 +33,7 @@ export default defineConfig({
 					},
 					{
 						text: '百度地图JSAPI WebGL v1.0类参考',
-						link: 'https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_webgl_1_0.html#a2b7'
+						link: 'https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_webgl_1_0.html'
 					}
 				]
 			},

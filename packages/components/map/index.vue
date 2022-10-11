@@ -16,7 +16,6 @@
 
 <script setup lang="ts">
 	import {
-		inject,
 		defineProps,
 		withDefaults,
 		defineEmits,
@@ -88,6 +87,10 @@
 				color: string
 			}
 		}[]
+		/**
+		 * 是否显示室内图控件
+		 */
+		showControls?: boolean
 		/**
 		 * 插件
 		 */
@@ -188,6 +191,7 @@
 		minZoom: 0,
 		heading: 0,
 		tilt: 0,
+		showControls: false,
 		enableDragging: true,
 		enableInertialDragging: true,
 		enableScrollWheelZoom: false,
@@ -250,12 +254,13 @@
 			key: '_initBMap'
 		})
 			.then(() => {
-				const { minZoom, maxZoom, mapType, enableAutoResize, center } = props
+				const { minZoom, maxZoom, mapType, enableAutoResize, showControls, center } = props
 				map = new BMapGL.Map(mapContainerId, {
 					minZoom,
 					maxZoom,
 					mapType: window[mapType],
-					enableAutoResize
+					enableAutoResize,
+					showControls
 				})
 				setCenterAndZoom(center)
 				initMapOptions()

@@ -3,9 +3,9 @@
 /// <reference path="./common.d.ts" />
 
 declare namespace BMapGL {
-  /**
-   * 地图核心组件
-   */
+	/**
+	 * 地图核心组件
+	 */
 	class Map {
 		constructor(container: string | HTMLElement, opts?: MapOptions)
 		/**
@@ -311,7 +311,7 @@ declare namespace BMapGL {
 		addEventListener(event: string, handler: Callback): void
 		removeEventListener(event: string, handler: Callback): void
 	}
-  interface baseSetOptions {
+	interface baseSetOptions {
 		/**
 		 * 是否禁用动画效果
 		 */
@@ -356,11 +356,12 @@ declare namespace BMapGL {
 		 * 	开启自动适应地图容器变化，默认启用
 		 */
 		enableAutoResize?: boolean
+		showControls?: boolean
 		//     enableHighResolution?: boolean;
 		//     enableMapClick?: boolean;
 		//     backgroundColor?: number[];
 		//     displayOptions?: object;
-	} 
+	}
 	interface Viewport {
 		center: Point
 		zoom: number
@@ -393,4 +394,4 @@ declare namespace BMapGL {
 	}
 	type MapStyleV2 = { styleJson: MapStyleItem[] } | { styleId: string }
 }
-declare const BMAP_API_VERSION: BMapGL.APIVersion;
+declare const BMAP_API_VERSION: BMapGL.APIVersion

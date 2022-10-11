@@ -22,7 +22,6 @@ import { Map } from 'vue3-baidu-map-gl'
     enablePinchToZoom: true,
     enableAutoResize: true
   })
-  const showMap = ref(false)
 </script>
 
 <div>
@@ -151,14 +150,15 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ## 静态组件 props
 
-| 参数    | 说明                                    | 类型               | 可选值           | 默认值  |
-| ------- | --------------------------------------- | ------------------ | ---------------- | ------- |
-| ak      | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`           | `required`       |         |
-| width   | 地图显示宽度                            | `string / number`  |                  | `100%`  |
-| height  | 地图显示高度                            | `string / number`  |                  | `400px` |
-| minZoom | 地图允许展示的最小级别                  | `number`           | `0-21`           | `0`     |
-| maxZoom | 地图允许展示的最大级别                  | `number`           | `0-21`           | `21`    |
-| plugins | 需要注册的插件                          | ['TrackAnimation'] | `TrackAnimation` |         |
+| 参数         | 说明                                    | 类型                 | 可选值           | 默认值  |
+| ------------ | --------------------------------------- | -------------------- | ---------------- | ------- |
+| ak           | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`             |                  |         |
+| width        | 地图显示宽度                            | `string / number`    |                  | `100%`  |
+| height       | 地图显示高度                            | `string / number`    |                  | `400px` |
+| minZoom      | 地图允许展示的最小级别                  | `number`             | `0-21`           | `0`     |
+| maxZoom      | 地图允许展示的最大级别                  | `number`             | `0-21`           | `21`    |
+| showControls | 是否显示室内图                          | `boolean`            |                  | `false` |
+| plugins      | 需要注册的插件                          | `['TrackAnimation']` | `TrackAnimation` |         |
 
 ## 动态组件 Props
 
