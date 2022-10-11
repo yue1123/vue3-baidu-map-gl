@@ -13,5 +13,5 @@ yarn add vue3-baidu-map-gl
 pnpm add vue3-baidu-map-gl
 ```
 
-## UMD
-参考 [使用 UMD](/zh/guide/usage-umd)。
+## CDN
+参考 [使用 CDN](/zh/guide/usage-umd)。
