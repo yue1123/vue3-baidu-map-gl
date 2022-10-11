@@ -51,7 +51,7 @@ export default defineConfig({
 		},
 		algolia: {
 			appId: 'R956DMSLMZ',
-			apiKey: '8cc02e945acc2e0f1815ec662c2aeb60',
+			apiKey: 'a67c9e1aaa7c0b2b5d771c1fb6679139',
 			indexName: 'zh'
 		},
 		footer: {

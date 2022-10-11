@@ -1,10 +1,16 @@
-# 使用 UMD
+# 使用 CDN
 
-在 `0.0.21` 版本后，你可以使用 UMD 版本的 vue-baidu-map-gl。
+在 `0.0.21` 版本后，你可以使用通过 CDN 使用 UMD 版本的 vue-baidu-map-gl。
 
 如果你要使用 minify 版本的包，将 `https://unpkg.com/vue3-baidu-map-gl@version` 作为 `src`，`version` 是你期望使用的版本，如果不指定 `version` 则会使用最新的版本。
 
 如果你要使用未 minify 版本的包，将 `https://unpkg.com/vue3-baidu-map-gl@version/dist/index.js` 作为 `src`。
+
+免费 CDN
+你可以通过以下免费 CDN 服务来使用 Vant:
+
+- [jsdelivr](https://www.jsdelivr.com/package/npm/vue3-baidu-map-gl)
+- [unpkg](https://unpkg.com/vue3-baidu-map-gl)
 
 ::: tip 提示
 最好锁定包的版本，避免不兼容变更带来的影响。

@@ -25,8 +25,8 @@ const sidebarConfig = {
 					link: '/zh/guide/usage-sfc'
 				},
 				{
-					text: '使用 UMD',
-					link: '/zh/guide/usage-umd'
+					text: '使用 CDN',
+					link: '/zh/guide/usage-cdn'
 				},
 				{
 					text: 'ak与插件配置',
