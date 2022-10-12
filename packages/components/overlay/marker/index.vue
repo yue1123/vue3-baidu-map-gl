@@ -120,7 +120,7 @@
 		onDragstart?: Callback
 		onDragging?: Callback
 		onDragend?: Callback
-		onNightstick?: Callback
+		onRightClick?: Callback
 	}
 
 	const props = withDefaults(defineProps<BmMarkerProps>(), {

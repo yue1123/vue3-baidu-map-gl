@@ -25,6 +25,7 @@ import Location from './components/control/location/index.vue'
 import Copyright from './components/control/copyright/index.vue'
 import Navigation3d from './components/control/navigation3d/index.vue'
 import Marker from './components/overlay/marker/index.vue'
+import Marker3d from './components/overlay/marker3d/index.vue'
 import Label from './components/overlay/label/index.vue'
 import Polyline from './components/overlay/polyline/index.vue'
 import Polygon from './components/overlay/polygon/index.vue'
@@ -37,6 +38,7 @@ const componentsList = [
 	Zoom,
 	Navigation3d,
 	Marker,
+	Marker3d,
 	Copyright,
 	Location,
 	Label,
@@ -71,6 +73,7 @@ export {
 	Zoom,
 	Navigation3d,
 	Marker,
+  Marker3d,
 	Copyright,
 	Location,
 	Label,
@@ -80,4 +83,3 @@ export {
 	CityList
 }
 export default vue3BaiduMapGl
-

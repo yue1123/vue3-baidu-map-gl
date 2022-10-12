@@ -107,6 +107,10 @@ const sidebarConfig = {
 					link: '/zh/overlay/marker'
 				},
 				{
+					text: 'Marker3d 带高度的点',
+					link: '/zh/overlay/marker3d'
+				},
+				{
 					text: 'Polygon 多边形',
 					link: '/zh/overlay/polygon'
 				},

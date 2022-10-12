@@ -1,6 +1,6 @@
 # Marker 标注点
 
-在地图上绘制简单的圆形
+在地图上绘制点
 
 ```ts
 import { Marker } from 'vue3-baidu-map-gl'

@@ -131,33 +131,19 @@ declare namespace BMapGL {
 		displayOnMinLevel?: number
 		displayOnMaxLevel?: number
 	}
-	interface Marker extends Overlay {
-		openInfoWindow(infoWnd: InfoWindow): void
-		closeInfoWindow(): void
+	interface Marker3D extends Overlay {
+		setHeight(height: number): void
+		getHeight(): number
+		setFillColor(color: string): void
+		getFillColor(): string
+		setFillOpacity(opacity: number): void
+		getFillOpacity(): number
 		setIcon(icon: Icon): void
 		getIcon(): Icon
 		setPosition(position: Point): void
 		getPosition(): Point
-		setOffset(offset: Size): void
-		getOffset(): Size
-		setLabel(label: Label): void
-		getLabel(): Label
-		setTitle(title: string): void
-		getTitle(): string
-		setTop(isTop: boolean): void
-		enableDragging(): void
-		disableDragging(): void
 		enableMassClear(): void
 		disableMassClear(): void
-		setZIndex(zIndex: number): void
-		getMap(): Map
-		addContextMenu(menu: ContextMenu): void
-		removeContextMenu(menu: ContextMenu): void
-		setAnimation(animation?: Animation): void
-		setRotation(rotation: number): void
-		getRotation(): number
-		setShadow(shadow: Icon): void
-		getShadow(): void
 		addEventListener(event: string, handler: Callback): void
 		removeEventListener(event: string, handler: Callback): void
 		onclick: (event: { type: string; target: any }) => void
@@ -176,6 +162,17 @@ declare namespace BMapGL {
 	}
 	class Marker {
 		constructor(point: Point, opts?: MarkerOptions)
+	}
+
+  interface Marker3DOptions {
+		size?: number
+		shape?: 'BMAP_SHAPE_CIRCLE' | 'BMAP_SHAPE_RECT'
+		fillColor?: string
+		fillOpacity?: number
+		icon?: Icon
+	}
+	class Marker3D {
+		constructor(point: Point, height: number, opts?: MarkerOptions)
 	}
 	interface SymbolOptions {
 		anchor?: Size
