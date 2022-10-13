@@ -37,7 +37,7 @@ import { Marker } from 'vue3-baidu-map-gl'
   <Marker
 			:position="{ lat: 39.915185, lng: 116.400901 }"
 			:icon="{
-        imageUrl: 'https://s1.ax1x.com/2022/09/29/xmTpcT.png',
+        imageUrl: 'https://cdn.jsdelivr.net/gh/yue1123/vue3-baidu-map-gl@0.0.21/docs/public/logo.png',
         imageSize: {
           width: 100,
           height: 100
@@ -49,7 +49,7 @@ import { Marker } from 'vue3-baidu-map-gl'
 </div>
 
 拖动图片试试
- ::: details 点击查看代码
+::: details 点击查看代码
 
 ```html
 <Map :minZoom="3" height="400px">
@@ -65,7 +65,7 @@ import { Marker } from 'vue3-baidu-map-gl'
 	<Marker
 		:position="{ lat: 39.915185, lng: 116.400901 }"
 		:icon="{
-      imageUrl: 'https://s1.ax1x.com/2022/09/29/xmTpcT.png',
+      imageUrl: 'https://cdn.jsdelivr.net/gh/yue1123/vue3-baidu-map-gl@0.0.21/docs/public/logo.png',
       imageSize: {
         width: 100,
         height: 100

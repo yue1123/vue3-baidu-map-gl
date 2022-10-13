@@ -1,4 +1,7 @@
-<template></template>
+<template>
+
+  {{props.position}}
+</template>
 
 <script setup lang="ts">
 	import { defineProps, watch, withDefaults } from 'vue'
@@ -6,7 +9,7 @@
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLifeCycle from '../../..//hooks/useLifeCycle'
 
-	export interface MarkerPosition {
+	export interface Marker3dPosition {
 		/**
 		 * 地理经度
 		 */
@@ -36,7 +39,7 @@
 		/**
 		 * 位置
 		 */
-		position: MarkerPosition
+		position: Marker3dPosition
 		/**
 		 * 点高度
 		 */
@@ -153,8 +156,14 @@
 		}
 		return new BMapGL.Icon(imageUrl, new BMapGL.Size(imageSize.width, imageSize.height), iconOptions)
 	}
-	function setPosition(position: MarkerPosition) {
-		marker3d.setPosition(new BMapGL.Point(position.lng, position.lat))
+	function setPosition(position: Marker3dPosition) {
+    console.log(position,'====');
+    try {
+      // FIXME: 更新 position baidu-map-gl api报错: TypeError: Cannot read properties of undefined (reading '2x')
+		  marker3d.setPosition(new BMapGL.Point(position.lng, position.lat))  
+    } catch (error) {
+    }
+    
 	}
 	function setHeight(height: number) {
 		marker3d.setHeight(height)
