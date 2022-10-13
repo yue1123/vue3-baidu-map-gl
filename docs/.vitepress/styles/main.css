@@ -105,6 +105,10 @@ img.resizable-img {
   margin: 16px 0;
 }
 
+.mySelect.light{
+  border: 1px solid #e2e2e2;
+  background-color: #f9f9f9; 
+}
 .mySelect.no-m-t {
   margin-top: 0;
 }

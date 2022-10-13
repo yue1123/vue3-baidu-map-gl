@@ -57,19 +57,21 @@ import { Map, Polygon } from 'vue3-baidu-map-gl'
 结合 [`useAreaBoundary`](../hooks/useAreaBoundary) hooks, 并通过指定 `props.isBoundary` 为 `true` 实现行政区域显示效果
 
 <div>
-  地区：
-  <select class="mySelect no-m-t" v-model="area">
-    <option value="北京市">北京市</option>
-    <option value="顺义区">北京市顺义区</option>
-    <option value="四川">四川</option>
-    <option value="成都">成都</option>
-  </select>
   <Map
     :minZoom="3"
     :zoom="zoom"
     height="400px"
     enableScrollWheelZoom
   >
+    <Control style="border-radius:4px;box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);color: #666;background:#fff;padding:10px;" :offset="{ x: 15, y: 15 }">
+     <span> 地区：</span>
+      <select class="mySelect light no-m-b no-m-t" v-model="area">
+        <option value="北京市">北京市</option>
+        <option value="顺义区">北京市顺义区</option>
+        <option value="四川">四川</option>
+        <option value="成都">成都</option>
+      </select>
+    </Control>
     <Polygon 
       :key="area"
       @initd="handleInitd"
@@ -85,19 +87,21 @@ import { Map, Polygon } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 ```html
 <div>
-  地区：
-  <select v-model="area">
-    <option value="北京市">北京市</option>
-    <option value="顺义区">北京市顺义区</option>
-    <option value="四川">四川</option>
-    <option value="成都">成都</option>
-  </select>
   <Map
     :minZoom="3"
     :zoom="zoom"
     height="400px"
     enableScrollWheelZoom
   >
+    <Control style="border-radius:4px;box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);color: #666;background:#fff;padding:10px;" :offset="{ x: 15, y: 15 }">
+     <span> 地区：</span>
+      <select v-model="area">
+        <option value="北京市">北京市</option>
+        <option value="顺义区">北京市顺义区</option>
+        <option value="四川">四川</option>
+        <option value="成都">成都</option>
+      </select>
+    </Control>
     <Polygon 
       :key="area"
       @initd="handleInitd"
@@ -110,12 +114,11 @@ import { Map, Polygon } from 'vue3-baidu-map-gl'
   </Map>
 </div>
 
-
 <script setup lang="ts">
   import { ref, watch } from 'vue'
-  import { useAreaBoundary } from 'vue3-baidu-map-gl'
+  import { Map, Control, Polygon, useAreaBoundary } from 'vue3-baidu-map-gl'
   const zoom = ref<number>(11)
-  const area = ref<string>('四川')
+  const area = ref<string>('顺义区')
   const areaZoomMap = {
     北京市: 9,
     顺义区: 11,
@@ -139,7 +142,7 @@ import { Map, Polygon } from 'vue3-baidu-map-gl'
   import { ref, watch } from 'vue'
   import { useAreaBoundary } from '../../../packages/index.ts'
   const zoom = ref<number>(11)
-  const area = ref<string>('四川')
+  const area = ref<string>('顺义区')
   const areaZoomMap = {
     北京市: 9,
     顺义区: 11,
