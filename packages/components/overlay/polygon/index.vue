@@ -1,6 +1,5 @@
 <template></template>
 <script setup lang="ts">
-	// TODO: 更新 isBoundary,autoCenter 相关文档
 	import { defineProps, inject, watch, withDefaults, defineEmits, nextTick } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'

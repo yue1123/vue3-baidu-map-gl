@@ -1,7 +1,4 @@
-<template>
-
-  {{props.position}}
-</template>
+<template></template>
 
 <script setup lang="ts">
 	import { defineProps, watch, withDefaults } from 'vue'

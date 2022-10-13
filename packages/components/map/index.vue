@@ -373,6 +373,7 @@
 	 * 设置缩放级别
 	 */
 	function setZoom(zoom: number): void {
+		console.log('zoom', zoom)
 		map!.setZoom(zoom)
 	}
 	// 设置地图类型

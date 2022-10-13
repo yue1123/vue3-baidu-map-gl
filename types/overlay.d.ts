@@ -164,7 +164,7 @@ declare namespace BMapGL {
 		constructor(point: Point, opts?: MarkerOptions)
 	}
 
-  interface Marker3DOptions {
+	interface Marker3DOptions {
 		size?: number
 		shape?: 'BMAP_SHAPE_CIRCLE' | 'BMAP_SHAPE_RECT'
 		fillColor?: string
@@ -174,6 +174,23 @@ declare namespace BMapGL {
 	class Marker3D {
 		constructor(point: Point, height: number, opts?: MarkerOptions)
 	}
+
+	interface PrismOptions {
+		// 顶面填充颜色
+		topFillColor: string
+		// 顶面填充颜色透明度，取值范围0-1
+		topFillOpacity: number
+		// 侧面填充颜色
+		sideFillColor: string
+		// 侧面填充颜色透明度，取值范围0-1
+		sideFillOpacity: number
+		// 是否在调用map.clearOverlays清除此覆盖物，默认为true
+		enableMassClear: boolean
+	}
+	class Prism extends Overlay {
+		constructor(point: Point[] | string[], altitude: number, opts?: PrismOptions)
+	}
+
 	interface SymbolOptions {
 		anchor?: Size
 		fillColor?: string

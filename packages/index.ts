@@ -30,6 +30,7 @@ import Label from './components/overlay/label/index.vue'
 import Polyline from './components/overlay/polyline/index.vue'
 import Polygon from './components/overlay/polygon/index.vue'
 import Circle from './components/overlay/circle/index.vue'
+import Prism from './components/overlay/prism/index.vue'
 
 const componentsList = [
 	Map,
@@ -45,7 +46,8 @@ const componentsList = [
 	Polyline,
 	Polygon,
 	Circle,
-	CityList
+	CityList,
+	Prism
 ]
 
 // global register
@@ -73,13 +75,14 @@ export {
 	Zoom,
 	Navigation3d,
 	Marker,
-  Marker3d,
+	Marker3d,
 	Copyright,
 	Location,
 	Label,
 	Polyline,
 	Polygon,
 	Circle,
-	CityList
+	CityList,
+	Prism
 }
 export default vue3BaiduMapGl

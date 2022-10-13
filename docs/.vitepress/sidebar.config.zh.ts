@@ -117,6 +117,10 @@ const sidebarConfig = {
 				{
 					text: 'Polyline 折线',
 					link: '/zh/overlay/polyline'
+				},
+				{
+					text: 'Prism 3d棱柱',
+					link: '/zh/overlay/prism'
 				}
 			]
 		},
