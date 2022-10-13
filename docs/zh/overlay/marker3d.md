@@ -164,19 +164,19 @@ import { Marker3d } from 'vue3-baidu-map-gl'
 | 参数            | 说明                                        | 类型                          | 可选值 | 默认值     |
 | --------------- | ------------------------------------------- | ----------------------------- | ------ | ---------- |
 | position        | 点的坐标                                | `{ lng: number, lat: number}` |        | `required` |
-| icon            | 点的图或[自定义贴图](#自定义贴图)       | `string `                     |        |            |
+| icon            | 点的图或[自定义纹理贴图](#自定义纹理贴图)       | `string `                     |        |            |
 | fillColor       | 点填充颜色，同 CSS 颜色                     | `string `                     |        | `#f00`     |
 | fillOpacity     | 点填充的透明度，范围 0-1                    | `number `                     | `0-1`  | `0.8 `     |
 | enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                     |        | ` true`    |
 
-## 自定义贴图
+## 自定义纹理贴图
 
 | 参数          | 说明                                                                                                                                                                        | 类型                                | 默认值     |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ---------- |
-| anchor        | 图标的定位点相对于图标左上角的偏移值                                                                                                                                        | `{ x: number, y: number }`          |            |
-| imageOffset   | 图标所用的图片相对于可视区域的偏移值，此功能的作用等同于 CSS 中的 background-position 属性                                                                                  | `{ x: number, y: number }`          |            |
-| imageSize     | 图标所用的图片的大小，此功能的作用等同于 CSS 中的 background-size 属性。可用于实现高清屏的高清效果                                                                          | `{ width: number, height: number }` | `required` |
-| imageUrl      | 图标所用图像资源的位置                                                                                                                                                      | `string`                            | `required` |
+| anchor        | 贴图的定位点相对于贴图左上角的偏移值                                                                                                                                        | `{ x: number, y: number }`          |            |
+| imageOffset   | 贴图所用的图片相对于可视区域的偏移值，此功能的作用等同于 CSS 中的 `background-position` 属性                                                                                  | `{ x: number, y: number }`          |            |
+| imageSize     | 贴图所用的图片的大小，此功能的作用等同于 CSS 中的` background-size `属性。可用于实现高清屏的高清效果                                                                          | `{ width: number, height: number }` | `required` |
+| imageUrl      | 贴图所用图像资源的位置                                                                                                                                                      | `string`                            | `required` |
 | printImageUrl | 设置 icon 打印图片的 url，该打印图片只针对 IE6 有效，解决 IE6 使用 PNG 滤镜导致的错位问题。如果您的 icon 没有使用 PNG 格式图片或者没有使用 CSS Sprites 技术，则可忽略此配置 | `string `                           |            |
 
 ## 组件事件
