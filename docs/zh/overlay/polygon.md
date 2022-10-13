@@ -166,6 +166,7 @@ import { Map, Polygon } from 'vue3-baidu-map-gl'
 | clip           | 是否进行跨经度 180 度裁剪，绘制跨精度 180 时为了优化效果， | `boolean ` | `true `  |
 | geodesic       | 是否开启大地线模式，true 时，两点连线将以大地线的形式。    | `boolean ` | `false ` |
 | isBoundary     | 是否是行政区域的边界多边形                                 | `boolean ` | `false ` |
+| autoCenter     | 是否将多边形自动居中地图                                 | `boolean ` | `true` |
 | enableClicking | 是否响应点击事件                                           | `boolean ` | `true `  |
 
 ## 动态组件 Props
