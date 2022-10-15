@@ -17,7 +17,7 @@
 	export type NonEmptyArray<T> = [T, ...T[]]
 	export interface PrismProps {
 		/**
-		 * 折线的节点坐标数组
+		 * 棱柱的节点坐标数组
 		 */
 		path: NonEmptyArray<PrismPath> | NonEmptyArray<string>
 		/**
@@ -34,7 +34,7 @@
 		 */
 		topFillColor?: string
 		/**
-		 * @default #fff
+		 * @default 0.5
 		 * 顶面填充颜色透明度，取值范围0-1
 		 */
 		topFillOpacity?: number
@@ -43,6 +43,7 @@
 		 */
 		sideFillColor?: string
 		/**
+     * @default 0.8
 		 * 侧面填充颜色透明度，取值范围0-1
 		 */
 		sideFillOpacity?: number
@@ -110,25 +111,36 @@
 			const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as PrismPath[])
 			if (!pathPoints) return
 			prism = new BMapGL.Prism(pathPoints, altitude, {
-        topFillColor,
+				topFillColor,
 				topFillOpacity,
 				sideFillColor,
 				sideFillOpacity,
-				enableMassClear,
-      })
+				enableMassClear
+			})
 			map.addOverlay(prism)
 			bindEvents(props, vueEmits, prism)
 			syncMapCenter()
 			watch(() => props.enableMassClear, setMassClear)
+			watch(() => props.topFillColor, setTopFillColor)
+			watch(() => props.topFillOpacity, setTopFillOpacity)
+			watch(() => props.sideFillColor, setSideFillColor)
+			watch(() => props.sideFillOpacity, setSideFillOpacity)
+			watch(() => props.altitude, setAltitude)
 		}
 		init()
 		// 监听值变化, 初始为空时不会初始化, 不为空值时初始化
-		watch(() => props.path, prism ? () => {
-      cal()
-      init()
-    } : init, {
-			deep: true
-		})
+		watch(
+			() => props.path,
+			prism
+				? () => {
+						cal()
+						init()
+				  }
+				: init,
+			{
+				deep: true
+			}
+		)
 		ready(map)
 		return cal
 	})
@@ -154,6 +166,22 @@
 
 	function setMassClear(enableMassClear?: boolean): void {
 		enableMassClear ? prism!.enableMassClear() : prism!.disableMassClear()
+	}
+
+	function setTopFillColor(color: string) {
+		prism.setTopFillColor(color)
+	}
+	function setTopFillOpacity(opacity: number) {
+		prism.setTopFillOpacity(opacity)
+	}
+	function setSideFillColor(color: string) {
+		prism.setSideFillColor(color)
+	}
+	function setSideFillOpacity(opacity: number) {
+		prism.setSideFillOpacity(opacity)
+	}
+	function setAltitude(altitude: number) {
+		prism.setAltitude(altitude)
 	}
 </script>
 <script lang="ts">

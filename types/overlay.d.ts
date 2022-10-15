@@ -189,6 +189,11 @@ declare namespace BMapGL {
 	}
 	class Prism extends Overlay {
 		constructor(point: Point[] | string[], altitude: number, opts?: PrismOptions)
+		setTopFillColor: (color: string) => void
+		setTopFillOpacity: (opacity: number) => void
+		setSideFillColor: (color: string) => void
+		setSideFillOpacity: (opacity: number) => void
+		setAltitude: (altitude: number) => void
 	}
 
 	interface SymbolOptions {
