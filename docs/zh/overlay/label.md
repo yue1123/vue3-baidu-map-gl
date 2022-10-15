@@ -9,12 +9,13 @@ import { Label } from 'vue3-baidu-map-gl'
 ## 组件示例
 
 <div>
+文字内容: <input class="my-input" type="text" v-model="content">
 <Map
   :minZoom="3"
   height="400px"
 >
   <Label
-    content="欢迎使用百度地图GL版Vue3组件库"
+    :content="content"
     :position="{lng: 116.404, lat: 39.915 }"
     :style="{
       color:'#fff',
@@ -28,21 +29,27 @@ import { Label } from 'vue3-baidu-map-gl'
 </Map>
 </div>
 
+<script setup lang="ts">
+  import { ref } from 'vue'
+  const content = ref<string>('欢迎使用百度地图GL版Vue3组件库')
+  
+</script>
+
 ::: details 点击查看代码
 ```html
 <Map :minZoom="3" height="400px">
-	<Label
-		content="欢迎使用百度地图GL版Vue3组件库"
-		:position="{lng: 116.404, lat: 39.915 }"
-		:style="{
-      color:'#fff',
-      backgroundColor: '#f90',
-      border: 'none',
-      borderRadius: '3px',
-      padding: '5px 10px',
-      fontSize: '16px'
-    }"
-	/>
+<Label
+  content="欢迎使用百度地图GL版Vue3组件库"
+  :position="{lng: 116.404, lat: 39.915 }"
+  :style="{
+    color:'#fff',
+    backgroundColor: '#f90',
+    border: 'none',
+    borderRadius: '3px',
+    padding: '5px 10px',
+    fontSize: '16px'
+  }"
+/>
 </Map>
 
 <script setup lang="ts">

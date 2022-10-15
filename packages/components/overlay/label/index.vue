@@ -1,10 +1,10 @@
 <template></template>
 <script setup lang="ts">
-	import { defineProps, onMounted, watch, withDefaults } from 'vue'
+	import { defineProps, onMounted, onUpdated, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLifeCycle from '../../..//hooks/useLifeCycle'
-	// TODO: 完善组件的属性动态监听设置
+	import { isDef } from '../../../utils/index'
 	export type LabelPosition = {
 		/**
 		 * 地理经度
@@ -38,7 +38,7 @@
 		 * 标注的位置偏移值
 		 */
 		offset?: LabelOffset
-    style?: LabelStyle
+		style?: LabelStyle
 		/**
 		 * @default true
 		 * 是否可清除
@@ -59,7 +59,7 @@
 			x: 0,
 			y: 0
 		}),
-		enableMassClear: true,
+		enableMassClear: true
 	})
 	const vueEmits = defineEmits([
 		'initd',
@@ -76,9 +76,8 @@
 	const { ready } = useLifeCycle()
 	let label: BMapGL.Label
 	useBaseMapEffect((map: BMapGL.Map) => {
-		console.log(map)
 		const cal = () => {
-			map.removeOverlay(label)
+			label && map.removeOverlay(label)
 		}
 		const init = () => {
 			const { content, position, offset, enableMassClear, style } = props
@@ -99,11 +98,7 @@
 		// 监听值变化
 		watch(() => props.position, setPosition, { deep: true })
 		watch(() => props.offset, setOffset, { deep: true })
-		watch(
-			() => props.style,
-			(style) => setStyle(),
-			{ deep: true }
-		)
+		watch(() => props.style, setStyle, { deep: true })
 		watch(() => props.content, setContent)
 		watch(() => props.enableMassClear, setMassClear)
 
@@ -116,7 +111,7 @@
 		label.setPosition(new BMapGL.Point(position.lng, position.lat))
 	}
 	function setStyle(styles?: LabelStyle): void {
-		if (styles) label.setStyle(styles)
+		if (isDef(styles)) label.setStyle(styles!)
 	}
 	function setContent(content: string): void {
 		label.setContent(content)
