@@ -1,0 +1,163 @@
+<template>
+	<div ref="infoWindowContainer" style="display: none">
+		<slot></slot>
+	</div>
+</template>
+
+<script setup lang="ts">
+	import { ref, watch, withDefaults, onUpdated, nextTick, computed } from 'vue'
+	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
+	import bindEvents, { Callback } from '../../../utils/bindEvents'
+	import useLifeCycle from '../../..//hooks/useLifeCycle'
+	import { callWhenDifferentValue } from '../../../utils/index'
+	export type InfoWindowPosition = {
+		/**
+		 * 地理经度
+		 */
+		lng: number
+		/**
+		 * 地理纬度
+		 */
+		lat: number
+	}
+	export interface InfoWindowProps {
+		modelValue: boolean
+		title: string
+		position: InfoWindowPosition
+		width?: 0 | RangeOf2<220, 730>
+		height?: 0 | RangeOf2<60, 650>
+		/**
+		 * 信息窗最大化时的宽度，单位像素。取值范围：220 - 730
+		 */
+		maxWidth?: RangeOf2<220, 730>
+		/**
+		 * 控件的偏移值
+		 */
+		offset?: {
+			x: number
+			y: number
+		}
+		enableAutoPan?: boolean
+		enableCloseOnClick?: boolean
+		enableMassClear?: boolean
+		onClose?: Callback
+		onOpen?: Callback
+		onMaximize?: Callback
+		onRestore?: Callback
+		onClickclose?: Callback
+	}
+	const infoWindowContainer = ref<HTMLDivElement>()
+	const props = withDefaults(defineProps<InfoWindowProps>(), {
+		width: 0,
+		height: 0,
+		maxWidth: 220,
+		offset: () => ({
+			x: 0,
+			y: 0
+		}),
+		enableAutoPan: true,
+		enableCloseOnClick: true
+	})
+	const vueEmits = defineEmits([
+		'initd',
+		'unload',
+		'close',
+		'open',
+		'maximize',
+		'restore',
+		'clickclose',
+		'update:modelValue'
+	])
+
+	const visible = computed({
+		get() {
+			return props.modelValue
+		},
+		set(value) {
+			vueEmits('update:modelValue', value)
+		}
+	})
+
+	const { ready } = useLifeCycle()
+	let infoWindow: BMapGL.InfoWindow
+	let _map: BMapGL.Map
+	useBaseMapEffect((map: BMapGL.Map) => {
+		_map = map
+		const cal = () => {
+			infoWindow && map.removeOverlay(infoWindow)
+		}
+		const init = () => {
+			const { title, width, height, enableAutoPan, maxWidth, offset, enableCloseOnClick } = props
+			const options: BMapGL.InfoWindowOptions = {
+				width,
+				height,
+				title,
+				maxWidth,
+				enableAutoPan,
+				enableCloseOnClick,
+				offset: new BMapGL.Size(offset.x, offset.y)
+			}
+			infoWindow = new BMapGL.InfoWindow(infoWindowContainer.value?.innerHTML || '', options)
+			infoWindow.addEventListener('close', () => {
+				if (props.modelValue) visible.value = false
+			})
+			infoWindow.addEventListener('open', () => {
+				if (!props.modelValue) visible.value = true
+			})
+			map.addOverlay(infoWindow)
+			bindEvents(props, vueEmits, infoWindow)
+		}
+
+		// 监听值变化
+		watch(() => props.position, callWhenDifferentValue(setPosition), { deep: true })
+		watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
+    // FIXME: 当显示时,hrm更新组件,组件状态混乱 
+		watch(
+			() => props.modelValue,
+			callWhenDifferentValue(() => {
+				props.modelValue ? open() : close()
+			})
+		)
+		init()
+		ready(map)
+		if (props.modelValue) {
+			// 多个 infoWindow, 显示最后一个实例, 其他实例同步显隐状态
+			nextTick(() => {
+				open()
+				nextTick(() => {
+          console.log(!infoWindow._visible); 
+					!infoWindow._visible && (visible.value = false)
+				})
+			})
+		}
+		return cal
+	})
+	onUpdated(() => {
+		setContent(infoWindowContainer.value?.innerHTML || '')
+	})
+	function open() {
+		const { position } = props
+		_map.openInfoWindow(infoWindow, new BMapGL.Point(position.lng, position.lat))
+		visible.value = true
+	}
+	function close() {
+		infoWindow.hide()
+		visible.value = false 
+	}
+	function setPosition(position: InfoWindowPosition) {
+		infoWindow.setPosition(new BMapGL.Point(position.lng, position.lat))
+	}
+	function setContent(content: string): void {
+		infoWindow.setContent(content)
+		infoWindow.redraw()
+	}
+	function setOffset(offset: { x: number; y: number }): void {
+		infoWindow.setOffset(new BMapGL.Size(offset.x, offset.y))
+	}
+</script>
+
+<script lang="ts">
+	export default {
+		name: 'BInfoWindow'
+	}
+</script>
