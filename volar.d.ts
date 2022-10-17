@@ -31,6 +31,12 @@ declare module '@vue/runtime-core' {
     Bminstall: typeof import('vue3-baidu-map-gl')['install']
     version: typeof import('vue3-baidu-map-gl')['version']
     Bmversion: typeof import('vue3-baidu-map-gl')['version']
+    InfoWindow: typeof import('vue3-baidu-map-gl')['InfoWindow']
+    BmInfoWindow: typeof import('vue3-baidu-map-gl')['InfoWindow']
+    Marker3d: typeof import('vue3-baidu-map-gl')['Marker3d']
+    BmMarker3d: typeof import('vue3-baidu-map-gl')['Marker3d']
+    Prism: typeof import('vue3-baidu-map-gl')['Prism']
+    BmPrism: typeof import('vue3-baidu-map-gl')['Prism']
   }
 }
 export {}

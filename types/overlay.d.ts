@@ -160,7 +160,7 @@ declare namespace BMapGL {
 		ondragend: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void
 		onrightclick: (event: { type: string; target: any }) => void
 	}
-	class Marker {
+	class Marker extends Overlay{
 		constructor(point: Point, opts?: MarkerOptions)
 	}
 

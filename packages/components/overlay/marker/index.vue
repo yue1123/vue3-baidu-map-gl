@@ -158,7 +158,7 @@
 
 	useBaseMapEffect((map: BMapGL.Map) => {
 		const cal = () => {
-			map.removeOverlay(marker)
+			marker && map.removeOverlay(marker)
 		}
 		const init = () => {
 			const {
