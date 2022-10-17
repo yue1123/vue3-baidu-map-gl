@@ -76,6 +76,10 @@ img.resizable-img {
   }
 }
 
+.VPDoc .content-container {
+  width: 100%;
+  max-width: 720px;
+}
 
 .myButton {
   border-radius: 6px;
@@ -149,7 +153,7 @@ input.my-input {
   border-radius: 4px;
   padding: 5px 14px;
   max-width: 300px;
-  width:100%;
+  width: 100%;
   font-size: 14px;
   margin-bottom: 15px;
 }

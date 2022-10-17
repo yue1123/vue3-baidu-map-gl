@@ -2,7 +2,6 @@ import DefaultTheme from 'vitepress/theme'
 import baiduMapInit from '../../../packages/index'
 import '../styles/main.css'
 
-console.log(baiduMapInit)
 export default {
 	...DefaultTheme,
 	enhanceApp(ctx) {

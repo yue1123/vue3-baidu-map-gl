@@ -287,6 +287,7 @@ declare namespace BMapGL {
 		 */
 		message: string
 		setWidth(width: number): void
+		setMaxWidth(width: number): void
 		setHeight(height: number): void
 		redraw(): void
 		setTitle(title: string | HTMLElement): void

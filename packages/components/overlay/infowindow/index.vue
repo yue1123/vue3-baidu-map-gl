@@ -2,13 +2,9 @@
 	<div ref="infoWindowContainer" style="display: none">
 		<slot></slot>
 	</div>
-	<div ref="infoWindowMaxContentContainer" style="display: none">
-		<slot name="maxContent"></slot>
-	</div>
 </template>
 
 <script setup lang="ts">
-	// TODO: 支持最大化内容
 	import { ref, watch, withDefaults, onUpdated, nextTick, computed } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
@@ -25,8 +21,8 @@
 		lat: number
 	}
 	export interface InfoWindowProps {
-		modelValue: boolean
-		title: string
+		modelValue?: boolean
+		title?: string
 		position: InfoWindowPosition
 		width?: 0 | RangeOf2<220, 730>
 		height?: 0 | RangeOf2<60, 650>
@@ -41,7 +37,7 @@
 			x: number
 			y: number
 		}
-		enableMaximize?: boolean
+		// enableMaximize?: boolean
 		enableAutoPan?: boolean
 		enableCloseOnClick?: boolean
 		onClose?: Callback
@@ -51,8 +47,9 @@
 		onClickclose?: Callback
 	}
 	const infoWindowContainer = ref<HTMLDivElement>()
-	const infoWindowMaxContentContainer = ref<HTMLDivElement>()
 	const props = withDefaults(defineProps<InfoWindowProps>(), {
+		modelValue: false,
+		title: '',
 		width: 0,
 		height: 0,
 		maxWidth: 220,
@@ -60,7 +57,7 @@
 			x: 0,
 			y: 0
 		}),
-		enableMaximize: false,
+		// enableMaximize: false,
 		enableAutoPan: true,
 		enableCloseOnClick: true
 	})
@@ -93,9 +90,7 @@
 			infoWindow && map.removeOverlay(infoWindow)
 		}
 		const init = () => {
-			const { title, width, height, enableMaximize, enableAutoPan, maxWidth, offset, enableCloseOnClick } = props
-			const content = infoWindowContainer.value?.innerHTML || ''
-			const maxContent = infoWindowMaxContentContainer.value?.innerHTML || ''
+			const { title, width, height, enableAutoPan, maxWidth, offset, enableCloseOnClick } = props
 			const options: BMapGL.InfoWindowOptions = {
 				width,
 				height,
@@ -105,19 +100,14 @@
 				enableCloseOnClick,
 				offset: new BMapGL.Size(offset.x, offset.y)
 			}
-			infoWindow = new BMapGL.InfoWindow(content, options)
+			infoWindow = new BMapGL.InfoWindow(infoWindowContainer.value?.innerHTML || '', options)
 			infoWindow.addEventListener('close', () => {
 				if (props.modelValue) visible.value = false
 			})
 			infoWindow.addEventListener('open', () => {
 				if (!props.modelValue) visible.value = true
 			})
-      console.log(infoWindow);
-      console.log(maxContent);
 			redraw()
-      setTimeout(() => {
-        infoWindow.maximize()
-      }, 1000);
 			map.addOverlay(infoWindow)
 			bindEvents(props, vueEmits, infoWindow)
 		}
@@ -125,11 +115,10 @@
 		// 监听值变化
 		watch(() => props.position, callWhenDifferentValue(setPosition), { deep: true })
 		watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
-
+		watch(() => props.title, setTitle)
 		watch(() => props.width, setWidth)
 		watch(() => props.height, setHeight)
 		watch(() => props.maxWidth, setMaxWidth)
-		watch(() => props.enableMaximize, setMaximize)
 		watch(() => props.enableAutoPan, setAutoPan)
 		watch(() => props.enableCloseOnClick, setCloseOnClick)
 		watch(
@@ -177,6 +166,9 @@
 		})
 	}
 
+	function setTitle(title: string) {
+		infoWindow.setTitle(title)
+	}
 	function setHeight(height: number) {
 		infoWindow.setHeight(height)
 	}
@@ -186,18 +178,16 @@
 	function setMaxWidth(maxWidth: number) {
 		infoWindow.setMaxWidth(maxWidth)
 	}
-	function setMaximize(maximize: boolean) {
-		maximize ? infoWindow.enableMaximize() : infoWindow.disableMaximize()
-	}
+	// function setMaximize(maximize: boolean) {
+	// 	maximize ? infoWindow.enableMaximize() : infoWindow.disableMaximize()
+	// }
 	function setAutoPan(autoPan: boolean) {
 		autoPan ? infoWindow.enableAutoPan() : infoWindow.disableAutoPan()
 	}
 	function setCloseOnClick(closeOnClick: boolean) {
 		closeOnClick ? infoWindow.enableCloseOnClick() : infoWindow.disableCloseOnClick()
 	}
-	function setMaxContent(content: string) {
-		infoWindow.setMaxContent(content)
-	}
+
 	function setPosition(position: InfoWindowPosition) {
 		infoWindow.setPosition(new BMapGL.Point(position.lng, position.lat))
 	}

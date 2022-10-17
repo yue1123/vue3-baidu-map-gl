@@ -1,5 +1,6 @@
 <template>
 	<div
+    class="baidu-map-container"
 		:id="mapContainerId"
 		:style="{ width: width, height: height }"
 		style="background: #f1f1f1; position: relative; overflow: hidden"

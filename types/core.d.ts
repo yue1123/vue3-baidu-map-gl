@@ -228,7 +228,7 @@ declare namespace BMapGL {
 		removeOverlay(overlay: Overlay): void
 		clearOverlays(): void
 		openInfoWindow(infoWnd: InfoWindow, point: Point): void
-		closeInfoWindow(): void
+		closeInfoWindow(infoWnd: InfoWindow): void
 		pointToOverlayPixel(point: Point): Pixel
 		overlayPixelToPoint(pixel: Pixel): Point
 		/**

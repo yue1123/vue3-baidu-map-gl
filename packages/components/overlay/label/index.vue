@@ -1,6 +1,6 @@
 <template></template>
 <script setup lang="ts">
-	import { defineProps, onMounted, onUpdated, watch, withDefaults } from 'vue'
+	import { defineProps, watch, withDefaults } from 'vue'
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLifeCycle from '../../..//hooks/useLifeCycle'

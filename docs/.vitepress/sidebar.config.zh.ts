@@ -119,6 +119,10 @@ const sidebarConfig = {
 					link: '/zh/overlay/polyline'
 				},
 				{
+					text: 'InfoWindow 信息窗口',
+					link: '/zh/overlay/infowindow'
+				},
+				{
 					text: 'Prism 3d棱柱',
 					link: '/zh/overlay/prism'
 				}

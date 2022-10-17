@@ -29,6 +29,7 @@ import Marker3d from './components/overlay/marker3d/index.vue'
 import Label from './components/overlay/label/index.vue'
 import Polyline from './components/overlay/polyline/index.vue'
 import Polygon from './components/overlay/polygon/index.vue'
+import InfoWindow from './components/overlay/infowindow/index.vue'
 import Circle from './components/overlay/circle/index.vue'
 import Prism from './components/overlay/prism/index.vue'
 
@@ -47,7 +48,8 @@ const componentsList = [
 	Polygon,
 	Circle,
 	CityList,
-	Prism
+	Prism,
+	InfoWindow
 ]
 
 // global register
@@ -83,6 +85,7 @@ export {
 	Polygon,
 	Circle,
 	CityList,
-	Prism
+	Prism,
+	InfoWindow
 }
 export default vue3BaiduMapGl
