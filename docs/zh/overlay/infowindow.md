@@ -65,9 +65,11 @@ import { InfoWindow } from 'vue3-baidu-map-gl'
   const show1 = ref<boolean>(false)
   const show2 = ref<boolean>(false)
   const count = ref<number>(1)
-  setInterval(() => {
-    count.value += 1
-  },1000)
+  if(typeof window !== 'undefined'){
+    setInterval(() => {
+      count.value += 1
+    }, 1000)
+  }
 </script>
 
 <style>
