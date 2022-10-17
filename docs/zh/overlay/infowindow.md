@@ -12,15 +12,15 @@ import { InfoWindow } from 'vue3-baidu-map-gl'
 ## 示例
 <div>
   <label>
-    显示infoWindow1: <input type="checkbox" v-model="show">
+    <input type="checkbox" v-model="show"> 文字内容infoWindow
   </label>
   <br />
   <label>
-    显示infoWindow2: <input type="checkbox" v-model="show1">
+    <input type="checkbox" v-model="show1"> 动态内容infoWindow
   </label>
   <br />
   <label>
-    显示infoWindow2: <input type="checkbox" v-model="show2">
+    <input type="checkbox" v-model="show2"> 图文组合排版infoWindow
   </label>
   <br />
   <br />
