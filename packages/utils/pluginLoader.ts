@@ -9,7 +9,18 @@ export const pluginLoaderMap: Record<PluginsUnion, () => Promise<any>> = {
 			src: '//api.map.baidu.com/library/TrackAnimation/src/TrackAnimation_min.js',
 			addCalToWindow: false,
 			key: 'trackAnimation'
-		})
+		}),
+	// SearchInfoWindow: () => {
+	// 	const linkEl: HTMLLinkElement = document.createElement('link')
+	// 	linkEl.href = '//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css'
+  //   linkEl.rel = 'stylesheet'
+	// 	document.head.appendChild(linkEl)
+	// 	return getScriptAsync({
+	// 		src: 'http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js',
+	// 		addCalToWindow: false,
+	// 		key: 'trackAnimation'
+	// 	})
+	// }
 }
 
 export function initPlugins(plugins: PluginsList) {
@@ -21,7 +32,7 @@ export function initPlugins(plugins: PluginsList) {
 			}
 			return pluginsArr
 		}, [] as (() => Promise<any>)[])
-    return pluginsLoaders
+		return pluginsLoaders
 	}
-  return []
+	return []
 }
