@@ -2,13 +2,24 @@
 
 基于百度地图 JavaScript GL 版（使用了WebGL对地图、覆盖物等进行渲染，支持3D视角展示地图） API 封装的 Vue3 组件库
 
-
 <img src='./docs/public/logo.png' style="border-radius:48px;overflow:hidden; width:220px;">
 <br />
 <br />
 
 [![GitHub license](https://img.shields.io/github/license/yue1123/img-previewer?style=flat-square)](https://github.com/yue1123/img-previewer/blob/main/LICENSE)
 <img src="https://img.shields.io/github/package-json/v/yue1123/vue3-baidu-map-gl?color=f90&style=flat-square" alt="GitHub package.json version (subfolder of monorepo)">
+
+
+## ✨ 特性
+- 自动加载百度地图 SDK及其工具库，将百度地图繁琐的Api封装进组件，你只需关注组件本身
+- 比较完整，提供的组件和 hooks 能覆盖大部分使用场景
+- Composition Api + Ts，面向未来，更好的性能，和你的 Ts 项目无缝衔接
+- tree shaking 支持，模块分包，只打包你想要的的
+- 体验良好，支持volar，组件提供完善的代码提示，与用户逻辑保持一致
+- 基于百度地图Gl版SDK，WebGL对地图、覆盖物等进行渲染，支持3D视角展示地图
+- 组件同时兼容大驼峰命名(CamelCase)和短横线命名(kebab-case)
+
+
 
 ## Documentation
 [https://yue1123.github.io/vue3-baidu-map-gl/zh](https://yue1123.github.io/vue3-baidu-map-gl/zh)
@@ -23,7 +34,7 @@ yarn add vue3-baidu-map-gl
 # or
 pnpm add vue3-baidu-map-gl
 ```
-### Usage
+### Usage SFC
 按需引入
 ```vue
 <template>
@@ -39,10 +50,10 @@ pnpm add vue3-baidu-map-gl
 ```ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import baiduMap from 'vue3-baidu-map-gl'
+import baiduMapGl from 'vue3-baidu-map-gl'
 
 const app = createApp(App)
-app.use(baiduMap, { ak: 'YOUR_AK' })
+app.use(baiduMapGl, { ak: 'YOUR_AK' })
 app.mount('#app')
 ```
 
