@@ -54,9 +54,9 @@ export default defineConfig({
 			]
 		},
 		algolia: {
-			appId: 'R956DMSLMZ',
-			apiKey: 'a67c9e1aaa7c0b2b5d771c1fb6679139',
-			indexName: 'zh'
+			appId: 'RT4OHPUGD1',
+			apiKey: '76ba0d807534197fb89a2644c412240b',
+			indexName: 'vue3-baidu-map-gl-zh'
 		},
 		footer: {
 			message: 'Released under the MIT License.',
