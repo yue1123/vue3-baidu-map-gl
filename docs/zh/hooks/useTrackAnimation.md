@@ -45,7 +45,6 @@
     duration:10000,
     delay:0
   })
-  console.log(isStopping)
   const path = [{
         'lng': 116.297611,
         'lat': 40.047363
