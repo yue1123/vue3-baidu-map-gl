@@ -61,7 +61,7 @@ if(typeof window !== 'undefined'){
       <h3>动态内容2{{count}}</h3>
   </Copyright>
 </Map>
-<button class="myButton no-m-b" @click="toggle">{{ show ? '隐藏': '显示' }}右上角版权</button>  
+<button @click="toggle">{{ show ? '隐藏': '显示' }}右上角版权</button>  
 
 <script setup lang="ts">
 import { Map, Copyright } from 'vue3-baidu-map-gl'
