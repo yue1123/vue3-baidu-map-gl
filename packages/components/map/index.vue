@@ -1,6 +1,6 @@
 <template>
 	<div
-    class="baidu-map-container"
+		class="baidu-map-container"
 		:id="mapContainerId"
 		:style="{ width: width, height: height }"
 		style="background: #f1f1f1; position: relative; overflow: hidden"
@@ -248,7 +248,7 @@
 	if (!ak) console.warn('missing required props: ak')
 
 	// 初始化地图
-	function init() {
+	function init(containerId: string) {
 		getScriptAsync({
 			src: `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=_initBMap`,
 			addCalToWindow: true,
@@ -256,7 +256,7 @@
 		})
 			.then(() => {
 				const { minZoom, maxZoom, mapType, enableAutoResize, showControls, center } = props
-				map = new BMapGL.Map(mapContainerId, {
+				map = new BMapGL.Map(containerId, {
 					minZoom,
 					maxZoom,
 					mapType: window[mapType],
@@ -424,7 +424,7 @@
 	}
 
 	onMounted(() => {
-		init()
+		init(mapContainerId)
 	})
 	/**
 	 * 销毁地图，当使用 WebGL 渲染地图时，如果确认不再使用该地图实例，则需要
