@@ -1,4 +1,4 @@
-import { Component, Ref, watch } from 'vue'
+import { Component, Ref, ref, watch } from 'vue'
 import Map from '../components/bm-map/index.vue'
 
 type MapComponent = typeof Map
@@ -44,6 +44,8 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
 	let pl: BMapGL.Polyline
 	let mapComponentInstance: any
 	let mapInstance: BMapGL.Map
+	const isRunning = ref<boolean>(false)
+	const isStopping = ref<boolean>(false)
 	watch(
 		() => map.value,
 		(n) => {
@@ -62,10 +64,24 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
 		init()
 	}
 	const start = () => {
-		if (instance) instance.start()
+		if (instance && !isRunning.value) {
+			isRunning.value = true
+			instance.start()
+		}
+	}
+	const cancel = () => {
+		if (instance) {
+			isRunning.value = false
+			instance.cancel()
+		}
 	}
 	const stop = () => {
-		if (instance) instance.cancel()
+		isStopping.value = true
+		if (instance) instance.pause()
+	}
+	const proceed = () => {
+		isStopping.value = false
+		if (instance) instance.continue()
 	}
 	return {
 		/**
@@ -77,8 +93,24 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
 		 */
 		start,
 		/**
-		 * 停止动画, 停止后再次开始,会重新播放
+		 * 暂停动画
 		 */
-		stop
+		stop,
+		/**
+		 * 取消动画
+		 */
+		cancel,
+		/**
+		 * 继续播放动画
+		 */
+		proceed,
+		/**
+		 * 是否处于动画播放进度中
+		 */
+		isRunning,
+    /**
+     * 是否暂停了播放
+     */
+		isStopping
 	}
 }

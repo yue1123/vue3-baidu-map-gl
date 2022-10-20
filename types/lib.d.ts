@@ -76,6 +76,8 @@ declare namespace BMapGLLib {
 		constructor(map: BMapGL.Map, pl: BMapGL.Polyline, opts: any)
 		start(): void
 		cancel(): void
+		pause(): void
+		continue(): void
 	}
 }
 

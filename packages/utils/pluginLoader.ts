@@ -6,14 +6,14 @@ export type PluginsList = ['TrackAnimation']
 export const pluginLoaderMap: Record<PluginsUnion, () => Promise<any>> = {
 	TrackAnimation: () =>
 		getScriptAsync({
-			src: '//api.map.baidu.com/library/TrackAnimation/src/TrackAnimation_min.js',
+			src: '//mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js',
 			addCalToWindow: false,
 			key: 'trackAnimation'
-		}),
+		})
 	// SearchInfoWindow: () => {
 	// 	const linkEl: HTMLLinkElement = document.createElement('link')
 	// 	linkEl.href = '//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css'
-  //   linkEl.rel = 'stylesheet'
+	//   linkEl.rel = 'stylesheet'
 	// 	document.head.appendChild(linkEl)
 	// 	return getScriptAsync({
 	// 		src: 'http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js',
