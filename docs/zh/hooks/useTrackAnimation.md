@@ -96,7 +96,7 @@
   />
   <div class="state">
     <span>动画状态: {{isRunning  ? '已开始' : '未开始' }}</span>
-    <span>播放状态: {{isStopping  ? '未播放' : '播放中' }}</span>
+    <span>播放状态: {{ !isRunning || isStopping  ? '未播放' : '播放中' }}</span>
   </div>
   <button class="myButton no-m-b" type="button" @click="start">开始</button>
   <button class="myButton no-m-b" type="button" @click="stop">暂停</button>
@@ -199,17 +199,33 @@ export declare type UseTrackAnimationOptions = {
  * @returns { setPath, start, stop}
  */
 export declare function useTrackAnimation(map: any, options: UseTrackAnimationOptions): {
-  /**
-   * 设置路径动画路径
-   */
-  setPath: (path: PathPoint[]) => void;
-  /**
-   * 开始动画
-   */
-  start: () => void;
-  /**
-   * 停止动画, 停止后再次开始,会重新播放
-   */
-  stop: () => void;
+    /**
+     * 设置路径动画路径
+     */
+    setPath: (path: PathPoint[]) => void;
+    /**
+     * 开始动画
+     */
+    start: () => void;
+    /**
+     * 暂停动画
+     */
+    stop: () => void;
+    /**
+     * 取消动画
+     */
+    cancel: () => void;
+    /**
+     * 继续播放动画
+     */
+    proceed: () => void;
+    /**
+     * 是否处于动画播放进度中
+     */
+    isRunning: Ref<boolean>;
+    /**
+     * 是否暂停了播放
+     */
+    isStopping: Ref<boolean>;
 };
 ```
