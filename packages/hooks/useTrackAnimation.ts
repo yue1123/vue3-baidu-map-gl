@@ -72,6 +72,7 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
 	const cancel = () => {
 		if (instance) {
 			isRunning.value = false
+      isStopping.value = false
 			instance.cancel()
 		}
 	}
