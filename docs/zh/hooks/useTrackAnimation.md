@@ -20,8 +20,8 @@
     @pluginReady="handleInitd"
   />
   <div class="state">
-    <span>动画状态: {{isRunning  ? '已开始' : '未开始' }}</span>
-    <span>播放状态: {{isStopping  ? '未播放' : '播放中' }}</span>
+    <span>动画状态: {{ isRunning  ? '已开始' : '未开始' }}</span>
+    <span>播放状态: {{ !isRunning || isStopping  ? '未播放' : '播放中' }}</span>
   </div>
   <button class="myButton no-m-b" type="button" @click="start">开始</button>
   <button class="myButton no-m-b" type="button" @click="stop">暂停</button>
@@ -45,6 +45,7 @@
     duration:10000,
     delay:0
   })
+  console.log(isStopping)
   const path = [{
         'lng': 116.297611,
         'lat': 40.047363
