@@ -1,7 +1,7 @@
 <template>
 	<div
 		class="baidu-map-container"
-		:id="mapContainerId"
+		ref="mapContainer"
 		:style="{ width: width, height: height }"
 		style="background: #f1f1f1; position: relative; overflow: hidden"
 	>
@@ -25,7 +25,8 @@
 		onUnmounted,
 		provide,
 		nextTick,
-		getCurrentInstance
+		getCurrentInstance,
+		ref
 	} from 'vue'
 	import useLifeCycle from '../../hooks/useLifeCycle'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
@@ -175,13 +176,14 @@
 		onTouchend?: Callback
 		onLongpress?: Callback
 	}
+	const mapContainer = ref<HTMLDivElement | null>()
 	let map: BMapGL.Map = null!
 	// 是否初始化
 	let initd: boolean = false
 	// 地图初始化的发布
 	const { ready } = useLifeCycle()
 	const { uid, proxy } = getCurrentInstance()!
-	const mapContainerId = 'baidu-map-container' + uid
+	// const mapContainerId = 'baidu-map-container' + uid
 	const props = withDefaults(defineProps<BaiduMapProps>(), {
 		width: '100%',
 		height: '400px',
@@ -248,7 +250,7 @@
 	if (!ak) console.warn('missing required props: ak')
 
 	// 初始化地图
-	function init(containerId: string) {
+	function init() {
 		getScriptAsync({
 			src: `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=_initBMap`,
 			addCalToWindow: true,
@@ -256,7 +258,8 @@
 		})
 			.then(() => {
 				const { minZoom, maxZoom, mapType, enableAutoResize, showControls, center } = props
-				map = new BMapGL.Map(containerId, {
+				if (!mapContainer.value) return
+				map = new BMapGL.Map(mapContainer.value, {
 					minZoom,
 					maxZoom,
 					mapType: window[mapType],
@@ -424,7 +427,7 @@
 	}
 
 	onMounted(() => {
-		init(mapContainerId)
+		init()
 	})
 	/**
 	 * 销毁地图，当使用 WebGL 渲染地图时，如果确认不再使用该地图实例，则需要
