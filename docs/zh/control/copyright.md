@@ -21,10 +21,10 @@ import { Copyright } from 'vue3-baidu-map-gl'
     </div>
   </Copyright>
   <Copyright anchor="BMAP_ANCHOR_BOTTOM_RIGHT">
-      <h3>动态内容1{{count}}</h3>
+      <h3>动态内容1: {{count}}</h3>
   </Copyright>
   <Copyright anchor="BMAP_ANCHOR_BOTTOM_RIGHT">
-      <h3>动态内容2{{count}}</h3>
+      <h3>动态内容2: {{count}}</h3>
   </Copyright>
 </Map>
 <button class="myButton no-m-b" @click="toggle">{{ show ? '隐藏': '显示' }}右上角版权</button>  
@@ -55,10 +55,10 @@ if(typeof window !== 'undefined'){
     </div>
   </Copyright>
   <Copyright anchor="BMAP_ANCHOR_BOTTOM_RIGHT">
-      <h3>动态内容1{{count}}</h3>
+      <h3>动态内容1: {{count}}</h3>
   </Copyright>
   <Copyright anchor="BMAP_ANCHOR_BOTTOM_RIGHT">
-      <h3>动态内容2{{count}}</h3>
+      <h3>动态内容2: {{count}}</h3>
   </Copyright>
 </Map>
 <button @click="toggle">{{ show ? '隐藏': '显示' }}右上角版权</button>  
