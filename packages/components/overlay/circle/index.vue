@@ -6,6 +6,7 @@
 	import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
 	import bindEvents, { Callback } from '../../../utils/bindEvents'
 	import useLifeCycle from '../../..//hooks/useLifeCycle'
+  import { callWhenDifferentValue } from '../../../utils'
 	export type CircleCenter = {
 		/**
 		 * 地理经度
@@ -150,7 +151,7 @@
 			bindEvents(props, vueEmits, circle)
 		}
 		// 监听值变化
-		watch(() => props.center, setCenter, { deep: true })
+		watch(() => props.center, callWhenDifferentValue(setCenter), { deep: true })
 		watch(() => props.radius, setRadius)
 		watch(() => props.strokeColor, setStrokeColor)
 		watch(() => props.strokeOpacity, setStrokeOpacity)

@@ -15,6 +15,7 @@ import { Circle } from 'vue3-baidu-map-gl'
   height="400px"
 >
   <Circle
+    enableEditing
     stroke-style="dashed"
     :center="{ lat: 39.915185, lng: 116.403901 }"
     :radius="300"
@@ -23,25 +24,18 @@ import { Circle } from 'vue3-baidu-map-gl'
 </div>
 
 ::: details 点击查看代码
+
 ```html
-<Map
-  :minZoom="3"
-  height="400px"
->
-  <Circle
-    stroke-style="dashed"
-    :center="{ lat: 39.915185, lng: 116.403901 }"
-    :radius="300"
-    enableEditing
-  />
-</Map>
+<Map :minZoom="3" height="400px">
+  <Circle stroke-style="dashed" :center="{ lat: 39.915185, lng: 116.403901 }" :radius="300" enableEditing />
+</map>
 
 <script setup lang="ts">
-import { Map, Circle } from 'vue3-baidu-map-gl'
+  import { Map, Circle } from 'vue3-baidu-map-gl'
 </script>
 ```
-:::
 
+:::
 
 ## 静态组件 Props
 
