@@ -20,7 +20,8 @@ import { Map } from 'vue3-baidu-map-gl'
     enableDoubleClickZoom: false,
     enableKeyboard: true,
     enablePinchToZoom: true,
-    enableAutoResize: true
+    enableAutoResize: true,
+    enableTraffic: true
   })
 </script>
 
@@ -53,6 +54,10 @@ import { Map } from 'vue3-baidu-map-gl'
     <input type="checkbox" v-model="mapSetting.enableContinuousZoom"/>双击平滑缩放效果
   </label>
   <br/>
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableTraffic"/>显示路况
+  </label>
+  <br/>
   <br/>
   地图类型：<select class="mySelect" name="" id="" v-model="type">
     <option value="BMAP_NORMAL_MAP">常规地图 BMAP_NORMAL_MAP</option>
@@ -79,6 +84,7 @@ import { Map } from 'vue3-baidu-map-gl'
     :enableDoubleClickZoom="mapSetting.enableDoubleClickZoom"
     :enableKeyboard="mapSetting.enableKeyboard"
     :enablePinchToZoom="mapSetting.enablePinchToZoom"
+    :enableTraffic="mapSetting.enableTraffic"
   />
 </div>
 
@@ -86,63 +92,85 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ```html
 <div>
-	<label> <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom" />鼠标缩放 </label>
-	<br />
-	<label> <input type="checkbox" v-model="mapSetting.enableDragging" />拖拽 </label>
-	<br />
-	<label> <input type="checkbox" v-model="mapSetting.enableInertialDragging" />惯性拖拽 </label>
-	<br />
-	<label> <input type="checkbox" v-model="mapSetting.enablePinchToZoom" />双指缩放地图 </label>
-	<br />
-	<label> <input type="checkbox" v-model="mapSetting.enableKeyboard" />键盘操作 </label>
-	<br />
-	<label>
-		<input
-			type="checkbox"
-			v-model="mapSetting.enableDoubleClickZoom"
-		/>双击缩放，左键双击放大、右键双击缩小
-	</label>
-	<br />
-	<label>
-		<input type="checkbox" v-model="mapSetting.enableContinuousZoom" />双击平滑缩放效果
-	</label>
-	<br />
-	<br />
-	地图类型：<select name="" id="" v-model="type">
-		<option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
-		<option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
-	</select>
-	<br />
-	<br />
-	<map
-		:minZoom="3"
-		height="400px"
-		:mapType="type"
-		:enableDragging="mapSetting.enableDragging"
-		:enableInertialDragging="mapSetting.enableInertialDragging"
-		:enableScrollWheelZoom="mapSetting.enableScrollWheelZoom"
-		:enableContinuousZoom="mapSetting.enableContinuousZoom"
-		:enableDoubleClickZoom="mapSetting.enableDoubleClickZoom"
-		:enableKeyboard="mapSetting.enableKeyboard"
-		:enablePinchToZoom="mapSetting.enablePinchToZoom"
-	/>
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom" />
+    鼠标缩放
+  </label>
+  <br />
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableDragging" />
+    拖拽
+  </label>
+  <br />
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableInertialDragging" />
+    惯性拖拽
+  </label>
+  <br />
+  <label>
+    <input type="checkbox" v-model="mapSetting.enablePinchToZoom" />
+    双指缩放地图
+  </label>
+  <br />
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableKeyboard" />
+    键盘操作
+  </label>
+  <br />
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableDoubleClickZoom" />
+    双击缩放，左键双击放大、右键双击缩小
+  </label>
+  <br />
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableContinuousZoom" />
+    双击平滑缩放效果
+  </label>
+  <br />
+  <label>
+    <input type="checkbox" v-model="mapSetting.enableTraffic" />
+    显示路况
+  </label>
+  <br />
+  <br />
+  地图类型：
+  <select name="" id="" v-model="type">
+    <option value="BMAP_NORMAL_MAP">BMAP_NORMAL_MAP</option>
+    <option value="BMAP_EARTH_MAP">BMAP_EARTH_MAP</option>
+  </select>
+  <br />
+  <br />
+  <map
+    :minZoom="3"
+    height="400px"
+    :mapType="type"
+    :enableDragging="mapSetting.enableDragging"
+    :enableInertialDragging="mapSetting.enableInertialDragging"
+    :enableScrollWheelZoom="mapSetting.enableScrollWheelZoom"
+    :enableContinuousZoom="mapSetting.enableContinuousZoom"
+    :enableDoubleClickZoom="mapSetting.enableDoubleClickZoom"
+    :enableKeyboard="mapSetting.enableKeyboard"
+    :enablePinchToZoom="mapSetting.enablePinchToZoom"
+    :enableTraffic="mapSetting.enableTraffic"
+  />
 </div>
 
 <script setup lang="ts">
-	import { ref } from 'vue'
-	import { Map } from 'vue3-baidu-map-gl'
-	const type = ref('BMAP_NORMAL_MAP')
-	const mapSetting = ref({
-		enableDragging: true,
-		enableInertialDragging: true,
-		enableScrollWheelZoom: false,
-		enableContinuousZoom: true,
-		enableResizeOnCenter: true,
-		enableDoubleClickZoom: false,
-		enableKeyboard: true,
-		enablePinchToZoom: true,
-		enableAutoResize: true
-	})
+  import { ref } from 'vue'
+  import { Map } from 'vue3-baidu-map-gl'
+  const type = ref('BMAP_NORMAL_MAP')
+  const mapSetting = ref({
+    enableDragging: true,
+    enableInertialDragging: true,
+    enableScrollWheelZoom: false,
+    enableContinuousZoom: true,
+    enableResizeOnCenter: true,
+    enableDoubleClickZoom: false,
+    enableKeyboard: true,
+    enablePinchToZoom: true,
+    enableAutoResize: true,
+    enableTraffic: false
+  })
 </script>
 ```
 
@@ -171,6 +199,7 @@ import { Map } from 'vue3-baidu-map-gl'
 | zoom                   | 地图缩放级别                                                                                                                                                                   | `number`                              | `14`              |
 | mapStyleId             | 个性化地图样式 ID [详见](./custom)                                                                                                                                             | `string`                              |                   |
 | mapStyleJson           | 个性化地图样式 Json [详见](./custom)                                                                                                                                           | `{featureType: string...}[]`          |                   |
+| enableTraffic          | 是否启用路况图层                                                                                                                                                               | `boolean`                             | `false`           |
 | enableDragging         | 启用地图拖拽                                                                                                                                                                   | `boolean`                             | `true`            |
 | enableInertialDragging | 启用地图惯性拖拽                                                                                                                                                               | `boolean`                             | `true`            |
 | enableScrollWheelZoom  | 允许地图可被鼠标滚轮缩放                                                                                                                                                       | `boolean`                             | `false`           |
@@ -237,63 +266,63 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ```html
 <map>
-	<template #loading="{ isLoading }">
-		<div class="spinner" v-if="isLoading">
-			<div class="double-bounce1"></div>
-			<div class="double-bounce2"></div>
-		</div>
-	</template>
+  <template #loading="{ isLoading }">
+    <div class="spinner" v-if="isLoading">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+  </template>
 </map>
 
 <style lang="css">
-	.spinner {
-		width: 60px;
-		height: 60px;
+  .spinner {
+    width: 60px;
+    height: 60px;
 
-		position: relative;
-		margin: 100px auto;
-	}
+    position: relative;
+    margin: 100px auto;
+  }
 
-	.double-bounce1,
-	.double-bounce2 {
-		width: 100%;
-		height: 100%;
-		border-radius: 50%;
-		background-color: #42b883;
-		opacity: 0.6;
-		position: absolute;
-		top: 0;
-		left: 0;
+  .double-bounce1,
+  .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #42b883;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-		-webkit-animation: bounce 2s infinite ease-in-out;
-		animation: bounce 2s infinite ease-in-out;
-	}
+    -webkit-animation: bounce 2s infinite ease-in-out;
+    animation: bounce 2s infinite ease-in-out;
+  }
 
-	.double-bounce2 {
-		-webkit-animation-delay: -1s;
-		animation-delay: -1s;
-	}
+  .double-bounce2 {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+  }
 
-	@-webkit-keyframes bounce {
-		0%,
-		100% {
-			-webkit-transform: scale(0);
-		}
-		50% {
-			-webkit-transform: scale(1);
-		}
-	}
+  @-webkit-keyframes bounce {
+    0%,
+    100% {
+      -webkit-transform: scale(0);
+    }
+    50% {
+      -webkit-transform: scale(1);
+    }
+  }
 
-	@keyframes bounce {
-		0%,
-		100% {
-			transform: scale(0);
-			-webkit-transform: scale(0);
-		}
-		50% {
-			transform: scale(1);
-			-webkit-transform: scale(1);
-		}
-	}
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: scale(0);
+      -webkit-transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+      -webkit-transform: scale(1);
+    }
+  }
 </style>
 ```
