@@ -78,6 +78,8 @@ declare namespace BMapGLLib {
 		cancel(): void
 		pause(): void
 		continue(): void
+		_status: 1 | 2 | 3
+		_viewAni: any
 	}
 }
 

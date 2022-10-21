@@ -33,6 +33,12 @@ export type UseTrackAnimationOptions = {
 	 */
 	zoom?: number
 }
+type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
+const statusMap: Record<number, AnimationStatus> = {
+	1: 'PLAYING',
+	2: 'INITIAL',
+	3: 'STOPPING'
+}
 /**
  * 轨迹动画
  * @param {any} map 地图组件实例引用
@@ -44,8 +50,8 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
 	let pl: BMapGL.Polyline
 	let mapComponentInstance: any
 	let mapInstance: BMapGL.Map
-	const isRunning = ref<boolean>(false)
-	const isStopping = ref<boolean>(false)
+	let status = ref<AnimationStatus>('INITIAL')
+
 	watch(
 		() => map.value,
 		(n) => {
@@ -64,26 +70,42 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
 		init()
 	}
 	const start = () => {
-		if (instance && !isRunning.value) {
-			isRunning.value = true
+		if (instance && status.value === 'INITIAL') {
 			instance.start()
+			syncState()
+			setTimeout(() => {
+				instance._viewAni.addEventListener('animationend', syncState)
+			})
 		}
 	}
+
 	const cancel = () => {
 		if (instance) {
-			isRunning.value = false
-      isStopping.value = false
 			instance.cancel()
+			syncState()
 		}
 	}
 	const stop = () => {
-		isStopping.value = true
-		if (instance) instance.pause()
+		if (instance) {
+			instance.pause()
+			syncState()
+		}
 	}
 	const proceed = () => {
-		isStopping.value = false
-		if (instance) instance.continue()
+		if (instance) {
+			instance.continue()
+			syncState()
+		}
 	}
+
+	const syncState = () => {
+		setTimeout(() => {
+			if (instance) {
+				status.value = statusMap[instance._status]
+			}
+		})
+	}
+
 	return {
 		/**
 		 * 设置路径动画路径
@@ -106,12 +128,8 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
 		 */
 		proceed,
 		/**
-		 * 是否处于动画播放进度中
+		 * 动画状态
 		 */
-		isRunning,
-    /**
-     * 是否暂停了播放
-     */
-		isStopping
+		status
 	}
 }

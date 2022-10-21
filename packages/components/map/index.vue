@@ -26,13 +26,14 @@
 		provide,
 		nextTick,
 		getCurrentInstance,
-		ref
+		ref,
+		onUpdated
 	} from 'vue'
 	import useLifeCycle from '../../hooks/useLifeCycle'
 	import bindEvents, { Callback } from '../../utils/bindEvents'
 	import getScriptAsync from '../../utils/getScriptAsync'
 	import { initPlugins, PluginsList } from '../../utils/pluginLoader'
-	import { isString } from '../../utils'
+	import { isString, callWhenDifferentValue } from '../../utils'
 	export interface BaiduMapProps {
 		ak?: string
 		/**sss
@@ -299,7 +300,6 @@
 			})
 			return
 		} else if (props.mapStyleJson) {
-			console.log('json')
 			map.setMapStyleV2({
 				styleJson: props.mapStyleJson
 			})
@@ -310,11 +310,11 @@
 		watch(() => props.zoom, setZoom)
 		watch(() => props.tilt, setTilt)
 		watch(() => props.heading, setHeading)
-		watch(() => props.center, setCenterAndZoom, {
+		watch(() => props.center, callWhenDifferentValue(setCenterAndZoom), {
 			deep: true
 		})
 		watch(() => props.mapStyleId, initCustomStyle)
-		watch(() => props.mapStyleJson, initCustomStyle, {
+		watch(() => props.mapStyleJson, callWhenDifferentValue(initCustomStyle), {
 			deep: true
 		})
 		watch(() => props.mapType, setMapType)
