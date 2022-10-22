@@ -120,7 +120,6 @@
     lng: number
     lat: number
   }) => void
-
   let polygon: BMapGL.Polygon
   useBaseMapEffect((map: BMapGL.Map) => {
     const cal = () => {

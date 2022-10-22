@@ -35,7 +35,7 @@
     "link:pnpm": "pnpm link --global",
     "fix-dot": "fixdot docs/zh/base/* docs/zh/control/* docs/zh/guide/* docs/zh/overlay/* docs/index.md -d -p",
     "gen-volar-dts": "esbuild scripts/gen-component-declaration.js --bundle --platform=node | node",
-    "format": "prettier -w docs/zh/* packages/*"
+    "format": "prettier -w types/* docs/zh/* packages/*"
   },
   "dependencies": {
     "mitt": "^3.0.0",
@@ -53,8 +53,14 @@
     "@rollup/plugin-node-resolve": "^14.1.0",
     "@rollup/plugin-replace": "^4.0.0",
     "@types/ws": "^8.5.3",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
     "@vitejs/plugin-vue": "3.1.0",
     "deepmerge": "^4.2.2",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.6.0",
     "husky": "^7.0.4",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
