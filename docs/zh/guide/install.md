@@ -14,4 +14,5 @@ pnpm add vue3-baidu-map-gl
 ```
 
 ## CDN
+
 参考 [使用 CDN](/zh/guide/usage-cdn)。

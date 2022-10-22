@@ -17,6 +17,7 @@
 :::
 
 ## 示例
+
 点击查看基本的[在线示例](https://jsbin.com/hohuximefi/edit?html,output)：
 
 ```html
@@ -37,7 +38,7 @@
       const App = {
         setup() {
           return {
-            
+
           }
         }
       }

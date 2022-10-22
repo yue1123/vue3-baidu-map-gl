@@ -1,6 +1,6 @@
-# Prism 3d棱柱
+# Prism 3d 棱柱
 
-通过该组件可在地图上绘制3d棱柱，可以基于位置经纬度，高度，顶面和侧面的颜色、透明度等属性来绘制不规则的棱柱体。
+通过该组件可在地图上绘制 3d 棱柱，可以基于位置经纬度，高度，顶面和侧面的颜色、透明度等属性来绘制不规则的棱柱体。
 
 ```ts
 import { Prism } from 'vue3-baidu-map-gl'
@@ -8,7 +8,7 @@ import { Prism } from 'vue3-baidu-map-gl'
 
 ## 示例
 
-结合 [`useAreaBoundary`](../hooks/useAreaBoundary) hooks, 并通过指定 `props.isBoundary` 为 `true` 实现3d行政区域显示效果
+结合 [`useAreaBoundary`](../hooks/useAreaBoundary) hooks, 并通过指定 `props.isBoundary` 为 `true` 实现 3d 行政区域显示效果
 
 <div>
   <Map
@@ -54,48 +54,45 @@ import { Prism } from 'vue3-baidu-map-gl'
 </script>
 
 :::details 点击查看代码
+
 ```html
-<Map
-  :zoom="10"
-  :tilt='50'
-  enableScrollWheelZoom
-  mapStyleId='980161f3645989feac25a0da15da4178'
->
+<map :zoom="10" :tilt="50" enableScrollWheelZoom mapStyleId="980161f3645989feac25a0da15da4178">
   <Prism
     isBoundary
-    :path="point"  
-    :autoCenter='false'
-    :topFillOpacity='topFillOpacity'
-    :sideFillOpacity='0.9'
-    :altitude='5000'
-    sideFillColor='#5679ea'
-    topFillColor='#5679ea'
+    :path="point"
+    :autoCenter="false"
+    :topFillOpacity="topFillOpacity"
+    :sideFillOpacity="0.9"
+    :altitude="5000"
+    sideFillColor="#5679ea"
+    topFillColor="#5679ea"
     @initd="handleInitd"
     @mouseover="handleMouseover"
     @mouseout="handleMouseout"
   />
-</Map>
+</map>
 
 <script setup lang="ts">
   import { ref, watch } from 'vue'
   import { Map, Prism, useAreaBoundary } from 'vue3-baidu-map-gl'
   const topFillOpacity = ref<number>(0.5)
   const area = ref<string>('北京市')
-  const { isLoading, boundaries: point, get } = useAreaBoundary()  
+  const { isLoading, boundaries: point, get } = useAreaBoundary()
 
-  function handleInitd(){
+  function handleInitd() {
     get(area.value)
   }
 
-  function handleMouseover(){
+  function handleMouseover() {
     topFillOpacity.value = 1
   }
 
-  function handleMouseout(){
+  function handleMouseout() {
     topFillOpacity.value = 0.5
   }
 </script>
 ```
+
 :::
 
 ## 静态组件 Props
@@ -111,7 +108,7 @@ import { Prism } from 'vue3-baidu-map-gl'
 | 参数            | 说明                                        | 类型                            | 可选值 | 默认值     |
 | --------------- | ------------------------------------------- | ------------------------------- | ------ | ---------- |
 | path            | 多边形的坐标数组                            | `{ lng: number, lat: number}[]` |        | `required` |
-| altitude        | 3d棱柱高度                                  | `number`                        |        | `required` |
+| altitude        | 3d 棱柱高度                                 | `number`                        |        | `required` |
 | topFillColor    | 顶面填充颜色                                | `string `                       |        | `#fff`     |
 | topFillOpacity  | 顶面填充颜色透明度                          | `number`                        | `0-1`  |            |
 | sideFillColor   | 侧面填充颜色                                | `string`                        |        |            |

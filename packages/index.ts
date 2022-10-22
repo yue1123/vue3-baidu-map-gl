@@ -2,14 +2,14 @@ import { App } from 'vue'
 import { PluginsList } from './utils/pluginLoader'
 
 declare module 'vue' {
-	interface ComponentCustomProperties {
-		$baiduMapAk: string
-		$baiduMapPlugins: PluginsList
-	}
+  interface ComponentCustomProperties {
+    $baiduMapAk: string
+    $baiduMapPlugins: PluginsList
+  }
 }
 interface InitOptions {
-	ak?: string
-	plugins?: PluginsList
+  ak?: string
+  plugins?: PluginsList
 }
 // hooks
 export * from './hooks/useAreaBoundary'
@@ -34,58 +34,58 @@ import Circle from './components/overlay/circle/index.vue'
 import Prism from './components/overlay/prism/index.vue'
 
 const componentsList = [
-	Map,
-	Control,
-	Scale,
-	Zoom,
-	Navigation3d,
-	Marker,
-	Marker3d,
-	Copyright,
-	Location,
-	Label,
-	Polyline,
-	Polygon,
-	Circle,
-	CityList,
-	Prism,
-	InfoWindow
+  Map,
+  Control,
+  Scale,
+  Zoom,
+  Navigation3d,
+  Marker,
+  Marker3d,
+  Copyright,
+  Location,
+  Label,
+  Polyline,
+  Polygon,
+  Circle,
+  CityList,
+  Prism,
+  InfoWindow
 ]
 
 // global register
 const vue3BaiduMapGl = {
-	install: (app: App, options?: InitOptions) => {
-		const { ak, plugins } = options || {}
-		for (const component of componentsList) {
-			const name = component.name
-			app.component(name, component)
-			app.component(name.replace('B', ''), component)
-		}
-		app.config.globalProperties.$baiduMapPlugins = plugins || []
-		ak && (app.config.globalProperties.$baiduMapAk = ak)
-	},
-	version: '__VERSION__'
+  install: (app: App, options?: InitOptions) => {
+    const { ak, plugins } = options || {}
+    for (const component of componentsList) {
+      const name = component.name
+      app.component(name, component)
+      app.component(name.replace('B', ''), component)
+    }
+    app.config.globalProperties.$baiduMapPlugins = plugins || []
+    ak && (app.config.globalProperties.$baiduMapAk = ak)
+  },
+  version: '__VERSION__'
 }
 // for umd
 export const install = vue3BaiduMapGl.install
 export const version = vue3BaiduMapGl.version
 
 export {
-	Map,
-	Control,
-	Scale,
-	Zoom,
-	Navigation3d,
-	Marker,
-	Marker3d,
-	Copyright,
-	Location,
-	Label,
-	Polyline,
-	Polygon,
-	Circle,
-	CityList,
-	Prism,
-	InfoWindow
+  Map,
+  Control,
+  Scale,
+  Zoom,
+  Navigation3d,
+  Marker,
+  Marker3d,
+  Copyright,
+  Location,
+  Label,
+  Polyline,
+  Polygon,
+  Circle,
+  CityList,
+  Prism,
+  InfoWindow
 }
 export default vue3BaiduMapGl

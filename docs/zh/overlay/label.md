@@ -36,12 +36,13 @@ import { Label } from 'vue3-baidu-map-gl'
 </script>
 
 ::: details 点击查看代码
+
 ```html
-<Map :minZoom="3" height="400px">
-<Label
-  content="欢迎使用百度地图GL版Vue3组件库"
-  :position="{lng: 116.404, lat: 39.915 }"
-  :style="{
+<map :minZoom="3" height="400px">
+  <label
+    content="欢迎使用百度地图GL版Vue3组件库"
+    :position="{lng: 116.404, lat: 39.915 }"
+    :style="{
     color:'#fff',
     backgroundColor: '#f90',
     border: 'none',
@@ -49,15 +50,15 @@ import { Label } from 'vue3-baidu-map-gl'
     padding: '5px 10px',
     fontSize: '16px'
   }"
-/>
-</Map>
+  />
+</map>
 
 <script setup lang="ts">
-import { Map, Label } from 'vue3-baidu-map-gl'
+  import { Map, Label } from 'vue3-baidu-map-gl'
 </script>
 ```
-:::
 
+:::
 
 ## 动态组件 Props
 

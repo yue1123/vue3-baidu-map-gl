@@ -27,12 +27,12 @@ features:
   - icon: ✨
     title: 比较完整
     details: 提供的组件和 hooks 能覆盖大部分使用场景
-    
+
   - icon: ⚡
     title: Composition Api + Ts
     details: 面向未来，更好的性能，和你的 Ts 项目无缝衔接
 
-  - icon: 🧩 
+  - icon: 🧩
     title: tree shaking 支持
     details: 模块分包，只打包你想要的的
 

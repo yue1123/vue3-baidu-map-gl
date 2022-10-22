@@ -52,43 +52,44 @@ import { Marker } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 
 ```html
-<Map :minZoom="3" height="400px">
-	<!-- 起点图标 -->
-	<Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="start" />
-	<!-- 终点图标 -->
-	<Marker :position="{ lat: 39.915185, lng: 116.404901 }" icon="end" />
-	<!-- 红色图标1 -->
-	<Marker :position="{ lat: 39.915185, lng: 116.405901 }" icon="red1" />
-	<!-- 红色图标2 -->
-	<Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="simple_red" />
-	<!-- 自定义图标 -->
-	<Marker
-		:position="{ lat: 39.915185, lng: 116.400901 }"
-		:icon="{
+<map :minZoom="3" height="400px">
+  <!-- 起点图标 -->
+  <Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="start" />
+  <!-- 终点图标 -->
+  <Marker :position="{ lat: 39.915185, lng: 116.404901 }" icon="end" />
+  <!-- 红色图标1 -->
+  <Marker :position="{ lat: 39.915185, lng: 116.405901 }" icon="red1" />
+  <!-- 红色图标2 -->
+  <Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="simple_red" />
+  <!-- 自定义图标 -->
+  <Marker
+    :position="{ lat: 39.915185, lng: 116.400901 }"
+    :icon="{
       imageUrl: 'https://cdn.jsdelivr.net/gh/yue1123/vue3-baidu-map-gl@0.0.21/docs/public/logo.png',
       imageSize: {
         width: 100,
         height: 100
       },
     }"
-		dragging
-	/>
-</Map>
+    dragging
+  />
+</map>
 
 <script setup lang="ts">
-import { Map, Maker } from 'vue3-baidu-map-gl'
+  import { Map, Maker } from 'vue3-baidu-map-gl'
 </script>
 ```
- :::
+
+:::
 
 ## 静态组件 Props
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ---- | ---- | ---- | ------ |
-| title | 鼠标移到 marker 上的显示内容 | `string` | |
-| draggingCursor | 拖拽标注时的鼠标指针样式。此属性值需遵循 CSS 的[cursor](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)属性规范 | `string` |  | 
-| raiseOnDrag | 拖拽标注时，标注是否开启离开地图表面效果 |` boolean` | `false` |
-| enableClicking | 是否响应点击事件 |` boolean` | `true` |
+| 参数           | 说明                                                                                                                     | 类型       | 默认值  |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | ------- |
+| title          | 鼠标移到 marker 上的显示内容                                                                                             | `string`   |         |
+| draggingCursor | 拖拽标注时的鼠标指针样式。此属性值需遵循 CSS 的[cursor](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)属性规范 | `string`   |         |
+| raiseOnDrag    | 拖拽标注时，标注是否开启离开地图表面效果                                                                                 | ` boolean` | `false` |
+| enableClicking | 是否响应点击事件                                                                                                         | ` boolean` | `true`  |
 
 ## 动态组件 Props
 
@@ -99,7 +100,7 @@ import { Map, Maker } from 'vue3-baidu-map-gl'
 | icon            | 标注点的图标。可使用默认图标，也可[自定义图标](#自定义图标) | `string `                     | `simple_red / simple_blue...` |            |
 | rotation        | 旋转角度                                                    | `number `                     |                               |            |
 | enableDragging  | 是否启用拖拽                                                | `boolean `                    |                               | ` true`    |
-| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物                   | `boolean `                    |                               | `true `    |
+| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物                 | `boolean `                    |                               | `true `    |
 
 ## 默认图标可选值
 

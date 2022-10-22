@@ -4,7 +4,7 @@
  * @returns
  */
 export function isString(value: any): boolean {
-	return Object.prototype.toString.call(value) === '[object String]'
+  return Object.prototype.toString.call(value) === '[object String]'
 }
 
 /**
@@ -13,7 +13,7 @@ export function isString(value: any): boolean {
  * @returns
  */
 export function isDef(v: any): boolean {
-	return v !== undefined && v !== null
+  return v !== undefined && v !== null
 }
 
 /**
@@ -22,7 +22,7 @@ export function isDef(v: any): boolean {
  * @returns (nv: T, ov: T) => void
  */
 export function callWhenDifferentValue<T>(cal: (v: T) => void): (nv: T, ov: T) => void {
-	return (nv: T, ov: T) => {
-		if (nv !== ov && JSON.stringify(nv) !== JSON.stringify(ov)) cal(nv)
-	}
+  return (nv: T, ov: T) => {
+    if (nv !== ov && JSON.stringify(nv) !== JSON.stringify(ov)) cal(nv)
+  }
 }

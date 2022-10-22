@@ -30,26 +30,28 @@ import { Polyline } from 'vue3-baidu-map-gl'
 </div>
 
 ::: details 点击查看代码
+
 ```html
-<Map :minZoom="3" height="400px" :zoom="16">
-	<Polyline
-		:path="[
+<map :minZoom="3" height="400px" :zoom="16">
+  <Polyline
+    :path="[
       { lng: 116.404, lat: 39.915 },
       { lng: 116.404, lat: 39.92 },
       { lng: 116.410, lat: 39.92 },
       { lng: 116.410, lat: 39.915 },
 	  ]"
-		stroke-color="#000"
-		:stroke-opacity="1"
-		:stroke-weight="5"
-		enableEditing
-	/>
-</Map>
+    stroke-color="#000"
+    :stroke-opacity="1"
+    :stroke-weight="5"
+    enableEditing
+  />
+</map>
 
 <script setup lang="ts">
-import { Map, Polyline } from 'vue3-baidu-map-gl'
+  import { Map, Polyline } from 'vue3-baidu-map-gl'
 </script>
 ```
+
 :::
 
 ## 静态组件 Props
@@ -71,7 +73,6 @@ import { Map, Polyline } from 'vue3-baidu-map-gl'
 | strokeStyle     | 描边的样式，为实线、虚线、或者点状线        | `string`                        | `solid / dashed / dotted` |            |
 | enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                       |                           | `true `    |
 | enableEditing   | 开启可编辑模式                              | `boolean`                       |                           | `false `   |
-
 
 ## 组件事件
 

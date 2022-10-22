@@ -26,7 +26,7 @@ import { Circle } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 
 ```html
-<Map :minZoom="3" height="400px">
+<map :minZoom="3" height="400px">
   <Circle stroke-style="dashed" :center="{ lat: 39.915185, lng: 116.403901 }" :radius="300" enableEditing />
 </map>
 
