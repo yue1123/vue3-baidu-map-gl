@@ -138,6 +138,7 @@
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <div>
   <input type="checkbox" v-model="mapSetting.enableScrollWheelZoom" />

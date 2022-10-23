@@ -31,6 +31,7 @@ import { Polygon } from 'vue3-baidu-map-gl'
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <Map :minZoom="3" height="400px">
   <Polygon
@@ -87,6 +88,7 @@ import { Polygon } from 'vue3-baidu-map-gl'
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <div>
   <Map :minZoom="3" :zoom="zoom" height="400px" enableScrollWheelZoom>

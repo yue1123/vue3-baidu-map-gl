@@ -35,6 +35,7 @@ import { Marker3d } from 'vue3-baidu-map-gl'
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <Map :minZoom="3" :zoom="16" :heading="64.5" :tilt="73" height="400px" enableScrollWheelZoom>
   <Marker3d
@@ -97,6 +98,7 @@ import { Marker3d } from 'vue3-baidu-map-gl'
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <Map :minZoom="3" :zoom="16" :heading="64.5" :tilt="73" height="400px" enableScrollWheelZoom>
   <Marker3d

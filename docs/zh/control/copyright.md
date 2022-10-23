@@ -46,6 +46,7 @@ if(typeof window !== 'undefined'){
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <Map>
   <Copyright anchor="BMAP_ANCHOR_TOP_RIGHT" v-if="show">

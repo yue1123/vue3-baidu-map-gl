@@ -1,17 +1,26 @@
+/** @format */
+
 import getScriptAsync from './getScriptAsync'
 
-export type PluginsList = ['TrackAnimation']
+export type PluginsList = ['TrackAnimation', 'MapVGl']
 export type PluginsUnion = PluginsList[number]
 export type PluginsSourceLink = Record<PluginsUnion, string>
 export type PluginsLoader = (...args: any[]) => Promise<any>
-export type UserPlugins = ('TrackAnimation' | PluginsLoader)[]
+export type UserPlugins = (PluginsUnion | PluginsLoader)[]
 
 export const DEFAULT_PLUGINS_SOURCE_LINK: PluginsSourceLink = {
-  TrackAnimation: '//mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js'
+  TrackAnimation: '//mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js',
+  MapVGl: 'https://unpkg.com/mapvgl/dist/mapvgl.min.js'
 } as const
 
 export const pluginLoaderMap: Record<PluginsUnion, (customSourceLink?: string) => Promise<any>> = {
   TrackAnimation: (customSourceLink?: string) =>
+    getScriptAsync({
+      src: customSourceLink || DEFAULT_PLUGINS_SOURCE_LINK['TrackAnimation'],
+      addCalToWindow: false,
+      key: 'trackAnimation'
+    }),
+  MapVGl: (customSourceLink?: string) =>
     getScriptAsync({
       src: customSourceLink || DEFAULT_PLUGINS_SOURCE_LINK['TrackAnimation'],
       addCalToWindow: false,

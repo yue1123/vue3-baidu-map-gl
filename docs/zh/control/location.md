@@ -16,6 +16,7 @@ import { Location } from 'vue3-baidu-map-gl'
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <Map>
   <Location />

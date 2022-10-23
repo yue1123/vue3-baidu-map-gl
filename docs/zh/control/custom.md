@@ -50,6 +50,7 @@ button{
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <div>
   <Map @initd="handleInitd" :minZoom="3" :zoom="zoom" height="400px">

@@ -6,7 +6,7 @@ function useBaseMapEffect(cal: (map: BMapGL.Map) => void | VoidFunction) {
   const parentUidGetter = inject('parentUidGetter') as number | void
   const uid = parentUidGetter || getCurrentInstance()?.uid
   const map = getMapInstance && getMapInstance()
-  let eventKey = `__initd__${uid}`
+  const eventKey = `__initd__${uid}`
   let onUnmountedCallback: void | VoidFunction
   const _cal = (map: BMapGL.Map) => {
     onUnmountedCallback = cal(map as BMapGL.Map)

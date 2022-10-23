@@ -97,6 +97,7 @@ import { InfoWindow } from 'vue3-baidu-map-gl'
 
 :::details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <div>
   <label>

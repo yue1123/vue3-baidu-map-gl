@@ -4,6 +4,7 @@
 
 ## 代码示例
 
+<!-- prettier-ignore -->
 ```html
 <Map @initd="handleInitd"></Map>
 
@@ -20,6 +21,7 @@
 
 自定义回调
 
+<!-- prettier-ignore -->
 ```html
 <Map @initd="handleInitd"></Map>
 

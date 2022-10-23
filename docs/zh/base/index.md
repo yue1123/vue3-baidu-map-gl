@@ -21,7 +21,7 @@ import { Map } from 'vue3-baidu-map-gl'
     enableKeyboard: true,
     enablePinchToZoom: true,
     enableAutoResize: true,
-    enableTraffic: true
+    enableTraffic: false
   })
 </script>
 
@@ -55,7 +55,7 @@ import { Map } from 'vue3-baidu-map-gl'
   </label>
   <br/>
   <label>
-    <input type="checkbox" v-model="mapSetting.enableTraffic"/>显示路况
+    <input type="checkbox" v-model="mapSetting.enableTraffic"/>显示交通路况
   </label>
   <br/>
   <br/>
@@ -90,6 +90,7 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <div>
   <label>
@@ -129,7 +130,7 @@ import { Map } from 'vue3-baidu-map-gl'
   <br />
   <label>
     <input type="checkbox" v-model="mapSetting.enableTraffic" />
-    显示路况
+    显示交通路况
   </label>
   <br />
   <br />
@@ -199,7 +200,7 @@ import { Map } from 'vue3-baidu-map-gl'
 | zoom                   | 地图缩放级别                                                                                                                                                                   | `number`                              | `14`              |
 | mapStyleId             | 个性化地图样式 ID [详见](./custom)                                                                                                                                             | `string`                              |                   |
 | mapStyleJson           | 个性化地图样式 Json [详见](./custom)                                                                                                                                           | `{featureType: string...}[]`          |                   |
-| enableTraffic          | 是否启用路况图层                                                                                                                                                               | `boolean`                             | `false`           |
+| enableTraffic          | 是否启用交通路况图层                                                                                                                                                           | `boolean`                             | `false`           |
 | enableDragging         | 启用地图拖拽                                                                                                                                                                   | `boolean`                             | `true`            |
 | enableInertialDragging | 启用地图惯性拖拽                                                                                                                                                               | `boolean`                             | `true`            |
 | enableScrollWheelZoom  | 允许地图可被鼠标滚轮缩放                                                                                                                                                       | `boolean`                             | `false`           |
@@ -264,6 +265,7 @@ import { Map } from 'vue3-baidu-map-gl'
 
 默认情况下，地图加载中效果是`map loading...`。如果不能满足你的需求，你可以通过提供`loading`具名作用域插槽来自定义地图加载中显示效果，在地图未完成加载前`isLoading`为 false，完成后为`true`
 
+<!-- prettier-ignore -->
 ```html
 <Map>
   <template #loading="{ isLoading }">

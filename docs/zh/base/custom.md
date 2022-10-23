@@ -18,6 +18,7 @@
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <div>
   <Map enableScrollWheelZoom mapStyleId="980161f3645989feac25a0da15da4178" />
@@ -37,6 +38,7 @@
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <div>
   <Map enableScrollWheelZoom mapStyleId="0f3219e982947931ae2893345940df80"></Map>

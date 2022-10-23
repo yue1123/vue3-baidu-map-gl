@@ -1,5 +1,6 @@
 # ak 与插件
-本章节将为你讲述如何配置 ak与插件以及更换资源链接，并实现一个自定义插件
+
+本章节将为你讲述如何配置 ak 与插件以及更换资源链接，并实现一个自定义插件
 
 ::: warning 注意
 `ak` 、`plugins`和`pluginsSourceLink`都支持两种来源，当同时指定的时候，会优先就近原则，从组件 `props` 中获取
@@ -22,6 +23,7 @@ app.mount('#app')
 
 ## 组件 `Map` 传入 `props` 配置
 
+<!-- prettier-ignore -->
 ```html{2,3}
 <Map
   ak='百度地图ak'
@@ -46,6 +48,7 @@ app.use(baiduMap, {
 
 或者
 
+<!-- prettier-ignore -->
 ```html{2-5}
 <Map
   :plugins=['TrackAnimation']
@@ -82,6 +85,7 @@ app.use(baiduMap, {
 
 或者
 
+<!-- prettier-ignore -->
 ```html
 <Map :plugins="[customPlugin]" />
 ```

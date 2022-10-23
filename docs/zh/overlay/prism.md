@@ -55,6 +55,7 @@ import { Prism } from 'vue3-baidu-map-gl'
 
 :::details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <Map :zoom="10" :tilt="50" enableScrollWheelZoom mapStyleId="980161f3645989feac25a0da15da4178">
   <Prism

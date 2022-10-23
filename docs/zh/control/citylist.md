@@ -24,6 +24,7 @@ https://lbs.baidu.com/jsdemo.htm#cCityList
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <Map :minZoom="3" height="400px">
   <CityList />

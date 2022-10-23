@@ -19,6 +19,7 @@ import { Navigation3d } from 'vue3-baidu-map-gl'
 
 ::: details 点击查看代码
 
+<!-- prettier-ignore -->
 ```html
 <Map :minZoom="3" height="400px">
   <Navigation3d />

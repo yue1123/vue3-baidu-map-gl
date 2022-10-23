@@ -6,6 +6,7 @@
 
 你可以直接导入组件并使用它。这种情况下，只有导入的组件才会被打包。
 
+<!-- prettier-ignore -->
 ```vue
 <template>
   <Map ak="百度地图ak">
