@@ -1,38 +1,35 @@
 import getScriptAsync from './getScriptAsync'
 
-export const Plugins = ['TrackAnimation'] as const
-export type PluginsUnion = typeof Plugins[number]
 export type PluginsList = ['TrackAnimation']
-export const pluginLoaderMap: Record<PluginsUnion, () => Promise<any>> = {
-  TrackAnimation: () =>
+export type PluginsUnion = PluginsList[number]
+export type PluginsSourceLink = Record<PluginsUnion, string>
+export type PluginsLoader = (...args: any[]) => Promise<any>
+export type UserPlugins = ('TrackAnimation' | PluginsLoader)[]
+
+export const DEFAULT_PLUGINS_SOURCE_LINK: PluginsSourceLink = {
+  TrackAnimation: '//mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js'
+} as const
+
+export const pluginLoaderMap: Record<PluginsUnion, (customSourceLink?: string) => Promise<any>> = {
+  TrackAnimation: (customSourceLink?: string) =>
     getScriptAsync({
-      src: '//mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js',
+      src: customSourceLink || DEFAULT_PLUGINS_SOURCE_LINK['TrackAnimation'],
       addCalToWindow: false,
       key: 'trackAnimation'
     })
-  // SearchInfoWindow: () => {
-  // 	const linkEl: HTMLLinkElement = document.createElement('link')
-  // 	linkEl.href = '//api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css'
-  //   linkEl.rel = 'stylesheet'
-  // 	document.head.appendChild(linkEl)
-  // 	return getScriptAsync({
-  // 		src: 'http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js',
-  // 		addCalToWindow: false,
-  // 		key: 'trackAnimation'
-  // 	})
-  // }
 }
 
-export function initPlugins(plugins: PluginsList) {
-  if (plugins) {
-    const pluginsLoaders = [...new Set(plugins)].reduce((pluginsArr, pluginsName) => {
-      let plugin
-      if ((plugin = pluginLoaderMap[pluginsName])) {
-        pluginsArr.push(plugin)
-      }
-      return pluginsArr
-    }, [] as (() => Promise<any>)[])
-    return pluginsLoaders
-  }
-  return []
+export function initPlugins(plugins: UserPlugins, customPluginSourceLink: Partial<PluginsSourceLink> = {}) {
+  // 都处理成 () => promise
+  const pluginsLoaders = [...new Set(plugins)].reduce((pluginsLoaderArr, pluginsKey) => {
+    let plugin
+    if (typeof pluginsKey === 'string' && (plugin = pluginLoaderMap[pluginsKey])) {
+      pluginsLoaderArr.push(plugin(customPluginSourceLink[pluginsKey]))
+    } else if (typeof pluginsKey === 'function') {
+      pluginsLoaderArr.push(pluginsKey())
+    }
+    return pluginsLoaderArr
+  }, [] as Promise<any>[])
+  // 加载插件
+  return Promise.all(pluginsLoaders)
 }

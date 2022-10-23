@@ -26,13 +26,12 @@
     provide,
     nextTick,
     getCurrentInstance,
-    ref,
-    onUpdated
+    ref
   } from 'vue'
   import useLifeCycle from '../../hooks/useLifeCycle'
   import bindEvents, { Callback } from '../../utils/bindEvents'
   import getScriptAsync from '../../utils/getScriptAsync'
-  import { initPlugins, PluginsList } from '../../utils/pluginLoader'
+  import { initPlugins, PluginsSourceLink, UserPlugins } from '../../utils/pluginLoader'
   import { isString, callWhenDifferentValue } from '../../utils'
   export interface BaiduMapProps {
     ak?: string
@@ -97,7 +96,8 @@
     /**
      * 插件
      */
-    plugins?: PluginsList
+    plugins?: UserPlugins
+    pluginsSourceLink?: Partial<PluginsSourceLink>
     /**
      * 是否启用路况图层
      */
@@ -184,7 +184,7 @@
   const mapContainer = ref<HTMLDivElement | null>()
   let map: BMapGL.Map = null!
   // 是否初始化
-  let initd: boolean = false
+  let initd = false
   // 地图初始化的发布
   const { ready } = useLifeCycle()
   const { uid, proxy } = getCurrentInstance()!
@@ -252,7 +252,8 @@
     'longpress'
   ])
   const ak = props.ak || proxy!.$baiduMapAk
-  const plugins = props.plugins || proxy!.$baiduMapPlugins
+  const plugins = props.plugins || proxy!.$baiduMapPlugins || []
+  const pluginsSourceLink = props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
   if (!ak) console.warn('missing required props: ak')
 
   // 初始化地图
@@ -280,9 +281,8 @@
         if (!initd) {
           initd = true
           nextTick(() => ready(map))
-          // 加载插件
-          if (plugins && plugins.length) {
-            Promise.all(initPlugins(plugins).map((loader) => loader()))
+          if (plugins) {
+            initPlugins(plugins, pluginsSourceLink)
               .then(() => {
                 vueEmits('pluginReady')
               })
