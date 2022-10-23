@@ -36,7 +36,7 @@ import { Marker3d } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 
 ```html
-<map :minZoom="3" :zoom="16" :heading="64.5" :tilt="73" height="400px" enableScrollWheelZoom>
+<Map :minZoom="3" :zoom="16" :heading="64.5" :tilt="73" height="400px" enableScrollWheelZoom>
   <Marker3d
     :position="point1"
     :height="1200"
@@ -45,7 +45,7 @@ import { Marker3d } from 'vue3-baidu-map-gl'
     :fillOpacity="0.5"
     shape="BMAP_SHAPE_CIRCLE"
   />
-</map>
+</Map>
 
 <script setup lang="ts">
   import { Map, Marker3d } from 'vue3-baidu-map-gl'
@@ -98,7 +98,7 @@ import { Marker3d } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 
 ```html
-<map :minZoom="3" :zoom="16" :heading="64.5" :tilt="73" height="400px" enableScrollWheelZoom>
+<Map :minZoom="3" :zoom="16" :heading="64.5" :tilt="73" height="400px" enableScrollWheelZoom>
   <Marker3d
     :position="point1"
     :height="1200"
@@ -125,7 +125,7 @@ import { Marker3d } from 'vue3-baidu-map-gl'
       },
     }"
   />
-</map>
+</Map>
 
 <script setup lang="ts">
   import { Map, Marker3d } from 'vue3-baidu-map-gl'

@@ -20,7 +20,7 @@
 
 ```html
 <div>
-  <map enableScrollWheelZoom mapStyleId="980161f3645989feac25a0da15da4178" />
+  <Map enableScrollWheelZoom mapStyleId="980161f3645989feac25a0da15da4178" />
 </div>
 ```
 
@@ -39,7 +39,7 @@
 
 ```html
 <div>
-  <map enableScrollWheelZoom mapStyleId="0f3219e982947931ae2893345940df80"></map>
+  <Map enableScrollWheelZoom mapStyleId="0f3219e982947931ae2893345940df80"></Map>
 </div>
 ```
 

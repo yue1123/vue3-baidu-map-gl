@@ -6,10 +6,6 @@ html:not(.dark) [img-dark] {
   display: none;
 }
 
-p {
-  word-break: keep-all;
-}
-
 /* h3 breaks SEO => replaced with h2 with the same size */
 .home-content h2 {
   margin-top: 2rem;

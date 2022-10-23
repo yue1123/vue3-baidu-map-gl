@@ -32,7 +32,7 @@ import { Polyline } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 
 ```html
-<map :minZoom="3" height="400px" :zoom="16">
+<Map :minZoom="3" height="400px" :zoom="16">
   <Polyline
     :path="[
       { lng: 116.404, lat: 39.915 },
@@ -45,7 +45,7 @@ import { Polyline } from 'vue3-baidu-map-gl'
     :stroke-weight="5"
     enableEditing
   />
-</map>
+</Map>
 
 <script setup lang="ts">
   import { Map, Polyline } from 'vue3-baidu-map-gl'

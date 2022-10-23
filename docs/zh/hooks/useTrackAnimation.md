@@ -43,7 +43,7 @@
     proceed,
     status
   } = useTrackAnimation(map, {
-    duration:1000,
+    duration:10000,
     delay:0
   })
   const path = [{
@@ -87,7 +87,7 @@
 
 ```html
 <div>
-  <map
+  <Map
     :center="{
       lng: 116.308301,
       lat: 40.050566

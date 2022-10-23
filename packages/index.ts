@@ -1,15 +1,17 @@
 import { App } from 'vue'
-import { PluginsList } from './utils/pluginLoader'
+import { UserPlugins, PluginsSourceLink } from './utils/pluginLoader'
 
 declare module 'vue' {
   interface ComponentCustomProperties {
     $baiduMapAk: string
-    $baiduMapPlugins: PluginsList
+    $baiduMapPlugins: UserPlugins
+    $baiduMapPluginsSourceLink: PluginsSourceLink
   }
 }
 interface InitOptions {
   ak?: string
-  plugins?: PluginsList
+  plugins?: UserPlugins
+  pluginsSourceLink?: PluginsSourceLink
 }
 // hooks
 export * from './hooks/useAreaBoundary'
@@ -55,14 +57,15 @@ const componentsList = [
 // global register
 const vue3BaiduMapGl = {
   install: (app: App, options?: InitOptions) => {
-    const { ak, plugins } = options || {}
+    const { ak, plugins, pluginsSourceLink } = options || {}
     for (const component of componentsList) {
       const name = component.name
       app.component(name, component)
       app.component(name.replace('B', ''), component)
     }
-    app.config.globalProperties.$baiduMapPlugins = plugins || []
     ak && (app.config.globalProperties.$baiduMapAk = ak)
+    plugins && (app.config.globalProperties.$baiduMapPlugins = plugins)
+    pluginsSourceLink && (app.config.globalProperties.$baiduMapPluginsSourceLink = pluginsSourceLink)
   },
   version: '__VERSION__'
 }

@@ -52,7 +52,7 @@ import { Marker } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 
 ```html
-<map :minZoom="3" height="400px">
+<Map :minZoom="3" height="400px">
   <!-- 起点图标 -->
   <Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="start" />
   <!-- 终点图标 -->
@@ -73,7 +73,7 @@ import { Marker } from 'vue3-baidu-map-gl'
     }"
     dragging
   />
-</map>
+</Map>
 
 <script setup lang="ts">
   import { Map, Maker } from 'vue3-baidu-map-gl'

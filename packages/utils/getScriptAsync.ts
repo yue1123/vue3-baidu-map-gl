@@ -4,8 +4,8 @@ export interface Options {
   addCalToWindow: boolean
 }
 
-let BMapScriptLoaderWrapper: Record<string, Promise<any>> = {}
-function getScriptAsync({ key, src, addCalToWindow }: Options): Promise<void> {
+const BMapScriptLoaderWrapper: Record<string, Promise<any>> = {}
+function getScriptAsync({ key, src, addCalToWindow }: Options): Promise<any> {
   if (!BMapScriptLoaderWrapper[key]) {
     BMapScriptLoaderWrapper[key] = new Promise<void>((resolve, reject) => {
       const script: HTMLScriptElement = document.createElement('script')

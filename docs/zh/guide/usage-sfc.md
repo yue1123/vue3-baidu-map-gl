@@ -38,9 +38,9 @@ app.use(baiduMap, { ak: '百度地图ak' })
 
 ```vue
 <template>
-  <b-map>
+  <b-Map>
     <b-zoom />
-  </b-map>
+  </b-Map>
 </template>
 ```
 

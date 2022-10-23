@@ -29,7 +29,7 @@ const sidebarConfig = {
 					link: '/zh/guide/usage-cdn'
 				},
 				{
-					text: 'ak与插件配置',
+					text: 'ak与插件',
 					link: '/zh/guide/config'
 				}
 			]

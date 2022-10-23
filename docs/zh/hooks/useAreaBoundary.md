@@ -5,7 +5,7 @@
 ## 代码示例
 
 ```html
-<map @initd="handleInitd"></map>
+<Map @initd="handleInitd"></Map>
 
 <script setup lang="ts">
   import { useAreaBoundary } from 'vue3-baidu-map-gl'
@@ -21,7 +21,7 @@
 自定义回调
 
 ```html
-<map @initd="handleInitd"></map>
+<Map @initd="handleInitd"></Map>
 
 <script setup lang="ts">
   import { useAreaBoundary } from 'vue3-baidu-map-gl'

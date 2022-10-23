@@ -30,7 +30,7 @@
   </head>
   <body>
     <div id="app">
-      <b-map>
+      <b-Map>
         <b-zoom />
       </b-ma>
     </div>

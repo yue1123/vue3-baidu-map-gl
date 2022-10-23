@@ -56,7 +56,7 @@ import { Prism } from 'vue3-baidu-map-gl'
 :::details 点击查看代码
 
 ```html
-<map :zoom="10" :tilt="50" enableScrollWheelZoom mapStyleId="980161f3645989feac25a0da15da4178">
+<Map :zoom="10" :tilt="50" enableScrollWheelZoom mapStyleId="980161f3645989feac25a0da15da4178">
   <Prism
     isBoundary
     :path="point"
@@ -70,7 +70,7 @@ import { Prism } from 'vue3-baidu-map-gl'
     @mouseover="handleMouseover"
     @mouseout="handleMouseout"
   />
-</map>
+</Map>
 
 <script setup lang="ts">
   import { ref, watch } from 'vue'

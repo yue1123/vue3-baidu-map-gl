@@ -17,5 +17,6 @@ module.exports = {
   tabWidth: 2,
   trailingComma: 'none',
   useTabs: false,
-  vueIndentScriptAndStyle: true
+  vueIndentScriptAndStyle: true,
+  requirePragma: true
 }

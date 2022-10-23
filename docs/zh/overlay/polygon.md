@@ -32,7 +32,7 @@ import { Polygon } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 
 ```html
-<map :minZoom="3" height="400px">
+<Map :minZoom="3" height="400px">
   <Polygon
     :path="[
       { lng: 116.404, lat: 39.915 },
@@ -44,7 +44,7 @@ import { Polygon } from 'vue3-baidu-map-gl'
     :stroke-weight="5"
     enableEditing
   />
-</map>
+</Map>
 
 <script setup lang="ts">
   import { Map, Polygon } from 'vue3-baidu-map-gl'
@@ -89,7 +89,7 @@ import { Polygon } from 'vue3-baidu-map-gl'
 
 ```html
 <div>
-  <map :minZoom="3" :zoom="zoom" height="400px" enableScrollWheelZoom>
+  <Map :minZoom="3" :zoom="zoom" height="400px" enableScrollWheelZoom>
     <Control
       style="border-radius:4px;box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);color: #666;background:#fff;padding:10px;"
       :offset="{ x: 15, y: 15 }"
@@ -111,7 +111,7 @@ import { Polygon } from 'vue3-baidu-map-gl'
       fillColor="blue"
       :stroke-weight="1"
     />
-  </map>
+  </Map>
 </div>
 
 <script setup lang="ts">

@@ -140,7 +140,7 @@ import { Map } from 'vue3-baidu-map-gl'
   </select>
   <br />
   <br />
-  <map
+  <Map
     :minZoom="3"
     height="400px"
     :mapType="type"
@@ -265,14 +265,14 @@ import { Map } from 'vue3-baidu-map-gl'
 默认情况下，地图加载中效果是`map loading...`。如果不能满足你的需求，你可以通过提供`loading`具名作用域插槽来自定义地图加载中显示效果，在地图未完成加载前`isLoading`为 false，完成后为`true`
 
 ```html
-<map>
+<Map>
   <template #loading="{ isLoading }">
     <div class="spinner" v-if="isLoading">
       <div class="double-bounce1"></div>
       <div class="double-bounce2"></div>
     </div>
   </template>
-</map>
+</Map>
 
 <style lang="css">
   .spinner {

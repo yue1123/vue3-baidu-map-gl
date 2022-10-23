@@ -11,4 +11,3 @@ export default function bindEvents(props: any, VueEmit: any, instance: any) {
     }
   }
 }
-console.log(121233)

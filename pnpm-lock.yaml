@@ -28,7 +28,7 @@ specifiers:
   rollup-plugin-vue: ^6.0.0
   tslib: ^2.4.0
   typescript: ^4.6.3
-  vite: 3.1.4
+  vite: 3.1.8
   vitepress: 1.0.0-alpha.21
   vue: ^3.2.40
   vue-tsc: ^1.0.0
@@ -48,7 +48,7 @@ devDependencies:
   '@types/ws': 8.5.3
   '@typescript-eslint/eslint-plugin': 5.40.1_c4zyna56jjjrggqkyejnaxjxfu
   '@typescript-eslint/parser': 5.40.1_wyqvi574yv7oiwfeinomdzmc3m
-  '@vitejs/plugin-vue': 3.1.0_vite@3.1.4+vue@3.2.40
+  '@vitejs/plugin-vue': 3.1.0_vite@3.1.8+vue@3.2.40
   deepmerge: 4.2.2
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0_eslint@8.26.0
@@ -64,7 +64,7 @@ devDependencies:
   rollup-plugin-vue: 6.0.0
   tslib: 2.4.0
   typescript: 4.8.4
-  vite: 3.1.4
+  vite: 3.1.8
   vitepress: 1.0.0-alpha.21
   vue-tsc: 1.0.0_typescript@4.8.4
 
@@ -980,14 +980,14 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-vue/3.1.0_vite@3.1.4+vue@3.2.40:
+  /@vitejs/plugin-vue/3.1.0_vite@3.1.8+vue@3.2.40:
     resolution: {integrity: sha512-fmxtHPjSOEIRg6vHYDaem+97iwCUg/uSIaTzp98lhELt2ISOQuDo2hbkBdXod0g15IhfPMQmAxh4heUks2zvDA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/@vitejs/plugin-vue/-/plugin-vue-3.1.0.tgz}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.1.4
+      vite: 3.1.8
       vue: 3.2.40
     dev: true
 
@@ -2900,7 +2900,7 @@ packages:
     dev: true
 
   /rollup/2.78.1:
-    resolution: {integrity: sha512-VeeCgtGi4P+o9hIg+xz4qQpRl6R401LWEXBmxYKOV4zlF82lyhgh2hTZnheFUbANE8l2A41F458iwj2vEYaXJg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/rollup/-/rollup-2.78.1.tgz}
+    resolution: {integrity: sha512-VeeCgtGi4P+o9hIg+xz4qQpRl6R401LWEXBmxYKOV4zlF82lyhgh2hTZnheFUbANE8l2A41F458iwj2vEYaXJg==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -3249,33 +3249,6 @@ packages:
     dependencies:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
-    dev: true
-
-  /vite/3.1.4:
-    resolution: {integrity: sha512-JoQI08aBjY9lycL7jcEq4p9o1xUjq5aRvdH4KWaXtkSx7e7RpAh9D3IjzDWRD4Fg44LS3oDAIOG/Kq1L+82psA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/vite/-/vite-3.1.4.tgz}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.15.10
-      postcss: 8.4.17
-      resolve: 1.22.1
-      rollup: 2.78.1
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: true
 
   /vite/3.1.8:

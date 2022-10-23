@@ -115,7 +115,7 @@ import { InfoWindow } from 'vue3-baidu-map-gl'
   </label>
   <br />
   <br />
-  <map enableScrollWheelZoom>
+  <Map enableScrollWheelZoom>
     <InfoWindow v-model="show" :position="{ lng: 116.404, lat: 39.925 }" title="文字内容">
       地址：北京市东城区王府井大街88号乐天银泰百货八层
     </InfoWindow>
@@ -129,7 +129,7 @@ import { InfoWindow } from 'vue3-baidu-map-gl'
         <img width="139" height="104" src="https://lbs.baidu.com/jsdemo/img/tianAnMen.jpg" alt="" />
       </div>
     </InfoWindow>
-  </map>
+  </Map>
 </div>
 
 <script lang="ts" setup>

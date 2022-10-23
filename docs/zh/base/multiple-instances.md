@@ -169,7 +169,7 @@
   </select>
   <br />
   <br />
-  <map
+  <Map
     :minZoom="3"
     height="400px"
     :mapType="mapSetting.type"
@@ -212,7 +212,7 @@
   </select>
   <br />
   <br />
-  <map
+  <Map
     :minZoom="3"
     height="400px"
     :mapType="mapSetting1.type"

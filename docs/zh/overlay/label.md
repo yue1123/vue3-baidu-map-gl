@@ -38,7 +38,7 @@ import { Label } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 
 ```html
-<map :minZoom="3" height="400px">
+<Map :minZoom="3" height="400px">
   <label
     content="欢迎使用百度地图GL版Vue3组件库"
     :position="{lng: 116.404, lat: 39.915 }"
@@ -51,7 +51,7 @@ import { Label } from 'vue3-baidu-map-gl'
     fontSize: '16px'
   }"
   />
-</map>
+</Map>
 
 <script setup lang="ts">
   import { Map, Label } from 'vue3-baidu-map-gl'

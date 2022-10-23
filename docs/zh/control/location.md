@@ -17,9 +17,9 @@ import { Location } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 
 ```html
-<map>
+<Map>
   <Location />
-</map>
+</Map>
 
 <script setup lang="ts">
   import { Map, Location } from 'vue3-baidu-map-gl'

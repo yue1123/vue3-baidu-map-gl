@@ -47,7 +47,7 @@ if(typeof window !== 'undefined'){
 ::: details 点击查看代码
 
 ```html
-<map>
+<Map>
   <Copyright anchor="BMAP_ANCHOR_TOP_RIGHT" v-if="show">
     <div style="display: flex; align-items:flex-end;">
       <img width="40" src="https://s1.ax1x.com/2022/09/29/xmTpcT.png" alt="" />
@@ -60,7 +60,7 @@ if(typeof window !== 'undefined'){
   <Copyright anchor="BMAP_ANCHOR_BOTTOM_RIGHT">
     <h3>动态内容2: {{count}}</h3>
   </Copyright>
-</map>
+</Map>
 <button @click="toggle">{{ show ? '隐藏': '显示' }}右上角版权</button>
 
 <script setup lang="ts">

@@ -20,9 +20,9 @@ import { Zoom } from 'vue3-baidu-map-gl'
 ::: details 点击查看代码
 
 ```html
-<map :minZoom="3" height="400px">
+<Map :minZoom="3" height="400px">
   <Zoom />
-</map>
+</Map>
 
 <script setup lang="ts">
   import { Map, Zoom } from 'vue3-baidu-map-gl'

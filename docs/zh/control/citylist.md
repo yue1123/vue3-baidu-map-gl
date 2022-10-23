@@ -25,9 +25,9 @@ https://lbs.baidu.com/jsdemo.htm#cCityList
 ::: details 点击查看代码
 
 ```html
-<map :minZoom="3" height="400px">
+<Map :minZoom="3" height="400px">
   <CityList />
-</map>
+</Map>
 
 <script setup lang="ts">
   import { Map, CityList } from 'vue3-baidu-map-gl'
