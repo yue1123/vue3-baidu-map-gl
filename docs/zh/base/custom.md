@@ -15,7 +15,9 @@
 > mapStyleId 和 mapStyleJson 获取以及相关注意事项，请访问 [百度地图个性化地图相关文档](https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/custom#service-page-anchor3) 知悉
 
 ## 示例样式 1 -- 出行
+
 类似苹果地图风格
+
 <div>
   <Map 
     :zoom="10"
@@ -25,6 +27,7 @@
 </div>
 
 ::: details 点击查看代码
+
 <!-- prettier-ignore -->
 ```html
 <div>
@@ -35,6 +38,7 @@
   />
 </div>
 ```
+
 :::
 
 ## 示例样式 2 -- 一蓑烟雨
@@ -48,6 +52,7 @@
 </div>
 
 ::: details 点击查看代码
+
 <!-- prettier-ignore -->
 ```html
 <div>
@@ -58,6 +63,7 @@
   />
 </div>
 ```
+
 :::
 
 ## 示例样式 3 -- 眼眸主题
@@ -71,6 +77,7 @@
 </div>
 
 ::: details 点击查看代码
+
 <!-- prettier-ignore -->
 ```html
 <div>
@@ -80,6 +87,7 @@
     mapStyleId="980161f3645989feac25a0da15da4178" />
 </div>
 ```
+
 :::
 
 ## 示例样式 4 -- 赛博朋克
@@ -93,6 +101,7 @@
 </div>
 
 ::: details 点击查看代码
+
 <!-- prettier-ignore -->
 ```html
 <div>
@@ -103,4 +112,5 @@
   />
 </div>
 ```
+
 :::

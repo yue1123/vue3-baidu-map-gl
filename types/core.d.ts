@@ -132,7 +132,7 @@ declare namespace BMapGL {
     /**
      * 设置个性化地图，参数为个性化配置对象
      */
-    setMapStyleV2(config: Object): void
+    setMapStyleV2(config: Record<string, any>): void
     /**
      * 获取当前地图样式id，对于内置样式则返回样式名称；对于自定义样式，则返回内部自动生成的样式id
      */
@@ -266,14 +266,12 @@ declare namespace BMapGL {
     /**
      * 加载地图当前样式所需要的样式文件，callback为加载成功后的回调函数
      */
-    loadMapStyleFiles(callback: Function): void
+    loadMapStyleFiles(callback: any): void
     /**
      * 设置版权信息位置，其中logo为logo位置，copyright为文字位置
      */
-    setCopyrightOffset(logo: Object, cpy: Object): void
-    /**
-     * 销毁地图，当使用 WebGL 渲染地图时，如果确认不再使用该地图实例，则需要调用本方法销毁 WebGL 上下文，否则频繁创建新地图实例会导致浏览器报：too many WebGL context 的警告
-     */
+    setCopyrightOffset(logo: any, cpy: any): void
+    setDisplayOptions: (options: Record<string, any>) => void
     destroy(): void
     onclick: (event: { type: string; target: any; point: Point; pixel: Pixel; overlay: Overlay }) => void
     ondblclick: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void

@@ -31,10 +31,10 @@ import { Location } from 'vue3-baidu-map-gl'
 
 ## 静态组件 Props
 
-| 参数   | 说明           | 类型                      | 可选值            | 默认值                     |
+| 属性   | 说明           | 类型                      | 可选值            | 默认值                     |
 | ------ | -------------- | ------------------------- | ----------------- | -------------------------- |
 | anchor | 控件的停靠位置 | `string`                  | [anchor](#anchor) | `BMAP_ANCHOR_BOTTOM_RIGHT` |
-| offset | 控件的偏移值   | `{x: number, y: number }` |                   | `{ x: 18, y: 18 }`         |
+| offset | 控件的偏移值   | `{x: number, y: number }` | -                 | `{ x: 18, y: 18 }`         |
 
 ## anchor
 

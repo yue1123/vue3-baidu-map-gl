@@ -39,11 +39,11 @@ https://lbs.baidu.com/jsdemo.htm#cCityList
 
 ## 静态组件 Props
 
-| 参数   | 说明             | 类型                      | 可选值            | 默认值                    |
+| 属性   | 说明             | 类型                      | 可选值            | 默认值                    |
 | ------ | ---------------- | ------------------------- | ----------------- | ------------------------- |
 | anchor | 控件的停靠位置   | `string`                  | [anchor](#anchor) | `BMAP_ANCHOR_BOTTOM_LEFT` |
-| offset | 控件的偏移值     | `{x: number, y: number }` |                   | `{ x: 18, y: 18 }`        |
-| expand | 默认列表是否展开 | `boolean`                 |                   | `false`                   |
+| offset | 控件的偏移值     | `{x: number, y: number }` | -                 | `{ x: 18, y: 18 }`        |
+| expand | 默认列表是否展开 | `boolean`                 | -                 | `false`                   |
 
 ## anchor
 

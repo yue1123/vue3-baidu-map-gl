@@ -85,23 +85,23 @@ import { Marker } from 'vue3-baidu-map-gl'
 
 ## 静态组件 Props
 
-| 参数           | 说明                                                                                                                     | 类型       | 默认值  |
+| 属性           | 说明                                                                                                                     | 类型       | 默认值  |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------ | ---------- | ------- |
-| title          | 鼠标移到 marker 上的显示内容                                                                                             | `string`   |         |
-| draggingCursor | 拖拽标注时的鼠标指针样式。此属性值需遵循 CSS 的[cursor](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)属性规范 | `string`   |         |
+| title          | 鼠标移到 marker 上的显示内容                                                                                             | `string`   | -       |
+| draggingCursor | 拖拽标注时的鼠标指针样式。此属性值需遵循 CSS 的[cursor](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)属性规范 | `string`   | -       |
 | raiseOnDrag    | 拖拽标注时，标注是否开启离开地图表面效果                                                                                 | ` boolean` | `false` |
 | enableClicking | 是否响应点击事件                                                                                                         | ` boolean` | `true`  |
 
 ## 动态组件 Props
 
-| 参数            | 说明                                                        | 类型                          | 可选值                        | 默认值     |
+| 属性            | 说明                                                        | 类型                          | 可选值                        | 默认值     |
 | --------------- | ----------------------------------------------------------- | ----------------------------- | ----------------------------- | ---------- |
-| position        | 标注点的坐标                                                | `{ lng: number, lat: number}` |                               | `required` |
-| offset          | 标注点的像素偏移                                            | ` {x: number, y: number }`    |                               |            |
-| icon            | 标注点的图标。可使用默认图标，也可[自定义图标](#自定义图标) | `string `                     | `simple_red / simple_blue...` |            |
-| rotation        | 旋转角度                                                    | `number `                     |                               |            |
-| enableDragging  | 是否启用拖拽                                                | `boolean `                    |                               | ` true`    |
-| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物                 | `boolean `                    |                               | `true `    |
+| position        | 标注点的坐标                                                | `{ lng: number, lat: number}` | -                             | `required` |
+| offset          | 标注点的像素偏移                                            | ` {x: number, y: number }`    | -                             |            |
+| icon            | 标注点的图标。可使用默认图标，也可[自定义图标](#自定义图标) | `string `                     | `simple_red / simple_blue...` | -          |
+| rotation        | 旋转角度                                                    | `number `                     | -                             |            |
+| enableDragging  | 是否启用拖拽                                                | `boolean `                    | -                             | ` true`    |
+| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物                 | `boolean `                    | -                             | `true `    |
 
 ## 默认图标可选值
 
@@ -110,13 +110,13 @@ simple_red , simple_blue , loc_red , loc_blue , start , end , location , red1 , 
 
 ## 自定义图标
 
-| 参数          | 说明                                                                                                                                                                        | 类型                                | 默认值     |
+| 属性          | 说明                                                                                                                                                                        | 类型                                | 默认值     |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ---------- |
-| anchor        | 图标的定位点相对于图标左上角的偏移值                                                                                                                                        | `{ x: number, y: number }`          |            |
-| imageOffset   | 图标所用的图片相对于可视区域的偏移值，此功能的作用等同于 CSS 中的 background-position 属性                                                                                  | `{ x: number, y: number }`          |            |
+| anchor        | 图标的定位点相对于图标左上角的偏移值                                                                                                                                        | `{ x: number, y: number }`          | -          |
+| imageOffset   | 图标所用的图片相对于可视区域的偏移值，此功能的作用等同于 CSS 中的 background-position 属性                                                                                  | `{ x: number, y: number }`          | -          |
 | imageSize     | 图标所用的图片的大小，此功能的作用等同于 CSS 中的 background-size 属性。可用于实现高清屏的高清效果                                                                          | `{ width: number, height: number }` | `required` |
 | imageUrl      | 图标所用图像资源的位置                                                                                                                                                      | `string`                            | `required` |
-| printImageUrl | 设置 icon 打印图片的 url，该打印图片只针对 IE6 有效，解决 IE6 使用 PNG 滤镜导致的错位问题。如果您的 icon 没有使用 PNG 格式图片或者没有使用 CSS Sprites 技术，则可忽略此配置 | `string `                           |            |
+| printImageUrl | 设置 icon 打印图片的 url，该打印图片只针对 IE6 有效，解决 IE6 使用 PNG 滤镜导致的错位问题。如果您的 icon 没有使用 PNG 格式图片或者没有使用 CSS Sprites 技术，则可忽略此配置 | `string `                           | -          |
 
 ## 组件事件
 

@@ -98,7 +98,7 @@ import { Prism } from 'vue3-baidu-map-gl'
 
 ## 静态组件 Props
 
-| 参数           | 说明                       | 类型       | 默认值   |
+| 属性           | 说明                       | 类型       | 默认值   |
 | -------------- | -------------------------- | ---------- | -------- |
 | isBoundary     | 是否是行政区域的边界多边形 | `boolean ` | `false ` |
 | autoCenter     | 是否自动根据多边形居中地图 | `boolean ` | `true`   |
@@ -106,15 +106,15 @@ import { Prism } from 'vue3-baidu-map-gl'
 
 ## 动态组件 Props
 
-| 参数            | 说明                                        | 类型                            | 可选值 | 默认值     |
+| 属性            | 说明                                        | 类型                            | 可选值 | 默认值     |
 | --------------- | ------------------------------------------- | ------------------------------- | ------ | ---------- |
-| path            | 多边形的坐标数组                            | `{ lng: number, lat: number}[]` |        | `required` |
-| altitude        | 3d 棱柱高度                                 | `number`                        |        | `required` |
-| topFillColor    | 顶面填充颜色                                | `string `                       |        | `#fff`     |
-| topFillOpacity  | 顶面填充颜色透明度                          | `number`                        | `0-1`  |            |
-| sideFillColor   | 侧面填充颜色                                | `string`                        |        |            |
+| path            | 多边形的坐标数组                            | `{ lng: number, lat: number}[]` | -      | `required` |
+| altitude        | 3d 棱柱高度                                 | `number`                        | -      | `required` |
+| topFillColor    | 顶面填充颜色                                | `string `                       | -      | `#fff`     |
+| topFillOpacity  | 顶面填充颜色透明度                          | `number`                        | `0-1`  | -          |
+| sideFillColor   | 侧面填充颜色                                | `string`                        | -      |            |
 | sideFillOpacity | 侧面填充颜色透明度                          | `number`                        | `0-1`  | `#fff`     |
-| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                       |        | ` true`    |
+| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                       | -      | ` true`    |
 
 ## 组件事件
 
