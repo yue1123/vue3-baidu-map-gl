@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults, watch, defineEmits } from 'vue'
+  import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   export interface BmCityListOptions {

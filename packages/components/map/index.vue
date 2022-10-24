@@ -6,7 +6,15 @@
     style="background: #f1f1f1; position: relative; overflow: hidden"
   >
     <slot name="loading" v-bind:isLoading="!initd">
-      <div style="color: #999; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+      <div
+        style="
+          color: #999;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        "
+      >
         {{ !initd ? 'map loading...' : '' }}
       </div>
     </slot>
@@ -31,8 +39,50 @@
   import useLifeCycle from '../../hooks/useLifeCycle'
   import bindEvents, { Callback } from '../../utils/bindEvents'
   import getScriptAsync from '../../utils/getScriptAsync'
-  import { initPlugins, PluginsSourceLink, UserPlugins } from '../../utils/pluginLoader'
+  import {
+    initPlugins,
+    PluginsSourceLink,
+    UserPlugins
+  } from '../../utils/pluginLoader'
   import { isString, callWhenDifferentValue } from '../../utils'
+  export interface DisplayOptions {
+    /**
+     * 是否显示地图上的地点标识
+     */
+    poi?: boolean
+    /**
+     * 是否显示室内图
+     */
+    indoor?: boolean
+    /**
+     * 是否显示地图上的地点标识文字
+     */
+    poiText?: boolean
+    /**
+     * 是否显示地图上的地点标识图标
+     */
+    poiIcon?: boolean
+    /**
+     * 是否显示覆盖物
+     */
+    overlay?: boolean
+    /**
+     * 是否显示叠加图层，地球模式暂不支持
+     */
+    layer?: boolean
+    /**
+     * 是否显示3D建筑物（仅支持WebGL方式渲染的地图）
+     */
+    building?: boolean
+    /**
+     * 是否显示路网（只对卫星图和地球模式有效）
+     */
+    street?: boolean
+    /**
+     * 天空颜色
+     */
+    skyColors?: [string, string]
+  }
   export interface BaiduMapProps {
     ak?: string
     /**sss
@@ -98,6 +148,10 @@
      */
     plugins?: UserPlugins
     pluginsSourceLink?: Partial<PluginsSourceLink>
+    /**
+     * 地图自定义属性
+     */
+    displayOptions?: DisplayOptions
     /**
      * 是否启用路况图层
      */
@@ -253,7 +307,8 @@
   ])
   const ak = props.ak || proxy!.$baiduMapAk
   const plugins = props.plugins || proxy!.$baiduMapPlugins || []
-  const pluginsSourceLink = props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
+  const pluginsSourceLink =
+    props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
   if (!ak) console.warn('missing required props: ak')
 
   // 初始化地图
@@ -264,7 +319,14 @@
       key: '_initBMap'
     })
       .then(() => {
-        const { minZoom, maxZoom, mapType, enableAutoResize, showControls, center } = props
+        const {
+          minZoom,
+          maxZoom,
+          mapType,
+          enableAutoResize,
+          showControls,
+          center
+        } = props
         if (!mapContainer.value) return
         map = new BMapGL.Map(mapContainer.value, {
           minZoom,
@@ -322,6 +384,13 @@
     watch(() => props.mapStyleJson, callWhenDifferentValue(initCustomStyle), {
       deep: true
     })
+    watch(
+      () => props.displayOptions,
+      callWhenDifferentValue(setDisplayOptions),
+      {
+        deep: true
+      }
+    )
     watch(() => props.mapType, setMapType)
     watch(() => props.enableTraffic, setTraffic)
     watch(() => props.enableDragging, setDragging)
@@ -347,6 +416,7 @@
       enablePinchToZoom,
       enableAutoResize,
       enableTraffic,
+      displayOptions,
       mapType,
       zoom,
       tilt,
@@ -366,6 +436,7 @@
     setDoubleClickZoom(enableDoubleClickZoom)
     setScrollWheelZoom(enableScrollWheelZoom)
     setInertialDragging(enableInertialDragging)
+    setDisplayOptions(displayOptions)
   }
   // 生产一个地理位置坐标点
   function genPoint(lng: number, lat: number): BMapGL.Point {
@@ -380,11 +451,22 @@
   /**
    * 设置中心点和缩放级别
    */
-  function setCenterAndZoom(center: { lng: number; lat: number } | string): void {
+  function setCenterAndZoom(
+    center: { lng: number; lat: number } | string
+  ): void {
     if (typeof center === 'string') {
       map!.centerAndZoom(center)
     } else {
       map!.centerAndZoom(genPoint(center.lng, center.lat), props.zoom)
+    }
+  }
+
+  /**
+   * 设置地图自定义属性
+   */
+  function setDisplayOptions(displayOptions?: DisplayOptions) {
+    if (displayOptions) {
+      map.setDisplayOptions(displayOptions)
     }
   }
   /**
@@ -409,23 +491,33 @@
   }
   // 设置地图惯性拖拽
   function setInertialDragging(enableInertialDragging: boolean) {
-    enableInertialDragging ? map!.enableInertialDragging() : map!.disableInertialDragging()
+    enableInertialDragging
+      ? map!.enableInertialDragging()
+      : map!.disableInertialDragging()
   }
   // 设置地图是否可滚轮缩放
   function setScrollWheelZoom(enableScrollWheelZoom: boolean) {
-    enableScrollWheelZoom ? map!.enableScrollWheelZoom() : map!.disableScrollWheelZoom()
+    enableScrollWheelZoom
+      ? map!.enableScrollWheelZoom()
+      : map!.disableScrollWheelZoom()
   }
   // 设置地图是否可连续缩放
   function setContinuousZoom(enableContinuousZoom: boolean): void {
-    enableContinuousZoom ? map!.enableContinuousZoom() : map!.disableContinuousZoom()
+    enableContinuousZoom
+      ? map!.enableContinuousZoom()
+      : map!.disableContinuousZoom()
   }
   // 设置地图是否可缩放至中心点
   function setResizeOnCenter(enableResizeOnCenter: boolean): void {
-    enableResizeOnCenter ? map!.enableResizeOnCenter() : map!.disableResizeOnCenter()
+    enableResizeOnCenter
+      ? map!.enableResizeOnCenter()
+      : map!.disableResizeOnCenter()
   }
   // 设置地图是否可双击缩放
   function setDoubleClickZoom(enableDoubleClickZoom: boolean): void {
-    enableDoubleClickZoom ? map!.enableDoubleClickZoom() : map!.disableDoubleClickZoom()
+    enableDoubleClickZoom
+      ? map!.enableDoubleClickZoom()
+      : map!.disableDoubleClickZoom()
   }
   // 设置地图是否可键盘操作
   function setKeyboard(enableKeyboard: boolean): void {
@@ -457,7 +549,9 @@
   })
   provide('getMapInstance', () => map)
   provide('parentUidGetter', uid)
-  provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) => setCenterAndZoom(_center))
+  provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) =>
+    setCenterAndZoom(_center)
+  )
 </script>
 <script lang="ts">
   export default {

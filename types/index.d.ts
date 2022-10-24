@@ -8,3 +8,4 @@
 /// <reference path="./service.d.ts" />
 /// <reference path="./tools.d.ts" />
 /// <reference path="./lib.d.ts" />
+/// <reference path="./mapvgl.d.ts" />
