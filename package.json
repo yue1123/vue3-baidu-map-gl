@@ -38,6 +38,8 @@
     "format": "prettier -w types/* docs/zh/* packages/*"
   },
   "dependencies": {
+    "mapv": "^2.0.62",
+    "mapvgl": "1.0.0-beta.159",
     "mitt": "^3.0.0",
     "vue": "^3.2.40"
   },

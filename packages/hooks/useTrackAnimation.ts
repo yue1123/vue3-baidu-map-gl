@@ -1,4 +1,4 @@
-import { Component, Ref, ref, watch } from 'vue'
+import { Component, onUnmounted, Ref, ref, watch } from 'vue'
 import Map from '../components/bm-map/index.vue'
 
 type MapComponent = typeof Map
@@ -47,10 +47,10 @@ const statusMap: Record<number, AnimationStatus> = {
  */
 export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
   let instance: BMapGLLib.TrackAnimation
-  let pl: BMapGL.Polyline
+  let pl: BMapGL.Polyline | null
   let mapComponentInstance: any
   let mapInstance: BMapGL.Map
-  let status = ref<AnimationStatus>('INITIAL')
+  const status = ref<AnimationStatus>('INITIAL')
 
   watch(
     () => map.value,
@@ -61,11 +61,11 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
   const init = () => {
     if (!instance) {
       mapInstance = mapComponentInstance.getMapInstance()
-      instance = new BMapGLLib.TrackAnimation(mapInstance, pl, options)
+      instance = new BMapGLLib.TrackAnimation(mapInstance, pl!, options)
     }
   }
   const setPath = (path: PathPoint[]) => {
-    let point = path.map((pathItem) => new BMapGL.Point(pathItem.lng, pathItem.lat))
+    const point = path.map((pathItem) => new BMapGL.Point(pathItem.lng, pathItem.lat))
     pl = new BMapGL.Polyline(point)
     init()
   }
@@ -105,6 +105,13 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
       }
     })
   }
+  onUnmounted(() => {
+    // 手动回收内存
+    if (mapInstance) {
+      mapInstance.removeOverlay(pl!)
+      pl = null
+    }
+  })
 
   return {
     /**

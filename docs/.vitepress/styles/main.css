@@ -19,6 +19,10 @@ img.resizable-img {
   height: unset;
 }
 
+.vp-doc td{
+  font-size: 14px !important;
+}
+
 /* fix height ~ 2 lines of text: 3 or more cards per row */
 .VPTeamMembersItem.small .profile .data .affiliation {
   min-height: 3rem;
@@ -74,7 +78,7 @@ img.resizable-img {
 
 .VPDoc .content-container {
   width: 100%;
-  max-width: 720px;
+  max-width: 720px !important;
 }
 
 .myButton {

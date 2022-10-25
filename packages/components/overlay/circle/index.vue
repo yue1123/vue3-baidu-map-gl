@@ -171,7 +171,9 @@
     circle.setRadius(radius)
   }
   function setCenter(center: CircleCenter): void {
-    circle.setCenter(new BMapGL.Point(center.lng, center.lat))
+    if (circle) {
+      circle.setCenter(new BMapGL.Point(center.lng, center.lat))
+    }
   }
   function setStrokeColor(color: string): void {
     circle.setStrokeColor(color)

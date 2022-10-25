@@ -1,4 +1,4 @@
-import { Ref, ref } from 'vue'
+import { Ref, ref, onUnmounted } from 'vue'
 // 获取地图区域边界
 
 export type AreaBoundary = string[]
@@ -9,9 +9,9 @@ export type AreaBoundary = string[]
  * @returns { isLoading, boundaries, get }
  */
 export function useAreaBoundary(cal?: (boundaries: Ref<AreaBoundary>) => void) {
-  let isLoading = ref<boolean>(false)
-  let boundaries = ref<AreaBoundary>([])
-  let boundaryInstance: BMapGL.Boundary
+  const isLoading = ref<boolean>(false)
+  const boundaries = ref<AreaBoundary>([])
+  let boundaryInstance: BMapGL.Boundary | null
   const getFn = (area: string) => {
     if (!boundaryInstance) {
       boundaryInstance = new BMapGL.Boundary()
@@ -24,6 +24,10 @@ export function useAreaBoundary(cal?: (boundaries: Ref<AreaBoundary>) => void) {
     })
   }
 
+  onUnmounted(() => {
+    // 手动回收内存
+    boundaryInstance = null
+  })
   return {
     /**
      * 是否加载中
