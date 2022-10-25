@@ -1,5 +1,5 @@
 /// <reference path="./core.d.ts" />
-declare namespace MapVGL {
+declare namespace mapvgl {
   class View {
     constructor(opts: ViewOptions)
     addLayer(x: Layer): void
