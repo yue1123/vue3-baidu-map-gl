@@ -39,11 +39,6 @@ import Prism from './components/overlay/prism/index.vue'
 
 // import MapvglView from './components/layer/mapvgl-view/index.vue'
 
-// mapv
-import * as mapvgl from 'mapvgl'
-import * as mapv from 'mapv'
-import * as mapvglThree from 'mapvgl/dist/mapvgl.threelayers.min'
-
 const componentsList = [
   Map,
   Control,
@@ -100,9 +95,6 @@ export {
   Circle,
   CityList,
   Prism,
-  InfoWindow,
-  mapvgl,
-  mapv,
-  mapvglThree
+  InfoWindow
 }
 export default vue3BaiduMapGl

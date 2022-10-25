@@ -18,6 +18,7 @@
       lat: 40.050566
     }"
     :zoom='16'
+    :plugins="['TrackAnimation']"
     ref="map" 
     @pluginReady="handleInitd"
   />
@@ -95,6 +96,7 @@
     }"
     :zoom="16"
     ref="map"
+    :plugins="['TrackAnimation']"
     @pluginReady="handleInitd"
   />
   <div class="state">

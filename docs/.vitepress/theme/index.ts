@@ -7,8 +7,7 @@ export default {
   enhanceApp(ctx) {
     const { app } = ctx
     app.use(baiduMapInit, {
-      ak: 'cwHsf5i2fAQAlijOyELx5COtkFhItaSm',
-      plugins: ['TrackAnimation']
+      ak: 'cwHsf5i2fAQAlijOyELx5COtkFhItaSm'
     })
     // // if (process.env.NODE_ENV === 'production') {
     // router.beforeEach((to, from, next) => {

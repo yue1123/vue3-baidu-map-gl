@@ -294,8 +294,15 @@
     'longpress'
   ])
   const ak = props.ak || proxy!.$baiduMapAk
-  const plugins = props.plugins || proxy!.$baiduMapPlugins || []
-  const pluginsSourceLink = props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
+  const plugins =
+    props.plugins && proxy!.$baiduMapPlugins
+      ? Object.assign(proxy!.$baiduMapPlugins, props.plugins)
+      : props.plugins || proxy!.$baiduMapPlugins
+
+  const pluginsSourceLink =
+    props.pluginsSourceLink && proxy!.$baiduMapPluginsSourceLink
+      ? Object.assign(proxy!.$baiduMapPluginsSourceLink, props.pluginsSourceLink)
+      : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
   if (!ak) console.warn('missing required props: ak')
 
   // 初始化地图
@@ -326,7 +333,7 @@
           if (plugins) {
             initPlugins(plugins, pluginsSourceLink)
               .then(() => {
-                vueEmits('pluginReady')
+                vueEmits('pluginReady', map)
               })
               .catch((err) => {
                 console.warn('plugins load error', err)

@@ -20,7 +20,8 @@ module.exports = {
   rules: {
     'vue/valid-template-root': 0,
     '@typescript-eslint/no-explicit-any': 0,
-    '@typescript-eslint/no-non-null-assertion': 0
+    '@typescript-eslint/no-non-null-assertion': 0,
+    '@typescript-eslint/ban-ts-comment': 0
   },
   overrides: [
     {
