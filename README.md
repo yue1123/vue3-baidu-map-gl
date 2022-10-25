@@ -75,7 +75,7 @@ app.mount('#app')
     -   [ ] 地面图片叠加层
     -   [ ] canvas 叠加层
     -   [ ] video 叠加层
-    -   [ ] MapVgl 叠加层
+    -   [x] MapVgl 叠加层
 -   [x] 信息窗口
 -   [ ] 右键菜单
 -   [ ] 大地路线书

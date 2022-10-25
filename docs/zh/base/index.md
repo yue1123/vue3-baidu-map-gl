@@ -179,15 +179,16 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ## 静态组件 props
 
-| 属性         | 说明                                    | 类型                 | 可选值           | 默认值  |
-| ------------ | --------------------------------------- | -------------------- | ---------------- | ------- |
-| ak           | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`             | -                | -       |
-| width        | 地图显示宽度                            | `string / number`    | -                | `100%`  |
-| height       | 地图显示高度                            | `string / number`    | -                | `400px` |
-| minZoom      | 地图允许展示的最小级别                  | `number`             | `0-21`           | `0`     |
-| maxZoom      | 地图允许展示的最大级别                  | `number`             | `0-21`           | `21`    |
-| showControls | 是否显示室内图                          | `boolean`            | -                | `false` |
-| plugins      | 需要注册的插件                          | `['TrackAnimation']` | `TrackAnimation` | -       |
+| 属性              | 说明                                    | 类型                                                                      | 可选值 | 默认值  |
+| ----------------- | --------------------------------------- | ------------------------------------------------------------------------- | ------ | ------- |
+| ak                | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`                                                                  | -      | -       |
+| width             | 地图显示宽度                            | `string / number`                                                         | -      | `100%`  |
+| height            | 地图显示高度                            | `string / number`                                                         | -      | `400px` |
+| minZoom           | 地图允许展示的最小级别                  | `number`                                                                  | `0-21` | `0`     |
+| maxZoom           | 地图允许展示的最大级别                  | `number`                                                                  | `0-21` | `21`    |
+| showControls      | 是否显示室内图                          | `boolean`                                                                 | -      | `false` |
+| plugins           | 需要注册的插件                          | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvglThree']`                     | -      | -       |
+| pluginsSourceLink | 自定义插件资源地址                      | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvglThree', string>` | -      | -       |
 
 ## 动态组件 Props
 
@@ -242,6 +243,9 @@ import { Map } from 'vue3-baidu-map-gl'
 
 | 事件名          | 说明                                                                                             | 类型                                     |
 | --------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------- |
+| initd           | 组件初始化后会触发此事件，返回一个地图实例                                                       | `{ map: BmapGL }`                        |
+| unload          | 组件卸载时会触发此事件                                                                           | -                                        |
+| pluginReady     | 插件加载完毕会触发此事件                                                                         | -                                        |
 | click           | 左键单击地图时触发此事件。 当双击时，产生的事件序列为： click click dblclick                     | `{type, target, latlng, pixel, overlay}` |
 | dblclick        | 鼠标双击地图时会触发此事件                                                                       | `{type, target, pixel, point}`           |
 | rightclick      | 右键单击地图时触发此事件。 当双击时，产生的事件序列为： rightclick rightclick rightdblclick      | `{type, target, latlng, pixel, overlay}` |

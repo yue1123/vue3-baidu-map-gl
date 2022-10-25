@@ -122,6 +122,8 @@ simple_red , simple_blue , loc_red , loc_blue , start , end , location , red1 , 
 
 | 事件名          | 说明                                                                               | 类型                   |
 | --------------- | ---------------------------------------------------------------------------------- | ---------------------- |
+| initd           | 组件初始化后，调用的方法，返回一个地图实例                                         | `{ map: BmapGL }`      |
+| unload          | 组件卸载时会调用此方法                                                             | -                      |
 | click           | 鼠标左键单击事件的回调函数。当双击时，产生的事件序列为：click -> click -> dblclick | `((e: Event) => void)` |
 | dblclick        | 鼠标左键双击事件的回调函数                                                         | `((e: Event) => void)` |
 | mousedown       | 鼠标左键在该覆盖物上按下的回调函数                                                 | `((e: Event) => void)` |
