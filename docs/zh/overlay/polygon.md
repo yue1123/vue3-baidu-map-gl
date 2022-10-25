@@ -11,7 +11,6 @@ import { Polygon } from 'vue3-baidu-map-gl'
 <div>
   <Map
     :minZoom="3"
-    
   >
     <Polygon 
       :path="[
@@ -62,7 +61,6 @@ import { Polygon } from 'vue3-baidu-map-gl'
   <Map
     :minZoom="3"
     :zoom="zoom"
-    
     enableScrollWheelZoom
   >
     <Control style="border-radius:4px;box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);color: #666;background:#fff;padding:10px;" :offset="{ x: 15, y: 15 }">

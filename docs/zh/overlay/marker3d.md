@@ -19,7 +19,6 @@ import { Marker3d } from 'vue3-baidu-map-gl'
   :zoom='16'
   :heading="64.5"
   :tilt="73"
-  
   enableScrollWheelZoom
 >
   <Marker3d
@@ -64,7 +63,6 @@ import { Marker3d } from 'vue3-baidu-map-gl'
   :zoom='16'
   :heading="64.5"
   :tilt="73"
-  
   enableScrollWheelZoom
 >
   <Marker3d

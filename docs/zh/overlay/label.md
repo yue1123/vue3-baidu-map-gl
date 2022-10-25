@@ -12,7 +12,6 @@ import { Label } from 'vue3-baidu-map-gl'
 文字内容: <input class="my-input" type="text" v-model="content">
 <Map
   :minZoom="3"
-  
 >
   <Label
     :content="content"

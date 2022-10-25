@@ -12,7 +12,6 @@ import { Polyline } from 'vue3-baidu-map-gl'
 <Map
   :minZoom="3"
   :zoom="16"
-  
 >
   <Polyline 
     :path="[
