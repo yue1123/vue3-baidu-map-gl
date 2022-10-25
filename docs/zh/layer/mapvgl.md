@@ -173,7 +173,7 @@ enableScrollWheelZoom
     });
     view.addLayer(grid);
 
-    fetch('./beijing.json').then(rs => {
+    fetch('/vue3-baidu-map-gl/beijing.json').then(rs => {
         return rs.json();
     }).then(rs => {
         rs = rs.result.data[0].bound;
@@ -197,9 +197,9 @@ enableScrollWheelZoom
 </script>
 
 ::: details 点击查看代码
-
+<!-- prettier-ignore -->
 ```html
-<map
+<Map
   :zoom="5"
   :center="{ lat: 39.915185, lng: 116.403901 }"
   :displayOptions="{
@@ -289,7 +289,6 @@ enableScrollWheelZoom
 
 > https://mapv.baidu.com/gl/docs/HeatGridLayer.html
 
-
 <Map
 :heading="30"
 :tilt="30"
@@ -307,9 +306,9 @@ enableScrollWheelZoom
 />
 
 ::: details 点击查看代码
-
+<!-- prettier-ignore -->
 ```html
-<map
+<Map
   :heading="30"
   :tilt="30"
   :zoom="12"
@@ -347,7 +346,7 @@ enableScrollWheelZoom
     })
     view.addLayer(grid)
 
-    fetch('./beijing.json')
+    fetch('/vue3-baidu-map-gl/beijing.json')
       .then((rs) => {
         return rs.json()
       })

@@ -12,7 +12,7 @@ import { Polyline } from 'vue3-baidu-map-gl'
 <Map
   :minZoom="3"
   :zoom="16"
-  height="400px"
+  
 >
   <Polyline 
     :path="[
@@ -33,7 +33,7 @@ import { Polyline } from 'vue3-baidu-map-gl'
 
 <!-- prettier-ignore -->
 ```html
-<Map :minZoom="3" height="400px" :zoom="16">
+<Map :minZoom="3"  :zoom="16">
   <Polyline
     :path="[
       { lng: 116.404, lat: 39.915 },

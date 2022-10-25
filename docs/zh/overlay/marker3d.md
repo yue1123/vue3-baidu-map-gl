@@ -19,7 +19,7 @@ import { Marker3d } from 'vue3-baidu-map-gl'
   :zoom='16'
   :heading="64.5"
   :tilt="73"
-  height="400px"
+  
   enableScrollWheelZoom
 >
   <Marker3d
@@ -37,7 +37,7 @@ import { Marker3d } from 'vue3-baidu-map-gl'
 
 <!-- prettier-ignore -->
 ```html
-<Map :minZoom="3" :zoom="16" :heading="64.5" :tilt="73" height="400px" enableScrollWheelZoom>
+<Map :minZoom="3" :zoom="16" :heading="64.5" :tilt="73"  enableScrollWheelZoom>
   <Marker3d
     :position="point1"
     :height="1200"
@@ -64,7 +64,7 @@ import { Marker3d } from 'vue3-baidu-map-gl'
   :zoom='16'
   :heading="64.5"
   :tilt="73"
-  height="400px"
+  
   enableScrollWheelZoom
 >
   <Marker3d
@@ -100,7 +100,7 @@ import { Marker3d } from 'vue3-baidu-map-gl'
 
 <!-- prettier-ignore -->
 ```html
-<Map :minZoom="3" :zoom="16" :heading="64.5" :tilt="73" height="400px" enableScrollWheelZoom>
+<Map :minZoom="3" :zoom="16" :heading="64.5" :tilt="73"  enableScrollWheelZoom>
   <Marker3d
     :position="point1"
     :height="1200"

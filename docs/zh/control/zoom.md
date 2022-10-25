@@ -11,7 +11,7 @@ import { Zoom } from 'vue3-baidu-map-gl'
 <div>
   <Map
     :minZoom="3"
-    height="400px"
+    
   >
     <Zoom />
   </Map>
@@ -21,7 +21,7 @@ import { Zoom } from 'vue3-baidu-map-gl'
 
 <!-- prettier-ignore -->
 ```html
-<Map :minZoom="3" height="400px">
+<Map :minZoom="3" >
   <Zoom />
 </Map>
 

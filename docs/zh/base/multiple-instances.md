@@ -71,7 +71,6 @@
   <br/>
   <Map
     :minZoom="3"
-    height="400px"
     :mapType="mapSetting.type"
     :enableDragging="mapSetting.enableDragging"
     :enableInertialDragging="mapSetting.enableInertialDragging"
@@ -124,7 +123,6 @@
   <br/>
   <Map
     :minZoom="3"
-    height="400px"
     :mapType="mapSetting1.type"
     :enableDragging="mapSetting1.enableDragging"
     :enableInertialDragging="mapSetting1.enableInertialDragging"
@@ -172,7 +170,6 @@
   <br />
   <Map
     :minZoom="3"
-    height="400px"
     :mapType="mapSetting.type"
     :enableDragging="mapSetting1.enableDragging"
     :enableInertialDragging="mapSetting1.enableInertialDragging"
@@ -215,7 +212,6 @@
   <br />
   <Map
     :minZoom="3"
-    height="400px"
     :mapType="mapSetting1.type"
     :enableDragging="mapSetting1.enableDragging"
     :enableInertialDragging="mapSetting1.enableInertialDragging"

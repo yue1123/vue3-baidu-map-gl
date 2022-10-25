@@ -11,9 +11,7 @@ import { Copyright } from 'vue3-baidu-map-gl'
 多个相同位置版权控件会自动排列，避免重叠
 
 <div>
-<Map
-  height="400px"
->
+<Map>
   <Copyright anchor="BMAP_ANCHOR_TOP_RIGHT" v-if="show">
     <div style="display: flex; align-items:flex-end;">
       <img width='40' src="https://s1.ax1x.com/2022/09/29/xmTpcT.png" alt="">

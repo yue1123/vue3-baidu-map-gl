@@ -13,7 +13,6 @@ import { Control } from 'vue3-baidu-map-gl'
   @initd="handleInitd"
   :minZoom="3"
   :zoom="zoom"
-  height="400px"
 >
   <Control style="display: flex; background-color: #fff; padding: 10px" :offset="{ x: 0, y: 0 }">
     <button @click="handleZoomOut">缩小</button>
@@ -53,7 +52,7 @@ button{
 <!-- prettier-ignore -->
 ```html
 <div>
-  <Map @initd="handleInitd" :minZoom="3" :zoom="zoom" height="400px">
+  <Map @initd="handleInitd" :minZoom="3" :zoom="zoom">
     <Control style="display: flex; background-color: #fff; padding: 10px" :offset="{ x: 0, y: 0 }">
       <button @click="handleZoomOut">缩小</button>
       <button @click="handleZoomIn">放大</button>

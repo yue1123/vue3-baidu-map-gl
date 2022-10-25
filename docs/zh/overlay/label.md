@@ -12,7 +12,7 @@ import { Label } from 'vue3-baidu-map-gl'
 文字内容: <input class="my-input" type="text" v-model="content">
 <Map
   :minZoom="3"
-  height="400px"
+  
 >
   <Label
     :content="content"
@@ -39,7 +39,7 @@ import { Label } from 'vue3-baidu-map-gl'
 
 <!-- prettier-ignore -->
 ```html
-<Map :minZoom="3" height="400px">
+<Map :minZoom="3" >
   <label
     content="欢迎使用百度地图GL版Vue3组件库"
     :position="{lng: 116.404, lat: 39.915 }"

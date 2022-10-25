@@ -54,6 +54,5 @@ export function initPlugins(plugins: UserPlugins, customPluginSourceLink: Partia
     return pluginsLoaderArr
   }, [] as Promise<any>[])
   // 加载插件
-  console.log(pluginsLoaders)
   return Promise.all(pluginsLoaders)
 }

@@ -11,7 +11,6 @@ import { Scale } from 'vue3-baidu-map-gl'
 <div>
 <Map
   :minZoom="3"
-  height="400px"
 >
   <Scale />
 </Map>
@@ -21,7 +20,7 @@ import { Scale } from 'vue3-baidu-map-gl'
 
 <!-- prettier-ignore -->
 ```html
-<Map :minZoom="3" height="400px">
+<Map :minZoom="3" >
   <Scale />
 </Map>
 

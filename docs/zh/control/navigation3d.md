@@ -11,7 +11,6 @@ import { Navigation3d } from 'vue3-baidu-map-gl'
 <div>
 <Map
   :minZoom="3"
-  height="400px"
 >
   <Navigation3d />
 </Map>
@@ -21,7 +20,7 @@ import { Navigation3d } from 'vue3-baidu-map-gl'
 
 <!-- prettier-ignore -->
 ```html
-<Map :minZoom="3" height="400px">
+<Map :minZoom="3">
   <Navigation3d />
 </Map>
 

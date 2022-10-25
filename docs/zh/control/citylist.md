@@ -11,7 +11,6 @@ import { CityList } from 'vue3-baidu-map-gl'
 <div>
   <Map
     :minZoom="3"
-    height="400px"
   >
     <CityList />
   </Map>
@@ -26,7 +25,7 @@ https://lbs.baidu.com/jsdemo.htm#cCityList
 
 <!-- prettier-ignore -->
 ```html
-<Map :minZoom="3" height="400px">
+<Map :minZoom="3">
   <CityList />
 </Map>
 

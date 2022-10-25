@@ -12,7 +12,7 @@ import { Marker } from 'vue3-baidu-map-gl'
 <Map
   :minZoom="3"
   :zoom='16'
-  height="400px"
+  
 >
   <Marker
     :position="{ lat: 39.918184, lng: 116.403901 }"
@@ -53,7 +53,7 @@ import { Marker } from 'vue3-baidu-map-gl'
 
 <!-- prettier-ignore -->
 ```html
-<Map :minZoom="3" height="400px">
+<Map :minZoom="3" >
   <!-- 起点图标 -->
   <Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="start" />
   <!-- 终点图标 -->

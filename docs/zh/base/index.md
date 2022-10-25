@@ -67,7 +67,6 @@ import { Map } from 'vue3-baidu-map-gl'
   <br/>
   <br/>
   <Map
-    height="400px"
     :heading="64.5"
     :tilt="73"
     :center="{
@@ -143,7 +142,6 @@ import { Map } from 'vue3-baidu-map-gl'
   <br />
   <Map
     :minZoom="3"
-    height="400px"
     :mapType="type"
     :enableDragging="mapSetting.enableDragging"
     :enableInertialDragging="mapSetting.enableInertialDragging"
@@ -183,7 +181,7 @@ import { Map } from 'vue3-baidu-map-gl'
 | ----------------- | --------------------------------------- | ------------------------------------------------------------------------- | ------ | ------- |
 | ak                | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`                                                                  | -      | -       |
 | width             | 地图显示宽度                            | `string / number`                                                         | -      | `100%`  |
-| height            | 地图显示高度                            | `string / number`                                                         | -      | `400px` |
+| height            | 地图显示高度                            | `string / number`                                                         | -      | `550px` |
 | minZoom           | 地图允许展示的最小级别                  | `number`                                                                  | `0-21` | `0`     |
 | maxZoom           | 地图允许展示的最大级别                  | `number`                                                                  | `0-21` | `21`    |
 | showControls      | 是否显示室内图                          | `boolean`                                                                 | -      | `false` |

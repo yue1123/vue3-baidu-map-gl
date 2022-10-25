@@ -1,3 +1,6 @@
+:root {
+  --vp-layout-max-width: 1620px;
+}
 .dark [img-light] {
   display: none;
 }
@@ -78,7 +81,7 @@ img.resizable-img {
 
 .VPDoc .content-container {
   width: 100%;
-  max-width: 720px !important;
+  max-width: 1200px !important;
 }
 
 .myButton {
