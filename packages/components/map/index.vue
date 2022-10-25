@@ -233,7 +233,7 @@
   // const mapContainerId = 'baidu-map-container' + uid
   const props = withDefaults(defineProps<BaiduMapProps>(), {
     width: '100%',
-    height: '400px',
+    height: '550px',
     center: () => ({ lat: 39.915185, lng: 116.403901 }),
     mapType: 'BMAP_NORMAL_MAP',
     zoom: 14,
