@@ -1,10 +1,12 @@
 # 与 mapvgl 可视化结合
 
-本章节将演示一下通过插件的形式加载 `mapv` 相关资源, 以及如何与 mapvgl 结合。
+本章节将演示一下通过插件的形式加载 `mapv` 相关资源，以及如何与 mapvgl 结合。
 
-> 以下示例均来自于 `mapv` 官方示例。更多示例见https://mapv.baidu.com/gl/docs/index.html
+> 以下示例均来自于 `mapv` 官方示例。更多示例见及文档请参考: https://mapv.baidu.com/gl/docs/index.html
 
 ## PointLayer 基础点层图
+
+> https://mapv.baidu.com/gl/docs/PointLayer.html
 
 <Map
 :zoom="5"
@@ -285,12 +287,14 @@ enableScrollWheelZoom
 
 ## HeatGridLayer 柱状热力图
 
-基于 `three.js` 实现，需要额外引入 `mapvglThree`。
+> https://mapv.baidu.com/gl/docs/HeatGridLayer.html
+
+
 <Map
 :heading="30"
 :tilt="30"
 :zoom="12"
-:plugins="[ 'Mapvgl', 'Mapv', 'MapvglThree' ]"
+:plugins="[ 'Mapvgl', 'Mapv' ]"
 :center="{ lat: 39.925406, lng: 116.387456 }"
 :displayOptions="{
 indoor: false,
@@ -373,6 +377,9 @@ enableScrollWheelZoom
 ## FlyLineLayer 飞线图层
 
 基于 `three.js` 实现，需要额外引入 `mapvglThree`。
+
+> https://mapv.baidu.com/gl/docs/FlyLineLayer.html
+
 <Map
 :tilt="45"
 :zoom="8.5"
