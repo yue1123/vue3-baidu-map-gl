@@ -210,11 +210,12 @@ enableScrollWheelZoom
   }"
   mapStyleId="91c53039a0b7f75e3dd8ddcdd932243b"
   enableScrollWheelZoom
+  :plugins="[ 'Mapvgl', 'Mapv' ]"
   @pluginReady="handleInit"
 />
 
 <script lang="ts" setup>
-  import { mapv, mapvgl } from 'vue3-baidu-map-gl'
+  import { Map } from 'vue3-baidu-map-gl'
   function handleInit(map) {
     var data = []
 
@@ -322,11 +323,12 @@ enableScrollWheelZoom
   }"
   mapStyleId="980161f3645989feac25a0da15da4178"
   enableScrollWheelZoom
+  :plugins="[ 'Mapvgl', 'Mapv' ]"
   @pluginReady="handleInitd"
 />
 
 <script lang="ts" setup>
-  import { Map, mapv, mapvgl, mapvglThree } from 'vue3-baidu-map-gl'
+  import { Map } from 'vue3-baidu-map-gl'
   function handleInit(map) {
     var view = new mapvgl.View({
       map: map
@@ -408,11 +410,12 @@ enableScrollWheelZoom
   }"
   mapStyleId="980161f3645989feac25a0da15da4178"
   enableScrollWheelZoom
+  :plugins="[ 'Mapvgl', 'Mapv', 'MapvglThree' ]"
   @pluginReady="handleInitd"
 />
 
 <script lang="ts" setup>
-  import { mapv, mapvgl, mapvglThree } from 'vue3-baidu-map-gl'
+  import { Map } from 'vue3-baidu-map-gl'
   function handleInit(map) {
     var citys = [
       '长沙市',
