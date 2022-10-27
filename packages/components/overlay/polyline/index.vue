@@ -99,12 +99,13 @@
   const { ready } = useLifeCycle()
   let polyline: BMapGL.Polyline
   useBaseMapEffect((map: BMapGL.Map) => {
-    if (!props.path.length) return
     const cal = () => {
       map.removeOverlay(polyline)
     }
     const init = () => {
+      if (!props.path.length) return
       const {
+        path,
         strokeColor,
         strokeWeight,
         strokeOpacity,
@@ -115,7 +116,7 @@
         geodesic,
         clip
       } = props
-      const pathPoints = props.path.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
+      const pathPoints = pathPointsToMapPoints(path)
       polyline = new BMapGL.Polyline(pathPoints, {
         strokeColor,
         strokeWeight,
@@ -132,9 +133,15 @@
     }
 
     // 监听值变化
-    watch(() => props.path, callWhenDifferentValue(setPath), {
-      deep: true
-    })
+    watch(
+      () => props.path,
+      callWhenDifferentValue((n) => {
+        polyline ? setPath(n) : init()
+      }),
+      {
+        deep: true
+      }
+    )
     watch(() => props.strokeColor, setStrokeColor)
     watch(() => props.strokeOpacity, setStrokeOpacity)
     watch(() => props.strokeWeight, setStrokeWeight)
