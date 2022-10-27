@@ -154,7 +154,6 @@
     return new BMapGL.Icon(imageUrl, new BMapGL.Size(imageSize.width, imageSize.height), iconOptions)
   }
   function setPosition(position: Marker3dPosition) {
-    console.log(position, '====')
     try {
       // FIXME: 更新 position baidu-map-gl api报错: TypeError: Cannot read properties of undefined (reading '2x')
       marker3d.setPosition(new BMapGL.Point(position.lng, position.lat))

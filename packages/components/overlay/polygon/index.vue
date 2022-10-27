@@ -126,7 +126,7 @@
       polygon && map.removeOverlay(polygon)
     }
     const init = () => {
-      if (!props.path.length) return
+      if (!props.path || !props.path.length) return
       const {
         path,
         strokeColor,

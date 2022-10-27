@@ -98,7 +98,7 @@
       prism && map.removeOverlay(prism)
     }
     const init = () => {
-      if (!props.path.length) return
+      if (!props.path || !props.path.length) return
       const {
         path,
         altitude,
