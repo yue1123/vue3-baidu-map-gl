@@ -25,27 +25,6 @@ declare namespace BMapGL {
      * 隐藏覆盖物。对于自定义覆盖物，此方法会自动将initialize方法返回的HTML元素样式的display属性设置为none
      */
     hide(): void
-    /**
-     * 	抽象方法，用于初始化覆盖物，当调用map.addOverlay时，API将调用此方法。自定义覆盖物时需要实现此方法。自定义覆盖物时需要将覆盖物对应的HTML元素返回
-     * @param map
-     */
-    initialize(map: Map): HTMLElement
-    /**
-     * 判断覆盖物是否可见
-     */
-    isVisible(): boolean
-    /**
-     * 抽象方法，当地图状态发生变化时，由系统调用对覆盖物进行绘制。自定义覆盖物需要实现此方法
-     */
-    draw(): void
-    /**
-     * 	显示覆盖物。对于自定义覆盖物，此方法会自动将initialize方法返回的HTML元素样式的display属性设置为空
-     */
-    show(): void
-    /**
-     * 隐藏覆盖物。对于自定义覆盖物，此方法会自动将initialize方法返回的HTML元素样式的display属性设置为none
-     */
-    hide(): void
     addEventListener(event: string, handler: Callback): void
     removeEventListener(event: string, handler: Callback): void
     setOptions(obj: object): void
@@ -568,6 +547,105 @@ declare namespace BMapGL {
   class GroundOverlay {
     constructor(bounds: Bounds, opts?: GroundOverlayOptions)
   }
+
+  interface BezierCurve extends Overlay {
+    /**
+     * 设置曲线的路径点
+     * @param path  路径
+     */
+    setPath(path: Array<Point>): void
+    /**
+     * 返回曲线的路径点
+     */
+    getPath(): Array<Point>
+    /**
+     * 设置曲线的控制点，每两个路径点之间可以有1或2个控制点，比如路径点有三个点，那个控制点的格式可以是：[ [cp1, cp2], [ cp3 ] ]，其中cp1和cp2为路经点1到2的控制点，cp3为路径点2到3的控制点
+     */
+    setControlPoints(points: Point[][]): void
+    /**
+     * 	返回曲线的控制点
+     */
+    getControlPoints(): Array<Point>
+    /**
+     *
+     * @param color 设置曲线的颜色
+     */
+    setStrokeColor(color: string): void
+    /**
+     * 返回曲线的颜色
+     */
+    getStrokeColor(): string
+
+    /**
+     * 设置透明度，取值范围0 - 1
+     */
+    setStrokeOpacity(opacity: number): void
+    /**
+     * 返回透明度
+     */
+    getStrokeOpacity(): number
+    /**
+     * 设置线的宽度，范围为大于等于1的整数
+     */
+    setStrokeWeight(weight: number): void
+    /**
+     * 返回线的宽度
+     */
+    getStrokeWeight(): number
+    /**
+     * 设置是为实线或虚线，solid或dashed
+     */
+    setStrokeStyle(style: string): void
+    /**
+     * 	返回当前线样式状态，实线或者虚线
+     */
+    getStrokeStyle(): string
+    /**
+     * 返回覆盖物的地理区域范围
+     */
+    getBounds(): Bounds
+    /**
+     * 	允许覆盖物在map.clearOverlays方法中被清除
+     */
+    enableMassClear(): void
+    /**
+     * 禁止覆盖物在map.clearOverlays方法中被清除
+     */
+    disableMassClear(): void
+    /**
+     * 返回覆盖物所在的map对象
+     */
+    getMap(): Map
+  }
+  interface BezierCurveOptions {
+    /**
+     * 折线颜色
+     */
+    strokeColor: string
+    /**
+     * 折线的宽度，以像素为单位
+     */
+    strokeWeight: number
+    /**
+     * 折线的透明度，取值范围0 - 1
+     */
+    strokeOpacity: number
+    /**
+     * 折线的样式，solid或dashed
+     */
+    strokeStyle: string
+    /**
+     * 是否在调用map.clearOverlays清除此覆盖物，默认为true
+     */
+    enableMassClear: boolean
+  }
+  /**
+   * 创建二阶贝塞尔曲线覆盖物，构造函数中必须定义坐标点和曲线的控制点
+   */
+  class BezierCurve {
+    constructor(points: Array<Point>, controlPoints: Point[][], opts?: BezierCurveOptions)
+  }
+
   interface HotspotOptions {
     text?: string
     offsets?: number[]

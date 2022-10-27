@@ -32,6 +32,7 @@ import Marker from './components/overlay/marker/index.vue'
 import Marker3d from './components/overlay/marker3d/index.vue'
 import Label from './components/overlay/label/index.vue'
 import Polyline from './components/overlay/polyline/index.vue'
+import BezierCurve from './components/overlay/bezierCurve/index.vue'
 import Polygon from './components/overlay/polygon/index.vue'
 import InfoWindow from './components/overlay/infowindow/index.vue'
 import Circle from './components/overlay/circle/index.vue'
@@ -52,6 +53,7 @@ const componentsList = [
   Label,
   Polyline,
   Polygon,
+  BezierCurve,
   Circle,
   CityList,
   Prism,
@@ -92,6 +94,7 @@ export {
   Label,
   Polyline,
   Polygon,
+  BezierCurve,
   Circle,
   CityList,
   Prism,

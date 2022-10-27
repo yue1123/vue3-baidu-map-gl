@@ -119,6 +119,10 @@ const sidebarConfig = {
           link: '/zh/overlay/polyline'
         },
         {
+          text: 'BezierCurve 贝塞尔曲线',
+          link: '/zh/overlay/bezierCurve'
+        },
+        {
           text: 'InfoWindow 信息窗口',
           link: '/zh/overlay/infowindow'
         },
