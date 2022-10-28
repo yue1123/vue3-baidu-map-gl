@@ -226,11 +226,10 @@
   const mapContainer = ref<HTMLDivElement | null>()
   let map: BMapGL.Map = null!
   // 是否初始化
-  let initd = false
+  let initd = ref<boolean>(false)
   // 地图初始化的发布
   const { ready } = useLifeCycle()
   const { uid, proxy } = getCurrentInstance()!
-  // const mapContainerId = 'baidu-map-container' + uid
   const props = withDefaults(defineProps<BaiduMapProps>(), {
     width: '100%',
     height: '550px',
@@ -327,8 +326,8 @@
         initCustomStyle()
         startWatchProps()
         bindEvents(props, vueEmits, map)
-        if (!initd) {
-          initd = true
+        if (!initd.value) {
+          initd.value = true
           nextTick(() => ready(map))
           if (plugins) {
             initPlugins(plugins, pluginsSourceLink)
@@ -458,7 +457,7 @@
   }
   // 设置地图类型
   function setMapType(mapType: _MapType): void {
-    map!.setMapType(window[mapType])
+    window[mapType] !== undefined && map!.setMapType(window[mapType])
   }
   function setHeading(heading: number): void {
     map!.setHeading(heading)
@@ -503,9 +502,7 @@
     enableAutoResize ? map!.enableAutoResize() : map!.disableAutoResize()
   }
 
-  onMounted(() => {
-    init()
-  })
+  onMounted(init)
   /**
    * 销毁地图，当使用 WebGL 渲染地图时，如果确认不再使用该地图实例，则需要
    * 调用本方法销毁 WebGL 上下文，否则频繁创建新地图实例会导致浏览器报：
