@@ -1,23 +1,23 @@
 import type { HeadConfig } from 'vitepress'
 const heads: HeadConfig[] = [
-	[
-		'link',
-		{
-			rel: 'icon',
-			type: 'image/png',
-			sizes: '16x16',
-			href: `/vue3-baidu-map-gl/logo.png`
-		}
-	],
-	['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
-	['meta', { name: 'theme-color', content: '#3eaf7c' }]
+  [
+    'link',
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      href: `/vue3-baidu-map-gl/logo.png`
+    }
+  ],
+  ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
+  ['meta', { name: 'theme-color', content: '#3eaf7c' }]
 ]
 
 if (process.env.NODE_ENV === 'production') {
-	heads.push([
-		'script',
-		{},
-		`
+  heads.push([
+    'script',
+    {},
+    `
         var _hmt = _hmt || [];
         (function() {
           var hm = document.createElement("script");
@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
           s.parentNode.insertBefore(hm, s);
         })();
         `
-	])
+  ])
 }
 
 export default heads
