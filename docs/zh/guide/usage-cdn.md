@@ -18,7 +18,7 @@
 
 ## 示例
 
-点击查看基本的[在线示例](https://jsbin.com/hohuximefi/edit?html,output)：
+点击查看基本的[在线示例](https://jsbin.com/danojihacu/edit?html,output)：
 
 ```html
 <!DOCTYPE html>
@@ -26,24 +26,25 @@
   <head>
     <meta charset="utf-8" />
     <script src="https://unpkg.com/vue"></script>
+    <!-- Would use latest version, you'd better specify a version -->
     <script src="https://unpkg.com/vue3-baidu-map-gl"></script>
   </head>
   <body>
     <div id="app">
-      <b-Map>
-        <b-zoom />
-      </b-ma>
+      <b-map :enable-scroll-wheel-zoom="true">
+        <b-zoom></b-zoom>
+        <b-scale></b-scale>
+        <b-location anchor="BMAP_ANCHOR_TOP_RIGHT"></b-location>
+      </b-map>
     </div>
     <script>
       const App = {
         setup() {
-          return {
-
-          }
+          return {}
         }
       }
       const app = Vue.createApp(App)
-      app.use(Vue3baiduMapGl, { ak:'cwHsf5i2fAQAlijOyELx5COtkFhItaSm' })
+      app.use(Vue3baiduMapGl, { ak: 'cwHsf5i2fAQAlijOyELx5COtkFhItaSm' })
       app.mount('#app')
     </script>
   </body>
