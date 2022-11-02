@@ -219,6 +219,9 @@ import { Map } from 'vue3-baidu-map-gl'
 | BMAP_EARTH_MAP     | 地球模式     |
 | BMAP_SATELLITE_MAP | 普通卫星地图 |
 
+::: warning 注意
+地球模式（BMAP_EARTH_MAP）下能支持的地图交互操作有限，如您需要卫星地图支持和标准地图（BMAP_NORMAL_MAP）一致的交互体验，请使用普通卫星图模式（BMAP_SATELLITE_MAP）
+:::
 ## displayOptions
 
 | 属性      | 说明                                              | 类型               | 默认值 |
@@ -233,9 +236,6 @@ import { Map } from 'vue3-baidu-map-gl'
 | street    | 是否显示路网（只对卫星图和地球模式有效）          | `boolean`          | `true` |
 | skyColors | 是否显示路网（只对卫星图和地球模式有效）          | `[string, string]` | -      |
 
-::: warning 注意
-地球模式（BMAP_EARTH_MAP）下能支持的地图交互操作有限，如您需要卫星地图支持和标准地图（BMAP_NORMAL_MAP）一致的交互体验，请使用普通卫星图模式（BMAP_SATELLITE_MAP）
-:::
 
 ## 组件事件
 
