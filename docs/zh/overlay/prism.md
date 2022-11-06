@@ -16,6 +16,7 @@ import { Prism } from 'vue3-baidu-map-gl'
     :tilt='50'
     enableScrollWheelZoom
     mapStyleId='980161f3645989feac25a0da15da4178'
+    @initd="handleInitd"
   >
     <Prism
       isBoundary
@@ -26,7 +27,6 @@ import { Prism } from 'vue3-baidu-map-gl'
       :altitude='5000'
       sideFillColor='#5679ea'
       topFillColor='#5679ea'
-      @initd="handleInitd"
       @mouseover="handleMouseover"
       @mouseout="handleMouseout"
     />

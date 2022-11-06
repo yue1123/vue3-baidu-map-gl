@@ -32,7 +32,7 @@
       anchor: window[props.anchor]
     })
     map.addControl(zoomControl)
-    ready(map)
+    ready(map, zoomControl)
     return () => map.removeControl(zoomControl)
   })
 </script>

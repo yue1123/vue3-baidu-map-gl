@@ -1,6 +1,6 @@
 <template></template>
 <script setup lang="ts">
-  import { defineProps, inject, watch, withDefaults, defineEmits, nextTick } from 'vue'
+  import { defineProps, inject, watch, withDefaults, defineEmits, nextTick, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
@@ -120,6 +120,7 @@
       })
       map.addOverlay(prism)
       bindEvents(props, vueEmits, prism)
+      ready(map, prism)
       syncMapCenter()
       watch(() => props.enableMassClear, setMassClear)
       watch(() => props.topFillColor, setTopFillColor)
@@ -144,9 +145,10 @@
         deep: true
       }
     )
-    ready(map)
     return cal
   })
+
+  provide('getOverlayInstance', () => prism)
 
   function syncMapCenter() {
     nextTick(() => {

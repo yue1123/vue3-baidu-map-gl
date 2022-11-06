@@ -1,9 +1,9 @@
 <template></template>
 <script setup lang="ts">
-  import { defineProps, inject, watch, withDefaults, defineEmits, nextTick } from 'vue'
+  import { defineProps, inject, watch, withDefaults, defineEmits, nextTick, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
-  import useLifeCycle from '../../..//hooks/useLifeCycle'
+  import useLifeCycle from '../../../hooks/useLifeCycle'
   import { callWhenDifferentValue } from '../../../utils'
   export interface PolygonPath {
     /**
@@ -159,6 +159,7 @@
       })
       map.addOverlay(polygon)
       bindEvents(props, vueEmits, polygon)
+      ready(map, polygon)
       syncMapCenter()
       watch(() => props.strokeColor, setStrokeColor)
       watch(() => props.strokeOpacity, setStrokeOpacity)
@@ -180,9 +181,10 @@
         deep: true
       }
     )
-    ready(map)
     return cal
   })
+
+  provide('getOverlayInstance', () => polygon)
 
   function syncMapCenter() {
     nextTick(() => {

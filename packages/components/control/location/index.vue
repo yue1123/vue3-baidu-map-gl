@@ -32,7 +32,7 @@
       anchor: window[props.anchor]
     })
     map.addControl(locationControl)
-    ready(map)
+    ready(map, locationControl)
     return () => map.removeControl(locationControl)
   })
 </script>

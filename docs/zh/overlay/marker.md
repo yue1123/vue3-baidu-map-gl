@@ -71,7 +71,7 @@ import { Marker } from 'vue3-baidu-map-gl'
         height: 100
       },
     }"
-    dragging
+    enableDragging
   />
 </Map>
 

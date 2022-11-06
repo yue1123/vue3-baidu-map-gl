@@ -38,7 +38,7 @@
     })
     setUnit()
     map.addControl(scaleCtrl)
-    ready(map)
+    ready(map, scaleCtrl)
     return () => map.removeControl(scaleCtrl)
   })
   // 监听比例尺单位变化

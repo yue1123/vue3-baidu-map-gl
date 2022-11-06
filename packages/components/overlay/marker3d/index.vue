@@ -1,10 +1,10 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineProps, watch, withDefaults } from 'vue'
+  import { defineProps, provide, watch, withDefaults } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
-  import useLifeCycle from '../../..//hooks/useLifeCycle'
+  import useLifeCycle from '../../../hooks/useLifeCycle'
   import { callWhenDifferentValue } from '../../../utils'
   export interface Marker3dPosition {
     /**
@@ -131,9 +131,12 @@
     watch(() => props.fillColor, setFillColor)
 
     init()
-    ready(map)
+    ready(map, marker3d)
     return cal
   })
+
+  provide('getOverlayInstance', () => marker3d)
+
   // 获取图标配置
   function getIconConfig(): BMapGL.Icon {
     const { icon } = props
@@ -157,7 +160,9 @@
     try {
       // FIXME: 更新 position baidu-map-gl api报错: TypeError: Cannot read properties of undefined (reading '2x')
       marker3d.setPosition(new BMapGL.Point(position.lng, position.lat))
-    } catch (error) {}
+    } catch (error) {
+      console.error(error)
+    }
   }
   function setHeight(height: number) {
     marker3d.setHeight(height)

@@ -23,6 +23,6 @@ export function isDef(v: any): boolean {
  */
 export function callWhenDifferentValue<T>(cal: (v: T) => void): (nv: T, ov: T) => void {
   return (nv: T, ov: T) => {
-    if (nv !== ov && JSON.stringify(nv) !== JSON.stringify(ov)) cal(nv)
+    if (nv === ov || (nv !== ov && JSON.stringify(nv) !== JSON.stringify(ov))) cal(nv)
   }
 }

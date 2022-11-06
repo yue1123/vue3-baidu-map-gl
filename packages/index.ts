@@ -38,6 +38,7 @@ import InfoWindow from './components/overlay/infowindow/index.vue'
 import Circle from './components/overlay/circle/index.vue'
 import Prism from './components/overlay/prism/index.vue'
 
+import ContextMenu from './components/contextMenu/index.vue'
 // import MapvglView from './components/layer/mapvgl-view/index.vue'
 
 const componentsList = [
@@ -57,7 +58,8 @@ const componentsList = [
   Circle,
   CityList,
   Prism,
-  InfoWindow
+  InfoWindow,
+  ContextMenu
   // MapvglView
 ]
 
@@ -98,6 +100,7 @@ export {
   Circle,
   CityList,
   Prism,
-  InfoWindow
+  InfoWindow,
+  ContextMenu
 }
 export default vue3BaiduMapGl

@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, withDefaults, onUpdated, nextTick, computed } from 'vue'
+  import { ref, watch, withDefaults, onUpdated, nextTick, computed, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
-  import useLifeCycle from '../../..//hooks/useLifeCycle'
+  import useLifeCycle from '../../../hooks/useLifeCycle'
   import { callWhenDifferentValue } from '../../../utils/index'
   export type InfoWindowPosition = {
     /**
@@ -129,7 +129,7 @@
     )
 
     init()
-    ready(map)
+    ready(map, infoWindow)
     if (props.modelValue) {
       // 多个 infoWindow, 显示最后一个实例, 其他实例同步显隐状态
       nextTick(() => {
@@ -142,11 +142,14 @@
     return cal
   })
   onUpdated(() => {
-    if (infoWindow.isOpen()) {
+    if (infoWindow && infoWindow.isOpen()) {
       setContent(infoWindowContainer.value?.innerHTML || '')
       redraw()
     }
   })
+
+  provide('getOverlayInstance', () => infoWindow)
+
   function open() {
     const { position } = props
     _map.openInfoWindow(infoWindow, new BMapGL.Point(position.lng, position.lat))

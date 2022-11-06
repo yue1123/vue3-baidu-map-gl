@@ -1,9 +1,9 @@
 <template></template>
 <script setup lang="ts">
-  import { defineProps, watch, withDefaults } from 'vue'
+  import { defineProps, provide, watch, withDefaults } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
-  import useLifeCycle from '../../..//hooks/useLifeCycle'
+  import useLifeCycle from '../../../hooks/useLifeCycle'
   import { isDef, callWhenDifferentValue } from '../../../utils/index'
   export type LabelPosition = {
     /**
@@ -103,10 +103,13 @@
     watch(() => props.enableMassClear, setMassClear)
 
     init()
-    ready(map)
+    ready(map, label)
     // 在地图上添加点标记
     return cal
   })
+
+  provide('getOverlayInstance', () => label)
+
   function setPosition(position: LabelPosition) {
     label.setPosition(new BMapGL.Point(position.lng, position.lat))
   }

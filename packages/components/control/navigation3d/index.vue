@@ -30,7 +30,7 @@
       anchor: window[props.anchor]
     })
     map.addControl(navigation3dControl)
-    ready(map)
+    ready(map, navigation3dControl)
     return () => map.removeControl(navigation3dControl)
   })
 </script>

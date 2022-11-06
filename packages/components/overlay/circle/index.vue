@@ -1,11 +1,9 @@
-<template>
-  <div></div>
-</template>
+<template></template>
 <script setup lang="ts">
-  import { defineProps, watch, withDefaults } from 'vue'
+  import { defineProps, provide, watch, withDefaults } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
-  import useLifeCycle from '../../..//hooks/useLifeCycle'
+  import useLifeCycle from '../../../hooks/useLifeCycle'
   import { callWhenDifferentValue } from '../../../utils'
   export type CircleCenter = {
     /**
@@ -149,6 +147,7 @@
       })
       map.addOverlay(circle)
       bindEvents(props, vueEmits, circle)
+      ready(map, circle)
     }
     // 监听值变化
     watch(() => props.center, callWhenDifferentValue(setCenter), { deep: true })
@@ -163,9 +162,10 @@
     watch(() => props.enableEditing, setEditing)
 
     init()
-    ready(map)
     return cal
   })
+
+  provide('getOverlayInstance', () => circle)
 
   function setRadius(radius: number): void {
     circle.setRadius(radius)

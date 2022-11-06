@@ -2,10 +2,10 @@
   <div></div>
 </template>
 <script setup lang="ts">
-  import { defineProps, watch, withDefaults, defineEmits } from 'vue'
+  import { defineProps, watch, withDefaults, defineEmits, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
-  import useLifeCycle from '../../..//hooks/useLifeCycle'
+  import useLifeCycle from '../../../hooks/useLifeCycle'
   import { callWhenDifferentValue } from '../../../utils'
   export interface PolylinePath {
     /**
@@ -130,6 +130,7 @@
       })
       map.addOverlay(polyline)
       bindEvents(props, vueEmits, polyline)
+      ready(map, polyline)
     }
 
     // 监听值变化
@@ -150,9 +151,10 @@
     watch(() => props.enableEditing, setEditing)
 
     init()
-    ready(map)
     return cal
   })
+
+  provide('getOverlayInstance', () => polyline)
 
   function pathPointsToMapPoints(pathPoints: PolylinePath[]) {
     return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))

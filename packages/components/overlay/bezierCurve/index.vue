@@ -2,10 +2,10 @@
   <div></div>
 </template>
 <script setup lang="ts">
-  import { defineProps, watch, withDefaults, defineEmits } from 'vue'
+  import { defineProps, watch, withDefaults, defineEmits, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
-  import useLifeCycle from '../../..//hooks/useLifeCycle'
+  import useLifeCycle from '../../../hooks/useLifeCycle'
   import { callWhenDifferentValue } from '../../../utils'
   export interface Point {
     /**
@@ -106,6 +106,7 @@
       }
 
       map.addOverlay(bezierCurve)
+      ready(map, bezierCurve)
       bindEvents(props, vueEmits, bezierCurve)
     }
 
@@ -113,7 +114,6 @@
     watch(
       () => props.path,
       callWhenDifferentValue((n) => {
-        console.log('变化 1')
         bezierCurve ? setPath(n) : init()
       }),
       {
@@ -123,7 +123,6 @@
     watch(
       () => props.controlPoints,
       callWhenDifferentValue((n) => {
-        console.log('变化 1')
         bezierCurve ? setControlPoints(n) : init()
       }),
       {
@@ -137,9 +136,10 @@
     watch(() => props.enableMassClear, setMassClear)
 
     init()
-    ready(map)
     return cal
   })
+
+  provide('getOverlayInstance', () => bezierCurve)
 
   function pathPointsToMapPoints(pathPoints: Point[]) {
     return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))

@@ -38,7 +38,7 @@
         return _map.getContainer().appendChild(controlContainer.value as Node) as HTMLElement
       }
       map.addControl(customControl)
-      ready(map)
+      ready(map, customControl)
       return () => map.removeControl(customControl)
     })
   })

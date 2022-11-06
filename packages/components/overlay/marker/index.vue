@@ -1,11 +1,13 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
 
 <script setup lang="ts">
-  import { defineProps, watch, withDefaults } from 'vue'
+  import { defineProps, provide, watch, withDefaults } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import { isString, callWhenDifferentValue } from '../../../utils/index'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
-  import useLifeCycle from '../../..//hooks/useLifeCycle'
+  import useLifeCycle from '../../../hooks/useLifeCycle'
   import useMarkerDefaultIcons from '../../../hooks/useMarkerDefaultIcons'
   export type MarkerDefaultIcons =
     | 'simple_red'
@@ -200,9 +202,12 @@
     watch(() => props.rotation, setRotation)
 
     init()
-    ready(map)
+    ready(map, marker)
     return cal
   })
+
+  provide('getOverlayInstance', () => marker)
+
   // 获取图标配置
   function getIconConfig(): BMapGL.Icon {
     const defaultIcons = useMarkerDefaultIcons()

@@ -328,7 +328,7 @@
         bindEvents(props, vueEmits, map)
         if (!initd.value) {
           initd.value = true
-          nextTick(() => ready(map))
+          nextTick(() => ready(map, map))
           if (plugins) {
             initPlugins(plugins, pluginsSourceLink)
               .then(() => {
@@ -435,7 +435,7 @@
    */
   function setCenterAndZoom(center: { lng: number; lat: number } | string): void {
     if (typeof center === 'string') {
-      map!.centerAndZoom(center)
+      map!.centerAndZoom(center, props.zoom)
     } else {
       map!.centerAndZoom(genPoint(center.lng, center.lat), props.zoom)
     }

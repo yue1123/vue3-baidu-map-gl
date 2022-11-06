@@ -87,6 +87,10 @@ const sidebarConfig = {
         {
           text: 'Location 定位',
           link: '/zh/control/location'
+        },
+        {
+          text: 'ContextMenu 上下文菜单',
+          link: '/zh/context-menu/'
         }
       ]
     },

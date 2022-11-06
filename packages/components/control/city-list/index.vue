@@ -38,7 +38,7 @@
       anchor: window[props.anchor]
     })
     map.addControl(cityListControl)
-    ready(map)
+    ready(map, cityListControl)
     return () => map.removeControl(cityListControl)
   })
 </script>

@@ -8,11 +8,11 @@ function useBaseMapEffect(cal: (map: BMapGL.Map) => void | VoidFunction) {
   const map = getMapInstance && getMapInstance()
   const eventKey = `__initd__${uid}`
   let onUnmountedCallback: void | VoidFunction
-  const _cal = (map: BMapGL.Map) => {
+  const _cal = ({ map }: { map: BMapGL.Map }) => {
     onUnmountedCallback = cal(map as BMapGL.Map)
   }
   if (map) {
-    _cal(map)
+    _cal({ map })
   } else {
     on(eventKey, _cal)
   }

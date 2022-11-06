@@ -27,13 +27,13 @@
     offset: () => ({ x: 83, y: 18 })
   })
   const { ready } = useLifeCycle()
-  const { anchor, offset } = props
   const copyrightContainer = ref<HTMLDivElement>()
   let copyrightControl: BMapGL.CopyrightControl
   const uid = getCurrentInstance()?.uid
 
   defineEmits(['initd', 'unload'])
   onMounted(() => {
+    const { anchor, offset } = props
     useBaseMapEffect((map: BMapGL.Map) => {
       if (!copyrightContainer.value) return
       let mapBounds = map.getBounds()
@@ -52,7 +52,7 @@
         bounds: mapBounds
       })
 
-      ready(map)
+      ready(map, copyrightControl)
       return () => {
         const cacheCopyright = copyrightControlPosCacheMap[anchor]
         const getCopyrightCollection = cacheCopyright?.getCopyrightCollection?.bind(cacheCopyright)
