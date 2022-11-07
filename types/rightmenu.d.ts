@@ -8,7 +8,7 @@ declare namespace BMapGL {
     iconUrl?: string
   }
   class MenuItem {
-    constructor(text: string, callback: (point: Point) => void, opts?: MenuItemOptions)
+    constructor(text: string, callback: (point: Point, pixel: Pixel) => void, opts?: MenuItemOptions)
     setText(text: string): void
     setIcon(iconUrl: string): void
     enable(): void
