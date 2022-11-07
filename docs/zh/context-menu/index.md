@@ -12,6 +12,7 @@ import { ContextMenu } from 'vue3-baidu-map-gl'
 
 ## 组件示例
 
+<!-- prettier-ignore -->
 <Map :center="center">
   <ContextMenu :menuItems="list" />
 </Map>
