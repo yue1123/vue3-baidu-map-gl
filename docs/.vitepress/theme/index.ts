@@ -1,11 +1,13 @@
 import { watch } from 'vue'
-import DefaultTheme from 'vitepress/theme'
+import defaultTheme from 'vitepress/theme'
 import baiduMapInit from '../../../packages/index'
 import '../styles/main.css'
 
 export default {
-  ...DefaultTheme,
+  ...defaultTheme,
+  // FIXME: vitepress bug: default theme with user config
   enhanceApp(ctx) {
+    defaultTheme.enhanceApp(ctx)
     const { app, router } = ctx
     if (process.env.NODE_ENV === 'production') {
       if (typeof window !== 'undefined') {

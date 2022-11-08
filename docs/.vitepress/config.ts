@@ -4,71 +4,75 @@ import sidebarConfigZh from './sidebar.config.zh'
 import { version } from '../../package.json'
 
 export default defineConfig({
-	lang: 'zh-CN',
-	title: 'Vue3 BaiduMap GL',
-	description: 'Vite & Vue powered static site generator.',
-	lastUpdated: true,
-	base: '/vue3-baidu-map-gl/',
-	head: heads,
-	themeConfig: {
-		nav: [
-			{
-				text: '指南',
-				link: '/zh/guide/'
-			},
-			{
-				text: '相关链接',
-				items: [
-					{
-						text: '百度拾取坐标系统',
-						link: 'https://api.map.baidu.com/lbsapi/getpoint/index.html'
-					},
-					{
-						text: '百度地图开放平台',
-						link: 'https://lbsyun.baidu.com/index.php?title=%E9%A6%96%E9%A1%B5'
-					},
-					{
-						text: '个性化地图编辑器',
-						link: 'https://lbsyun.baidu.com/index.php?title=open/custom'
-					},
-					{
-						text: '百度地图JSAPI WebGL v1.0类参考',
-						link: 'https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_webgl_1_0.html'
-					}
-				]
-			},
-			{
-				text: `v${version}`,
-				items: [
-					{
-						text: '历史版本',
-						link: 'https://github.com/yue1123/vue3-baidu-map-gl/releases'
-					}
-				]
-			}
-		],
-		localeLinks: {
-			text: '简体中文',
-			items: [
-				// { text: 'English', link: '/es' }
-			]
-		},
-		algolia: {
-			appId: 'RT4OHPUGD1',
-			apiKey: '76ba0d807534197fb89a2644c412240b',
-			indexName: 'vue3-baidu-map-gl-zh'
-		},
-		footer: {
-			message: 'Released under the MIT License.',
-			copyright: 'Copyright © 2022-present dh and all contributors'
-		},
-		socialLinks: [{ icon: 'github', link: 'https://github.com/yue1123/vue3-baidu-map-gl' }],
-		sidebar: sidebarConfigZh,
-		editLink: {
-			pattern: 'https://github.com/yue1123/vue3-baidu-map-gl/edit/main/docs/:path',
-			text: 'Suggest changes to this page'
-		}
-	}
+  lang: 'zh-CN',
+  title: 'Vue3 BaiduMap GL',
+  description: 'Vite & Vue powered static site generator.',
+  lastUpdated: true,
+  base: '/vue3-baidu-map-gl/',
+  head: heads,
+  themeConfig: {
+    nav: [
+      {
+        text: '指南',
+        link: '/zh/guide/'
+      },
+      {
+        text: '相关链接',
+        items: [
+          {
+            text: '百度拾取坐标系统',
+            link: 'https://api.map.baidu.com/lbsapi/getpoint/index.html'
+          },
+          {
+            text: '百度地图开放平台',
+            link: 'https://lbsyun.baidu.com/index.php?title=%E9%A6%96%E9%A1%B5'
+          },
+          {
+            text: '个性化地图编辑器',
+            link: 'https://lbsyun.baidu.com/index.php?title=open/custom'
+          },
+          {
+            text: '百度地图JSAPI WebGL v1.0类参考',
+            link: 'https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_webgl_1_0.html'
+          }
+        ]
+      },
+      {
+        text: `v${version}`,
+        items: [
+          {
+            text: '历史版本',
+            link: 'https://github.com/yue1123/vue3-baidu-map-gl/releases'
+          }
+        ]
+      },
+      {
+        text: '赞助',
+        link: '/sponsor/'
+      }
+    ],
+    localeLinks: {
+      text: '简体中文',
+      items: [
+        // { text: 'English', link: '/es' }
+      ]
+    },
+    algolia: {
+      appId: 'RT4OHPUGD1',
+      apiKey: '76ba0d807534197fb89a2644c412240b',
+      indexName: 'vue3-baidu-map-gl-zh'
+    },
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2022-present dh and all contributors'
+    },
+    socialLinks: [{ icon: 'github', link: 'https://github.com/yue1123/vue3-baidu-map-gl' }],
+    sidebar: sidebarConfigZh,
+    editLink: {
+      pattern: 'https://github.com/yue1123/vue3-baidu-map-gl/edit/main/docs/:path',
+      text: 'Suggest changes to this page'
+    }
+  }
 })
 
 // // 主题和它的配置
