@@ -19,7 +19,8 @@
       "ESNext.Promise"
     ],
     "types": [
-      "vite/client"
+      "vite/client",
+      ""
     ],
     "suppressImplicitAnyIndexErrors": true,
     "baseUrl": "./"

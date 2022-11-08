@@ -175,7 +175,7 @@ import { InfoWindow } from 'vue3-baidu-map-gl'
 
 | 事件名     | 说明                                       | 属性                         |
 | ---------- | ------------------------------------------ | ---------------------------- |
-| initd      | 组件初始化后，调用的方法，返回一个地图实例 | `{ map: BmapGL }`            |
+| initd      | 组件初始化后，调用的方法，返回一个地图实例 | `{ map, BmapGL, instance }`            |
 | unload     | 组件卸载时会调用此方法                     | -                            |
 | close      | 信息窗口被关闭时触发此事件                 | `event{type, target, point}` |
 | open       | 信息窗口被打开时触发此事件                 | `event{type, target, point}` |

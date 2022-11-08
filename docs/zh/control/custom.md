@@ -25,7 +25,7 @@ import { Control } from 'vue3-baidu-map-gl'
   import { ref } from 'vue'
   const zoom = ref(10)
   let _map = null
-  function handleInitd(map){
+  function handleInitd({map}){
     _map = map
   }
   function handleZoomOut() {
@@ -51,20 +51,18 @@ button{
 
 <!-- prettier-ignore -->
 ```html
-<div>
-  <Map @initd="handleInitd" :minZoom="3" :zoom="zoom">
-    <Control style="display: flex; background-color: #fff; padding: 10px" :offset="{ x: 0, y: 0 }">
-      <button @click="handleZoomOut">缩小</button>
-      <button @click="handleZoomIn">放大</button>
-    </Control>
-  </Map>
-</div>
+<Map @initd="handleInitd" :minZoom="3" :zoom="zoom">
+  <Control style="display: flex; background-color: #fff; padding: 10px" :offset="{ x: 0, y: 0 }">
+    <button @click="handleZoomOut">缩小</button>
+    <button @click="handleZoomIn">放大</button>
+  </Control>
+</Map>
 
 <script setup lang="ts">
   import { ref } from 'vue'
   const zoom = ref(10)
   let _map = null
-  function handleInitd(map) {
+  function handleInitd({map}) {
     _map = map
   }
   function handleZoomOut() {
@@ -109,5 +107,5 @@ button{
 
 | 事件名 | 说明                                       | 类型              |
 | ------ | ------------------------------------------ | ----------------- |
-| initd  | 组件初始化后，调用的方法，返回一个地图实例 | `{ map: BmapGL }` |
+| initd  | 组件初始化后，调用的方法，返回一个地图实例 | `{ map, BmapGL, instance }` |
 | unload | 组件卸载时会调用此方法                     | -                 |

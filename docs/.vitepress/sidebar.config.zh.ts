@@ -151,6 +151,10 @@ const sidebarConfig = {
       collapsible: true,
       items: [
         {
+          text: 'usePoint',
+          link: '/zh/hooks/usePoint'
+        },
+        {
           text: 'useAreaBoundary',
           link: '/zh/hooks/useAreaBoundary'
         },

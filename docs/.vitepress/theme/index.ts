@@ -5,7 +5,6 @@ import '../styles/main.css'
 
 export default {
   ...defaultTheme,
-  // FIXME: vitepress bug: default theme with user config
   enhanceApp(ctx) {
     defaultTheme.enhanceApp(ctx)
     const { app, router } = ctx

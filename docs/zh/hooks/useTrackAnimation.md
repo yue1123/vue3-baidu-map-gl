@@ -2,12 +2,15 @@
 
 通过该 hooks 可实现轨迹动画, 在轨迹动态播放的同时，视角跟随移动.
 
-::: warning 注意
+:::tip
+该 hooks 依赖于 `BMapGL` ，所以需要再 `Map` 组件初始化完毕调用 `setPath` 初始化路径后，方法和数据才可用
+:::
 
+::: warning 注意
 1. 使用该 hooks 前，请确保`TrackAnimation`插件正确的 [注册](../guide/#插件注册) 了。
 2. 由于在渲染动画时，数据资源是随着当前方位和坐标的改变而实时加载的，刚开始播放动画时画面可能会卡顿，属于正常现象。
 3. 为了减少加载数据资源的性能损耗，在播放动画时隐藏了地图上的 POI 点。
-   :::
+:::
 
 ## 代码示例
 
@@ -69,8 +72,7 @@
         'lng': 116.307223,
         'lat': 40.056379
     }];
-  function handleInitd(map){
-    
+  function handleInitd(){
     setPath(path)
   }
 </script>
@@ -147,7 +149,7 @@
       lat: 40.056379
     }
   ]
-  function handleInitd(map) {
+  function handleInitd() {
     setPath(path)
   }
 </script>

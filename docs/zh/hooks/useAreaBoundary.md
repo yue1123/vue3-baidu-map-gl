@@ -2,6 +2,10 @@
 
 通过该 hooks 可获取行政区域的边界。
 
+:::tip
+该 hooks 依赖于 `BMapGL` ，所以需要再 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
+:::
+
 ## 代码示例
 
 <!-- prettier-ignore -->
