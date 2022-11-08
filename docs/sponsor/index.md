@@ -8,7 +8,7 @@ Vue3 BaiduMap GL 是采用 MIT 许可的开源项目，使用完全免费。
 
 ## 如何赞助
 
-你可以通过微信赞赏码或者支付宝进行赞助，赞助后会在下面列表中显示赞助者信息。
+你可以通过微信或者支付宝扫描下面二维码进行赞助，赞助后会在下面列表中显示赞助者信息。
 
 <label>
   <input type="radio" v-model="activeKey" value="weiChatPay" name="pay-type">
