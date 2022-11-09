@@ -7,10 +7,59 @@
 :::
 
 ::: warning 注意
+
 1. 使用该 hooks 前，请确保`TrackAnimation`插件正确的 [注册](../guide/#插件注册) 了。
 2. 由于在渲染动画时，数据资源是随着当前方位和坐标的改变而实时加载的，刚开始播放动画时画面可能会卡顿，属于正常现象。
 3. 为了减少加载数据资源的性能损耗，在播放动画时隐藏了地图上的 POI 点。
-:::
+   :::
+
+## 用法
+
+```ts
+const { setPath, start, cancel, stop, proceed, status } = useTrackAnimation(map, options)
+```
+
+### 参数
+- **`map`** : `Map`地图组件`ref`引用
+- **`options`**
+  - **`duration`** : 动画持续时常，单位ms
+    - 类型: `number`
+    - 默认值: `10000`
+  - **`delay`** : 动画开始延迟
+    - 类型: `number`
+    - 默认值: `0`
+  - **`overallView`** : 是否在动画结束后总览视图缩放（调整地图到能看到整个轨迹的视野），默认开启
+    - 类型: `boolean`
+    - 默认值: `true`
+  - **`tilt`** : 设置动画中的地图倾斜角度，默认55度
+    - 类型: `number`
+    - 默认值: `55`
+  - **`zoom`**: 设置动画中的缩放级别，默认会根据轨迹情况调整到一个合适的级别
+    - 类型: `number`
+    - 默认值: `auto`
+### 引用
+
+- **`setPath`** ：设置路径动画路径，需要在`Map`组件`initd`事件触发后才可调用
+  - 类型: `(path: PathPoint[]) => void`
+  ```ts
+  type PathPoint = { lng: number lat: number }
+  ```
+- **`start`** ：开始动画，`setPath` 设置路径后且 `status` 为 `INITIAL` 才可调用
+  - 类型: `() => void`
+- **`stop`** ：暂停动画
+  - 类型: `() => void`
+- **`cancel`** ：取消动画
+  - 类型: `() => void`
+- **`proceed`** ：继续播放动画
+  - 类型: `() => void`
+- **`status`** ：动画状态
+  - 类型: `Ref<AnimationStatus>`
+  ```ts
+  // PLAYING 是否处在播放中
+  // STOPPING 是否处在暂停中
+  // INITIAL 默认状态
+  type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
+  ```
 
 ## 代码示例
 
@@ -166,7 +215,7 @@
 
 :::
 
-## 类型定义
+## ts 类型定义参考
 
 ```ts
 import { Ref } from 'vue'

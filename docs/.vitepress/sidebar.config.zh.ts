@@ -17,7 +17,7 @@ const sidebarConfig = {
           link: '/zh/guide/install'
         },
         {
-          text: '申请 ak',
+          text: '申请密钥ak',
           link: '/zh/guide/ak'
         },
         {
@@ -29,7 +29,7 @@ const sidebarConfig = {
           link: '/zh/guide/usage-cdn'
         },
         {
-          text: 'ak与插件',
+          text: '密钥ak与插件',
           link: '/zh/guide/config'
         }
       ]
