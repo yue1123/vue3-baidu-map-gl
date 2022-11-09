@@ -513,11 +513,17 @@
   })
   defineExpose({
     // 父组件获取map实例方法
-    getMapInstance: () => map
+    getMapInstance: () => map,
+    // 父组件/外部获取map组件 options
+    getBaseMapOptions: () => props,
+    // 设置地图是否可拖动
+    setDragging
   })
   provide('getMapInstance', () => map)
   provide('parentUidGetter', uid)
   provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) => setCenterAndZoom(_center))
+  provide('baseMapSetDragging', (enableDragging: boolean) => setDragging(enableDragging))
+  provide('getBaseMapOptions', () => props)
 </script>
 <script lang="ts">
   export default {
