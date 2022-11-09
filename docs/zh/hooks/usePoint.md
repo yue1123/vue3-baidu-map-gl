@@ -6,6 +6,23 @@
 该 hooks 依赖于 `BMapGL` ，所以需要再 `Map` 组件初始化完毕调用 `set` 方法后数据才可用
 :::
 
+## 用法
+
+```ts
+const { point, set } = usePoint()
+```
+
+### 参数
+
+无
+
+### 引用
+
+- **`point`** : BMapGL.Point 实例对象，默认为 `null`，调用 `set` 方法后才可用
+- **`set`** : 设置实例点坐标方法，需要在`Map`组件`initd`事件触发后才可调用
+  - `@param { lng: number; lat: number } point 经纬度点对象`
+  - `@example get({ lng: 116.297611, lat: 40.047363 })`
+
 ## 代码示例
 
 <!-- prettier-ignore -->
@@ -26,7 +43,7 @@
 </script>
 ```
 
-## 类型定义
+## ts 类型定义参考
 
 ```ts
 import { Ref } from 'vue'
@@ -42,7 +59,7 @@ export declare type Point = {
  */
 export declare function usePoint(): {
   /**
-   * BMapGL.Point 实例
+   * BMapGL.Point 实例对象
    */
   point: Ref<BMapGL.Point | null>
   /**
