@@ -1,7 +1,7 @@
 {
   "name": "vue3-baidu-map-gl",
   "description": "A Vue 3 baidu map gl Component Library. ",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "main": "es/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",

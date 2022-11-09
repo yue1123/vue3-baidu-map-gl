@@ -1,4 +1,4 @@
-# useViewAnimation
+# useViewAnimation <Badge type="tip" text="^0.0.30" />
 
 该 hooks 用于展示地图的 3D 动画，您可以自定义从地图上某一地点切换到另一地点的 3D 过渡动画效果。
 
