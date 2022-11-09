@@ -1,12 +1,10 @@
-import { Component, onUnmounted, Ref, ref, watch } from 'vue'
-import Map from '../components/bm-map/index.vue'
+import { onUnmounted, Ref, ref, watch } from 'vue'
 
-type MapComponent = typeof Map
 export type PathPoint = {
   lng: number
   lat: number
 }
-export type UseTrackAnimationOptions = {
+export type TrackAnimationOptions = {
   /**
    * 动画持续时常，单位ms
    * @default 10000
@@ -45,7 +43,7 @@ const statusMap: Record<number, AnimationStatus> = {
  * @param {UseTrackAnimationOptions} options 轨迹动画配置
  * @returns { setPath, start, stop}
  */
-export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
+export function useTrackAnimation(map: any, options: TrackAnimationOptions) {
   let instance: BMapGLLib.TrackAnimation
   let pl: BMapGL.Polyline | null
   let mapComponentInstance: any
@@ -106,6 +104,9 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
     })
   }
   onUnmounted(() => {
+    if (instance && status.value !== 'INITIAL') {
+      instance.cancel()
+    }
     // 手动回收内存
     if (mapInstance) {
       mapInstance.removeOverlay(pl!)

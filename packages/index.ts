@@ -17,6 +17,7 @@ interface InitOptions {
 export * from './hooks/useAreaBoundary'
 export * from './hooks/useTrackAnimation'
 export * from './hooks/usePoint'
+export * from './hooks/useViewAnimation'
 
 // components
 import Map from './components/map/index.vue'
