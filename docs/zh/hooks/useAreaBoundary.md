@@ -7,21 +7,24 @@
 :::
 
 ## 用法
+
 ```ts
 const { isLoading, boundaries, get } = useAreaBoundary()
 ```
+
 ### 参数
+
 无
 
 ### 引用
 
-- **`isLoading`** : 是否加载中
-- **`boundaries`** : 区域边界数据，默认为空数组，`get`方法调用后才可用
-- **`get`** : 获取指定区域边界方法
-  * `@param {string} area 区域名`
-  * `@example get('北京市')`
+| 引用       | 描述                                              | 类型                 |
+| ---------- | ------------------------------------------------- | -------------------- |
+| isLoading  | 是否加载中                                        | `boolean`            |
+| boundaries | 区域边界数据，默认为空数组，`get`方法调用后才可用 | `string[]`           |
+| get        | 获取指定区域边界方法                              | `({string}) => void` |
 
-## 代码示例
+## 示例
 
 <!-- prettier-ignore -->
 ```html
@@ -57,7 +60,7 @@ const { isLoading, boundaries, get } = useAreaBoundary()
 </script>
 ```
 
-## ts类型定义参考
+## TS 类型定义参考
 
 ```ts
 import { Ref } from 'vue'

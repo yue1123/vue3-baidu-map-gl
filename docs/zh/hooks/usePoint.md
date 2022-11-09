@@ -18,12 +18,12 @@ const { point, set } = usePoint()
 
 ### 引用
 
-- **`point`** : BMapGL.Point 实例对象，默认为 `null`，调用 `set` 方法后才可用
-- **`set`** : 设置实例点坐标方法，需要在`Map`组件`initd`事件触发后才可调用
-  - `@param { lng: number; lat: number } point 经纬度点对象`
-  - `@example get({ lng: 116.297611, lat: 40.047363 })`
+| 引用  | 描述                                                          | 类型                                     |
+| ----- | ------------------------------------------------------------- | ---------------------------------------- |
+| point | BMapGL.Point 实例对象，默认为 `null`，调用 `set` 方法后才可用 | `BMapGL.Point`                           |
+| set   | 设置实例点坐标方法，需要在`Map`组件`initd`事件触发后才可调用  | `({ lng: number; lat: number }) => void` |
 
-## 代码示例
+## 示例
 
 <!-- prettier-ignore -->
 ```html
@@ -43,7 +43,7 @@ const { point, set } = usePoint()
 </script>
 ```
 
-## ts 类型定义参考
+## TS 类型定义参考
 
 ```ts
 import { Ref } from 'vue'

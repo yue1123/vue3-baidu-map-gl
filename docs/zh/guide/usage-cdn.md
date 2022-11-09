@@ -1,4 +1,4 @@
-# 使用 CDN
+# 通过 CDN 使用
 
 在 `0.0.21` 版本后，你可以使用通过 CDN 使用 UMD 版本的 vue-baidu-map-gl。
 

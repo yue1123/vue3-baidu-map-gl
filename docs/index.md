@@ -14,31 +14,31 @@ hero:
   actions:
     - theme: brand
       text: 开始使用
-      link: /zh/guide/
+      link: /zh/guide/quick-start
     - theme: alt
       text: View on GitHub
       link: https://github.com/yue1123/vue3-baidu-map-gl
 
 features:
-  - icon: 🪄
+  - icon: 🚀
     title: '"化繁为简"'
     details: 将百度地图繁琐的Api封装进组件，你只需关注组件本身
 
   - icon: ✨
     title: 比较完整
     details: 提供的组件和 hooks 能覆盖大部分使用场景
-    
+
   - icon: ⚡
     title: Composition Api + Ts
     details: 面向未来，更好的性能，和你的 Ts 项目无缝衔接
 
-  - icon: 🧩 
+  - icon: 🧩
     title: tree shaking 支持
     details: 模块分包，只打包你想要的的
 
-  - icon: 🚰
+  - icon: 👍
     title: 体验良好
-    details: 支持volar，组件提供完善的代码提示，与用户逻辑保持一致
+    details: 不仅仅是简单的封装，每一个组件都从开发者使用体验出发，做到与逻辑保持一致
 
   - icon: 🌏
     title: WebGl

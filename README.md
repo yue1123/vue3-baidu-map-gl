@@ -1,6 +1,6 @@
 # Vue3 BaiduMap gl
 
-基于百度地图 JavaScript GL 版（使用了 WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图） API 封装的 Vue3 组件库
+基于百度地图 JavaScript GL 版（使用了 WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图） API 封装设计的 Vue3 组件库，开发体验良好，代码优雅。
 
 <img src='./docs/public/logo.png' style="border-radius:48px;overflow:hidden; width:220px;">
 <br />
@@ -9,15 +9,16 @@
 [![GitHub license](https://img.shields.io/github/license/yue1123/img-previewer?style=flat-square)](https://github.com/yue1123/img-previewer/blob/main/LICENSE)
 <img src="https://img.shields.io/github/package-json/v/yue1123/vue3-baidu-map-gl?color=f90&style=flat-square" alt="GitHub package.json version (subfolder of monorepo)">
 
-## ✨ 特性
+## :sparkles: 特性
 
-- 自动加载百度地图 SDK 及其工具库，将百度地图繁琐的 Api 封装进组件，你只需关注组件本身
-- 比较完整，提供的组件和 hooks 能覆盖大部分使用场景
-- Composition Api + Ts，面向未来，更好的性能，和你的 Ts 项目无缝衔接
-- tree shaking 支持，模块分包，只打包你想要的的
-- 体验良好，支持 volar，组件提供完善的代码提示，与用户逻辑保持一致
-- 基于百度地图 Gl 版 SDK，WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图
-- 组件同时兼容大驼峰命名(CamelCase)和短横线命名(kebab-case)
+- 🚀 自动加载百度地图 SDK，将百度地图繁琐的 Api 封装进组件，你只需关注组件本身
+- ✨ 比较完整，提供的组件和 hooks 能覆盖大部分使用场景
+- ⚡ Composition Api + Ts，面向未来，更好的性能，和你的 Ts 项目无缝衔接
+- 🧩 tree shaking 支持，模块分包，只打包你想要的的
+- 👍 体验良好，不仅仅是简单的封装，每一个组件都从开发者使用体验出发，做到与逻辑保持一致
+- 🌏 基于百度地图 Gl 版 SDK，通过 WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图
+- 🖇️ 组件同时兼容纯净式大驼峰命名(`Map`)和短横线命名(`b-map`)
+- 🚀 支持 volar，组件提供完善的代码提示
 
 ## Documentation
 
@@ -61,6 +62,10 @@ app.use(baiduMapGl, { ak: 'YOUR_AK' })
 app.mount('#app')
 ```
 
+### CDN
+
+参考 [通过 CDN 使用](./docs/zh/guide/usage-cdn)。
+
 ## todo
 
 - [ ] 叠加层
@@ -70,7 +75,6 @@ app.mount('#app')
   - [ ] video 叠加层
   - [x] MapVgl 叠加层
 - [ ] 大地路线书
-- [ ] 3d 视角动画
 
 ## License
 

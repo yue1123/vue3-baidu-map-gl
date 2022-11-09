@@ -11,57 +11,10 @@
 1. 使用该 hooks 前，请确保`TrackAnimation`插件正确的 [注册](../guide/#插件注册) 了。
 2. 由于在渲染动画时，数据资源是随着当前方位和坐标的改变而实时加载的，刚开始播放动画时画面可能会卡顿，属于正常现象。
 3. 为了减少加载数据资源的性能损耗，在播放动画时隐藏了地图上的 POI 点。
-   :::
+:::
 
-## 用法
 
-```ts
-const { setPath, start, cancel, stop, proceed, status } = useTrackAnimation(map, options)
-```
-
-### 参数
-- **`map`** : `Map`地图组件`ref`引用
-- **`options`**
-  - **`duration`** : 动画持续时常，单位ms
-    - 类型: `number`
-    - 默认值: `10000`
-  - **`delay`** : 动画开始延迟
-    - 类型: `number`
-    - 默认值: `0`
-  - **`overallView`** : 是否在动画结束后总览视图缩放（调整地图到能看到整个轨迹的视野），默认开启
-    - 类型: `boolean`
-    - 默认值: `true`
-  - **`tilt`** : 设置动画中的地图倾斜角度，默认55度
-    - 类型: `number`
-    - 默认值: `55`
-  - **`zoom`**: 设置动画中的缩放级别，默认会根据轨迹情况调整到一个合适的级别
-    - 类型: `number`
-    - 默认值: `auto`
-### 引用
-
-- **`setPath`** ：设置路径动画路径，需要在`Map`组件`initd`事件触发后才可调用
-  - 类型: `(path: PathPoint[]) => void`
-  ```ts
-  type PathPoint = { lng: number lat: number }
-  ```
-- **`start`** ：开始动画，`setPath` 设置路径后且 `status` 为 `INITIAL` 才可调用
-  - 类型: `() => void`
-- **`stop`** ：暂停动画
-  - 类型: `() => void`
-- **`cancel`** ：取消动画
-  - 类型: `() => void`
-- **`proceed`** ：继续播放动画
-  - 类型: `() => void`
-- **`status`** ：动画状态
-  - 类型: `Ref<AnimationStatus>`
-  ```ts
-  // PLAYING 是否处在播放中
-  // STOPPING 是否处在暂停中
-  // INITIAL 默认状态
-  type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
-  ```
-
-## 代码示例
+## 示例
 
 <div>
   <Map 
@@ -215,7 +168,56 @@ const { setPath, start, cancel, stop, proceed, status } = useTrackAnimation(map,
 
 :::
 
-## ts 类型定义参考
+## 用法
+
+```ts
+const { setPath, start, cancel, stop, proceed, status } = useTrackAnimation(map, options)
+```
+
+### 参数
+
+| 参数    | 描述                   | 类型                                              | 默认值     |
+| ------- | ---------------------- | ------------------------------------------------- | ---------- |
+| map     | `Map`地图组件`ref`引用 | `Ref<Map>`                                        | `required` |
+| options | 地图视角动画的配置     | [`TrackAnimationOptions`](#trackanimationoptions) | -          |
+
+#### TrackAnimationOptions
+
+| 属性        | 描述                                                                     | 类型      | 默认值  |
+| ----------- | ------------------------------------------------------------------------ | --------- | ------- |
+| duration    | 动画持续时常，单位 ms                                                    | `number`  | `10000` |
+| delay       | 动画开始延迟                                                             | `number`  | `0`     |
+| overallView | 是否在动画结束后总览视图缩放（调整地图到能看到整个轨迹的视野），默认开启 | `boolean` | `true`  |
+| tilt        | 设置动画中的地图倾斜角度，默认 55 度                                     | `number`  | `55`    |
+| zoom        | 设置动画中的缩放级别，默认会根据轨迹情况调整到一个合适的级别             | `boolean` | `auto`  |
+
+### 引用
+
+| 引用    | 描述                                                            | 类型                                        |
+| ------- | --------------------------------------------------------------- | ------------------------------------------- |
+| setPath | 设置路径动画路径，需要在`Map`组件`initd`事件触发后才可调用      | [`(path: PathPoint[]) => void`](#pathpoint) |
+| start   | 开始动画，`setPath` 设置路径后且 `status` 为 `INITIAL` 才可调用 | `() => void`                                |
+| stop    | 暂停动画函数                                                    | `() => void`                                |
+| cancel  | 取消动画函数                                                    | `() => void`                                |
+| proceed | 继续播放动画函数                                                | `() => void`                                |
+| status  | 动画状态                                                        | [`Ref<AnimationStatus>`](#animationstatus)  |
+
+#### PathPoint
+
+```ts
+type PathPoint = { lng: number lat: number }
+```
+
+#### AnimationStatus
+
+```ts
+// PLAYING 播放中
+// STOPPING 暂停中
+// INITIAL 默认状态
+type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
+```
+
+## TS 类型定义参考
 
 ```ts
 import { Ref } from 'vue'
@@ -254,12 +256,12 @@ declare type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
 /**
  * 轨迹动画
  * @param {any} map 地图组件实例引用
- * @param {UseTrackAnimationOptions} options 轨迹动画配置
+ * @param {TrackAnimationOptions} options 轨迹动画配置
  * @returns { setPath, start, stop}
  */
 export declare function useTrackAnimation(
   map: any,
-  options: UseTrackAnimationOptions
+  options: TrackAnimationOptions
 ): {
   /**
    * 设置路径动画路径

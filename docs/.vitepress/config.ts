@@ -14,7 +14,7 @@ export default defineConfig({
     nav: [
       {
         text: '指南',
-        link: '/zh/guide/'
+        link: '/zh/guide/quick-start'
       },
       {
         text: '相关链接',

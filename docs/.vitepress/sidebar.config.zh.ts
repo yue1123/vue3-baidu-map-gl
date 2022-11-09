@@ -1,31 +1,23 @@
 const sidebarConfig = {
   '/zh/': [
     {
-      text: '介绍',
-      items: [
-        {
-          text: 'vue3-baidu-map-gl',
-          link: '/zh/guide/'
-        }
-      ]
-    },
-    {
       text: '指南',
+      collapsible: true,
       items: [
         {
-          text: '安装',
-          link: '/zh/guide/install'
+          text: '快速开始',
+          link: '/zh/guide/quick-start'
         },
-        {
-          text: '申请密钥ak',
-          link: '/zh/guide/ak'
-        },
+        // {
+        //   text: '申请密钥ak',
+        //   link: '/zh/guide/ak'
+        // },
         {
           text: '在 SFC 中使用',
           link: '/zh/guide/usage-sfc'
         },
         {
-          text: '使用 CDN',
+          text: '通过 CDN 使用',
           link: '/zh/guide/usage-cdn'
         },
         {
@@ -157,6 +149,10 @@ const sidebarConfig = {
         {
           text: 'useAreaBoundary',
           link: '/zh/hooks/useAreaBoundary'
+        },
+        {
+          text: 'useViewAnimation',
+          link: '/zh/hooks/useViewAnimation'
         },
         {
           text: 'useTrackAnimation',

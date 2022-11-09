@@ -246,11 +246,11 @@ declare namespace BMapGL {
     /**
      * 启动视角动画
      */
-    // startViewAnimation(viewAnimation: ViewAnimation): number
+    startViewAnimation(viewAnimation: ViewAnimation): number
     /**
      * 停止视角动画
      */
-    // cancelViewAnimation(viewAnimation: ViewAnimation): void
+    cancelViewAnimation(viewAnimation: ViewAnimation): void
     /**
      * 获取地图截图，地球模式不支持。需要初始化地图配置preserveDrawingBuffer：true，否则是黑屏
      */
@@ -391,5 +391,14 @@ declare namespace BMapGL {
     weight?: string
   }
   type MapStyleV2 = { styleJson: MapStyleItem[] } | { styleId: string }
+
+  class ViewAnimation {
+    constructor(keyFrames: any, opts: any)
+    addEventListener(event: string, handler: Callback): void
+    removeEventListener(event: string, handler: Callback): void
+    _cancel(map: BMapGL.Map): void
+    _continue(): void
+    _pause(): void
+  }
 }
 declare const BMAP_API_VERSION: BMapGL.APIVersion
