@@ -64,7 +64,7 @@ app.mount('#app')
 
 ### CDN
 
-参考 [通过 CDN 使用](./blob/main/docs/zh/guide/usage-cdn.md)。
+参考 [通过 CDN 使用](./docs/zh/guide/usage-cdn.md)。
 
 ## todo
 
