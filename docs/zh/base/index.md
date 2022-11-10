@@ -177,16 +177,16 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ## 静态组件 props
 
-| 属性              | 说明                                    | 类型                                                                      | 可选值 | 默认值  |
-| ----------------- | --------------------------------------- | ------------------------------------------------------------------------- | ------ | ------- |
-| ak                | 百度地图 ak [申请 ak](../guide/#申请ak) | `string`                                                                  | -      | -       |
-| width             | 地图显示宽度                            | `string / number`                                                         | -      | `100%`  |
-| height            | 地图显示高度                            | `string / number`                                                         | -      | `550px` |
-| minZoom           | 地图允许展示的最小级别                  | `number`                                                                  | `0-21` | `0`     |
-| maxZoom           | 地图允许展示的最大级别                  | `number`                                                                  | `0-21` | `21`    |
-| showControls      | 是否显示室内图                          | `boolean`                                                                 | -      | `false` |
-| plugins           | 需要注册的插件                          | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvglThree']`                     | -      | -       |
-| pluginsSourceLink | 自定义插件资源地址                      | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvglThree', string>` | -      | -       |
+| 属性              | 说明                                                   | 类型                                                                      | 可选值 | 默认值  |
+| ----------------- | ------------------------------------------------------ | ------------------------------------------------------------------------- | ------ | ------- |
+| ak                | 百度地图 ak [申请 ak](../guide/quick-start#申请-ak-密钥) | `string`                                                                  | -      | -       |
+| width             | 地图显示宽度                                           | `string / number`                                                         | -      | `100%`  |
+| height            | 地图显示高度                                           | `string / number`                                                         | -      | `550px` |
+| minZoom           | 地图允许展示的最小级别                                 | `number`                                                                  | `0-21` | `0`     |
+| maxZoom           | 地图允许展示的最大级别                                 | `number`                                                                  | `0-21` | `21`    |
+| showControls      | 是否显示室内图                                         | `boolean`                                                                 | -      | `false` |
+| plugins           | 需要注册的插件                                         | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvglThree']`                     | -      | -       |
+| pluginsSourceLink | 自定义插件资源地址                                     | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvglThree', string>` | -      | -       |
 
 ## 动态组件 Props
 
@@ -222,6 +222,7 @@ import { Map } from 'vue3-baidu-map-gl'
 ::: warning 注意
 地球模式（BMAP_EARTH_MAP）下能支持的地图交互操作有限，如您需要卫星地图支持和标准地图（BMAP_NORMAL_MAP）一致的交互体验，请使用普通卫星图模式（BMAP_SATELLITE_MAP）
 :::
+
 ## displayOptions
 
 | 属性      | 说明                                              | 类型               | 默认值 |
@@ -236,12 +237,11 @@ import { Map } from 'vue3-baidu-map-gl'
 | street    | 是否显示路网（只对卫星图和地球模式有效）          | `boolean`          | `true` |
 | skyColors | 是否显示路网（只对卫星图和地球模式有效）          | `[string, string]` | -      |
 
-
 ## 组件事件
 
 | 事件名          | 说明                                                                                             | 类型                                     |
 | --------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------- |
-| initd           | 组件初始化后会触发此事件，返回一个地图实例                                                       | `{ map, BmapGL, instance }`                        |
+| initd           | 组件初始化后会触发此事件，返回一个地图实例                                                       | `{ map, BmapGL, instance }`              |
 | unload          | 组件卸载时会触发此事件                                                                           | -                                        |
 | pluginReady     | 插件加载完毕会触发此事件                                                                         | -                                        |
 | click           | 左键单击地图时触发此事件。 当双击时，产生的事件序列为： click click dblclick                     | `{type, target, latlng, pixel, overlay}` |
