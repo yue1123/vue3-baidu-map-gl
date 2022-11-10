@@ -29,6 +29,8 @@ import CityList from './components/control/city-list/index.vue'
 import Location from './components/control/location/index.vue'
 import Copyright from './components/control/copyright/index.vue'
 import Navigation3d from './components/control/navigation3d/index.vue'
+import PanoramaControl from './components/control/panorama-control/index.vue'
+import PanoramaCoverageLayer from './components/layer/panorama-coverage/index.vue'
 
 import Marker from './components/overlay/marker/index.vue'
 import Marker3d from './components/overlay/marker3d/index.vue'
@@ -61,7 +63,9 @@ const componentsList = [
   CityList,
   Prism,
   InfoWindow,
-  ContextMenu
+  ContextMenu,
+  PanoramaControl,
+  PanoramaCoverageLayer
   // MapvglView
 ]
 
@@ -103,6 +107,8 @@ export {
   CityList,
   Prism,
   InfoWindow,
-  ContextMenu
+  ContextMenu,
+  PanoramaControl,
+  PanoramaCoverageLayer
 }
 export default vue3BaiduMapGl

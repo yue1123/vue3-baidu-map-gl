@@ -152,6 +152,7 @@ declare namespace BMapGL {
     locationIcon?: Icon
   }
   type StatusCode = number
+  type PanoramaControlOptions = ZoomControlOptions
   class PanoramaControl extends Control {
     constructor()
   }

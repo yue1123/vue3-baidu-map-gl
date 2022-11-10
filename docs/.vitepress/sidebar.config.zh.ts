@@ -81,6 +81,10 @@ const sidebarConfig = {
           link: '/zh/control/location'
         },
         {
+          text: 'PanoramaControl 全景',
+          link: '/zh/control/panorama-control'
+        },
+        {
           text: 'ContextMenu 上下文菜单',
           link: '/zh/context-menu/'
         }
@@ -129,12 +133,12 @@ const sidebarConfig = {
       ]
     },
     {
-      text: '扩展',
+      text: '图层',
       collapsible: true,
       items: [
         {
-          text: '与 mapvgl 可视化结合',
-          link: '/zh/layer/mapvgl'
+          text: 'PanoramaCoverageLayer 全景图层',
+          link: '/zh/layer/panorama-coverage'
         }
       ]
     },
@@ -157,6 +161,16 @@ const sidebarConfig = {
         {
           text: 'useTrackAnimation',
           link: '/zh/hooks/useTrackAnimation'
+        }
+      ]
+    },
+    {
+      text: '扩展',
+      collapsible: true,
+      items: [
+        {
+          text: '与 mapvgl 可视化结合',
+          link: '/zh/expand/mapvgl'
         }
       ]
     }

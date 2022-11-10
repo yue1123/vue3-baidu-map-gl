@@ -1,6 +1,4 @@
-<template>
-  <div></div>
-</template>
+<template></template>
 
 <script setup lang="ts">
   import { defineProps, withDefaults, watch, defineEmits } from 'vue'

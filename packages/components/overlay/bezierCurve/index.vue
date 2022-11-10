@@ -1,6 +1,4 @@
-<template>
-  <div></div>
-</template>
+<template></template>
 <script setup lang="ts">
   import { defineProps, watch, withDefaults, defineEmits, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
