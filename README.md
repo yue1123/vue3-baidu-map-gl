@@ -1,6 +1,6 @@
 # Vue3 BaiduMap gl
 
-基于百度地图 JavaScript GL 版（使用了 WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图） API 封装设计的 Vue3 组件库，开发体验良好，代码优雅。
+基于百度地图 JavaScript GL 版（使用了 WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图） API 封装设计的 Vue3 组件库。
 
 <img src='./docs/public/logo.png' style="border-radius:48px;overflow:hidden; width:220px;">
 <br />
@@ -68,12 +68,6 @@ app.mount('#app')
 
 ## todo
 
-- [ ] 叠加层
-  - [x] 路况叠加层
-  - [ ] 地面图片叠加层
-  - [ ] canvas 叠加层
-  - [ ] video 叠加层
-  - [x] MapVgl 叠加层
 - [ ] 大地路线书
 
 ## License

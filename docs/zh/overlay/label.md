@@ -39,22 +39,25 @@ import { Label } from 'vue3-baidu-map-gl'
 <!-- prettier-ignore -->
 ```html
 <Map :minZoom="3" >
+  文字内容: <input class="my-input" type="text" v-model="content">
   <Label
-    content="欢迎使用百度地图GL版Vue3组件库"
+    :content="content"
     :position="{lng: 116.404, lat: 39.915 }"
     :style="{
-    color:'#fff',
-    backgroundColor: '#f90',
-    border: 'none',
-    borderRadius: '3px',
-    padding: '5px 10px',
-    fontSize: '16px'
-  }"
+      color:'#fff',
+      backgroundColor: '#f90',
+      border: 'none',
+      borderRadius: '3px',
+      padding: '5px 10px',
+      fontSize: '16px'
+    }"
   />
 </Map>
 
 <script setup lang="ts">
+  import { ref } from 'vue'
   import { Map, Label } from 'vue3-baidu-map-gl'
+  const content = ref<string>('欢迎使用百度地图GL版Vue3组件库')
 </script>
 ```
 
