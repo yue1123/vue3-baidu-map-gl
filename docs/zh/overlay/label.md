@@ -39,7 +39,7 @@ import { Label } from 'vue3-baidu-map-gl'
 <!-- prettier-ignore -->
 ```html
 <Map :minZoom="3" >
-  <label
+  <Label
     content="欢迎使用百度地图GL版Vue3组件库"
     :position="{lng: 116.404, lat: 39.915 }"
     :style="{

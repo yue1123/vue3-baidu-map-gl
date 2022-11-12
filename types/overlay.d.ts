@@ -105,10 +105,13 @@ declare namespace BMapGL {
     fillOpacity: number
   }
   interface GroundOverlayOptions {
+    type?: 'video' | 'canvas' | 'image'
     opacity?: number
-    imageURL?: string
+    url?: string | HTMLCanvasElement
     displayOnMinLevel?: number
     displayOnMaxLevel?: number
+    isReDraw?: boolean
+    drawHook?: () => any
   }
   interface Marker3D extends Overlay {
     setHeight(height: number): void
@@ -535,7 +538,7 @@ declare namespace BMapGL {
     getBounds(): Bounds
     setOpacity(opcity: number): void
     getOpacity(): number
-    setImageURL(url: string): void
+    setImageURL(url: any): void
     getImageURL(): string
     setDisplayOnMinLevel(level: number): void
     getDisplayOnMinLevel(): number

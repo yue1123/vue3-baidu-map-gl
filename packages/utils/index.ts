@@ -26,3 +26,16 @@ export function callWhenDifferentValue<T>(cal: (v: T) => void): (nv: T, ov: T) =
     if (nv === ov || (nv !== ov && JSON.stringify(nv) !== JSON.stringify(ov))) cal(nv)
   }
 }
+
+/**
+ * warn 抛出警告
+ * @internal
+ * @param {string} 警告内容
+ */
+export function warn(text: string) {
+  console.warn(`[Vue3 BaiduMap GL] ${text}`)
+}
+
+export function error(text: string) {
+  console.error(`[Vue3 BaiduMap GL] ${text}`)
+}

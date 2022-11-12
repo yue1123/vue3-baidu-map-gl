@@ -41,6 +41,7 @@ import Polygon from './components/overlay/polygon/index.vue'
 import InfoWindow from './components/overlay/infowindow/index.vue'
 import Circle from './components/overlay/circle/index.vue'
 import Prism from './components/overlay/prism/index.vue'
+import GroundOverlay from './components/overlay/ground-overlay/index.vue'
 
 import ContextMenu from './components/contextMenu/index.vue'
 // import MapvglView from './components/layer/mapvgl-view/index.vue'
@@ -65,7 +66,8 @@ const componentsList = [
   InfoWindow,
   ContextMenu,
   PanoramaControl,
-  PanoramaCoverageLayer
+  PanoramaCoverageLayer,
+  GroundOverlay
   // MapvglView
 ]
 
@@ -109,6 +111,7 @@ export {
   InfoWindow,
   ContextMenu,
   PanoramaControl,
-  PanoramaCoverageLayer
+  PanoramaCoverageLayer,
+  GroundOverlay
 }
 export default vue3BaiduMapGl

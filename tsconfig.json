@@ -19,6 +19,7 @@
       "ESNext.Promise"
     ],
     "types": [
+      "node",
       "vite/client"
     ],
     "suppressImplicitAnyIndexErrors": true,

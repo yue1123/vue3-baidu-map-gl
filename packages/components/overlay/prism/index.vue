@@ -151,9 +151,9 @@
   provide('getOverlayInstance', () => prism)
 
   function syncMapCenter() {
-    nextTick(() => {
-      // 自动设置中心点
-      if (props.autoCenter) {
+    if (props.autoCenter) {
+      nextTick(() => {
+        // 自动设置中心点
         // 获取中心点
         try {
           const center = prism.getBounds()?.getCenter()
@@ -161,8 +161,8 @@
         } catch (e) {
           console.warn('set center error', e)
         }
-      }
-    })
+      })
+    }
   }
 
   function pathPointsToMapPoints(pathPoints: PrismPath[]) {

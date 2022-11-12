@@ -129,6 +129,10 @@ const sidebarConfig = {
         {
           text: 'Prism 3d棱柱',
           link: '/zh/overlay/prism'
+        },
+        {
+          text: 'GroundOverlay 地面叠加层',
+          link: '/zh/overlay/ground-overlay'
         }
       ]
     },
