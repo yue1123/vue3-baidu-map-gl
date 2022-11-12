@@ -8,10 +8,6 @@ const sidebarConfig = {
           text: '快速开始',
           link: '/zh/guide/quick-start'
         },
-        // {
-        //   text: '申请密钥ak',
-        //   link: '/zh/guide/ak'
-        // },
         {
           text: '在 SFC 中使用',
           link: '/zh/guide/usage-sfc'
@@ -21,7 +17,7 @@ const sidebarConfig = {
           link: '/zh/guide/usage-cdn'
         },
         {
-          text: '密钥ak与插件',
+          text: '密钥 ak 与插件',
           link: '/zh/guide/config'
         }
       ]

@@ -1,7 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineEmits, inject, nextTick, ref, Ref, watch } from 'vue'
+  import { defineEmits, nextTick, Ref, watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
