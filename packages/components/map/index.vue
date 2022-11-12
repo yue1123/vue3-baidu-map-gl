@@ -114,7 +114,10 @@
      * 地图允许展示的最大级别
      */
     maxZoom?: number
-
+    /**
+     * 禁用缩放动画
+     */
+    noAnimation?: boolean
     /**
      * 个性化地图
      */
@@ -240,6 +243,7 @@
     minZoom: 0,
     heading: 0,
     tilt: 0,
+    noAnimation: false,
     showControls: false,
     enableTraffic: false,
     enableDragging: true,
@@ -304,12 +308,13 @@
       : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
   if (!ak) console.warn('missing required props: ak')
 
+  const scriptKey = `_initBMap${ak}`
   // 初始化地图
   function init() {
     getScriptAsync({
-      src: `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=_initBMap`,
+      src: `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=${scriptKey}`,
       addCalToWindow: true,
-      key: '_initBMap'
+      key: scriptKey
     })
       .then(() => {
         const { minZoom, maxZoom, mapType, enableAutoResize, showControls, center } = props
@@ -445,15 +450,15 @@
    * 设置地图自定义属性
    */
   function setDisplayOptions(displayOptions?: DisplayOptions) {
-    if (displayOptions) {
-      map.setDisplayOptions(displayOptions)
-    }
+    map.setDisplayOptions(displayOptions || {})
   }
   /**
    * 设置缩放级别
    */
   function setZoom(zoom: number): void {
-    map!.setZoom(zoom)
+    map!.setZoom(zoom, {
+      noAnimation: props.noAnimation
+    })
   }
   // 设置地图类型
   function setMapType(mapType: _MapType): void {
