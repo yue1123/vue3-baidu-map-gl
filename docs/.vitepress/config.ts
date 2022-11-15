@@ -9,6 +9,7 @@ export default defineConfig({
   description: 'Vite & Vue powered static site generator.',
   lastUpdated: true,
   base: '/vue3-baidu-map-gl/',
+  cleanUrls: 'without-subfolders',
   head: heads,
   themeConfig: {
     nav: [

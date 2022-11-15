@@ -270,6 +270,7 @@ declare namespace BMapGL {
     center: Point
     level: number
     name: string
+    code: number
   }
   interface AutocompleteOptions {
     location?: string | Map | Point
@@ -316,6 +317,7 @@ declare namespace BMapGL {
   class Geolocation {
     constructor()
     getCurrentPosition(callback: (result: GeolocationResult) => void, opts?: PositionOptions): void
+    enableSDKLocation(): void
     getStatus(): ServiceStatusCode
   }
   interface AutocompleteResult {
@@ -342,6 +344,15 @@ declare namespace BMapGL {
   interface GeolocationResult {
     point: Point
     accuracy: number
+    address: {
+      country: string
+      city: string
+      city_code: number
+      district: string
+      province: string
+      street: string
+      street_number: string
+    }
   }
   class Boundary {
     constructor()

@@ -18,6 +18,8 @@ export * from './hooks/useAreaBoundary'
 export * from './hooks/useTrackAnimation'
 export * from './hooks/usePoint'
 export * from './hooks/useViewAnimation'
+export * from './hooks/useIpLocation'
+export * from './hooks/useBrowserLocation'
 
 // components
 import Map from './components/map/index.vue'

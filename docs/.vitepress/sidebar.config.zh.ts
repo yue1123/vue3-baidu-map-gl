@@ -147,19 +147,27 @@ const sidebarConfig = {
       collapsible: true,
       items: [
         {
-          text: 'usePoint',
+          text: 'usePoint 地图实例点',
           link: '/zh/hooks/usePoint'
         },
         {
-          text: 'useAreaBoundary',
+          text: 'useIpLocation Ip定位',
+          link: '/zh/hooks/useIpLocation'
+        },
+        {
+          text: 'useBrowserLocation 浏览器定位',
+          link: '/zh/hooks/useBrowserLocation'
+        },
+        {
+          text: 'useAreaBoundary 区域边界',
           link: '/zh/hooks/useAreaBoundary'
         },
         {
-          text: 'useViewAnimation',
+          text: 'useViewAnimation 3d视角动画',
           link: '/zh/hooks/useViewAnimation'
         },
         {
-          text: 'useTrackAnimation',
+          text: 'useTrackAnimation 轨迹动画',
           link: '/zh/hooks/useTrackAnimation'
         }
       ]
