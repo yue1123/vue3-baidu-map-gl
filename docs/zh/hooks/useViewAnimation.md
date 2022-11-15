@@ -375,7 +375,7 @@ export interface ViewAnimationKeyFrames {
    */
   percentage: RangeOf2<0, 1>
 }
-export interface ViewAnimationOptions {
+export interface UseViewAnimationOptions {
   /**
    * 	动画开始延迟时间，单位ms，默认0
    */
@@ -397,7 +397,7 @@ declare type AnimationListenerType = 'animationstart' | 'animationiterations' | 
 declare type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
 export declare function useViewAnimation(
   map: any,
-  options: ViewAnimationOptions
+  options: UseViewAnimationOptions
 ): {
   viewAnimation: {
     addEventListener(event: AnimationListenerType, cal: BMapGL.Callback): void

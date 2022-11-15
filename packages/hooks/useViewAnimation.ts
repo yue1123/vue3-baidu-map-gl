@@ -24,7 +24,7 @@ export interface ViewAnimationKeyFrames {
   percentage: RangeOf2<0, 1>
 }
 
-export interface ViewAnimationOptions {
+export interface UseViewAnimationOptions {
   /**
    * 	动画开始延迟时间，单位ms，默认0
    */
@@ -46,7 +46,8 @@ export interface ViewAnimationOptions {
 type AnimationListenerType = 'animationstart' | 'animationiterations' | 'animationend' | 'animationcancel'
 
 type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
-export function useViewAnimation(map: any, options: ViewAnimationOptions) {
+// FIXME: 默认值处理
+export function useViewAnimation(map: any, options: UseViewAnimationOptions) {
   options = options || {}
   options.disableDragging = options.disableDragging !== undefined ? false : true
   const status = ref<AnimationStatus>('INITIAL')

@@ -4,7 +4,7 @@ export type PathPoint = {
   lng: number
   lat: number
 }
-export type TrackAnimationOptions = {
+export type UseTrackAnimationOptions = {
   /**
    * 动画持续时常，单位ms
    * @default 10000
@@ -43,7 +43,8 @@ const statusMap: Record<number, AnimationStatus> = {
  * @param {UseTrackAnimationOptions} options 轨迹动画配置
  * @returns { setPath, start, stop}
  */
-export function useTrackAnimation(map: any, options: TrackAnimationOptions) {
+// FIXME: 默认值处理
+export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
   let instance: BMapGLLib.TrackAnimation
   let pl: BMapGL.Polyline | null
   let mapComponentInstance: any

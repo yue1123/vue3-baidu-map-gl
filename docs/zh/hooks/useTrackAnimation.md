@@ -261,7 +261,7 @@ declare type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
  */
 export declare function useTrackAnimation(
   map: any,
-  options: TrackAnimationOptions
+  options: UseTrackAnimationOptions
 ): {
   /**
    * 设置路径动画路径

@@ -23,7 +23,7 @@ const { point, set } = usePoint()
 | point | BMapGL.Point 实例对象，默认为 `null`，调用 `set` 方法后才可用 | `BMapGL.Point`                           |
 | set   | 设置实例点坐标方法，需要在`Map`组件`initd`事件触发后才可调用  | `({ lng: number; lat: number }) => void` |
 
-## 示例
+## 代码示例
 
 <!-- prettier-ignore -->
 ```html

@@ -24,7 +24,7 @@ const { isLoading, boundaries, get } = useAreaBoundary()
 | boundaries | 区域边界数据，默认为空数组，`get`方法调用后才可用 | `string[]`           |
 | get        | 获取指定区域边界方法                              | `({string}) => void` |
 
-## 示例
+## 代码示例
 
 <!-- prettier-ignore -->
 ```html
