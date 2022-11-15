@@ -26,7 +26,7 @@ import { Circle } from 'vue3-baidu-map-gl'
 <!-- prettier-ignore -->
 ```html
 <Map :minZoom="3" >
-  <Circle stroke-style="dashed" :center="{ lat: 39.915185, lng: 116.403901 }" :radius="300" enableEditing />
+  <Circle stroke-style="dashed" :center="{ lat: 39.915185, lng: 116.403901 }" :radius="300" />
 </Map>
 
 <script setup lang="ts">
