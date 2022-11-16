@@ -1,4 +1,5 @@
-import { ref } from 'vue'
+import { ref, Ref } from 'vue'
+import { Point } from './usePoint'
 
 interface UseLocationOptions {
   /**
@@ -36,9 +37,23 @@ const statusMap: Record<number, Status> = {
   6: 'ERR_PERMISSION_DENIED'
 }
 
-export function useBrowserLocation(options?: UseLocationOptions) {
+interface Location {
+  accuracy: number
+  point: Point
+  address: {
+    country: string
+    city: string
+    city_code: string
+    district: string
+    province: string
+    street: string
+    street_number: string
+  }
+}
+
+export function useBrowserLocation(options?: UseLocationOptions, cal?: (location: Ref<Location>) => void) {
   options = options || {}
-  const location = ref({})
+  const location = ref<Location>({} as Location)
   const isLoading = ref<boolean>(true)
   const isError = ref<boolean>(false)
   const status = ref<Status>()
@@ -64,6 +79,7 @@ export function useBrowserLocation(options?: UseLocationOptions) {
     })
       .then((res) => {
         location.value = res
+        cal && cal(location)
       })
       .catch(() => {
         isError.value = true
