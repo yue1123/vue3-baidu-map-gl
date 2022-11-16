@@ -1,4 +1,4 @@
-import { ref, watch } from 'vue'
+import { ref, Ref } from 'vue'
 import { Point } from './usePoint'
 
 interface Location {
@@ -9,34 +9,20 @@ interface Location {
 /**
  * ip定位
  */
-export function useIpLocation(map?: any) {
+export function useIpLocation(cal?: (location: Ref<Location>) => void) {
   const location = ref<Location>({} as Location)
   const isLoading = ref<boolean>(true)
 
-  let mapComponentInstance: any
-  map &&
-    watch(
-      () => map.value,
-      (n) => {
-        mapComponentInstance = n
-      }
-    )
-
   const init = () => {
     isLoading.value = true
-    const options: Record<string, any> = {}
-    if (map) {
-      options.renderOptions = {
-        map: mapComponentInstance.getMapInstance()
-      }
-    }
-
-    new BMapGL.LocalCity(options).get((res: any) => {
+    new BMapGL.LocalCity().get((res: any) => {
       isLoading.value = false
-      res.point = res.center
-      Reflect.deleteProperty(res, 'level')
-      Reflect.deleteProperty(res, 'center')
-      location.value = res
+      location.value = {
+        code: res.code,
+        point: res.center,
+        name: res.name
+      }
+      cal && cal(location)
     })
   }
 
