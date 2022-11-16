@@ -5,27 +5,27 @@
 ## 用法
 
 ```ts
-const { get, location, isLoading } = useIpLocation(map)
+const { get, location, isLoading } = useIpLocation(cal)
 ```
 
 ### 参数
 
-| 参数 | 描述                                                                               | 类型       | 默认值 |
-| ---- | ---------------------------------------------------------------------------------- | ---------- | ------ |
-| map  | `Map`地图组件`ref`引用，可选；如果传递该参数，则会在定位成功后地图自动跳转到定位点 | `Ref<Map>` | -      |
+| 参数 | 描述                 | 类型                                | 默认值 |
+| ---- | -------------------- | ----------------------------------- | ------ |
+| cal  | 定位成功后的回调函数 | `(location: Ref<Location>) => void` | -      |
 
 ### 引用
 
-| 引用      | 描述                                                   | 类型                                          |
-| --------- | ------------------------------------------------------ | --------------------------------------------- |
-| isLoading | 是否在获取中                                           | `boolean`                                     |
+| 引用      | 描述                                                   | 类型                                         |
+| --------- | ------------------------------------------------------ | -------------------------------------------- |
+| isLoading | 是否在获取中                                           | `boolean`                                    |
 | location  | 定位信息                                               | `{ point: Point code: number name: string }` |
-| get       | 获取定位方法，需要在`Map`组件`initd`事件触发后才可调用 | `() => void`                                  |
+| get       | 获取定位方法，需要在`Map`组件`initd`事件触发后才可调用 | `() => void`                                 |
 
 ## 示例
 
 <div>
-  <Map enableScrollWheelZoom ref="map" @initd="get" >
+  <Map enableScrollWheelZoom ref="map" :center="location.point || undefined" @initd="get" >
     <template v-if="!isLoading">
       <Marker :position="location.point"></Marker>
     </template>
@@ -39,13 +39,16 @@ const { get, location, isLoading } = useIpLocation(map)
   <div class="state"  v-else>
     定位中...
   </div>
+  <button v-if="!isLoading" class="myButton" @click="get">重新获取</button>
 </div>
 
 <script lang="ts" setup>
   import { ref } from 'vue'
   import { useIpLocation } from '../../../packages'
   const map = ref()
-  const { get, location, isLoading } = useIpLocation(map)
+  const { get, location, isLoading } = useIpLocation(() => {
+    map.value.resetCenter()
+  })
 </script>
 
 <style>
@@ -62,7 +65,7 @@ const { get, location, isLoading } = useIpLocation(map)
 <!-- prettier-ignore -->
 ```html
 <div>
-  <Map enableScrollWheelZoom ref="map" @initd="get" >
+  <Map enableScrollWheelZoom ref="map" :center="location.point || undefined" @initd="get" >
     <template v-if="!isLoading">
       <Marker :position="location.point"></Marker>
     </template>
@@ -77,13 +80,16 @@ const { get, location, isLoading } = useIpLocation(map)
   <div class="state"  v-else>
     定位中...
   </div>
+  <button v-if="!isLoading" @click="get">重新获取</button>
 </div>
 
 <script lang="ts" setup>
   import { ref } from 'vue'
   import { useIpLocation, Marker } from 'vue3-baidu-map-gl'
   const map = ref()
-  const { get, location, isLoading } = useIpLocation(map)
+  const { get, location, isLoading } = useIpLocation(() => {
+    map.value.resetCenter()
+  })
 </script>
 
 <style>
@@ -101,23 +107,19 @@ const { get, location, isLoading } = useIpLocation(map)
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue'
-/**
- * 地图经纬度点
- */
-type Point = {
-  lng: number
-  lat: number
+import { Ref } from 'vue';
+import { Point } from './usePoint';
+interface Location {
+    point: Point;
+    code: number;
+    name: string;
 }
 /**
  * ip定位
  */
-export declare function useIpLocation(map?: any): {
-  location: Ref<{
-    point: Point
-    code: number
-    name: string
-  }>
-  get: () => void
-}
+export declare function useIpLocation(cal?: (location: Ref<Location>) => void): {
+    location: Ref<Location>;
+    isLoading: Ref<boolean>;
+    get: () => void;
+};
 ```

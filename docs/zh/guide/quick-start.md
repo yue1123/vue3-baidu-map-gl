@@ -18,7 +18,6 @@
 - 🖇️ 组件同时兼容纯净式大驼峰命名(`Map`)和短横线命名(`b-map`)
 - 🚀 支持 volar，组件提供完善的代码提示
 
-
 ## 安装
 
 ### npm
@@ -33,6 +32,7 @@ yarn add vue3-baidu-map-gl
 # or with pnpm
 pnpm add vue3-baidu-map-gl
 ```
+
 ### CDN
 
 参考 [使用 CDN](/zh/guide/usage-cdn)。

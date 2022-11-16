@@ -1,6 +1,6 @@
 # 全景控件 <Badge type="tip" text="^0.0.31" />
 
-全景地图服务，360°全景地图刻画真实世界，将街道场景带入到地图产品中，用户可以拖拽地图从不同的角度浏览真实的街景效果
+全景地图服务，360° 全景地图刻画真实世界，将街道场景带入到地图产品中，用户可以拖拽地图从不同的角度浏览真实的街景效果
 
 ```ts
 import { PanoramaControl } from 'vue3-baidu-map-gl'
@@ -11,7 +11,9 @@ import { PanoramaControl } from 'vue3-baidu-map-gl'
 :::
 
 ## 组件示例
+
 单独使用该组件不会显示全景地图覆盖情况，还需要搭配`PanoramaCoverageLayer`组件使用。
+
 <div>
 <Map enableScrollWheelZoom ak='oW2UEhdth2tRbEE4FUpF9E5YVDCIPYih'>
   <PanoramaControl />
@@ -38,7 +40,7 @@ import { PanoramaControl } from 'vue3-baidu-map-gl'
 
 ## 组件事件
 
-| 事件名 | 说明                                       | 类型              |
-| ------ | ------------------------------------------ | ----------------- |
+| 事件名 | 说明                                       | 类型                        |
+| ------ | ------------------------------------------ | --------------------------- |
 | initd  | 组件初始化后，调用的方法，返回一个地图实例 | `{ map, BmapGL, instance }` |
-| unload | 组件卸载时会调用此方法                     | -                 |
+| unload | 组件卸载时会调用此方法                     | -                           |

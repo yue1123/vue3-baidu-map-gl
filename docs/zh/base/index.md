@@ -177,16 +177,16 @@ import { Map } from 'vue3-baidu-map-gl'
 
 ## 静态组件 props
 
-| 属性              | 说明                                                   | 类型                                                                      | 可选值 | 默认值  |
-| ----------------- | ------------------------------------------------------ | ------------------------------------------------------------------------- | ------ | ------- |
+| 属性              | 说明                                                     | 类型                                                                      | 可选值 | 默认值  |
+| ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------- | ------ | ------- |
 | ak                | 百度地图 ak [申请 ak](../guide/quick-start#申请-ak-密钥) | `string`                                                                  | -      | -       |
-| width             | 地图显示宽度                                           | `string / number`                                                         | -      | `100%`  |
-| height            | 地图显示高度                                           | `string / number`                                                         | -      | `550px` |
-| minZoom           | 地图允许展示的最小级别                                 | `number`                                                                  | `0-21` | `0`     |
-| maxZoom           | 地图允许展示的最大级别                                 | `number`                                                                  | `0-21` | `21`    |
-| showControls      | 是否显示室内图                                         | `boolean`                                                                 | -      | `false` |
-| plugins           | 需要注册的插件                                         | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvglThree']`                     | -      | -       |
-| pluginsSourceLink | 自定义插件资源地址                                     | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvglThree', string>` | -      | -       |
+| width             | 地图显示宽度                                             | `string / number`                                                         | -      | `100%`  |
+| height            | 地图显示高度                                             | `string / number`                                                         | -      | `550px` |
+| minZoom           | 地图允许展示的最小级别                                   | `number`                                                                  | `0-21` | `0`     |
+| maxZoom           | 地图允许展示的最大级别                                   | `number`                                                                  | `0-21` | `21`    |
+| showControls      | 是否显示室内图                                           | `boolean`                                                                 | -      | `false` |
+| plugins           | 需要注册的插件                                           | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvglThree']`                     | -      | -       |
+| pluginsSourceLink | 自定义插件资源地址                                       | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvglThree', string>` | -      | -       |
 
 ## 动态组件 Props
 
@@ -236,6 +236,15 @@ import { Map } from 'vue3-baidu-map-gl'
 | building  | 是否显示 3D 建筑物（仅支持 WebGL 方式渲染的地图） | `boolean`          | `true` |
 | street    | 是否显示路网（只对卫星图和地球模式有效）          | `boolean`          | `true` |
 | skyColors | 是否显示路网（只对卫星图和地球模式有效）          | `[string, string]` | -      |
+
+## 组件方法
+
+| 方法              | 说明                             | 类型                               |
+| ----------------- | -------------------------------- | ---------------------------------- |
+| getMapInstance    | 父组件获取 map 实例方法          | `() => void`                       |
+| getBaseMapOptions | 父组件/外部获取 map 组件 options | `() => void`                       |
+| resetCenter       | 重置地图中心                     | `() => void`                       |
+| setDragging       | 设置地图是否可拖动               | `(nableDragging: boolean) => void` |
 
 ## 组件事件
 

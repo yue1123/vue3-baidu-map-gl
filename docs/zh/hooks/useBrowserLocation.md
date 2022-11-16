@@ -12,14 +12,15 @@
 ## 用法
 
 ```ts
-const { get, location, isLoading, isError, status } = useBrowserLocation(options)
+const { get, location, isLoading, isError, status } = useBrowserLocation(options, cal)
 ```
 
 ### 参数
 
-| 参数    | 描述             | 类型                                                | 默认值 |
-| ------- | ---------------- | --------------------------------------------------- | ------ |
-| options | 浏览器定位配置项 | [`BrowserLocationOptions`](#browserlocationoptions) | -      |
+| 参数    | 描述                 | 类型                                                | 默认值 |
+| ------- | -------------------- | --------------------------------------------------- | ------ |
+| options | 浏览器定位配置项     | [`BrowserLocationOptions`](#browserlocationoptions) | -      |
+| cal     | 定位成功后的回调函数 | `(location: Ref<Location>) => void`                 | -      |
 
 #### BrowserLocationOptions
 
@@ -100,7 +101,9 @@ const { get, location, isLoading, isError, status } = useBrowserLocation(options
   import { ref } from 'vue'
   import { useBrowserLocation } from '../../../packages'
   const map = ref()
-  const { get, location, isLoading, isError, status } = useBrowserLocation()
+  const { get, location, isLoading, isError, status } = useBrowserLocation(null, () => {
+    map.value.resetCenter()
+  })
 </script>
 
 <style>
@@ -138,14 +141,16 @@ const { get, location, isLoading, isError, status } = useBrowserLocation(options
   <div class="state" v-else>
     定位中...
   </div>
-  <button v-if="!isLoading" class="myButton" @click="get">重新获取</button>
+  <button v-if="!isLoading" @click="get">重新获取</button>
 </div>
 
 <script lang="ts" setup>
   import { ref } from 'vue'
   import { useBrowserLocation, Marker, Circle } from 'vue3-baidu-map-gl'
   const map = ref()
-  const { get, location, isLoading } = useBrowserLocation()
+  const { get, location, isLoading, isError, status } = useBrowserLocation(null, () => {
+    map.value.resetCenter()
+  })
 </script>
 
 <style>
@@ -164,22 +169,55 @@ const { get, location, isLoading, isError, status } = useBrowserLocation(options
 
 ```ts
 import { Ref } from 'vue'
-/**
- * 地图经纬度点
- */
-type Point = {
-  lng: number
-  lat: number
+import { Point } from './usePoint'
+interface UseLocationOptions {
+  /**
+   * 是否开启SDK辅助定位，仅当使用环境为移动web混合开发，且开启了定位sdk辅助定位功能后生效
+   */
+  enableSDKLocation?: boolean
+  /**
+   * 是否要求浏览器获取最佳效果，同浏览器定位接口参数。默认为false
+   */
+  enableHighAccuracy?: boolean
+  /**
+   * 超时事件，单位为毫秒。默认为10秒
+   */
+  timeout?: number
+  /**
+   * 允许返回指定事件内的缓存结果，单位为毫秒。如果为0，则每次请求都获取最新的定位结果。默认为10分钟
+   */
+  maximumAge?: number
+  /**
+   * 是否开启SDK辅助定位
+   */
+  SDKLocation?: boolean
 }
-/**
- * ip定位
- */
-export declare function useIpLocation(map?: any): {
-  location: Ref<{
-    center: Point
-    code: number
-    name: string
-  }>
+declare type Status =
+  | 'BMAP_STATUS_SUCCESS'
+  | 'ERR_PERMISSION_DENIED'
+  | 'ERR_POSITION_UNAVAILABLE'
+  | 'ERR_POSITION_TIMEOUT'
+interface Location {
+  accuracy: number
+  point: Point
+  address: {
+    country: string
+    city: string
+    city_code: string
+    district: string
+    province: string
+    street: string
+    street_number: string
+  }
+}
+export declare function useBrowserLocation(
+  options?: UseLocationOptions,
+  cal?: (location: Ref<Location>) => void
+): {
   get: () => void
+  isLoading: Ref<boolean>
+  isError: Ref<boolean>
+  status: Ref<Status | undefined>
+  location: Ref<Location>
 }
 ```
