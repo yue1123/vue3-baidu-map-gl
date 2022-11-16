@@ -521,6 +521,8 @@
     getMapInstance: () => map,
     // 父组件/外部获取map组件 options
     getBaseMapOptions: () => props,
+    // 重置地图中心
+    resetCenter: () => setCenterAndZoom(props.center),
     // 设置地图是否可拖动
     setDragging
   })
