@@ -58,9 +58,21 @@ const prodConfig = defineConfig({
   }
 })
 
+const esmConfig = defineConfig({
+  output: {
+    globals: {
+      vue: 'Vue'
+    },
+    format: 'esm',
+    file: path.resolve('dist/index.esm.js')
+  }
+})
+
 module.exports = [
   // dev umd output
   merge(baseConfig, devConfig),
   // prod umd output
-  merge(baseConfig, prodConfig)
+  merge(baseConfig, prodConfig),
+  // esm output
+  merge(baseConfig, esmConfig)
 ]
