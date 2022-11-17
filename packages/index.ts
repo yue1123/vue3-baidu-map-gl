@@ -117,3 +117,10 @@ export {
   GroundOverlay
 }
 export default vue3BaiduMapGl
+
+/**
+ * TODO:
+ * 1. 导出 mapType ts类型
+ * 2. useBrowserLocation options 可以为 null
+ * 3. control 动态 offset
+ */

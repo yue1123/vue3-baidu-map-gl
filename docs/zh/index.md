@@ -2,12 +2,11 @@
 layout: home
 
 title: Vue3 BaiduMap GL
-titleTemplate: Vite & Vue Powered Static Site Generator
 
 hero:
   name: Vue3 BaiduMap GL
-  text: Vue3 & baidu-map-gl & TypeScript
-  tagline: 一套基于 Vue 3.0 和百度地图gl的地图组件。
+  text: 易用 & 完整 & 高性能
+  tagline: 基于 Vue 3.0 和 百度地图GL的高质量地图组件/hooks库
   image:
     src: /logo.png
     alt: Vue3 BaiduMap GL
@@ -21,24 +20,24 @@ hero:
 
 features:
   - icon: 🚀
-    title: '"化繁为简"'
+    title: 繁 => 简
     details: 将百度地图繁琐的Api封装进组件，你只需关注组件本身
 
-  - icon: ✨
-    title: 比较完整
-    details: 提供的组件和 hooks 能覆盖大部分使用场景
+  - icon: 📦
+    title: 完整
+    details: 20+ 高质量的开箱即用 Vue 3 组件以及 5+ hooks 封装
+  
+  - icon: 📐
+    title: 易用
+    details: 遵循直觉的、简约的 Api 设计
 
   - icon: ⚡
-    title: Composition Api + Ts
-    details: 面向未来，更好的性能，和你的 Ts 项目无缝衔接
+    title: 高性能
+    details: Composition Api，更好的性能
 
-  - icon: 🧩
-    title: tree shaking 支持
-    details: 模块分包，只打包你想要的的
-
-  - icon: 👍
-    title: 体验良好
-    details: 不仅仅是简单的封装，每一个组件都从开发者使用体验出发，做到与逻辑保持一致
+  - icon: 🔨
+    title: 不是 AnyScript
+    details: 完整的 TypeScript 支持，更好的体验
 
   - icon: 🌏
     title: WebGl
