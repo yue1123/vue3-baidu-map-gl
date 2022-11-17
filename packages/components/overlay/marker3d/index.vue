@@ -120,6 +120,9 @@
       setMassClear(enableMassClear)
       bindEvents(props, vueEmits, marker3d)
     }
+
+    init()
+    ready(map, marker3d)
     // 监听值变化
     watch(() => props.enableMassClear, setMassClear)
     watch(() => props.position, callWhenDifferentValue(setPosition), { deep: true })
@@ -129,9 +132,6 @@
     watch(() => props.height, setHeight)
     watch(() => props.fillOpacity, setFillOpacity)
     watch(() => props.fillColor, setFillColor)
-
-    init()
-    ready(map, marker3d)
     return cal
   })
 

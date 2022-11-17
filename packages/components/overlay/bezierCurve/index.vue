@@ -108,6 +108,7 @@
       bindEvents(props, vueEmits, bezierCurve)
     }
 
+    init()
     // 监听值变化
     watch(
       () => props.path,
@@ -133,7 +134,6 @@
     watch(() => props.strokeStyle, setStrokeStyle)
     watch(() => props.enableMassClear, setMassClear)
 
-    init()
     return cal
   })
 

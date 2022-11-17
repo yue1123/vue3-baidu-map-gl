@@ -131,6 +131,7 @@
       ready(map, polyline)
     }
 
+    init()
     // 监听值变化
     watch(
       () => props.path,
@@ -148,7 +149,6 @@
     watch(() => props.enableMassClear, setMassClear)
     watch(() => props.enableEditing, setEditing)
 
-    init()
     return cal
   })
 

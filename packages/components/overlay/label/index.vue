@@ -38,6 +38,10 @@
      * 标注的位置偏移值
      */
     offset?: LabelOffset
+    /**
+     * 显示层级
+     */
+    // zIndex: number
     style?: LabelStyle
     /**
      * @default true
@@ -92,9 +96,12 @@
         label.setStyle(style)
       }
       map.addOverlay(label)
+      // isDef(zIndex) && setZIndex(zIndex)
       bindEvents(props, vueEmits, label)
     }
 
+    init()
+    ready(map, label)
     // 监听值变化
     watch(() => props.position, callWhenDifferentValue(setPosition), { deep: true })
     watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
@@ -102,14 +109,15 @@
     watch(() => props.content, setContent)
     watch(() => props.enableMassClear, setMassClear)
 
-    init()
-    ready(map, label)
-    // 在地图上添加点标记
     return cal
   })
 
   provide('getOverlayInstance', () => label)
 
+  // function setZIndex(zIndex: number) {
+  //   console.log('shezhi ')
+  //   label.setZIndex(zIndex)
+  // }
   function setPosition(position: LabelPosition) {
     label.setPosition(new BMapGL.Point(position.lng, position.lat))
   }

@@ -112,6 +112,8 @@
       bindEvents(props, vueEmits, infoWindow)
     }
 
+    init()
+    ready(map, infoWindow)
     // 监听值变化
     watch(() => props.position, callWhenDifferentValue(setPosition), { deep: true })
     watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
@@ -128,8 +130,6 @@
       })
     )
 
-    init()
-    ready(map, infoWindow)
     if (props.modelValue) {
       // 多个 infoWindow, 显示最后一个实例, 其他实例同步显隐状态
       nextTick(() => {

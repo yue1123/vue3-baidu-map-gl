@@ -13,8 +13,21 @@ import { Label } from 'vue3-baidu-map-gl'
 <Map
   :minZoom="3"
 >
+  <Marker
+  :zIndex="900"
+			:position="{ lat: 39.915185, lng: 116.400901 }"
+			:icon="{
+        imageUrl: 'https://cdn.jsdelivr.net/gh/yue1123/vue3-baidu-map-gl@0.0.21/docs/public/logo.png',
+        imageSize: {
+          width: 100,
+          height: 100
+        },
+      }"
+			enableDragging
+		/>
   <Label
     :content="content"
+    :zIndex="-1"
     :position="{lng: 116.404, lat: 39.915 }"
     :style="{
       color:'#fff',

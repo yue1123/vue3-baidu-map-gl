@@ -149,6 +149,8 @@
       bindEvents(props, vueEmits, circle)
       ready(map, circle)
     }
+
+    init()
     // 监听值变化
     watch(() => props.center, callWhenDifferentValue(setCenter), { deep: true })
     watch(() => props.radius, setRadius)
@@ -161,7 +163,6 @@
     watch(() => props.enableMassClear, setMassClear)
     watch(() => props.enableEditing, setEditing)
 
-    init()
     return cal
   })
 
