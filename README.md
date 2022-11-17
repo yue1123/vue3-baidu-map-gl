@@ -1,13 +1,15 @@
 # Vue3 BaiduMap gl
 
-基于百度地图 JavaScript GL 版（使用了 WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图） API 封装设计的 Vue3 组件库。
+[![GitHub license](https://img.shields.io/github/license/yue1123/img-previewer?style=flat-square)](https://github.com/yue1123/img-previewer/blob/main/LICENSE) <img src="https://img.shields.io/github/package-json/v/yue1123/vue3-baidu-map-gl?color=f90&style=flat-square" alt="GitHub package.json version (subfolder of monorepo)">
 
-<img src='./docs/public/logo.png' style="border-radius:48px;overflow:hidden; width:220px;">
-<br />
+基于百度地图 JavaScript GL 版（使用了 WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图） API 封装设计的 Vue3 组件/hooks 库。
+
+<div style="overflow:hidden; width:200px;height:200px;border-radius:48px;">
+  <img src='./docs/public/logo.png' style="width:100%;">
+</div>
 <br />
 
-[![GitHub license](https://img.shields.io/github/license/yue1123/img-previewer?style=flat-square)](https://github.com/yue1123/img-previewer/blob/main/LICENSE)
-<img src="https://img.shields.io/github/package-json/v/yue1123/vue3-baidu-map-gl?color=f90&style=flat-square" alt="GitHub package.json version (subfolder of monorepo)">
+[demo 示例](https://yue1123.github.io/vue3-baidu-map-gl/zh/base/)
 
 ## :sparkles: 特性
 
@@ -77,6 +79,10 @@ app.mount('#app')
 ❤️ 用心制作，开源不易，点亮 🌟star🌟 是支持更新的最大动力 ✌🏻
 
 ## 参与贡献
+
+> **环境**
+> pnpm: ">=6.0.0"
+> node: ">=12.0.0"
 
 ```bash
 # clone
