@@ -5,7 +5,7 @@
 <script setup lang="ts">
   import { defineProps, provide, watch, withDefaults } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import { isString, callWhenDifferentValue } from '../../../utils/index'
+  import { isString, callWhenDifferentValue, isDef } from '../../../utils/index'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import useMarkerDefaultIcons from '../../../hooks/useMarkerDefaultIcons'
@@ -78,6 +78,10 @@
      * 标注所用的图标对象
      */
     icon?: MarkerCustomIcon | MarkerDefaultIcons
+    /**
+     * 显示层级
+     */
+    zIndex?: number
     /**
      * @default true
      * 是否在调用map.clearOverlays清除此覆盖物，默认为true
@@ -173,7 +177,8 @@
         draggingCursor,
         rotation,
         title,
-        icon
+        icon,
+        zIndex
       } = props
       const options: BMapGL.MarkerOptions = {
         offset: new BMapGL.Size(offset.x, offset.y),
@@ -189,10 +194,14 @@
       }
       marker = new BMapGL.Marker(new BMapGL.Point(position.lng, position.lat), options)
       setRotation(rotation)
+      isDef(zIndex) && setZIndex(zIndex!)
       // 在地图上添加点标记
       map.addOverlay(marker)
       bindEvents(props, vueEmits, marker)
     }
+
+    init()
+    ready(map, marker)
     // 监听值变化
     watch(() => props.position, callWhenDifferentValue(setPosition), { deep: true })
     watch(() => props.icon, callWhenDifferentValue(setIcon), { deep: true })
@@ -200,9 +209,6 @@
     watch(() => props.enableDragging, setDragging)
     watch(() => props.enableMassClear, setMassClear)
     watch(() => props.rotation, setRotation)
-
-    init()
-    ready(map, marker)
     return cal
   })
 
@@ -231,6 +237,10 @@
       }
       return new BMapGL.Icon(imageUrl, new BMapGL.Size(imageSize.width, imageSize.height), iconOptions)
     }
+  }
+  function setZIndex(zIndex: number) {
+    console.log('shezhi marker')
+    marker.setZIndex(zIndex)
   }
   function setPosition(position: MarkerPosition) {
     marker.setPosition(new BMapGL.Point(position.lng, position.lat))

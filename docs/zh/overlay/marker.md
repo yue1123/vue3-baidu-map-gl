@@ -18,6 +18,7 @@ import { Marker } from 'vue3-baidu-map-gl'
     enableDragging
   />
   <Marker
+    :zIndex="99"
     :position="{ lat: 39.915185, lng: 116.403901 }"
     icon="start"
   />
@@ -54,7 +55,7 @@ import { Marker } from 'vue3-baidu-map-gl'
 ```html
 <Map :minZoom="3" >
   <!-- 起点图标 -->
-  <Marker :position="{ lat: 39.915185, lng: 116.403901 }" icon="start" />
+  <Marker :zIndex="99" :position="{ lat: 39.915185, lng: 116.403901 }" icon="start" />
   <!-- 终点图标 -->
   <Marker :position="{ lat: 39.915185, lng: 116.404901 }" icon="end" />
   <!-- 红色图标1 -->
@@ -93,19 +94,27 @@ import { Marker } from 'vue3-baidu-map-gl'
 
 ## 动态组件 Props
 
-| 属性            | 说明                                                        | 类型                          | 可选值                        | 默认值     |
-| --------------- | ----------------------------------------------------------- | ----------------------------- | ----------------------------- | ---------- |
-| position        | 标注点的坐标                                                | `{ lng: number, lat: number}` | -                             | `required` |
-| offset          | 标注点的像素偏移                                            | ` {x: number, y: number }`    | -                             |            |
-| icon            | 标注点的图标。可使用默认图标，也可[自定义图标](#自定义图标) | `string `                     | `simple_red / simple_blue...` | -          |
-| rotation        | 旋转角度                                                    | `number `                     | -                             |            |
-| enableDragging  | 是否启用拖拽                                                | `boolean `                    | -                             | ` true`    |
-| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物                 | `boolean `                    | -                             | `true `    |
+| 属性                                      | 说明                                                        | 类型                          | 可选值                        | 默认值     |
+| ----------------------------------------- | ----------------------------------------------------------- | ----------------------------- | ----------------------------- | ---------- |
+| zIndex<Badge type="tip" text="^0.0.35" /> | 显示层级                                                    | `number`                      | -                             | -          |
+| position                                  | 标注点的坐标                                                | `{ lng: number, lat: number}` | -                             | `required` |
+| offset                                    | 标注点的像素偏移                                            | ` {x: number, y: number }`    | -                             |            |
+| icon                                      | 标注点的图标。可使用默认图标，也可[自定义图标](#自定义图标) | `string `                     | `simple_red / simple_blue...` | -          |
+| rotation                                  | 旋转角度                                                    | `number `                     | -                             |            |
+| enableDragging                            | 是否启用拖拽                                                | `boolean `                    | -                             | ` true`    |
+| enableMassClear                           | 是否在调用 `map.clearOverlays` 清除此覆盖物                 | `boolean `                    | -                             | `true `    |
 
 ## 默认图标可选值
 
+simple_red , simple_blue , loc_red , loc_blue , start , end , location
+
+红色图标: red1 , red2 , red3 , red4 , red5 , red6 , red7 , red8 , red9 , red10
+
+蓝色图标: blue1 , blue2 , blue3 , blue4 , blue5 , blue6 , blue7 , blue8 , blue9 , blue10
+
+其余图标可根据下图自行定位裁切:
+
 ![https://mapopen.bj.bcebos.com/cms/react-bmap/markers_new2x_fbb9e99.png](https://mapopen.bj.bcebos.com/cms/react-bmap/markers_new2x_fbb9e99.png)
-simple_red , simple_blue , loc_red , loc_blue , start , end , location , red1 , red2 , red3 , red4 , red5 , red6 , red7 , red8 , red9 , red10 , blue1 , blue2 , blue3 , blue4 , blue5 , blue6 , blue7 , blue8 , blue9 , blue10
 
 ## 自定义图标
 
