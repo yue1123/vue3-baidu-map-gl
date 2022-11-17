@@ -78,6 +78,7 @@ export function useBrowserLocation(options?: UseLocationOptions, cal?: (location
       }, options)
     })
       .then((res) => {
+        isError.value = false
         location.value = res
         cal && cal(location)
       })
