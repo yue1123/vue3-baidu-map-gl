@@ -51,7 +51,7 @@ interface Location {
   }
 }
 
-export function useBrowserLocation(options?: UseLocationOptions, cal?: (location: Ref<Location>) => void) {
+export function useBrowserLocation(options?: UseLocationOptions | null, cal?: (location: Ref<Location>) => void) {
   options = options || {}
   const location = ref<Location>({} as Location)
   const isLoading = ref<boolean>(true)
@@ -75,7 +75,7 @@ export function useBrowserLocation(options?: UseLocationOptions, cal?: (location
         } else {
           reject()
         }
-      }, options)
+      }, options as UseLocationOptions)
     })
       .then((res) => {
         isError.value = false
