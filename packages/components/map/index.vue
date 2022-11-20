@@ -32,7 +32,7 @@
   import bindEvents, { Callback } from '../../utils/bindEvents'
   import getScriptAsync from '../../utils/getScriptAsync'
   import { initPlugins, PluginsSourceLink, UserPlugins } from '../../utils/pluginLoader'
-  import { isString, callWhenDifferentValue } from '../../utils'
+  import { error, isString, callWhenDifferentValue } from '../../utils'
   export interface DisplayOptions {
     /**
      * 是否显示地图上的地点标识
@@ -306,7 +306,7 @@
     props.pluginsSourceLink && proxy!.$baiduMapPluginsSourceLink
       ? Object.assign(proxy!.$baiduMapPluginsSourceLink, props.pluginsSourceLink)
       : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
-  if (!ak) console.warn('missing required props: ak')
+  if (!ak) error('missing required props: ak')
 
   const scriptKey = `_initBMap${ak}`
   // 初始化地图
@@ -340,14 +340,12 @@
                 vueEmits('pluginReady', map)
               })
               .catch((err) => {
-                console.warn('plugins load error', err)
+                error('plugins load error: ' + err)
               })
           }
         }
       })
-      .catch((err: any) => {
-        console.warn(err)
-      })
+      .catch(error)
   }
 
   // 个性化地图
