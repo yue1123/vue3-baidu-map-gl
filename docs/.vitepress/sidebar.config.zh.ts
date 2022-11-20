@@ -159,6 +159,14 @@ const sidebarConfig = {
           link: '/zh/hooks/useBrowserLocation'
         },
         {
+          text: 'usePointGeocoder 坐标点解析',
+          link: '/zh/hooks/usePointGeocoder'
+        },
+        {
+          text: 'useAddressGeocoder 地址解析',
+          link: '/zh/hooks/useAddressGeocoder'
+        },
+        {
           text: 'useAreaBoundary 区域边界',
           link: '/zh/hooks/useAreaBoundary'
         },

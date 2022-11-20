@@ -1,16 +1,19 @@
-# useAreaBoundary
+# usePoint
 
 通过该 hooks 可获取一个地图实例点(BMapGL.Point)。
 
-:::tip
-该 hooks 依赖于 `BMapGL` ，所以需要再 `Map` 组件初始化完毕调用 `set` 方法后数据才可用
-:::
-
+```ts
+import { usePoint } from 'vue3-baidu-map-gl'
+```
 ## 用法
 
 ```ts
 const { point, set } = usePoint()
 ```
+
+:::tip
+该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `set` 方法后数据才可用
+:::
 
 ### 参数
 
@@ -20,7 +23,7 @@ const { point, set } = usePoint()
 
 | 引用  | 描述                                                          | 类型                                     |
 | ----- | ------------------------------------------------------------- | ---------------------------------------- |
-| point | BMapGL.Point 实例对象，默认为 `null`，调用 `set` 方法后才可用 | `BMapGL.Point`                           |
+| point | `BMapGL.Point` 实例对象，默认为 `null`，调用 `set` 方法后才可用 | `BMapGL.Point`                           |
 | set   | 设置实例点坐标方法，需要在`Map`组件`initd`事件触发后才可调用  | `({ lng: number; lat: number }) => void` |
 
 ## 代码示例

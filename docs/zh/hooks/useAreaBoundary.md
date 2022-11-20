@@ -2,26 +2,32 @@
 
 通过该 hooks 可获取行政区域的边界。
 
-:::tip
-该 hooks 依赖于 `BMapGL` ，所以需要再 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
-:::
+```ts
+import { useAreaBoundary } from 'vue3-baidu-map-gl'
+```
 
 ## 用法
 
 ```ts
-const { isLoading, boundaries, get } = useAreaBoundary()
+const { isLoading, boundaries, get } = useAreaBoundary(cal)
 ```
+
+:::tip
+该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
+:::
 
 ### 参数
 
-无
+| 参数 | 描述                         | 类型                         | 默认值 |
+| ---- | ---------------------------- | ---------------------------- | ------ |
+| cal  | 获取行政区域成功后的回调函数 | `(boundaries: string[]) => void` | -      |
 
 ### 引用
 
 | 引用       | 描述                                              | 类型                 |
 | ---------- | ------------------------------------------------- | -------------------- |
 | isLoading  | 是否加载中                                        | `boolean`            |
-| boundaries | 区域边界数据，默认为空数组，`get`方法调用后才可用 | `string[]`           |
+| boundaries | 区域边界数据，默认为空数组，`get`方法调用后才可用 | `Ref<string[]>`           |
 | get        | 获取指定区域边界方法                              | `({string}) => void` |
 
 ## 代码示例
@@ -34,25 +40,6 @@ const { isLoading, boundaries, get } = useAreaBoundary()
   import { useAreaBoundary } from 'vue3-baidu-map-gl'
 
   const { isLoading, boundaries, get } = useAreaBoundary()
-
-  function handleInitd() {
-    get('北京市')
-  }
-</script>
-```
-
-自定义回调
-
-<!-- prettier-ignore -->
-```html
-<Map @initd="handleInitd"></Map>
-
-<script setup lang="ts">
-  import { useAreaBoundary } from 'vue3-baidu-map-gl'
-
-  const { isLoading, boundaries, get } = useAreaBoundary(() => {
-    // do somethings
-  })
 
   function handleInitd() {
     get('北京市')

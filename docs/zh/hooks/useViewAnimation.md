@@ -2,6 +2,10 @@
 
 该 hooks 用于展示地图的 3D 动画，您可以自定义从地图上某一地点切换到另一地点的 3D 过渡动画效果。
 
+```ts
+import { useViewAnimation } from 'vue3-baidu-map-gl'
+```
+
 :::warning 注意
 
 - 由于在渲染动画时，数据资源是随着当前方位和坐标的改变而实时加载的，刚开始播放动画时画面可能会卡顿，属于正常现象；此外，为了减少加载数据资源的性能损耗，在播放动画时隐藏了地图上的 POI 点。
@@ -264,6 +268,9 @@
 const { setKeyFrames, start, cancel, stop, proceed, status } = useViewAnimation(map, options)
 ```
 
+:::tip
+该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `setKeyFrames` 方法后其他方法和数据才可用
+:::
 ### 参数
 
 | 参数    | 描述                   | 类型                                            | 默认值     |

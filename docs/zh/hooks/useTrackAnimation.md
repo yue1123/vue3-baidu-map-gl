@@ -2,9 +2,9 @@
 
 通过该 hooks 可实现轨迹动画, 在轨迹动态播放的同时，视角跟随移动.
 
-:::tip
-该 hooks 依赖于 `BMapGL` ，所以需要再 `Map` 组件初始化完毕调用 `setPath` 初始化路径后，方法和数据才可用
-:::
+```ts
+import { useTrackAnimation } from 'vue3-baidu-map-gl'
+```
 
 ::: warning 注意
 
@@ -172,6 +172,10 @@
 ```ts
 const { setPath, start, cancel, stop, proceed, status } = useTrackAnimation(map, options)
 ```
+
+:::tip
+该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `setPath` 初始化路径后，方法和数据才可用
+:::
 
 ### 参数
 

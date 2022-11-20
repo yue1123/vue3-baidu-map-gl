@@ -1,7 +1,7 @@
 import { ref, Ref } from 'vue'
 import { Point } from './usePoint'
 
-interface UseLocationOptions {
+interface UseBrowserLocationOptions {
   /**
    * 是否开启SDK辅助定位，仅当使用环境为移动web混合开发，且开启了定位sdk辅助定位功能后生效
    */
@@ -51,7 +51,10 @@ interface Location {
   }
 }
 
-export function useBrowserLocation(options?: UseLocationOptions | null, cal?: (location: Ref<Location>) => void) {
+export function useBrowserLocation(
+  options?: UseBrowserLocationOptions | null,
+  cal?: (location: Ref<Location>) => void
+) {
   options = options || {}
   const location = ref<Location>({} as Location)
   const isLoading = ref<boolean>(true)
@@ -75,7 +78,7 @@ export function useBrowserLocation(options?: UseLocationOptions | null, cal?: (l
         } else {
           reject()
         }
-      }, options as UseLocationOptions)
+      }, options as UseBrowserLocationOptions)
     })
       .then((res) => {
         isError.value = false

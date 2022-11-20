@@ -123,6 +123,7 @@ declare namespace BMapGL {
     addressComponents: AddressComponent
     surroundingPoi: LocalResultPoi[]
     business: string
+    surroundingPois: Array<BMapGL.LocalResultPoi>
   }
   interface BusListResult {
     keyword: string
