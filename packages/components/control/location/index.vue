@@ -4,6 +4,7 @@
   import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
+  import bindEvents, { Callback } from '../../../utils/bindEvents'
   export interface BmLocationOptions {
     /**
      * 控件的停靠位置
@@ -16,6 +17,8 @@
       x: number
       y: number
     }
+    onLocationError?: Callback
+    onLocationSuccess?: Callback
   }
   const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<BmLocationOptions>(), {
@@ -23,7 +26,7 @@
     offset: () => ({ x: 18, y: 18 })
   })
   let locationControl: BMapGL.LocationControl
-  defineEmits(['initd', 'unload'])
+  const vueEmits = defineEmits(['initd', 'unload', 'locationSuccess', 'locationError'])
   useBaseMapEffect((map) => {
     locationControl = new BMapGL.LocationControl({
       offset: new BMapGL.Size(props.offset.x, props.offset.y),
@@ -31,6 +34,7 @@
     })
     map.addControl(locationControl)
     ready(map, locationControl)
+    bindEvents(props, vueEmits, locationControl)
     return () => map.removeControl(locationControl)
   })
 </script>

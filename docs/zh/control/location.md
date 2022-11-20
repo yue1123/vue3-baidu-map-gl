@@ -10,9 +10,15 @@ import { Location } from 'vue3-baidu-map-gl'
 
 <div>
   <Map>
-    <Location />
+    <Location @onLocationSuccess="handleSuccess" @onLocationError="handleSuccess"/>
   </Map>
 </div>
+
+<script setup>
+  function handleSuccess(e){
+    console.log(e)
+  }
+</script>
 
 ::: details 点击查看代码
 
@@ -47,7 +53,9 @@ import { Location } from 'vue3-baidu-map-gl'
 
 ## 组件事件
 
-| 事件名 | 说明                                       | 类型                        |
-| ------ | ------------------------------------------ | --------------------------- |
-| initd  | 组件初始化后，调用的方法，返回一个地图实例 | `{ map, BmapGL, instance }` |
-| unload | 组件卸载时会调用此方法                     | -                           |
+| 事件名          | 说明                                       | 类型                        |
+| --------------- | ------------------------------------------ | --------------------------- |
+| initd           | 组件初始化后，调用的方法，返回一个地图实例 | `{ map, BmapGL, instance }` |
+| unload          | 组件卸载时会调用此方法                     | -                           |
+| locationSuccess <Badge type="tip" text="^0.0.39" /> | 定位成功时会调用此方法                     | `{Event}`                   |
+| locationError <Badge type="tip" text="^0.0.39" />  | 定位失败时会调用此方法                     | `{Event}`                   |
