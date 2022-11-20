@@ -20,6 +20,8 @@ export * from './hooks/usePoint'
 export * from './hooks/useViewAnimation'
 export * from './hooks/useIpLocation'
 export * from './hooks/useBrowserLocation'
+export * from './hooks/useAddressGeocoder'
+export * from './hooks/usePointGeocoder'
 
 // components
 import Map from './components/map/index.vue'
