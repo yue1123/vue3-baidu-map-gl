@@ -160,6 +160,7 @@ import { usePointGeocoder } from 'vue3-baidu-map-gl'
 </div>
 
 :::details 点击查看代码
+
 <!-- prettier-ignore -->
 ```html
 <div>
@@ -232,6 +233,7 @@ import { usePointGeocoder } from 'vue3-baidu-map-gl'
   }
 </style>
 ```
+
 :::
 
 ## 用法
@@ -248,7 +250,7 @@ const { get, result, isLoading, isEmpty } = usePointGeocoder(options, cal)
 
 | 参数    | 描述                 | 类型                                                                          | 默认值 |
 | ------- | -------------------- | ----------------------------------------------------------------------------- | ------ |
-| options | 解析配置             | [`UsePointGeocoderOptions`](#usepointgeocoderoptions)                        | -      |
+| options | 解析配置             | [`UsePointGeocoderOptions`](#usepointgeocoderoptions)                         | -      |
 | cal     | 定位成功后的回调函数 | `(result: Ref<PointGeocoderResult \| PointGeocoderResult[] \| null>) => void` | -      |
 
 ### UsePointGeocoderOptions
@@ -319,44 +321,47 @@ type Point = { lng: number; lat: number }
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue';
-import { Point } from './usePoint';
+import { Ref } from 'vue'
+import { Point } from './usePoint'
 interface PointGeocoderResult {
-    /**
-     * 坐标点
-     */
-    point: Point;
-    /**
-     * 地址描述
-     */
-    address: string;
-    /**
-     * 结构化的地址描述
-     */
-    addressComponents: {
-        city: string;
-        district: string;
-        province: string;
-        street: string;
-        streetNumber: string;
-    };
-    /**
-     * 附近的POI点
-     */
-    surroundingPois: Array<BMapGL.LocalResultPoi>;
-    /**
-     * 商圈字段，代表此点所属的商圈
-     */
-    business: string;
+  /**
+   * 坐标点
+   */
+  point: Point
+  /**
+   * 地址描述
+   */
+  address: string
+  /**
+   * 结构化的地址描述
+   */
+  addressComponents: {
+    city: string
+    district: string
+    province: string
+    street: string
+    streetNumber: string
+  }
+  /**
+   * 附近的POI点
+   */
+  surroundingPois: Array<BMapGL.LocalResultPoi>
+  /**
+   * 商圈字段，代表此点所属的商圈
+   */
+  business: string
 }
-declare type Result = PointGeocoderResult | PointGeocoderResult[] | null;
+declare type Result = PointGeocoderResult | PointGeocoderResult[] | null
 /**
  * 由地址解析坐标点
  */
-export declare function usePointGeocoder(options: BMapGL.LocationOptions | null | undefined, cal: (point: Ref<Result>) => void): {
-    get: (point: Point | Point[]) => void;
-    result: Ref<Result | undefined>;
-    isLoading: Ref<boolean>;
-    isEmpty: Ref<boolean>;
-};
+export declare function usePointGeocoder(
+  options: BMapGL.LocationOptions | null | undefined,
+  cal: (point: Ref<Result>) => void
+): {
+  get: (point: Point | Point[]) => void
+  result: Ref<Result | undefined>
+  isLoading: Ref<boolean>
+  isEmpty: Ref<boolean>
+}
 ```

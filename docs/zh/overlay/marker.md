@@ -7,7 +7,9 @@ import { Marker } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例
+
 拖动图片试试
+
 <div>
 <Map
   :minZoom="3"
@@ -47,7 +49,6 @@ import { Marker } from 'vue3-baidu-map-gl'
 		/>
 </Map>
 </div>
-
 
 ::: details 点击查看代码
 

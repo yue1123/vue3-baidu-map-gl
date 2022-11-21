@@ -289,7 +289,7 @@ const { get, point, isLoading, isEmpty } = useAddressGeocoder(cal)
 | 引用      | 描述                                                                                                                                                 | 类型                                                  |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | isLoading | 是否在获取中                                                                                                                                         | `boolean`                                             |
-| isEmpty   | 是否有解析结果。批量解析时，所有地址都未解析到正确坐标点，该值才为`false`                                                                                 | `boolean`                                             |
+| isEmpty   | 是否有解析结果。批量解析时，所有地址都未解析到正确坐标点，该值才为`false`                                                                            | `boolean`                                             |
 | point     | 地址解析出来的坐标点。批量解析地址时，point 为数组。                                                                                                 | `Ref<Point \| Point[] \| null \| undefined>`          |
 | get       | 获取地址到坐标点方法，需要在`Map`组件`initd`事件触发后才可调用；参数 `address`表示要解析的地址，可以传数组一次解析多个地址；`city`表示地址所属的城市 | `(address: string \| string[], city: string) => void` |
 
@@ -302,15 +302,15 @@ type Point = { lng: number; lat: number }
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue';
-import { Point } from './usePoint';
+import { Ref } from 'vue'
+import { Point } from './usePoint'
 /**
  * 由地址解析坐标点
  */
 export declare function useAddressGeocoder(cal: (point: Ref<Point | Point[]>) => void): {
-    get: (address: string | string[], city: string) => void;
-    point: Ref<Point | Point[] | null | undefined>;
-    isLoading: Ref<boolean>;
-    isEmpty: Ref<boolean>;
-};
+  get: (address: string | string[], city: string) => void
+  point: Ref<Point | Point[] | null | undefined>
+  isLoading: Ref<boolean>
+  isEmpty: Ref<boolean>
+}
 ```

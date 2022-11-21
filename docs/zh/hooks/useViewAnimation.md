@@ -271,6 +271,7 @@ const { setKeyFrames, start, cancel, stop, proceed, status } = useViewAnimation(
 :::tip
 该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `setKeyFrames` 方法后其他方法和数据才可用
 :::
+
 ### 参数
 
 | 参数    | 描述                   | 类型                                            | 默认值     |

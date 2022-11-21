@@ -112,23 +112,22 @@ const { get, location, isLoading } = useIpLocation(cal)
 | location  | 定位信息                                               | `{ point: Point code: number name: string }` |
 | get       | 获取定位方法，需要在`Map`组件`initd`事件触发后才可调用 | `() => void`                                 |
 
-
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue';
-import { Point } from './usePoint';
+import { Ref } from 'vue'
+import { Point } from './usePoint'
 interface Location {
-    point: Point;
-    code: number;
-    name: string;
+  point: Point
+  code: number
+  name: string
 }
 /**
  * ip定位
  */
 export declare function useIpLocation(cal?: (location: Ref<Location>) => void): {
-    location: Ref<Location>;
-    isLoading: Ref<boolean>;
-    get: () => void;
-};
+  location: Ref<Location>
+  isLoading: Ref<boolean>
+  get: () => void
+}
 ```
