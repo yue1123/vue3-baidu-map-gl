@@ -1,4 +1,4 @@
-# 信息窗口
+# InfoWindow 信息窗口
 
 使用 slot 模式渲染子节点向地图添加信息窗口，以及与地图相关的一些交互。
 
@@ -97,28 +97,32 @@ import { InfoWindow } from 'vue3-baidu-map-gl'
 
 :::details 点击查看代码
 
+
 <!-- prettier-ignore -->
 ```html
 <div>
   <label>
-    显示infoWindow1:
     <input type="checkbox" v-model="show" />
+    文字内容infoWindow
   </label>
   <br />
   <label>
-    显示infoWindow2:
     <input type="checkbox" v-model="show1" />
+    动态内容infoWindow
   </label>
   <br />
   <label>
-    显示infoWindow2:
     <input type="checkbox" v-model="show2" />
+    图文组合排版infoWindow
   </label>
   <br />
   <br />
   <Map enableScrollWheelZoom>
-    <InfoWindow v-model="show" :position="{ lng: 116.404, lat: 39.925 }" title="文字内容">
+    <InfoWindow v-model="show" enableMaximize :position="{ lng: 116.404, lat: 39.925 }" title="文字内容">
       地址：北京市东城区王府井大街88号乐天银泰百货八层
+      <template #maxContent>
+        <h1>最大化内容</h1>
+      </template>
     </InfoWindow>
     <InfoWindow v-model="show1" :position="{ lng: 116.404, lat: 39.925 }" title="动态内容">
       <h2>{{count}}</h2>
@@ -139,12 +143,24 @@ import { InfoWindow } from 'vue3-baidu-map-gl'
   const show1 = ref<boolean>(false)
   const show2 = ref<boolean>(false)
   const count = ref<number>(1)
-  setInterval(() => {
-    count.value += 1
-  }, 1000)
+  if (typeof window !== 'undefined') {
+    setInterval(() => {
+      count.value += 1
+    }, 1000)
+  }
 </script>
 
 <style>
+  .baidu-map-container img {
+    max-width: none;
+  }
+  .baidu-map-container h2 {
+    margin: 0;
+    border-top: none;
+    padding-top: 0;
+    letter-spacing: initial;
+    line-height: initial;
+  }
   .infoWindow-content {
     display: flex;
     justify-content: space-between;

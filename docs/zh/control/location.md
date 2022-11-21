@@ -1,6 +1,6 @@
-# Zoom 缩放控件
+# Location 定位控件
 
-缩放控件，默认位于地图右下角
+定位控件，默认位于地图右下角
 
 ```ts
 import { Location } from 'vue3-baidu-map-gl'

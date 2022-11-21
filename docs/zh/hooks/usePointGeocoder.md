@@ -1,4 +1,4 @@
-# usePointGeocoder
+# usePointGeocoder <Badge type="tip" text="^0.0.39" />
 
 通过坐标点解析地址
 

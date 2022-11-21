@@ -13,18 +13,6 @@ import { Label } from 'vue3-baidu-map-gl'
 <Map
   :minZoom="3"
 >
-  <Marker
-  :zIndex="900"
-			:position="{ lat: 39.915185, lng: 116.400901 }"
-			:icon="{
-        imageUrl: 'https://cdn.jsdelivr.net/gh/yue1123/vue3-baidu-map-gl@0.0.21/docs/public/logo.png',
-        imageSize: {
-          width: 100,
-          height: 100
-        },
-      }"
-			enableDragging
-		/>
   <Label
     :content="content"
     :zIndex="-1"
@@ -86,7 +74,7 @@ import { Label } from 'vue3-baidu-map-gl'
 | style           | 设置文本标注的样式                        | `css style object `            | -          |
 | position        | 文本标注的坐标                            | `{ lng: number, lat: number} ` | `required` |
 
-::: tip
+::: tip 提示
 style 可以是任何符合规范的 css 样式，样式属性需使用驼峰命名法
 :::
 

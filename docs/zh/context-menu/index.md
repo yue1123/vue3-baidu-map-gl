@@ -1,4 +1,4 @@
-# 上下文菜单 <Badge type="tip" text="^0.0.29" />
+# ContextMenu 上下文菜单 <Badge type="tip" text="^0.0.29" />
 
 在地图上添加自定义内容的右键菜单
 

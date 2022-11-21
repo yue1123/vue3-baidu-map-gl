@@ -1,4 +1,4 @@
-# 地面叠加层 <Badge type="tip" text="^0.0.32" />
+# GroundOverlay 地面叠加层 <Badge type="tip" text="^0.0.32" />
 
 在地图底面上叠加覆盖物，覆盖物可以是图片、自定义 Canvas、视频。
 
