@@ -1,6 +1,6 @@
 import { Ref, ref } from 'vue'
 import { Point } from './usePoint'
-import { error } from '../utils'
+import { error, isArray } from '../utils'
 
 interface PointGeocoderResult {
   /**
@@ -31,35 +31,49 @@ interface PointGeocoderResult {
   business: string
 }
 
+type Result = PointGeocoderResult | PointGeocoderResult[] | null
 /**
  * 由地址解析坐标点
  */
-export function usePointGeocoder(cal: (point: Ref<PointGeocoderResult>) => void) {
-  const result = ref<PointGeocoderResult>()
+export function usePointGeocoder(options: BMapGL.LocationOptions | null = {}, cal: (point: Ref<Result>) => void) {
+  options = options || {}
+  const result = ref<Result>()
   const isLoading = ref<boolean>(true)
   const isEmpty = ref<boolean>(true)
   let geocoder: BMapGL.Geocoder
-  const init = (point: Point, options?: BMapGL.LocationOptions | null) => {
+  const init = (point: Point | Point[]) => {
     if (!point) return error('missed required params: point')
-    options = options || {}
-    new Promise<PointGeocoderResult>((resolve, reject) => {
-      isLoading.value = true
-      if (!geocoder) {
-        geocoder = new BMapGL.Geocoder()
+    if (!geocoder) {
+      geocoder = new BMapGL.Geocoder()
+    }
+    const isBatch = isArray(point)
+    isLoading.value = true
+    ;(() => {
+      if (isBatch) {
+        return Promise.all(
+          (point as Point[]).map((item) => getAddress(geocoder, item, options as BMapGL.LocationOptions | null))
+        )
       }
-      geocoder.getLocation(
-        new BMapGL.Point(point.lng, point.lat),
-        (res: PointGeocoderResult) => {
-          if (res) resolve(res)
-          else reject()
-        },
-        options as BMapGL.LocationOptions
-      )
-    })
+      return getAddress(geocoder, point as Point, options as BMapGL.LocationOptions | null)
+    })()
       .then((res) => {
-        result.value = res
-        isEmpty.value = false
-        cal && cal(result as Ref<PointGeocoderResult>)
+        if (res) {
+          if (isBatch) {
+            let emptyCount = 0
+            result.value = (res as any[]).map((item) => {
+              emptyCount += +!item
+              return item
+            })
+            isEmpty.value = emptyCount === (res as any[]).length
+          } else {
+            result.value = res as PointGeocoderResult
+            isEmpty.value = false
+          }
+        } else {
+          result.value = res
+          isEmpty.value = true
+        }
+        cal && cal(result as Ref<Result>)
       })
       .catch(() => {
         isEmpty.value = true
@@ -75,4 +89,17 @@ export function usePointGeocoder(cal: (point: Ref<PointGeocoderResult>) => void)
     isLoading,
     isEmpty
   }
+}
+
+function getAddress(geocoder: BMapGL.Geocoder, point: Point, options: BMapGL.LocationOptions | null) {
+  return new Promise<PointGeocoderResult | null>((resolve) => {
+    geocoder.getLocation(
+      new BMapGL.Point(point.lng, point.lat),
+      (res: PointGeocoderResult) => {
+        if (res) resolve(res)
+        else resolve(null)
+      },
+      options as BMapGL.LocationOptions
+    )
+  })
 }
