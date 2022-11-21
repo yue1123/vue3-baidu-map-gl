@@ -10,6 +10,7 @@ hero:
   image:
     src: /logo.png
     alt: Vue3 BaiduMap GL
+    id: J_index_logo
   actions:
     - theme: brand
       text: 开始使用
@@ -26,7 +27,7 @@ features:
   - icon: 📦
     title: 完整
     details: 20+ 高质量的开箱即用 Vue 3 组件以及 5+ hooks 封装
-  
+
   - icon: 📐
     title: 易用
     details: 遵循直觉的、简约的 Api 设计
@@ -43,3 +44,25 @@ features:
     title: WebGl
     details: 基于百度地图Gl版SDK，WebGL对地图、覆盖物等进行渲染，支持3D视角展示地图
 ---
+
+<script>
+  window.onload = function () {
+    const element = document.getElementById('J_index_logo')
+    const div = document.createElement('div')
+    const _element = element.cloneNode(true)
+    const parent = element.parentNode
+    div.classList.add('image-src')
+    div.classList.add('index_logo-container')
+    div.appendChild(_element)
+    _element.classList.remove('image-src')
+    element.remove()
+    parent.append(div)
+    VanillaTilt.init(_element, { reverse: true, transition: true })
+  }
+</script>
+
+<style>
+  .index_logo-container{
+    width: 320px;
+  }
+</style>

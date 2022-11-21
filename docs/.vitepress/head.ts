@@ -10,7 +10,8 @@ const heads: HeadConfig[] = [
     }
   ],
   ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
-  ['meta', { name: 'theme-color', content: '#3eaf7c' }]
+  ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+  ['script', { src: '/vue3-baidu-map-gl/lib/tilt.min.js' }]
 ]
 
 if (process.env.NODE_ENV === 'production') {

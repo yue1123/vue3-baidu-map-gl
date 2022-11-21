@@ -10,7 +10,7 @@
 ## :sparkles: 特性
 
 - 🚀 自动加载百度地图 SDK，将百度地图繁琐的 Api 封装进组件，你只需关注组件本身
-- 📦 20+ 高质量的开箱即用 Vue 3 组件以及 5+ hooks 封装
+- 📦 20+ 高质量的开箱即用 Vue 3 组件以及 7+ hooks 封装
 - 📐 遵循直觉的、简约的 Api 设计
 - ⚡ Composition Api，更好的性能
 - 🔨 完整的 TypeScript 支持，更好的体验
@@ -45,3 +45,7 @@ pnpm add vue3-baidu-map-gl
 > [官方密钥 ak 申请指引](https://lbs.baidu.com/index.php?title=jspopularGL/guide/getkey)
 
 > [申请开发者密钥 ak](https://lbsyun.baidu.com/apiconsole/key?application=key)
+
+## License
+
+[MIT licenses](https://opensource.org/licenses/MIT)
