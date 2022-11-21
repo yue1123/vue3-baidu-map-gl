@@ -1,6 +1,4 @@
-<template>
-  <slot></slot>
-</template>
+<template></template>
 
 <script setup lang="ts">
   import { defineProps, provide, watch, withDefaults } from 'vue'
@@ -167,6 +165,7 @@
       marker && map.removeOverlay(marker)
     }
     const init = () => {
+      if (!props.position) return
       const {
         position,
         offset,
@@ -198,12 +197,18 @@
       // 在地图上添加点标记
       map.addOverlay(marker)
       bindEvents(props, vueEmits, marker)
+      ready(map, marker)
     }
 
     init()
-    ready(map, marker)
     // 监听值变化
-    watch(() => props.position, callWhenDifferentValue(setPosition), { deep: true })
+    watch(
+      () => props.position,
+      callWhenDifferentValue((n) => {
+        marker ? setPosition(n) : init()
+      }),
+      { deep: true }
+    )
     watch(() => props.icon, callWhenDifferentValue(setIcon), { deep: true })
     watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
     watch(() => props.enableDragging, setDragging)
@@ -243,7 +248,7 @@
     marker.setZIndex(zIndex)
   }
   function setPosition(position: MarkerPosition) {
-    marker.setPosition(new BMapGL.Point(position.lng, position.lat))
+    position && position.lat && position.lng && marker.setPosition(new BMapGL.Point(position.lng, position.lat))
   }
   function setIcon() {
     marker.setIcon(getIconConfig())

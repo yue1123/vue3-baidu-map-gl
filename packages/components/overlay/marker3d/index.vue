@@ -5,7 +5,7 @@
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { callWhenDifferentValue } from '../../../utils'
+  import { callWhenDifferentValue, error } from '../../../utils'
   export interface Marker3dPosition {
     /**
      * 地理经度
@@ -104,6 +104,7 @@
       map.removeOverlay(marker3d)
     }
     const init = () => {
+      if (!props.position || !props.height) return
       const { position, shape, fillColor, fillOpacity, size, icon, height, enableMassClear } = props
       const options: BMapGL.Marker3DOptions = {
         size,
@@ -119,17 +120,27 @@
       map.addOverlay(marker3d)
       setMassClear(enableMassClear)
       bindEvents(props, vueEmits, marker3d)
+      ready(map, marker3d)
     }
 
     init()
-    ready(map, marker3d)
     // 监听值变化
+    watch(
+      () => props.position,
+      callWhenDifferentValue((n) => {
+        marker3d ? setPosition(n) : init()
+      }),
+      { deep: true }
+    )
+    watch(
+      () => props.height,
+      (n) => {
+        marker3d ? setHeight(n) : init()
+      }
+    )
     watch(() => props.enableMassClear, setMassClear)
-    watch(() => props.position, callWhenDifferentValue(setPosition), { deep: true })
     watch(() => props.icon, callWhenDifferentValue(setIcon), { deep: true })
     watch(() => props.enableMassClear, setMassClear)
-
-    watch(() => props.height, setHeight)
     watch(() => props.fillOpacity, setFillOpacity)
     watch(() => props.fillColor, setFillColor)
     return cal
