@@ -3,6 +3,7 @@
 <div style="display:flex;justify-content:flex-start;margin-top:15px;">
 <img src="https://img.shields.io/github/license/yue1123/img-previewer?style=flat-square" alt="GitHub license" >
 <img src="https://img.shields.io/github/package-json/v/yue1123/vue3-baidu-map-gl?color=f90&style=flat-square" alt="" style="margin-left:10px">
+<img alt="npm" src="https://img.shields.io/npm/dw/vue3-baidu-map-gl?label=npm%20downloads&style=flat-square" style="margin-left:10px">
 </div>
 
 基于百度地图 JavaScript GL 版（使用了 WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图） API 封装设计的 Vue3 组件库，开发体验良好，代码优雅。
