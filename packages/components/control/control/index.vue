@@ -1,13 +1,13 @@
 <template>
   <div style="display: none">
-    <div ref="controlContainer" v-bind="attrs">
+    <div ref="controlContainer" v-bind="$attrs">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, defineProps, withDefaults, onMounted, useAttrs } from 'vue'
+  import { ref, defineProps, withDefaults, onMounted } from 'vue'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   export interface baseBmControlOptions {
@@ -25,7 +25,6 @@
   }
   const controlContainer = ref<HTMLDivElement>()
   const { ready } = useLifeCycle()
-  const attrs = useAttrs()
   const props = withDefaults(defineProps<baseBmControlOptions>(), {
     anchor: 'BMAP_ANCHOR_TOP_LEFT',
     offset: () => ({ x: 83, y: 18 })

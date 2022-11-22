@@ -1,13 +1,13 @@
 <template>
   <div style="display: none">
-    <div ref="infoWindowContainer" v-bind="attrs">
+    <div ref="infoWindowContainer" v-bind="$attrs">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, withDefaults, onUpdated, nextTick, computed, provide, useAttrs } from 'vue'
+  import { ref, watch, withDefaults, onUpdated, nextTick, computed, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
@@ -86,7 +86,6 @@
   const { ready } = useLifeCycle()
   let infoWindow: BMapGL.InfoWindow
   let _map: BMapGL.Map
-  const attrs = useAttrs()
   useBaseMapEffect((map: BMapGL.Map) => {
     _map = map
     const cal = () => {
