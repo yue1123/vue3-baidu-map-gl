@@ -1,11 +1,13 @@
 <template>
-  <div ref="copyrightContainer" style="display: none">
-    <slot></slot>
+  <div style="display: none">
+    <div ref="copyrightContainer" v-bind="attrs">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults, defineEmits, onMounted, ref, getCurrentInstance, onUpdated } from 'vue'
+  import { defineProps, withDefaults, defineEmits, onMounted, ref, getCurrentInstance, onUpdated, useAttrs } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import copyrightControlPosCacheMap from './copyrightControlPosCacheMap'
@@ -30,7 +32,7 @@
   const copyrightContainer = ref<HTMLDivElement>()
   let copyrightControl: BMapGL.CopyrightControl
   const uid = getCurrentInstance()?.uid
-
+  const attrs = useAttrs()
   defineEmits(['initd', 'unload'])
   onMounted(() => {
     const { anchor, offset } = props
@@ -80,6 +82,7 @@
 </script>
 <script lang="ts">
   export default {
-    name: 'BCopyright'
+    name: 'BCopyright',
+    inheritAttrs: false
   }
 </script>
