@@ -48,6 +48,7 @@
 </script>
 <script lang="ts">
   export default {
-    name: 'BControl'
+    name: 'BControl',
+    inheritAttrs: false
   }
 </script>
