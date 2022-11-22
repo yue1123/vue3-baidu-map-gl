@@ -11,6 +11,7 @@ const heads: HeadConfig[] = [
   ],
   ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
   ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+  ['meta', { name: 'keywords', content: 'vue3,vue,baidu map,baidu map gl,vue3-baidu-map-gl,vue3-bmap-gl' }]
 ]
 
 if (process.env.NODE_ENV === 'production') {
