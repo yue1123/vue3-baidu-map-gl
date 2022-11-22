@@ -167,6 +167,10 @@ const sidebarConfig = {
           link: '/zh/hooks/useAddressGeocoder'
         },
         {
+          text: 'usePointConvertor 坐标转换',
+          link: '/zh/hooks/usePointConvertor'
+        },
+        {
           text: 'useAreaBoundary 区域边界',
           link: '/zh/hooks/useAreaBoundary'
         },

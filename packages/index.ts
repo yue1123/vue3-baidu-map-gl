@@ -22,6 +22,7 @@ export * from './hooks/useIpLocation'
 export * from './hooks/useBrowserLocation'
 export * from './hooks/useAddressGeocoder'
 export * from './hooks/usePointGeocoder'
+export * from './hooks/usePointConvertor'
 
 // components
 import Map from './components/map/index.vue'
