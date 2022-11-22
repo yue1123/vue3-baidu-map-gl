@@ -35,7 +35,7 @@ import { Prism } from 'vue3-baidu-map-gl'
 
 <script setup lang="ts">
   import { ref, watch } from 'vue'
-  import { useAreaBoundary } from '../../../packages/index.ts'
+  import { useAreaBoundary } from 'vue3-baidu-map-gl'
   const topFillOpacity = ref<number>(0.5)
   const area = ref<string>('北京市')
   const { isLoading, boundaries: point, get } = useAreaBoundary()  

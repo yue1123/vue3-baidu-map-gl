@@ -1,6 +1,23 @@
 :root {
   --vp-layout-max-width: 1620px;
+  /* --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, ##fff 30%, #fff);
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #fff 50%, #fff 50%);
+  --vp-home-hero-image-filter: blur(40px); */
 }
+
+/* .image-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  width: 192px;
+  height: 192px;
+  background-image: var(--vp-home-hero-image-background-image);
+  filter: var(--vp-home-hero-image-filter);
+  transform: translate(-50%, -50%);
+} */
+
 .dark [img-light] {
   display: none;
 }
@@ -22,7 +39,7 @@ img.resizable-img {
   height: unset;
 }
 
-.vp-doc td{
+.vp-doc td {
   font-size: 14px !important;
 }
 

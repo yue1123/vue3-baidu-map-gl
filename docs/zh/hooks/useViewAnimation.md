@@ -38,7 +38,7 @@ import { useViewAnimation } from 'vue3-baidu-map-gl'
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { useViewAnimation } from '../../../packages/hooks/useViewAnimation'
+  import { useViewAnimation } from 'vue3-baidu-map-gl'
   const map = ref(null)
   const { 
     viewAnimation,

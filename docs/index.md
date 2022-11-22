@@ -11,6 +11,7 @@ hero:
     src: /logo.png
     alt: Vue3 BaiduMap GL
     id: J_index_logo
+    width: 240
   actions:
     - theme: brand
       text: 开始使用
@@ -46,6 +47,7 @@ features:
 ---
 
 <script>
+  import VanillaTilt from 'vanilla-tilt';
   if(typeof window !== 'undefined'){
     window.onload = function () {
       const element = document.getElementById('J_index_logo')

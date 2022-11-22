@@ -1,6 +1,6 @@
 import { watch } from 'vue'
 import defaultTheme from 'vitepress/theme'
-import baiduMapInit from '../../../packages/index'
+import baiduMapInit from 'vue3-baidu-map-gl'
 import '../styles/main.css'
 
 export default {

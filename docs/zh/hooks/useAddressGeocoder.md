@@ -33,7 +33,7 @@ import { useAddressGeocoder } from 'vue3-baidu-map-gl'
 
 <script lang="ts" setup>
   import { ref, watch } from 'vue'
-  import { useAddressGeocoder } from '../../../packages'
+  import { useAddressGeocoder } from 'vue3-baidu-map-gl'
   const map = ref()
   const addressList = ref([
     {

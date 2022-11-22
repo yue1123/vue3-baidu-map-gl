@@ -46,6 +46,7 @@ features:
 ---
 
 <script>
+  import VanillaTilt from 'vanilla-tilt';
   if(typeof window !== 'undefined'){
     window.onload = function () {
       const element = document.getElementById('J_index_logo')

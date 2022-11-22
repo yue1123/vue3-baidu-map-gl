@@ -43,7 +43,7 @@ import { useBrowserLocation } from 'vue3-baidu-map-gl'
 
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import { useBrowserLocation } from '../../../packages'
+  import { useBrowserLocation } from 'vue3-baidu-map-gl'
   const map = ref()
   const { get, location, isLoading, isError, status } = useBrowserLocation(null, () => {
     map.value.resetCenter()

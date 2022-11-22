@@ -25,7 +25,7 @@ import { usePointGeocoder } from 'vue3-baidu-map-gl'
 
 <script lang="ts" setup>
   import { ref, watch } from 'vue'
-  import { usePointGeocoder } from '../../../packages'
+  import { usePointGeocoder } from 'vue3-baidu-map-gl'
   const map = ref()
   const { get, result, isLoading, isEmpty } = usePointGeocoder()
   const point = { lng: 116.30793520652882, lat: 40.05861561613348 }

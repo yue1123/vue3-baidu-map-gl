@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "vitepress dev .",
+    "build": "prettier -w ./zh/* && vitepress build .",
+    "fix-dot": "fixdot docs/zh/base/* docs/zh/control/* docs/zh/guide/* docs/zh/overlay/* docs/index.md -d -p",
+    "format": "prettier -w types/* docs/zh/* packages/*"
+  },
+  "devDependencies": {
+    "vanilla-tilt": "^1.7.3",
+    "vue3-baidu-map-gl": "workspace:*"
+  },
+  "dependencies": {
+    "vitepress": "1.0.0-alpha.27"
+  }
+}

@@ -38,7 +38,7 @@ import { useTrackAnimation } from 'vue3-baidu-map-gl'
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { useTrackAnimation } from '../../../packages/hooks/useTrackAnimation'
+  import { useTrackAnimation } from 'vue3-baidu-map-gl'
   const map = ref(null)
   const { 
     setPath,
