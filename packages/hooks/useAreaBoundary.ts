@@ -1,4 +1,4 @@
-import { Ref, ref, onUnmounted } from 'vue'
+import {  Ref, ref, onUnmounted  } from 'vue-demi'
 // 获取地图区域边界
 
 export type AreaBoundary = string[]

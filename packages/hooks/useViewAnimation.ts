@@ -1,4 +1,4 @@
-import { onUnmounted, ref, Ref, watch } from 'vue'
+import {  onUnmounted, ref, Ref, watch  } from 'vue-demi'
 import { Point } from './usePoint'
 
 export interface ViewAnimationKeyFrames {

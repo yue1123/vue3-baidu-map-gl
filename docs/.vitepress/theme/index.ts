@@ -1,4 +1,4 @@
-import { watch } from 'vue'
+import {  watch  } from 'vue-demi'
 import defaultTheme from 'vitepress/theme'
 import baiduMapInit from 'vue3-baidu-map-gl'
 import '../styles/main.css'
@@ -23,7 +23,7 @@ export default {
     }
 
     app.use(baiduMapInit, {
-      ak: 'cwHsf5i2fAQAlijOyELx5COtkFhItaSm'
+      ak: 'rxc8tkdjxtk5gQt4gtzdTuvp5NO4442t'
     })
   }
 }

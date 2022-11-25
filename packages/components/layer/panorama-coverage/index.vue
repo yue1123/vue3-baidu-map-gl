@@ -1,7 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineEmits } from 'vue'
+  import {  defineEmits  } from 'vue-demi'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   const { ready } = useLifeCycle()

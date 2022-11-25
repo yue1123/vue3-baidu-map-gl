@@ -115,7 +115,7 @@ import { Polygon } from 'vue3-baidu-map-gl'
 </div>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import {  ref, watch  } from 'vue-demi'
   import { Map, Control, Polygon, useAreaBoundary } from 'vue3-baidu-map-gl'
   const zoom = ref<number>(11)
   const area = ref<string>('顺义区')
@@ -144,7 +144,7 @@ import { Polygon } from 'vue3-baidu-map-gl'
 :::
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import {  ref, watch  } from 'vue-demi'
   import { useAreaBoundary } from 'vue3-baidu-map-gl'
   const zoom = ref<number>(11)
   const area = ref<string>('顺义区')

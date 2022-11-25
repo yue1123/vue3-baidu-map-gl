@@ -62,7 +62,7 @@ import { InfoWindow } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import {ref} from 'vue'
+  import { ref } from 'vue-demi'
   const show = ref<boolean>(true)
   const show1 = ref<boolean>(false)
   const show2 = ref<boolean>(false)
@@ -137,7 +137,7 @@ import { InfoWindow } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   const show = ref<boolean>(true)
   const show1 = ref<boolean>(false)
   const show2 = ref<boolean>(false)

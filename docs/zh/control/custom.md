@@ -22,7 +22,7 @@ import { Control } from 'vue3-baidu-map-gl'
 </div>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   const zoom = ref(10)
   let _map = null
   function handleInitd({map}){
@@ -59,7 +59,7 @@ button{
 </Map>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   const zoom = ref(10)
   let _map = null
   function handleInitd({map}) {

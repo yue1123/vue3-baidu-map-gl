@@ -1,7 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults, watch, defineEmits } from 'vue'
+  import {  defineProps, withDefaults, watch, defineEmits  } from 'vue-demi'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   export interface BmScaleOptions {

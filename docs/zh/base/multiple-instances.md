@@ -3,7 +3,7 @@
 在一个页面，显示多个地图
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   const mapSetting = ref({
     type: 'BMAP_NORMAL_MAP',
     enableDragging: true,
@@ -224,7 +224,7 @@
 </div>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { Map } from 'vue3-baidu-map-gl'
 
   const mapSetting = ref({

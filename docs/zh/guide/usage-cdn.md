@@ -44,7 +44,7 @@
         }
       }
       const app = Vue.createApp(App)
-      app.use(Vue3baiduMapGl, { ak: 'cwHsf5i2fAQAlijOyELx5COtkFhItaSm' })
+      app.use(Vue3baiduMapGl, { ak: 'rxc8tkdjxtk5gQt4gtzdTuvp5NO4442t' })
       app.mount('#app')
     </script>
   </body>

@@ -10,7 +10,7 @@ export default defineConfig({
     '基于百度地图 JavaScript GL 版（使用了 WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图） API 封装设计的 Vue3 组件/hooks 库，开箱即用。',
   titleTemplate: 'Vue3 BaiduMap GL',
   lastUpdated: true,
-  base: '/vue3-baidu-map-gl/',
+  base: '/',
   cleanUrls: 'without-subfolders',
   head: heads,
   themeConfig: {

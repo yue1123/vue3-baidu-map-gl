@@ -1,4 +1,4 @@
-import { onUnmounted, inject, getCurrentInstance } from 'vue'
+import {  onUnmounted, inject, getCurrentInstance  } from 'vue-demi'
 import useBaseMapListener from './useBaseMapListener'
 function useBaseMapEffect(cal: (map: BMapGL.Map) => void | VoidFunction) {
   const { on, off } = useBaseMapListener()

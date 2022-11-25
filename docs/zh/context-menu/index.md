@@ -18,7 +18,7 @@ import { ContextMenu } from 'vue3-baidu-map-gl'
 </Map>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   const center = ref('北京市')
   const list = ref([
     {
@@ -54,7 +54,7 @@ import { ContextMenu } from 'vue3-baidu-map-gl'
 </map>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { ContextMenu } from 'vue3-baidu-map-gl'
   const center = ref('北京市')
   const list = ref([

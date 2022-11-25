@@ -1,4 +1,4 @@
-import { onUnmounted, getCurrentInstance } from 'vue'
+import {  onUnmounted, getCurrentInstance  } from 'vue-demi'
 import useBaseMapListener from './useBaseMapListener'
 
 export default function useLifeCycle() {

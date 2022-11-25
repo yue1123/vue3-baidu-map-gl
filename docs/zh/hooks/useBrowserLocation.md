@@ -42,7 +42,7 @@ import { useBrowserLocation } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { useBrowserLocation } from 'vue3-baidu-map-gl'
   const map = ref()
   const { get, location, isLoading, isError, status } = useBrowserLocation(null, () => {
@@ -96,7 +96,7 @@ import { useBrowserLocation } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { useBrowserLocation, Marker, Circle } from 'vue3-baidu-map-gl'
   const map = ref()
   const { get, location, isLoading, isError, status } = useBrowserLocation(null, () => {
@@ -184,7 +184,7 @@ const { get, location, isLoading, isError, status } = useBrowserLocation(options
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue'
+import {  Ref  } from 'vue-demi'
 import { Point } from './usePoint'
 interface UseBrowserLocationOptions {
   /**

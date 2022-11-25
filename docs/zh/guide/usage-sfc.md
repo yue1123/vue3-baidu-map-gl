@@ -28,7 +28,7 @@
 如果你想全局安装但是不想安装全部组件，请参考[按需引入](#按需引入-thumbsup-（推荐）)。
 
 ```ts
-import { createApp } from 'vue'
+import {  createApp  } from 'vue-demi'
 import baiduMap from 'vue3-baidu-map-gl'
 
 const app = createApp(App)

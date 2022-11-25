@@ -15,7 +15,7 @@ import { PanoramaControl } from 'vue3-baidu-map-gl'
 单独使用该组件不会显示全景地图覆盖情况，还需要搭配`PanoramaCoverageLayer`组件使用。
 
 <div>
-<Map enableScrollWheelZoom ak='oW2UEhdth2tRbEE4FUpF9E5YVDCIPYih'>
+<Map enableScrollWheelZoom ak='rxc8tkdjxtk5gQt4gtzdTuvp5NO4442t'>
   <PanoramaControl />
   <PanoramaCoverageLayer />
 </Map>

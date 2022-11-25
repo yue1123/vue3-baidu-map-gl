@@ -27,7 +27,7 @@ import { useIpLocation } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { useIpLocation } from 'vue3-baidu-map-gl'
   const map = ref()
   const { get, location, isLoading } = useIpLocation(() => {
@@ -68,7 +68,7 @@ import { useIpLocation } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { useIpLocation, Marker } from 'vue3-baidu-map-gl'
   const map = ref()
   const { get, location, isLoading } = useIpLocation(() => {
@@ -115,7 +115,7 @@ const { get, location, isLoading } = useIpLocation(cal)
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue'
+import {  Ref  } from 'vue-demi'
 import { Point } from './usePoint'
 interface Location {
   point: Point

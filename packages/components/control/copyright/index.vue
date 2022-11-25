@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults, defineEmits, onMounted, ref, getCurrentInstance, onUpdated } from 'vue'
+  import {  defineProps, withDefaults, defineEmits, onMounted, ref, getCurrentInstance, onUpdated  } from 'vue-demi'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import copyrightControlPosCacheMap from './copyrightControlPosCacheMap'

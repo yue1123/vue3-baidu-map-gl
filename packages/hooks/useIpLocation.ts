@@ -1,4 +1,4 @@
-import { ref, Ref } from 'vue'
+import {  ref, Ref  } from 'vue-demi'
 import { Point } from './usePoint'
 
 interface Location {

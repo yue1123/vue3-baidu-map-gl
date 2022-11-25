@@ -24,7 +24,7 @@ import { usePointGeocoder } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref, watch } from 'vue'
+  import {  ref, watch  } from 'vue-demi'
   import { usePointGeocoder } from 'vue3-baidu-map-gl'
   const map = ref()
   const { get, result, isLoading, isEmpty } = usePointGeocoder()
@@ -103,7 +103,7 @@ import { usePointGeocoder } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { Map, Marker, usePointGeocoder } from 'vue3-baidu-map-gl'
   const map = ref()
   const { get, result, isLoading, isEmpty } = usePointGeocoder()
@@ -189,7 +189,7 @@ import { usePointGeocoder } from 'vue3-baidu-map-gl'
   </Map>
 </div>
 <script lang="ts" setup>
-  import { ref, watch } from 'vue'
+  import {  ref, watch  } from 'vue-demi'
   import { Map, Control, Marker, Label, usePointGeocoder } from 'vue3-baidu-map-gl'
   const points = [
     { lng: 116.307852, lat: 40.057031 },
@@ -321,7 +321,7 @@ type Point = { lng: number; lat: number }
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue'
+import {  Ref  } from 'vue-demi'
 import { Point } from './usePoint'
 interface PointGeocoderResult {
   /**

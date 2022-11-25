@@ -50,7 +50,7 @@ const { point, set } = usePoint()
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue'
+import {  Ref  } from 'vue-demi'
 /**
  * 地图经纬度点
  */

@@ -30,7 +30,7 @@ import { Label } from 'vue3-baidu-map-gl'
 </div>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   const content = ref<string>('欢迎使用百度地图GL版Vue3组件库')
   
 </script>
@@ -56,7 +56,7 @@ import { Label } from 'vue3-baidu-map-gl'
 </Map>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { Map, Label } from 'vue3-baidu-map-gl'
   const content = ref<string>('欢迎使用百度地图GL版Vue3组件库')
 </script>

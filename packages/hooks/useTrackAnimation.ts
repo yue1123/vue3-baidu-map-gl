@@ -1,4 +1,4 @@
-import { onUnmounted, Ref, ref, watch } from 'vue'
+import {  onUnmounted, Ref, ref, watch  } from 'vue-demi'
 
 export type PathPoint = {
   lng: number

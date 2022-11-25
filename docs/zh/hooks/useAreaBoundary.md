@@ -50,7 +50,7 @@ const { isLoading, boundaries, get } = useAreaBoundary(cal)
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue'
+import {  Ref  } from 'vue-demi'
 export declare type AreaBoundary = string[]
 /**
  * 获取地图区域边界

@@ -1,6 +1,6 @@
 <template></template>
 <script setup lang="ts">
-  import { defineProps, inject, watch, withDefaults, defineEmits, nextTick, provide } from 'vue'
+  import {  defineProps, inject, watch, withDefaults, defineEmits, nextTick, provide  } from 'vue-demi'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'

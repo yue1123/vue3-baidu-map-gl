@@ -37,7 +37,7 @@ import { useTrackAnimation } from 'vue3-baidu-map-gl'
 </div>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { useTrackAnimation } from 'vue3-baidu-map-gl'
   const map = ref(null)
   const { 
@@ -113,7 +113,7 @@ import { useTrackAnimation } from 'vue3-baidu-map-gl'
 </div>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { useTrackAnimation } from 'vue3-baidu-map-gl'
   const map = ref(null)
   const { setPath, start, cancel, stop, proceed, status } = useTrackAnimation(map, {
@@ -223,7 +223,7 @@ type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue'
+import {  Ref  } from 'vue-demi'
 export declare type PathPoint = {
   lng: number
   lat: number

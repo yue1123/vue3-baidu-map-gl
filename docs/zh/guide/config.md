@@ -9,7 +9,7 @@
 ## 通过全局注册配置 ak 与 插件
 
 ```ts{7,8}
-import { createApp } from 'vue'
+import {  createApp  } from 'vue-demi'
 import App from './App.vue'
 import baiduMap from 'vue3-baidu-map-gl'
 

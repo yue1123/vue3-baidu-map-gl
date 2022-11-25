@@ -1,4 +1,4 @@
-import { Ref, ref } from 'vue'
+import {  Ref, ref  } from 'vue-demi'
 import { Point } from './usePoint'
 import { error, isArray } from '../utils'
 

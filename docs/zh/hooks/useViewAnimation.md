@@ -37,7 +37,7 @@ import { useViewAnimation } from 'vue3-baidu-map-gl'
 </div>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { useViewAnimation } from 'vue3-baidu-map-gl'
   const map = ref(null)
   const { 
@@ -165,7 +165,7 @@ import { useViewAnimation } from 'vue3-baidu-map-gl'
 </div>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { useViewAnimation } from 'vue3-baidu-map-gl'
   const map = ref(null)
   const { viewAnimation, setKeyFrames, start, stop, proceed, cancel, status } = useViewAnimation(map, {
@@ -359,7 +359,7 @@ type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue'
+import {  Ref  } from 'vue-demi'
 type Point = { lng: number; lat: number }
 export interface ViewAnimationKeyFrames {
   /**

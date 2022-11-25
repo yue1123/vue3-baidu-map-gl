@@ -29,7 +29,7 @@ import { Copyright } from 'vue3-baidu-map-gl'
 </div>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import { ref } from 'vue-demi'
 const count = ref<number>(1)
 const show = ref<boolean>(true)
 function toggle(){     
@@ -64,7 +64,7 @@ if(typeof window !== 'undefined'){
 
 <script setup lang="ts">
   import { Map, Copyright } from 'vue3-baidu-map-gl'
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   const count = ref<number>(1)
   const show = ref<boolean>(true)
   function toggle() {

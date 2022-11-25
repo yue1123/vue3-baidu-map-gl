@@ -1,4 +1,4 @@
-import { App, capitalize } from 'vue'
+import {  App, capitalize  } from 'vue-demi'
 
 export type WithInstall<T> = T & {
   install(app: App): void

@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, defineProps, withDefaults, onMounted } from 'vue'
+  import {  ref, defineProps, withDefaults, onMounted  } from 'vue-demi'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   export interface baseBmControlOptions {

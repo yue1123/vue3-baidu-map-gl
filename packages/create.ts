@@ -1,4 +1,4 @@
-import { App } from 'vue'
+import {  App  } from 'vue-demi'
 type ComponentType = any
 
 export interface NUiInstance {

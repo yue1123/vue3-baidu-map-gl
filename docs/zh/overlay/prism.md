@@ -34,7 +34,7 @@ import { Prism } from 'vue3-baidu-map-gl'
 </div>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import {  ref, watch  } from 'vue-demi'
   import { useAreaBoundary } from 'vue3-baidu-map-gl'
   const topFillOpacity = ref<number>(0.5)
   const area = ref<string>('北京市')
@@ -74,7 +74,7 @@ import { Prism } from 'vue3-baidu-map-gl'
 </Map>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import {  ref, watch  } from 'vue-demi'
   import { Map, Prism, useAreaBoundary } from 'vue3-baidu-map-gl'
   const topFillOpacity = ref<number>(0.5)
   const area = ref<string>('北京市')

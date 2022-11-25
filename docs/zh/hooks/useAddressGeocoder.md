@@ -32,7 +32,7 @@ import { useAddressGeocoder } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref, watch } from 'vue'
+  import {  ref, watch  } from 'vue-demi'
   import { useAddressGeocoder } from 'vue3-baidu-map-gl'
   const map = ref()
   const addressList = ref([
@@ -140,7 +140,7 @@ import { useAddressGeocoder } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref, watch } from 'vue'
+  import {  ref, watch  } from 'vue-demi'
   import { Map, Marker, useAddressGeocoder } from 'vue3-baidu-map-gl'
   const map = ref()
   const addressList = ref([
@@ -228,7 +228,7 @@ import { useAddressGeocoder } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref, watch } from 'vue'
+  import {  ref, watch  } from 'vue-demi'
   import { Map, Marker, Label, useAddressGeocoder } from 'vue3-baidu-map-gl'
   const addressList = [
     '包河区金寨路1号（金寨路与望江西路交叉口）',
@@ -302,7 +302,7 @@ type Point = { lng: number; lat: number }
 ## TS 类型定义参考
 
 ```ts
-import { Ref } from 'vue'
+import {  Ref  } from 'vue-demi'
 import { Point } from './usePoint'
 /**
  * 由地址解析坐标点

@@ -9,7 +9,7 @@ import { Map } from 'vue3-baidu-map-gl'
 ## 基础综合示例
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   const type = ref('BMAP_NORMAL_MAP')
   const mapSetting = ref({
     enableDragging: true,
@@ -155,7 +155,7 @@ import { Map } from 'vue3-baidu-map-gl'
 </div>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   import { Map } from 'vue3-baidu-map-gl'
   const type = ref('BMAP_NORMAL_MAP')
   const mapSetting = ref({

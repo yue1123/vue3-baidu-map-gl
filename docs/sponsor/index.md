@@ -25,7 +25,7 @@ Vue3 BaiduMap GL 是采用 MIT 许可的开源项目，使用完全免费。
 <img width="300" v-else src="/weiCharPay.jpeg" alt="">
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import {  ref  } from 'vue-demi'
   const activeKey = ref<'weiChatPay' | 'aliPay'>('weiChatPay')
 </script>
 

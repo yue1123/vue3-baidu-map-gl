@@ -63,7 +63,7 @@ import { GroundOverlay } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref, computed } from 'vue'
+  import {  ref, computed  } from 'vue-demi'
 
   const activeKey = ref<'image' | 'canvas' | 'video'>('canvas')
 
@@ -172,7 +172,7 @@ import { GroundOverlay } from 'vue3-baidu-map-gl'
 </div>
 
 <script lang="ts" setup>
-  import { ref, computed } from 'vue'
+  import {  ref, computed  } from 'vue-demi'
   import { GroundOverlay } from 'vue3-baidu-map-gl'
   const activeKey = ref<'image' | 'canvas' | 'video'>('image')
 

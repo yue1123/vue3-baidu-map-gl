@@ -1,7 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineProps, provide, watch, withDefaults } from 'vue'
+  import {  defineProps, provide, watch, withDefaults  } from 'vue-demi'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import { isString, callWhenDifferentValue, isDef } from '../../../utils/index'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
