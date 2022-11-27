@@ -63,9 +63,3 @@ features:
     }
   }
 </script>
-
-<style>
-  .index_logo-container{
-    width: 320px;
-  }
-</style>
