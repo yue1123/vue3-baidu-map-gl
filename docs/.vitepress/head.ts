@@ -6,7 +6,7 @@ const heads: HeadConfig[] = [
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      href: `/vue3-baidu-map-gl/logo.png`
+      href: `/vue3-baidu-map-gl/logo.svg`
     }
   ],
   ['meta', { name: 'msapplication-TileColor', content: '#3eaf7c' }],
