@@ -8,7 +8,7 @@ hero:
   text: 易用 & 完整 & 高性能
   tagline: 基于 Vue 3.0 和 百度地图GL的高质量地图组件+hooks库
   image:
-    src: /logo.png
+    src: /logo.svg
     alt: Vue3 BaiduMap GL
     id: J_index_logo
     width: 240
