@@ -1,4 +1,4 @@
-module.exports = {
+{
   env: {
     browser: true,
     es2021: true,
@@ -16,7 +16,8 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     sourceType: 'module'
   },
-  plugins: ['vue', '@typescript-eslint'],
+  plugins: ['vue', '@typescript-eslint'
+  ],
   rules: {
     'vue/valid-template-root': 0,
     '@typescript-eslint/no-explicit-any': 0,
@@ -25,7 +26,8 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.ts', '*.vue', '*.tsx'],
+      files: ['*.ts', '*.vue', '*.tsx'
+      ],
       rules: {
         'no-undef': 0,
         '@typescript-eslint/triple-slash-reference': 0
