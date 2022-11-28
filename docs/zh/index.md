@@ -45,21 +45,22 @@ features:
     details: 基于百度地图Gl版SDK，WebGL对地图、覆盖物等进行渲染，支持3D视角展示地图
 ---
 
-<script>
+<script lang="ts" setup>
+  import { onMounted } from 'vue'
   import VanillaTilt from 'vanilla-tilt';
-  if(typeof window !== 'undefined'){
-    window.onload = function () {
-      const element = document.getElementById('J_index_logo')
-      const div = document.createElement('div')
-      const _element = element.cloneNode(true)
-      const parent = element.parentNode
-      div.classList.add('image-src')
-      div.classList.add('index_logo-container')
-      div.appendChild(_element)
-      _element.classList.remove('image-src')
-      element.remove()
-      parent.append(div)
-      VanillaTilt.init(_element, { reverse: true, transition: true })
-    }
-  }
+
+
+  onMounted(() => {
+    const element = document.getElementById('J_index_logo')
+    const div = document.createElement('div')
+    const _element = element.cloneNode(true)
+    const parent = element.parentNode
+    div.classList.add('image-src')
+    div.classList.add('index_logo-container')
+    div.appendChild(_element)
+    _element.classList.remove('image-src')
+    element.remove()
+    parent.append(div)
+    VanillaTilt.init(_element, { reverse: true, transition: true })
+  })
 </script>
