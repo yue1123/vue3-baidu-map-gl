@@ -14,6 +14,7 @@ export default defineConfig({
   cleanUrls: 'without-subfolders',
   head: heads,
   themeConfig: {
+    logo: '/logo.svg',
     nav: [
       {
         text: '指南',

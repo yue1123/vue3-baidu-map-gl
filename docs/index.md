@@ -1,6 +1,5 @@
 ---
 layout: home
-
 title: Vue3 BaiduMap GL
 
 hero:
