@@ -1,7 +1,7 @@
 {
   "name": "vue3-baidu-map-gl",
   "description": "A Vue 3 baidu map gl Component Library. ",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "es/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",
@@ -35,9 +35,9 @@
     "docs:build": "pnpm run build && pnpm run -C docs build",
     "gen-volar-dts": "esbuild scripts/gen-component-declaration.js --bundle --platform=node | node",
     "format": "prettier -w types/* packages/*",
-    "release-major": "standard-version --release-as major",
-    "release-minor": "standard-version --release-as minor",
-    "release-patch": "standard-version --release-as patch"
+    "release-major": "standard-version --release-as major --tag-prefix v",
+    "release-minor": "standard-version --release-as minor --tag-prefix v",
+    "release-patch": "standard-version --release-as patch --tag-prefix v"
   },
   "dependencies": {
     "mitt": "^3.0.0",
