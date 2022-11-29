@@ -32,7 +32,7 @@
     "packages/components/**/*.vue",
     "packages/components/**/*.ts",
     "types/*.d.ts",
-    "packages/env.d.ts",
+    "packages/env.d.ts"
   ],
   "exclude": [
     "node_modules",
