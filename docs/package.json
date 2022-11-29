@@ -3,8 +3,8 @@
   "scripts": {
     "dev": "vitepress dev .",
     "build": "prettier -w ./zh/* && vitepress build .",
-    "fix-dot": "fixdot docs/zh/base/* docs/zh/control/* docs/zh/guide/* docs/zh/overlay/* docs/index.md -d -p",
-    "format": "prettier -w types/* docs/zh/* packages/*"
+    "fix-dot": "fixdot ./zh/base/* ./zh/control/* ./zh/guide/* ./zh/overlay/* ./index.md -d -p",
+    "format": "prettier -w ./zh/*"
   },
   "devDependencies": {
     "vanilla-tilt": "^1.7.3",

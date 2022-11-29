@@ -34,7 +34,10 @@
     "docs:dev": "pnpm run -C docs dev",
     "docs:build": "pnpm run build && pnpm run -C docs build",
     "gen-volar-dts": "esbuild scripts/gen-component-declaration.js --bundle --platform=node | node",
-    "format": "prettier -w types/* docs/zh/* packages/*"
+    "format": "prettier -w types/* packages/*",
+    "release-major": "standard-version --release-as major",
+    "release-minor": "standard-version --release-as minor",
+    "release-patch": "standard-version --release-as patch"
   },
   "dependencies": {
     "mitt": "^3.0.0",
@@ -70,6 +73,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-vue": "^6.0.0",
+    "standard-version": "^9.5.0",
     "tslib": "^2.4.0",
     "typescript": "^4.6.3",
     "vite": "3.1.8",

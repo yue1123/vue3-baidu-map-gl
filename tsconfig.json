@@ -33,7 +33,6 @@
     "packages/components/**/*.ts",
     "types/*.d.ts",
     "packages/env.d.ts",
-    "packages/components/bm-map/index.spec.tsx"
   ],
   "exclude": [
     "node_modules",
