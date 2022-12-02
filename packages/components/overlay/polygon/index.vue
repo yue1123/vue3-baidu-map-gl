@@ -5,7 +5,7 @@
   import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import { callWhenDifferentValue } from '../../../utils'
-  export interface PolygonPath {
+  export interface PolygonPathPoint {
     /**
      * 地理经度
      */
@@ -20,7 +20,7 @@
     /**
      * 折线的节点坐标数组
      */
-    path: NonEmptyArray<PolygonPath> | NonEmptyArray<string>
+    path: PolygonPathPoint[] | string[]
     /**
      * 是否是行政区域绘制
      */
@@ -142,7 +142,7 @@
         clip,
         isBoundary
       } = props
-      const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as PolygonPath[])
+      const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as PolygonPathPoint[])
       if (!pathPoints) return
       polygon = new BMapGL.Polygon(pathPoints, {
         strokeColor,
@@ -201,15 +201,15 @@
     })
   }
 
-  function pathPointsToMapPoints(pathPoints: PolygonPath[]) {
+  function pathPointsToMapPoints(pathPoints: PolygonPathPoint[]) {
     return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
   }
 
-  function setPath(path: PolygonPath[] | string[]) {
+  function setPath(path: PolygonPathPoint[] | string[]) {
     if (props.isBoundary) {
       polygon.setPath(path as string[])
     } else {
-      polygon.setPath(pathPointsToMapPoints(path as PolygonPath[]))
+      polygon.setPath(pathPointsToMapPoints(path as PolygonPathPoint[]))
     }
     syncMapCenter()
   }

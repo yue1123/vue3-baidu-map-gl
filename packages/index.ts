@@ -26,6 +26,7 @@ export * from './hooks/usePointConvertor'
 
 // components
 import Map from './components/map/index.vue'
+export type { DisplayOptions } from './components/map/index.vue'
 
 import Control from './components/control/control/index.vue'
 import Scale from './components/control/scale/index.vue'
@@ -49,6 +50,8 @@ import Prism from './components/overlay/prism/index.vue'
 import GroundOverlay from './components/overlay/ground-overlay/index.vue'
 
 import ContextMenu from './components/contextMenu/index.vue'
+export type ContextMenuSeparator = '-'
+export type { ContextMenuItem } from './components/contextMenu/index.vue'
 // import MapvglView from './components/layer/mapvgl-view/index.vue'
 
 const componentsList = [
@@ -120,3 +123,9 @@ export {
   GroundOverlay
 }
 export default vue3BaiduMapGl
+
+/**
+ * FIXME:
+ * ts 类型错误
+ * 1. 导出 mapType
+ */
