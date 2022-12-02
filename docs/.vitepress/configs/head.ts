@@ -1,5 +1,5 @@
 import type { HeadConfig } from 'vitepress'
-const heads: HeadConfig[] = [
+export const head: HeadConfig[] = [
   [
     'link',
     {
@@ -15,7 +15,7 @@ const heads: HeadConfig[] = [
 ]
 
 if (process.env.NODE_ENV === 'production') {
-  heads.push([
+  head.push([
     'script',
     {},
     `
@@ -29,5 +29,3 @@ if (process.env.NODE_ENV === 'production') {
         `
   ])
 }
-
-export default heads

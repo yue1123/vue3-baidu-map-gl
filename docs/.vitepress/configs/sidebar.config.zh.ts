@@ -1,4 +1,4 @@
-const sidebarConfig = {
+export const sidebarConfigZh = {
   '/zh/': [
     {
       text: '指南',
@@ -26,6 +26,10 @@ const sidebarConfig = {
       text: '基础',
       collapsible: true,
       items: [
+        {
+          text: 'Map 地图',
+          link: '/zh/components/map'
+        },
         {
           text: 'Map 地图',
           link: '/zh/base/'
@@ -196,5 +200,3 @@ const sidebarConfig = {
     }
   ]
 }
-
-export default sidebarConfig
