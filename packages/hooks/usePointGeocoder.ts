@@ -35,7 +35,7 @@ type Result = PointGeocoderResult | PointGeocoderResult[] | null
 /**
  * 由地址解析坐标点
  */
-export function usePointGeocoder(options: BMapGL.LocationOptions | null = {}, cal: (point: Ref<Result>) => void) {
+export function usePointGeocoder(options?: BMapGL.LocationOptions | null, cal?: (point: Ref<Result>) => void) {
   options = options || {}
   const result = ref<Result>()
   const isLoading = ref<boolean>(true)
