@@ -4,7 +4,7 @@ import { warn, error, isArray } from '../utils'
 /**
  * 由地址解析坐标点
  */
-export function useAddressGeocoder(cal: (point: Ref<Point | Point[]>) => void) {
+export function useAddressGeocoder(cal?: (point: Ref<Point | Point[]>) => void) {
   const point = ref<Point | Point[] | null>()
   const isLoading = ref<boolean>(true)
   const isEmpty = ref<boolean>(true)
