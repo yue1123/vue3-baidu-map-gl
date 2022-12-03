@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, withDefaults, onUpdated, nextTick, computed, provide } from 'vue'
+  import { ref, watch, withDefaults, onUpdated, nextTick, computed, provide, onUnmounted } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
@@ -48,7 +48,7 @@
     onRestore?: Callback
     onClickclose?: Callback
   }
-  const infoWindowContainer = ref<HTMLDivElement>()
+  const infoWindowContainer = ref<HTMLElement>()
   const props = withDefaults(defineProps<InfoWindowProps>(), {
     modelValue: false,
     title: '',
@@ -102,18 +102,19 @@
         enableCloseOnClick,
         offset: new BMapGL.Size(offset.x, offset.y)
       }
-      infoWindow = new BMapGL.InfoWindow(infoWindowContainer.value?.innerHTML || '', options)
+      infoWindow = new BMapGL.InfoWindow(infoWindowContainer.value || '', options)
       infoWindow.addEventListener('close', () => {
         if (props.modelValue) visible.value = false
       })
       infoWindow.addEventListener('open', () => {
         if (!props.modelValue) visible.value = true
       })
-      redraw()
       map.addOverlay(infoWindow)
+      redraw()
+      bindObserver()
       bindEvents(props, vueEmits, infoWindow)
+      window.infoWindow = infoWindow
     }
-
     init()
     ready(map, infoWindow)
     // 监听值变化
@@ -145,13 +146,25 @@
   })
   onUpdated(() => {
     if (infoWindow && infoWindow.isOpen()) {
-      setContent(infoWindowContainer.value?.innerHTML || '')
+      setContent(infoWindowContainer.value || '')
       redraw()
     }
   })
-
+  let ob: MutationObserver | null = null
+  onUnmounted(() => {
+    ob = null
+  })
   provide('getOverlayInstance', () => infoWindow)
-
+  function bindObserver() {
+    const MutationObserver = window.MutationObserver
+    if (!MutationObserver) {
+      return
+    }
+    ob = new MutationObserver(() => {
+      infoWindow.redraw()
+    })
+    ob.observe(infoWindowContainer.value!, { attributes: true, childList: true, characterData: true, subtree: true })
+  }
   function open() {
     const { position } = props
     _map.openInfoWindow(infoWindow, new BMapGL.Point(position.lng, position.lat))
@@ -196,7 +209,7 @@
   function setPosition(position: InfoWindowPosition) {
     infoWindow.setPosition(new BMapGL.Point(position.lng, position.lat))
   }
-  function setContent(content: string): void {
+  function setContent(content: string | HTMLElement): void {
     infoWindow.setContent(content)
   }
   function setOffset(offset: { x: number; y: number }): void {
