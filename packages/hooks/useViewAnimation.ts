@@ -28,19 +28,19 @@ export interface UseViewAnimationOptions {
   /**
    * 	动画开始延迟时间，单位ms，默认0
    */
-  delay: number
+  delay?: number
   /**
    * 	动画持续时间，单位ms，默认1000
    */
-  duration: number
+  duration?: number
   /**
    * 循环次数，参数类型为数字时循环固定次数，参数为'INFINITE'无限循环，默认为1
    */
-  loop: number | 'INFINITE'
+  loop?: number | 'INFINITE'
   /**
    * 动画播放时禁止鼠标拖动
    */
-  disableDragging: boolean
+  disableDragging?: boolean
 }
 
 type AnimationListenerType = 'animationstart' | 'animationiterations' | 'animationend' | 'animationcancel'
