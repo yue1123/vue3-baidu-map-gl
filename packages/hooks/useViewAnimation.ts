@@ -121,7 +121,7 @@ export function useViewAnimation(map: any, options: UseViewAnimationOptions) {
     initd = true
   }
   const start = () => {
-    if (initd) {
+    if (initd && status.value !== 'PLAYING') {
       mapInstance = mapComponentInstance.getMapInstance()
       mapInstance.startViewAnimation(viewAnimation as BMapGL.ViewAnimation)
       mapComponentInstance.setDragging(!options.disableDragging)
