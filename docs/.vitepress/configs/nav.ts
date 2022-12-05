@@ -4,7 +4,7 @@ import { version } from '../../../package.json'
 export const nav: DefaultTheme.Config['nav'] = [
   {
     text: '文档',
-    link: '/zh-CN/guide/quick-start'
+    link: '/zh-CN/guide/introduction'
   },
   {
     text: '游乐场',

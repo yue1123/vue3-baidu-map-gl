@@ -40,8 +40,8 @@
     document.body.style.overflow = 'auto'
     height.value = preHeight.value
   }
-  function handleEscKeydown() {
-    if (fullScreen.value) {
+  function handleEscKeydown(e) {
+    if (fullScreen.value && e.key === 'Escape') {
       toggleFullScreen(false)
       resetHeight()
     }
@@ -127,7 +127,7 @@
               </svg>
             </template>
           </button>
-          <button v-tooltip="copied ? '复制成功' : '复制'" v-if="isSupported" @click="() => copy()">
+          <button v-tooltip="copied ? '复制成功' : '复制代码'" v-if="isSupported" @click="() => copy()">
             <template v-if="copied">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -203,6 +203,7 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
+      background: var(--vp-c-bg);
       button {
         width: 30px;
         height: 30px;
@@ -212,7 +213,7 @@
         align-items: center;
         transition: color 0.3s;
         &:hover {
-          color: var(--vp-c-white);
+          color: var(--vp-c-text-1);
         }
       }
     }

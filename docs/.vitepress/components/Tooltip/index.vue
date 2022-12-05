@@ -43,7 +43,7 @@
       position: absolute;
       display: none;
       opacity: 0;
-      box-shadow: var(--vp-shadow-2);
+      box-shadow: var(--vp-shadow-3);
     }
 
     &:before {
@@ -67,7 +67,7 @@
       border-radius: 0.3rem;
       border: 1px solid var(--vp-c-divider-light);
       background: @gray;
-      color: #fff;
+      color: var(--vp-c-text-1);
       z-index: 1000;
     }
 
