@@ -26,7 +26,8 @@
     provide,
     nextTick,
     getCurrentInstance,
-    ref
+    ref,
+    computed
   } from 'vue'
   import useLifeCycle from '../../hooks/useLifeCycle'
   import bindEvents, { Callback } from '../../utils/bindEvents'
@@ -256,8 +257,8 @@
     enablePinchToZoom: true,
     enableAutoResize: true
   })
-  const width = isString(props.width) ? props.width : `${props.width}px`
-  const height = isString(props.height) ? props.height : `${props.height}px`
+  const width = computed(() => (isString(props.width) ? props.width : `${props.width}px`))
+  const height = computed(() => (isString(props.height) ? props.height : `${props.height}px`))
   const vueEmits = defineEmits([
     'initd',
     'unload',
@@ -307,7 +308,6 @@
       ? Object.assign(proxy!.$baiduMapPluginsSourceLink, props.pluginsSourceLink)
       : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
   if (!ak) error('missing required props: ak')
-
   const scriptKey = `_initBMap${ak}`
   // 初始化地图
   function init() {
