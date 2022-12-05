@@ -10,7 +10,7 @@
 <p align="center">
 <img src="https://img.shields.io/github/license/yue1123/img-previewer?style=flat-square" alt="">
 <img src="https://img.shields.io/github/package-json/v/yue1123/vue3-baidu-map-gl?color=f90&style=flat-square" alt="GitHub package.json version (subfolder of monorepo)">
-<img alt="npm" src="https://img.shields.io/npm/dw/vue3-baidu-map-gl?label=npm%20downloads&style=flat-square" style="margin-left:10px">
+<img alt="npm" src="https://img.shields.io/npm/dm/vue3-baidu-map-gl?logo=npm&style=flat-square" style="margin-left:10px">
 </div>
 </p>
 
