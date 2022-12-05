@@ -35,9 +35,9 @@
     "docs:build": "pnpm run build && pnpm run -C docs build",
     "gen-volar-dts": "esbuild scripts/gen-component-declaration.js --bundle --platform=node | node",
     "format": "prettier -w types/* packages/*",
-    "release-major": "standard-version --release-as major --tag-prefix v",
-    "release-minor": "standard-version --release-as minor --tag-prefix v",
-    "release-patch": "standard-version --release-as patch --tag-prefix v"
+    "release-major": "standard-version --release-as major --tag-prefix v && pnpm run build",
+    "release-minor": "standard-version --release-as minor --tag-prefix v && pnpm run build",
+    "release-patch": "standard-version --release-as patch --tag-prefix v && pnpm run build"
   },
   "dependencies": {
     "mitt": "^3.0.0",
