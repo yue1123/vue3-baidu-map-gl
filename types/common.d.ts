@@ -1,12 +1,12 @@
 declare enum ControlAnchor {
   /**
-   * 控件将定位到地图的右上角
-   */
-  'BMAP_ANCHOR_TOP_RIGHT' = 0,
-  /**
    * 控件将定位到地图的左上角
    */
-  'BMAP_ANCHOR_TOP_LEFT' = 1,
+  'BMAP_ANCHOR_TOP_LEFT' = 0,
+  /**
+   * 控件将定位到地图的右上角
+   */
+  'BMAP_ANCHOR_TOP_RIGHT' = 1,
   /**
    * 控件将定位到地图的左下角
    */
