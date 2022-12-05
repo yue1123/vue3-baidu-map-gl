@@ -1,5 +1,27 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [1.0.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.0.0...v1.0.1) (2022-12-05)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 动画可重复开始调用 ([d7c75a0](https://github.com/yue1123/vue3-baidu-map-gl/commit/d7c75a08d1d212401bcf2417814eee16f4acb4c1))
+* **infoWindow:** 修复插槽内容绑定事件无效 ([52c673d](https://github.com/yue1123/vue3-baidu-map-gl/commit/52c673d25678c78eca08ce69826059aa8493fbc7))
+* **useAddressGeocoder:** 修复 cal 必传 ts 报错 ([a298bcf](https://github.com/yue1123/vue3-baidu-map-gl/commit/a298bcf0915963022558d89f5413370ab24b6dc5))
+* **usePointGeocoder:** 修复 options 和 cal 必传 ts 报错 ([305d291](https://github.com/yue1123/vue3-baidu-map-gl/commit/305d29153164547ee02b3b1193687d21cb418de6))
+* **useViewAnimation:** 修复 options ts 错误 ([60a9eab](https://github.com/yue1123/vue3-baidu-map-gl/commit/60a9eab0381e89b3fe637c55ea4d4abbba4f524e))
+* **useViewAnimation:** 修复可重复调用cancel ([2d2478a](https://github.com/yue1123/vue3-baidu-map-gl/commit/2d2478a1267d5e869987dac9fed104ca2822a1a6))
+
+
+### ✨ Features | 新功能
+
+* 导出 ts 类型: ([574cb8e](https://github.com/yue1123/vue3-baidu-map-gl/commit/574cb8e908c7331f261a7e0ebe5bd184eeb4ce7c))
+* update logo ([1b2235d](https://github.com/yue1123/vue3-baidu-map-gl/commit/1b2235d87204b864b19e300f7c670e1a69279df9))
+* update logo ([f2d5091](https://github.com/yue1123/vue3-baidu-map-gl/commit/f2d5091fcae3180eb31ecbc985e2a41253ef1942))
+* width 和 height 支持响应式 ([e16dc90](https://github.com/yue1123/vue3-baidu-map-gl/commit/e16dc9041b070f7c9b0be8b2d6ba79677979abb6))
+
 # [1.0.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v0.0.40...v1.0.0) (2022-11-22)
 
 
