@@ -21,8 +21,7 @@
 
 <style lang="less" scoped>
   .example-showcase {
-    padding: 1rem;
-    padding-bottom: 0;
+    padding: 0 1rem;
     margin: 0.5px;
   }
 </style>

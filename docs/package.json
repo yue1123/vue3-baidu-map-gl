@@ -2,9 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "vitepress dev .",
-    "build": "prettier -w ./zh/* && vitepress build .",
-    "fix-dot": "fixdot ./zh/base/* ./zh/control/* ./zh/guide/* ./zh/overlay/* ./index.md -d -p",
-    "format": "prettier -w ./zh/*"
+    "build": "prettier -w ./zh-CN/* && vitepress build .",
+    "fix-dot": "fixdot ./zh-CN/base/* ./zh-CN/control/* ./zh-CN/guide/* ./zh-CN/overlay/* ./index.md -d -p",
+    "format": "prettier -w ./zh-CN/*"
   },
   "devDependencies": {
     "consola": "^2.15.3",

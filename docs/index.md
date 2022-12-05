@@ -14,7 +14,7 @@ hero:
   actions:
     - theme: brand
       text: 开始使用
-      link: /zh/guide/quick-start
+      link: /zh-CN/guide/introduction
     - theme: alt
       text: View on GitHub
       link: https://github.com/yue1123/vue3-baidu-map-gl

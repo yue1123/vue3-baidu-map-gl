@@ -5,6 +5,8 @@ import '../styles/main.css'
 import '../styles/code.css'
 
 import Demo from '../components/vp-demo.vue'
+import tooltipDirective from '../components/Tooltip/directive'
+import Tooltip from '../components/Tooltip/index.vue'
 
 export default {
   ...defaultTheme,
@@ -24,7 +26,9 @@ export default {
         )
       }
     }
+    tooltipDirective(app)
     app.component('Demo', Demo)
+    app.component('Tooltip', Tooltip)
     app.use(baiduMapInit, {
       ak: 'cwHsf5i2fAQAlijOyELx5COtkFhItaSm'
     })

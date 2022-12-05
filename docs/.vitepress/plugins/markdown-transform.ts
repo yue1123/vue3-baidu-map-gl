@@ -21,6 +21,7 @@ export function MarkdownTransform(): Plugin {
         scriptSetups: [`const demos = import.meta.globEager('../../examples/${componentId}/*.vue')`]
       }
       code = transformVpScriptSetup(code, append)
+      console.log(code.indexOf(':::demo') !== -1)
       if (code.indexOf(':::demo') !== -1) {
         code = transformComponentMarkdown(id, componentId, code, append)
       }
