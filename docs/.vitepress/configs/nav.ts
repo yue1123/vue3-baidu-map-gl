@@ -43,6 +43,10 @@ export const nav: DefaultTheme.Config['nav'] = [
     text: `v${version}`,
     items: [
       {
+        text: 'CHANGELOG',
+        link: 'https://github.com/yue1123/vue3-baidu-map-gl/blob/main/CHANGELOG.md'
+      },
+      {
         text: '历史版本',
         link: 'https://github.com/yue1123/vue3-baidu-map-gl/releases'
       }

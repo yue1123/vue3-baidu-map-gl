@@ -25,15 +25,14 @@ Vue3 BaiduMap GL 目前还处于快速开发迭代中。
 
 ```shell
 # with npm
-npm install vue3-baidu-map-gl --save
+npm install vue3-baidu-map-gl@latest --save
 
 # or with yarn
-yarn add vue3-baidu-map-gl
+yarn add vue3-baidu-map-gl@latest
 
 # or with pnpm
-pnpm add vue3-baidu-map-gl
+pnpm add vue3-baidu-map-gl@latest
 ```
-
 ## 浏览器直接引入 <Badge type="tip" text="^0.0.21" />
 
 直接通过浏览器的 HTML 标签导入 Vue3 BaiduMap GL，然后就可以使用全局变量 `Vue3baiduMapGl` 了。

@@ -39,9 +39,14 @@
 ## 安装
 推荐使用 pnpm 安装
 ```shell
-yarn add vue3-baidu-map-gl
-# or
-pnpm add vue3-baidu-map-gl
+# with npm
+npm install vue3-baidu-map-gl@latest --save
+
+# or with yarn
+yarn add vue3-baidu-map-gl@latest
+
+# or with pnpm
+pnpm add vue3-baidu-map-gl@latest
 ```
 
 ### 使用
