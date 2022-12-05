@@ -7,6 +7,7 @@ import { Marker } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例
+
 在地图上添加标记点，通过 icon 指定显示图标
 :::demo 拖动图片试试
 overlay/marker

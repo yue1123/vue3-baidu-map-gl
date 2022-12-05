@@ -42,7 +42,7 @@ const { get, location, isLoading, isError, status } = useBrowserLocation(options
 | 属性               | 描述                                                                                                                                                     | 类型      | 默认值    |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------- |
 | enableSDKLocation  | 是否启用安卓定位 SDK 辅助定位，适用于安卓 WebView 页面，[详见](https://lbsyun.baidu.com/index.php?title=android-locsdk/guide/addition-func/assistant-h5) | `boolean` | `false`   |
-| enableHighAccuracy | 是否要求浏览器获取最佳效果，同[浏览器定位](https://developer.mozilla.org/zh-CN-CN/docs/Web/API/Geolocation/getCurrentPosition)接口参数                      | `boolean` | `false`   |
+| enableHighAccuracy | 是否要求浏览器获取最佳效果，同[浏览器定位](https://developer.mozilla.org/zh-CN-CN/docs/Web/API/Geolocation/getCurrentPosition)接口参数                   | `boolean` | `false`   |
 | timeout            | 超时时间                                                                                                                                                 | `number`  | `10000`   |
 | maximumAge         | 允许返回指定事件内的缓存结果，单位为毫秒。如果为`0`，则每次请求都获取最新的定位结果。默认为`10`分钟                                                      | `number`  | `600,000` |
 

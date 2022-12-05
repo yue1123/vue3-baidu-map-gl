@@ -18,6 +18,7 @@ import { useViewAnimation } from 'vue3-baidu-map-gl'
 :::demo class="p-bottom"
 hooks/useViewAnimation
 :::
+
 ## 用法
 
 ```ts

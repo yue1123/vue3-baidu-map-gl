@@ -7,16 +7,19 @@ import { usePointGeocoder } from 'vue3-baidu-map-gl'
 ```
 
 ## 示例
+
 使用坐标点对象作为 `get` 方法参数解析单个坐标点
 :::demo 鼠标点击地图选择坐标点解析
 hooks/usePointGeocoder/index
 :::
+
 ## 批量解析坐标点
 
 使用坐标点对象数组作为 `get` 方法参数批量解析坐标点
 :::demo
 hooks/usePointGeocoder/batch
 :::
+
 ## 用法
 
 ```ts

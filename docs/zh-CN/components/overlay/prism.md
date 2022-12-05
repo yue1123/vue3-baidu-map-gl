@@ -12,7 +12,6 @@ import { Prism } from 'vue3-baidu-map-gl'
 overlay/prism
 :::
 
-
 ## 静态组件 Props
 
 | 属性           | 说明                       | 类型       | 默认值   |
