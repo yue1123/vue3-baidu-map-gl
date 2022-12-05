@@ -46,7 +46,7 @@ export interface UseViewAnimationOptions {
 type AnimationListenerType = 'animationstart' | 'animationiterations' | 'animationend' | 'animationcancel'
 
 type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
-// FIXME: 默认值处理
+// FIXME: 取消动画后再次开始动画,地图上 pio 不消失,可能是地图本身 bug
 export function useViewAnimation(map: any, options: UseViewAnimationOptions) {
   options = options || {}
   options.disableDragging = options.disableDragging !== undefined ? false : true
@@ -128,7 +128,7 @@ export function useViewAnimation(map: any, options: UseViewAnimationOptions) {
     }
   }
   const cancel = () => {
-    if (initd) {
+    if (initd && status.value !== 'INITIAL') {
       ;(viewAnimation as BMapGL.ViewAnimation)._cancel(mapInstance)
       syncDragging()
     }
