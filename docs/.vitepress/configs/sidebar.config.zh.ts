@@ -1,7 +1,7 @@
 export const sidebarConfigZh = {
   '/zh-CN/': [
     {
-      text: '基础',
+      text: '指南',
       collapsible: true,
       items: [
         {
