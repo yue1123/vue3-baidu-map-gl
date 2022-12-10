@@ -198,7 +198,7 @@
       z-index: 99999;
     }
     .buttons {
-      border-top: 1px solid var(--vp-c-divider-light);
+      border-top: 1px dashed var(--vp-c-divider-light);
       padding: 0.5rem 1rem;
       display: flex;
       justify-content: flex-end;
@@ -218,7 +218,7 @@
       }
     }
     .buttons + div {
-      border-top: 1px solid var(--vp-c-divider-light);
+      border-top: 1px dashed var(--vp-c-divider-light);
     }
     .source_code-container {
       overflow: hidden;
@@ -228,7 +228,7 @@
       bottom: 0;
       text-align: center;
       padding: 0.5rem 0;
-      border-top: 1px solid var(--vp-c-divider-light);
+      border-top: 1px dashed var(--vp-c-divider-light);
       background-color: var(--vp-c-black-soft);
       z-index: 99;
     }
