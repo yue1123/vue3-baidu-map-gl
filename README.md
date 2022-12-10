@@ -32,10 +32,6 @@
 - 🖇️ 组件同时兼容纯净式大驼峰命名(`Map`)和短横线命名(`b-map`)
 - 🚀 支持 volar，组件提供完善的代码提示
 
-## 文档
-
-[https://yue1123.github.io/vue3-baidu-map-gl/zh](https://yue1123.github.io/vue3-baidu-map-gl/zh)
-
 ## 安装
 推荐使用 pnpm 安装
 ```shell
@@ -49,21 +45,9 @@ yarn add vue3-baidu-map-gl@latest
 pnpm add vue3-baidu-map-gl@latest
 ```
 
-### 使用
+## 文档
 
-```vue
-<template>
-  <Map ak="YOUR_AK" />
-</template>
-
-<script setup lang="ts">
-  import { Map } from 'vue3-baidu-map-gl'
-</script>
-```
-
-### CDN
-
-参考 [通过 CDN 使用](./docs/zh/guide/usage-cdn.md)。
+[https://yue1123.github.io/vue3-baidu-map-gl/zh](https://yue1123.github.io/vue3-baidu-map-gl/zh)
 
 ## 参与贡献
 
@@ -87,6 +71,9 @@ pnpm install
 # 运行文档站点，用来测试组件，预览文档
 pnpm run docs:dev
 ```
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=yue1123/vue3-baidu-map-gl&type=Timeline)](https://star-history.com/#yue1123/vue3-baidu-map-gl&Timeline)
 
 
 ## License
