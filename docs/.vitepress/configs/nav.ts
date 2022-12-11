@@ -3,8 +3,8 @@ import { version } from '../../../package.json'
 
 export const nav: DefaultTheme.Config['nav'] = [
   {
-    text: '文档',
-    link: '/zh-CN/guide/introduction'
+    text: '指南',
+    link: '/zh-CN/guide/installation'
   },
   {
     text: '游乐场',
