@@ -18,8 +18,8 @@ map/base
 
 ## 多实例
 
-:::demo class="p-top"
-map/base
+:::demo class="p-top not-full p-bottom"
+map/multiInstance
 :::
 
 ## 个性化地图
@@ -48,6 +48,77 @@ map/theme1
 map/theme2
 :::
 
+## 自定义地图加载中
+
+默认情况下，地图加载中效果是`map loading...`。如果不能满足你的需求，你可以通过提供`loading`具名作用域插槽来自定义地图加载中显示效果，在地图未完成加载前`isLoading`为 `false`，完成后为`true`
+
+:::details 显示代码
+<!-- prettier-ignore -->
+```html
+<template>
+  <Map>
+    <template #loading="{ isLoading }">
+      <div class="spinner" v-if="isLoading">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </template>
+  </Map>
+</template>
+
+<style lang="css">
+  .spinner {
+    width: 60px;
+    height: 60px;
+
+    position: relative;
+    margin: 100px auto;
+  }
+
+  .double-bounce1,
+  .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #42b883;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    -webkit-animation: bounce 2s infinite ease-in-out;
+    animation: bounce 2s infinite ease-in-out;
+  }
+
+  .double-bounce2 {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+  }
+
+  @-webkit-keyframes bounce {
+    0%,
+    100% {
+      -webkit-transform: scale(0);
+    }
+    50% {
+      -webkit-transform: scale(1);
+    }
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: scale(0);
+      -webkit-transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+      -webkit-transform: scale(1);
+    }
+  }
+</style>
+```
+:::
 ## 静态组件 props
 
 | 属性              | 说明                                                     | 类型                                                                      | 可选值 | 默认值  |
@@ -159,71 +230,3 @@ map/theme2
 | touchmove       | 触摸移动时触发此事件，仅适用移动设备                                                             | `{type, target}`                         |
 | touchend        | 触摸结束时触发此事件，仅适用移动设备                                                             | `{type, target}`                         |
 | longpress       | 长按事件，仅适用移动设备                                                                         | `{type, target}`                         |
-
-## 自定义地图加载中
-
-默认情况下，地图加载中效果是`map loading...`。如果不能满足你的需求，你可以通过提供`loading`具名作用域插槽来自定义地图加载中显示效果，在地图未完成加载前`isLoading`为 false，完成后为`true`
-
-<!-- prettier-ignore -->
-```html
-<Map>
-  <template #loading="{ isLoading }">
-    <div class="spinner" v-if="isLoading">
-      <div class="double-bounce1"></div>
-      <div class="double-bounce2"></div>
-    </div>
-  </template>
-</Map>
-
-<style lang="css">
-  .spinner {
-    width: 60px;
-    height: 60px;
-
-    position: relative;
-    margin: 100px auto;
-  }
-
-  .double-bounce1,
-  .double-bounce2 {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: #42b883;
-    opacity: 0.6;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    -webkit-animation: bounce 2s infinite ease-in-out;
-    animation: bounce 2s infinite ease-in-out;
-  }
-
-  .double-bounce2 {
-    -webkit-animation-delay: -1s;
-    animation-delay: -1s;
-  }
-
-  @-webkit-keyframes bounce {
-    0%,
-    100% {
-      -webkit-transform: scale(0);
-    }
-    50% {
-      -webkit-transform: scale(1);
-    }
-  }
-
-  @keyframes bounce {
-    0%,
-    100% {
-      transform: scale(0);
-      -webkit-transform: scale(0);
-    }
-    50% {
-      transform: scale(1);
-      -webkit-transform: scale(1);
-    }
-  }
-</style>
-```

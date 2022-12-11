@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { computed, ref, nextTick, onUnmounted, onMounted } from 'vue'
-  import { useClipboard, useToggle, useMagicKeys } from '@vueuse/core'
+  import { useClipboard, useToggle } from '@vueuse/core'
   import { exampleModuleMap } from './../constants'
   import Example from './demo/vp-example.vue'
   import SourceCode from './demo/vp-source-code.vue'
@@ -55,7 +55,7 @@
 </script>
 
 <template>
-  <div>
+  <div class="demo-wrapper">
     <ClientOnly>
       <p text="sm" v-html="decodedDescription" />
       <div class="demo-container" ref="demoContainer" :class="{ 'full-screen': fullScreen }">
@@ -247,7 +247,7 @@
   .collapse-leave-to {
     max-height: 0;
   }
-  .demo-container :deep(.baidu-map-container) {
+  .demo-wrapper:not(.not-full) .demo-container :deep(.baidu-map-container) {
     width: calc(100% + 2rem) !important;
     margin-left: -1rem;
   }
