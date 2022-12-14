@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.0.1...v1.1.0) (2022-12-14)
+
+
+### 📦‍ Build System | 打包构建
+
+* 增加合并BMapGl类型定义脚本 ([4f9375e](https://github.com/yue1123/vue3-baidu-map-gl/commit/4f9375ede837512cdeae5c57dc00d0ebd796aa92))
+
+
+### ♻️ Code Refactoring | 代码重构
+
+* 重构项目 ([e5f02d3](https://github.com/yue1123/vue3-baidu-map-gl/commit/e5f02d3d91a7fedf71582fd4f656ea8bff5e605b))
+  1. 优化 ts 类型支持 
+  2. 导出所有的 ts 类型 
+  3. 移除无用依赖
+* remove marker console ([5abcc8d](https://github.com/yue1123/vue3-baidu-map-gl/commit/5abcc8daf6411eb1f50193f3d3f39a2a432481b4))
+
+
+### ✏️ Documentation | 文档
+
+* 修复文档中实例代码 ts 错误 ([fe9b615](https://github.com/yue1123/vue3-baidu-map-gl/commit/fe9b6152faf66aa2893ad9031ae8e540effa61f2))
+* 修复ContextMenu组件演示错误 ([4995cc6](https://github.com/yue1123/vue3-baidu-map-gl/commit/4995cc6e2fd13dad4e633b6426358b02816636b0))
+* **map:** update multiInstance demo ([2aed043](https://github.com/yue1123/vue3-baidu-map-gl/commit/2aed043e2f688f3e04ebfbed7cc3c8af0041ff40))
+* **style:** 代码样式优化 ([2969ff5](https://github.com/yue1123/vue3-baidu-map-gl/commit/2969ff58b1710543d23ee5e4e8a9ea3a8ad755dc))
+* **style:** demo container 隐藏代码按钮浅色主题支持 ([1712cdc](https://github.com/yue1123/vue3-baidu-map-gl/commit/1712cdcb8192dc29ad8cb9f471be05dde30e2b57))
+* **style:** update demo container style ([417e2a4](https://github.com/yue1123/vue3-baidu-map-gl/commit/417e2a49869c310f8840acf9e19819e53037168c))
+* update nav link ([557a648](https://github.com/yue1123/vue3-baidu-map-gl/commit/557a6489ad5360b404cc57914feee78e8f9f2bc6))
+* update sidebar menu title ([06855af](https://github.com/yue1123/vue3-baidu-map-gl/commit/06855afbedb212aa74569367148ffe6239c8958c))
+* usePoint ts 类型内容更改 ([ded9ea4](https://github.com/yue1123/vue3-baidu-map-gl/commit/ded9ea40db4e4ac9aa3f3c829cac58117b4828d6))
+
 ### [1.0.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.0.0...v1.0.1) (2022-12-05)
 
 
