@@ -233,7 +233,6 @@
     }
   }
   function setZIndex(zIndex: number) {
-    console.log('shezhi marker')
     marker.setZIndex(zIndex)
   }
   function setPosition(position: Point) {
