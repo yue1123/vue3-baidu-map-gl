@@ -51,6 +51,7 @@ const { point, set } = usePoint()
 
 ```ts
 import { Ref } from 'vue'
+import { Point } from '../utils'
 /**
  * 地图经纬度点
  */
@@ -69,6 +70,6 @@ export declare function usePoint(): {
   /**
    * 设置实例点坐标
    */
-  set: ({ lng, lat }: { lng: number; lat: number }) => void
+  set: ({ lng, lat }: Point) => void
 }
 ```
