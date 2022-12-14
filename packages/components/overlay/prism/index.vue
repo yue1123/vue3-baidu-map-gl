@@ -2,25 +2,13 @@
 <script setup lang="ts">
   import { defineProps, inject, watch, withDefaults, defineEmits, nextTick, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { callWhenDifferentValue } from '../../../utils'
-  export interface PrismPath {
-    /**
-     * 地理经度
-     */
-    lng: number
-    /**
-     * 地理纬度
-     */
-    lat: number
-  }
-  export type NonEmptyArray<T> = [T, ...T[]]
+  import { bindEvents, Callback, callWhenDifferentValue, type Point } from '../../../utils'
   export interface PrismProps {
     /**
      * 棱柱的节点坐标数组
      */
-    path: NonEmptyArray<PrismPath> | NonEmptyArray<string>
+    path: Point[] | string[]
     /**
      * 高度
      */
@@ -109,7 +97,7 @@
         sideFillOpacity,
         enableMassClear
       } = props
-      const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as PrismPath[])
+      const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as Point[])
       if (!pathPoints) return
       prism = new BMapGL.Prism(pathPoints, altitude, {
         topFillColor,
@@ -165,7 +153,7 @@
     }
   }
 
-  function pathPointsToMapPoints(pathPoints: PrismPath[]) {
+  function pathPointsToMapPoints(pathPoints: Point[]) {
     return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
   }
 

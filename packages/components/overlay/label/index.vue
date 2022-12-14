@@ -2,19 +2,8 @@
 <script setup lang="ts">
   import { defineProps, provide, watch, withDefaults } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { isDef, callWhenDifferentValue } from '../../../utils/index'
-  export type LabelPosition = {
-    /**
-     * 地理经度
-     */
-    lng: number
-    /**
-     * 地理纬度
-     */
-    lat: number
-  }
+  import { bindEvents, Callback, isDef, callWhenDifferentValue, type Point } from '../../../utils/index'
   export type LabelStyle = {
     [k in keyof CSSStyleDeclaration]?: any
   }
@@ -28,12 +17,12 @@
      */
     y: number
   }
-  export interface BmLabelProps {
+  export interface LabelProps {
     /**
      * 文本标注信息
      */
     content: string
-    position: LabelPosition
+    position: Point
     /**
      * 标注的位置偏移值
      */
@@ -58,7 +47,7 @@
     onRemove?: Callback
     onRightclick?: Callback
   }
-  const props = withDefaults(defineProps<BmLabelProps>(), {
+  const props = withDefaults(defineProps<LabelProps>(), {
     offset: () => ({
       x: 0,
       y: 0
@@ -118,7 +107,7 @@
   //   console.log('shezhi ')
   //   label.setZIndex(zIndex)
   // }
-  function setPosition(position: LabelPosition) {
+  function setPosition(position: Point) {
     label.setPosition(new BMapGL.Point(position.lng, position.lat))
   }
   function setStyle(styles?: LabelStyle): void {

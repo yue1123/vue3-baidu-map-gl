@@ -3,17 +3,17 @@
 <script setup lang="ts">
   import { defineProps, watch, withDefaults } from 'vue'
   import useBaseMapEffect from '../../hooks/useBaseMapEffect'
-  import bindEvents, { Callback } from '../../utils/bindEvents'
   import useLifeCycle from '../../hooks/useLifeCycle'
-  import { isString, callWhenDifferentValue } from '../../utils/index'
+  import { bindEvents, Callback, isString, callWhenDifferentValue } from '../../utils/index'
   export interface ContextMenuItem {
     text: string
     callback: (...arg: any[]) => void
     disabled?: boolean
   }
+  export type ContextMenuSeparator = '-'
   export interface ContextMenuProps {
     width?: number
-    menuItems?: (ContextMenuItem | '-')[]
+    menuItems?: (ContextMenuItem | ContextMenuSeparator)[]
     onOpen?: Callback
     onClose?: Callback
   }

@@ -2,24 +2,13 @@
 <script setup lang="ts">
   import { defineProps, provide, watch, withDefaults } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { callWhenDifferentValue } from '../../../utils'
-  export type CircleCenter = {
-    /**
-     * 地理经度
-     */
-    lng: number
-    /**
-     * 地理纬度
-     */
-    lat: number
-  }
-  export interface BmCircleProps {
+  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point } from '../../../utils'
+  export interface CircleProps {
     /**
      * 圆形中心点经纬度
      */
-    center: CircleCenter
+    center: Point
     /**
      * 半径，以米为单位
      */
@@ -49,7 +38,7 @@
     /**
      * 折线的样式
      */
-    strokeStyle?: 'solid' | 'dashed' | 'dotted'
+    strokeStyle?: StrokeStyle
     /**
      * @default true
      * 是否在调用map.clearOverlays清除此覆盖物，默认为true
@@ -84,7 +73,7 @@
     onRemove?: Callback
     onLineupdate?: Callback
   }
-  const props = withDefaults(defineProps<BmCircleProps>(), {
+  const props = withDefaults(defineProps<CircleProps>(), {
     strokeColor: '#000',
     strokeWeight: 2,
     strokeOpacity: 1,
@@ -171,7 +160,7 @@
   function setRadius(radius: number): void {
     circle.setRadius(radius)
   }
-  function setCenter(center: CircleCenter): void {
+  function setCenter(center: Point): void {
     if (circle) {
       circle.setCenter(new BMapGL.Point(center.lng, center.lat))
     }
@@ -191,7 +180,7 @@
   function setStrokeWeight(weight: number): void {
     circle.setStrokeWeight(weight)
   }
-  function setStrokeStyle(style: 'solid' | 'dashed' | 'dotted'): void {
+  function setStrokeStyle(style: StrokeStyle): void {
     circle.setStrokeStyle(style)
   }
   function setMassClear(enableMassClear: boolean): void {

@@ -4,11 +4,12 @@
   import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  export interface BmZoomProps {
+  import { type ControlAnchor } from '../../../utils'
+  export interface ZoomProps {
     /**
      * 控件的停靠位置
      */
-    anchor?: _ControlAnchor
+    anchor?: ControlAnchor
     /**
      * 控件的偏移值
      */
@@ -17,7 +18,7 @@
       y: number
     }
   }
-  const props = withDefaults(defineProps<BmZoomProps>(), {
+  const props = withDefaults(defineProps<ZoomProps>(), {
     anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
     offset: () => ({ x: 83, y: 18 })
   })

@@ -1,7 +1,7 @@
 /// <reference path="./base.d.ts" />
 /// <reference path="./core.d.ts" />
 /// <reference path="./rightmenu.d.ts" />
-/// <reference path="./tools.d.ts" />
+/// <reference path="../tools.d.ts" />
 declare namespace BMapGL {
   interface Overlay {
     /**

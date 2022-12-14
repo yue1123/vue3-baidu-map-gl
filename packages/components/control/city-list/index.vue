@@ -4,11 +4,12 @@
   import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  export interface BmCityListOptions {
+  import { ControlAnchor } from '../../../utils'
+  export interface CityListProps {
     /**
      * 控件的停靠位置
      */
-    anchor?: _ControlAnchor
+    anchor?: ControlAnchor
     /**
      * 控件的偏移值
      */
@@ -22,7 +23,7 @@
     expand?: boolean
   }
   const { ready } = useLifeCycle()
-  const props = withDefaults(defineProps<BmCityListOptions>(), {
+  const props = withDefaults(defineProps<CityListProps>(), {
     anchor: 'BMAP_ANCHOR_TOP_LEFT',
     offset: () => ({ x: 18, y: 18 }),
     expand: false

@@ -2,24 +2,13 @@
 <script setup lang="ts">
   import { defineProps, watch, withDefaults, defineEmits, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { callWhenDifferentValue } from '../../../utils'
-  export interface PolylinePath {
-    /**
-     * 地理经度
-     */
-    lng: number
-    /**
-     * 地理纬度
-     */
-    lat: number
-  }
+  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point } from '../../../utils'
   export interface PolylineProps {
     /**
      * 折线的节点坐标数组
      */
-    path: PolylinePath[]
+    path: Point[]
     /**
      * @default #000000
      * 折线颜色
@@ -36,7 +25,7 @@
     /**
      * 折线的样式
      */
-    strokeStyle?: 'solid' | 'dashed' | 'dotted'
+    strokeStyle?: StrokeStyle
     /**
      * @default true
      * 是否在调用map.clearOverlays清除此覆盖物，默认为true
@@ -154,11 +143,11 @@
 
   provide('getOverlayInstance', () => polyline)
 
-  function pathPointsToMapPoints(pathPoints: PolylinePath[]) {
+  function pathPointsToMapPoints(pathPoints: Point[]) {
     return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
   }
 
-  function setPath(path: PolylinePath[]) {
+  function setPath(path: Point[]) {
     polyline.setPath(pathPointsToMapPoints(path))
   }
 
@@ -171,7 +160,7 @@
   function setStrokeWeight(weight: number): void {
     polyline.setStrokeWeight(weight)
   }
-  function setStrokeStyle(style: 'solid' | 'dashed' | 'dotted'): void {
+  function setStrokeStyle(style: StrokeStyle): void {
     polyline.setStrokeStyle(style)
   }
   function setMassClear(enableMassClear: boolean): void {

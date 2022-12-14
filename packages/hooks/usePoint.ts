@@ -1,15 +1,12 @@
 import { ref } from 'vue'
-/**
- * 地图经纬度点
- */
-export type Point = { lng: number; lat: number }
+import { type Point } from '../utils'
 /**
  * 获取一个地图经纬度点实例
  */
 export function usePoint() {
   const point = ref<null | BMapGL.Point>(null)
 
-  const genPoint = ({ lng, lat }: { lng: number; lat: number }) => {
+  const genPoint = ({ lng, lat }: Point) => {
     point.value = new BMapGL.Point(lng, lat)
   }
   return {

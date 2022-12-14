@@ -2,25 +2,13 @@
 <script setup lang="ts">
   import { defineProps, inject, watch, withDefaults, defineEmits, nextTick, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { callWhenDifferentValue } from '../../../utils'
-  export interface PolygonPathPoint {
-    /**
-     * 地理经度
-     */
-    lng: number
-    /**
-     * 地理纬度
-     */
-    lat: number
-  }
-  export type NonEmptyArray<T> = [T, ...T[]]
+  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point } from '../../../utils'
   export interface PolygonProps {
     /**
      * 折线的节点坐标数组
      */
-    path: PolygonPathPoint[] | string[]
+    path: Point[] | string[]
     /**
      * 是否是行政区域绘制
      */
@@ -45,7 +33,7 @@
     /**
      * 折线的样式
      */
-    strokeStyle?: 'solid' | 'dashed' | 'dotted'
+    strokeStyle?: StrokeStyle
     /**
      * 面填充颜色，同CSS颜色
      */
@@ -142,7 +130,7 @@
         clip,
         isBoundary
       } = props
-      const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as PolygonPathPoint[])
+      const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as Point[])
       if (!pathPoints) return
       polygon = new BMapGL.Polygon(pathPoints, {
         strokeColor,
@@ -201,15 +189,15 @@
     })
   }
 
-  function pathPointsToMapPoints(pathPoints: PolygonPathPoint[]) {
+  function pathPointsToMapPoints(pathPoints: Point[]) {
     return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
   }
 
-  function setPath(path: PolygonPathPoint[] | string[]) {
+  function setPath(path: Point[] | string[]) {
     if (props.isBoundary) {
       polygon.setPath(path as string[])
     } else {
-      polygon.setPath(pathPointsToMapPoints(path as PolygonPathPoint[]))
+      polygon.setPath(pathPointsToMapPoints(path as Point[]))
     }
     syncMapCenter()
   }
@@ -229,7 +217,7 @@
   function setStrokeWeight(weight: number): void {
     polygon.setStrokeWeight(weight)
   }
-  function setStrokeStyle(style: 'solid' | 'dashed' | 'dotted'): void {
+  function setStrokeStyle(style: StrokeStyle): void {
     polygon.setStrokeStyle(style)
   }
   function setMassClear(enableMassClear?: boolean): void {

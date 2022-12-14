@@ -30,11 +30,11 @@
     computed
   } from 'vue'
   import useLifeCycle from '../../hooks/useLifeCycle'
-  import bindEvents, { Callback } from '../../utils/bindEvents'
   import getScriptAsync from '../../utils/getScriptAsync'
   import { initPlugins, PluginsSourceLink, UserPlugins } from '../../utils/pluginLoader'
-  import { error, isString, callWhenDifferentValue } from '../../utils'
-  export interface DisplayOptions {
+  import { bindEvents, Callback, error, isString, callWhenDifferentValue } from '../../utils'
+  export type MapType = _MapType
+  export interface MapDisplayOptions {
     /**
      * 是否显示地图上的地点标识
      */
@@ -72,7 +72,7 @@
      */
     skyColors?: [string, string]
   }
-  export interface BaiduMapProps {
+  export interface MapProps {
     ak?: string
     /**sss
      * 地图显示宽度
@@ -100,7 +100,7 @@
     /**
      * 地图类型
      */
-    mapType?: _MapType
+    mapType?: MapType
     /**
      * 缩放级别
      */
@@ -143,7 +143,7 @@
     /**
      * 地图自定义属性
      */
-    displayOptions?: DisplayOptions
+    displayOptions?: MapDisplayOptions
     /**
      * 是否启用路况图层
      */
@@ -234,7 +234,7 @@
   // 地图初始化的发布
   const { ready } = useLifeCycle()
   const { uid, proxy } = getCurrentInstance()!
-  const props = withDefaults(defineProps<BaiduMapProps>(), {
+  const props = withDefaults(defineProps<MapProps>(), {
     width: '100%',
     height: '550px',
     center: () => ({ lat: 39.915185, lng: 116.403901 }),
@@ -447,7 +447,7 @@
   /**
    * 设置地图自定义属性
    */
-  function setDisplayOptions(displayOptions?: DisplayOptions) {
+  function setDisplayOptions(displayOptions?: MapDisplayOptions) {
     map.setDisplayOptions(displayOptions || {})
   }
   /**

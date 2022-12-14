@@ -4,11 +4,12 @@
   import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  export interface BPanoramaControlOptions {
+  import { type ControlAnchor } from '../../../utils'
+  export interface PanoramaControlProps {
     /**
      * 控件的停靠位置
      */
-    anchor?: _ControlAnchor
+    anchor?: ControlAnchor
     /**
      * 控件的偏移值
      */
@@ -18,7 +19,7 @@
     }
   }
   const { ready } = useLifeCycle()
-  const props = withDefaults(defineProps<BPanoramaControlOptions>(), {
+  const props = withDefaults(defineProps<PanoramaControlProps>(), {
     anchor: 'BMAP_ANCHOR_TOP_RIGHT',
     offset: () => ({ x: 10, y: 10 })
   })

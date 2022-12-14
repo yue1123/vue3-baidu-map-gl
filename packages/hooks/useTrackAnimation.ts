@@ -1,9 +1,6 @@
-import { onUnmounted, Ref, ref, watch } from 'vue'
+import { onUnmounted, ref, watch } from 'vue'
+import { type Point } from '../utils'
 
-export type PathPoint = {
-  lng: number
-  lat: number
-}
 export type UseTrackAnimationOptions = {
   /**
    * 动画持续时常，单位ms
@@ -63,7 +60,7 @@ export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
       instance = new BMapGLLib.TrackAnimation(mapInstance, pl!, options)
     }
   }
-  const setPath = (path: PathPoint[]) => {
+  const setPath = (path: Point[]) => {
     const point = path.map((pathItem) => new BMapGL.Point(pathItem.lng, pathItem.lat))
     pl = new BMapGL.Polyline(point)
     init()

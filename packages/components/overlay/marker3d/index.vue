@@ -3,20 +3,9 @@
 <script setup lang="ts">
   import { defineProps, provide, watch, withDefaults } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { callWhenDifferentValue, error } from '../../../utils'
-  export interface Marker3dPosition {
-    /**
-     * 地理经度
-     */
-    lng: number
-    /**
-     * 地理纬度
-     */
-    lat: number
-  }
-  export type MarkerCustomIcon = {
+  import { bindEvents, Callback, callWhenDifferentValue, type Point } from '../../../utils'
+  export type Marker3dCustomIcon = {
     anchor?: {
       x: number
       y: number
@@ -32,11 +21,12 @@
     imageUrl: string
     printImageUrl?: string
   }
-  export interface BmMarker3dProps {
+  export type Marker3dShape = 'BMAP_SHAPE_CIRCLE' | 'BMAP_SHAPE_RECT'
+  export interface Marker3dProps {
     /**
      * 位置
      */
-    position: Marker3dPosition
+    position: Point
     /**
      * 点高度
      */
@@ -48,7 +38,7 @@
     /**
      * 点形状
      */
-    shape?: 'BMAP_SHAPE_CIRCLE' | 'BMAP_SHAPE_RECT'
+    shape?: Marker3dShape
     /**
      * 点填充颜色，同CSS颜色
      */
@@ -61,7 +51,7 @@
     /**
      * 标注所用的图标对象
      */
-    icon?: MarkerCustomIcon
+    icon?: Marker3dCustomIcon
     /**
      * @default true
      * 是否在调用map.clearOverlays清除此覆盖物，默认为true
@@ -77,7 +67,7 @@
     onRightClick?: Callback
   }
 
-  const props = withDefaults(defineProps<BmMarker3dProps>(), {
+  const props = withDefaults(defineProps<Marker3dProps>(), {
     enableMassClear: true,
     size: 50,
     shape: 'BMAP_SHAPE_CIRCLE',
@@ -167,7 +157,7 @@
     }
     return new BMapGL.Icon(imageUrl, new BMapGL.Size(imageSize.width, imageSize.height), iconOptions)
   }
-  function setPosition(position: Marker3dPosition) {
+  function setPosition(position: Point) {
     try {
       // FIXME: 更新 position baidu-map-gl api报错: TypeError: Cannot read properties of undefined (reading '2x')
       marker3d.setPosition(new BMapGL.Point(position.lng, position.lat))

@@ -10,11 +10,12 @@
   import { ref, defineProps, withDefaults, onMounted } from 'vue'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  export interface baseBmControlOptions {
+  import { type ControlAnchor } from '../../../utils'
+  export interface ControlOptions {
     /**
      * 控件的停靠位置
      */
-    anchor?: _ControlAnchor
+    anchor?: ControlAnchor
     /**
      * 控件的偏移值
      */
@@ -25,7 +26,7 @@
   }
   const controlContainer = ref<HTMLDivElement>()
   const { ready } = useLifeCycle()
-  const props = withDefaults(defineProps<baseBmControlOptions>(), {
+  const props = withDefaults(defineProps<ControlOptions>(), {
     anchor: 'BMAP_ANCHOR_TOP_LEFT',
     offset: () => ({ x: 83, y: 18 })
   })

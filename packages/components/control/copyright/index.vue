@@ -11,11 +11,12 @@
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import copyrightControlPosCacheMap from './copyrightControlPosCacheMap'
-  export interface CopyrightControlOptions {
+  import { type ControlAnchor } from '../../../utils'
+  export interface CopyrightProps {
     /**
      * 控件的停靠位置
      */
-    anchor?: _ControlAnchor
+    anchor?: ControlAnchor
     /**
      * 控件的偏移值
      */
@@ -24,7 +25,7 @@
       y: number
     }
   }
-  const props = withDefaults(defineProps<CopyrightControlOptions>(), {
+  const props = withDefaults(defineProps<CopyrightProps>(), {
     anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
     offset: () => ({ x: 83, y: 18 })
   })

@@ -1,5 +1,5 @@
 import { ref, Ref } from 'vue'
-import { Point } from './usePoint'
+import { type Point } from '../utils'
 
 interface Location {
   point: Point

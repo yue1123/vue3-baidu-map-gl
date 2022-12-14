@@ -2,20 +2,9 @@
 <script setup lang="ts">
   import { defineProps, watch, withDefaults, defineEmits, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { callWhenDifferentValue } from '../../../utils'
-  export interface Point {
-    /**
-     * 地理经度
-     */
-    lng: number
-    /**
-     * 地理纬度
-     */
-    lat: number
-  }
-  export interface PolylineProps {
+  import { bindEvents, Callback, callWhenDifferentValue, type Point, type StrokeStyle } from '../../../utils'
+  export interface BezierCurveProps {
     /**
      * 折线的节点坐标数组
      */
@@ -40,7 +29,7 @@
     /**
      * 折线的样式
      */
-    strokeStyle?: 'solid' | 'dashed' | 'dotted'
+    strokeStyle?: StrokeStyle
     /**
      * @default true
      * 是否在调用map.clearOverlays清除此覆盖物，默认为true
@@ -55,16 +44,12 @@
     onRemove?: Callback
     onLineupdate?: Callback
   }
-  const props = withDefaults(defineProps<PolylineProps>(), {
+  const props = withDefaults(defineProps<BezierCurveProps>(), {
     strokeColor: '#000',
     strokeWeight: 2,
     strokeOpacity: 1,
     strokeStyle: 'solid',
-    enableMassClear: true,
-    enableEditing: false,
-    enableClicking: true,
-    geodesic: false,
-    clip: true
+    enableMassClear: true
   })
   const vueEmits = defineEmits([
     'initd',
@@ -159,7 +144,7 @@
   function setStrokeWeight(weight: number): void {
     bezierCurve.setStrokeWeight(weight)
   }
-  function setStrokeStyle(style: 'solid' | 'dashed' | 'dotted'): void {
+  function setStrokeStyle(style: StrokeStyle): void {
     bezierCurve.setStrokeStyle(style)
   }
   function setMassClear(enableMassClear: boolean): void {

@@ -4,12 +4,12 @@
   import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
-  export interface BmLocationOptions {
+  import { bindEvents, Callback, type ControlAnchor } from '../../../utils'
+  export interface LocationProps {
     /**
      * 控件的停靠位置
      */
-    anchor?: _ControlAnchor
+    anchor?: ControlAnchor
     /**
      * 控件的偏移值
      */
@@ -21,7 +21,7 @@
     onLocationSuccess?: Callback
   }
   const { ready } = useLifeCycle()
-  const props = withDefaults(defineProps<BmLocationOptions>(), {
+  const props = withDefaults(defineProps<LocationProps>(), {
     anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
     offset: () => ({ x: 18, y: 18 })
   })

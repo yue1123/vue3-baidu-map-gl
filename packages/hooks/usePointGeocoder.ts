@@ -1,8 +1,7 @@
 import { Ref, ref } from 'vue'
-import { Point } from './usePoint'
-import { error, isArray } from '../utils'
+import { error, isArray, Point } from '../utils'
 
-interface PointGeocoderResult {
+export interface PointGeocoderResult {
   /**
    * 坐标点
    */
@@ -31,17 +30,18 @@ interface PointGeocoderResult {
   business: string
 }
 
-type Result = PointGeocoderResult | PointGeocoderResult[] | null
 /**
  * 由地址解析坐标点
  */
-export function usePointGeocoder(options?: BMapGL.LocationOptions | null, cal?: (point: Ref<Result>) => void) {
+export function usePointGeocoder<
+  T extends PointGeocoderResult | PointGeocoderResult[] = PointGeocoderResult | PointGeocoderResult[]
+>(options?: BMapGL.LocationOptions | null, cal?: (point: Ref<T>) => void) {
   options = options || {}
-  const result = ref<Result>()
+  const result = ref<T | null>()
   const isLoading = ref<boolean>(true)
   const isEmpty = ref<boolean>(true)
   let geocoder: BMapGL.Geocoder
-  const init = (point: Point | Point[]) => {
+  const init = (point: T extends PointGeocoderResult ? Point : Point[]) => {
     if (!point) return error('missed required params: point')
     if (!geocoder) {
       geocoder = new BMapGL.Geocoder()
@@ -63,17 +63,17 @@ export function usePointGeocoder(options?: BMapGL.LocationOptions | null, cal?: 
             result.value = (res as any[]).map((item) => {
               emptyCount += +!item
               return item
-            })
+            }) as T
             isEmpty.value = emptyCount === (res as any[]).length
           } else {
-            result.value = res as PointGeocoderResult
+            result.value = res as T
             isEmpty.value = false
           }
         } else {
           result.value = res
           isEmpty.value = true
         }
-        cal && cal(result as Ref<Result>)
+        cal && cal(result as Ref<T>)
       })
       .catch(() => {
         isEmpty.value = true

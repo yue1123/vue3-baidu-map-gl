@@ -1,7 +1,5 @@
 import { ref } from 'vue'
-import { error } from '../utils'
-import { Point } from './usePoint'
-
+import { error, Point } from '../utils'
 export enum CoordinatesFromType {
   /**
    *  WGS84坐标（GPS标准坐标）

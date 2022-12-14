@@ -1,7 +1,6 @@
 import { ref, Ref } from 'vue'
-import { Point } from './usePoint'
-
-interface UseBrowserLocationOptions {
+import { type Point } from '../utils'
+export interface UseBrowserLocationOptions {
   /**
    * 是否开启SDK辅助定位，仅当使用环境为移动web混合开发，且开启了定位sdk辅助定位功能后生效
    */
@@ -24,9 +23,13 @@ interface UseBrowserLocationOptions {
   SDKLocation?: boolean
 }
 
-type Status = 'BMAP_STATUS_SUCCESS' | 'ERR_PERMISSION_DENIED' | 'ERR_POSITION_UNAVAILABLE' | 'ERR_POSITION_TIMEOUT'
+export type BrowserLocationStatus =
+  | 'BMAP_STATUS_SUCCESS'
+  | 'ERR_PERMISSION_DENIED'
+  | 'ERR_POSITION_UNAVAILABLE'
+  | 'ERR_POSITION_TIMEOUT'
 
-const statusMap: Record<number, Status> = {
+const statusMap: Record<number, BrowserLocationStatus> = {
   // 定位成功
   0: 'BMAP_STATUS_SUCCESS',
   // 定位超时
@@ -59,7 +62,7 @@ export function useBrowserLocation(
   const location = ref<Location>({} as Location)
   const isLoading = ref<boolean>(true)
   const isError = ref<boolean>(false)
-  const status = ref<Status>()
+  const status = ref<BrowserLocationStatus>()
   const init = () => {
     options!.SDKLocation = options!.enableSDKLocation
     new Promise<any>((resolve, reject) => {

@@ -13,17 +13,10 @@
     "declarationDir": "./es",
     "emitDeclarationOnly": true,
     "skipLibCheck": true, // TODO https://github.com/vuejs/core/issues/6554
-    "lib": [
-      "ESNext",
-      "dom",
-      "ESNext.Promise"
-    ],
-    "types": [
-      "node",
-      "vite/client"
-    ],
+    "lib": ["ESNext", "dom", "ESNext.Promise"],
+    "types": ["node", "vite/client"],
     "suppressImplicitAnyIndexErrors": true,
-    "baseUrl": "./"
+    "baseUrl": "."
   },
   "include": [
     "packages/index.ts",
@@ -32,13 +25,8 @@
     "packages/components/**/*.vue",
     "packages/components/**/*.ts",
     "types/*.d.ts",
+    "types/**/*.d.ts",
     "packages/env.d.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "es"
-  ],
-  "files": [
-    "./types/index.d.ts"
-  ]
+  "exclude": ["node_modules", "es", "dist"]
 }

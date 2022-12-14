@@ -3,8 +3,7 @@
 <script setup lang="ts">
   import { defineProps, provide, watch, withDefaults } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import { isString, callWhenDifferentValue, isDef } from '../../../utils/index'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
+  import { bindEvents, Callback, isString, callWhenDifferentValue, isDef, Point } from '../../../utils/index'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import useMarkerDefaultIcons from '../../../hooks/useMarkerDefaultIcons'
   export type MarkerDefaultIcons =
@@ -36,16 +35,6 @@
     | 'blue9'
     | 'blue10'
 
-  export interface MarkerPosition {
-    /**
-     * 地理经度
-     */
-    lng: number
-    /**
-     * 地理纬度
-     */
-    lat: number
-  }
   export interface MarkerOffset {
     x: number
     y: number
@@ -66,8 +55,8 @@
     imageUrl: string
     printImageUrl?: string
   }
-  export interface BmMarkerProps {
-    position: MarkerPosition
+  export interface MarkerProps {
+    position: Point
     /**
      * 标注的位置偏移值
      */
@@ -127,7 +116,7 @@
     onRightClick?: Callback
   }
 
-  const props = withDefaults(defineProps<BmMarkerProps>(), {
+  const props = withDefaults(defineProps<MarkerProps>(), {
     offset: () => ({
       x: 0,
       y: 0
@@ -247,7 +236,7 @@
     console.log('shezhi marker')
     marker.setZIndex(zIndex)
   }
-  function setPosition(position: MarkerPosition) {
+  function setPosition(position: Point) {
     position && position.lat && position.lng && marker.setPosition(new BMapGL.Point(position.lng, position.lat))
   }
   function setIcon() {

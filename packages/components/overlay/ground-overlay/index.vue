@@ -4,16 +4,16 @@
   import { defineEmits, nextTick, Ref, watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
-  import { Point } from '../../../hooks/usePoint'
-  import { error, callWhenDifferentValue } from '../../../utils'
-  export interface BGroundOverlayProps {
+  import { bindEvents, Callback, error, callWhenDifferentValue, type Point } from '../../../utils'
+  export type GroundOverlayUrl =
+    | string
+    | HTMLCanvasElement
+    | Ref<HTMLCanvasElement | string>
+    | (() => HTMLCanvasElement | Ref<HTMLCanvasElement | string>)
+
+  export interface GroundOverlayProps {
     type: 'video' | 'canvas' | 'image'
-    url:
-      | string
-      | HTMLCanvasElement
-      | Ref<HTMLCanvasElement | string>
-      | (() => HTMLCanvasElement | Ref<HTMLCanvasElement | string>)
+    url: GroundOverlayUrl
     startPoint: Point
     endPoint: Point
     autoCenter?: boolean
@@ -24,7 +24,7 @@
     onMouseover?: Callback
     onMouseout?: Callback
   }
-  const props = withDefaults(defineProps<BGroundOverlayProps>(), {
+  const props = withDefaults(defineProps<GroundOverlayProps>(), {
     autoCenter: false,
     opacity: 1
   })

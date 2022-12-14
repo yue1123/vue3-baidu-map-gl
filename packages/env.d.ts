@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
-
 interface Window {
   [key: string]: any
   mapv: any

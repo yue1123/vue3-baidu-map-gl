@@ -1,6 +1,5 @@
-import { onUnmounted, ref, Ref, watch } from 'vue'
-import { Point } from './usePoint'
-
+import { onUnmounted, ref, watch } from 'vue'
+import { type Point } from '../utils'
 export interface ViewAnimationKeyFrames {
   /**
    * 	地图中心点，默认值为地图当前状态中心点
@@ -46,7 +45,7 @@ export interface UseViewAnimationOptions {
 type AnimationListenerType = 'animationstart' | 'animationiterations' | 'animationend' | 'animationcancel'
 
 type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
-// FIXME: 取消动画后再次开始动画,地图上 pio 不消失,可能是地图本身 bug
+// FIXME: 取消动画后再次开始动画, 地图上 pio 不消失, 可能是地图本身 bug
 export function useViewAnimation(map: any, options: UseViewAnimationOptions) {
   options = options || {}
   options.disableDragging = options.disableDragging !== undefined ? false : true

@@ -9,23 +9,12 @@
 <script setup lang="ts">
   import { ref, watch, withDefaults, onUpdated, nextTick, computed, provide, onUnmounted } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import bindEvents, { Callback } from '../../../utils/bindEvents'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { callWhenDifferentValue } from '../../../utils/index'
-  export type InfoWindowPosition = {
-    /**
-     * 地理经度
-     */
-    lng: number
-    /**
-     * 地理纬度
-     */
-    lat: number
-  }
+  import { bindEvents, Callback, callWhenDifferentValue, type Point } from '../../../utils/index'
   export interface InfoWindowProps {
     modelValue?: boolean
     title?: string
-    position: InfoWindowPosition
+    position: Point
     width?: 0 | RangeOf2<220, 730>
     height?: 0 | RangeOf2<60, 650>
     /**
@@ -206,7 +195,7 @@
     closeOnClick ? infoWindow.enableCloseOnClick() : infoWindow.disableCloseOnClick()
   }
 
-  function setPosition(position: InfoWindowPosition) {
+  function setPosition(position: Point) {
     infoWindow.setPosition(new BMapGL.Point(position.lng, position.lat))
   }
   function setContent(content: string | HTMLElement): void {

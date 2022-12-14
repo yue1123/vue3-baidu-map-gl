@@ -4,7 +4,7 @@
   import { defineProps, withDefaults, watch, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  export interface BmScaleOptions {
+  export interface ScaleProps {
     /**
      * 控件的停靠位置
      */
@@ -22,7 +22,7 @@
     unit?: _LengthUnit
   }
   const { ready } = useLifeCycle()
-  const props = withDefaults(defineProps<BmScaleOptions>(), {
+  const props = withDefaults(defineProps<ScaleProps>(), {
     anchor: 'BMAP_ANCHOR_BOTTOM_LEFT',
     offset: () => ({ x: 83, y: 18 }),
     unit: 'BMAP_UNIT_METRIC'

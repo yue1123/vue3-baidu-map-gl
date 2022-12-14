@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const merge = require('deepmerge')
 const { defineConfig } = require('rollup')
@@ -10,7 +11,10 @@ const typescript = require('rollup-plugin-typescript')
 const pkg = require('./package.json')
 
 const baseConfig = defineConfig({
-  external: ['vue'],
+  external(id) {
+    if (id === 'vue') return true
+    if (id === 'index.vue' || id === './components/index') return false
+  },
   input: path.resolve('./packages/index.ts'),
   plugins: [
     replace({

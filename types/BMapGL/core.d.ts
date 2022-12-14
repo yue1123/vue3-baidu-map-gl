@@ -214,7 +214,13 @@ declare namespace BMapGL {
      */
     reset(): void
     highResolutionEnabled(): boolean
+    /**
+     * 放大一级
+     */
     zoomIn(): void
+    /**
+     * 缩小一级
+     */
     zoomOut(): void
     addHotspot(hotspot: Hotspot): void
     removeHotspot(hotspot: Hotspot): void

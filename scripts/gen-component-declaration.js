@@ -2,12 +2,9 @@
 import path from 'path'
 import fs from 'fs-extra'
 import process from 'process'
-import * as globalComponents from '../es/index'
+import componentsList from '../es/components'
 
 const TYPE_ROOT = process.cwd()
-
-// XButton is for tsx type checking, shouldn't be exported
-const excludeComponents = []
 
 function exist(path) {
   return fs.existsSync(path)
@@ -22,16 +19,13 @@ function parseComponentsDeclaration(code) {
   )
 }
 
-const exclude = /use|version|install/
-
 async function generateComponentsType() {
   const components = {}
-  Object.keys(globalComponents).forEach((key) => {
+  componentsList.forEach(({ name }) => {
+    const key = name.replace('B', '')
     const entry = `typeof import('vue3-baidu-map-gl')['${key}']`
-    if (key !== 'default' && !exclude.test(key) && !excludeComponents.includes(key)) {
-      components[key] = entry
-      components[`B${key}`] = entry
-    }
+    components[name] = entry
+    components[key] = entry
   })
   const originalContent = exist(path.resolve(TYPE_ROOT, 'volar.d.ts'))
     ? await fs.readFile(path.resolve(TYPE_ROOT, 'volar.d.ts'), 'utf-8')
@@ -52,6 +46,7 @@ async function generateComponentsType() {
       return `${name}: ${v}`
     })
   const code = `// Auto generated component declarations ↓
+/// <reference path="../types/index.d.ts" />
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ${lines.join('\n    ')}

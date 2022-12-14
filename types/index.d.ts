@@ -1,11 +1,10 @@
-/// <reference path="./base.d.ts" />
-/// <reference path="./control.d.ts" />
-/// <reference path="./core.d.ts" />
-/// <reference path="./layer.d.ts" />
-/// <reference path="./overlay.d.ts" />
-/// <reference path="./panorama.d.ts" />
-/// <reference path="./rightmenu.d.ts" />
-/// <reference path="./service.d.ts" />
+/// <reference path="./BMapGL/index.d.ts" />
 /// <reference path="./tools.d.ts" />
-/// <reference path="./lib.d.ts" />
-/// <reference path="./mapvgl.d.ts" />
+import { UserPlugins, PluginsSourceLink } from '../packages/utils/pluginLoader'
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $baiduMapAk: string
+    $baiduMapPlugins: UserPlugins
+    $baiduMapPluginsSourceLink: PluginsSourceLink
+  }
+}
