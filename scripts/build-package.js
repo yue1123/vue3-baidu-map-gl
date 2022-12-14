@@ -40,9 +40,6 @@ function getComponentList() {
     fileName = fileName.endsWith('.vue') ? fileName + '.js' : fileName.replace('.ts', '.js')
     return {
       external(id) {
-        if (id === 'mitt') {
-          return false
-        }
         if (id.endsWith('.vue') || id.endsWith('index')) return true
         return internalModuleReg.test(id)
       },
@@ -66,9 +63,6 @@ function getTypescriptFilesList() {
   return typescriptFiles.map((tsFile) => {
     return {
       external(id) {
-        if (/^mitt/.test(id)) {
-          return false
-        }
         return true
       },
       input: tsFile,
