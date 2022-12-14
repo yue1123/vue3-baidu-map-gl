@@ -229,8 +229,9 @@
       text-align: center;
       padding: 0.5rem 0;
       border-top: 1px dashed var(--vp-c-divider-light);
-      background-color: var(--vp-c-black-soft);
+      background-color: var(--vp-custom-block-details-bg);
       z-index: 99;
+      cursor: pointer;
     }
   }
   .collapse-enter-active {
