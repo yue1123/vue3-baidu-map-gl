@@ -89,7 +89,8 @@ const { get, location, isLoading, isError, status } = useBrowserLocation(options
 
 ```ts
 import { Ref } from 'vue'
-import { Point } from './usePoint'
+import { type Point } from 'vue3-baidu-map-gl'
+
 interface UseBrowserLocationOptions {
   /**
    * 是否开启SDK辅助定位，仅当使用环境为移动web混合开发，且开启了定位sdk辅助定位功能后生效

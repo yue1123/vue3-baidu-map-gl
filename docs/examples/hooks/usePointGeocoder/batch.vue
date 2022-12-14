@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { usePointGeocoder } from 'vue3-baidu-map-gl'
+  import { usePointGeocoder, PointGeocoderResult } from 'vue3-baidu-map-gl'
   const points = [
     { lng: 116.307852, lat: 40.057031 },
     { lng: 116.313082, lat: 40.047674 },
@@ -46,7 +46,7 @@
     { lng: 116.403472, lat: 39.999411 },
     { lng: 116.307901, lat: 40.05901 }
   ]
-  const { get, result, isLoading } = usePointGeocoder()
+  const { get, result, isLoading } = usePointGeocoder<PointGeocoderResult[]>()
   function handleInitd() {
     get(points)
   }

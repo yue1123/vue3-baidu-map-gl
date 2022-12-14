@@ -10,13 +10,13 @@
   const list = ref<(ContextMenuItem | ContextMenuSeparator)[]>([
     {
       text: '放大一级',
-      callback: function ({ map }) {
+      callback: function ({ map }: { map: BMapGL.Map }) {
         map.zoomIn()
       }
     },
     {
       text: '缩小一级',
-      callback: function ({ map }) {
+      callback: function ({ map }: { map: BMapGL.Map }) {
         map.zoomOut()
       }
     },

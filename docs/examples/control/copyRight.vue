@@ -25,9 +25,7 @@
   function toggle() {
     show.value = !show.value
   }
-  if (typeof window !== 'undefined') {
-    setInterval(() => {
-      count.value++
-    }, 1000)
-  }
+  setInterval(() => {
+    count.value++
+  }, 1000)
 </script>

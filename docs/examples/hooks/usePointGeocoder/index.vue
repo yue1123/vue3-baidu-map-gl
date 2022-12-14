@@ -17,9 +17,9 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import { usePointGeocoder } from 'vue3-baidu-map-gl'
+  import { usePointGeocoder, PointGeocoderResult } from 'vue3-baidu-map-gl'
   const map = ref()
-  const { get, result, isLoading, isEmpty } = usePointGeocoder()
+  const { get, result, isLoading, isEmpty } = usePointGeocoder<PointGeocoderResult>()
   const point = ref({ lng: 116.30793520652882, lat: 40.05861561613348 })
   const markerPoint = point
 

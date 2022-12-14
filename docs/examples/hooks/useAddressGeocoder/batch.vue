@@ -16,7 +16,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { useAddressGeocoder } from 'vue3-baidu-map-gl'
+  import { useAddressGeocoder, Point } from 'vue3-baidu-map-gl'
   const addressList = [
     '包河区金寨路1号（金寨路与望江西路交叉口）',
     '庐阳区凤台路209号（凤台路与蒙城北路交叉口）',
@@ -25,9 +25,9 @@
     '蜀山区 长丰南路159号铜锣湾广场312室',
     '合肥市寿春路93号钱柜星乐町KTV（逍遥津公园对面）',
     '庐阳区长江中路177号',
-    '新站区胜利路89'
+    
   ]
-  const { get, point: points, isLoading, isEmpty } = useAddressGeocoder()
+  const { get, point: points, isLoading, isEmpty } = useAddressGeocoder<Point[]>()
 
   function handleInitd() {
     get(addressList, '合肥市')

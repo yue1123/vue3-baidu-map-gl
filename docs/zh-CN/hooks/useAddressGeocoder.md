@@ -6,11 +6,21 @@
 import { useAddressGeocoder } from 'vue3-baidu-map-gl'
 ```
 
-## 示例
+## 单个地址解析
 
 使用地址字符串作为 `get` 方法参数解析单个地址
 :::demo 通过下拉框切换地址解析坐标点
 hooks/useAddressGeocoder/index
+:::
+
+:::tip
+在 Ts 中使用单个解析地址时，使用泛型`Point`内部可推断`point`为可推断为`Point`，从而避免读取值时 ts 的报错。
+
+```ts
+import { Point } from 'vue3-baidu-map-gl'
+const { point } = useAddressGeocoder<Point>()
+```
+
 :::
 
 ## 批量解析地址
@@ -18,6 +28,16 @@ hooks/useAddressGeocoder/index
 使用地址字符串数组作为 `get` 方法参数批量解析地址
 :::demo
 hooks/useAddressGeocoder/batch
+:::
+
+:::tip
+在 Ts 中使用批量解析地址时，使用泛型`Point[]`内部可推断`point`为可推断为`Point[]`，从而避免遍历时 ts 的报错。
+
+```ts
+import { Point } from 'vue3-baidu-map-gl'
+const { point: points } = useAddressGeocoder<Point[]>()
+```
+
 :::
 
 ## 用法
@@ -55,13 +75,17 @@ type Point = { lng: number; lat: number }
 
 ```ts
 import { Ref } from 'vue'
-import { Point } from './usePoint'
+import { type Point } from 'vue3-baidu-map-gl'
+
+export declare type AddressGeocoderResult = Point | Point[]
 /**
  * 由地址解析坐标点
  */
-export declare function useAddressGeocoder(cal: (point: Ref<Point | Point[]>) => void): {
-  get: (address: string | string[], city: string) => void
-  point: Ref<Point | Point[] | null | undefined>
+export declare function useAddressGeocoder<T extends AddressGeocoderResult = AddressGeocoderResult>(
+  cal?: (point: Ref<T>) => void
+): {
+  get: (address: T extends Point ? string : string[], city: string) => void
+  point: Ref<T | null | undefined>
   isLoading: Ref<boolean>
   isEmpty: Ref<boolean>
 }

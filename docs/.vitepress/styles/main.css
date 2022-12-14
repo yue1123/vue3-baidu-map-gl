@@ -10,8 +10,6 @@
   top: 50%;
   left: 50%;
   border-radius: 50%;
-  /* width: 172px !important;
-  height: 172px !important; */
   background-image: var(--vp-home-hero-image-background-image);
   filter: var(--vp-home-hero-image-filter);
   transform: translate(-50%, -50%);

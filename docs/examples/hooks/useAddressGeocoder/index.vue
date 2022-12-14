@@ -1,7 +1,7 @@
 <template>
   <div>
     选择地址解析:
-    <select class="mySelect" v-model="address">
+    <select class="mySelect" v-model="currentAddress">
       <option v-for="item in addressList" :value="item">{{ item.address }}</option>
     </select>
     <div class="state" v-if="!isLoading && !isEmpty">
@@ -22,7 +22,7 @@
 
 <script lang="ts" setup>
   import { ref, watch } from 'vue'
-  import { useAddressGeocoder } from 'vue3-baidu-map-gl'
+  import { useAddressGeocoder, Point } from 'vue3-baidu-map-gl'
   const map = ref()
   const addressList = ref([
     {
@@ -38,10 +38,10 @@
       city: '北京市'
     }
   ])
-  const address = ref(addressList.value[0])
+  const currentAddress = ref(addressList.value[0])
 
   watch(
-    () => address,
+    () => currentAddress,
     (n) => {
       get(n.value.address, n.value.city)
     },
@@ -49,12 +49,12 @@
       deep: true
     }
   )
-  const { get, point, isLoading, isEmpty } = useAddressGeocoder(() => {
+  const { get, point, isLoading, isEmpty } = useAddressGeocoder<Point>(() => {
     map.value.resetCenter()
   })
 
   function handleInitd() {
-    get(address.value.address, address.value.city)
+    get(currentAddress.value.address, currentAddress.value.city)
   }
 </script>
 

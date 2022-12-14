@@ -40,7 +40,7 @@ const { get, location, isLoading } = useIpLocation(cal)
 
 ```ts
 import { Ref } from 'vue'
-import { Point } from './usePoint'
+import { type Point } from 'vue3-baidu-map-gl'
 interface Location {
   point: Point
   code: number

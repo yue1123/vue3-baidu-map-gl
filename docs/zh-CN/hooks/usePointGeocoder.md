@@ -6,11 +6,21 @@
 import { usePointGeocoder } from 'vue3-baidu-map-gl'
 ```
 
-## 示例
+## 单个坐标点解析
 
 使用坐标点对象作为 `get` 方法参数解析单个坐标点
 :::demo 鼠标点击地图选择坐标点解析
 hooks/usePointGeocoder/index
+:::
+
+:::tip
+在 Ts 中使用批量解析坐标点时，使用泛型`PointGeocoderResult`内部可推断`result`为可推断为`PointGeocoderResult`，从而避免读取值时 ts 的报错。
+
+```ts
+import { usePointGeocoder, PointGeocoderResult } from 'vue3-baidu-map-gl'
+const { result } = usePointGeocoder<PointGeocoderResult>()
+```
+
 :::
 
 ## 批量解析坐标点
@@ -18,6 +28,16 @@ hooks/usePointGeocoder/index
 使用坐标点对象数组作为 `get` 方法参数批量解析坐标点
 :::demo
 hooks/usePointGeocoder/batch
+:::
+
+:::tip
+在 Ts 中使用批量解析坐标点时，使用泛型`PointGeocoderResult[]`内部可推断`result`为可推断为`PointGeocoderResult[]`，从而避免遍历时 ts 的报错。
+
+```ts
+import { usePointGeocoder, PointGeocoderResult } from 'vue3-baidu-map-gl'
+const { result } = usePointGeocoder<PointGeocoderResult[]>()
+```
+
 :::
 
 ## 用法
@@ -106,8 +126,8 @@ type Point = { lng: number; lat: number }
 
 ```ts
 import { Ref } from 'vue'
-import { Point } from './usePoint'
-interface PointGeocoderResult {
+import { Point } from 'vue3-baidu-map-gl'
+export interface PointGeocoderResult {
   /**
    * 坐标点
    */
@@ -135,16 +155,17 @@ interface PointGeocoderResult {
    */
   business: string
 }
-declare type Result = PointGeocoderResult | PointGeocoderResult[] | null
 /**
  * 由地址解析坐标点
  */
-export declare function usePointGeocoder(
-  options: BMapGL.LocationOptions | null | undefined,
-  cal: (point: Ref<Result>) => void
+export declare function usePointGeocoder<
+  T extends PointGeocoderResult | PointGeocoderResult[] = PointGeocoderResult | PointGeocoderResult[]
+>(
+  options?: BMapGL.LocationOptions | null,
+  cal?: (point: Ref<T>) => void
 ): {
-  get: (point: Point | Point[]) => void
-  result: Ref<Result | undefined>
+  get: (point: T extends PointGeocoderResult ? Point : Point[]) => void
+  result: Ref<T | null | undefined>
   isLoading: Ref<boolean>
   isEmpty: Ref<boolean>
 }
