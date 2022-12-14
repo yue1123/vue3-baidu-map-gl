@@ -26,7 +26,7 @@
       callback: function () {
         center.value = center.value === '上海市' ? '北京市' : '上海市'
         setTimeout(() => {
-          ;(list.value[2] as ContextMenuItem).text = '回北京'
+          ;(list.value[3] as ContextMenuItem).text = '回北京'
         })
       }
     }
