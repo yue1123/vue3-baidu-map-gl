@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.1.0...v1.1.1) (2022-12-14)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 修复 mitt 依赖导致无法运行的 bug ([28c3c6a](https://github.com/yue1123/vue3-baidu-map-gl/commit/28c3c6a48dc5f271cc79a9d2aefb9a743ca82a1d))
+
 ## [1.1.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.0.1...v1.1.0) (2022-12-14)
 
 
