@@ -40,14 +40,13 @@ const statusMap: Record<number, AnimationStatus> = {
  * @param {UseTrackAnimationOptions} options 轨迹动画配置
  * @returns { setPath, start, stop}
  */
-// FIXME: 默认值处理
-export function useTrackAnimation(map: any, options: UseTrackAnimationOptions) {
+export function useTrackAnimation(map: any, options?: UseTrackAnimationOptions) {
   let instance: BMapGLLib.TrackAnimation
   let pl: BMapGL.Polyline | null
   let mapComponentInstance: any
   let mapInstance: BMapGL.Map
   const status = ref<AnimationStatus>('INITIAL')
-
+  options = options || {}
   watch(
     () => map.value,
     (n) => {
