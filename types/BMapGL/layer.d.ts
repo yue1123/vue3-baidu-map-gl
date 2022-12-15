@@ -58,6 +58,18 @@ declare namespace BMapGL {
     pointDensityType?: PointDensityType
   }
   type PointDensityType = number
+
+  interface DistrictLayerOptions {
+    name: string
+    kind: number
+    fillColor: string
+    fillOpacity: number
+    strokeColor: string
+    viewport: boolean
+  }
+  class DistrictLayer extends TileLayer {
+    constructor(opts: DistrictLayerOptions)
+  }
 }
 
 declare const BMAP_POINT_DENSITY_HIGH: BMapGL.PointDensityType

@@ -131,6 +131,10 @@ export const sidebarConfigZh = {
         {
           text: 'PanoramaCoverageLayer 全景图层',
           link: '/zh-CN/components/layer/panorama-coverage'
+        },
+        {
+          text: 'DistrictLayer 行政区图层',
+          link: '/zh-CN/components/layer/district-layer'
         }
       ]
     },

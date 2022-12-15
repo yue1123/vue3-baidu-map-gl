@@ -249,6 +249,8 @@ declare namespace BMapGL {
     addTileLayer(tileLayer: TileLayer): void
     removeTileLayer(tilelayer: TileLayer): void
     getTileLayer(mapType: string): TileLayer
+    removeDistrictLayer(districtLayer: BMapGL.DistrictLayer): void
+    addDistrictLayer(districtLayer: BMapGL.DistrictLayer): void
     /**
      * 启动视角动画
      */

@@ -19,6 +19,7 @@ import { Circle } from './components/overlay/circle/index'
 import { Prism } from './components/overlay/prism/index'
 import { GroundOverlay } from './components/overlay/ground-overlay/index'
 import { ContextMenu } from './components/contextMenu/index'
+import { DistrictLayer } from './components/layer/district-layer/index'
 
 export default [
   Map,
@@ -41,5 +42,6 @@ export default [
   ContextMenu,
   PanoramaControl,
   PanoramaCoverageLayer,
-  GroundOverlay
+  GroundOverlay,
+  DistrictLayer
 ]
