@@ -174,3 +174,36 @@ input.my-input {
   font-size: 14px;
   margin-bottom: 15px;
 }
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border: 1px solid var(--vp-c-divider-light);
+}
+
+.vp-doc th {
+  text-align: left;
+  /* background-color: var(--vp-c-bg-soft) !important; */
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: none;
+}
+
+.vp-doc tr {
+  border-top: none;
+  border-bottom: 1px solid var(--vp-c-divider-light);
+}
+
+.vp-doc tbody tr:last-child {
+  border: none;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background: none;
+}
+
+.vp-doc tbody tr:hover {
+  background-color: var(--vp-c-bg-soft);
+}
