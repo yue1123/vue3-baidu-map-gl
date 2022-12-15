@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.1.1...v1.1.2) (2022-12-15)
+
+
+### ✏️ Documentation | 文档
+
+* **style:** 文档 api 表格样式调整 ([0c87faa](https://github.com/yue1123/vue3-baidu-map-gl/commit/0c87faa213293b2ff43208814c8a1c0551984d76))
+
+
+### ✨ Features | 新功能
+
+* 增加行政区图层组件 ([1e2464a](https://github.com/yue1123/vue3-baidu-map-gl/commit/1e2464a69200a0d48d64b2eb1f890cfb1af788e6))
+* **useTrackAnimation:** options 更改为可选 ([009951d](https://github.com/yue1123/vue3-baidu-map-gl/commit/009951d16fa35cc6ba2885284464ff5078cfbb42))
+
 ### [1.1.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.1.0...v1.1.1) (2022-12-14)
 
 
