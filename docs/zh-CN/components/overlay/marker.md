@@ -24,15 +24,15 @@ overlay/marker
 
 ## 动态组件 Props
 
-| 属性                                      | 说明                                                        | 类型                          | 可选值                        | 默认值     |
-| ----------------------------------------- | ----------------------------------------------------------- | ----------------------------- | ----------------------------- | ---------- |
-| zIndex<Badge type="tip" text="^0.0.35" /> | 显示层级                                                    | `number`                      | -                             | -          |
-| position                                  | 标注点的坐标                                                | `{ lng: number, lat: number}` | -                             | `required` |
-| offset                                    | 标注点的像素偏移                                            | ` {x: number, y: number }`    | -                             |            |
-| icon                                      | 标注点的图标。可使用默认图标，也可[自定义图标](#自定义图标) | `string `                     | `simple_red / simple_blue...` | -          |
-| rotation                                  | 旋转角度                                                    | `number `                     | -                             |            |
-| enableDragging                            | 是否启用拖拽                                                | `boolean `                    | -                             | ` true`    |
-| enableMassClear                           | 是否在调用 `map.clearOverlays` 清除此覆盖物                 | `boolean `                    | -                             | `true `    |
+| 属性            | 说明                                                        | 类型                          | 可选值                        | 默认值     | 版本                                |
+| --------------- | ----------------------------------------------------------- | ----------------------------- | ----------------------------- | ---------- | ----------------------------------- |
+| zIndex          | 显示层级                                                    | `number`                      | -                             | -          | <Badge type="tip" text="^0.0.35" /> |
+| position        | 标注点的坐标                                                | `{ lng: number, lat: number}` | -                             | `required` | -                                   |
+| offset          | 标注点的像素偏移                                            | ` {x: number, y: number }`    | -                             |            | -                                   |
+| icon            | 标注点的图标。可使用默认图标，也可[自定义图标](#自定义图标) | `string `                     | `simple_red / simple_blue...` | -          | -                                   |
+| rotation        | 旋转角度                                                    | `number `                     | -                             |            | -                                   |
+| enableDragging  | 是否启用拖拽                                                | `boolean `                    | -                             | ` true`    | -                                   |
+| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物                 | `boolean `                    | -                             | `true `    | -                                   |
 
 ## 默认图标可选值
 

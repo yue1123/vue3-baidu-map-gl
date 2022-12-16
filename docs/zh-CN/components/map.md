@@ -53,6 +53,7 @@ map/theme2
 默认情况下，地图加载中效果是`map loading...`。如果不能满足你的需求，你可以通过提供`loading`具名作用域插槽来自定义地图加载中显示效果，在地图未完成加载前`isLoading`为 `false`，完成后为`true`
 
 :::details 显示代码
+
 <!-- prettier-ignore -->
 ```html
 <template>
@@ -118,42 +119,45 @@ map/theme2
   }
 </style>
 ```
+
 :::
+
 ## 静态组件 props
 
-| 属性              | 说明                                                     | 类型                                                                      | 可选值 | 默认值  |
-| ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------- | ------ | ------- |
-| ak                | 百度地图 ak [申请 ak](../guide/quick-start#申请-ak-密钥) | `string`                                                                  | -      | -       |
-| minZoom           | 地图允许展示的最小级别                                   | `number`                                                                  | `0-21` | `0`     |
-| maxZoom           | 地图允许展示的最大级别                                   | `number`                                                                  | `0-21` | `21`    |
-| showControls      | 是否显示室内图                                           | `boolean`                                                                 | -      | `false` |
-| plugins           | 需要注册的插件                                           | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvglThree']`                     | -      | -       |
-| pluginsSourceLink | 自定义插件资源地址                                       | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvglThree', string>` | -      | -       |
+| 属性              | 说明                                                     | 类型                                                                    | 可选值 | 默认值  | 版本                               |
+| ----------------- | -------------------------------------------------------- | ----------------------------------------------------------------------- | ------ | ------- | ---------------------------------- |
+| ak                | 百度地图 ak [申请 ak](../guide/quick-start#申请-ak-密钥) | `string`                                                                | -      | -       | -                                  |
+| minZoom           | 地图允许展示的最小级别                                   | `number`                                                                | `0-21` | `0`     | -                                  |
+| maxZoom           | 地图允许展示的最大级别                                   | `number`                                                                | `0-21` | `21`    | -                                  |
+| showControls      | 是否显示室内图                                           | `boolean`                                                               | -      | `false` | -                                  |
+| restrictCenter    | 是否限制中心                                             | `boolean`                                                               | -      | `true`  | <Badge type="tip" text="^1.1.3" /> |
+| plugins           | 需要注册的插件                                           | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvThree']`                     | -      | -       | -                                  |
+| pluginsSourceLink | 自定义插件资源地址                                       | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvThree', string>` | -      | -       | -                                  |
 
 ## 动态组件 Props
 
-| 属性                   | 说明                                                                                                                                                                           | 类型                                  | 默认值            |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ----------------- |
-| width <Badge type="tip" text="^1.0.1" />                 | 地图显示宽度                                                                                                                                                                   | `string / number`                     | `100%`            |
-| height <Badge type="tip" text="^1.0.1" />                 | 地图显示高度                                                                                                                                                                   | `string / number`                     | `550px`           |
-| center                 | 地图默认中心点，可使用城市名，如：北京市，也可以使用对象如 `{lng: 121.424333, lat: 31.228604}` 表示经纬度。                                                                    | `string / {lng: number, lat: number}` | `北京市`          |
-| heading                | 地图旋转角度                                                                                                                                                                   | `number`                              | `0`               |
-| tilt                   | 地图倾斜角度                                                                                                                                                                   | `number`                              | `0 `              |
-| mapType                | 地图类型 [mapType](#地图类型)                                                                                                                                                  | `string`                              | `BMAP_NORMAL_MAP` |
-| zoom                   | 地图缩放级别                                                                                                                                                                   | `number`                              | `14`              |
-| displayOptions         | 自定义地图属性 [详见](#displayoptions)                                                                                                                                         | -                                     | -                 |
-| mapStyleId             | 个性化地图样式 ID [详见](#个性化地图)                                                                                                                                          | `string`                              | -                 |
-| mapStyleJson           | 个性化地图样式 Json [详见](#个性化地图)                                                                                                                                        | `{featureType: string...}[]`          | -                 |
-| enableTraffic          | 是否启用交通路况图层                                                                                                                                                           | `boolean`                             | `false`           |
-| enableDragging         | 启用地图拖拽                                                                                                                                                                   | `boolean`                             | `true`            |
-| enableInertialDragging | 启用地图惯性拖拽                                                                                                                                                               | `boolean`                             | `true`            |
-| enableScrollWheelZoom  | 允许地图可被鼠标滚轮缩放                                                                                                                                                       | `boolean`                             | `false`           |
-| enableContinuousZoom   | 开启双击平滑缩放效果                                                                                                                                                           | `boolean`                             | `true`            |
-| enableResizeOnCenter   | 开启图区 resize 中心点不变                                                                                                                                                     | `boolean`                             | `true`            |
-| enableDoubleClickZoom  | 启用地图双击缩放，左键双击放大、右键双击缩小                                                                                                                                   | `boolean`                             | `false`           |
-| enableKeyboard         | 启用键盘操作，键盘的上、下、左、右键可连续移动地图。同时按下其中两个键可使地图进行对角移动。PgUp、PgDn、Home 和 End 键会使地图平移其 1/2 的大小。 +、-键会使地图放大或缩小一级 | `boolean`                             | `true`            |
-| enablePinchToZoom      | 启用双指缩放地图                                                                                                                                                               | `boolean `                            | `true`            |
-| enableAutoResize       | 启用自动适应容器尺寸变化                                                                                                                                                       | `boolean `                            | `true`            |
+| 属性                   | 说明                                                                                                                                                                           | 类型                                  | 默认值            | 版本                               |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ----------------- | ---------------------------------- |
+| width                  | 地图显示宽度                                                                                                                                                                   | `string / number`                     | `100%`            | <Badge type="tip" text="^1.0.1" /> |
+| height                 | 地图显示高度                                                                                                                                                                   | `string / number`                     | `550px`           | <Badge type="tip" text="^1.0.1" /> |
+| center                 | 地图默认中心点，可使用城市名，如：北京市，也可以使用对象如 `{lng: 121.424333, lat: 31.228604}` 表示经纬度。                                                                    | `string / {lng: number, lat: number}` | `北京市`          | -                                  |
+| heading                | 地图旋转角度                                                                                                                                                                   | `number`                              | `0`               | -                                  |
+| tilt                   | 地图倾斜角度                                                                                                                                                                   | `number`                              | `0 `              | -                                  |
+| mapType                | 地图类型 [mapType](#地图类型)                                                                                                                                                  | `string`                              | `BMAP_NORMAL_MAP` | -                                  |
+| zoom                   | 地图缩放级别                                                                                                                                                                   | `number`                              | `14`              | -                                  |
+| displayOptions         | 自定义地图属性 [详见](#displayoptions)                                                                                                                                         | -                                     | -                 | -                                  |
+| mapStyleId             | 个性化地图样式 ID [详见](#个性化地图)                                                                                                                                          | `string`                              | -                 | -                                  |
+| mapStyleJson           | 个性化地图样式 Json [详见](#个性化地图)                                                                                                                                        | `{featureType: string...}[]`          | -                 | -                                  |
+| enableTraffic          | 是否启用交通路况图层                                                                                                                                                           | `boolean`                             | `false`           | -                                  |
+| enableDragging         | 启用地图拖拽                                                                                                                                                                   | `boolean`                             | `true`            | -                                  |
+| enableInertialDragging | 启用地图惯性拖拽                                                                                                                                                               | `boolean`                             | `true`            | -                                  |
+| enableScrollWheelZoom  | 允许地图可被鼠标滚轮缩放                                                                                                                                                       | `boolean`                             | `false`           | -                                  |
+| enableContinuousZoom   | 开启双击平滑缩放效果                                                                                                                                                           | `boolean`                             | `true`            | -                                  |
+| enableResizeOnCenter   | 开启图区 resize 中心点不变                                                                                                                                                     | `boolean`                             | `true`            | -                                  |
+| enableDoubleClickZoom  | 启用地图双击缩放，左键双击放大、右键双击缩小                                                                                                                                   | `boolean`                             | `false`           | -                                  |
+| enableKeyboard         | 启用键盘操作，键盘的上、下、左、右键可连续移动地图。同时按下其中两个键可使地图进行对角移动。PgUp、PgDn、Home 和 End 键会使地图平移其 1/2 的大小。 +、-键会使地图放大或缩小一级 | `boolean`                             | `true`            | -                                  |
+| enablePinchToZoom      | 启用双指缩放地图                                                                                                                                                               | `boolean `                            | `true`            | -                                  |
+| enableAutoResize       | 启用自动适应容器尺寸变化                                                                                                                                                       | `boolean `                            | `true`            | -                                  |
 
 ## 地图类型
 
@@ -196,7 +200,7 @@ map/theme2
 | --------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------- |
 | initd           | 组件初始化后会触发此事件，返回一个地图实例                                                       | `{ map, BmapGL, instance }`              |
 | unload          | 组件卸载时会触发此事件                                                                           | -                                        |
-| pluginReady     | 插件加载完毕会触发此事件                                                                         | -                                        |
+| pluginReady     | 插件加载完毕会触发此事件                                                                         | `{map}`                                  |
 | click           | 左键单击地图时触发此事件。 当双击时，产生的事件序列为： click click dblclick                     | `{type, target, latlng, pixel, overlay}` |
 | dblclick        | 鼠标双击地图时会触发此事件                                                                       | `{type, target, pixel, point}`           |
 | rightclick      | 右键单击地图时触发此事件。 当双击时，产生的事件序列为： rightclick rightclick rightdblclick      | `{type, target, latlng, pixel, overlay}` |

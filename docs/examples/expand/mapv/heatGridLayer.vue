@@ -13,13 +13,12 @@
     mapStyleId="980161f3645989feac25a0da15da4178"
     enableScrollWheelZoom
     :plugins="['Mapvgl', 'Mapv']"
-    @pluginReady="handleInitd"
+    @pluginReady="handlePluginReady"
   />
 </template>
 
 <script setup>
-  import { Map } from 'vue3-baidu-map-gl'
-  function handleInitd(map) {
+  function handlePluginReady(map) {
     let view = new mapvgl.View({
       map: map
     })

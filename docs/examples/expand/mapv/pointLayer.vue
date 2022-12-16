@@ -11,11 +11,11 @@
     }"
     mapStyleId="91c53039a0b7f75e3dd8ddcdd932243b"
     enableScrollWheelZoom
-    @pluginReady="handleInitd"
+    @pluginReady="handlePluginReady"
   />
 </template>
 <script setup>
-  function handleInitd(map) {
+  function handlePluginReady(map) {
     let data = []
 
     let citys = [

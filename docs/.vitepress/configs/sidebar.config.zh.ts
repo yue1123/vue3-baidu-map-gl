@@ -185,8 +185,8 @@ export const sidebarConfigZh = {
       collapsible: true,
       items: [
         {
-          text: '与 mapvgl 可视化结合',
-          link: '/zh-CN/expand/mapvgl'
+          text: '与 mapv 可视化结合',
+          link: '/zh-CN/expand/mapv'
         }
       ]
     }
