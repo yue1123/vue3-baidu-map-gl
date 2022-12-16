@@ -1,6 +1,4 @@
-import fs from 'fs'
 import path from 'path'
-import glob from 'fast-glob'
 
 import type { Plugin } from 'vite'
 

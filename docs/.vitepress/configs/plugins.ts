@@ -5,12 +5,11 @@ import mdContainer from 'markdown-it-container'
 import { highlight } from '../utils/higtlight'
 import type Token from 'markdown-it/lib/token'
 import type Renderer from 'markdown-it/lib/renderer'
+import { hideSomeCode } from '../utils/hideSomeCode'
 
 const localMd = MarkdownIt()
 const docRoot = process.cwd()
 const classReg = /class\=\".*\"/
-const akReg = /\sak\=\".*\"/
-const vBindRef = /v\-bind\=\"\$attrs\"\n*\s+/
 
 interface ContainerOpts {
   marker?: string | undefined
@@ -39,7 +38,7 @@ export const mdPlugin = (md: MarkdownIt) => {
         }
         if (!source) throw new Error(`Incorrect source file: ${sourceFile}`)
         return `<Demo ${attrs || ''} source="${encodeURIComponent(
-          highlight(source.replace(akReg, '').replace(vBindRef, ''), 'vue')
+          highlight(hideSomeCode(source), 'vue')
         )}" path="${sourceFile}" raw-source="${encodeURIComponent(source)}" description="${encodeURIComponent(
           localMd.render(description)
         )}">
