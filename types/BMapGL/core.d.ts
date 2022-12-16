@@ -363,6 +363,7 @@ declare namespace BMapGL {
      */
     enableAutoResize?: boolean
     showControls?: boolean
+    restrictCenter?: boolean
     //     enableHighResolution?: boolean;
     //     enableMapClick?: boolean;
     //     backgroundColor?: number[];

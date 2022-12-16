@@ -144,6 +144,7 @@
      * 地图自定义属性
      */
     displayOptions?: MapDisplayOptions
+    restrictCenter?: boolean
     /**
      * 是否启用路况图层
      */
@@ -244,6 +245,7 @@
     minZoom: 0,
     heading: 0,
     tilt: 0,
+    restrictCenter: true,
     noAnimation: false,
     showControls: false,
     enableTraffic: false,
@@ -317,9 +319,10 @@
       key: scriptKey
     })
       .then(() => {
-        const { minZoom, maxZoom, mapType, enableAutoResize, showControls, center } = props
+        const { restrictCenter, minZoom, maxZoom, mapType, enableAutoResize, showControls, center } = props
         if (!mapContainer.value) return
         map = new BMapGL.Map(mapContainer.value, {
+          restrictCenter,
           minZoom,
           maxZoom,
           mapType: window[mapType],
