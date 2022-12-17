@@ -81,7 +81,7 @@ interface ViewAnimationKeyFrames {
   /**
    * 	表示当前关键帧处于动画过程的百分比，取值范围0~1
    */
-  percentage: RangeOf2<0, 1>
+  percentage: number
 }
 ```
 
@@ -138,7 +138,7 @@ export interface ViewAnimationKeyFrames {
   /**
    * 	表示当前关键帧处于动画过程的百分比，取值范围0~1
    */
-  percentage: RangeOf2<0, 1>
+  percentage: number
 }
 export interface UseViewAnimationOptions {
   /**
