@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { useViewAnimation } from 'vue3-baidu-map-gl'
+  import { useViewAnimation, ViewAnimationKeyFrames } from 'vue3-baidu-map-gl'
   const map = ref(null)
   const { setKeyFrames, start, stop, proceed, cancel, status } = useViewAnimation(map, {
     duration: 10000,
@@ -32,7 +32,7 @@
     loop: 'INFINITE'
   })
   function handleInitd() {
-    var keyFrames = [
+    const keyFrames: ViewAnimationKeyFrames[] = [
       {
         center: { lng: 116.307092, lat: 40.054922 },
         zoom: 18,

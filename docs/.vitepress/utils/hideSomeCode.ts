@@ -4,9 +4,9 @@ const regs = [
   // 全屏功能参数
   /v\-bind\=\"\$attrs\"\n*\s+/,
   // global css
-  /myButton|no-m-t|mySelect|light|no-m-b|my-input/g,
+  /\s*myButton|no-m-t|mySelect|light|no-m-b|my-input\s*/g,
   // empty class attr
-  /\sclass=""/
+  /\sclass="\s*"/g
 ]
 export function hideSomeCode(code: string): string {
   regs.forEach((reg) => {
