@@ -147,6 +147,10 @@ export const sidebarConfigZh = {
           link: '/zh-CN/hooks/usePoint'
         },
         {
+          text: 'useDefaultMarkerIcons 图标',
+          link: '/zh-CN/hooks/useDefaultMarkerIcons'
+        },
+        {
           text: 'useIpLocation Ip定位',
           link: '/zh-CN/hooks/useIpLocation'
         },

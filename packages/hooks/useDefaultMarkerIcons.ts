@@ -1,4 +1,4 @@
-export type MarkerDefaultIcons =
+export type DefaultMarkerIcons =
   | 'simple_red'
   | 'simple_blue'
   | 'loc_red'
@@ -27,9 +27,9 @@ export type MarkerDefaultIcons =
   | 'blue9'
   | 'blue10'
 
-let icons: Record<MarkerDefaultIcons, BMapGL.Icon> | null = null
+let icons: Record<DefaultMarkerIcons, BMapGL.Icon> | null = null
 
-export default function useMarkerDefaultIcons(): Record<MarkerDefaultIcons, BMapGL.Icon> {
+export function useDefaultMarkerIcons(): Record<DefaultMarkerIcons, BMapGL.Icon> {
   if (icons !== null) return icons
   const defaultIconUrl = '//mapopen.bj.bcebos.com/cms/react-bmap/markers_new2x_fbb9e99.png'
   icons = {
@@ -61,7 +61,7 @@ export default function useMarkerDefaultIcons(): Record<MarkerDefaultIcons, BMap
       imageOffset: new BMapGL.Size(248 / 2, 466 / 2),
       imageSize: new BMapGL.Size(600 / 2, 600 / 2)
     })
-  } as Record<MarkerDefaultIcons, BMapGL.Icon>
+  } as Record<DefaultMarkerIcons, BMapGL.Icon>
 
   for (let i = 1; i <= 10; i++) {
     icons['red' + i] = new BMapGL.Icon(defaultIconUrl, new BMapGL.Size(42 / 2, 66 / 2), {

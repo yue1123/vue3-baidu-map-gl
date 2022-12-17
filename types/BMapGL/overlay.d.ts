@@ -74,35 +74,35 @@ declare namespace BMapGL {
      * @default false
      * 是否开启大地线模式，true时，两点连线将以大地线的形式。默认为false
      */
-    geodesic: boolean
+    geodesic?: boolean
     /**
      * @default true
      * 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果，可以设置成false，默认为true
      */
-    clip: boolean
+    clip?: boolean
   }
   type PolylineOptions = overlayCommonOptions
   type PolygonOptions = overlayCommonOptions & {
     /**
      * 面填充颜色，同CSS颜色
      */
-    fillColor: string
+    fillColor?: string
 
     /**
      * 面填充的透明度，范围0-1
      */
-    fillOpacity: number
+    fillOpacity?: number
   }
   type CircleOptions = overlayCommonOptions & {
     /**
      * 面填充颜色，同CSS颜色
      */
-    fillColor: string
+    fillColor?: string
 
     /**
      * 面填充的透明度，范围0-1
      */
-    fillOpacity: number
+    fillOpacity?: number
   }
   interface GroundOverlayOptions {
     type?: 'video' | 'canvas' | 'image'
@@ -460,6 +460,7 @@ declare namespace BMapGL {
   }
   type SizeType = number
   interface IconOptions {
+    offset?: Size
     anchor?: Size
     imageOffset?: Size
     imageSize?: Size
