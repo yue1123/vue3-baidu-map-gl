@@ -185,8 +185,12 @@ export const sidebarConfigZh = {
       collapsible: true,
       items: [
         {
-          text: '与 mapv 可视化结合',
+          text: 'mapv 可视化',
           link: '/zh-CN/expand/mapv'
+        },
+        {
+          text: 'bmap-draw 鼠标绘制',
+          link: '/zh-CN/expand/bmap-draw'
         }
       ]
     }

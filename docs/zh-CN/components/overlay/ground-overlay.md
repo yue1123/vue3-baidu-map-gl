@@ -21,7 +21,7 @@ overlay/groundOverlay
 | startPoint | 显示区域开始点，见[图示](#bounds-图示)               | `{ lng: number, lat: number}` | `required` |
 | endPoint   | 显示区域结束点，见[图示](#bounds-图示)               | `{ lng: number, lat: number}` | `required` |
 | autoCenter | 是否自动根据地面叠加物显示区域居中地图               | `boolean `                    | `true`     |
-| opacity    | 透明度，范围 0-1                                     | `RangeOf2<0, 1>`              |            |
+| opacity    | 透明度，范围 0-1                                     | `number`              |            |
 
 ### bounds 图示
 

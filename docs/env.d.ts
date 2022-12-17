@@ -1,5 +1,7 @@
 /// <reference types="vite/client" />
 
+declare module 'bmap-draw'
+
 interface Window {
 	[key: string]: any
 }
