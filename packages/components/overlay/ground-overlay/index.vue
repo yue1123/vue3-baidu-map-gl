@@ -17,7 +17,7 @@
     startPoint: Point
     endPoint: Point
     autoCenter?: boolean
-    opacity?: RangeOf2<0, 1>
+    opacity?: number
     onClick?: Callback
     onDblclick?: Callback
     onMousemove?: Callback
