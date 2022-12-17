@@ -5,7 +5,7 @@ export const sidebarConfigZh = {
       collapsible: true,
       items: [
         {
-          text: '介绍',
+          text: '简介',
           link: '/zh-CN/guide/introduction'
         },
         {
@@ -193,7 +193,7 @@ export const sidebarConfigZh = {
           link: '/zh-CN/expand/mapv'
         },
         {
-          text: 'bmap-draw 鼠标绘制',
+          text: 'bmap-draw 鼠标测量与绘制',
           link: '/zh-CN/expand/bmap-draw'
         }
       ]
