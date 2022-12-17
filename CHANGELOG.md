@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.1.2...v1.1.3) (2022-12-17)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 修复 mapvThree cdn 地址错误 ([00164f9](https://github.com/yue1123/vue3-baidu-map-gl/commit/00164f905043a5f4d64238d72d7309b537aa2e72))
+* **type:** 修复RangOf2不支持小数导致的ts错误 ([367d378](https://github.com/yue1123/vue3-baidu-map-gl/commit/367d378e5a6e43bd7041eb33f60cc104a4c91ea3))
+
+
+### ✏️ Documentation | 文档
+
+* 修复图片无法显示 ([b0a4931](https://github.com/yue1123/vue3-baidu-map-gl/commit/b0a49318c38247687fb9c2356e5022d111cabf88))
+* 修复文档内容错误 ([e304478](https://github.com/yue1123/vue3-baidu-map-gl/commit/e30447802b6221b3e8fffd7c682f3d175bd1d5a5))
+* 增加 bmap-draw 相关内容 ([2b4fe78](https://github.com/yue1123/vue3-baidu-map-gl/commit/2b4fe78c8dace09e9a6430836c7c42b7b08b2a61))
+* **expand:** 扩展相关内容更改 ([cd338df](https://github.com/yue1123/vue3-baidu-map-gl/commit/cd338df9b9bbe1a2604fefae8dc8dd997fe4d20d))
+* **utils:** 隐藏示例中代码的内部代码 ([fb132b7](https://github.com/yue1123/vue3-baidu-map-gl/commit/fb132b786880ed9b3675088ba96c87faa89c9483))
+* **ViewAnimationKeyFrames:** 更新ts类型 ([619498c](https://github.com/yue1123/vue3-baidu-map-gl/commit/619498c2c86fe4b637a821f3d7f1c140655b77e6))
+
+
+### ✨ Features | 新功能
+
+* 导出内部 useDefaultMarkerIcons hooks ([d7f168b](https://github.com/yue1123/vue3-baidu-map-gl/commit/d7f168bedc1514af61fceb4bcbbf5822bfb41f66))
+* **map:** 新增restrictCenter属性 ([b62ea85](https://github.com/yue1123/vue3-baidu-map-gl/commit/b62ea85698e11216936ebe4399072e6200fd91ea))
+
 ### [1.1.2](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.1.1...v1.1.2) (2022-12-15)
 
 
