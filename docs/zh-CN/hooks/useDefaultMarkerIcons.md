@@ -6,7 +6,7 @@
 import { useDefaultMarkerIcons } from 'vue3-baidu-map-gl'
 ```
 
-> 参考: [marker图标可选值](/zh-CN/components/overlay/marker#默认图标可选值)
+> 参考: [marker 图标可选值](/zh-CN/components/overlay/marker#默认图标可选值)
 
 ## 用法
 

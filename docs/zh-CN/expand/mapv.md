@@ -73,7 +73,6 @@ import * as mapvThree from 'mapv-three'
 mapv、mapvgl、mapvThree 均使用 umd 格式打包，而非 esm。所以通过 npm 方式使用代码不利于构建工具 Tree-shaking，导致打包大小臃肿。我们更推荐以插件形式使用
 :::
 
-
 ## 示例
 
 > 以下示例均来自于 `mapv` 官方示例。更多示例见及文档请参考: https://mapv.baidu.com/gl/docs/index.html
@@ -98,7 +97,6 @@ expand/mapv/heatGridLayer
 
 > https://lbsyun.baidu.com/solutions/mapvthreedoc
 
-该示例使用 npm 安装方式
 :::demo 渲染 3d 模型并绑定事件
 expand/mapv/3dModel
 :::
