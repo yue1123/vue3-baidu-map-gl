@@ -48,7 +48,7 @@ pnpm add vue3-baidu-map-gl@latest
 
 ## 文档
 
-[https://yue1123.github.io/vue3-baidu-map-gl/zh](https://yue1123.github.io/vue3-baidu-map-gl/zh)
+[中文](https://yue1123.github.io/vue3-baidu-map-gl/)
 
 ## 参与贡献
 

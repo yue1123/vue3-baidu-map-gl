@@ -33,6 +33,8 @@ Vue3 BaiduMap GL 是采用 MIT 许可的开源项目，使用完全免费。
 
 ## 当前赞助者
 
-- 虚位以待...
+<!-- - 虚位以待... -->
 
-<span style="font-size:12px">┭┮﹏┭┮，还没有小伙伴赞助，快抢沙发</span>
+- 友人\_A &nbsp; &nbsp;&nbsp; 10 元
+
+<!-- <span style="font-size:12px">┭┮﹏┭┮，还没有小伙伴赞助，快抢沙发</span> -->
