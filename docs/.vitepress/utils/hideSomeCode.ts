@@ -2,7 +2,7 @@ const regs = [
   // ak
   /\sak\=\".*\"/,
   // 全屏功能参数
-  /v\-bind\=\"\$attrs\"\n*\s+/g,
+  /v\-bind\=\"\$attrs\"\n*\s*/g,
   // global css
   /\s*myButton|no-m-t|mySelect|light|no-m-b|my-input\s*/g,
   // empty class attr
