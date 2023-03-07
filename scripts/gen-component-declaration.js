@@ -25,7 +25,7 @@ async function generateComponentsType() {
     const key = name.replace('B', '')
     const entry = `typeof import('vue3-baidu-map-gl')['${key}']`
     components[name] = entry
-    components[key] = entry
+    // components[key] = entry
   })
   const originalContent = exist(path.resolve(TYPE_ROOT, 'volar.d.ts'))
     ? await fs.readFile(path.resolve(TYPE_ROOT, 'volar.d.ts'), 'utf-8')
