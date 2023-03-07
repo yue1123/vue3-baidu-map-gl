@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, withDefaults, onUpdated, nextTick, computed, provide, onUnmounted } from 'vue'
+  import { ref, watch, withDefaults, onUpdated, nextTick, computed, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import { bindEvents, Callback, callWhenDifferentValue, type Point } from '../../../utils/index'
@@ -37,7 +37,6 @@
     onRestore?: Callback
     onClickclose?: Callback
   }
-  const infoWindowContainer = ref<HTMLElement>()
   const props = withDefaults(defineProps<InfoWindowProps>(), {
     modelValue: false,
     title: '',
@@ -71,7 +70,7 @@
       vueEmits('update:modelValue', value)
     }
   })
-
+  const infoWindowContainer = ref<HTMLElement>()
   const { ready } = useLifeCycle()
   let infoWindow: BMapGL.InfoWindow
   let _map: BMapGL.Map
@@ -102,12 +101,33 @@
       redraw()
       bindObserver()
       bindEvents(props, vueEmits, infoWindow)
-      window.infoWindow = infoWindow
+      ready(map, infoWindow)
+
+      if (props.modelValue) {
+        // 多个 infoWindow, 显示最后一个实例, 其他实例同步显隐状态
+        nextTick(() => {
+          open()
+          nextTick(() => {
+            !infoWindow._visible && (visible.value = false)
+          })
+        })
+      }
     }
-    init()
-    ready(map, infoWindow)
+    if (!infoWindowContainer.value) {
+      nextTick(() => init())
+    } else {
+      init()
+    }
+
     // 监听值变化
-    watch(() => props.position, callWhenDifferentValue(setPosition), { deep: true })
+    watch(
+      () => props.position,
+      callWhenDifferentValue((res) => {
+        console.log(res)
+        setPosition(res)
+      }),
+      { deep: true }
+    )
     watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
     watch(() => props.title, setTitle)
     watch(() => props.width, setWidth)
@@ -122,15 +142,6 @@
       })
     )
 
-    if (props.modelValue) {
-      // 多个 infoWindow, 显示最后一个实例, 其他实例同步显隐状态
-      nextTick(() => {
-        open()
-        nextTick(() => {
-          !infoWindow._visible && (visible.value = false)
-        })
-      })
-    }
     return cal
   })
   onUpdated(() => {
@@ -139,27 +150,24 @@
       redraw()
     }
   })
-  let ob: MutationObserver | null = null
-  onUnmounted(() => {
-    ob = null
-  })
   provide('getOverlayInstance', () => infoWindow)
   function bindObserver() {
     const MutationObserver = window.MutationObserver
     if (!MutationObserver) {
       return
     }
-    ob = new MutationObserver(() => {
+    new MutationObserver(() => {
       infoWindow.redraw()
-    })
-    ob.observe(infoWindowContainer.value!, { attributes: true, childList: true, characterData: true, subtree: true })
+    }).observe(infoWindowContainer.value!, { attributes: true, childList: true, characterData: true, subtree: true })
   }
   function open() {
     const { position } = props
+    if (!position || !infoWindow) return
     _map.openInfoWindow(infoWindow, new BMapGL.Point(position.lng, position.lat))
     visible.value = true
   }
   function close() {
+    if (!infoWindow) return
     infoWindow.hide()
     visible.value = false
   }
@@ -194,9 +202,10 @@
   function setCloseOnClick(closeOnClick: boolean) {
     closeOnClick ? infoWindow.enableCloseOnClick() : infoWindow.disableCloseOnClick()
   }
-
   function setPosition(position: Point) {
+    close()
     infoWindow.setPosition(new BMapGL.Point(position.lng, position.lat))
+    open()
   }
   function setContent(content: string | HTMLElement): void {
     infoWindow.setContent(content)
