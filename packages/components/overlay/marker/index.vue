@@ -5,8 +5,36 @@
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import { bindEvents, Callback, isString, callWhenDifferentValue, isDef, Point } from '../../../utils/index'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { useDefaultMarkerIcons, DefaultMarkerIcons } from '../../../hooks/useDefaultMarkerIcons'
+  import { useDefaultMarkerIcons } from '../../../hooks/useDefaultMarkerIcons'
 
+  export type MarkerIcons =
+    | 'simple_red'
+    | 'simple_blue'
+    | 'loc_red'
+    | 'loc_blue'
+    | 'start'
+    | 'end'
+    | 'location'
+    | 'red1'
+    | 'red2'
+    | 'red3'
+    | 'red4'
+    | 'red5'
+    | 'red6'
+    | 'red7'
+    | 'red8'
+    | 'red9'
+    | 'red10'
+    | 'blue1'
+    | 'blue2'
+    | 'blue3'
+    | 'blue4'
+    | 'blue5'
+    | 'blue6'
+    | 'blue7'
+    | 'blue8'
+    | 'blue9'
+    | 'blue10'
   export interface MarkerOffset {
     x: number
     y: number
@@ -36,7 +64,7 @@
     /**
      * 标注所用的图标对象
      */
-    icon?: MarkerCustomIcon | DefaultMarkerIcons
+    icon?: MarkerIcons | MarkerCustomIcon
     /**
      * 显示层级
      */
