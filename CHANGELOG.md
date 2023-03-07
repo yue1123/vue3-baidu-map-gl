@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.4](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.1.3...v1.1.4) (2023-03-07)
+
+
+### ✏️ Documentation | 文档
+
+* update hide code reg ([c447912](https://github.com/yue1123/vue3-baidu-map-gl/commit/c4479121f0e893caf996ac7cf1e924804d0b8994))
+* update sponsor ([800089d](https://github.com/yue1123/vue3-baidu-map-gl/commit/800089d13a44ad6d7fc9f38b226c98133a8e9174))
+* update sponsor ([5e47ad0](https://github.com/yue1123/vue3-baidu-map-gl/commit/5e47ad05063f0f18f64da713343a64c520c1308a))
+* update sponsoring content ([000ae59](https://github.com/yue1123/vue3-baidu-map-gl/commit/000ae590bcbd6cce388ef46b4a521f182d01de1d))
+* update title ([6c9ee33](https://github.com/yue1123/vue3-baidu-map-gl/commit/6c9ee33167a2f2c34aabbdadd874ccd3ad6d41f6))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* can not set position ([5bfc794](https://github.com/yue1123/vue3-baidu-map-gl/commit/5bfc794a3164d6e80d7253856811415809c75fad))
+* **docs:** 代码显示优化 ([f718328](https://github.com/yue1123/vue3-baidu-map-gl/commit/f7183288fa3a0ca667935d7ca1dec10ae73af35d))
+* **docs:** 修复地图多实例全屏显示错误 ([23bb2ab](https://github.com/yue1123/vue3-baidu-map-gl/commit/23bb2ab8211dc54fda316a3a61a1caf507a3bd1a))
+* **docs:** 修复文档 3d 模型演示不渲染问题 ([391b924](https://github.com/yue1123/vue3-baidu-map-gl/commit/391b924b4de12549a75afd098062135a22b280c4))
+* **docs:** 修复一些文档问题 ([7fad3d6](https://github.com/yue1123/vue3-baidu-map-gl/commit/7fad3d62b7affb67312e62613fc2cac4bc0d6c60))
+* marker icon type warning ([f68cd61](https://github.com/yue1123/vue3-baidu-map-gl/commit/f68cd611e0223b41e60a491538bb46265feebc15))
+
 ### [1.1.3](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.1.2...v1.1.3) (2022-12-17)
 
 
