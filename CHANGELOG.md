@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.1.4...v2.0.0) (2023-03-08)
+
+
+### ✨ Features | 新功能
+
+* 组件统一增加前缀`B`,避免与某些组件库内部冲突 [#24](https://github.com/yue1123/vue3-baidu-map-gl/issues/24) ([f285e94](https://github.com/yue1123/vue3-baidu-map-gl/commit/f285e948073d9079abf42d518d49860e7aa5daa6))
+
 ### [1.1.4](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.1.3...v1.1.4) (2023-03-07)
 
 
