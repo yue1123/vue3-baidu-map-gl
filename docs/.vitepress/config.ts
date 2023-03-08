@@ -9,20 +9,22 @@ export default defineConfig({
   // titleTemplate: 'Vue3 BaiduMap GL',
   lastUpdated: true,
   base: '/vue3-baidu-map-gl/',
-  cleanUrls: 'without-subfolders',
+  cleanUrls: true,
   head,
   markdown: {
     config: (md) => mdPlugin(md)
   },
+  // localeLinks: {
+  //   text: '语言',
+  //   items: [{ text: '简体中文', link: '/zh-CN/' }]
+  // },
   themeConfig: {
+    i18nRouting: true,
+    returnToTopLabel: 'top',
     logo: '/logo.svg',
     nav,
     outlineTitle: 'ON THIS PAGE',
     outline: [1, 5],
-    localeLinks: {
-      text: '语言',
-      items: [{ text: '简体中文', link: '/zh-CN/' }]
-    },
     algolia: {
       appId: 'RT4OHPUGD1',
       apiKey: '76ba0d807534197fb89a2644c412240b',

@@ -47,6 +47,10 @@ export const nav: DefaultTheme.Config['nav'] = [
         link: 'https://github.com/yue1123/vue3-baidu-map-gl/blob/main/CHANGELOG.md'
       },
       {
+        text: 'v1',
+        link: 'https://yue1123.github.io/vue3-baidu-map-gl/v1/'
+      },
+      {
         text: '历史版本',
         link: 'https://github.com/yue1123/vue3-baidu-map-gl/releases'
       }
