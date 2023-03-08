@@ -1,9 +1,9 @@
-# Circle 圆形
+# BCircle 圆形
 
 在地图上绘制简单的圆形
 
 ```ts
-import { Circle } from 'vue3-baidu-map-gl'
+import { BCircle } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

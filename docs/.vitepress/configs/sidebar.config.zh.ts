@@ -31,7 +31,7 @@ export const sidebarConfigZh = {
       collapsible: true,
       items: [
         {
-          text: 'Map 地图',
+          text: 'BMap 地图',
           link: '/zh-CN/components/map'
         }
       ]
@@ -41,39 +41,39 @@ export const sidebarConfigZh = {
       collapsible: true,
       items: [
         {
-          text: 'Control 自定义',
+          text: 'BControl 自定义',
           link: '/zh-CN/components/control/custom'
         },
         {
-          text: 'CityList 城市列表',
+          text: 'BCityList 城市列表',
           link: '/zh-CN/components/control/citylist'
         },
         {
-          text: 'Navigation3d 3D视角导航',
+          text: 'BNavigation3d 3D视角导航',
           link: '/zh-CN/components/control/navigation3d'
         },
         {
-          text: 'Copyright 版权',
+          text: 'BCopyright 版权',
           link: '/zh-CN/components/control/copyright'
         },
         {
-          text: 'Scale 比例尺',
+          text: 'BScale 比例尺',
           link: '/zh-CN/components/control/scale'
         },
         {
-          text: 'Zoom 缩放',
+          text: 'BZoom 缩放',
           link: '/zh-CN/components/control/zoom'
         },
         {
-          text: 'Location 定位',
+          text: 'BLocation 定位',
           link: '/zh-CN/components/control/location'
         },
         {
-          text: 'PanoramaControl 全景',
+          text: 'BPanoramaControl 全景',
           link: '/zh-CN/components/control/panorama-control'
         },
         {
-          text: 'ContextMenu 上下文菜单',
+          text: 'BContextMenu 上下文菜单',
           link: '/zh-CN/components/context-menu/'
         }
       ]
@@ -83,43 +83,43 @@ export const sidebarConfigZh = {
       collapsible: true,
       items: [
         {
-          text: 'Circle 圆形',
+          text: 'BCircle 圆形',
           link: '/zh-CN/components/overlay/circle'
         },
         {
-          text: 'Label 文本标注',
+          text: 'BLabel 文本标注',
           link: '/zh-CN/components/overlay/label'
         },
         {
-          text: 'Marker 标注点',
+          text: 'BMarker 标注点',
           link: '/zh-CN/components/overlay/marker'
         },
         {
-          text: 'Marker3d 带高度的点',
+          text: 'BMarker3d 带高度的点',
           link: '/zh-CN/components/overlay/marker3d'
         },
         {
-          text: 'Polygon 多边形',
+          text: 'BPolygon 多边形',
           link: '/zh-CN/components/overlay/polygon'
         },
         {
-          text: 'Polyline 折线',
+          text: 'BPolyline 折线',
           link: '/zh-CN/components/overlay/polyline'
         },
         {
-          text: 'BezierCurve 贝塞尔曲线',
+          text: 'BBezierCurve 贝塞尔曲线',
           link: '/zh-CN/components/overlay/bezierCurve'
         },
         {
-          text: 'InfoWindow 信息窗口',
+          text: 'BInfoWindow 信息窗口',
           link: '/zh-CN/components/overlay/infowindow'
         },
         {
-          text: 'Prism 3d棱柱',
+          text: 'BPrism 3d棱柱',
           link: '/zh-CN/components/overlay/prism'
         },
         {
-          text: 'GroundOverlay 地面叠加层',
+          text: 'BGroundOverlay 地面叠加层',
           link: '/zh-CN/components/overlay/ground-overlay'
         }
       ]
@@ -129,11 +129,11 @@ export const sidebarConfigZh = {
       collapsible: true,
       items: [
         {
-          text: 'PanoramaCoverageLayer 全景图层',
+          text: 'BPanoramaCoverageLayer 全景图层',
           link: '/zh-CN/components/layer/panorama-coverage'
         },
         {
-          text: 'DistrictLayer 行政区图层',
+          text: 'BDistrictLayer 行政区图层',
           link: '/zh-CN/components/layer/district-layer'
         }
       ]

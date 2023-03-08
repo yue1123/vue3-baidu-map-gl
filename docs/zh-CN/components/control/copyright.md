@@ -1,9 +1,9 @@
-# Copyright 版权控件
+# BCopyright 版权控件
 
 地图 3D 控件，可以控制地图的旋转、倾斜，默认位于地图右下角
 
 ```ts
-import { Copyright } from 'vue3-baidu-map-gl'
+import { BCopyright } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

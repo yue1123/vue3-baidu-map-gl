@@ -20,6 +20,9 @@ import Vue3BaiduMapGL from 'vue3-baidu-map-gl'
 const app = createApp(App)
 app.use(Vue3BaiduMapGL)
 ```
+在组件中使用
+
+
 
 #### Volar 支持 <Badge type="tip" text="^0.0.21" />
 
@@ -42,14 +45,14 @@ Vue3 BaiduMap GL 提供了基于 ES Module 开箱即用的 Tree Shaking 功能�
 <!-- prettier-ignore -->
 ```vue
 <template>
-  <Map>
-    <Zoom />
+  <BMap>
+    <BZoom />
     <!-- ... -->
-  </Map>
+  </BMap>
 </template>
 
 <script setup lang="ts">
-  import { Map, Zoom } from 'vue3-baidu-map-gl'
+  import { BMap, BZoom } from 'vue3-baidu-map-gl'
 </script>
 ```
 

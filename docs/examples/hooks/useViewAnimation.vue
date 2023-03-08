@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Map
+    <BMap
       v-bind="$attrs"
       :center="{
         lng: 116.308301,

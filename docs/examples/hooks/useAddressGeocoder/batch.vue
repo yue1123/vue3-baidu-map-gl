@@ -1,18 +1,18 @@
 <template>
   <div>
-    <Map v-bind="$attrs" :zoom="13" center="合肥市" @initd="handleInitd">
-      <Control class="address-list" :offset="{ x: 10, y: 10 }">
+    <BMap v-bind="$attrs" :zoom="13" center="合肥市" @initd="handleInitd">
+      <BControl class="address-list" :offset="{ x: 10, y: 10 }">
         <ul>
           <li v-for="item in addressList" :key="item">{{ item }}</li>
         </ul>
-      </Control>
+      </BControl>
       <template v-if="!isLoading && !isEmpty">
         <template v-for="(item, index) in points">
-          <Marker :position="item"></Marker>
-          <Label style="color: #333; font-size: 9px" :position="item" :content="addressList[index]"></Label>
+          <BMarker :position="item"></BMarker>
+          <BLabel style="color: #333; font-size: 9px" :position="item" :content="addressList[index]"></BLabel>
         </template>
       </template>
-    </Map>
+    </BMap>
   </div>
 </template>
 <script lang="ts" setup>
@@ -27,7 +27,7 @@
     '庐阳区长江中路177号',
     
   ]
-  const { get, point: points, isLoading, isEmpty } = useAddressGeocoder<Point[]>()
+  const { get, point: points, isLoading, isEmpty } = useAddressGeocoder<BPoint[]>()
 
   function handleInitd() {
     get(addressList, '合肥市')

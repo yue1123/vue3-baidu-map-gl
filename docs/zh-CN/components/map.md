@@ -214,17 +214,17 @@ map/theme2
 | moveend         | 地图移动结束时触发此事件                                                                         | `{type, target}`                         |
 | zoomstart       | 地图更改缩放级别开始时触发触发此事件                                                             | `{type, target}`                         |
 | zoomend         | 地图更改缩放级别结束时触发触发此事件                                                             | `{type, target}`                         |
-| addoverlay      | 当组件 BmOverlay 被挂载到地图中时会触发此事件                                                    | `{type, target}`                         |
-| removeoverlay   | 当组件 BmOverlay 被移除时会触发此事件                                                            | `{type, target}`                         |
-| addcontrol      | 当组件 BmControl 被挂载到地图中时会触发此事件                                                    | `{type, target}`                         |
-| removecontrol   | 当组件 BmControl 被移除时会触发此事件                                                            | `{type, target}`                         |
-| clearoverlays   | 当使用 Map.clearOverlays() 方法一次性移除全部覆盖物时会触发此事件                                | `{type, target}`                         |
+| addoverlay      | 当组件被挂载到地图中时会触发此事件                                                    | `{type, target}`                         |
+| removeoverlay   | 当组件被移除时会触发此事件                                                            | `{type, target}`                         |
+| addcontrol      | 当组件被挂载到地图中时会触发此事件                                                    | `{type, target}`                         |
+| removecontrol   | 当组件被移除时会触发此事件                                                            | `{type, target}`                         |
+| clearoverlays   | 当使用方法一次性移除全部覆盖物时会触发此事件                                | `{type, target}`                         |
 | dragstart       | 开始拖拽地图时触发                                                                               | `{type, target, pixel, point}`           |
 | dragging        | 拖拽地图过程中触发                                                                               | `{type, target, pixel, point}`           |
 | dragend         | 停止拖拽地图时触发                                                                               | `{type, target, pixel, point}`           |
 | addtilelayer    | 添加一个自定义地图图层时触发此事件                                                               | `{type, target}`                         |
 | removetilelayer | 移除一个自定义地图图层时触发此事件                                                               | `{type, target}`                         |
-| load            | 调用 Map.centerAndZoom()方法时会触发此事件。这表示位置、缩放层级已经确定，但可能还在载入地图图块 | `{type, target}`                         |
+| load            | 调用方法时会触发此事件。这表示位置、缩放层级已经确定，但可能还在载入地图图块 | `{type, target}`                         |
 | resize          | 地图可视区域大小发生变化时会触发此事件                                                           | `{type, target, pixel, point}`           |
 | hotspotclick    | 点击热区时触发此事件                                                                             | `{type, target}`                         |
 | hotspotover     | 鼠标移至热区时触发此事件                                                                         | `{type, target}`                         |

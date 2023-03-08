@@ -1,9 +1,9 @@
-# PanoramaCoverageLayer 全景图层 <Badge type="tip" text="^0.0.31" />
+# BPanoramaCoverageLayer 全景图层 <Badge type="tip" text="^0.0.31" />
 
 全景地图服务，360° 全景地图刻画真实世界，将街道场景带入到地图产品中，用户可以拖拽地图从不同的角度浏览真实的街景效果
 
 ```ts
-import { PanoramaCoverageLayer } from 'vue3-baidu-map-gl'
+import { BPanoramaCoverageLayer } from 'vue3-baidu-map-gl'
 ```
 
 :::tip 提示
@@ -12,7 +12,7 @@ import { PanoramaCoverageLayer } from 'vue3-baidu-map-gl'
 
 ## 组件示例
 
-单独使用该组件无法查看全景地图，还需要搭配`PanoramaControl`组件使用。
+单独使用该组件无法查看全景地图，还需要搭配`BPanoramaControl`组件使用。
 
 :::demo 显示全景图层
 layer/panoramaCoverage

@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Map
+    <BMap
       v-bind="$attrs"
       enableScrollWheelZoom
       :zoom="13"
       :center="{ lng: 116.328749, lat: 40.026922 }"
       @initd="handleInitd"
     >
-      <Control class="point-list" :offset="{ x: 10, y: 10 }">
+      <BControl class="point-list" :offset="{ x: 10, y: 10 }">
         <ul>
           <li v-for="(item, index) in points" :key="index">
             <div>
@@ -17,20 +17,20 @@
             </div>
           </li>
         </ul>
-      </Control>
+      </BControl>
       <template v-if="!isLoading">
         <template v-for="(item, index) in result">
-          <Marker :position="item.point"></Marker>
-          <Label
+          <BMarker :position="item.point"></BMarker>
+          <BLabel
             style="color: #333; font-size: 9px"
             :position="item.point"
             :content="`${index}. 地址: ${item.address} 所属商圈:${item.business} 最匹配地点: ${
               item?.surroundingPois[0]?.title || '无'
             }`"
-          ></Label>
+          ></BLabel>
         </template>
       </template>
-    </Map>
+    </BMap>
   </div>
 </template>
 
@@ -46,7 +46,7 @@
     { lng: 116.403472, lat: 39.999411 },
     { lng: 116.307901, lat: 40.05901 }
   ]
-  const { get, result, isLoading } = usePointGeocoder<PointGeocoderResult[]>()
+  const { get, result, isLoading } = usePointGeocoder<BPointGeocoderResult[]>()
   function handleInitd() {
     get(points)
   }

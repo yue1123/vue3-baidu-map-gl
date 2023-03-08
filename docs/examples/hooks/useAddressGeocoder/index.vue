@@ -12,11 +12,11 @@
     <div class="state" v-else-if="isEmpty">没有解析到结果 ！</div>
     <div class="state" v-else>解析中...</div>
     <br />
-    <Map v-bind="$attrs" ref="map" :center="point" @initd="handleInitd">
+    <BMap v-bind="$attrs" ref="map" :center="point" @initd="handleInitd">
       <template v-if="!isLoading && !isEmpty">
-        <Marker :position="point"></Marker>
+        <BMarker :position="point"></BMarker>
       </template>
-    </Map>
+    </BMap>
   </div>
 </template>
 
@@ -49,7 +49,7 @@
       deep: true
     }
   )
-  const { get, point, isLoading, isEmpty } = useAddressGeocoder<Point>(() => {
+  const { get, point, isLoading, isEmpty } = useAddressGeocoder<BPoint>(() => {
     map.value.resetCenter()
   })
 

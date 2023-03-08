@@ -11,7 +11,7 @@
     <button class="myButton" type="button" v-if="!rectangle.isDrawing" @click="rectangle.toggle">绘制矩形</button>
     <button class="myButton" type="button" v-else @click="rectangle.toggle">禁用绘制矩形</button>
     <button class="myButton" type="button" @click="clearFn">清空</button>
-    <Map
+    <BMap
       v-bind="$attrs"
       :center="{ lng: 116.385243, lat: 39.913063 }"
       :zoom="16"

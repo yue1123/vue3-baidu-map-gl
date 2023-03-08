@@ -1,5 +1,5 @@
 <template>
-  <Map
+  <BMap
     v-bind="$attrs"
     :zoom="10"
     :tilt="50"
@@ -7,7 +7,7 @@
     mapStyleId="980161f3645989feac25a0da15da4178"
     @initd="handleInitd"
   >
-    <Prism
+    <BPrism
       isBoundary
       :path="pathPoints"
       :autoCenter="false"
@@ -19,7 +19,7 @@
       @mouseover="handleMouseover"
       @mouseout="handleMouseout"
     />
-  </Map>
+  </BMap>
 </template>
 
 <script setup lang="ts">

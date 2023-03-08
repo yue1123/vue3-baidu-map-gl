@@ -1,2 +1,2 @@
-export { default as Prism } from './index.vue'
+export { default as BPrism } from './index.vue'
 export * from './index.vue'

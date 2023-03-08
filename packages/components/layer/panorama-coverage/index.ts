@@ -1,2 +1,2 @@
-export { default as PanoramaCoverageLayer } from './index.vue'
+export { default as BPanoramaCoverageLayer } from './index.vue'
 export * from './index.vue'

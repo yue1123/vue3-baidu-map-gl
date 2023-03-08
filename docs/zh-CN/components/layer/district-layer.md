@@ -1,9 +1,9 @@
-# DistrictLayer 行政区图层 <Badge type="tip" text="^1.1.2" />
+# BDistrictLayer 行政区图层 <Badge type="tip" text="^1.1.2" />
 
 在地图上显示行政区划分
 
 ```ts
-import { DistrictLayer } from 'vue3-baidu-map-gl'
+import { BDistrictLayer } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

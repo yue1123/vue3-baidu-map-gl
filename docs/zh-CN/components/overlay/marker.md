@@ -1,9 +1,9 @@
-# Marker 标注点
+# BMarker 标注点
 
 在地图上绘制点
 
 ```ts
-import { Marker } from 'vue3-baidu-map-gl'
+import { BMarker } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

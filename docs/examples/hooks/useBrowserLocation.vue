@@ -15,10 +15,10 @@
     <div class="state" v-else-if="isError">出错了，{{ status }}</div>
     <div class="state" v-else>定位中...</div>
     <button v-if="!isLoading" class="myButton" @click="get">重新获取</button>
-    <Map v-bind="$attrs" enableScrollWheelZoom ref="map" @initd="get" :center="location.point || undefined">
+    <BMap v-bind="$attrs" enableScrollWheelZoom ref="map" @initd="get" :center="location.point || undefined">
       <template v-if="!isLoading">
-        <Marker :position="location.point"></Marker>
-        <Circle
+        <BMarker :position="location.point"></BMarker>
+        <BCircle
           strokeStyle="solid"
           strokeColor="#0099ff"
           :strokeOpacity="0.8"
@@ -28,7 +28,7 @@
           :radius="location.accuracy"
         />
       </template>
-    </Map>
+    </BMap>
   </div>
 </template>
 

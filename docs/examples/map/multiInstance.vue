@@ -1,10 +1,10 @@
 <template>
   <div class="map-wrapper">
     <div class="map-item">
-      <Map v-bind="$attrs" />
+      <BMap v-bind="$attrs" />
     </div>
     <div class="map-item">
-      <Map v-bind="$attrs" />
+      <BMap v-bind="$attrs" />
     </div>
   </div>
 </template>

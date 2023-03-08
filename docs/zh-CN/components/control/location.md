@@ -1,9 +1,9 @@
-# Location 定位控件
+# BLocation 定位控件
 
 定位控件，默认位于地图右下角
 
 ```ts
-import { Location } from 'vue3-baidu-map-gl'
+import { BLocation } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

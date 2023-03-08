@@ -1,9 +1,9 @@
-# Marker3d 带高度的点
+# BMarker3d 带高度的点
 
 在地图上绘制带高度的点覆盖物
 
 ```ts
-import { Marker3d } from 'vue3-baidu-map-gl'
+import { BMarker3d } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

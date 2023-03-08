@@ -1,9 +1,9 @@
-# CityList 城市选择控件
+# BCityList 城市选择控件
 
 缩放控件，默认位于地图右下角
 
 ```ts
-import { CityList } from 'vue3-baidu-map-gl'
+import { BCityList } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

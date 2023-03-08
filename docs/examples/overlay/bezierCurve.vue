@@ -1,6 +1,6 @@
 <template>
-  <Map v-bind="$attrs" :center="{ lng: 113.399, lat: 39.91 }" :zoom="8">
-    <BezierCurve
+  <BMap v-bind="$attrs" :center="{ lng: 113.399, lat: 39.91 }" :zoom="8">
+    <BBezierCurve
       :path="[
         { lng: 116.399, lat: 39.911 },
         { lng: 113.399, lat: 39.91 },
@@ -20,5 +20,5 @@
       :stroke-opacity="1"
       :stroke-weight="2"
     />
-  </Map>
+  </BMap>
 </template>

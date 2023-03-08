@@ -1,9 +1,9 @@
-# InfoWindow 信息窗口
+# BInfoWindow 信息窗口
 
 使用 slot 模式渲染子节点向地图添加信息窗口，以及与地图相关的一些交互。
 
 ```ts
-import { InfoWindow } from 'vue3-baidu-map-gl'
+import { BInfoWindow } from 'vue3-baidu-map-gl'
 ```
 
 ::: tip 提示

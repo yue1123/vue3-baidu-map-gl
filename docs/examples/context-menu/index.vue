@@ -1,7 +1,7 @@
 <template>
-  <Map v-bind="$attrs" :center="center">
-    <ContextMenu :menuItems="list" />
-  </Map>
+  <BMap v-bind="$attrs" :center="center">
+    <BContextMenu :menuItems="list" />
+  </BMap>
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue'

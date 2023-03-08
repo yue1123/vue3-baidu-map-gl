@@ -1,9 +1,9 @@
-# Polyline 折线
+# BPolyline 折线
 
 在地图上绘制简单的折线
 
 ```ts
-import { Polyline } from 'vue3-baidu-map-gl'
+import { BPolyline } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

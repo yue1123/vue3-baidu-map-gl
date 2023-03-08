@@ -18,7 +18,6 @@ const vue3BaiduMapGl = {
     for (const component of componentsList) {
       const name = component.name
       app.component(name, component)
-      app.component(name.replace('B', ''), component)
     }
     ak && (appProp.$baiduMapAk = ak)
     p && (appProp.$baiduMapPlugins = p)

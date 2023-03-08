@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Map v-bind="$attrs" enableScrollWheelZoom ref="map" :center="point" @initd="handleInitd" @click="handleClick">
+    <BMap v-bind="$attrs" enableScrollWheelZoom ref="map" :center="point" @initd="handleInitd" @click="handleClick">
       <template v-if="!isLoading && !isEmpty">
-        <Marker :position="point"></Marker>
-        <Label
+        <BMarker :position="point"></BMarker>
+        <BLabel
           style="color: #333; font-size: 9px"
           :position="result.point"
           :content="`地址: ${result?.address} 所属商圈:${result?.business} 最匹配地点: ${
@@ -11,7 +11,7 @@
           }`"
         />
       </template>
-    </Map>
+    </BMap>
   </div>
 </template>
 
@@ -19,7 +19,7 @@
   import { ref } from 'vue'
   import { usePointGeocoder, PointGeocoderResult } from 'vue3-baidu-map-gl'
   const map = ref()
-  const { get, result, isLoading, isEmpty } = usePointGeocoder<PointGeocoderResult>()
+  const { get, result, isLoading, isEmpty } = usePointGeocoder<BPointGeocoderResult>()
   const point = ref({ lng: 116.30793520652882, lat: 40.05861561613348 })
   const markerPoint = point
 

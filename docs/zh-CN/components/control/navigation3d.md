@@ -1,9 +1,9 @@
-# Navigation3d 3D 视角导航控件
+# BNavigation3d 3D 视角导航控件
 
 地图 3D 控件，可以控制地图的旋转、倾斜，默认位于地图右下角
 
 ```ts
-import { Navigation3d } from 'vue3-baidu-map-gl'
+import { BNavigation3d } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

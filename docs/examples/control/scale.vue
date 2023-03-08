@@ -1,5 +1,5 @@
 <template>
-  <Map v-bind="$attrs">
-    <Scale />
-  </Map>
+  <BMap v-bind="$attrs">
+    <BScale />
+  </BMap>
 </template>

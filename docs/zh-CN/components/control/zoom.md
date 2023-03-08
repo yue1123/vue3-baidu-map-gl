@@ -1,9 +1,9 @@
-# Zoom 缩放控件
+# BZoom 缩放控件
 
 缩放控件，默认位于地图右下角
 
 ```ts
-import { Zoom } from 'vue3-baidu-map-gl'
+import { BZoom } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

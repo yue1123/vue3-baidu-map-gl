@@ -1,14 +1,14 @@
 <template>
-  <Map v-bind="$attrs" @initd="handleInitd" :center="googlePoint">
+  <BMap v-bind="$attrs" @initd="handleInitd" :center="googlePoint">
     <template v-if="!isLoading && !isError">
       <template v-for="(point, index) in result">
-        <Marker :position="point"></Marker>
-        <Label :position="point" style="color: #333; font-size: 9px" content="转换后的百度标注（正确）"></Label>
+        <BMarker :position="point"></BMarker>
+        <BLabel :position="point" style="color: #333; font-size: 9px" content="转换后的百度标注（正确）"></BLabel>
       </template>
     </template>
-    <Marker :position="googlePoint"></Marker>
-    <Label :position="googlePoint" style="color: #333; font-size: 9px" content="未转换的谷歌标注（错误）"></Label>
-  </Map>
+    <BMarker :position="googlePoint"></BMarker>
+    <BLabel :position="googlePoint" style="color: #333; font-size: 9px" content="未转换的谷歌标注（错误）"></BLabel>
+  </BMap>
 </template>
 
 <script lang="ts" setup>

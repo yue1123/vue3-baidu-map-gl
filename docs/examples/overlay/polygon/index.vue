@@ -1,6 +1,6 @@
 <template>
-  <Map v-bind="$attrs">
-    <Polygon
+  <BMap v-bind="$attrs">
+    <BPolygon
       enableEditing
       :path="[
         { lng: 116.387112, lat: 39.920977 },
@@ -14,5 +14,5 @@
       :stroke-opacity="0.4"
       :stroke-weight="1"
     />
-  </Map>
+  </BMap>
 </template>

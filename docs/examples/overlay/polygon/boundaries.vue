@@ -1,6 +1,6 @@
 <template>
-  <Map v-bind="$attrs" :minZoom="3" :zoom="zoom" enableScrollWheelZoom @initd="handleInitd">
-    <Control
+  <BMap v-bind="$attrs" :minZoom="3" :zoom="zoom" enableScrollWheelZoom @initd="handleInitd">
+    <BControl
       style="
         border-radius: 4px;
         box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);
@@ -17,9 +17,9 @@
         <option value="四川">四川</option>
         <option value="成都">成都</option>
       </select>
-    </Control>
-    <Polygon :key="area" isBoundary :path="pathPoints" stroke-color="#000" fillColor="blue" :stroke-weight="1" />
-  </Map>
+    </BControl>
+    <BPolygon :key="area" isBoundary :path="pathPoints" stroke-color="#000" fillColor="blue" :stroke-weight="1" />
+  </BMap>
 </template>
 
 <script setup lang="ts">

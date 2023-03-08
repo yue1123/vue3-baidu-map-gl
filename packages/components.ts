@@ -1,47 +1,47 @@
-import { Map } from './components/map/index'
-import { Control } from './components/control/control/index'
-import { Scale } from './components/control/scale/index'
-import { Zoom } from './components/control/zoom/index'
-import { CityList } from './components/control/city-list/index'
-import { Location } from './components/control/location/index'
-import { Copyright } from './components/control/copyright/index'
-import { Navigation3d } from './components/control/navigation3d/index'
-import { PanoramaControl } from './components/control/panorama-control/index'
-import { PanoramaCoverageLayer } from './components/layer/panorama-coverage/index'
-import { Marker } from './components/overlay/marker/index'
-import { Marker3d } from './components/overlay/marker3d/index'
-import { Label } from './components/overlay/label/index'
-import { Polyline } from './components/overlay/polyline/index'
-import { BezierCurve } from './components/overlay/bezierCurve/index'
-import { Polygon } from './components/overlay/polygon/index'
-import { InfoWindow } from './components/overlay/infowindow/index'
-import { Circle } from './components/overlay/circle/index'
-import { Prism } from './components/overlay/prism/index'
-import { GroundOverlay } from './components/overlay/ground-overlay/index'
-import { ContextMenu } from './components/contextMenu/index'
-import { DistrictLayer } from './components/layer/district-layer/index'
+import { BMap } from './components/map/index'
+import { BControl } from './components/control/control/index'
+import { BScale } from './components/control/scale/index'
+import { BZoom } from './components/control/zoom/index'
+import { BCityList } from './components/control/city-list/index'
+import { BLocation } from './components/control/location/index'
+import { BCopyright } from './components/control/copyright/index'
+import { BNavigation3d } from './components/control/navigation3d/index'
+import { BPanoramaControl } from './components/control/panorama-control/index'
+import { BPanoramaCoverageLayer } from './components/layer/panorama-coverage/index'
+import { BMarker } from './components/overlay/marker/index'
+import { BMarker3d } from './components/overlay/marker3d/index'
+import { BLabel } from './components/overlay/label/index'
+import { BPolyline } from './components/overlay/polyline/index'
+import { BBezierCurve } from './components/overlay/bezierCurve/index'
+import { BPolygon } from './components/overlay/polygon/index'
+import { BInfoWindow } from './components/overlay/infowindow/index'
+import { BCircle } from './components/overlay/circle/index'
+import { BPrism } from './components/overlay/prism/index'
+import { BGroundOverlay } from './components/overlay/ground-overlay/index'
+import { BContextMenu } from './components/contextMenu/index'
+import { BDistrictLayer } from './components/layer/district-layer/index'
 
 export default [
-  Map,
-  Control,
-  Scale,
-  Zoom,
-  Navigation3d,
-  Marker,
-  Marker3d,
-  Copyright,
-  Location,
-  Label,
-  Polyline,
-  Polygon,
-  BezierCurve,
-  Circle,
-  CityList,
-  Prism,
-  InfoWindow,
-  ContextMenu,
-  PanoramaControl,
-  PanoramaCoverageLayer,
-  GroundOverlay,
-  DistrictLayer
+  BMap,
+  BControl,
+  BScale,
+  BZoom,
+  BNavigation3d,
+  BMarker,
+  BMarker3d,
+  BCopyright,
+  BLocation,
+  BLabel,
+  BPolyline,
+  BPolygon,
+  BBezierCurve,
+  BCircle,
+  BCityList,
+  BPrism,
+  BInfoWindow,
+  BContextMenu,
+  BPanoramaControl,
+  BPanoramaCoverageLayer,
+  BGroundOverlay,
+  BDistrictLayer
 ]

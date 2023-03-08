@@ -1,9 +1,9 @@
-# Polygon 多边形
+# BPolygon 多边形
 
 在地图上绘制简单的多边形
 
 ```ts
-import { Polygon } from 'vue3-baidu-map-gl'
+import { BPolygon } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例

@@ -6,7 +6,7 @@
       <option value="video">video 视频叠加层</option>
       <option value="canvas">canvas 画布叠加层</option>
     </select>
-    <Map
+    <BMap
       v-bind="$attrs"
       enableScrollWheelZoom
       noAnimation
@@ -18,9 +18,9 @@
       :tilt="groundOverlay.tilt"
       :zoom="groundOverlay.zoom"
     >
-      <Marker :position="groundOverlay.startPoint" icon="start" :offset="{ x: 0, y: -16 }" />
-      <Marker :position="groundOverlay.endPoint" icon="end" :offset="{ x: 0, y: -16 }" />
-      <GroundOverlay
+      <BMarker :position="groundOverlay.startPoint" icon="start" :offset="{ x: 0, y: -16 }" />
+      <BMarker :position="groundOverlay.endPoint" icon="end" :offset="{ x: 0, y: -16 }" />
+      <BGroundOverlay
         autoCenter
         :type="activeKey"
         :startPoint="groundOverlay.startPoint"
@@ -28,7 +28,7 @@
         :url="groundOverlay.url"
         :opacity="groundOverlay.opacity"
       />
-      <Label
+      <BLabel
         v-if="activeKey === 'canvas'"
         content="日坛公园"
         :position="{ lng: 116.449921, lat: 39.921324 }"
@@ -43,7 +43,7 @@
           lineHeight: '30px'
         }"
       />
-    </Map>
+    </BMap>
   </div>
 </template>
 

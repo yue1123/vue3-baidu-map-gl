@@ -1,6 +1,6 @@
 <template>
-  <Map v-bind="$attrs" :zoom="16" :heading="64.5" :tilt="73" enableScrollWheelZoom>
-    <Marker3d
+  <BMap v-bind="$attrs" :zoom="16" :heading="64.5" :tilt="73" enableScrollWheelZoom>
+    <BMarker3d
       :position="point1"
       :height="1200"
       :size="200"
@@ -13,7 +13,7 @@
         }
       }"
     />
-    <Marker3d
+    <BMarker3d
       :position="point2"
       :height="800"
       :size="200"
@@ -26,7 +26,7 @@
         }
       }"
     />
-  </Map>
+  </BMap>
 </template>
 
 <script setup lang="ts">

@@ -22,8 +22,7 @@ function parseComponentsDeclaration(code) {
 async function generateComponentsType() {
   const components = {}
   componentsList.forEach(({ name }) => {
-    const key = name.replace('B', '')
-    const entry = `typeof import('vue3-baidu-map-gl')['${key}']`
+    const entry = `typeof import('vue3-baidu-map-gl')['${name}']`
     components[name] = entry
     // components[key] = entry
   })

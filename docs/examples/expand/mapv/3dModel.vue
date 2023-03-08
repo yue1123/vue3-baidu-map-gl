@@ -1,5 +1,5 @@
 <template>
-  <Map
+  <BMap
     v-bind="$attrs"
     :tilt="65"
     :heading="-50"

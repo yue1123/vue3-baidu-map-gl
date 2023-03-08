@@ -8,11 +8,11 @@
     </div>
     <div class="state" v-else>定位中...</div>
     <button v-if="!isLoading" class="myButton" @click="get">重新获取</button>
-    <Map v-bind="$attrs" enableScrollWheelZoom ref="map" :center="location.point || undefined" @initd="get">
+    <BMap v-bind="$attrs" enableScrollWheelZoom ref="map" :center="location.point || undefined" @initd="get">
       <template v-if="!isLoading">
-        <Marker :position="location.point"></Marker>
+        <BMarker :position="location.point"></BMarker>
       </template>
-    </Map>
+    </BMap>
   </div>
 </template>
 

@@ -1,2 +1,2 @@
-export { default as PanoramaControl } from './index.vue'
+export { default as BPanoramaControl } from './index.vue'
 export * from './index.vue'

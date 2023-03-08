@@ -23,7 +23,7 @@ app.use(baiduMap, {
 
 ```vue
 <template>
-  <Map :plugins="['Mapvgl', 'Mapv', 'MapvThree']"></Map>
+  <BMap :plugins="['Mapvgl', 'Mapv', 'MapvThree']"></BMap>
 </template>
 ```
 
@@ -31,7 +31,7 @@ app.use(baiduMap, {
 
 ```vue
 <template>
-  <Map :plugins="['Mapvgl', 'Mapv', 'MapvThree']" @pluginReady="handlePluginReady"></Map>
+  <BMap :plugins="['Mapvgl', 'Mapv', 'MapvThree']" @pluginReady="handlePluginReady"></BMap>
 </template>
 <script lang="ts" setup>
   function handlePluginReady() {

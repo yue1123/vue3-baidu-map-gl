@@ -1,14 +1,14 @@
-# Label 文本标注
+# BLabel 文本标注
 
 在地图上显示文本标注
 
 ```ts
-import { Label } from 'vue3-baidu-map-gl'
+import { BLabel } from 'vue3-baidu-map-gl'
 ```
 
 ## 组件示例
 
-:::demo 在地图上添加动态更新的，试试改变文本输入框内容 Label class="p-top"
+:::demo 在地图上添加动态更新的，试试改变文本输入框内容 class="p-top"
 overlay/label
 :::
 

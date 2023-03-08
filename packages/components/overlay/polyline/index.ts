@@ -1,2 +1,2 @@
-export { default as Polyline } from './index.vue'
+export { default as BPolyline } from './index.vue'
 export * from './index.vue'

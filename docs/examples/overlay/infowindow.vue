@@ -16,25 +16,25 @@
     </label>
     <br />
     <br />
-    <Map v-bind="$attrs" enableScrollWheelZoom>
-      <InfoWindow v-model="show" enableMaximize :position="{ lng: 116.404, lat: 39.925 }" title="文字内容">
+    <BMap v-bind="$attrs" enableScrollWheelZoom>
+      <BInfoWindow v-model="show" enableMaximize :position="{ lng: 116.404, lat: 39.925 }" title="文字内容">
         地址：北京市东城区王府井大街88号乐天银泰百货八层
         <template #maxContent>
           <h1>最大化内容</h1>
         </template>
-      </InfoWindow>
-      <InfoWindow v-model="show1" :position="{ lng: 116.404, lat: 39.925 }" title="动态内容">
+      </BInfoWindow>
+      <BInfoWindow v-model="show1" :position="{ lng: 116.404, lat: 39.925 }" title="动态内容">
         <h2>count: {{ count }}</h2>
         <button @click="count += 1">count++</button>
-      </InfoWindow>
-      <InfoWindow v-model="show2" :position="{ lng: 116.404, lat: 39.925 }" title="图文组合排版">
+      </BInfoWindow>
+      <BInfoWindow v-model="show2" :position="{ lng: 116.404, lat: 39.925 }" title="图文组合排版">
         <h2>天安门</h2>
         <div class="infoWindow-content">
           <p>天安门坐落在中国北京市中心，故宫的南侧，与天安门广场隔长安街相望，是清朝皇城的大门。..</p>
           <img width="139" height="104" src="https://lbs.baidu.com/jsdemo/img/tianAnMen.jpg" alt="" />
         </div>
-      </InfoWindow>
-    </Map>
+      </BInfoWindow>
+    </BMap>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <Map v-bind="$attrs">
-    <Zoom />
-  </Map>
+  <BMap v-bind="$attrs">
+    <BZoom />
+  </BMap>
 </template>
