@@ -28,7 +28,5 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          TARGET_FOLDER: /
           FOLDER: docs/.vitepress/dist
-          CLEAN: true
-          CLEAN_EXCLUDE: v1/** v1/**/*
+          clean: false
