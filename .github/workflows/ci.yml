@@ -31,4 +31,4 @@ jobs:
           TARGET_FOLDER: /
           FOLDER: docs/.vitepress/dist
           CLEAN: true
-          CLEAN_EXCLUDE: /v1/** /v1/**/*
+          CLEAN_EXCLUDE: v1/** v1/**/*
