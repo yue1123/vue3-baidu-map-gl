@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2018 (评估版) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="70.0058mm" height="46.1117mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 537.52 354.05"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:#32475B}
+    .fil0 {fill:#3FB27F}
+    .fil2 {fill:white}
+   ]]>
+  </style>
+    <clipPath id="id0">
+     <path d="M-0 135.82l537.52 0 0 207.22 -537.52 0 0 -207.22z"/>
+    </clipPath>
+    <clipPath id="id1">
+     <path d="M94.81 115.96l346.08 0 0 116.85 -346.08 0 0 -116.85z"/>
+    </clipPath>
+    <clipPath id="id2">
+     <path d="M180.52 0l168.48 0 0 200.18 -168.48 0 0 -200.18z"/>
+    </clipPath>
+ </defs>
+ <g id="图层_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_821497104">
+   <g style="clip-path:url(#id0)">
+    <image x="-0" y="135.82" width="537.52" height="207.22" xlink:href="logo_Images\logo_ImgID1.png"/>
+   </g>
+  </g>
+  <path class="fil0" d="M24.26 171.16l235.87 146.38c3.39,2.1 7.08,2.12 10.48,0.04l242.65 -148.53c0.24,-0.15 0.37,-0.43 0.35,-0.75 -0.02,-0.32 -0.2,-0.58 -0.45,-0.67l-20.49 -7.3c-2.84,-1.01 -5.56,-0.75 -8.22,0.79l-209.39 120.58c-3.25,1.87 -6.69,1.87 -9.94,-0.01 -69.22,-40 -138.44,-80.01 -207.65,-120.01 -2.68,-1.55 -5.4,-1.81 -8.25,-0.79 -8.28,2.96 -16.56,5.9 -24.85,8.84 -0.26,0.09 -0.43,0.34 -0.45,0.66 -0.03,0.32 0.11,0.61 0.34,0.76z"/>
+  <g id="_821498640">
+   <g style="clip-path:url(#id1)">
+    <image x="94.81" y="115.96" width="346.08" height="116.85" xlink:href="logo_Images\logo_ImgID2.png"/>
+   </g>
+  </g>
+  <path class="fil1" d="M108.68 141.13c50.2,25.69 100.41,51.37 150.61,77.05 2.96,1.51 5.96,1.52 8.93,0.03l158.79 -79.84c0.25,-0.13 0.41,-0.42 0.39,-0.75 -0.01,-0.33 -0.19,-0.6 -0.46,-0.69l-19.36 -6.89c-2.57,-0.91 -5,-0.78 -7.49,0.4l-131.05 62.33c-2.84,1.35 -5.67,1.34 -8.51,-0.03l-123.96 -59.86c-2.5,-1.21 -4.96,-1.35 -7.54,-0.43l-20.29 7.23c-0.26,0.09 -0.44,0.36 -0.46,0.69 -0.02,0.33 0.13,0.62 0.39,0.75z"/>
+  <g id="_821499456">
+   <g style="clip-path:url(#id2)">
+    <image x="180.52" y="0" width="168.48" height="200.18" xlink:href="logo_Images\logo_ImgID3.png"/>
+   </g>
+  </g>
+  <path class="fil0" d="M264.98 180.74c25.82,-13.87 56.72,-51.57 62.86,-80.69 9.13,-43.34 -18.99,-80.87 -62.89,-80.6 -40.86,0.24 -72.7,35.26 -63.35,79.73 6.98,33.21 42.42,70.83 63.38,81.57zm0.5 -62.99c-18.95,0 -34.31,-15.36 -34.31,-34.31 0,-18.95 15.36,-34.31 34.31,-34.31 18.95,0 34.31,15.36 34.31,34.31 0,18.95 -15.36,34.31 -34.31,34.31z"/>
+ </g>
+</svg>
