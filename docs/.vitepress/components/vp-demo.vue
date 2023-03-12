@@ -185,11 +185,11 @@
 
 <style scoped lang="less">
   .demo-container {
-    border: 1px solid var(--vp-c-divider-light);
+    border: 1px solid var(--vp-c-divider);
     border-radius: 6px;
     overflow: hidden;
     &.full-screen {
-      background-color: var(--vp-c-black-soft);
+      background-color: var(--vp-c-divider);
       position: fixed;
       width: 100%;
       height: 100%;
@@ -198,7 +198,7 @@
       z-index: 99999;
     }
     .buttons {
-      border-top: 1px dashed var(--vp-c-divider-light);
+      border-top: 1px dashed var(--vp-c-divider);
       padding: 0.5rem 1rem;
       display: flex;
       justify-content: flex-end;
@@ -218,7 +218,7 @@
       }
     }
     .buttons + div {
-      border-top: 1px dashed var(--vp-c-divider-light);
+      border-top: 1px dashed var(--vp-c-divider);
     }
     .source_code-container {
       overflow: hidden;
@@ -228,7 +228,7 @@
       bottom: 0;
       text-align: center;
       padding: 0.5rem 0;
-      border-top: 1px dashed var(--vp-c-divider-light);
+      border-top: 1px dashed var(--vp-c-divider);
       background-color: var(--vp-custom-block-details-bg);
       z-index: 99;
       cursor: pointer;
