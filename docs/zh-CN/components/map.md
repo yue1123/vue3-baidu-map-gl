@@ -7,7 +7,7 @@ title: Map 地图
 地图核心对象，地图控件、覆盖物、图层等需作为其子组件，以获得 map 的实例化对象
 
 ```ts
-import { Map } from 'vue3-baidu-map-gl'
+import { BMap } from 'vue3-baidu-map-gl'
 ```
 
 ## 渲染地图
