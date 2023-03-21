@@ -49,7 +49,7 @@
       deep: true
     }
   )
-  const { get, point, isLoading, isEmpty } = useAddressGeocoder<BPoint>(() => {
+  const { get, point, isLoading, isEmpty } = useAddressGeocoder<Point>(() => {
     map.value.resetCenter()
   })
 

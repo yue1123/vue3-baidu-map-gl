@@ -27,7 +27,7 @@
     '庐阳区长江中路177号',
     
   ]
-  const { get, point: points, isLoading, isEmpty } = useAddressGeocoder<BPoint[]>()
+  const { get, point: points, isLoading, isEmpty } = useAddressGeocoder<Point[]>()
 
   function handleInitd() {
     get(addressList, '合肥市')

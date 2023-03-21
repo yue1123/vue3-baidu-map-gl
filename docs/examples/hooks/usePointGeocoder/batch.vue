@@ -46,7 +46,7 @@
     { lng: 116.403472, lat: 39.999411 },
     { lng: 116.307901, lat: 40.05901 }
   ]
-  const { get, result, isLoading } = usePointGeocoder<BPointGeocoderResult[]>()
+  const { get, result, isLoading } = usePointGeocoder<PointGeocoderResult[]>()
   function handleInitd() {
     get(points)
   }
