@@ -5,7 +5,7 @@
     :style="{ width: width, height: height }"
     style="background: #f1f1f1; position: relative; overflow: hidden"
   >
-    <slot name="loading" v-bind:isLoading="!initd">
+    <slot name="loading">
       <div style="color: #999; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
         {{ !initd ? 'map loading...' : '' }}
       </div>

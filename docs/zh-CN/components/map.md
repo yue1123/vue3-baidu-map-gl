@@ -57,14 +57,14 @@ map/theme2
 <!-- prettier-ignore -->
 ```html
 <template>
-  <Map>
-    <template #loading="{ isLoading }">
-      <div class="spinner" v-if="isLoading">
+  <BMap>
+    <template #loading>
+      <div class="spinner">
         <div class="double-bounce1"></div>
         <div class="double-bounce2"></div>
       </div>
     </template>
-  </Map>
+  </BMap>
 </template>
 
 <style lang="css">
