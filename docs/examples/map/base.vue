@@ -75,8 +75,8 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { MapType, MapProps } from 'vue3-baidu-map-gl'
-  const type = ref<BMapType>('BMAP_NORMAL_MAP')
-  const mapSetting = ref<BMapProps>({
+  const type = ref<MapType>('BMAP_NORMAL_MAP')
+  const mapSetting = ref<MapProps>({
     enableDragging: true,
     enableInertialDragging: true,
     enableScrollWheelZoom: false,
