@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.0.0...v2.0.1) (2023-03-23)
+
+
+### ✏️ Documentation | 文档
+
+* add v1 documentation link ([3a545e3](https://github.com/yue1123/vue3-baidu-map-gl/commit/3a545e32188ca2c0d0528d6939cbc4526ee6aa71))
+* fixed demo container border style ([4d0eec7](https://github.com/yue1123/vue3-baidu-map-gl/commit/4d0eec7fad7adda88ce75b64aebe3f3ce8c82631))
+* fixed demo ts type error ([53c8cd3](https://github.com/yue1123/vue3-baidu-map-gl/commit/53c8cd329e759109ba120b50af9f0528b00870fb))
+* fixed ts type error ([b5080a8](https://github.com/yue1123/vue3-baidu-map-gl/commit/b5080a8f3218c5aecf16b7b89c4450b77023f6c7))
+* update sponsor list ([a957e5b](https://github.com/yue1123/vue3-baidu-map-gl/commit/a957e5bf05e85b84b7ac8f7023d1238dd0c8b1a7))
+
+
+### ✨ Features | 新功能
+
+* remove isLoading slot scope ([61436c3](https://github.com/yue1123/vue3-baidu-map-gl/commit/61436c301fac0141c0d6c0be2258767abaa34397))
+
 ## [2.0.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v1.1.4...v2.0.0) (2023-03-08)
 
 
