@@ -229,7 +229,7 @@
     onLongpress?: Callback
   }
   const mapContainer = ref<HTMLDivElement | null>()
-  let map: BMapGL.Map = null!
+  let map: BMapGL.Map | null = null
   // 是否初始化
   let initd = ref<boolean>(false)
   // 地图初始化的发布
@@ -336,7 +336,7 @@
         bindEvents(props, vueEmits, map)
         if (!initd.value) {
           initd.value = true
-          nextTick(() => ready(map, map))
+          nextTick(() => ready(map!, map))
           if (plugins) {
             initPlugins(plugins, pluginsSourceLink)
               .then(() => {
@@ -354,12 +354,12 @@
   // 个性化地图
   function initCustomStyle() {
     if (props.mapStyleId) {
-      map.setMapStyleV2({
+      map!.setMapStyleV2({
         styleId: props.mapStyleId
       })
       return
     } else if (props.mapStyleJson) {
-      map.setMapStyleV2({
+      map!.setMapStyleV2({
         styleJson: props.mapStyleJson
       })
     }
@@ -434,7 +434,7 @@
    * 设置是否显示路况图层
    */
   function setTraffic(enableTraffic: boolean) {
-    enableTraffic ? map.setTrafficOn() : map.setTrafficOff()
+    enableTraffic ? map!.setTrafficOn() : map!.setTrafficOff()
   }
   /**
    * 设置中心点和缩放级别
@@ -451,7 +451,7 @@
    * 设置地图自定义属性
    */
   function setDisplayOptions(displayOptions?: MapDisplayOptions) {
-    map.setDisplayOptions(displayOptions || {})
+    map!.setDisplayOptions(displayOptions || {})
   }
   /**
    * 设置缩放级别

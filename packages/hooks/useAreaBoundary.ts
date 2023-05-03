@@ -24,10 +24,7 @@ export function useAreaBoundary(cal?: (boundaries: Ref<AreaBoundary>) => void) {
     })
   }
 
-  onUnmounted(() => {
-    // 手动回收内存
-    boundaryInstance = null
-  })
+  onUnmounted(() => (boundaryInstance = null))
   return {
     /**
      * 是否加载中
