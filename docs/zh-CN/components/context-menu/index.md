@@ -6,10 +6,6 @@
 import { BContextMenu } from 'vue3-baidu-map-gl'
 ```
 
-:::tip
-目前只支持 map 组件添加上下文菜单，后续百度地图 GL SDK 更新了，再支持覆盖物一类组件添加上下文菜单
-:::
-
 ## 组件示例
 
 :::demo
