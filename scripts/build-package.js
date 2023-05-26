@@ -11,6 +11,12 @@ const outDir = 'es'
 const root = process.cwd()
 const internalModuleReg = /^vue|hooks|utils/
 const componentsBuildCommonPlugins = [
+  replace({
+    values: {
+      __DEV__: "process.env.NODE_ENV !== 'production'"
+    },
+    preventAssignment: true
+  }),
   resolve(),
   vue(),
   typescript(),
@@ -23,6 +29,7 @@ const componentsBuildCommonPlugins = [
 const typeScriptBuildCommonPlugins = [
   replace({
     values: {
+      __DEV__: "process.env.NODE_ENV !== 'production'",
       __VERSION__: packageJson.version
     },
     preventAssignment: true
