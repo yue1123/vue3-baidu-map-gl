@@ -2,11 +2,14 @@
   <div
     class="baidu-map-container"
     ref="mapContainer"
-    :style="{ width: width, height: height }"
-    style="background: #f1f1f1; position: relative; overflow: hidden"
+    :style="{ width: width, height: height, background: props.loadingBgColor }"
+    style="position: relative; overflow: hidden"
   >
     <slot name="loading">
-      <div style="color: #999; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+      <div
+        :style="{ color: props.loadingTextColor }"
+        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)"
+      >
         {{ !initd ? 'map loading...' : '' }}
       </div>
     </slot>
@@ -16,24 +19,12 @@
 </template>
 
 <script setup lang="ts">
-  import {
-    defineProps,
-    withDefaults,
-    defineEmits,
-    watch,
-    onMounted,
-    onUnmounted,
-    provide,
-    nextTick,
-    getCurrentInstance,
-    ref,
-    computed
-  } from 'vue'
+  import { watch, onMounted, provide, nextTick, getCurrentInstance, ref, computed, onBeforeUnmount } from 'vue'
   import useLifeCycle from '../../hooks/useLifeCycle'
   import getScriptAsync from '../../utils/getScriptAsync'
   import { initPlugins, PluginsSourceLink, UserPlugins } from '../../utils/pluginLoader'
   import { bindEvents, Callback, error, isString, callWhenDifferentValue } from '../../utils'
-  export type MapType = _MapType
+
   export interface MapDisplayOptions {
     /**
      * 是否显示地图上的地点标识
@@ -144,6 +135,9 @@
      * 地图自定义属性
      */
     displayOptions?: MapDisplayOptions
+    /**
+     * 是否限制中心
+     */
     restrictCenter?: boolean
     /**
      * 是否启用路况图层
@@ -194,6 +188,18 @@
      * 启用自动适应容器尺寸变化，默认启用
      */
     enableAutoResize?: boolean
+    /**
+     * 是否启用底图可点击
+     */
+    enableIconClick?: boolean
+    /**
+     * 加载背景图颜色
+     */
+    loadingBgColor?: string
+    /**
+     * 加载文字图颜色
+     */
+    loadingTextColor?: string
     onClick?: Callback
     onDblclick?: Callback
     onRightclick?: Callback
@@ -228,6 +234,7 @@
     onTouchend?: Callback
     onLongpress?: Callback
   }
+
   const mapContainer = ref<HTMLDivElement | null>()
   let map: BMapGL.Map | null = null
   // 是否初始化
@@ -248,6 +255,8 @@
     restrictCenter: true,
     noAnimation: false,
     showControls: false,
+    loadingBgColor: '#f1f1f1',
+    loadingTextColor: '#999',
     enableTraffic: false,
     enableDragging: true,
     enableInertialDragging: true,
@@ -261,6 +270,7 @@
   })
   const width = computed(() => (isString(props.width) ? props.width : `${props.width}px`))
   const height = computed(() => (isString(props.height) ? props.height : `${props.height}px`))
+
   const vueEmits = defineEmits([
     'initd',
     'unload',
@@ -309,8 +319,9 @@
     props.pluginsSourceLink && proxy!.$baiduMapPluginsSourceLink
       ? Object.assign(proxy!.$baiduMapPluginsSourceLink, props.pluginsSourceLink)
       : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
-  if (!ak) error('missing required props: ak')
-  const scriptKey = `_initBMap${ak}`
+  const scriptKey = `_initBMap_${ak}`
+  if (__DEV__ && !ak) error('missing required props: ak')
+
   // 初始化地图
   function init() {
     getScriptAsync({
@@ -319,9 +330,11 @@
       key: scriptKey
     })
       .then(() => {
-        const { restrictCenter, minZoom, maxZoom, mapType, enableAutoResize, showControls, center } = props
+        const { restrictCenter, enableIconClick, minZoom, maxZoom, mapType, enableAutoResize, showControls, center } =
+          props
         if (!mapContainer.value) return
         map = new BMapGL.Map(mapContainer.value, {
+          enableIconClick,
           restrictCenter,
           minZoom,
           maxZoom,
@@ -462,7 +475,7 @@
     })
   }
   // 设置地图类型
-  function setMapType(mapType: _MapType): void {
+  function setMapType(mapType: MapType): void {
     window[mapType] !== undefined && map!.setMapType(window[mapType])
   }
   function setHeading(heading: number): void {
@@ -514,7 +527,7 @@
    * 调用本方法销毁 WebGL 上下文，否则频繁创建新地图实例会导致浏览器报：
    * too many WebGL context 的警告。
    */
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     map?.destroy()
   })
   defineExpose({
@@ -532,9 +545,7 @@
   provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) => setCenterAndZoom(_center))
   provide('baseMapSetDragging', (enableDragging: boolean) => setDragging(enableDragging))
   provide('getBaseMapOptions', () => props)
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BMap'
-  }
+  })
 </script>
