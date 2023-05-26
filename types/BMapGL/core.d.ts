@@ -1,6 +1,6 @@
 /// <reference path="./base.d.ts" />
 /// <reference path="./panorama.d.ts" />
-/// <reference path="./common.d.ts" />
+/// <reference path="../shared/common.d.ts" />
 
 declare namespace BMapGL {
   /**

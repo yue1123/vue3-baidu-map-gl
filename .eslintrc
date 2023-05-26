@@ -28,13 +28,15 @@
       "files": ["*.ts", "*.vue", "*.tsx"],
       "rules": {
         "no-undef": 0,
+        "vue/multi-word-component-names": 0,
         "@typescript-eslint/triple-slash-reference": 0
       }
     },
     {
       "files": "*",
       "globals": {
-        "BMapGL": "readonly"
+        "BMapGL": "readonly",
+        "__DEV__": "readonly"
       }
     }
   ]

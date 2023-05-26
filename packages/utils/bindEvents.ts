@@ -1,4 +1,5 @@
 export type Callback = (...args: any[]) => void
+
 export function bindEvents(props: any, VueEmit: any, instance: any) {
   for (const key of Object.keys(props)) {
     if (/^on/.test(key) && props[key]) {

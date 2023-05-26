@@ -1,38 +1,34 @@
-declare enum ControlAnchor {
+declare type ControlAnchor =
   /**
    * 控件将定位到地图的左上角
    */
-  'BMAP_ANCHOR_TOP_LEFT' = 0,
+  | 'BMAP_ANCHOR_TOP_LEFT'
   /**
    * 控件将定位到地图的右上角
    */
-  'BMAP_ANCHOR_TOP_RIGHT' = 1,
+  | 'BMAP_ANCHOR_TOP_RIGHT'
   /**
    * 控件将定位到地图的左下角
    */
-  'BMAP_ANCHOR_BOTTOM_LEFT' = 2,
+  | 'BMAP_ANCHOR_BOTTOM_LEFT'
   /**
    * 控件将定位到地图的右下角
    */
-  'BMAP_ANCHOR_BOTTOM_RIGHT' = 3
-}
+  | 'BMAP_ANCHOR_BOTTOM_RIGHT'
 
-declare type _ControlAnchor = keyof typeof ControlAnchor
-declare enum MapType {
+declare type MapType =
   /**
    * 此地图类型展示普通街道视图
    */
-  'BMAP_NORMAL_MAP' = 'B_NORMAL_MAP',
+  | 'BMAP_NORMAL_MAP'
   /**
    * 地球模式
    */
-  'BMAP_EARTH_MAP' = 'B_EARTH_MAP',
+  | 'BMAP_EARTH_MAP'
   /**
    * 普通卫星图
    */
-  'BMAP_SATELLITE_MAP' = 'B_SATELLITE_MAP'
-}
-declare type _MapType = keyof typeof MapType
+  | 'BMAP_SATELLITE_MAP'
 
 /**
  * 市内公交方案换乘策略
@@ -55,6 +51,7 @@ declare enum TransitPolicy {
    */
   'BMAP_TRANSIT_POLICY_AVOID_SUBWAYS'
 }
+
 declare type _TransitPolicy = keyof typeof TransitPolicy
 /**
  * 驾车方案的策略配置
