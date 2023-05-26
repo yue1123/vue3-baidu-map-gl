@@ -23,7 +23,7 @@
   import useLifeCycle from '../../hooks/useLifeCycle'
   import getScriptAsync from '../../utils/getScriptAsync'
   import { initPlugins, PluginsSourceLink, UserPlugins } from '../../utils/pluginLoader'
-  import { bindEvents, Callback, error, isString, callWhenDifferentValue } from '../../utils'
+  import { bindEvents, Callback, error, isString, callWhenDifferentValue, isClient } from '../../utils'
 
   export interface MapDisplayOptions {
     /**
@@ -234,7 +234,6 @@
     onTouchend?: Callback
     onLongpress?: Callback
   }
-
   const mapContainer = ref<HTMLDivElement | null>()
   let map: BMapGL.Map | null = null
   // 是否初始化
@@ -321,9 +320,9 @@
       : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
   const scriptKey = `_initBMap_${ak}`
   if (__DEV__ && !ak) error('missing required props: ak')
-
   // 初始化地图
   function init() {
+    if (!isClient) return
     getScriptAsync({
       src: `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=${scriptKey}`,
       addCalToWindow: true,
