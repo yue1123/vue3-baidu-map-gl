@@ -7,11 +7,10 @@
 </template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults, defineEmits, onMounted, ref, getCurrentInstance, onUpdated } from 'vue'
+  import { onMounted, ref, getCurrentInstance, onUpdated } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import copyrightControlPosCacheMap from './copyrightControlPosCacheMap'
-  import { type ControlAnchor } from '../../../utils'
   export interface CopyrightProps {
     /**
      * 控件的停靠位置
@@ -79,10 +78,8 @@
       })
     }
   })
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BCopyright',
     inheritAttrs: false
-  }
+  })
 </script>

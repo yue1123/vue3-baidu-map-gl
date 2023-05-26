@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, withDefaults, onUpdated, nextTick, computed, provide } from 'vue'
+  import { ref, watch, onUpdated, nextTick, computed, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import { bindEvents, Callback, callWhenDifferentValue, type Point } from '../../../utils/index'
@@ -213,10 +213,7 @@
   function setOffset(offset: { x: number; y: number }): void {
     infoWindow.setOffset(new BMapGL.Size(offset.x, offset.y))
   }
-</script>
-
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BInfoWindow'
-  }
+  })
 </script>

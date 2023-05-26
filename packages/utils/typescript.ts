@@ -9,7 +9,6 @@ export interface _Point {
   lat: number
 }
 export type Point = _Point | BMapGL.Point
-export type ControlAnchor = _ControlAnchor
 export type StrokeStyle = 'solid' | 'dashed' | 'dotted'
 export enum DistrictType {
   'PROVINCE' = 0,

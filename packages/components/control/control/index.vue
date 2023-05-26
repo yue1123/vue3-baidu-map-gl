@@ -7,10 +7,9 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, defineProps, withDefaults, onMounted } from 'vue'
+  import { ref, onMounted } from 'vue'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import { type ControlAnchor } from '../../../utils'
   export interface ControlOptions {
     /**
      * 控件的停靠位置

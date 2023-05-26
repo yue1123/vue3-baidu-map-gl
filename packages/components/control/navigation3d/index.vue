@@ -1,10 +1,8 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { type ControlAnchor } from '../../../utils'
   export interface Navigation3dProps {
     /**
      * 控件的停靠位置
@@ -34,9 +32,7 @@
     ready(map, navigation3dControl)
     return () => map.removeControl(navigation3dControl)
   })
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BNavigation3d'
-  }
+  })
 </script>

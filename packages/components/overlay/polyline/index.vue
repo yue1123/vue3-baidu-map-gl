@@ -1,6 +1,9 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
+
 <script setup lang="ts">
-  import { defineProps, watch, withDefaults, defineEmits, provide } from 'vue'
+  import { watch, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point } from '../../../utils'
@@ -86,9 +89,6 @@
   const { ready } = useLifeCycle()
   let polyline: BMapGL.Polyline
   useBaseMapEffect((map: BMapGL.Map) => {
-    const cal = () => {
-      map.removeOverlay(polyline)
-    }
     const init = () => {
       if (!props.path || !props.path.length) return
       const {
@@ -138,7 +138,7 @@
     watch(() => props.enableMassClear, setMassClear)
     watch(() => props.enableEditing, setEditing)
 
-    return cal
+    return () => map.removeOverlay(polyline)
   })
 
   provide('getOverlayInstance', () => polyline)
@@ -169,9 +169,7 @@
   function setEditing(enableEditing: boolean): void {
     enableEditing ? polyline!.enableEditing() : polyline!.disableEditing()
   }
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BPolyline'
-  }
+  })
 </script>

@@ -1,9 +1,12 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
+
 <script setup lang="ts">
-  import { defineProps, inject, watch, withDefaults, defineEmits, nextTick, provide } from 'vue'
+  import { inject, watch, nextTick, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point } from '../../../utils'
+  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point, warn } from '../../../utils'
   export interface PolygonProps {
     /**
      * 折线的节点坐标数组
@@ -114,7 +117,7 @@
       polygon && map.removeOverlay(polygon)
     }
     const init = () => {
-      if (!props.path || !props.path.length) return
+      if (__DEV__ && (!props.path || !(props.path && props.path.length))) return warn('Polygon props path is required')
       const {
         path,
         strokeColor,
@@ -226,9 +229,7 @@
   function setEditing(enableEditing?: boolean): void {
     enableEditing ? polygon!.enableEditing() : polygon!.disableEditing()
   }
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BPolygon'
-  }
+  })
 </script>

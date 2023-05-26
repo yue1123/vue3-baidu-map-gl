@@ -23,7 +23,7 @@
   import useLifeCycle from '../../hooks/useLifeCycle'
   import getScriptAsync from '../../utils/getScriptAsync'
   import { initPlugins, PluginsSourceLink, UserPlugins } from '../../utils/pluginLoader'
-  import { bindEvents, Callback, error, isString, callWhenDifferentValue, isClient } from '../../utils'
+  import { bindEvents, Callback, error, isString, callWhenDifferentValue, isClient, warn } from '../../utils'
 
   export interface MapDisplayOptions {
     /**
@@ -319,7 +319,7 @@
       ? Object.assign(proxy!.$baiduMapPluginsSourceLink, props.pluginsSourceLink)
       : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
   const scriptKey = `_initBMap_${ak}`
-  if (__DEV__ && !ak) error('missing required props: ak')
+  if (__DEV__ && !ak) warn('Map ak props is required')
   // 初始化地图
   function init() {
     if (!isClient) return

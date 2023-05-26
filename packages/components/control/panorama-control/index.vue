@@ -1,10 +1,8 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { type ControlAnchor } from '../../../utils'
   export interface PanoramaControlProps {
     /**
      * 控件的停靠位置
@@ -28,14 +26,12 @@
   useBaseMapEffect((map) => {
     panoramaControl = new BMapGL.PanoramaControl()
     panoramaControl.setOffset(new BMapGL.Size(props.offset.x, props.offset.y))
-    panoramaControl.setAnchor(window[props.anchor])
+    panoramaControl.setAnchor(window[props.anchor] as unknown as any)
     map.addControl(panoramaControl)
     ready(map, panoramaControl)
     return () => map.removeControl(panoramaControl)
   })
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BPanoramaControl'
-  }
+  })
 </script>

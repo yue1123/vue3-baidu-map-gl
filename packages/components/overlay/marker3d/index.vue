@@ -1,10 +1,13 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
 
 <script setup lang="ts">
-  import { defineProps, provide, watch, withDefaults } from 'vue'
+  import { provide, watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, callWhenDifferentValue, type Point } from '../../../utils'
+  import { bindEvents, Callback, callWhenDifferentValue, warn, type Point } from '../../../utils'
+
   export type Marker3dCustomIcon = {
     anchor?: {
       x: number
@@ -94,7 +97,10 @@
       map.removeOverlay(marker3d)
     }
     const init = () => {
-      if (!props.position || !props.height) return
+      if (__DEV__) {
+        if (!props.position) return warn('Marker3d props position is required')
+        if (!props.height) return warn('Marker3d props height is required')
+      }
       const { position, shape, fillColor, fillOpacity, size, icon, height, enableMassClear } = props
       const options: BMapGL.Marker3DOptions = {
         size,
@@ -180,9 +186,7 @@
   function setMassClear(enableMassClear: boolean): void {
     enableMassClear ? marker3d!.enableMassClear() : marker3d!.disableMassClear()
   }
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BMarker3d'
-  }
+  })
 </script>

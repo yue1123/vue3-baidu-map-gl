@@ -1,10 +1,12 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
 
 <script setup lang="ts">
-  import { defineEmits, nextTick, Ref, watch } from 'vue'
+  import { nextTick, Ref, watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, error, callWhenDifferentValue, type Point } from '../../../utils'
+  import { bindEvents, Callback, error, callWhenDifferentValue, type Point, warn } from '../../../utils'
   export type GroundOverlayUrl =
     | string
     | HTMLCanvasElement
@@ -32,14 +34,20 @@
   const { ready } = useLifeCycle()
   let groundOverlay: BMapGL.GroundOverlay
   useBaseMapEffect((map) => {
-    const cal = () => {
+    const clear = () => {
       groundOverlay && map.removeOverlay(groundOverlay)
     }
     const init = () => {
-      cal()
+      clear()
       let { startPoint, endPoint, opacity, type, autoCenter } = props
       const url = getUrl()
-      if (!url || !startPoint || !endPoint) return
+      if (__DEV__) {
+        if (!url) return
+        if (!startPoint) {
+          return warn(`GroundOverlay props startPoint is required`)
+        }
+        if (!endPoint) return warn(`GroundOverlay props endPoint is required`)
+      }
       const boundsObj = getBounds(startPoint, endPoint)
       const options: BMapGL.GroundOverlayOptions = {
         opacity,
@@ -56,7 +64,7 @@
             const center = boundsObj.getCenter()
             map.panTo(center)
           } catch (e) {
-            error('set center error')
+            error('GroundOverlay set center error')
           }
         })
       }
@@ -66,7 +74,7 @@
     ready(map, groundOverlay)
 
     watch(() => props, callWhenDifferentValue(init), { deep: true })
-    return cal
+    return clear
   })
   function getBounds(start: Point, end: Point) {
     return new BMapGL.Bounds(new BMapGL.Point(start.lng, end.lat), new BMapGL.Point(end.lng, start.lat))
@@ -75,16 +83,13 @@
     let url = props.url
     if (typeof url === 'function') {
       url = url()
-      if (!url && process.env.NODE_ENV === 'development') {
-        error(`expect a function return string or canvas html element, but got ${url}`)
-        return
+      if (!url && __DEV__) {
+        return warn(`GroundOverlay props url expect a function return string or canvas html element, but got ${url}`)
       }
     }
     return url
   }
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BGroundOverlay'
-  }
+  })
 </script>

@@ -1,9 +1,20 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
+
 <script setup lang="ts">
-  import { defineProps, watch, withDefaults, defineEmits, provide } from 'vue'
+  import { watch, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, callWhenDifferentValue, type Point, type StrokeStyle } from '../../../utils'
+  import {
+    bindEvents,
+    Callback,
+    callWhenDifferentValue,
+    type Point,
+    type StrokeStyle,
+    error,
+    warn
+  } from '../../../utils'
   export interface BezierCurveProps {
     /**
      * 折线的节点坐标数组
@@ -70,7 +81,11 @@
       map.removeOverlay(bezierCurve)
     }
     const init = () => {
-      if (!props.path || !props.path.length || !props.controlPoints || !props.controlPoints.length) return
+      if (__DEV__) {
+        if (!props.path || !(props.path && props.path.length)) return warn('BezierCurve path props is required')
+        if (!props.controlPoints || !(props.controlPoints && props.controlPoints.length))
+          return warn('BezierCurve controlPoints props is required')
+      }
       const { path, controlPoints, strokeColor, strokeWeight, strokeOpacity, strokeStyle, enableMassClear } = props
       const pathPoints = pathPointsToMapPoints(path)
       const _controlPoints = controlPoints.map((points) => {
@@ -84,8 +99,9 @@
           strokeStyle,
           enableMassClear
         })
-      } catch (error) {
-        console.error('Init bezierCurve overlay error, make sure path and controlPoints data is correct!')
+      } catch (e: any) {
+        if (__DEV__)
+          error(e.message || 'Init bezierCurve overlay error, make sure path and controlPoints data is correct!')
       }
 
       map.addOverlay(bezierCurve)
@@ -150,9 +166,5 @@
   function setMassClear(enableMassClear: boolean): void {
     enableMassClear ? bezierCurve!.enableMassClear() : bezierCurve!.disableMassClear()
   }
-</script>
-<script lang="ts">
-  export default {
-    name: 'BBezierCurve'
-  }
+  defineOptions({ name: 'BBezierCurve' })
 </script>
