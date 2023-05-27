@@ -54,8 +54,7 @@ function getComponentList() {
       output: {
         exports: 'named',
         file: fileName,
-        format: 'esm',
-        sourcemap: true
+        format: 'esm'
       },
       plugins: componentsBuildCommonPlugins
     }
@@ -69,7 +68,7 @@ function getTypescriptFilesList() {
   })
   return typescriptFiles.map((tsFile) => {
     return {
-      external(id) {
+      external() {
         return true
       },
       input: tsFile,
