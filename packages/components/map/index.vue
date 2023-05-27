@@ -200,6 +200,11 @@
      * 加载文字图颜色
      */
     loadingTextColor?: string
+    /**
+     * 地图背景颜色 rgba 数组
+     * @default  [245, 245, 245, 100]
+     */
+    backgroundColor?: number[]
     onClick?: Callback
     onDblclick?: Callback
     onRightclick?: Callback
@@ -254,6 +259,7 @@
     restrictCenter: true,
     noAnimation: false,
     showControls: false,
+    backgroundColor: () => [245, 245, 245, 100],
     loadingBgColor: '#f1f1f1',
     loadingTextColor: '#999',
     enableTraffic: false,
@@ -329,17 +335,29 @@
       key: scriptKey
     })
       .then(() => {
-        const { restrictCenter, enableIconClick, minZoom, maxZoom, mapType, enableAutoResize, showControls, center } =
-          props
+        const {
+          restrictCenter,
+          enableIconClick,
+          backgroundColor,
+          minZoom,
+          maxZoom,
+          mapType,
+          enableAutoResize,
+          showControls,
+          center,
+          displayOptions
+        } = props
         if (!mapContainer.value) return
         map = new BMapGL.Map(mapContainer.value, {
+          backgroundColor,
           enableIconClick,
           restrictCenter,
           minZoom,
           maxZoom,
           mapType: window[mapType],
           enableAutoResize,
-          showControls
+          showControls,
+          displayOptions
         })
         setCenterAndZoom(center)
         initMapOptions()
@@ -416,7 +434,6 @@
       enablePinchToZoom,
       enableAutoResize,
       enableTraffic,
-      displayOptions,
       mapType,
       zoom,
       tilt,
@@ -436,7 +453,6 @@
     setDoubleClickZoom(enableDoubleClickZoom)
     setScrollWheelZoom(enableScrollWheelZoom)
     setInertialDragging(enableInertialDragging)
-    setDisplayOptions(displayOptions)
   }
   // 生产一个地理位置坐标点
   function genPoint(lng: number, lat: number): BMapGL.Point {
