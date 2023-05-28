@@ -4,6 +4,7 @@
   import { watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
+  import { type ControlAnchor, type LengthUnit } from '../../../utils'
   export interface ScaleProps {
     /**
      * 控件的停靠位置
@@ -19,7 +20,7 @@
     /**
      * 比例尺单位制
      */
-    unit?: _LengthUnit
+    unit?: LengthUnit
   }
   const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<ScaleProps>(), {

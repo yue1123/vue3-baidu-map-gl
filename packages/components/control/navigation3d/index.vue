@@ -3,6 +3,7 @@
 <script setup lang="ts">
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
+  import { type ControlAnchor } from '../../../utils'
   export interface Navigation3dProps {
     /**
      * 控件的停靠位置

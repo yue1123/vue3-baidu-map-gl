@@ -10,6 +10,7 @@
   import { ref, onMounted } from 'vue'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
+  import { ControlAnchor } from '../../../utils'
   export interface ControlOptions {
     /**
      * 控件的停靠位置

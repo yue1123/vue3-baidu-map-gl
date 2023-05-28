@@ -3,6 +3,7 @@
 <script setup lang="ts">
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
+  import { ControlAnchor } from '../../../utils'
   export interface CityListProps {
     /**
      * 控件的停靠位置

@@ -650,6 +650,16 @@ declare namespace BMapGL {
     constructor(points: Array<Point>, controlPoints: Point[][], opts?: BezierCurveOptions)
   }
 
+  interface MapMaskOptions {
+    showRegion?: 'inside' | 'outside'
+    isBuildingMask?: boolean
+    isMapMask?: boolean
+    isPoiMask?: boolean
+  }
+  class MapMask extends Overlay {
+    constructor(paths: Point[], opts: MapMaskOptions)
+  }
+
   interface HotspotOptions {
     text?: string
     offsets?: number[]

@@ -6,7 +6,15 @@
   import { inject, watch, nextTick, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point, warn } from '../../../utils'
+  import {
+    bindEvents,
+    Callback,
+    callWhenDifferentValue,
+    StrokeStyle,
+    type Point,
+    warn,
+    pathPointsToMapPoints
+  } from '../../../utils'
   export interface PolygonProps {
     /**
      * 折线的节点坐标数组
@@ -190,10 +198,6 @@
         }
       }
     })
-  }
-
-  function pathPointsToMapPoints(pathPoints: Point[]) {
-    return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
   }
 
   function setPath(path: Point[] | string[]) {

@@ -23,8 +23,7 @@
   import useLifeCycle from '../../hooks/useLifeCycle'
   import getScriptAsync from '../../utils/getScriptAsync'
   import { initPlugins, PluginsSourceLink, UserPlugins } from '../../utils/pluginLoader'
-  import { bindEvents, Callback, error, isString, callWhenDifferentValue, isClient, warn } from '../../utils'
-
+  import { bindEvents, Callback, error, isString, callWhenDifferentValue, isClient, warn, MapType } from '../../utils'
   export interface MapDisplayOptions {
     /**
      * 是否显示地图上的地点标识

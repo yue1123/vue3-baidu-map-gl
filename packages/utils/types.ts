@@ -1,5 +1,105 @@
 import { ComputedRef, Ref, WatchOptions, WatchSource } from 'vue'
 
+export interface _Point {
+  /**
+   * 地理经度
+   */
+  lng: number
+  /**
+   * 地理纬度
+   */
+  lat: number
+}
+export type Point = _Point | BMapGL.Point
+export type StrokeStyle = 'solid' | 'dashed' | 'dotted'
+export enum DistrictType {
+  'PROVINCE' = 0,
+  'CITY' = 1,
+  'AREA' = 2
+}
+export type MapMaskShowRegion = 'inside' | 'outside'
+
+export type ControlAnchor =
+  /**
+   * 控件将定位到地图的左上角
+   */
+  | 'BMAP_ANCHOR_TOP_LEFT'
+  /**
+   * 控件将定位到地图的右上角
+   */
+  | 'BMAP_ANCHOR_TOP_RIGHT'
+  /**
+   * 控件将定位到地图的左下角
+   */
+  | 'BMAP_ANCHOR_BOTTOM_LEFT'
+  /**
+   * 控件将定位到地图的右下角
+   */
+  | 'BMAP_ANCHOR_BOTTOM_RIGHT'
+
+export type MapType =
+  /**
+   * 此地图类型展示普通街道视图
+   */
+  | 'BMAP_NORMAL_MAP'
+  /**
+   * 地球模式
+   */
+  | 'BMAP_EARTH_MAP'
+  /**
+   * 普通卫星图
+   */
+  | 'BMAP_SATELLITE_MAP'
+
+/**
+ * 市内公交方案换乘策略
+ */
+
+export type TransitPolicy =
+  /**
+   *  最少时间
+   */
+  | 'BMAP_TRANSIT_POLICY_LEAST_TIME'
+  /**
+   *  最少换乘
+   */
+  | 'BMAP_TRANSIT_POLICY_LEAST_TRANSFER'
+  /**
+   *  最少步行
+   */
+  | 'BMAP_TRANSIT_POLICY_LEAST_WALKING'
+  /**
+   *  不乘地铁
+   */
+  | 'BMAP_TRANSIT_POLICY_AVOID_SUBWAYS'
+
+/**
+ * 驾车方案的策略配置
+ */
+export type DrivingPolicy =
+  /**
+   * 最少时间
+   */
+  | 'BMAP_DRIVING_POLICY_LEAST_TIME'
+  /**
+   * 最短距离
+   */
+  | 'BMAP_DRIVING_POLICY_LEAST_DISTANCE'
+  /**
+   * 避开高速
+   */
+  | 'BMAP_DRIVING_POLICY_AVOID_HIGHWAYS'
+
+export type LengthUnit =
+  /**
+   * 公制单位
+   */
+  | 'BMAP_UNIT_METRIC'
+  /**
+   * 英制单位
+   */
+  | 'BMAP_UNIT_US'
+
 /**
  * Void function
  */

@@ -28,7 +28,7 @@
   "scripts": {
     "clean": "rimraf es dist",
     "dev": "rollup -c --environment NODE_ENV:production && rollup -c ./scripts/build-package.js -w",
-    "build": "pnpm clean && vue-tsc && rollup -c --environment NODE_ENV:production && rollup -c ./scripts/build-package.js && rimraf *.tsbuildinfo && pnpm gen-volar-dts && pnpm merge-dts",
+    "build": "pnpm clean && vue-tsc && rollup -c --environment NODE_ENV:production && rollup -c ./scripts/build-package.js && rimraf *.tsbuildinfo && pnpm gen-volar-dts",
     "test": "pnpm clean && vue-tsc && rollup -c ./scripts/build-package.js",
     "link:pnpm": "pnpm link --global",
     "docs:dev": "pnpm run -C docs dev",

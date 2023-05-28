@@ -1,4 +1,4 @@
-import type { App, Plugin } from 'vue'
+import type { App } from 'vue'
 import componentsList from './components'
 import { UserPlugins, PluginsSourceLink } from './utils/pluginLoader'
 interface InitOptions {
@@ -8,9 +8,12 @@ interface InitOptions {
 }
 // hooks
 export * from './hooks'
+// components
 export * from './components/index'
-export * from './utils/typescript'
-// // global register
+// types
+export * from './utils/types'
+import '../types/index.d.ts'
+// global register
 const vue3BaiduMapGl = {
   install: (app: App, options?: InitOptions) => {
     const { ak, plugins: p, pluginsSourceLink: psl } = options || {}

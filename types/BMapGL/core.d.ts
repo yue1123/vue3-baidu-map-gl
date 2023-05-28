@@ -1,6 +1,5 @@
 /// <reference path="./base.d.ts" />
 /// <reference path="./panorama.d.ts" />
-/// <reference path="../shared/common.d.ts" />
 
 declare namespace BMapGL {
   /**
@@ -152,11 +151,11 @@ declare namespace BMapGL {
     /**
      * 设置地图类型
      */
-    setMapType(mapTypeId: MapType): void
+    setMapType(mapTypeId: number): void
     /**
      * 返回地图类型
      */
-    getMapType(): MapType
+    getMapType(): 'BMAP_NORMAL_MAP' | 'BMAP_EARTH_MAP' | 'BMAP_SATELLITE_MAP'
     /**
      * 根据提供的地理区域或坐标设置地图视野，调整后的视野会保证包含提供的地理区域或坐标
      */
@@ -357,7 +356,7 @@ declare namespace BMapGL {
     /**
      * 地图类型，默认为BMAP_NORMAL_MAP
      */
-    mapType?: MapType
+    mapType?: 'BMAP_NORMAL_MAP' | 'BMAP_EARTH_MAP' | 'BMAP_SATELLITE_MAP'
     /**
      * 	开启自动适应地图容器变化，默认启用
      */
@@ -365,10 +364,10 @@ declare namespace BMapGL {
     showControls?: boolean
     restrictCenter?: boolean
     enableIconClick?: boolean
-    //     enableHighResolution?: boolean;
-    //     enableMapClick?: boolean;
-    //     backgroundColor?: number[];
-    //     displayOptions?: object;
+    enableHighResolution?: boolean
+    // enableMapClick?: boolean
+    backgroundColor?: number[]
+    displayOptions?: object
   }
   interface Viewport {
     center: Point

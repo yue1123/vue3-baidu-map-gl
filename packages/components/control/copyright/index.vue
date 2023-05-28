@@ -11,6 +11,7 @@
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import copyrightControlPosCacheMap from './copyrightControlPosCacheMap'
+  import { ControlAnchor } from '../../../utils'
   export interface CopyrightProps {
     /**
      * 控件的停靠位置

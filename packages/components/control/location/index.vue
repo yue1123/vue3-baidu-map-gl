@@ -3,7 +3,7 @@
 <script setup lang="ts">
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback } from '../../../utils'
+  import { bindEvents, Callback, ControlAnchor } from '../../../utils'
   export interface LocationProps {
     /**
      * 控件的停靠位置

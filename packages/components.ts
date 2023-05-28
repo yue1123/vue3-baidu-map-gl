@@ -20,6 +20,7 @@ import { BPrism } from './components/overlay/prism/index'
 import { BGroundOverlay } from './components/overlay/ground-overlay/index'
 import { BContextMenu } from './components/contextMenu/index'
 import { BDistrictLayer } from './components/layer/district-layer/index'
+import { BMapMask } from './components/overlay/map-mask/index'
 
 export default [
   BMap,
@@ -34,6 +35,7 @@ export default [
   BLabel,
   BPolyline,
   BPolygon,
+  BMapMask,
   BBezierCurve,
   BCircle,
   BCityList,

@@ -1,7 +1,6 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   const { ready } = useLifeCycle()
@@ -13,9 +12,7 @@
     ready(map, panoramaCoverageLayer)
     return () => map.removeTileLayer(panoramaCoverageLayer)
   })
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BPanoramaCoverageLayer'
-  }
+  })
 </script>
