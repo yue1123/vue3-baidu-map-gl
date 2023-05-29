@@ -1,4 +1,4 @@
-# BMapMask 掩膜
+# BMapMask 掩膜 <Badge type="tip" text="^2.1.0" />
 
 控制地图元素的局部显示与隐藏
 
