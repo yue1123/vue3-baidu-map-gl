@@ -21,7 +21,7 @@
   import { ref, shallowRef, triggerRef } from 'vue'
   import { BMap, BMarker, BMapMask, Point, type MapMaskShowRegion } from 'vue3-baidu-map-gl'
   const path = shallowRef<Point[]>([])
-  const center = ref()
+  const center = ref<BMapGL.Point>()
   const showRegion = ref<MapMaskShowRegion>('outside')
   function handleInitd({ map }: { map: BMapGL.Map }) {
     center.value = new BMapGL.Point(116.31951444701689, 40.03514188328609)
