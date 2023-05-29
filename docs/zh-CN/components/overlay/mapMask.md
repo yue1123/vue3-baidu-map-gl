@@ -28,7 +28,7 @@ overlay/mapMask
 | path           | 圆形中心点经纬度          | `{ lng: number, lat: number}`             | -      | `required` |
 | showRegion     | 展示区域内部还是外部      | [`MapMaskShowRegion`](#mapmaskshowregion) | -      | `inside`   |
 | isBuildingMask | 楼块是否参与掩膜          | `boolean`                                 | -      | `false`    |
-| isMapMask      | 底图是否参与掩膜          | `boolean`                                 | -      | `false`  |
+| isMapMask      | 底图是否参与掩膜          | `boolean`                                 | -      | `false`    |
 | isPoiMask      | 底图上的 Poi 是否参与掩膜 | `boolean`                                 | -      | `false`    |
 
 ### MapMaskShowRegion

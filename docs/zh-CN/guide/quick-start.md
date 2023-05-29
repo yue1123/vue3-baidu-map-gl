@@ -20,9 +20,8 @@ import Vue3BaiduMapGL from 'vue3-baidu-map-gl'
 const app = createApp(App)
 app.use(Vue3BaiduMapGL)
 ```
+
 在组件中使用
-
-
 
 #### Volar 支持 <Badge type="tip" text="^0.0.21" />
 
