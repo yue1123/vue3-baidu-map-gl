@@ -125,7 +125,7 @@
       polygon && map.removeOverlay(polygon)
     }
     const init = () => {
-      if (__DEV__ && (!props.path || !(props.path && props.path.length))) return warn('Polygon props path is required')
+      if (!props.path) return __DEV__ && warn('Polygon props path is required')
       const {
         path,
         strokeColor,

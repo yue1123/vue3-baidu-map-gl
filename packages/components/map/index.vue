@@ -323,7 +323,6 @@
       ? Object.assign(proxy!.$baiduMapPluginsSourceLink, props.pluginsSourceLink)
       : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
   const scriptKey = `_initBMap_${ak}`
-  if (__DEV__ && !ak) warn('Map ak props is required')
   // 初始化地图
   function init() {
     if (!isClient) return
@@ -534,7 +533,10 @@
     enableAutoResize ? map!.enableAutoResize() : map!.disableAutoResize()
   }
 
-  onMounted(init)
+  onMounted(() => {
+    if (!ak) __DEV__ && warn('Map ak props is required')
+    else init()
+  })
   /**
    * 销毁地图，当使用 WebGL 渲染地图时，如果确认不再使用该地图实例，则需要
    * 调用本方法销毁 WebGL 上下文，否则频繁创建新地图实例会导致浏览器报：

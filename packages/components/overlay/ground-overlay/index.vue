@@ -41,13 +41,11 @@
       clear()
       let { startPoint, endPoint, opacity, type, autoCenter } = props
       const url = getUrl()
-      if (__DEV__) {
-        if (!url) return
-        if (!startPoint) {
-          return warn(`GroundOverlay props startPoint is required`)
-        }
-        if (!endPoint) return warn(`GroundOverlay props endPoint is required`)
+      if (!url) return
+      if (!startPoint) {
+        return __DEV__ && warn(`GroundOverlay props startPoint is required`)
       }
+      if (!endPoint) return __DEV__ && warn(`GroundOverlay props endPoint is required`)
       const boundsObj = getBounds(startPoint, endPoint)
       const options: BMapGL.GroundOverlayOptions = {
         opacity,
@@ -83,8 +81,11 @@
     let url = props.url
     if (typeof url === 'function') {
       url = url()
-      if (!url && __DEV__) {
-        return warn(`GroundOverlay props url expect a function return string or canvas html element, but got ${url}`)
+      if (!url) {
+        return (
+          __DEV__ &&
+          warn(`GroundOverlay props url expect a function return string or canvas html element, but got ${url}`)
+        )
       }
     }
     return url

@@ -81,11 +81,10 @@
       map.removeOverlay(bezierCurve)
     }
     const init = () => {
-      if (__DEV__) {
-        if (!props.path || !(props.path && props.path.length)) return warn('BezierCurve path props is required')
-        if (!props.controlPoints || !(props.controlPoints && props.controlPoints.length))
-          return warn('BezierCurve controlPoints props is required')
-      }
+      if (!props.path || !(props.path && props.path.length))
+        return __DEV__ && warn('BezierCurve path props is required or not empty array')
+      if (!props.controlPoints || !(props.controlPoints && props.controlPoints.length))
+        return __DEV__ && warn('BezierCurve controlPoints props is required or not empty array')
       const { path, controlPoints, strokeColor, strokeWeight, strokeOpacity, strokeStyle, enableMassClear } = props
       const pathPoints = pathPointsToMapPoints(path)
       const _controlPoints = controlPoints.map((points) => {

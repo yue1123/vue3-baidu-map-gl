@@ -128,8 +128,8 @@
       marker && map.removeOverlay(marker)
     }
     const init = () => {
-      if (__DEV__ && !props.position) {
-        return warn('Marker position is required')
+      if (!props.position) {
+        return __DEV__ && warn('Marker position is required')
       }
 
       const {

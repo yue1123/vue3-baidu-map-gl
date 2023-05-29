@@ -6,7 +6,7 @@
   import { watch, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point } from '../../../utils'
+  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point, warn } from '../../../utils'
   export interface PolylineProps {
     /**
      * 折线的节点坐标数组
@@ -95,7 +95,8 @@
   let polyline: BMapGL.Polyline
   useBaseMapEffect((map: BMapGL.Map) => {
     const init = () => {
-      if (!props.path || !props.path.length) return
+      if (!props.path || !props.path.length)
+        return __DEV__ && warn('Polyline props path is required or not empty array')
       const {
         path,
         strokeColor,

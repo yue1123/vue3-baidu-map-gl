@@ -69,7 +69,7 @@
   useBaseMapEffect((map) => {
     const clear = () => map.removeOverlay(mapMask)
     const init = () => {
-      if (!props.path || !(props.path && props.path.length)) return warn('MapMask props path is required')
+      if (!props.path || !(props.path && props.path.length)) return __DEV__ && warn('MapMask props path is required')
       const { path, showRegion, isBuildingMask, isMapMask, isPoiMask } = props
       const pathPoints = pathPointsToMapPoints(path as Point[])
       mapMask = new BMapGL.MapMask(pathPoints, {
