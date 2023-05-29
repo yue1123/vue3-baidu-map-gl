@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://yue1123.github.io/vue3-baidu-map-gl/zh/" target="_blank" rel="noopener noreferrer">
-  <img src='./docs/public/logo.svg' style="overflow:hidden; width:200px;height:200px;border-radius:48px;">
+  <a href="https://yue1123.github.io/vue3-baidu-map-gl/zh-CN" target="_blank" rel="noopener noreferrer">
+  <img src='https://github.com/yue1123/vue3-baidu-map-gl/raw/v2.1.0/docs/public/logo.svg' crossorigin="anonymous" style="overflow:hidden; width:200px;height:200px;border-radius:48px;">
   </a>
 </p>
 
