@@ -81,7 +81,9 @@ declare namespace BMapGL {
      */
     clip?: boolean
   }
-  type PolylineOptions = overlayCommonOptions
+  type PolylineOptions = overlayCommonOptions & {
+    linkRight?: boolean
+  }
   type PolygonOptions = overlayCommonOptions & {
     /**
      * 面填充颜色，同CSS颜色
