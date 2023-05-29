@@ -1,9 +1,12 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
+
 <script setup lang="ts">
-  import { defineProps, provide, watch, withDefaults } from 'vue'
+  import { provide, watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point } from '../../../utils'
+  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point, warn } from '../../../utils'
   export interface CircleProps {
     /**
      * 圆形中心点经纬度
@@ -105,6 +108,10 @@
       map.removeOverlay(circle)
     }
     const init = () => {
+      if (__DEV__) {
+        if (!props.center) warn('BCircle center props is required')
+        if (!props.radius) warn('BCircle center props is required')
+      }
       const {
         center,
         radius,
@@ -189,9 +196,7 @@
   function setEditing(enableEditing: boolean): void {
     enableEditing ? circle!.enableEditing() : circle!.disableEditing()
   }
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BCircle'
-  }
+  })
 </script>

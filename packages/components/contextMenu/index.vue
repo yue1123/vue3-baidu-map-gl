@@ -1,7 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineProps, watch, withDefaults } from 'vue'
+  import { inject, watch } from 'vue'
   import useBaseMapEffect from '../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../hooks/useLifeCycle'
   import { bindEvents, Callback, isString, callWhenDifferentValue } from '../../utils/index'
@@ -22,13 +22,12 @@
     menuItems: () => []
   })
 
-  // const getParentInstance = inject('getOverlayInstance', () => null)
+  const getParentInstance = inject('getOverlayInstance', () => null)
   const vueEmits = defineEmits(['initd', 'unload', 'open', 'close'])
   const { ready } = useLifeCycle()
   let contextMenu: BMapGL.ContextMenu
   useBaseMapEffect((map: BMapGL.Map) => {
-    // const target = getParentInstance() || map
-    const target = map
+    const target = getParentInstance() || map
     const cal = () => {
       contextMenu && target.removeContextMenu(contextMenu)
     }

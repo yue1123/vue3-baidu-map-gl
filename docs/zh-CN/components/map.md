@@ -124,15 +124,16 @@ map/theme2
 
 ## 静态组件 props
 
-| 属性              | 说明                                                     | 类型                                                                    | 可选值 | 默认值  | 版本                               |
-| ----------------- | -------------------------------------------------------- | ----------------------------------------------------------------------- | ------ | ------- | ---------------------------------- |
-| ak                | 百度地图 ak [申请 ak](../guide/quick-start#申请-ak-密钥) | `string`                                                                | -      | -       | -                                  |
-| minZoom           | 地图允许展示的最小级别                                   | `number`                                                                | `0-21` | `0`     | -                                  |
-| maxZoom           | 地图允许展示的最大级别                                   | `number`                                                                | `0-21` | `21`    | -                                  |
-| showControls      | 是否显示室内图                                           | `boolean`                                                               | -      | `false` | -                                  |
-| restrictCenter    | 是否限制中心                                             | `boolean`                                                               | -      | `true`  | <Badge type="tip" text="^1.1.3" /> |
-| plugins           | 需要注册的插件                                           | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvThree']`                     | -      | -       | -                                  |
-| pluginsSourceLink | 自定义插件资源地址                                       | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvThree', string>` | -      | -       | -                                  |
+| 属性              | 说明                                                     | 类型                                                                    | 可选值 | 默认值                 | 版本                               |
+| ----------------- | -------------------------------------------------------- | ----------------------------------------------------------------------- | ------ | ---------------------- | ---------------------------------- |
+| ak                | 百度地图 ak [申请 ak](../guide/quick-start#申请-ak-密钥) | `string`                                                                | -      | -                      | -                                  |
+| minZoom           | 地图允许展示的最小级别                                   | `number`                                                                | `0-21` | `0`                    | -                                  |
+| maxZoom           | 地图允许展示的最大级别                                   | `number`                                                                | `0-21` | `21`                   | -                                  |
+| backgroundColor   | 地图背景颜色, rgba 数组                                  | ` number[]`                                                             | -      | `[245, 245, 245, 100]` | <Badge type="tip" text="^2.1.0" /> |
+| showControls      | 是否显示室内图                                           | `boolean`                                                               | -      | `false`                | -                                  |
+| restrictCenter    | 是否限制中心                                             | `boolean`                                                               | -      | `true`                 | <Badge type="tip" text="^1.1.3" /> |
+| plugins           | 需要注册的插件                                           | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvThree']`                     | -      | -                      | -                                  |
+| pluginsSourceLink | 自定义插件资源地址                                       | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvThree', string>` | -      | -                      | -                                  |
 
 ## 动态组件 Props
 
@@ -156,8 +157,11 @@ map/theme2
 | enableResizeOnCenter   | 开启图区 resize 中心点不变                                                                                                                                                     | `boolean`                             | `true`            | -                                  |
 | enableDoubleClickZoom  | 启用地图双击缩放，左键双击放大、右键双击缩小                                                                                                                                   | `boolean`                             | `false`           | -                                  |
 | enableKeyboard         | 启用键盘操作，键盘的上、下、左、右键可连续移动地图。同时按下其中两个键可使地图进行对角移动。PgUp、PgDn、Home 和 End 键会使地图平移其 1/2 的大小。 +、-键会使地图放大或缩小一级 | `boolean`                             | `true`            | -                                  |
-| enablePinchToZoom      | 启用双指缩放地图                                                                                                                                                               | `boolean `                            | `true`            | -                                  |
-| enableAutoResize       | 启用自动适应容器尺寸变化                                                                                                                                                       | `boolean `                            | `true`            | -                                  |
+| enablePinchToZoom      | 启用双指缩放地图                                                                                                                                                               | `boolean`                             | `true`            | -                                  |
+| enableAutoResize       | 启用自动适应容器尺寸变化                                                                                                                                                       | `boolean`                             | `true`            | -                                  |
+| enableIconClick        | 是否启用底图可点击                                                                                                                                                             | `boolean`                             | `true`            | <Badge type="tip" text="^2.1.0" /> |
+| loadingBgColor         | 加载背景图颜色                                                                                                                                                                 | `string`                              | `#f1f1f1`         | <Badge type="tip" text="^2.1.0" /> |
+| loadingTextColor       | 加载文字图颜色                                                                                                                                                                 | `string`                              | `#999`            | <Badge type="tip" text="^2.1.0" /> |
 
 ## 地图类型
 
@@ -196,41 +200,41 @@ map/theme2
 
 ## 组件事件
 
-| 事件名          | 说明                                                                                             | 类型                                     |
-| --------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------- |
-| initd           | 组件初始化后会触发此事件，返回一个地图实例                                                       | `{ map, BmapGL, instance }`              |
-| unload          | 组件卸载时会触发此事件                                                                           | -                                        |
-| pluginReady     | 插件加载完毕会触发此事件                                                                         | `{map}`                                  |
-| click           | 左键单击地图时触发此事件。 当双击时，产生的事件序列为： click click dblclick                     | `{type, target, latlng, pixel, overlay}` |
-| dblclick        | 鼠标双击地图时会触发此事件                                                                       | `{type, target, pixel, point}`           |
-| rightclick      | 右键单击地图时触发此事件。 当双击时，产生的事件序列为： rightclick rightclick rightdblclick      | `{type, target, latlng, pixel, overlay}` |
-| rightdblclick   | 右键双击地图时触发此事件                                                                         | `{type, target, latlng, pixel, overlay}` |
-| maptypechange   | 地图类型发生变化时触发此事件                                                                     | `{type, target}`                         |
-| mousemove       | 鼠标在地图区域移动过程中触发此事件                                                               | `{type, target, latlng, pixel, overlay}` |
-| mouseover       | 鼠标移入地图区域时触发此事件                                                                     | `{type, target}`                         |
-| mouseout        | 鼠标移出地图区域时触发此事件                                                                     | `{type, target}`                         |
-| movestart       | 地图移动开始时触发此事件                                                                         | `{type, target}`                         |
-| moving          | 地图移动过程中触发此事件                                                                         | `{type, target}`                         |
-| moveend         | 地图移动结束时触发此事件                                                                         | `{type, target}`                         |
-| zoomstart       | 地图更改缩放级别开始时触发触发此事件                                                             | `{type, target}`                         |
-| zoomend         | 地图更改缩放级别结束时触发触发此事件                                                             | `{type, target}`                         |
-| addoverlay      | 当组件被挂载到地图中时会触发此事件                                                    | `{type, target}`                         |
-| removeoverlay   | 当组件被移除时会触发此事件                                                            | `{type, target}`                         |
-| addcontrol      | 当组件被挂载到地图中时会触发此事件                                                    | `{type, target}`                         |
-| removecontrol   | 当组件被移除时会触发此事件                                                            | `{type, target}`                         |
-| clearoverlays   | 当使用方法一次性移除全部覆盖物时会触发此事件                                | `{type, target}`                         |
-| dragstart       | 开始拖拽地图时触发                                                                               | `{type, target, pixel, point}`           |
-| dragging        | 拖拽地图过程中触发                                                                               | `{type, target, pixel, point}`           |
-| dragend         | 停止拖拽地图时触发                                                                               | `{type, target, pixel, point}`           |
-| addtilelayer    | 添加一个自定义地图图层时触发此事件                                                               | `{type, target}`                         |
-| removetilelayer | 移除一个自定义地图图层时触发此事件                                                               | `{type, target}`                         |
-| load            | 调用方法时会触发此事件。这表示位置、缩放层级已经确定，但可能还在载入地图图块 | `{type, target}`                         |
-| resize          | 地图可视区域大小发生变化时会触发此事件                                                           | `{type, target, pixel, point}`           |
-| hotspotclick    | 点击热区时触发此事件                                                                             | `{type, target}`                         |
-| hotspotover     | 鼠标移至热区时触发此事件                                                                         | `{type, target}`                         |
-| hotspotout      | 鼠标移出热区时触发此事件                                                                         | `{type, target}`                         |
-| tilesloaded     | 当地图所有图块完成加载时触发此事件                                                               | `{type, target}`                         |
-| touchstart      | 触摸开始时触发此事件，仅适用移动设备                                                             | `{type, target}`                         |
-| touchmove       | 触摸移动时触发此事件，仅适用移动设备                                                             | `{type, target}`                         |
-| touchend        | 触摸结束时触发此事件，仅适用移动设备                                                             | `{type, target}`                         |
-| longpress       | 长按事件，仅适用移动设备                                                                         | `{type, target}`                         |
+| 事件名          | 说明                                                                                        | 类型                                     |
+| --------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| initd           | 组件初始化后会触发此事件，返回一个地图实例                                                  | `{ map, BmapGL, instance }`              |
+| unload          | 组件卸载时会触发此事件                                                                      | -                                        |
+| pluginReady     | 插件加载完毕会触发此事件                                                                    | `{map}`                                  |
+| click           | 左键单击地图时触发此事件。 当双击时，产生的事件序列为： click click dblclick                | `{type, target, latlng, pixel, overlay}` |
+| dblclick        | 鼠标双击地图时会触发此事件                                                                  | `{type, target, pixel, point}`           |
+| rightclick      | 右键单击地图时触发此事件。 当双击时，产生的事件序列为： rightclick rightclick rightdblclick | `{type, target, latlng, pixel, overlay}` |
+| rightdblclick   | 右键双击地图时触发此事件                                                                    | `{type, target, latlng, pixel, overlay}` |
+| maptypechange   | 地图类型发生变化时触发此事件                                                                | `{type, target}`                         |
+| mousemove       | 鼠标在地图区域移动过程中触发此事件                                                          | `{type, target, latlng, pixel, overlay}` |
+| mouseover       | 鼠标移入地图区域时触发此事件                                                                | `{type, target}`                         |
+| mouseout        | 鼠标移出地图区域时触发此事件                                                                | `{type, target}`                         |
+| movestart       | 地图移动开始时触发此事件                                                                    | `{type, target}`                         |
+| moving          | 地图移动过程中触发此事件                                                                    | `{type, target}`                         |
+| moveend         | 地图移动结束时触发此事件                                                                    | `{type, target}`                         |
+| zoomstart       | 地图更改缩放级别开始时触发触发此事件                                                        | `{type, target}`                         |
+| zoomend         | 地图更改缩放级别结束时触发触发此事件                                                        | `{type, target}`                         |
+| addoverlay      | 当组件被挂载到地图中时会触发此事件                                                          | `{type, target}`                         |
+| removeoverlay   | 当组件被移除时会触发此事件                                                                  | `{type, target}`                         |
+| addcontrol      | 当组件被挂载到地图中时会触发此事件                                                          | `{type, target}`                         |
+| removecontrol   | 当组件被移除时会触发此事件                                                                  | `{type, target}`                         |
+| clearoverlays   | 当使用方法一次性移除全部覆盖物时会触发此事件                                                | `{type, target}`                         |
+| dragstart       | 开始拖拽地图时触发                                                                          | `{type, target, pixel, point}`           |
+| dragging        | 拖拽地图过程中触发                                                                          | `{type, target, pixel, point}`           |
+| dragend         | 停止拖拽地图时触发                                                                          | `{type, target, pixel, point}`           |
+| addtilelayer    | 添加一个自定义地图图层时触发此事件                                                          | `{type, target}`                         |
+| removetilelayer | 移除一个自定义地图图层时触发此事件                                                          | `{type, target}`                         |
+| load            | 调用方法时会触发此事件。这表示位置、缩放层级已经确定，但可能还在载入地图图块                | `{type, target}`                         |
+| resize          | 地图可视区域大小发生变化时会触发此事件                                                      | `{type, target, pixel, point}`           |
+| hotspotclick    | 点击热区时触发此事件                                                                        | `{type, target}`                         |
+| hotspotover     | 鼠标移至热区时触发此事件                                                                    | `{type, target}`                         |
+| hotspotout      | 鼠标移出热区时触发此事件                                                                    | `{type, target}`                         |
+| tilesloaded     | 当地图所有图块完成加载时触发此事件                                                          | `{type, target}`                         |
+| touchstart      | 触摸开始时触发此事件，仅适用移动设备                                                        | `{type, target}`                         |
+| touchmove       | 触摸移动时触发此事件，仅适用移动设备                                                        | `{type, target}`                         |
+| touchend        | 触摸结束时触发此事件，仅适用移动设备                                                        | `{type, target}`                         |
+| longpress       | 长按事件，仅适用移动设备                                                                    | `{type, target}`                         |

@@ -68,17 +68,6 @@ export function useAddressGeocoder<T extends AddressGeocoderResult = AddressGeoc
 
 function getPoint(geocoder: BMapGL.Geocoder, address: string, city: string): Promise<Point | null> {
   return new Promise<Point | null>((resolve) => {
-    // 将地址解析结果显示在地图上，并调整地图视野
-    geocoder.getPoint(
-      address,
-      (_point: BMapGL.Point) => {
-        if (_point) {
-          resolve(_point)
-        } else {
-          resolve(null)
-        }
-      },
-      city
-    )
+    geocoder.getPoint(address, (point: BMapGL.Point) => resolve(point ? point : null), city)
   })
 }

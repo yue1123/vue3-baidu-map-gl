@@ -1,6 +1,9 @@
 <template>
   <BMap v-bind="$attrs" :center="center">
     <BContextMenu :menuItems="list" />
+    <BMarker icon="simple_red" :position="{ lat: 39.915185, lng: 116.403901 }">
+      <BContextMenu :menuItems="overlayList" :width="300" />
+    </BMarker>
   </BMap>
 </template>
 <script lang="ts" setup>
@@ -29,6 +32,12 @@
           ;(list.value[3] as ContextMenuItem).text = '回北京'
         })
       }
+    }
+  ])
+  const overlayList = ref<(ContextMenuItem | ContextMenuSeparator)[]>([
+    {
+      text: '覆盖物上下文菜单',
+      callback: function ({ map }: { map: BMapGL.Map }) {}
     }
   ])
 </script>

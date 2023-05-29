@@ -1,7 +1,6 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults } from 'vue'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import { warn, type Callback, type DistrictType, bindEvents } from '../../../utils'
@@ -70,9 +69,7 @@
     ready(map, districtLayer)
     return () => map.removeDistrictLayer(districtLayer)
   })
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BDistrictLayer'
-  }
+  })
 </script>

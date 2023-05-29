@@ -19,6 +19,7 @@ const baseConfig = defineConfig({
   plugins: [
     replace({
       values: {
+        __DEV__: "process.env.NODE_ENV !== 'production'",
         __VERSION__: pkg.version
       },
       preventAssignment: true

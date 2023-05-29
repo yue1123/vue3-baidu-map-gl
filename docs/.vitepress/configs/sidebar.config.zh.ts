@@ -121,6 +121,10 @@ export const sidebarConfigZh = {
         {
           text: 'BGroundOverlay 地面叠加层',
           link: '/zh-CN/components/overlay/ground-overlay'
+        },
+        {
+          text: 'BMapMask 掩膜',
+          link: '/zh-CN/components/overlay/mapMask'
         }
       ]
     },

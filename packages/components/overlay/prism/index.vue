@@ -1,9 +1,12 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
+
 <script setup lang="ts">
-  import { defineProps, inject, watch, withDefaults, defineEmits, nextTick, provide } from 'vue'
+  import { inject, watch, nextTick, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, callWhenDifferentValue, type Point } from '../../../utils'
+  import { bindEvents, Callback, callWhenDifferentValue, warn, type Point } from '../../../utils'
   export interface PrismProps {
     /**
      * 棱柱的节点坐标数组
@@ -82,11 +85,11 @@
 
   let prism: BMapGL.Prism
   useBaseMapEffect((map: BMapGL.Map) => {
-    const cal = () => {
+    const clear = () => {
       prism && map.removeOverlay(prism)
     }
     const init = () => {
-      if (!props.path || !props.path.length) return
+      if (__DEV__ && (!props.path || !(props.path && props.path.length))) return warn('Prism props path is required')
       const {
         path,
         altitude,
@@ -98,7 +101,6 @@
         enableMassClear
       } = props
       const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as Point[])
-      if (!pathPoints) return
       prism = new BMapGL.Prism(pathPoints, altitude, {
         topFillColor,
         topFillOpacity,
@@ -124,7 +126,7 @@
       callWhenDifferentValue(() => {
         prism
           ? () => {
-              cal()
+              clear()
               init()
             }
           : init()
@@ -133,7 +135,7 @@
         deep: true
       }
     )
-    return cal
+    return clear
   })
 
   provide('getOverlayInstance', () => prism)
@@ -176,9 +178,7 @@
   function setAltitude(altitude: number) {
     prism.setAltitude(altitude)
   }
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BPrism'
-  }
+  })
 </script>

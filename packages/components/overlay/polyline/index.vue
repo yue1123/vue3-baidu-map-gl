@@ -1,6 +1,9 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
+
 <script setup lang="ts">
-  import { defineProps, watch, withDefaults, defineEmits, provide } from 'vue'
+  import { watch, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point } from '../../../utils'
@@ -51,6 +54,10 @@
      * 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果，可以设置成false，默认为true
      */
     clip?: boolean
+    /**
+     * 连接右线
+     */
+    linkRight?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousedown?: Callback
@@ -69,7 +76,8 @@
     enableEditing: false,
     enableClicking: true,
     geodesic: false,
-    clip: true
+    clip: true,
+    linkRight: true
   })
   const vueEmits = defineEmits([
     'initd',
@@ -86,9 +94,6 @@
   const { ready } = useLifeCycle()
   let polyline: BMapGL.Polyline
   useBaseMapEffect((map: BMapGL.Map) => {
-    const cal = () => {
-      map.removeOverlay(polyline)
-    }
     const init = () => {
       if (!props.path || !props.path.length) return
       const {
@@ -101,7 +106,8 @@
         enableEditing,
         enableClicking,
         geodesic,
-        clip
+        clip,
+        linkRight
       } = props
       const pathPoints = pathPointsToMapPoints(path)
       polyline = new BMapGL.Polyline(pathPoints, {
@@ -113,6 +119,7 @@
         enableEditing,
         enableClicking,
         geodesic,
+        linkRight,
         clip
       })
       map.addOverlay(polyline)
@@ -138,7 +145,7 @@
     watch(() => props.enableMassClear, setMassClear)
     watch(() => props.enableEditing, setEditing)
 
-    return cal
+    return () => map.removeOverlay(polyline)
   })
 
   provide('getOverlayInstance', () => polyline)
@@ -169,9 +176,7 @@
   function setEditing(enableEditing: boolean): void {
     enableEditing ? polyline!.enableEditing() : polyline!.disableEditing()
   }
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BPolyline'
-  }
+  })
 </script>

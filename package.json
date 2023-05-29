@@ -1,7 +1,7 @@
 {
   "name": "vue3-baidu-map-gl",
   "description": "A Vue 3 baidu map gl Component Library. ",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "main": "es/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",
@@ -28,7 +28,7 @@
   "scripts": {
     "clean": "rimraf es dist",
     "dev": "rollup -c --environment NODE_ENV:production && rollup -c ./scripts/build-package.js -w",
-    "build": "pnpm clean && vue-tsc && rollup -c --environment NODE_ENV:production && rollup -c ./scripts/build-package.js && rimraf *.tsbuildinfo && pnpm gen-volar-dts && pnpm merge-dts",
+    "build": "pnpm clean && vue-tsc && rollup -c --environment NODE_ENV:production && rollup -c ./scripts/build-package.js && rimraf *.tsbuildinfo && pnpm gen-volar-dts",
     "test": "pnpm clean && vue-tsc && rollup -c ./scripts/build-package.js",
     "link:pnpm": "pnpm link --global",
     "docs:dev": "pnpm run -C docs dev",
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "mitt": "^3.0.0",
-    "vue": "^3.2.40"
+    "vue": "^3.3.4"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
@@ -57,6 +57,7 @@
     "@types/ws": "^8.5.3",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
+    "@vue/compiler-sfc": "^3.3.4",
     "conventional-changelog-cli": "2.2.2",
     "deepmerge": "^4.2.2",
     "eslint": "^8.26.0",

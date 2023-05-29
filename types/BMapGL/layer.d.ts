@@ -72,6 +72,6 @@ declare namespace BMapGL {
   }
 }
 
-declare const BMAP_POINT_DENSITY_HIGH: BMapGL.PointDensityType
-declare const BMAP_POINT_DENSITY_MEDIUM: BMapGL.PointDensityType
-declare const BMAP_POINT_DENSITY_LOW: BMapGL.PointDensityType
+// declare const BMAP_POINT_DENSITY_HIGH: BMapGL.PointDensityType
+// declare const BMAP_POINT_DENSITY_MEDIUM: BMapGL.PointDensityType
+// declare const BMAP_POINT_DENSITY_LOW: BMapGL.PointDensityType

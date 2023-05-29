@@ -242,6 +242,7 @@ declare namespace BMapGL {
     addEventListener(event: string, handler: Callback): void
     removeEventListener(event: string, handler: Callback): void
   }
+  type TransitPolicy = number
   class TransitRoute {
     constructor(location: Map | Point | string, opts?: TransitRouteOptions)
     search(start: string | Point | LocalResultPoi, end: string | Point | LocalResultPoi): void
@@ -313,7 +314,6 @@ declare namespace BMapGL {
     streetNumber: string
     business: string
   }
-  type TransitPolicy = number
   type RouteType = number
   class Geolocation {
     constructor()
@@ -327,7 +327,7 @@ declare namespace BMapGL {
     getNumPois(): number
   }
   interface TransitRouteResult {
-    policy: TransitPolicy
+    policy: number
     city: string
     moreResultsUrl: string
     getStart(): LocalResultPoi
@@ -419,33 +419,3 @@ declare namespace BMapGL {
   type HighlightModes = number
   type ServiceStatusCode = number
 }
-
-declare const BMAP_LINE_TYPE_BUS: BMapGL.LineType
-declare const BMAP_LINE_TYPE_SUBWAY: BMapGL.LineType
-declare const BMAP_LINE_TYPE_FERRY: BMapGL.LineType
-
-declare const BMAP_DRIVING_POLICY_LEAST_TIME: BMapGL.DrivingPolicy
-declare const BMAP_DRIVING_POLICY_LEAST_DISTANCE: BMapGL.DrivingPolicy
-declare const BMAP_DRIVING_POLICY_AVOID_HIGHWAYS: BMapGL.DrivingPolicy
-
-declare const BMAP_POI_TYPE_NORMAL: BMapGL.PoiType
-declare const BMAP_POI_TYPE_BUSSTOP: BMapGL.PoiType
-declare const BMAP_POI_TYPE_SUBSTOP: BMapGL.PoiType
-
-declare const BMAP_TRANSIT_POLICY_LEAST_TIME: BMapGL.TransitPolicy
-declare const BMAP_TRANSIT_POLICY_LEAST_TRANSFER: BMapGL.TransitPolicy
-declare const BMAP_TRANSIT_POLICY_LEAST_WALKING: BMapGL.TransitPolicy
-declare const BMAP_TRANSIT_POLICY_AVOID_SUBWAYS: BMapGL.TransitPolicy
-
-declare const BMAP_ROUTE_TYPE_DRIVING: BMapGL.RouteType
-declare const BMAP_ROUTE_TYPE_WALKING: BMapGL.RouteType
-
-declare const BMAP_HIGHLIGHT_STEP: BMapGL.HighlightModes
-declare const BMAP_HIGHLIGHT_ROUTE: BMapGL.HighlightModes
-
-declare const BMAP_STATUS_SUCCESS: BMapGL.ServiceStatusCode
-declare const BMAP_STATUS_CITY_LIST: BMapGL.ServiceStatusCode
-declare const BMAP_STATUS_UNKNOWN_LOCATION: BMapGL.ServiceStatusCode
-declare const BMAP_STATUS_UNKNOWN_ROUTE: BMapGL.ServiceStatusCode
-declare const BMAP_STATUS_INVALID_KEY: BMapGL.ServiceStatusCode
-declare const BMAP_STATUS_INVALID_REQUEST: BMapGL.ServiceStatusCode

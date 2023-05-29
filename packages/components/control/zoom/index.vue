@@ -1,10 +1,9 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { type ControlAnchor } from '../../../utils'
+  import { ControlAnchor } from '../../../utils'
   export interface ZoomProps {
     /**
      * 控件的停靠位置
@@ -34,9 +33,7 @@
     ready(map, zoomControl)
     return () => map.removeControl(zoomControl)
   })
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BZoom'
-  }
+  })
 </script>

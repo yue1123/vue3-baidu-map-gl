@@ -6,6 +6,6 @@
 /// <reference path="./panorama.d.ts" />
 /// <reference path="./rightmenu.d.ts" />
 /// <reference path="./service.d.ts" />
-/// <reference path="../tools.d.ts" />
+/// <reference path="../shared/rangOf.d.ts" />
 /// <reference path="./lib.d.ts" />
 /// <reference path="./mapvgl.d.ts" />

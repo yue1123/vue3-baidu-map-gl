@@ -120,7 +120,7 @@ declare namespace BMapGL {
   }
   interface MapTypeControlOptions {
     type?: MapTypeControlType
-    mapTypes?: MapType[]
+    mapTypes?: number
   }
   type NavigationControlType = number
   class ScaleControl extends Control {
@@ -128,7 +128,7 @@ declare namespace BMapGL {
     /**
      * 返回比例尺单位制
      */
-    getUnit(): LengthUnitValue
+    getUnit(): 'metric' | 'us'
     /**
      * 设置比例尺单位制
      * @param unit

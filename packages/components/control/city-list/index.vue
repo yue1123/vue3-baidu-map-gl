@@ -1,7 +1,6 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import { ControlAnchor } from '../../../utils'
@@ -40,9 +39,7 @@
     ready(map, cityListControl)
     return () => map.removeControl(cityListControl)
   })
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BCityList'
-  }
+  })
 </script>

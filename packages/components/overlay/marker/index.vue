@@ -1,40 +1,14 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
 
 <script setup lang="ts">
-  import { defineProps, provide, watch, withDefaults } from 'vue'
+  import { provide, watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import { bindEvents, Callback, isString, callWhenDifferentValue, isDef, Point } from '../../../utils/index'
+  import { bindEvents, Callback, isString, callWhenDifferentValue, isDef, Point, warn } from '../../../utils/index'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { useDefaultMarkerIcons } from '../../../hooks/useDefaultMarkerIcons'
+  import { MarkerIcons, useDefaultMarkerIcons } from '../../../hooks/useDefaultMarkerIcons'
 
-  export type MarkerIcons =
-    | 'simple_red'
-    | 'simple_blue'
-    | 'loc_red'
-    | 'loc_blue'
-    | 'start'
-    | 'end'
-    | 'location'
-    | 'red1'
-    | 'red2'
-    | 'red3'
-    | 'red4'
-    | 'red5'
-    | 'red6'
-    | 'red7'
-    | 'red8'
-    | 'red9'
-    | 'red10'
-    | 'blue1'
-    | 'blue2'
-    | 'blue3'
-    | 'blue4'
-    | 'blue5'
-    | 'blue6'
-    | 'blue7'
-    | 'blue8'
-    | 'blue9'
-    | 'blue10'
   export interface MarkerOffset {
     x: number
     y: number
@@ -154,7 +128,10 @@
       marker && map.removeOverlay(marker)
     }
     const init = () => {
-      if (!props.position) return
+      if (__DEV__ && !props.position) {
+        return warn('Marker position is required')
+      }
+
       const {
         position,
         offset,
@@ -248,14 +225,10 @@
     enableMassClear ? marker!.enableMassClear() : marker!.disableMassClear()
   }
   function setOffset(offset: MarkerOffset) {
-    marker.setOffset(new BMapGL.Size(offset.x, offset.y))
+    offset && marker.setOffset(new BMapGL.Size(offset.x, offset.y))
   }
   function setRotation(rotation: number) {
-    marker.setRotation(rotation)
+    rotation !== undefined && marker.setRotation(rotation)
   }
-</script>
-<script lang="ts">
-  export default {
-    name: 'BMarker'
-  }
+  defineOptions({ name: 'BMarker' })
 </script>

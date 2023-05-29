@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.0.0...v2.1.0) (2023-05-29)
+
+
+### ♻️ Code Refactoring | 代码重构
+
+* 整理项目结构 ([33eec9e](https://github.com/yue1123/vue3-baidu-map-gl/commit/33eec9e53730c6df008a9fc5ea3eb03f7da5c838))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* center point support BMapGL.Point and Point ([25ec30c](https://github.com/yue1123/vue3-baidu-map-gl/commit/25ec30c357467abe21937b61156ba2cd0deda09d))
+
+
+### ✨ Features | 新功能
+
+*  map 组件支持更改背景颜色 ([cf56102](https://github.com/yue1123/vue3-baidu-map-gl/commit/cf5610297cacc38dd709c9597afd922a052d7eef))
+*  Polyline support  linkRight props ([f5e272a](https://github.com/yue1123/vue3-baidu-map-gl/commit/f5e272a67927a777b4a9bc399f3b68c952ab0ebd))
+* 1. 枚举类型重构 ([cc0d047](https://github.com/yue1123/vue3-baidu-map-gl/commit/cc0d047fa8f05837e75b75f9633839df6968c504)), closes [#31](https://github.com/yue1123/vue3-baidu-map-gl/issues/31)
+* 1. 所有组件使用 defineOptions ([92e46b2](https://github.com/yue1123/vue3-baidu-map-gl/commit/92e46b20bde2bd5c7b9655b943f51231199a3b9c))
+* 覆盖物支持上下文菜单支持 ([52efbde](https://github.com/yue1123/vue3-baidu-map-gl/commit/52efbde86dc8e22df34520d4ca8f602346df674b))
+* add shared package ([01eb3df](https://github.com/yue1123/vue3-baidu-map-gl/commit/01eb3df5e75b79bc6796daed3c281ae9807880f5))
+* map 组件非客户端环境忽略 ([c5e42c8](https://github.com/yue1123/vue3-baidu-map-gl/commit/c5e42c8a7f186d1925b534c5bdaa249029087c68))
+* map 组件增加图标可点击, 加载文字及背景颜色设置 ([3eb873d](https://github.com/yue1123/vue3-baidu-map-gl/commit/3eb873df7e289f976ff1355638bb6194517a2de6))
+* remove isLoading slot scope ([61436c3](https://github.com/yue1123/vue3-baidu-map-gl/commit/61436c301fac0141c0d6c0be2258767abaa34397))
+
+
+### ✏️ Documentation | 文档
+
+* 更新地图自定义加载中文档内容 ([2ec61d3](https://github.com/yue1123/vue3-baidu-map-gl/commit/2ec61d3227158fbd72e012ea882f39cc340da737))
+* 更新地图自定义加载中文档内容 ([d9e969f](https://github.com/yue1123/vue3-baidu-map-gl/commit/d9e969f2d13890afe7c55367262c7ce0772cf88b))
+* add v1 documentation link ([3a545e3](https://github.com/yue1123/vue3-baidu-map-gl/commit/3a545e32188ca2c0d0528d6939cbc4526ee6aa71))
+* fixed demo container border style ([4d0eec7](https://github.com/yue1123/vue3-baidu-map-gl/commit/4d0eec7fad7adda88ce75b64aebe3f3ce8c82631))
+* fixed demo ts type error ([53c8cd3](https://github.com/yue1123/vue3-baidu-map-gl/commit/53c8cd329e759109ba120b50af9f0528b00870fb))
+* fixed ts type error ([b5080a8](https://github.com/yue1123/vue3-baidu-map-gl/commit/b5080a8f3218c5aecf16b7b89c4450b77023f6c7))
+* update 2.1.0 version update badge ([e61b10a](https://github.com/yue1123/vue3-baidu-map-gl/commit/e61b10aae638ba4d332c2ea1692257379d13fc67))
+* update mapMask demo ([9a239e8](https://github.com/yue1123/vue3-baidu-map-gl/commit/9a239e8e4474ccb235285a48eda745b89ee70388))
+* update sponsor list ([a957e5b](https://github.com/yue1123/vue3-baidu-map-gl/commit/a957e5bf05e85b84b7ac8f7023d1238dd0c8b1a7))
+
 ### [2.0.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.0.0...v2.0.1) (2023-03-23)
 
 

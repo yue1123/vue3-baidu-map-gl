@@ -1,9 +1,12 @@
-<template></template>
+<template>
+  <slot></slot>
+</template>
+
 <script setup lang="ts">
-  import { defineProps, provide, watch, withDefaults } from 'vue'
+  import { provide, watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, isDef, callWhenDifferentValue, type Point } from '../../../utils/index'
+  import { bindEvents, Callback, isDef, callWhenDifferentValue, type Point, warn } from '../../../utils/index'
   export type LabelStyle = {
     [k in keyof CSSStyleDeclaration]?: any
   }
@@ -73,6 +76,10 @@
       label && map.removeOverlay(label)
     }
     const init = () => {
+      if (__DEV__) {
+        if (props.content) return warn('Label content props is required')
+        if (props.position) return warn('Label position props is required')
+      }
       const { content, position, offset, enableMassClear, style } = props
       const options: BMapGL.LabelOptions = {
         position: new BMapGL.Point(position.lng, position.lat),
@@ -122,9 +129,7 @@
   function setMassClear(enableMassClear: boolean): void {
     enableMassClear ? label!.enableMassClear() : label!.disableMassClear()
   }
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BLabel'
-  }
+  })
 </script>

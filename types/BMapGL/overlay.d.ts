@@ -1,7 +1,7 @@
 /// <reference path="./base.d.ts" />
 /// <reference path="./core.d.ts" />
 /// <reference path="./rightmenu.d.ts" />
-/// <reference path="../tools.d.ts" />
+/// <reference path="../shared/rangOf.d.ts" />
 declare namespace BMapGL {
   interface Overlay {
     /**
@@ -81,7 +81,9 @@ declare namespace BMapGL {
      */
     clip?: boolean
   }
-  type PolylineOptions = overlayCommonOptions
+  type PolylineOptions = overlayCommonOptions & {
+    linkRight?: boolean
+  }
   type PolygonOptions = overlayCommonOptions & {
     /**
      * 面填充颜色，同CSS颜色
@@ -648,6 +650,16 @@ declare namespace BMapGL {
    */
   class BezierCurve {
     constructor(points: Array<Point>, controlPoints: Point[][], opts?: BezierCurveOptions)
+  }
+
+  interface MapMaskOptions {
+    showRegion?: 'inside' | 'outside'
+    isBuildingMask?: boolean
+    isMapMask?: boolean
+    isPoiMask?: boolean
+  }
+  class MapMask extends Overlay {
+    constructor(paths: Point[], opts: MapMaskOptions)
   }
 
   interface HotspotOptions {

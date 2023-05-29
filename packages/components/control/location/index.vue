@@ -1,10 +1,9 @@
 <template></template>
 
 <script setup lang="ts">
-  import { defineProps, withDefaults, defineEmits } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, type ControlAnchor } from '../../../utils'
+  import { bindEvents, Callback, ControlAnchor } from '../../../utils'
   export interface LocationProps {
     /**
      * 控件的停靠位置
@@ -30,16 +29,14 @@
   useBaseMapEffect((map) => {
     locationControl = new BMapGL.LocationControl({
       offset: new BMapGL.Size(props.offset.x, props.offset.y),
-      anchor: window[props.anchor]
+      anchor: window[props.anchor] as unknown as number
     })
     map.addControl(locationControl)
     ready(map, locationControl)
     bindEvents(props, vueEmits, locationControl)
     return () => map.removeControl(locationControl)
   })
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BLocation'
-  }
+  })
 </script>

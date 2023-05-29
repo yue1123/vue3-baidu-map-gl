@@ -1,4 +1,32 @@
-let icons: Record<string, BMapGL.Icon> | null = null
+export type MarkerIcons =
+  | 'simple_red'
+  | 'simple_blue'
+  | 'loc_red'
+  | 'loc_blue'
+  | 'start'
+  | 'end'
+  | 'location'
+  | 'red1'
+  | 'red2'
+  | 'red3'
+  | 'red4'
+  | 'red5'
+  | 'red6'
+  | 'red7'
+  | 'red8'
+  | 'red9'
+  | 'red10'
+  | 'blue1'
+  | 'blue2'
+  | 'blue3'
+  | 'blue4'
+  | 'blue5'
+  | 'blue6'
+  | 'blue7'
+  | 'blue8'
+  | 'blue9'
+  | 'blue10'
+let icons: Record<MarkerIcons, BMapGL.Icon> | null = null
 
 export function useDefaultMarkerIcons(): Record<string, BMapGL.Icon> {
   if (icons !== null) return icons
