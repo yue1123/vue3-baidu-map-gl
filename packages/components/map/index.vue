@@ -23,7 +23,17 @@
   import useLifeCycle from '../../hooks/useLifeCycle'
   import getScriptAsync from '../../utils/getScriptAsync'
   import { initPlugins, PluginsSourceLink, UserPlugins } from '../../utils/pluginLoader'
-  import { bindEvents, Callback, error, isString, callWhenDifferentValue, isClient, warn, MapType } from '../../utils'
+  import {
+    bindEvents,
+    Callback,
+    error,
+    isString,
+    callWhenDifferentValue,
+    isClient,
+    warn,
+    type MapType,
+    type Point
+  } from '../../utils'
   export interface MapDisplayOptions {
     /**
      * 是否显示地图上的地点标识
@@ -75,18 +85,7 @@
     /**
      * 中心点坐标
      */
-    center?:
-      | string
-      | {
-          /**
-           * 地理经度
-           */
-          lng: number
-          /**
-           * 地理纬度
-           */
-          lat: number
-        }
+    center?: string | Point
     /**
      * 地图类型
      */
@@ -248,7 +247,7 @@
   const props = withDefaults(defineProps<MapProps>(), {
     width: '100%',
     height: '550px',
-    center: () => ({ lat: 39.915185, lng: 116.403901 }),
+    center: () => ({ lat: 39.915185, lng: 116.403901 } as Point),
     mapType: 'BMAP_NORMAL_MAP',
     zoom: 14,
     maxZoom: 21,
