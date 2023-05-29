@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.1.0...v2.1.1) (2023-05-29)
+
+
+### ✨ Features | 新功能
+
+* required props dev warn log ([5d637ce](https://github.com/yue1123/vue3-baidu-map-gl/commit/5d637ce5db2043c10c52cf9e836cf57bd590ff3a))
+
+
+### ✏️ Documentation | 文档
+
+* **style:** format docs ([30fb3e2](https://github.com/yue1123/vue3-baidu-map-gl/commit/30fb3e2e711cf43daf5f1530639d83da7b0a7065))
+* update docs SEO and README.md img url ([c2aef9a](https://github.com/yue1123/vue3-baidu-map-gl/commit/c2aef9afc3f7098fc2a7a4d46a90bf97d176d05f))
+
 ## [2.1.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.0.0...v2.1.0) (2023-05-29)
 
 
