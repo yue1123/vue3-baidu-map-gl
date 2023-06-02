@@ -133,7 +133,11 @@
     watch(
       () => props.path,
       callWhenDifferentValue((n) => {
-        polyline ? setPath(n) : init()
+        polyline 
+          ? n.length
+            ? setPath(n)
+            : map.removeOverlay(polyline)
+          : init()
       }),
       {
         deep: true
