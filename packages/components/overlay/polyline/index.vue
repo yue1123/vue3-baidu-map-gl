@@ -92,8 +92,12 @@
     'lineupdate'
   ])
   const { ready } = useLifeCycle()
-  let polyline: BMapGL.Polyline
+  let polyline: BMapGL.Polyline | null
   useBaseMapEffect((map: BMapGL.Map) => {
+    const clear = () => {
+      polyline && map.removeOverlay(polyline)
+      polyline = null
+    }
     const init = () => {
       if (!props.path || !props.path.length)
         return __DEV__ && warn('Polyline props path is required or not empty array')
@@ -133,7 +137,11 @@
     watch(
       () => props.path,
       callWhenDifferentValue((n) => {
-        polyline ? setPath(n) : init()
+        if (polyline) {
+          n.length ? setPath(n) : clear()
+        } else {
+          init()
+        }
       }),
       {
         deep: true
@@ -146,7 +154,7 @@
     watch(() => props.enableMassClear, setMassClear)
     watch(() => props.enableEditing, setEditing)
 
-    return () => map.removeOverlay(polyline)
+    return clear
   })
 
   provide('getOverlayInstance', () => polyline)
@@ -156,26 +164,30 @@
   }
 
   function setPath(path: Point[]) {
-    polyline.setPath(pathPointsToMapPoints(path))
+    polyline && polyline.setPath(pathPointsToMapPoints(path))
   }
 
   function setStrokeColor(color: string): void {
-    polyline.setStrokeColor(color)
+    polyline && polyline.setStrokeColor(color)
   }
   function setStrokeOpacity(opacity: number): void {
-    polyline.setStrokeOpacity(opacity)
+    polyline && polyline.setStrokeOpacity(opacity)
   }
   function setStrokeWeight(weight: number): void {
-    polyline.setStrokeWeight(weight)
+    polyline && polyline.setStrokeWeight(weight)
   }
   function setStrokeStyle(style: StrokeStyle): void {
-    polyline.setStrokeStyle(style)
+    polyline && polyline.setStrokeStyle(style)
   }
   function setMassClear(enableMassClear: boolean): void {
-    enableMassClear ? polyline!.enableMassClear() : polyline!.disableMassClear()
+    if (polyline) {
+      enableMassClear ? polyline!.enableMassClear() : polyline!.disableMassClear()
+    }
   }
   function setEditing(enableEditing: boolean): void {
-    enableEditing ? polyline!.enableEditing() : polyline!.disableEditing()
+    if (polyline) {
+      enableEditing ? polyline!.enableEditing() : polyline!.disableEditing()
+    }
   }
   defineOptions({
     name: 'BPolyline'
