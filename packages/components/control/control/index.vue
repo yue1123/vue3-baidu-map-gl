@@ -45,10 +45,8 @@
       return () => map.removeControl(customControl)
     })
   })
-</script>
-<script lang="ts">
-  export default {
+  defineOptions({
     name: 'BControl',
     inheritAttrs: false
-  }
+  })
 </script>
