@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.1.1...v2.1.2) (2023-06-11)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 空 path 清除覆盖物并置为 null, 下一次不为空时无法正确显示 ([fe37570](https://github.com/yue1123/vue3-baidu-map-gl/commit/fe37570bbb91e879cdb5d8fbe4747a54a5a31d18))
+* polyline path 变成空数组时清除polyline ([#33](https://github.com/yue1123/vue3-baidu-map-gl/issues/33)) ([f7fc37b](https://github.com/yue1123/vue3-baidu-map-gl/commit/f7fc37b443e4d828df7ae0d1cdca70708a7890e6))
+* polyline props变成空数组时手动清除polyline ([60f5234](https://github.com/yue1123/vue3-baidu-map-gl/commit/60f523486f4e42d1fc6b56db4fc454c6cdee280e))
+
 ### [2.1.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.1.0...v2.1.1) (2023-05-29)
 
 
