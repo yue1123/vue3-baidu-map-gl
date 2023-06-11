@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.3](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.1.2...v2.1.3) (2023-06-11)
+
+
+### ✨ Features | 新功能
+
+* 1. 提高组件健壮性 ([712597e](https://github.com/yue1123/vue3-baidu-map-gl/commit/712597ed5097599791ca7d591eef72e1ca052ef4))
+* 增加 autoComplete 组件 ([0b3e820](https://github.com/yue1123/vue3-baidu-map-gl/commit/0b3e820bf30503b6f71a5d2cbd368c5510e8b372))
+* refactor to defineOptions ([c903a53](https://github.com/yue1123/vue3-baidu-map-gl/commit/c903a53aa0919a875dbb29cb85db10f7d2293b3d))
+
 ### [2.1.2](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.1.1...v2.1.2) (2023-06-11)
 
 
