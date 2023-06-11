@@ -201,37 +201,34 @@
   }
 
   function setPath(path: Point[] | string[]) {
-    if (props.isBoundary) {
-      polygon.setPath(path as string[])
-    } else {
-      polygon.setPath(pathPointsToMapPoints(path as Point[]))
-    }
+    const { isBoundary } = props
+    polygon.setPath(isBoundary ? (path as string[]) : pathPointsToMapPoints(path as Point[]))
     syncMapCenter()
   }
 
   function setStrokeColor(color: string): void {
-    polygon.setStrokeColor(color)
+    polygon && polygon.setStrokeColor(color)
   }
   function setFillColor(color: string): void {
-    polygon.setFillColor(color)
+    polygon && polygon.setFillColor(color)
   }
   function setStrokeOpacity(opacity: number): void {
-    polygon.setStrokeOpacity(opacity)
+    polygon && polygon.setStrokeOpacity(opacity)
   }
   function setFillOpacity(opacity: number): void {
-    polygon.setFillOpacity(opacity)
+    polygon && polygon.setFillOpacity(opacity)
   }
   function setStrokeWeight(weight: number): void {
-    polygon.setStrokeWeight(weight)
+    polygon && polygon.setStrokeWeight(weight)
   }
   function setStrokeStyle(style: StrokeStyle): void {
-    polygon.setStrokeStyle(style)
+    polygon && polygon.setStrokeStyle(style)
   }
   function setMassClear(enableMassClear?: boolean): void {
-    enableMassClear ? polygon!.enableMassClear() : polygon!.disableMassClear()
+    if (polygon) enableMassClear ? polygon.enableMassClear() : polygon.disableMassClear()
   }
   function setEditing(enableEditing?: boolean): void {
-    enableEditing ? polygon!.enableEditing() : polygon!.disableEditing()
+    if (polygon) enableEditing ? polygon.enableEditing() : polygon.disableEditing()
   }
   defineOptions({
     name: 'BPolygon'

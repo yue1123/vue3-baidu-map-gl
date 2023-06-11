@@ -6,7 +6,7 @@
   import { inject, watch, nextTick, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, callWhenDifferentValue, warn, type Point } from '../../../utils'
+  import { bindEvents, Callback, callWhenDifferentValue, warn, type Point, pathPointsToMapPoints } from '../../../utils'
   export interface PrismProps {
     /**
      * 棱柱的节点坐标数组
@@ -123,13 +123,8 @@
     // 监听值变化, 初始为空时不会初始化, 不为空值时初始化
     watch(
       () => props.path,
-      callWhenDifferentValue(() => {
-        prism
-          ? () => {
-              clear()
-              init()
-            }
-          : init()
+      callWhenDifferentValue((n) => {
+        prism ? setPath(n) : init()
       }),
       {
         deep: true
@@ -155,28 +150,29 @@
     }
   }
 
-  function pathPointsToMapPoints(pathPoints: Point[]) {
-    return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
-  }
-
   function setMassClear(enableMassClear?: boolean): void {
     enableMassClear ? prism!.enableMassClear() : prism!.disableMassClear()
   }
 
+  function setPath(path: Point[] | string[]) {
+    const { isBoundary } = props
+    prism.setPath(isBoundary ? (path as string[]) : pathPointsToMapPoints(path as Point[]))
+  }
+
   function setTopFillColor(color: string) {
-    prism.setTopFillColor(color)
+    prism && prism.setTopFillColor(color)
   }
   function setTopFillOpacity(opacity: number) {
-    prism.setTopFillOpacity(opacity)
+    prism && prism.setTopFillOpacity(opacity)
   }
   function setSideFillColor(color: string) {
-    prism.setSideFillColor(color)
+    prism && prism.setSideFillColor(color)
   }
   function setSideFillOpacity(opacity: number) {
-    prism.setSideFillOpacity(opacity)
+    prism && prism.setSideFillOpacity(opacity)
   }
   function setAltitude(altitude: number) {
-    prism.setAltitude(altitude)
+    prism && prism.setAltitude(altitude)
   }
   defineOptions({
     name: 'BPrism'

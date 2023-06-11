@@ -13,7 +13,8 @@
     type Point,
     type StrokeStyle,
     error,
-    warn
+    warn,
+    pathPointsToMapPoints
   } from '../../../utils'
   export interface BezierCurveProps {
     /**
@@ -138,10 +139,6 @@
   })
 
   provide('getOverlayInstance', () => bezierCurve)
-
-  function pathPointsToMapPoints(pathPoints: Point[]) {
-    return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
-  }
 
   function setPath(path: Point[]) {
     bezierCurve.setPath(pathPointsToMapPoints(path))

@@ -6,7 +6,15 @@
   import { watch, provide } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point, warn } from '../../../utils'
+  import {
+    bindEvents,
+    Callback,
+    callWhenDifferentValue,
+    StrokeStyle,
+    type Point,
+    warn,
+    pathPointsToMapPoints
+  } from '../../../utils'
   export interface PolylineProps {
     /**
      * 折线的节点坐标数组
@@ -158,10 +166,6 @@
   })
 
   provide('getOverlayInstance', () => polyline)
-
-  function pathPointsToMapPoints(pathPoints: Point[]) {
-    return pathPoints.map(({ lng, lat }) => new BMapGL.Point(lng, lat))
-  }
 
   function setPath(path: Point[]) {
     polyline && polyline.setPath(pathPointsToMapPoints(path))
