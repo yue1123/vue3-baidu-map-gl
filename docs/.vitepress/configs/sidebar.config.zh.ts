@@ -1,8 +1,9 @@
-export const sidebarConfigZh = {
+import { DefaultTheme } from 'vitepress'
+export const sidebarConfigZh: DefaultTheme.Sidebar = {
   '/zh-CN/': [
     {
       text: '指南',
-      collapsible: true,
+      collapsed: false,
       items: [
         {
           text: '简介',
@@ -28,7 +29,7 @@ export const sidebarConfigZh = {
     },
     {
       text: '基础组件',
-      collapsible: true,
+      collapsed: true,
       items: [
         {
           text: 'BMap 地图',
@@ -38,7 +39,7 @@ export const sidebarConfigZh = {
     },
     {
       text: '控件组件',
-      collapsible: true,
+      collapsed: true,
       items: [
         {
           text: 'BControl 自定义',
@@ -80,7 +81,7 @@ export const sidebarConfigZh = {
     },
     {
       text: '覆盖物组件',
-      collapsible: true,
+      collapsed: true,
       items: [
         {
           text: 'BCircle 圆形',
@@ -130,7 +131,7 @@ export const sidebarConfigZh = {
     },
     {
       text: '图层组件',
-      collapsible: true,
+      collapsed: true,
       items: [
         {
           text: 'BPanoramaCoverageLayer 全景图层',
@@ -143,8 +144,18 @@ export const sidebarConfigZh = {
       ]
     },
     {
+      text: '检索组件',
+      collapsed: true,
+      items: [
+        {
+          text: 'BAutoComplete 自动填充',
+          link: '/zh-CN/components/autoComplete/index'
+        }
+      ]
+    },
+    {
       text: 'hooks',
-      collapsible: true,
+      collapsed: true,
       items: [
         {
           text: 'usePoint 地图实例点',
@@ -190,7 +201,7 @@ export const sidebarConfigZh = {
     },
     {
       text: '扩展',
-      collapsible: true,
+      collapsed: true,
       items: [
         {
           text: 'mapv 可视化',

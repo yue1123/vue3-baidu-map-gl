@@ -174,6 +174,7 @@ declare namespace BMapGL {
   class Prism extends Overlay {
     constructor(point: Point[] | string[], altitude: number, opts?: PrismOptions)
     setTopFillColor: (color: string) => void
+    setPath: (path: Point[] | string[]) => void
     setTopFillOpacity: (opacity: number) => void
     setSideFillColor: (color: string) => void
     setSideFillOpacity: (opacity: number) => void
@@ -301,8 +302,7 @@ declare namespace BMapGL {
     constructor(content: string | HTMLElement, opts?: InfoWindowOptions)
   }
   interface Polygon extends Overlay {
-    setPath(path: Point[]): void
-    setPath(path: string[]): void
+    setPath(path: string[] | Point[]): void
     getPath(): Point[]
     setStrokeColor(color: string): void
     getStrokeColor(): string
