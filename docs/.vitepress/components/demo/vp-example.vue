@@ -23,5 +23,6 @@
   .example-showcase {
     padding: 0 1rem;
     margin: 0.5px;
+    background: var(--vp-c-bg);
   }
 </style>

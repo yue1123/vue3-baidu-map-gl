@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { computed, ref, nextTick, onUnmounted, onMounted } from 'vue'
-  import { useClipboard, useToggle } from '@vueuse/core'
+  import { useClipboard, useToggle, useEventListener, useDebounceFn } from '@vueuse/core'
   import { exampleModuleMap } from './../constants'
   import Example from './demo/vp-example.vue'
   import SourceCode from './demo/vp-source-code.vue'
@@ -16,26 +16,32 @@
   })
   const [showCode, toggleShowCode] = useToggle()
   const [fullScreen, toggleFullScreen] = useToggle()
-  const { copy, copied, isSupported } = useClipboard({ source: rawSource })
+  const { copy, copied, isSupported } = useClipboard({ source: rawSource.value })
   const decodedDescription = computed(() => decodeURIComponent(props.description!))
   const buttonsHeight = 47
   let preHeight = ref<number>()
   let height = ref<number>()
+  const debouncedFn = useDebounceFn(() => {
+    if (fullScreen.value) calcHeight()
+  }, 500)
+  useEventListener('resize', debouncedFn)
+
   function handleFullScreen() {
     toggleFullScreen()
-    const mapContainer = demoContainer.value?.querySelector('.baidu-map-container') as HTMLDivElement
-    if (fullScreen.value) {
-      document.body.style.overflow = 'hidden'
-      nextTick(() => {
-        const demoEl = demoContainer.value?.querySelector('.example-showcase') as HTMLDivElement
-        const emptyHeight = window.innerHeight - demoEl.offsetHeight
-        preHeight.value = mapContainer.offsetHeight
-        height.value = mapContainer.offsetHeight + emptyHeight - buttonsHeight
-      })
-    } else {
-      resetHeight()
-    }
+    fullScreen.value ? calcHeight() : resetHeight()
   }
+  function calcHeight() {
+    const mapContainer = demoContainer.value?.querySelector('.baidu-map-container') as HTMLDivElement
+
+    document.body.style.overflow = 'hidden'
+    nextTick(() => {
+      const demoEl = demoContainer.value?.querySelector('.example-showcase') as HTMLDivElement
+      const emptyHeight = window.innerHeight - demoEl.offsetHeight
+      preHeight.value = mapContainer.offsetHeight
+      height.value = mapContainer.offsetHeight + emptyHeight - buttonsHeight
+    })
+  }
+
   function resetHeight() {
     document.body.style.overflow = 'auto'
     height.value = preHeight.value
@@ -175,7 +181,7 @@
             <SourceCode :source="props.source" />
           </div>
         </Transition>
-        <div v-if="showCode" class="hide_code-btn" @click="showCode = false">
+        <div v-if="showCode" class="hide_code-btn" @click="() => toggleShowCode()">
           <span>隐藏代码</span>
         </div>
       </div>
@@ -226,6 +232,7 @@
     .hide_code-btn {
       position: sticky;
       bottom: 0;
+      top: 0;
       text-align: center;
       padding: 0.5rem 0;
       border-top: 1px dashed var(--vp-c-divider);
