@@ -66,7 +66,9 @@
     map.addDistrictLayer(districtLayer)
 
     bindEvents(props, vueEmits, districtLayer)
-    ready(map, districtLayer)
+    setTimeout(() => {
+      ready(map, districtLayer)
+    }, 400)
     return () => map.removeDistrictLayer(districtLayer)
   })
   defineOptions({

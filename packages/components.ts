@@ -19,7 +19,7 @@ import { BCircle } from './components/overlay/circle/index'
 import { BPrism } from './components/overlay/prism/index'
 import { BGroundOverlay } from './components/overlay/ground-overlay/index'
 import { BContextMenu } from './components/contextMenu/index'
-import { BDistrictLayer } from './components/layer/district-layer/index'
+import { BDistrictLayer } from './components/layer/district/index'
 import { BMapMask } from './components/overlay/map-mask/index'
 import { BAutoComplete } from './components/autoComplete/index'
 
