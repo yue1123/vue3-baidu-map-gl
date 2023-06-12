@@ -29,7 +29,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '基础组件',
-      collapsed: true,
+      collapsed: false,
       items: [
         {
           text: 'BMap 地图',
@@ -39,7 +39,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '控件组件',
-      collapsed: true,
+      collapsed: false,
       items: [
         {
           text: 'BControl 自定义',
@@ -81,7 +81,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '覆盖物组件',
-      collapsed: true,
+      collapsed: false,
       items: [
         {
           text: 'BCircle 圆形',
@@ -131,7 +131,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '图层组件',
-      collapsed: true,
+      collapsed: false,
       items: [
         {
           text: 'BPanoramaCoverageLayer 全景图层',
@@ -155,7 +155,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: 'hooks',
-      collapsed: true,
+      collapsed: false,
       items: [
         {
           text: 'usePoint 地图实例点',
@@ -201,7 +201,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '扩展',
-      collapsed: true,
+      collapsed: false,
       items: [
         {
           text: 'mapv 可视化',
