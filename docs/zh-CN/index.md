@@ -1,16 +1,14 @@
 ---
 layout: home
-
 title: Vue3 BaiduMap GL
 
 hero:
   name: Vue3 BaiduMap GL
   text: 易用 & 完整 & 高性能
-  tagline: 基于 Vue 3.0 和 百度地图GL的高质量地图组件+hooks库
+  tagline: 基于 Vue3 和 BMapGL 的常用地图组件 📦 + hooks 库 ⚡
   image:
     src: /logo.svg
     alt: Vue3 BaiduMap GL
-    id: J_index_logo
   actions:
     - theme: brand
       text: 开始使用
@@ -21,8 +19,8 @@ hero:
 
 features:
   - icon: 🚀
-    title: 繁 => 简
-    details: 将百度地图繁琐的Api封装进组件，你只需关注组件本身
+    title: 化繁 => 为简
+    details: 将百度地图繁琐的 API 封装进组件，你只需关注组件本身
 
   - icon: 📦
     title: 完整
@@ -45,13 +43,13 @@ features:
     details: 基于百度地图Gl版SDK，WebGL对地图、覆盖物等进行渲染，支持3D视角展示地图
 ---
 
-<script lang="ts" setup>
+<!-- <script lang="ts" setup>
   import { onMounted } from 'vue'
   import VanillaTilt from 'vanilla-tilt';
 
 
   onMounted(() => {
-    const element = document.getElementById('J_index_logo')
+    const element = document.querySelector('.image-bg')
     const div = document.createElement('div')
     const _element = element.cloneNode(true)
     const parent = element.parentNode
@@ -63,4 +61,4 @@ features:
     parent.append(div)
     VanillaTilt.init(_element, { reverse: true, transition: true })
   })
-</script>
+</script> -->

@@ -1,8 +1,118 @@
 :root {
   --vp-layout-max-width: 1620px;
-  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, rgba(96, 137, 241, .15) 30%, rgba(66, 211, 146, .15));
-  --vp-home-hero-image-background-image: linear-gradient(120deg, rgba(96, 137, 241, .15) 30%, rgba(66, 211, 146, .15));
-  --vp-home-hero-image-filter: blur(100px);
+  --vp-home-hero-image-background-image: -webkit-radial-gradient(
+    rgba(96, 137, 241, 0.2) 40%,
+    rgba(66, 211, 146, 0.15) 60%
+  );
+  --vp-home-hero-image-background-image: radial-gradient(rgba(96, 137, 241, 0.2) 40%, rgba(66, 211, 146, 0.15) 60%);
+  --vp-home-hero-image-filter: blur(50px);
+}
+
+/* grid background */
+.VPContent.is-home {
+  background-color: var(--vp-c-bg);
+  background-image: radial-gradient(circle, var(--vp-c-divider) 1px, var(--vp-c-bg) 1px);
+  background-size: 1rem 1rem;
+}
+
+/* card animation */
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 360deg;
+  inherits: false;
+}
+
+span.VPFeature.VPLink {
+  border: 1px solid transparent;
+  position: relative;
+  border-radius: 0;
+  border-radius: 12px;
+}
+
+.VPFeature .box {
+  position: relative;
+  z-index: 10;
+}
+
+.VPFeature::after,
+.VPFeature::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+}
+
+.VPFeature::after {
+  transform: translate(-1px, -1px);
+  z-index: 1;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  opacity: 0;
+  transition: all 0.3s linear;
+}
+
+.dark .VPFeature::after {
+  background: linear-gradient(
+    1turn,
+    hsla(0, 0%, 100%, 0.5),
+    hsla(0, 0%, 100%, 0.1),
+    #fff,
+    hsla(0, 0%, 100%, 0.3)
+  ) !important;
+  background: linear-gradient(
+    var(--gradient-angle),
+    rgba(96, 137, 241, 0.45),
+    hsla(0, 0%, 100%, 0.1),
+    #fff,
+    rgba(66, 211, 146, 0.3)
+  ) !important;
+}
+
+.VPFeature::after {
+  background: linear-gradient(
+    1turn,
+    rgba(66, 211, 146, 0.3),
+    var(--vp-button-alt-border),
+    rgba(96, 137, 241, 0.45),
+    rgba(29, 224, 177, 0.3)
+  );
+  background: linear-gradient(
+    var(--gradient-angle),
+    rgba(66, 211, 146, 0.3),
+    var(--vp-button-alt-border),
+    rgba(96, 137, 241, 0.45),
+    rgba(29, 224, 177, 0.3)
+  );
+}
+
+.VPFeature:hover::after {
+  opacity: 1;
+  animation: gradient-rotate 5s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .VPFeature::after {
+    animation: none !important;
+  }
+}
+
+@keyframes gradient-rotate {
+  from {
+    --gradient-angle: 360deg;
+  }
+
+  to {
+    --gradient-angle: 0deg;
+  }
+}
+
+.VPFeature::before {
+  z-index: 2;
+  background-color: var(--vp-c-bg-soft);
 }
 
 .image-bg {
@@ -12,7 +122,23 @@
   border-radius: 50%;
   background-image: var(--vp-home-hero-image-background-image);
   filter: var(--vp-home-hero-image-filter);
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.8) !important;
+  opacity: 1;
+}
+
+.dark .image-bg {
+  opacity: 0.6 !important;
+}
+
+.image-bg + img {
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .dark [img-light] {
@@ -161,7 +287,6 @@ input[type='checkbox'] {
 input[type='checkbox']:checked {
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.6 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
 }
-
 
 input.my-input {
   color: var(--vp-c-text-1);

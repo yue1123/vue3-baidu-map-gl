@@ -19,6 +19,32 @@
 - 🌏 基于百度地图 Gl 版 SDK，通过 WebGL 对地图、覆盖物等进行渲染，支持 3D 视角展示地图
 - 🚀 支持 volar，组件提供完善的代码提示
 
+<script lang="ts" setup>
+import { ref } from 'vue'
+import { VPTeamMembers } from 'vitepress/theme'
+
+const members = ref<any[]>([])
+const isLoading = ref(true)
+fetch('https://api.github.com/repos/yue1123/vue3-baidu-map-gl/contributors?anon=1').then(res => res.json()).then(res => {
+  isLoading.value = false
+  members.value = res.map(({ avatar_url, login, url }, index) => {
+    return {
+      avatar: avatar_url,
+      name: login,
+      title: index === 0 ? 'Creator' : 'Contributor',
+      links: [
+        { icon: 'github', link: url },
+      ]
+    }
+  })
+})
+</script>
+
+## 贡献者
+
+<div v-if="isLoading">Loading Contributors...</div>
+<VPTeamMembers v-else size="small" :members="members" />
+
 ## License
 
 [MIT licenses](https://opensource.org/licenses/MIT)
