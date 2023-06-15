@@ -14,7 +14,7 @@ export default defineConfig({
   markdown: {
     config: (md) => mdPlugin(md)
   },
-  // localeLinks: {
+  // locales: {
   //   text: '语言',
   //   items: [{ text: '简体中文', link: '/zh-CN/' }]
   // },

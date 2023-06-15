@@ -145,7 +145,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '检索组件',
-      collapsed: true,
+      collapsed: false,
       items: [
         {
           text: 'BAutoComplete 自动填充',

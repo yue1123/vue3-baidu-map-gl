@@ -1,4 +1,4 @@
-# 赞助作者 ☕️ 
+# 赞助作者 ☕️
 
 <br />
 <br />
@@ -24,8 +24,12 @@
 </label>
 <br />
 <br />
-<img width="300" v-show="activeKey === 'aliPay'" src="/aliPay.jpg" alt="">
-<img width="300" v-show="activeKey === 'weiChatPay'" src="/weiCharPay.jpeg" alt="">
+<div class="CardAnimation appear" style="display:inline-block" v-show="activeKey === 'aliPay'">
+  <img width="300" src="/aliPay.jpg" alt="" style="border-radius: 12px;">
+</div>
+<div class="CardAnimation appear" style="display:inline-block" v-show="activeKey === 'weiChatPay'">
+  <img width="300" style="border-radius: 12px;" src="/weiCharPay.jpg" alt="">
+</div>
 
 <script lang="ts" setup>
   import { ref } from 'vue'
