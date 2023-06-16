@@ -27,13 +27,13 @@ const members = ref<any[]>([])
 const isLoading = ref(true)
 fetch('https://api.github.com/repos/yue1123/vue3-baidu-map-gl/contributors?anon=1').then(res => res.json()).then(res => {
   isLoading.value = false
-  members.value = res.map(({ avatar_url, login, url }, index) => {
+  members.value = res.map(({ avatar_url, login, html_url }, index) => {
     return {
       avatar: avatar_url,
       name: login,
       title: index === 0 ? 'Creator' : 'Contributor',
       links: [
-        { icon: 'github', link: url },
+        { icon: 'github', link: html_url },
       ]
     }
   })
