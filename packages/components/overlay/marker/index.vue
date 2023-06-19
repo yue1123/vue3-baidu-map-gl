@@ -75,6 +75,10 @@
      * 鼠标移到marker上的显示内容
      */
     title?: string
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousedown?: Callback
@@ -101,7 +105,8 @@
     raiseOnDrag: false,
     draggingCursor: 'pointer',
     rotation: 0,
-    title: ''
+    title: '',
+    visible: true
   })
   const vueEmits = defineEmits([
     'initd',
@@ -143,7 +148,8 @@
         rotation,
         title,
         icon,
-        zIndex
+        zIndex,
+        visible
       } = props
       const options: BMapGL.MarkerOptions = {
         offset: new BMapGL.Size(offset.x, offset.y),
@@ -161,7 +167,7 @@
       setRotation(rotation)
       isDef(zIndex) && setZIndex(zIndex!)
       // 在地图上添加点标记
-      map.addOverlay(marker)
+      visible && map.addOverlay(marker)
       bindEvents(props, vueEmits, marker)
       ready(map, marker)
     }
@@ -180,6 +186,12 @@
     watch(() => props.enableDragging, setDragging)
     watch(() => props.enableMassClear, setMassClear)
     watch(() => props.rotation, setRotation)
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addOverlay' : 'removeOverlay'](marker)
+      }
+    )
     return cal
   })
 
