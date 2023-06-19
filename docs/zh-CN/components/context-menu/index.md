@@ -8,7 +8,7 @@ import { BContextMenu } from 'vue3-baidu-map-gl'
 
 ## 组件示例
 
-:::demo
+:::demo 添加地图和 `Marker` 上下文菜单，鼠标右击地图或 `Marker` 试试
 context-menu/index
 :::
 
@@ -20,9 +20,10 @@ context-menu/index
 
 ## 动态组件 Props
 
-| 属性      | 说明                  | 类型                                                | 可选值 | 默认值 |
-| --------- | --------------------- | --------------------------------------------------- | ------ | ------ |
-| menuItems | 菜单项，`-`添加分割线 | ([`ContextMenuItem`](#contextmenuitem) \| `-`) `[]` | -      | -      |
+| 属性      | 说明                  | 类型                                                | 可选值 | 默认值 | 版本                               |
+| --------- | --------------------- | --------------------------------------------------- | ------ | ------ | ---------------------------------- |
+| menuItems | 菜单项，`-`添加分割线 | ([`ContextMenuItem`](#contextmenuitem) \| `-`) `[]` | -      | -      | -                                  |
+| visible   | 是否显示              | `boolean`                                           | -      | `true` | <Badge type="tip" text="^2.1.4" /> |
 
 ## ContextMenuItem
 

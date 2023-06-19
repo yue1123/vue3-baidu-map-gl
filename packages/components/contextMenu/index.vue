@@ -4,7 +4,7 @@
   import { inject, watch } from 'vue'
   import useBaseMapEffect from '../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../hooks/useLifeCycle'
-  import { bindEvents, Callback, isString, callWhenDifferentValue } from '../../utils/index'
+  import { bindEvents, Callback, isString, callWhenDifferentValue } from '../../utils'
   export interface ContextMenuItem {
     text: string
     callback: (...arg: any[]) => void
@@ -13,15 +13,19 @@
   export type ContextMenuSeparator = '-'
   export interface ContextMenuProps {
     width?: number
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     menuItems?: (ContextMenuItem | ContextMenuSeparator)[]
     onOpen?: Callback
     onClose?: Callback
   }
   const props = withDefaults(defineProps<ContextMenuProps>(), {
     width: 100,
+    visible: true,
     menuItems: () => []
   })
-
   const getParentInstance = inject('getOverlayInstance', () => null)
   const vueEmits = defineEmits(['initd', 'unload', 'open', 'close'])
   const { ready } = useLifeCycle()
@@ -32,7 +36,7 @@
       contextMenu && target.removeContextMenu(contextMenu)
     }
     const init = () => {
-      const { width, menuItems } = props
+      const { width, menuItems, visible } = props
       contextMenu = new BMapGL.ContextMenu()
       for (const item of menuItems) {
         if (isString(item) && item === '-') {
@@ -58,9 +62,17 @@
         ;(item as ContextMenuItem).disabled ? menuItem.disable() : menuItem.enable()
         contextMenu.addItem(menuItem)
       }
-      target.addContextMenu(contextMenu)
+      visible && target.addContextMenu(contextMenu)
       bindEvents(props, vueEmits, contextMenu)
     }
+    watch(
+      () => props.visible,
+      (n) => {
+        if (contextMenu) {
+          target[n ? 'addContextMenu' : 'removeContextMenu'](contextMenu)
+        }
+      }
+    )
     watch(
       () => {
         return props.menuItems
