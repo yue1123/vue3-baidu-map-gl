@@ -66,6 +66,10 @@
      * 连接右线
      */
     linkRight?: boolean
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousedown?: Callback
@@ -85,7 +89,8 @@
     enableClicking: true,
     geodesic: false,
     clip: true,
-    linkRight: true
+    linkRight: true,
+    visible: true
   })
   const vueEmits = defineEmits([
     'initd',
@@ -100,11 +105,10 @@
     'lineupdate'
   ])
   const { ready } = useLifeCycle()
-  let polyline: BMapGL.Polyline | null
+  let polyline: BMapGL.Polyline
   useBaseMapEffect((map: BMapGL.Map) => {
     const clear = () => {
       polyline && map.removeOverlay(polyline)
-      polyline = null
     }
     const init = () => {
       if (!props.path || !props.path.length)
@@ -120,7 +124,8 @@
         enableClicking,
         geodesic,
         clip,
-        linkRight
+        linkRight,
+        visible
       } = props
       const pathPoints = pathPointsToMapPoints(path)
       polyline = new BMapGL.Polyline(pathPoints, {
@@ -135,9 +140,15 @@
         linkRight,
         clip
       })
-      map.addOverlay(polyline)
+      visible && map.addOverlay(polyline)
       bindEvents(props, vueEmits, polyline)
       ready(map, polyline)
+      watch(() => props.strokeColor, setStrokeColor)
+      watch(() => props.strokeOpacity, setStrokeOpacity)
+      watch(() => props.strokeWeight, setStrokeWeight)
+      watch(() => props.strokeStyle, setStrokeStyle)
+      watch(() => props.enableMassClear, setMassClear)
+      watch(() => props.enableEditing, setEditing)
     }
 
     init()
@@ -155,13 +166,13 @@
         deep: true
       }
     )
-    watch(() => props.strokeColor, setStrokeColor)
-    watch(() => props.strokeOpacity, setStrokeOpacity)
-    watch(() => props.strokeWeight, setStrokeWeight)
-    watch(() => props.strokeStyle, setStrokeStyle)
-    watch(() => props.enableMassClear, setMassClear)
-    watch(() => props.enableEditing, setEditing)
 
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addOverlay' : 'removeOverlay'](polyline)
+      }
+    )
     return clear
   })
 

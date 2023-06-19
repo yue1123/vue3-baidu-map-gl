@@ -4,7 +4,7 @@ title: Vue3 BaiduMap GL
 
 hero:
   name: Vue3 BaiduMap GL
-  text: 易用 & 完整 & 高性能
+  text: 易用 & 完整 & 性能不错
   tagline: 基于 Vue3 和 BMapGL 的常用地图组件 📦 + hooks 库 ⚡
   image:
     src: /logo.svg

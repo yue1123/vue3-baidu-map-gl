@@ -23,15 +23,16 @@ overlay/polyline
 
 ## 动态组件 Props
 
-| 属性            | 说明                                        | 类型                            | 可选值                    | 默认值     |
-| --------------- | ------------------------------------------- | ------------------------------- | ------------------------- | ---------- |
-| path            | 多边形的坐标数组                            | `{ lng: number, lat: number}[]` | -                         | `required` |
-| strokeColor     | 描边的颜色，同 CSS 颜色                     | `string`                        | -                         | `#000000`  |
-| strokeWeight    | 描边的宽度，单位为像素                      | `string`                        | -                         | `2`        |
-| strokeOpacity   | 描边的透明度，范围 `0-1`                    | ` number`                       | -                         | ` 1`       |
-| strokeStyle     | 描边的样式，为实线、虚线、或者点状线        | `string`                        | `solid / dashed / dotted` | -          |
-| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                       | -                         | `true `    |
-| enableEditing   | 开启可编辑模式                              | `boolean`                       | -                         | `false `   |
+| 属性            | 说明                                        | 类型                            | 可选值                    | 默认值     | 版本                               |
+| --------------- | ------------------------------------------- | ------------------------------- | ------------------------- | ---------- | ---------------------------------- |
+| path            | 多边形的坐标数组                            | `{ lng: number, lat: number}[]` | -                         | `required` | -                                  |
+| strokeColor     | 描边的颜色，同 CSS 颜色                     | `string`                        | -                         | `#000000`  | -                                  |
+| strokeWeight    | 描边的宽度，单位为像素                      | `string`                        | -                         | `2`        | -                                  |
+| strokeOpacity   | 描边的透明度，范围 `0-1`                    | ` number`                       | -                         | ` 1`       | -                                  |
+| strokeStyle     | 描边的样式，为实线、虚线、或者点状线        | `string`                        | `solid / dashed / dotted` | -          | -                                  |
+| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                       | -                         | `true `    | -                                  |
+| enableEditing   | 开启可编辑模式                              | `boolean`                       | -                         | `false `   | -                                  |
+| visible         | 是否显示                                    | `boolean`                       |                           | `true`     | <Badge type="tip" text="^2.1.4" /> |
 
 ## 组件事件
 
