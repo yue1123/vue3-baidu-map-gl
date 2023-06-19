@@ -108,7 +108,6 @@
   ],
   "lint-staged": {
     "*.{js,ts?(x)}": [
-      "prettier --write",
       "eslint --fix",
       "git add"
     ],
@@ -120,7 +119,6 @@
       "prettier --write"
     ],
     "**/*.md": [
-      "prettier --write --parser markdown --prose-wrap never",
       "eslint --fix",
       "git add"
     ]
