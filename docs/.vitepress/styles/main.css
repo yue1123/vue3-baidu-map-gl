@@ -6,6 +6,7 @@
   );
   --vp-home-hero-image-background-image: radial-gradient(rgba(96, 137, 241, 0.2) 40%, rgba(66, 211, 146, 0.15) 60%);
   --vp-home-hero-image-filter: blur(50px);
+  --vp-sidebar-width: 282px;
 }
 
 /* grid background */

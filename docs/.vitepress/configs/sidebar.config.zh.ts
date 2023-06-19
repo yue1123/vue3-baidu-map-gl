@@ -154,7 +154,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
       ]
     },
     {
-      text: 'hooks',
+      text: 'Hooks',
       collapsed: false,
       items: [
         {
