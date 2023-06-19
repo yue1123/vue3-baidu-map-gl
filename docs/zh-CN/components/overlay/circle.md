@@ -22,18 +22,19 @@ overlay/circle
 
 ## 动态组件 Props
 
-| 属性            | 说明                                        | 类型                          | 可选值                    | 默认值     |
-| --------------- | ------------------------------------------- | ----------------------------- | ------------------------- | ---------- |
-| center          | 圆形中心点经纬度                            | `{ lng: number, lat: number}` | -                         | `required` |
-| radius          | 圆形的半径，单位为米                        | `number`                      | -                         | `required` |
-| strokeColor     | 描边的颜色，同 CSS 颜色                     | `string`                      | -                         | `#000`     |
-| strokeOpacity   | 描边的透明度，范围 0-1                      | `number`                      | `0-1 `                    | 1          |
-| fillColor       | 面填充颜色，同 CSS 颜色                     | `string`                      | -                         | `#fff`     |
-| fillOpacity     | 面填充的透明度，范围 0-1                    | `number`                      | `0-1 `                    | `0.3 `     |
-| strokeWeight    | 描边的宽度，单位为像素                      | `number`                      | -                         | `2 `       |
-| strokeStyle     | 描边的样式，为实线、虚线、或者点状线        | `string`                      | `solid / dashed / dotted` | `solid `   |
-| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                     | -                         | `true `    |
-| enableEditing   | 是否启用线编辑                              | `boolean`                     | -                         | `false `   |
+| 属性            | 说明                                        | 类型                          | 可选值                    | 默认值     | 版本                               |
+| --------------- | ------------------------------------------- | ----------------------------- | ------------------------- | ---------- | ---------------------------------- |
+| center          | 圆形中心点经纬度                            | `{ lng: number, lat: number}` | -                         | `required` | -                                  |
+| radius          | 圆形的半径，单位为米                        | `number`                      | -                         | `required` | -                                  |
+| strokeColor     | 描边的颜色，同 CSS 颜色                     | `string`                      | -                         | `#000`     | -                                  |
+| strokeOpacity   | 描边的透明度，范围 0-1                      | `number`                      | `0-1 `                    | 1          | -                                  |
+| fillColor       | 面填充颜色，同 CSS 颜色                     | `string`                      | -                         | `#fff`     | -                                  |
+| fillOpacity     | 面填充的透明度，范围 0-1                    | `number`                      | `0-1 `                    | `0.3 `     | -                                  |
+| strokeWeight    | 描边的宽度，单位为像素                      | `number`                      | -                         | `2 `       | -                                  |
+| strokeStyle     | 描边的样式，为实线、虚线、或者点状线        | `string`                      | `solid / dashed / dotted` | `solid `   | -                                  |
+| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                     | -                         | `true `    | -                                  |
+| enableEditing   | 是否启用线编辑                              | `boolean`                     | -                         | `false `   | -                                  |
+| visible         | 是否显示                                    | `boolean`                     | -                         | `true`     | <Badge type="tip" text="^2.1.4" /> |
 
 ## 组件事件
 

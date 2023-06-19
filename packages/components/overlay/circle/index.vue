@@ -67,6 +67,10 @@
      * 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果，可以设置成false，默认为true
      */
     clip?: boolean
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousedown?: Callback
@@ -87,7 +91,8 @@
     enableEditing: false,
     enableClicking: true,
     geodesic: false,
-    clip: true
+    clip: true,
+    visible: true
   })
   const vueEmits = defineEmits([
     'initd',
@@ -123,7 +128,8 @@
         enableEditing,
         enableClicking,
         geodesic,
-        clip
+        clip,
+        visible
       } = props
       const centerPoint = new BMapGL.Point(center.lng, center.lat)
       circle = new BMapGL.Circle(centerPoint, radius, {
@@ -139,7 +145,7 @@
         fillOpacity,
         fillColor
       })
-      map.addOverlay(circle)
+      visible && map.addOverlay(circle)
       bindEvents(props, vueEmits, circle)
       ready(map, circle)
     }
@@ -156,11 +162,19 @@
     watch(() => props.strokeStyle, setStrokeStyle)
     watch(() => props.enableMassClear, setMassClear)
     watch(() => props.enableEditing, setEditing)
-
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addOverlay' : 'removeOverlay'](circle)
+      }
+    )
     return cal
   })
 
   provide('getOverlayInstance', () => circle)
+  defineOptions({
+    name: 'BCircle'
+  })
 
   function setRadius(radius: number): void {
     circle.setRadius(radius)
@@ -194,7 +208,4 @@
   function setEditing(enableEditing: boolean): void {
     enableEditing ? circle!.enableEditing() : circle!.disableEditing()
   }
-  defineOptions({
-    name: 'BCircle'
-  })
 </script>
