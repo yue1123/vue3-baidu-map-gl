@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted, ref, getCurrentInstance, onUpdated } from 'vue'
+  import { onMounted, ref, getCurrentInstance, onUpdated, warn, watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import copyrightControlPosCacheMap from './copyrightControlPosCacheMap'
@@ -24,10 +24,15 @@
       x: number
       y: number
     }
+    /**
+     * 是否可见
+     */
+    visible?: boolean
   }
   const props = withDefaults(defineProps<CopyrightProps>(), {
     anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
-    offset: () => ({ x: 83, y: 18 })
+    offset: () => ({ x: 83, y: 18 }),
+    visible: true
   })
   const { ready } = useLifeCycle()
   const copyrightContainer = ref<HTMLDivElement>()
@@ -35,11 +40,16 @@
   const uid = getCurrentInstance()?.uid
   defineEmits(['initd', 'unload'])
   onMounted(() => {
-    const { anchor, offset } = props
     useBaseMapEffect((map: BMapGL.Map) => {
-      if (!copyrightContainer.value) return
+      const { anchor, offset, visible } = props
+      if (!copyrightContainer.value) {
+        if (__DEV__) {
+          warn('Custom Control render error')
+        }
+        return
+      }
       let mapBounds = map.getBounds()
-      // 同一位置的 copyright 应该调用 addCopyright,防止多个 copyright 重叠
+      // 同一位置的 copyright 应该调用 addCopyright, 防止多个 copyright 重叠
       if (!(copyrightControl = copyrightControlPosCacheMap[anchor])) {
         copyrightControl = new BMapGL.CopyrightControl({
           offset: new BMapGL.Size(offset.x, offset.y),
@@ -48,13 +58,29 @@
         copyrightControlPosCacheMap[anchor] = copyrightControl
         map.addControl(copyrightControl)
       }
-      copyrightControl.addCopyright({
-        id: uid,
-        content: copyrightContainer.value.innerHTML,
-        bounds: mapBounds
-      })
-
+      if (visible) {
+        copyrightControl.addCopyright({
+          id: uid,
+          content: copyrightContainer.value.innerHTML,
+          bounds: mapBounds
+        })
+      }
       ready(map, copyrightControl)
+      watch(
+        () => props.visible,
+        (n) => {
+          if (n) {
+            copyrightContainer.value &&
+              copyrightControl.addCopyright({
+                id: uid,
+                content: copyrightContainer.value.innerHTML,
+                bounds: mapBounds
+              })
+          } else {
+            uid && copyrightControl.removeCopyright(uid)
+          }
+        }
+      )
       return () => {
         const cacheCopyright = copyrightControlPosCacheMap[anchor]
         const getCopyrightCollection = cacheCopyright?.getCopyrightCollection?.bind(cacheCopyright)
@@ -70,11 +96,11 @@
   })
   onUpdated(() => {
     if (!copyrightControl) return
-    let copyright = copyrightControl?.getCopyright(uid!)
-    if (copyright?.content !== copyrightContainer.value?.innerHTML) {
+    let copyright = copyrightControl.getCopyright(uid!)
+    if (copyright && copyrightContainer.value && copyright.content !== copyrightContainer.value.innerHTML) {
       copyrightControl.addCopyright({
         id: uid,
-        content: copyrightContainer.value?.innerHTML,
+        content: copyrightContainer.value.innerHTML,
         bounds: copyright.bounds
       })
     }

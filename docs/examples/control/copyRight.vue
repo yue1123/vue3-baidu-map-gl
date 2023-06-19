@@ -1,7 +1,7 @@
 <template>
   <div>
     <BMap v-bind="$attrs">
-      <BCopyright anchor="BMAP_ANCHOR_TOP_RIGHT" v-if="show">
+      <BCopyright anchor="BMAP_ANCHOR_TOP_RIGHT" :visible="show">
         <div style="display: flex; align-items: flex-end">
           <img width="40" src="https://s1.ax1x.com/2022/09/29/xmTpcT.png" alt="" />
           @我是自定义版权控件呀
