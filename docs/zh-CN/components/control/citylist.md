@@ -25,6 +25,12 @@ https://lbs.baidu.com/jsdemo.htm#cCityList
 | offset | 控件的偏移值     | `{x: number, y: number }` | -                 | `{ x: 18, y: 18 }`        |
 | expand | 默认列表是否展开 | `boolean`                 | -                 | `false`                   |
 
+## 动态组件 Props
+
+| 属性    | 说明     | 类型      | 可选值 | 默认值 | 版本                               |
+| ------- | -------- | --------- | ------ | ------ | ---------------------------------- |
+| visible | 是否显示 | `boolean` | -      | `true` | <Badge type="tip" text="^2.1.4" /> |
+
 ## anchor
 
 | 值                       | 说明 |
