@@ -47,6 +47,10 @@
      * 是否在调用map.clearOverlays清除此覆盖物，默认为true
      */
     enableMassClear?: boolean
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousedown?: Callback
@@ -61,7 +65,8 @@
     strokeWeight: 2,
     strokeOpacity: 1,
     strokeStyle: 'solid',
-    enableMassClear: true
+    enableMassClear: true,
+    visible: true
   })
   const vueEmits = defineEmits([
     'initd',
@@ -86,7 +91,8 @@
         return __DEV__ && warn('BezierCurve path props is required or not empty array')
       if (!props.controlPoints || !(props.controlPoints && props.controlPoints.length))
         return __DEV__ && warn('BezierCurve controlPoints props is required or not empty array')
-      const { path, controlPoints, strokeColor, strokeWeight, strokeOpacity, strokeStyle, enableMassClear } = props
+      const { path, controlPoints, strokeColor, strokeWeight, strokeOpacity, strokeStyle, enableMassClear, visible } =
+        props
       const pathPoints = pathPointsToMapPoints(path)
       const _controlPoints = controlPoints.map((points) => {
         return pathPointsToMapPoints(points)
@@ -104,7 +110,7 @@
           error(e.message || 'Init bezierCurve overlay error, make sure path and controlPoints data is correct!')
       }
 
-      map.addOverlay(bezierCurve)
+      visible && map.addOverlay(bezierCurve)
       ready(map, bezierCurve)
       bindEvents(props, vueEmits, bezierCurve)
     }
@@ -134,11 +140,17 @@
     watch(() => props.strokeWeight, setStrokeWeight)
     watch(() => props.strokeStyle, setStrokeStyle)
     watch(() => props.enableMassClear, setMassClear)
-
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addOverlay' : 'removeOverlay'](bezierCurve)
+      }
+    )
     return cal
   })
 
   provide('getOverlayInstance', () => bezierCurve)
+  defineOptions({ name: 'BBezierCurve' })
 
   function setPath(path: Point[]) {
     bezierCurve.setPath(pathPointsToMapPoints(path))
@@ -162,5 +174,4 @@
   function setMassClear(enableMassClear: boolean): void {
     enableMassClear ? bezierCurve!.enableMassClear() : bezierCurve!.disableMassClear()
   }
-  defineOptions({ name: 'BBezierCurve' })
 </script>
