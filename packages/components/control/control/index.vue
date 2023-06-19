@@ -7,10 +7,10 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, watch } from 'vue'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import { ControlAnchor } from '../../../utils'
+  import { ControlAnchor, warn } from '../../../utils'
   export interface ControlOptions {
     /**
      * 控件的停靠位置
@@ -23,25 +23,42 @@
       x: number
       y: number
     }
+    /**
+     * 是否可见
+     */
+    visible?: boolean
   }
   const controlContainer = ref<HTMLDivElement>()
   const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<ControlOptions>(), {
     anchor: 'BMAP_ANCHOR_TOP_LEFT',
-    offset: () => ({ x: 83, y: 18 })
+    offset: () => ({ x: 83, y: 18 }),
+    visible: true
   })
   defineEmits(['initd', 'unload'])
   onMounted(() => {
     useBaseMapEffect((map: BMapGL.Map) => {
-      if (!controlContainer.value) return
+      if (!controlContainer.value) {
+        if (__DEV__) {
+          warn('Custom Control render error')
+        }
+        return
+      }
+      const { offset, anchor, visible } = props
       const customControl = new BMapGL.Control()
-      customControl.defaultAnchor = window[props.anchor]
-      customControl.defaultOffset = new BMapGL.Size(props.offset!.x, props.offset!.y)
+      customControl.defaultAnchor = window[anchor]
+      customControl.defaultOffset = new BMapGL.Size(offset.x, offset.y)
       customControl.initialize = (_map: BMapGL.Map) => {
         return _map.getContainer().appendChild(controlContainer.value as Node) as HTMLElement
       }
-      map.addControl(customControl)
+      visible && map.addControl(customControl)
       ready(map, customControl)
+      watch(
+        () => props.visible,
+        (n) => {
+          map[n ? 'addControl' : 'removeControl'](customControl)
+        }
+      )
       return () => map.removeControl(customControl)
     })
   })
