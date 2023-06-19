@@ -22,15 +22,16 @@ overlay/prism
 
 ## 动态组件 Props
 
-| 属性            | 说明                                        | 类型                            | 可选值 | 默认值     |
-| --------------- | ------------------------------------------- | ------------------------------- | ------ | ---------- |
-| path            | 多边形的坐标数组                            | `{ lng: number, lat: number}[]` | -      | `required` |
-| altitude        | 3d 棱柱高度                                 | `number`                        | -      | `required` |
-| topFillColor    | 顶面填充颜色                                | `string `                       | -      | `#fff`     |
-| topFillOpacity  | 顶面填充颜色透明度                          | `number`                        | `0-1`  | -          |
-| sideFillColor   | 侧面填充颜色                                | `string`                        | -      |            |
-| sideFillOpacity | 侧面填充颜色透明度                          | `number`                        | `0-1`  | `#fff`     |
-| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                       | -      | ` true`    |
+| 属性            | 说明                                        | 类型                            | 可选值 | 默认值     | 版本                               |
+| --------------- | ------------------------------------------- | ------------------------------- | ------ | ---------- | ---------------------------------- |
+| path            | 多边形的坐标数组                            | `{ lng: number, lat: number}[]` | -      | `required` | -                                  |
+| altitude        | 3d 棱柱高度                                 | `number`                        | -      | `required` | -                                  |
+| topFillColor    | 顶面填充颜色                                | `string `                       | -      | `#fff`     | -                                  |
+| topFillOpacity  | 顶面填充颜色透明度                          | `number`                        | `0-1`  | -          | -                                  |
+| sideFillColor   | 侧面填充颜色                                | `string`                        | -      |            | -                                  |
+| sideFillOpacity | 侧面填充颜色透明度                          | `number`                        | `0-1`  | `#fff`     | -                                  |
+| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                       | -      | ` true`    | -                                  |
+| visible         | 是否显示                                    | `boolean`                       | -      | `true`     | <Badge type="tip" text="^2.1.4" /> |
 
 ## 组件事件
 

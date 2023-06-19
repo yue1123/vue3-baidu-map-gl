@@ -48,6 +48,10 @@
      * 是否在调用map.clearOverlays清除此覆盖物，默认为true
      */
     enableMassClear?: boolean
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousedown?: Callback
@@ -63,7 +67,8 @@
     sideFillColor: '#fff',
     sideFillOpacity: 0.8,
     enableMassClear: true,
-    autoCenter: true
+    autoCenter: true,
+    visible: true
   })
   const vueEmits = defineEmits([
     'initd',
@@ -98,7 +103,8 @@
         topFillOpacity,
         sideFillColor,
         sideFillOpacity,
-        enableMassClear
+        enableMassClear,
+        visible
       } = props
       const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as Point[])
       prism = new BMapGL.Prism(pathPoints, altitude, {
@@ -108,7 +114,7 @@
         sideFillOpacity,
         enableMassClear
       })
-      map.addOverlay(prism)
+      visible && map.addOverlay(prism)
       bindEvents(props, vueEmits, prism)
       ready(map, prism)
       syncMapCenter()
@@ -128,6 +134,12 @@
       }),
       {
         deep: true
+      }
+    )
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addOverlay' : 'removeOverlay'](prism)
       }
     )
     return clear
