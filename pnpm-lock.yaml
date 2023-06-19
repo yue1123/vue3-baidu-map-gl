@@ -2071,7 +2071,7 @@ packages:
     resolution: {integrity: sha512-M1HXuyZFCfEIIKkglh/r5L9H3c5QTEsnMBoZOFQiRnGPGmJWcaBissGb7mTFX2+DKE7FNWXh4TDnZlaLABB0dQ==}
     dependencies:
       '@turf/helpers': 6.5.0
-      earcut: 2.2.4
+      earcut: 2.2.0
     dev: false
 
   /@turf/tin/6.5.0:
@@ -3438,7 +3438,7 @@ packages:
       minimatch: 3.1.2
     dev: true
 
-  /earcut/2.2.4:
+  /earcut/2.2.0:
     resolution: {integrity: sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==}
     dev: false
 
