@@ -60,6 +60,10 @@
      * 是否在调用map.clearOverlays清除此覆盖物，默认为true
      */
     enableMassClear?: boolean
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousedown?: Callback
@@ -75,7 +79,8 @@
     size: 50,
     shape: 'BMAP_SHAPE_CIRCLE',
     fillColor: '#f00',
-    fillOpacity: 0.8
+    fillOpacity: 0.8,
+    visible: true
   })
   const vueEmits = defineEmits([
     'initd',
@@ -99,7 +104,7 @@
     const init = () => {
       if (!props.position) return __DEV__ && warn('Marker3d props position is required')
       if (!props.height) return __DEV__ && warn('Marker3d props height is required')
-      const { position, shape, fillColor, fillOpacity, size, icon, height, enableMassClear } = props
+      const { position, shape, fillColor, fillOpacity, size, icon, height, enableMassClear, visible } = props
       const options: BMapGL.Marker3DOptions = {
         size,
         fillColor,
@@ -111,7 +116,7 @@
       }
       marker3d = new BMapGL.Marker3D(new BMapGL.Point(position.lng, position.lat), height, options)
       // 在地图上添加点标记
-      map.addOverlay(marker3d)
+      visible && map.addOverlay(marker3d)
       setMassClear(enableMassClear)
       bindEvents(props, vueEmits, marker3d)
       ready(map, marker3d)
@@ -137,6 +142,12 @@
     watch(() => props.enableMassClear, setMassClear)
     watch(() => props.fillOpacity, setFillOpacity)
     watch(() => props.fillColor, setFillColor)
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addOverlay' : 'removeOverlay'](marker3d)
+      }
+    )
     return cal
   })
 

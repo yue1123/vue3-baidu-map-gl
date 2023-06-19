@@ -35,13 +35,14 @@ overlay/marker3d/withImg
 
 ## 动态组件 Props
 
-| 属性            | 说明                                        | 类型                          | 可选值 | 默认值     |
-| --------------- | ------------------------------------------- | ----------------------------- | ------ | ---------- |
-| position        | 点的坐标                                    | `{ lng: number, lat: number}` | -      | `required` |
-| icon            | 点的图或[自定义纹理贴图](#自定义纹理贴图)   | `string `                     | -      |            |
-| fillColor       | 点填充颜色，同 CSS 颜色                     | `string `                     | -      | `#f00`     |
-| fillOpacity     | 点填充的透明度，范围 0-1                    | `number `                     | `0-1`  | `0.8 `     |
-| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                     | -      | ` true`    |
+| 属性            | 说明                                        | 类型                          | 可选值 | 默认值     | 版本                               |
+| --------------- | ------------------------------------------- | ----------------------------- | ------ | ---------- | ---------------------------------- |
+| position        | 点的坐标                                    | `{ lng: number, lat: number}` | -      | `required` | -                                  |
+| icon            | 点的图或[自定义纹理贴图](#自定义纹理贴图)   | `string `                     | -      |            | -                                  |
+| fillColor       | 点填充颜色，同 CSS 颜色                     | `string `                     | -      | `#f00`     | -                                  |
+| fillOpacity     | 点填充的透明度，范围 0-1                    | `number `                     | `0-1`  | `0.8 `     | -                                  |
+| enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                     | -      | ` true`    | -                                  |
+| visible         | 是否显示                                    | `boolean`                     | -      | `true`     | <Badge type="tip" text="^2.1.4" /> |
 
 ## 自定义纹理贴图
 
