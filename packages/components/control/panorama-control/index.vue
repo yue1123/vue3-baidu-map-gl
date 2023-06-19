@@ -1,6 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
+  import { watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import { type ControlAnchor } from '../../../utils'
@@ -16,20 +17,33 @@
       x: number
       y: number
     }
+    /**
+     * 是否可见
+     */
+    visible?: boolean
   }
   const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<PanoramaControlProps>(), {
     anchor: 'BMAP_ANCHOR_TOP_RIGHT',
-    offset: () => ({ x: 10, y: 10 })
+    offset: () => ({ x: 10, y: 10 }),
+    visible: true
   })
   let panoramaControl: BMapGL.PanoramaControl
   defineEmits(['initd', 'unload'])
   useBaseMapEffect((map) => {
+    const { visible, offset, anchor } = props
     panoramaControl = new BMapGL.PanoramaControl()
-    panoramaControl.setOffset(new BMapGL.Size(props.offset.x, props.offset.y))
-    panoramaControl.setAnchor(window[props.anchor] as unknown as any)
-    map.addControl(panoramaControl)
+    panoramaControl.setOffset(new BMapGL.Size(offset.x, offset.y))
+    panoramaControl.setAnchor(window[anchor] as unknown as any)
+
+    visible && map.addControl(panoramaControl)
     ready(map, panoramaControl)
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addControl' : 'removeControl'](panoramaControl)
+      }
+    )
     return () => map.removeControl(panoramaControl)
   })
   defineOptions({
