@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.1.3...v2.2.0) (2023-06-19)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* polygon 初始 visible 为 false 不应该渲染 ([cced75b](https://github.com/yue1123/vue3-baidu-map-gl/commit/cced75b737f557a3299a6c4c794614b3234ebdf4))
+
+
+### ✨ Features | 新功能
+
+* bezierCurve支持visible属性 ([b3037e5](https://github.com/yue1123/vue3-baidu-map-gl/commit/b3037e5932345dfb270e3ab20a1eb9dc4a9feb29))
+* circle 支持visible属性 ([aedd28b](https://github.com/yue1123/vue3-baidu-map-gl/commit/aedd28b05f7187738f010e8920ae1efbd7394302))
+* cityList 支持visible属性 ([6b95fe5](https://github.com/yue1123/vue3-baidu-map-gl/commit/6b95fe5a6eb2dfa142865b9fe0cdd07e1b0cb092))
+* contextMenu支持visible属性 ([0aebae9](https://github.com/yue1123/vue3-baidu-map-gl/commit/0aebae9ddc94eea2f1388f8ec2485c9470f7615e))
+* control 支持visible属性 ([fc82fa3](https://github.com/yue1123/vue3-baidu-map-gl/commit/fc82fa399dd55b2de52410e51fbeac700784c75b))
+* copyright 支持visible属性 ([e7f89ff](https://github.com/yue1123/vue3-baidu-map-gl/commit/e7f89ffe64a526b843e76394ae692eae621e7840))
+* districtLayer支持visible属性 ([1657bcf](https://github.com/yue1123/vue3-baidu-map-gl/commit/1657bcf217b0752ef7f900081c22f50e04af287b))
+* groundOverlay 支持visible属性 ([c3bdc0f](https://github.com/yue1123/vue3-baidu-map-gl/commit/c3bdc0f027de242f1610778cada88c6d1b1eef11))
+* label 支持visible属性和zIndex属性 ([2075043](https://github.com/yue1123/vue3-baidu-map-gl/commit/20750435c66911637bbd3df89460c106ab6a4be6))
+* location 支持visible属性 ([ba66f57](https://github.com/yue1123/vue3-baidu-map-gl/commit/ba66f57628885d518c5b262390fd192520eb34c8))
+* mapMask 支持visible属性 ([9ce3968](https://github.com/yue1123/vue3-baidu-map-gl/commit/9ce396876e1ed3c4ec390ee9edbf57fc7251b5c3))
+* marker 支持visible属性 ([a0eb087](https://github.com/yue1123/vue3-baidu-map-gl/commit/a0eb087d0a39b0ff5658046fefab20eefd30591e))
+* marker3d 支持visible属性 ([5ca1efa](https://github.com/yue1123/vue3-baidu-map-gl/commit/5ca1efaec9122d6ad452367e717893dd57c389a0))
+* navigation3d 支持visible属性 ([901845d](https://github.com/yue1123/vue3-baidu-map-gl/commit/901845d61480c3be59f9d2fa10148eedf3704191))
+* panoramaControl 支持visible属性 ([bf0c0ad](https://github.com/yue1123/vue3-baidu-map-gl/commit/bf0c0ad98345284fa1e3bc2c0bd2db4d9af2f1ec))
+* polygon 支持visible属性 ([15a72cd](https://github.com/yue1123/vue3-baidu-map-gl/commit/15a72cdc7366b4c50e9b3fe918059553005a564a))
+* polyline 支持visible属性 ([c1ff306](https://github.com/yue1123/vue3-baidu-map-gl/commit/c1ff30680d7e895829ac044a2957e750d1752d50))
+* prism 支持visible属性 ([0d5cbad](https://github.com/yue1123/vue3-baidu-map-gl/commit/0d5cbad9cbeb7e7652a6cafb3d6decbd974736da))
+* scale 支持visible属性 ([ffccbcc](https://github.com/yue1123/vue3-baidu-map-gl/commit/ffccbccc2d64a0f015f1889fe1eb018d4d58738b))
+* update sidebar collapse ([b835388](https://github.com/yue1123/vue3-baidu-map-gl/commit/b835388b1b90d7aa5ab4fd1b7edac4d756bb1088))
+* zoom 支持visible属性 ([1e12b34](https://github.com/yue1123/vue3-baidu-map-gl/commit/1e12b34a650487d7b1f657010ee509db1b583b8c))
+
+
+### ✏️ Documentation | 文档
+
+* 1. 样式优化 ([be67065](https://github.com/yue1123/vue3-baidu-map-gl/commit/be6706555229e9024f558fab92c454e99103899a))
+* 样式调整 ([0d2f6a7](https://github.com/yue1123/vue3-baidu-map-gl/commit/0d2f6a71605cd3fb1cf3e8f97c2be2d185df0e0a))
+* 样式内容更新 ([9c55a96](https://github.com/yue1123/vue3-baidu-map-gl/commit/9c55a96ac1edd3c0ea101943de7574668915c7a0))
+* **chore:** update vitepress version ([79d390a](https://github.com/yue1123/vue3-baidu-map-gl/commit/79d390a07ac0090af5bc31ab12275bc8e83b5f87))
+* demo 展示组件优化 ([64132cf](https://github.com/yue1123/vue3-baidu-map-gl/commit/64132cf22b762518a0e7b229afab1c4efc63c609))
+* **fix:** 修复贡献者跳转链接错误 ([e48ffa1](https://github.com/yue1123/vue3-baidu-map-gl/commit/e48ffa1fb7ec62c1118e9f46389b543dc9fe554b))
+* update playground url ([7db4e81](https://github.com/yue1123/vue3-baidu-map-gl/commit/7db4e81c72bbafa4ac8428382afd17bffdd4c5fc))
+* update site seo keywords ([e4aede6](https://github.com/yue1123/vue3-baidu-map-gl/commit/e4aede66d169c1a7e6104efe0febbc0b822a2b4d))
+
 ### [2.1.3](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.1.2...v2.1.3) (2023-06-11)
 
 

@@ -1,7 +1,7 @@
 {
   "name": "vue3-baidu-map-gl",
   "description": "A Vue 3 baidu map gl Component Library. ",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "main": "es/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",
@@ -108,19 +108,16 @@
   ],
   "lint-staged": {
     "*.{js,ts?(x)}": [
-      "eslint --fix",
-      "git add"
+      "eslint"
     ],
     "*.vue": [
-      "eslint --fix",
-      "git add"
+      "eslint"
     ],
     "**/*.css": [
       "prettier --write"
     ],
     "**/*.md": [
-      "eslint --fix",
-      "git add"
+      "eslint"
     ]
   }
 }
