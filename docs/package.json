@@ -13,12 +13,12 @@
     "markdown-it": "^13.0.1",
     "markdown-it-container": "^3.0.0",
     "prismjs": "^1.29.0",
-    "vanilla-tilt": "^1.7.3",
+    "vanilla-tilt": "^1.8.0",
     "vue3-baidu-map-gl": "workspace:*"
   },
   "dependencies": {
-    "bmap-draw": "^1.0.8",
-    "mapv-three": "^1.0.7",
+    "bmap-draw": "^1.0.19",
+    "mapv-three": "^1.0.12",
     "prism-theme-vars": "^0.2.4",
     "three": "^0.147.0",
     "vitepress": "1.0.0-beta.2"
