@@ -1,4 +1,5 @@
 import type { HeadConfig } from 'vitepress'
+
 export const head: HeadConfig[] = [
   [
     'link',
@@ -22,7 +23,8 @@ export const head: HeadConfig[] = [
     'meta',
     {
       name: 'keywords',
-      content: 'vue3,vue,baidu map,baidu map gl,vue3-baidu-map-gl,vue3-bmap-gl,百度地图,组件库,vue3组件库'
+      content:
+        'vue3,vue component,baidu map,baidu map gl,vue3-baidu-map-gl,vue3-bmap-gl,百度地图,组件库,vue3组件库,vue百度地图'
     }
   ]
 ]
