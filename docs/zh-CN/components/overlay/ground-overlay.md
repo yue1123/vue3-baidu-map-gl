@@ -22,7 +22,7 @@ overlay/groundOverlay
 | endPoint   | 显示区域结束点，见[图示](#bounds-图示)               | `{ lng: number, lat: number}`            | `required` | -                                  |
 | autoCenter | 是否自动根据地面叠加物显示区域居中地图               | `boolean `                               | `true`     | -                                  |
 | opacity    | 透明度，范围 0-1                                     | `number`                                 |            | -                                  |
-| visible    | 是否显示                                             | `boolean`                                | `true`     | <Badge type="tip" text="^2.1.4" /> |
+| visible    | 是否显示                                             | `boolean`                                | `true`     | <Badge type="tip" text="^2.2.0" /> |
 
 ### bounds 图示
 

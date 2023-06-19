@@ -33,7 +33,7 @@ overlay/marker
 | rotation        | 旋转角度                                                    | `number `                     | -                             |            | -                                   |
 | enableDragging  | 是否启用拖拽                                                | `boolean `                    | -                             | ` true`    | -                                   |
 | enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物                 | `boolean `                    | -                             | `true `    | -                                   |
-| visible         | 是否显示                                                    | `boolean`                     | -                             | `true`     | <Badge type="tip" text="^2.1.4" />  |
+| visible         | 是否显示                                                    | `boolean`                     | -                             | `true`     | <Badge type="tip" text="^2.2.0" />  |
 
 ## 默认图标可选值
 

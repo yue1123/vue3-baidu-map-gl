@@ -42,7 +42,7 @@ overlay/marker3d/withImg
 | fillColor       | 点填充颜色，同 CSS 颜色                     | `string `                     | -      | `#f00`     | -                                  |
 | fillOpacity     | 点填充的透明度，范围 0-1                    | `number `                     | `0-1`  | `0.8 `     | -                                  |
 | enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                     | -      | ` true`    | -                                  |
-| visible         | 是否显示                                    | `boolean`                     | -      | `true`     | <Badge type="tip" text="^2.1.4" /> |
+| visible         | 是否显示                                    | `boolean`                     | -      | `true`     | <Badge type="tip" text="^2.2.0" /> |
 
 ## 自定义纹理贴图
 

@@ -27,7 +27,7 @@ overlay/bezierCurve
 | strokeOpacity   | 描边的透明度，范围 `0-1`                    | ` number`                         | -                         | ` 1`       | -                                  |
 | strokeStyle     | 描边的样式，为实线、虚线、或者点状线        | `string`                          | `solid / dashed / dotted` | -          | -                                  |
 | enableMassClear | 是否在调用 `map.clearOverlays` 清除此覆盖物 | `boolean`                         | -                         | `true `    | -                                  |
-| visible         | 是否显示                                    | `boolean`                         | -                         | `true`     | <Badge type="tip" text="^2.1.4" /> |
+| visible         | 是否显示                                    | `boolean`                         | -                         | `true`     | <Badge type="tip" text="^2.2.0" /> |
 
 ## 组件事件
 

@@ -30,7 +30,7 @@ overlay/mapMask
 | isBuildingMask | 楼块是否参与掩膜          | `boolean`                                 | -      | `false`    | -                                  |
 | isMapMask      | 底图是否参与掩膜          | `boolean`                                 | -      | `false`    | -                                  |
 | isPoiMask      | 底图上的 Poi 是否参与掩膜 | `boolean`                                 | -      | `false`    | -                                  |
-| visible        | 是否显示                  | `boolean`                                 | -      | `true`     | <Badge type="tip" text="^2.1.4" /> |
+| visible        | 是否显示                  | `boolean`                                 | -      | `true`     | <Badge type="tip" text="^2.2.0" /> |
 
 ### MapMaskShowRegion
 

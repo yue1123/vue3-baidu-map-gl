@@ -23,7 +23,7 @@ context-menu/index
 | 属性      | 说明                  | 类型                                                | 可选值 | 默认值 | 版本                               |
 | --------- | --------------------- | --------------------------------------------------- | ------ | ------ | ---------------------------------- |
 | menuItems | 菜单项，`-`添加分割线 | ([`ContextMenuItem`](#contextmenuitem) \| `-`) `[]` | -      | -      | -                                  |
-| visible   | 是否显示              | `boolean`                                           | -      | `true` | <Badge type="tip" text="^2.1.4" /> |
+| visible   | 是否显示              | `boolean`                                           | -      | `true` | <Badge type="tip" text="^2.2.0" /> |
 
 ## ContextMenuItem
 
