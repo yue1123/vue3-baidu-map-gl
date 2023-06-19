@@ -79,6 +79,10 @@
      * 是否进行跨经度180度裁剪，绘制跨精度180时为了优化效果，可以设置成false，默认为true
      */
     clip?: boolean
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousedown?: Callback
@@ -100,7 +104,8 @@
     clicking: true,
     geodesic: false,
     clip: true,
-    autoCenter: true
+    autoCenter: true,
+    visible: true
   })
   const vueEmits = defineEmits([
     'initd',
@@ -139,7 +144,8 @@
         enableClicking,
         geodesic,
         clip,
-        isBoundary
+        isBoundary,
+        visible
       } = props
       const pathPoints = isBoundary ? (path as string[]) : pathPointsToMapPoints(path as Point[])
       if (!pathPoints) return
@@ -160,6 +166,7 @@
       bindEvents(props, vueEmits, polygon)
       ready(map, polygon)
       syncMapCenter()
+      // 监听值变化, 初始为空时不会初始化, 不为空值时初始化
       watch(() => props.strokeColor, setStrokeColor)
       watch(() => props.strokeOpacity, setStrokeOpacity)
       watch(() => props.fillColor, setFillColor)
@@ -168,9 +175,14 @@
       watch(() => props.strokeStyle, setStrokeStyle)
       watch(() => props.enableMassClear, setMassClear)
       watch(() => props.enableEditing, setEditing)
+      watch(
+        () => props.visible,
+        (n) => {
+          map[n ? 'addOverlay' : 'removeOverlay'](polygon)
+        }
+      )
     }
     init()
-    // 监听值变化, 初始为空时不会初始化, 不为空值时初始化
     watch(
       () => props.path,
       callWhenDifferentValue((path) => {
