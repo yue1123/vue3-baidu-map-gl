@@ -23,6 +23,12 @@ layer/districtLayer
 | strokeColor | 线条颜色         | `string`                        | -      | `#231cf8`              |
 | viewport    | 自动聚焦地图中心 | `boolean`                       | -      | `false`                |
 
+## 动态组件 Props
+
+| 属性    | 说明     | 类型      | 可选值 | 默认值 | 版本                               |
+| ------- | -------- | --------- | ------ | ------ | ---------------------------------- |
+| visible | 是否显示 | `boolean` | -      | `true` | <Badge type="tip" text="^2.1.4" /> |
+
 ## DistrictType
 
 | 值       | 说明    |
