@@ -162,7 +162,7 @@
         geodesic,
         clip
       })
-      map.addOverlay(polygon)
+      visible && map.addOverlay(polygon)
       bindEvents(props, vueEmits, polygon)
       ready(map, polygon)
       syncMapCenter()
