@@ -14,14 +14,15 @@ overlay/groundOverlay
 
 ## 动态组件 Props
 
-| 属性       | 说明                                                 | 类型                          | 默认值     |
-| ---------- | ---------------------------------------------------- | ----------------------------- | ---------- |
-| type       | 地面叠加物类型                                       | `video \| canvas \| image`    | `required` |
-| url        | 叠加物 image url、video url 或者自定义的 canvas 对象 | [`urlType` ](#urltype)        | `required` |
-| startPoint | 显示区域开始点，见[图示](#bounds-图示)               | `{ lng: number, lat: number}` | `required` |
-| endPoint   | 显示区域结束点，见[图示](#bounds-图示)               | `{ lng: number, lat: number}` | `required` |
-| autoCenter | 是否自动根据地面叠加物显示区域居中地图               | `boolean `                    | `true`     |
-| opacity    | 透明度，范围 0-1                                     | `number`                      |            |
+| 属性       | 说明                                                 | 类型                                     | 默认值     | 版本                               |
+| ---------- | ---------------------------------------------------- | ---------------------------------------- | ---------- | ---------------------------------- |
+| type       | 地面叠加物类型                                       | `video \| canvas \| image`               | `required` | -                                  |
+| url        | 叠加物 image url、video url 或者自定义的 canvas 对象 | [`GroundOverlayUrl` ](#GroundOverlayUrl) | `required` | -                                  |
+| startPoint | 显示区域开始点，见[图示](#bounds-图示)               | `{ lng: number, lat: number}`            | `required` | -                                  |
+| endPoint   | 显示区域结束点，见[图示](#bounds-图示)               | `{ lng: number, lat: number}`            | `required` | -                                  |
+| autoCenter | 是否自动根据地面叠加物显示区域居中地图               | `boolean `                               | `true`     | -                                  |
+| opacity    | 透明度，范围 0-1                                     | `number`                                 |            | -                                  |
+| visible    | 是否显示                                             | `boolean`                                | `true`     | <Badge type="tip" text="^2.1.4" /> |
 
 ### bounds 图示
 
@@ -37,10 +38,10 @@ overlay/groundOverlay
   }
 </style>
 
-### urlType
+### GroundOverlayUrl
 
 ```ts
-type url =
+export type GroundOverlayUrl =
   | string
   | HTMLCanvasElement
   | Ref<HTMLCanvasElement | string>

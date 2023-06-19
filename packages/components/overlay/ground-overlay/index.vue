@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-  import { nextTick, Ref, watch } from 'vue'
+  import { nextTick, provide, Ref, watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import { bindEvents, Callback, error, callWhenDifferentValue, type Point, warn } from '../../../utils'
@@ -20,6 +20,10 @@
     endPoint: Point
     autoCenter?: boolean
     opacity?: number
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousemove?: Callback
@@ -28,7 +32,8 @@
   }
   const props = withDefaults(defineProps<GroundOverlayProps>(), {
     autoCenter: false,
-    opacity: 1
+    opacity: 1,
+    visible: true
   })
   const vueEmits = defineEmits(['initd', 'unload', 'click', 'dblclick', 'mousemove', 'mouseover', 'mouseout'])
   const { ready } = useLifeCycle()
@@ -39,7 +44,7 @@
     }
     const init = () => {
       clear()
-      let { startPoint, endPoint, opacity, type, autoCenter } = props
+      let { startPoint, endPoint, opacity, type, autoCenter, visible } = props
       const url = getUrl()
       if (!url) return
       if (!startPoint) {
@@ -53,7 +58,8 @@
         url: (url as Ref<HTMLCanvasElement>).value || url
       }
       groundOverlay = new BMapGL.GroundOverlay(boundsObj, options)
-      map.addOverlay(groundOverlay)
+      visible && map.addOverlay(groundOverlay)
+
       // 自动设置中心点
       if (autoCenter) {
         nextTick(() => {
@@ -72,8 +78,22 @@
     ready(map, groundOverlay)
 
     watch(() => props, callWhenDifferentValue(init), { deep: true })
+
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addOverlay' : 'removeOverlay'](groundOverlay)
+      }
+    )
+
     return clear
   })
+
+  provide('getOverlayInstance', () => groundOverlay)
+  defineOptions({
+    name: 'BGroundOverlay'
+  })
+
   function getBounds(start: Point, end: Point) {
     return new BMapGL.Bounds(new BMapGL.Point(start.lng, end.lat), new BMapGL.Point(end.lng, start.lat))
   }
@@ -90,7 +110,4 @@
     }
     return url
   }
-  defineOptions({
-    name: 'BGroundOverlay'
-  })
 </script>
