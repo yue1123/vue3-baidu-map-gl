@@ -23,7 +23,7 @@
   const path = shallowRef<Point[]>([])
   const center = ref<BMapGL.Point>()
   const showRegion = ref<MapMaskShowRegion>('outside')
-  function handleInitd({ map }: { map: BMapGL.Map }) {
+  function handleInitd() {
     center.value = new BMapGL.Point(116.31951444701689, 40.03514188328609)
     path.value = [
       new BMapGL.Point(116.31951444701689, 40.03514188328609),

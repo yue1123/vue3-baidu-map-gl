@@ -39,6 +39,10 @@
      * 底图上的Poi是否参与掩膜
      */
     isPoiMask?: boolean
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousedown?: Callback
@@ -52,7 +56,8 @@
     showRegion: 'inside',
     isBuildingMask: false,
     isMapMask: false,
-    isPoiMask: false
+    isPoiMask: false,
+    visible: true
   })
   let mapMask: BMapGL.MapMask
   const vueEmits = defineEmits([
@@ -67,10 +72,13 @@
     'rightclick'
   ])
   useBaseMapEffect((map) => {
-    const clear = () => map.removeOverlay(mapMask)
+    const clear = () => {
+      mapMask && map.removeOverlay(mapMask)
+    }
     const init = () => {
+      clear()
       if (!props.path || !(props.path && props.path.length)) return __DEV__ && warn('MapMask props path is required')
-      const { path, showRegion, isBuildingMask, isMapMask, isPoiMask } = props
+      const { path, showRegion, isBuildingMask, isMapMask, isPoiMask, visible } = props
       const pathPoints = pathPointsToMapPoints(path as Point[])
       mapMask = new BMapGL.MapMask(pathPoints, {
         showRegion,
@@ -78,17 +86,12 @@
         isMapMask,
         isPoiMask
       })
-      map.addOverlay(mapMask)
+      visible && map.addOverlay(mapMask)
 
       bindEvents(props, vueEmits, mapMask)
       ready(map, mapMask)
     }
-    init()
-    // 监听值变化
-    watchPostEffect(() => {
-      if (mapMask) clear()
-      init()
-    })
+    watchPostEffect(init)
     return clear
   })
   provide('getOverlayInstance', () => mapMask)
