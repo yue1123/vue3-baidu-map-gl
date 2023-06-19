@@ -1,6 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
+  import { watch } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
   import { ControlAnchor } from '../../../utils'
@@ -16,21 +17,33 @@
       x: number
       y: number
     }
+    /**
+     * 是否可见
+     */
+    visible?: boolean
   }
   const props = withDefaults(defineProps<ZoomProps>(), {
     anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
-    offset: () => ({ x: 83, y: 18 })
+    offset: () => ({ x: 83, y: 18 }),
+    visible: true
   })
   const { ready } = useLifeCycle()
   let zoomControl: BMapGL.ZoomControl
   defineEmits(['initd', 'unload'])
   useBaseMapEffect((map) => {
+    const { visible, offset, anchor } = props
     zoomControl = new BMapGL.ZoomControl({
-      offset: new BMapGL.Size(props.offset.x, props.offset.y),
-      anchor: window[props.anchor]
+      offset: new BMapGL.Size(offset.x, offset.y),
+      anchor: window[anchor]
     })
-    map.addControl(zoomControl)
+    visible && map.addControl(zoomControl)
     ready(map, zoomControl)
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addControl' : 'removeControl'](zoomControl)
+      }
+    )
     return () => map.removeControl(zoomControl)
   })
   defineOptions({
