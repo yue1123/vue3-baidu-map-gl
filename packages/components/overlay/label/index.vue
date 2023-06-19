@@ -10,6 +10,7 @@
   export type LabelStyle = {
     [k in keyof CSSStyleDeclaration]?: any
   }
+
   export type LabelOffset = {
     /**
      * 水平偏移量
@@ -33,7 +34,7 @@
     /**
      * 显示层级
      */
-    // zIndex: number
+    zIndex?: number
     style?: LabelStyle
     /**
      * @default true
@@ -41,6 +42,10 @@
      * 是否在调用map.clearOverlays清除此覆盖物，默认为true
      */
     enableMassClear?: boolean
+    /**
+     * 是否可见
+     */
+    visible?: boolean
     onClick?: Callback
     onDblclick?: Callback
     onMousedown?: Callback
@@ -55,7 +60,8 @@
       x: 0,
       y: 0
     }),
-    enableMassClear: true
+    enableMassClear: true,
+    visible: true
   })
   const vueEmits = defineEmits([
     'initd',
@@ -78,7 +84,7 @@
     const init = () => {
       if (!props.content) return __DEV__ && warn('Label content props is required')
       if (!props.position) return __DEV__ && warn('Label position props is required')
-      const { content, position, offset, enableMassClear, style } = props
+      const { content, position, offset, enableMassClear, style, visible, zIndex } = props
       const options: BMapGL.LabelOptions = {
         position: new BMapGL.Point(position.lng, position.lat),
         offset: new BMapGL.Size(offset.x, offset.y),
@@ -89,8 +95,8 @@
       if (style) {
         label.setStyle(style)
       }
-      map.addOverlay(label)
-      // isDef(zIndex) && setZIndex(zIndex)
+      visible && map.addOverlay(label)
+      isDef(zIndex) && setZIndex(zIndex)
       bindEvents(props, vueEmits, label)
     }
 
@@ -101,17 +107,22 @@
     watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
     watch(() => props.style, callWhenDifferentValue(setStyle), { deep: true })
     watch(() => props.content, setContent)
+    watch(() => props.zIndex, setZIndex)
     watch(() => props.enableMassClear, setMassClear)
-
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addOverlay' : 'removeOverlay'](label)
+      }
+    )
     return cal
   })
 
   provide('getOverlayInstance', () => label)
 
-  // function setZIndex(zIndex: number) {
-  //   console.log('shezhi ')
-  //   label.setZIndex(zIndex)
-  // }
+  function setZIndex(zIndex?: number) {
+    isDef(zIndex) && label.setZIndex(zIndex)
+  }
   function setPosition(position: Point) {
     label.setPosition(new BMapGL.Point(position.lng, position.lat))
   }

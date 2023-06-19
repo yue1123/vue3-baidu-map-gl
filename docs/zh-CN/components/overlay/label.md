@@ -14,13 +14,15 @@ overlay/label
 
 ## 动态组件 Props
 
-| 属性            | 说明                                      | 类型                           | 默认值     |
-| --------------- | ----------------------------------------- | ------------------------------ | ---------- |
-| content         | 设置文本标注的内容                        | `string `                      | `required` |
-| offset          | 文本标注的像素偏移                        | `{x: number, y: number } `     | -          |
-| enableMassClear | 是否在调用 map.clearOverlays 清除此覆盖物 | `boolean `                     | `true `    |
-| style           | 设置文本标注的样式                        | `css style object `            | -          |
-| position        | 文本标注的坐标                            | `{ lng: number, lat: number} ` | `required` |
+| 属性            | 说明                                      | 类型                                                                                          | 默认值     | 版本                               |
+| --------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------- | ---------- | ---------------------------------- |
+| content         | 设置文本标注的内容                        | `string `                                                                                     | `required` | -                                  |
+| offset          | 文本标注的像素偏移                        | `{x: number, y: number } `                                                                    | -          | -                                  |
+| enableMassClear | 是否在调用 map.clearOverlays 清除此覆盖物 | `boolean `                                                                                    | `true `    | -                                  |
+| style           | 设置文本标注的样式                        | [`CSSStyleDeclaration`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration) | -          | -                                  |
+| position        | 文本标注的坐标                            | `{ lng: number, lat: number} `                                                                | `required` | -                                  |
+| zIndex          | 显示层级                                  | `number`                                                                                      | -          | <Badge type="tip" text="^2.1.4" /> |
+| visible         | 是否显示                                  | `boolean`                                                                                     | `true`     | <Badge type="tip" text="^2.1.4" /> |
 
 ::: tip 提示
 style 可以是任何符合规范的 css 样式，样式属性需使用驼峰命名法
