@@ -38,11 +38,9 @@ importers:
       vite: ^4.0.0
       vue: ^3.3.4
       vue-tsc: ^1.6.5
-      vue3-baidu-map-gl: ^2.2.0
     dependencies:
       mitt: 3.0.0
       vue: 3.3.4
-      vue3-baidu-map-gl: 'link:'
     devDependencies:
       '@babel/core': 7.19.6
       '@commitlint/cli': 16.3.0
