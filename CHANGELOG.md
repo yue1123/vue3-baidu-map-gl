@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.2.0...v2.2.1) (2023-06-21)
+
+
+### ✏️ Documentation | 文档
+
+* **chore:** remove deps ([4079571](https://github.com/yue1123/vue3-baidu-map-gl/commit/40795714a2bebd5bf4607adcada363c9c32c1ecd))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 1. 升级依赖版本无法打包 ([26fe1e0](https://github.com/yue1123/vue3-baidu-map-gl/commit/26fe1e0e9366c15d6906b613d305730de8644439))
+
 ## [2.2.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.1.3...v2.2.0) (2023-06-19)
 
 
