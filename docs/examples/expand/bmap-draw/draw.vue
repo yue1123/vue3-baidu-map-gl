@@ -25,7 +25,6 @@
 <script lang="ts" setup>
   import { ref } from 'vue'
   import { useDefaultMarkerIcons } from 'vue3-baidu-map-gl'
-
   let marker = ref({
     instance: null,
     isDrawing: false,

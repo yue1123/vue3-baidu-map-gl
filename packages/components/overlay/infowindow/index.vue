@@ -123,7 +123,6 @@
     watch(
       () => props.position,
       callWhenDifferentValue((res) => {
-        console.log(res)
         setPosition(res)
       }),
       { deep: true }

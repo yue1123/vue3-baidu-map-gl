@@ -1,5 +1,5 @@
 {
   "compilerOptions": {
-    "types": ["./volar.d.ts"]
+    "types": ["vue3-baidu-map-gl/volar"]
   }
 }
