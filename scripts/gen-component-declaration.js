@@ -45,7 +45,7 @@ async function generateComponentsType() {
       return `${name}: ${v}`
     })
   const code = `// Auto generated component declarations ↓
-/// <reference path="../types/index.d.ts" />
+/// <reference path="./types/index.d.ts" />
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ${lines.join('\n    ')}

@@ -9,7 +9,7 @@ const entryTsContent = fs.readFileSync(entryTsPath).toString()
 
 fs.writeFileSync(
   entryTsPath,
-  `/// <reference path="../types/index.d.ts" />
+  `import '../types/index.d.ts';
 ${entryTsContent}
 `
 )
