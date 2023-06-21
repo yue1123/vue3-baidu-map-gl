@@ -25,7 +25,7 @@
 <script lang="ts" setup>
   import { ref } from 'vue'
   import { useDefaultMarkerIcons } from 'vue3-baidu-map-gl'
-  import 'bmap-draw/es/style/DrawingManager.css'
+
   let marker = ref({
     instance: null,
     isDrawing: false,
@@ -72,7 +72,7 @@
     }
   })
   let clearFn = ref()
-  function handleInitd({ map }) {
+  function handleInitd({ map, BMapGL }) {
     import('bmap-draw').then(({ DrawScene, MarkerDraw, PolylineDraw, CircleDraw, PolygonDraw, RectDraw }) => {
       const scene = new DrawScene(map)
       clearFn.value = () => scene.clearData()

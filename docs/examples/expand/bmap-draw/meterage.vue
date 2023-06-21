@@ -16,7 +16,6 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import 'bmap-draw/es/style/DrawingManager.css'
   let distance = ref({
     instance: null,
     isMeasuring: true,
