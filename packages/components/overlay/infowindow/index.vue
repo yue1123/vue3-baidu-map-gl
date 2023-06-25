@@ -122,9 +122,7 @@
     // 监听值变化
     watch(
       () => props.position,
-      callWhenDifferentValue((res) => {
-        setPosition(res)
-      }),
+      callWhenDifferentValue((position) => setPosition(position)),
       { deep: true }
     )
     watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
@@ -202,9 +200,9 @@
     closeOnClick ? infoWindow.enableCloseOnClick() : infoWindow.disableCloseOnClick()
   }
   function setPosition(position: Point) {
-    close()
-    infoWindow.setPosition(new BMapGL.Point(position.lng, position.lat))
     open()
+    infoWindow.setPosition(new BMapGL.Point(position.lng, position.lat))
+    if (!visible.value) close()
   }
   function setContent(content: string | HTMLElement): void {
     infoWindow.setContent(content)
