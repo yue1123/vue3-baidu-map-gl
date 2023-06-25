@@ -7,12 +7,16 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, onUpdated, nextTick, computed, provide } from 'vue'
+  import { ref, watch, onUpdated, nextTick, computed, provide, watchEffect } from 'vue'
   import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
   import useLifeCycle from '../../../hooks/useLifeCycle'
-  import { bindEvents, Callback, callWhenDifferentValue, type Point } from '../../../utils/index'
+  import { bindEvents, Callback, callWhenDifferentValue, type Point, warnOnce } from '../../../utils'
   export interface InfoWindowProps {
+    /**
+     * @deprecated
+     */
     modelValue?: boolean
+    show?: boolean
     title?: string
     position: Point
     width?: 0 | RangeOf2<220, 730>
@@ -38,7 +42,8 @@
     onClickclose?: Callback
   }
   const props = withDefaults(defineProps<InfoWindowProps>(), {
-    modelValue: false,
+    modelValue: undefined,
+    show: false,
     title: '',
     width: 0,
     height: 0,
@@ -51,32 +56,24 @@
     enableAutoPan: true,
     enableCloseOnClick: true
   })
-  const vueEmits = defineEmits([
-    'initd',
-    'unload',
-    'close',
-    'open',
-    'maximize',
-    'restore',
-    'clickclose',
-    'update:modelValue'
-  ])
+  const vueEmits = defineEmits(['initd', 'unload', 'close', 'open', 'maximize', 'restore', 'clickclose', 'update:show'])
 
   const visible = computed({
-    get() {
-      return props.modelValue
-    },
-    set(value) {
-      vueEmits('update:modelValue', value)
-    }
+    get: () => props.show,
+    set: (value) => vueEmits('update:show', value)
   })
   const infoWindowContainer = ref<HTMLElement>()
   const { ready } = useLifeCycle()
   let infoWindow: BMapGL.InfoWindow
   let _map: BMapGL.Map
+  watchEffect(() => {
+    if (typeof props.modelValue !== 'undefined' && __DEV__) {
+      warnOnce('BInfoWindow', '`v-model` is deprecated, please use `v-model:show` instead.')
+    }
+  })
   useBaseMapEffect((map: BMapGL.Map) => {
     _map = map
-    const cal = () => {
+    const clear = () => {
       infoWindow && map.removeOverlay(infoWindow)
     }
     const init = () => {
@@ -92,10 +89,10 @@
       }
       infoWindow = new BMapGL.InfoWindow(infoWindowContainer.value || '', options)
       infoWindow.addEventListener('close', () => {
-        if (props.modelValue) visible.value = false
+        if (props.show) visible.value = false
       })
       infoWindow.addEventListener('open', () => {
-        if (!props.modelValue) visible.value = true
+        if (!props.show) visible.value = true
       })
       map.addOverlay(infoWindow)
       redraw()
@@ -103,7 +100,7 @@
       bindEvents(props, vueEmits, infoWindow)
       ready(map, infoWindow)
 
-      if (props.modelValue) {
+      if (props.show) {
         // 多个 infoWindow, 显示最后一个实例, 其他实例同步显隐状态
         nextTick(() => {
           open()
@@ -133,13 +130,13 @@
     watch(() => props.enableAutoPan, setAutoPan)
     watch(() => props.enableCloseOnClick, setCloseOnClick)
     watch(
-      () => props.modelValue,
+      () => props.show,
       callWhenDifferentValue(() => {
-        props.modelValue ? open() : close()
+        props.show ? open() : close()
       })
     )
 
-    return cal
+    return clear
   })
   onUpdated(() => {
     if (infoWindow && infoWindow.isOpen()) {
