@@ -59,9 +59,9 @@ export function usePointConvertor() {
   const status = ref<UsePointConvertorStatus>()
   let convertor: BMapGL.Convertor
   const init = (points: Point[], from: CoordinatesFromType, to: CoordinatesToType) => {
-    if (!points) return error('missed required params: points')
-    if (!from) return error('missed required params: from')
-    if (!to) return error('missed required params: to')
+    if (!points) return error('usePointConvertor', 'missing required params: points')
+    if (!from) return error('usePointConvertor', 'missing required params: from')
+    if (!to) return error('usePointConvertor', 'missing required params: to')
     if (!points.length) return
     if (!convertor) {
       convertor = new BMapGL.Convertor()

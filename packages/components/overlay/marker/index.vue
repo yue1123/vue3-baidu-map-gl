@@ -134,7 +134,7 @@
     }
     const init = () => {
       if (!props.position) {
-        return __DEV__ && warn('Marker position is required')
+        return __DEV__ && warn('BMarker', 'position is required')
       }
 
       const {

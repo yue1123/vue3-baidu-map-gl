@@ -29,7 +29,7 @@
   let autoComplete: BMapGL.Autocomplete
   onMounted(() =>
     useBaseMapEffect((map: BMapGL.Map) => {
-      if (!autoCompleteInput.value) warn('autoComplete render error')
+      if (!autoCompleteInput.value) warn('BAutoComplete', 'render error')
       const { location, types } = props
       let _location: string | BMapGL.Point | BMapGL.Map = map
       if (typeof location === 'object' && (location as Point).lat && (location as Point).lng) {

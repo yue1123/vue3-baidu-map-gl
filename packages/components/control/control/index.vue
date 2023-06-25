@@ -40,7 +40,7 @@
     useBaseMapEffect((map: BMapGL.Map) => {
       if (!controlContainer.value) {
         if (__DEV__) {
-          warn('Custom Control render error')
+          warn('BControl', 'container el render error')
         }
         return
       }

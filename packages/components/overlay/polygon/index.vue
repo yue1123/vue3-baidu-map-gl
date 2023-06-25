@@ -130,7 +130,7 @@
       polygon && map.removeOverlay(polygon)
     }
     const init = () => {
-      if (!props.path) return __DEV__ && warn('Polygon props path is required')
+      if (!props.path) return __DEV__ && warn('BPolygon', 'path is required')
       const {
         path,
         strokeColor,
@@ -206,7 +206,7 @@
           const center = polygon.getBounds()?.getCenter()
           injectBaseMapSetCenterAndZoom(center)
         } catch (e) {
-          console.warn('set center error', e)
+          console.warn('BPolygon', 'auto set center error', e)
         }
       }
     })

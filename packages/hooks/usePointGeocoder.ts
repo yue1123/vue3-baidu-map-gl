@@ -42,7 +42,7 @@ export function usePointGeocoder<
   const isEmpty = ref<boolean>(true)
   let geocoder: BMapGL.Geocoder
   const init = (point: T extends PointGeocoderResult ? Point : Point[]) => {
-    if (!point) return error('missed required params: point')
+    if (!point) return error('usePointGeocoder', 'missing required params: point')
     if (!geocoder) {
       geocoder = new BMapGL.Geocoder()
     }

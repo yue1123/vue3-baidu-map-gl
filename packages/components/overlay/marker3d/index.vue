@@ -102,8 +102,8 @@
       map.removeOverlay(marker3d)
     }
     const init = () => {
-      if (!props.position) return __DEV__ && warn('Marker3d props position is required')
-      if (!props.height) return __DEV__ && warn('Marker3d props height is required')
+      if (!props.position) return __DEV__ && warn('Marker3d', 'position is required')
+      if (!props.height) return __DEV__ && warn('Marker3d', 'height is required')
       const { position, shape, fillColor, fillOpacity, size, icon, height, enableMassClear, visible } = props
       const options: BMapGL.Marker3DOptions = {
         size,

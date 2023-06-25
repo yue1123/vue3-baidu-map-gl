@@ -82,8 +82,8 @@
       label && map.removeOverlay(label)
     }
     const init = () => {
-      if (!props.content) return __DEV__ && warn('Label content props is required')
-      if (!props.position) return __DEV__ && warn('Label position props is required')
+      if (!props.content) return __DEV__ && warn('BLabel', 'content is required')
+      if (!props.position) return __DEV__ && warn('BLabel', 'position is required')
       const { content, position, offset, enableMassClear, style, visible, zIndex } = props
       const options: BMapGL.LabelOptions = {
         position: new BMapGL.Point(position.lng, position.lat),

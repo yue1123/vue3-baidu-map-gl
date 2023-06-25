@@ -59,7 +59,7 @@
   let districtLayer: BMapGL.DistrictLayer
   const vueEmits = defineEmits(['initd', 'unload', 'mouseover', 'mouseout', 'click'])
   useBaseMapEffect((map) => {
-    if (!props.name) return error('DistrictLayer props.name is required')
+    if (!props.name) return error('BDistrictLayer', 'DistrictLayer props.name is required')
     const { visible, name, kind, fillColor, fillOpacity, strokeColor, viewport } = props
     districtLayer = new BMapGL.DistrictLayer({
       name: `(${name})`,

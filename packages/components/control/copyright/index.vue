@@ -44,7 +44,7 @@
       const { anchor, offset, visible } = props
       if (!copyrightContainer.value) {
         if (__DEV__) {
-          warn('Custom Control render error')
+          warn('BCopyright', 'container el render error')
         }
         return
       }

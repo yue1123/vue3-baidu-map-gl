@@ -370,12 +370,12 @@
                 vueEmits('pluginReady', map)
               })
               .catch((err) => {
-                error('plugins load error: ' + err)
+                error('BMap', 'plugins load error: ' + err)
               })
           }
         }
       })
-      .catch(error)
+      .catch((e) => error('BMap', e.message))
   }
 
   // 个性化地图
@@ -534,7 +534,7 @@
   }
 
   onMounted(() => {
-    if (!ak) __DEV__ && warn('Map ak props is required')
+    if (!ak) __DEV__ && warn('BMap', 'ak is required')
     else init()
   })
   /**
@@ -556,7 +556,7 @@
     setDragging
   })
   provide('getMapInstance', () => map)
-  provide('parentUidGetter', uid)
+  provide('parentUid', uid)
   provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) => setCenterAndZoom(_center))
   provide('baseMapSetDragging', (enableDragging: boolean) => setDragging(enableDragging))
   provide('getBaseMapOptions', () => props)

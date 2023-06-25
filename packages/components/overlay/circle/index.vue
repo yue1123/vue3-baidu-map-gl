@@ -113,8 +113,8 @@
       map.removeOverlay(circle)
     }
     const init = () => {
-      if (!props.center) return __DEV__ && warn('BCircle center props is required')
-      else if (!props.radius) return __DEV__ && warn('BCircle radius props is required')
+      if (!props.center) return __DEV__ && warn('BCircle', 'center props is required')
+      else if (!props.radius) return __DEV__ && warn('BCircle', 'radius props is required')
       const {
         center,
         radius,

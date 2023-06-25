@@ -88,9 +88,9 @@
     }
     const init = () => {
       if (!props.path || !(props.path && props.path.length))
-        return __DEV__ && warn('BezierCurve path props is required or not empty array')
+        return __DEV__ && warn('BezierCurve', 'path props is required or not empty array')
       if (!props.controlPoints || !(props.controlPoints && props.controlPoints.length))
-        return __DEV__ && warn('BezierCurve controlPoints props is required or not empty array')
+        return __DEV__ && warn('BezierCurve', 'controlPoints props is required or not empty array')
       const { path, controlPoints, strokeColor, strokeWeight, strokeOpacity, strokeStyle, enableMassClear, visible } =
         props
       const pathPoints = pathPointsToMapPoints(path)
@@ -107,7 +107,10 @@
         })
       } catch (e: any) {
         if (__DEV__)
-          error(e.message || 'Init bezierCurve overlay error, make sure path and controlPoints data is correct!')
+          error(
+            'BezierCurve',
+            e.message || 'Init bezierCurve overlay error, make sure path and controlPoints data is correct!'
+          )
       }
 
       visible && map.addOverlay(bezierCurve)

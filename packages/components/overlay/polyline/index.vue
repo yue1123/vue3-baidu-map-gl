@@ -111,8 +111,7 @@
       polyline && map.removeOverlay(polyline)
     }
     const init = () => {
-      if (!props.path || !props.path.length)
-        return __DEV__ && warn('Polyline props path is required or not empty array')
+      if (!props.path || !props.path.length) return __DEV__ && warn('BPolyline', 'path is required and not empty array')
       const {
         path,
         strokeColor,

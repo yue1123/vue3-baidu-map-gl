@@ -19,8 +19,8 @@ export function useAddressGeocoder<T extends AddressGeocoderResult = AddressGeoc
   }
   const get = (address: T extends Point ? string : string[], city: string) => {
     init()
-    if (!address) return error('missed required params: address')
-    if (!city) return error('missed required  params: city')
+    if (!address) return error('useAddressGeocoder', 'missing required params: address')
+    if (!city) return error('useAddressGeocoder', 'missing required  params: city')
     const isBatch = isArray(address)
     isLoading.value = true
     ;(() => {
@@ -49,7 +49,7 @@ export function useAddressGeocoder<T extends AddressGeocoderResult = AddressGeoc
         cal && cal(point as Ref<T>)
       })
       .catch((err) => {
-        error(err)
+        error('useAddressGeocoder', err.message)
         isEmpty.value = true
         point.value = null
       })

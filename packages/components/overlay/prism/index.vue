@@ -94,7 +94,7 @@
       prism && map.removeOverlay(prism)
     }
     const init = () => {
-      if (!props.path || !(props.path && props.path.length)) return __DEV__ && warn('Prism props path is required')
+      if (!props.path || !(props.path && props.path.length)) return __DEV__ && warn('BPrism', 'path is required')
       const {
         path,
         altitude,
@@ -156,7 +156,7 @@
           const center = prism.getBounds()?.getCenter()
           injectBaseMapSetCenterAndZoom(center)
         } catch (e) {
-          console.warn('set center error', e)
+          warn('BPrism', 'auto set center error')
         }
       })
     }

@@ -77,7 +77,7 @@
     }
     const init = () => {
       clear()
-      if (!props.path || !(props.path && props.path.length)) return __DEV__ && warn('MapMask props path is required')
+      if (!props.path || !(props.path && props.path.length)) return __DEV__ && warn('BMapMask', 'path is required')
       const { path, showRegion, isBuildingMask, isMapMask, isPoiMask, visible } = props
       const pathPoints = pathPointsToMapPoints(path as Point[])
       mapMask = new BMapGL.MapMask(pathPoints, {
