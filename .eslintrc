@@ -33,6 +33,13 @@
       }
     },
     {
+      "files": ["*.md"],
+      "rules": {
+        "vue/comment-directive": 0,
+        "prettier/prettier": 0
+      }
+    },
+    {
       "files": "*",
       "globals": {
         "BMapGL": "readonly",

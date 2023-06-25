@@ -18,11 +18,11 @@
 
 如果您觉得还不错，点亮 🌟star🌟 是支持更新的最大动力 ✌🏻
 
-[Plauground](https://sfc.vuejs.org/#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)
+[Plauground](https://play.vuejs.org/#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)
 
-> **自 `2.0.0`起，所有组件名字增加 `B`前缀，避免与其他组件库冲突 [#24](https://github.com/yue1123/vue3-baidu-map-gl/issues/24)**
+> **自 `2.0.0` 起，所有组件名字增加 `B` 前缀，避免与其他组件库冲突 [#24](https://github.com/yue1123/vue3-baidu-map-gl/issues/24)**
 >
-> 目前只支持 vue3.x，vue2.x用户请移步[vue-baidu-map](https://github.com/Dafrok/vue-baidu-map)
+> 目前只支持 vue3.x，vue2.x用户请移步 [vue-baidu-map](https://github.com/Dafrok/vue-baidu-map)
 ## :sparkles: 特性
 
 - 🚀 自动加载百度地图 SDK，将百度地图繁琐的 Api 封装进组件，你只需关注组件本身
@@ -38,7 +38,7 @@
 推荐使用 pnpm 安装
 ```shell
 # with npm
-npm install vue3-baidu-map-gl@latest --save
+npm install vue3-baidu-map-gl@latest
 
 # or with yarn
 yarn add vue3-baidu-map-gl@latest
@@ -51,12 +51,9 @@ pnpm add vue3-baidu-map-gl@latest
 
 [中文](https://yue1123.github.io/vue3-baidu-map-gl/)
 
-## 参与贡献
+## 开发参与贡献
 
 一个人精力有限，欢迎大家参与贡献
-
-和代码请提 dev
-
 
 > **环境**
 > pnpm: ">=6.0.0"
@@ -71,7 +68,7 @@ cd ./vue3-baidu-map-gl
 pnpm install
 
 # 运行文档站点，用来测试组件，预览文档
-pnpm run docs:dev
+pnpm docs:dev
 ```
 ## 🌟 Star History
 
