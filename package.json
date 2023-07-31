@@ -29,7 +29,6 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "preinstall": "npx only-allow pnpm",
     "clean": "rimraf es dist",
     "dev": "rollup -c --environment NODE_ENV:production && rollup -c ./scripts/build-package.js -w",
     "build": "pnpm clean && vue-tsc && rollup -c --environment NODE_ENV:production && rollup -c ./scripts/build-package.js && rimraf *.tsbuildinfo && pnpm gen-volar-dts && pnpm merge-dts",
@@ -95,7 +94,7 @@
       ]
     }
   },
-  "packageManager": "pnpm",
+  "packageManager": "pnpm@7.0.0",
   "engines": {
     "pnpm": ">=6.0.0",
     "node": ">=12.0.0"
