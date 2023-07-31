@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.3](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.2.2...v2.2.3) (2023-07-31)
+
+
+### ✏️ Documentation | 文档
+
+* add logo  mouse over effect ([2eff668](https://github.com/yue1123/vue3-baidu-map-gl/commit/2eff668009933dc73388e32b74cbbdb60e71c464))
+
 ### [2.2.2](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.2.1...v2.2.2) (2023-06-25)
 
 
