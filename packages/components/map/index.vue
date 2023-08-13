@@ -364,15 +364,14 @@
         if (!initd.value) {
           initd.value = true
           nextTick(() => ready(map!, map))
-          if (plugins) {
-            initPlugins(plugins, pluginsSourceLink)
-              .then(() => {
-                vueEmits('pluginReady', map)
-              })
-              .catch((err) => {
-                error('BMap', 'plugins load error: ' + err)
-              })
-          }
+          if (!plugins) return
+          initPlugins(plugins, pluginsSourceLink)
+            .then(() => {
+              vueEmits('pluginReady', map)
+            })
+            .catch((err) => {
+              error('BMap', 'plugins error: ' + err)
+            })
         }
       })
       .catch((e) => error('BMap', e.message))
