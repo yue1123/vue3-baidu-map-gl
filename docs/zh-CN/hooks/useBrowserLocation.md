@@ -46,9 +46,9 @@ const { get, location, isLoading, isError, status } = useBrowserLocation(options
 | timeout            | 超时时间                                                                                                                                                 | `number`  | `10000`   |
 | maximumAge         | 允许返回指定事件内的缓存结果，单位为毫秒。如果为`0`，则每次请求都获取最新的定位结果。默认为`10`分钟                                                      | `number`  | `600,000` |
 
-### 引用
+### 返回值
 
-| 引用      | 描述                                                   | 类型                    |
+| 返回值      | 描述                                                   | 类型                    |
 | --------- | ------------------------------------------------------ | ----------------------- |
 | isLoading | 是否在获取中                                           | `boolean`               |
 | location  | 定位信息                                               | [`Location`](#location) |

@@ -45,9 +45,9 @@ const { setKeyFrames, start, cancel, stop, proceed, status } = useViewAnimation(
 | loop            | 循环次数，参数类型为数字时循环固定次数，参数为'INFINITE'无限循环 | `number \| 'INFINITE'` | `1`    |
 | disableDragging | 动画播放时禁止鼠标拖动                                           | `boolean`              | `true` |
 
-### 引用
+### 返回值
 
-| 引用          | 描述                                                                     | 类型                                                                  |
+| 返回值          | 描述                                                                     | 类型                                                                  |
 | ------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------- |
 | viewAnimation | 视角动画实例                                                             | `BMapGL.ViewAnimation`                                                |
 | setKeyFrames  | 设置动画关键帧函数，需要在`Map`组件`initd`事件触发后才可调用             | [`(path: ViewAnimationKeyFrames[]) => void`](#viewanimationkeyframes) |
@@ -96,7 +96,7 @@ type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
 
 ### 事件监听
 
-调用`useViewAnimation`后，即可通过`viewAnimation`引用来添加事件监听，无需等待`setKeyFrames`方法调用
+调用`useViewAnimation`后，即可通过`viewAnimation`返回值来添加事件监听，无需等待`setKeyFrames`方法调用
 
 | 事件                | 参数 | 描述                                                                          |
 | ------------------- | ---- | ----------------------------------------------------------------------------- |

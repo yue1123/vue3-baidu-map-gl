@@ -46,9 +46,9 @@ const { setPath, start, cancel, stop, proceed, status } = useTrackAnimation(map,
 | tilt        | 设置动画中的地图倾斜角度，默认 55 度                                     | `number`  | `55`    |
 | zoom        | 设置动画中的缩放级别，默认会根据轨迹情况调整到一个合适的级别             | `boolean` | `auto`  |
 
-### 引用
+### 返回值
 
-| 引用    | 描述                                                            | 类型                                        |
+| 返回值    | 描述                                                            | 类型                                        |
 | ------- | --------------------------------------------------------------- | ------------------------------------------- |
 | setPath | 设置路径动画路径，需要在`Map`组件`initd`事件触发后才可调用      | [`(path: PathPoint[]) => void`](#pathpoint) |
 | start   | 开始动画，`setPath` 设置路径后且 `status` 为 `INITIAL` 才可调用 | `() => void`                                |
@@ -110,7 +110,7 @@ export declare type UseTrackAnimationOptions = {
 declare type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
 /**
  * 轨迹动画
- * @param {any} map 地图组件实例引用
+ * @param {any} map 地图组件实例返回值
  * @param {TrackAnimationOptions} options 轨迹动画配置
  * @returns { setPath, start, stop}
  */

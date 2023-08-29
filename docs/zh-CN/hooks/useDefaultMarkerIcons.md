@@ -22,9 +22,9 @@ const icons = useDefaultMarkerIcons()
 
 无
 
-### 引用
+### 返回值
 
-| 引用  | 描述                                    | 类型                                      |
+| 返回值  | 描述                                    | 类型                                      |
 | ----- | --------------------------------------- | ----------------------------------------- |
 | icons | 所有内置的 `BMapGL.Icon` 实例对象键值对 | `Record<DefaultMarkerIcons, BMapGL.Icon>` |
 
