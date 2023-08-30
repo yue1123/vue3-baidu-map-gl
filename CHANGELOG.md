@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.4](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.2.3...v2.2.4) (2023-08-30)
+
+
+### ✨ Features | 新功能
+
+* opt plugins load and error tips ([3a098f2](https://github.com/yue1123/vue3-baidu-map-gl/commit/3a098f259e5c2cfd6082d51551afbe5a5dcc9119))
+
+
+### ✏️ Documentation | 文档
+
+* 修复文档中 hooks 返回值标题描述错误 ([b0b6af2](https://github.com/yue1123/vue3-baidu-map-gl/commit/b0b6af2a9433fff1d6ba841dced8acb264aa9df3))
+* logo 光晕颜色加深 ([aabba4b](https://github.com/yue1123/vue3-baidu-map-gl/commit/aabba4b0d6f1c3ac0947543254a930431c9f371c))
+
 ### [2.2.3](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.2.2...v2.2.3) (2023-07-31)
 
 
