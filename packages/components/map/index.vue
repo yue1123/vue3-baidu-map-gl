@@ -1,26 +1,29 @@
 <template>
-  <div
-    class="baidu-map-container"
-    ref="mapContainer"
-    :style="{ width: width, height: height, background: props.loadingBgColor }"
-    style="position: relative; overflow: hidden"
-  >
-    <slot name="loading">
+  <div :id="instanceId">
+    <template v-if="shouldRender">
       <div
-        :style="{ color: props.loadingTextColor }"
-        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)"
+        class="baidu-map-container"
+        ref="mapContainer"
+        :style="{ width: width, height: height, background: props.loadingBgColor }"
+        style="position: relative; overflow: hidden"
       >
-        {{ !initd ? 'map loading...' : '' }}
+        <slot name="loading">
+          <div
+            :style="{ color: props.loadingTextColor }"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)"
+          >
+            {{ !initd ? 'map loading...' : '' }}
+          </div>
+        </slot>
       </div>
-    </slot>
+      <slot></slot>
+    </template>
   </div>
-
-  <slot></slot>
 </template>
 
 <script setup lang="ts">
-  import { watch, onMounted, provide, nextTick, getCurrentInstance, ref, computed, onBeforeUnmount } from 'vue'
-  import useLifeCycle from '../../hooks/useLifeCycle'
+  import { watch, onMounted, provide, getCurrentInstance, ref, computed, onUnmounted } from 'vue'
+  import usePubSub from '../../hooks/usePubSub'
   import getScriptAsync from '../../utils/getScriptAsync'
   import { initPlugins, PluginsSourceLink, UserPlugins } from '../../utils/pluginLoader'
   import {
@@ -29,10 +32,12 @@
     error,
     isString,
     callWhenDifferentValue,
-    isClient,
     warn,
     type MapType,
-    type Point
+    type Point,
+    nanoid,
+    getInitEventKey,
+    isClient
   } from '../../utils'
   export interface MapDisplayOptions {
     /**
@@ -237,13 +242,6 @@
     onTouchend?: Callback
     onLongpress?: Callback
   }
-  const mapContainer = ref<HTMLDivElement | null>()
-  let map: BMapGL.Map | null = null
-  // 是否初始化
-  let initd = ref<boolean>(false)
-  // 地图初始化的发布
-  const { ready } = useLifeCycle()
-  const { uid, proxy } = getCurrentInstance()!
   const props = withDefaults(defineProps<MapProps>(), {
     width: '100%',
     height: '550px',
@@ -271,8 +269,18 @@
     enablePinchToZoom: true,
     enableAutoResize: true
   })
+
+  const mapContainer = ref<HTMLDivElement | null>()
+  let map: BMapGL.Map | null = null
+  // 是否初始化
+  let initd = ref<boolean>(false)
+  const instance = getCurrentInstance()
+  const instanceId = nanoid(8)
+  // 地图初始化的发布
+  const { emit } = usePubSub()
   const width = computed(() => (isString(props.width) ? props.width : `${props.width}px`))
   const height = computed(() => (isString(props.height) ? props.height : `${props.height}px`))
+  const shouldRender = isClient && !!instance
 
   const vueEmits = defineEmits([
     'initd',
@@ -312,24 +320,29 @@
     'touchend',
     'longpress'
   ])
-  const ak = props.ak || proxy!.$baiduMapAk
-  const plugins =
-    props.plugins && proxy!.$baiduMapPlugins
-      ? Object.assign(proxy!.$baiduMapPlugins, props.plugins)
-      : props.plugins || proxy!.$baiduMapPlugins
-
-  const pluginsSourceLink =
-    props.pluginsSourceLink && proxy!.$baiduMapPluginsSourceLink
-      ? Object.assign(proxy!.$baiduMapPluginsSourceLink, props.pluginsSourceLink)
-      : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
-  const scriptKey = `_initBMap_${ak}`
   // 初始化地图
   function init() {
-    if (!isClient) return
+    if (!shouldRender) return
+    const { proxy } = instance
+    const ak = props.ak || (proxy && proxy.$baiduMapAk)
+
+    if (!ak) __DEV__ && warn('BMap', 'ak is required')
+
+    const plugins =
+      props.plugins && proxy!.$baiduMapPlugins
+        ? Object.assign(proxy!.$baiduMapPlugins, props.plugins)
+        : props.plugins || proxy!.$baiduMapPlugins
+
+    const pluginsSourceLink =
+      props.pluginsSourceLink && proxy!.$baiduMapPluginsSourceLink
+        ? Object.assign(proxy!.$baiduMapPluginsSourceLink, props.pluginsSourceLink)
+        : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
+    const scriptKey = `_initBMap_${ak}`
     getScriptAsync({
       src: `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=${scriptKey}`,
       addCalToWindow: true,
-      key: scriptKey
+      key: scriptKey,
+      exportGetter: () => window.BMapGL
     })
       .then(() => {
         const {
@@ -361,10 +374,7 @@
         initCustomStyle()
         startWatchProps()
         bindEvents(props, vueEmits, map)
-        if (!initd.value) {
-          initd.value = true
-          nextTick(() => ready(map!, map))
-          if (!plugins) return
+        if (plugins) {
           initPlugins(plugins, pluginsSourceLink)
             .then(() => {
               vueEmits('pluginReady', map)
@@ -373,6 +383,14 @@
               error('BMap', 'plugins error: ' + err)
             })
         }
+        const event = {
+          map,
+          instance,
+          BMapGL: window.BMapGL
+        }
+        emit(getInitEventKey(instanceId), event)
+        vueEmits('initd', event)
+        initd.value = true
       })
       .catch((e) => error('BMap', e.message))
   }
@@ -532,17 +550,20 @@
     enableAutoResize ? map!.enableAutoResize() : map!.disableAutoResize()
   }
 
-  onMounted(() => {
-    if (!ak) __DEV__ && warn('BMap', 'ak is required')
-    else init()
-  })
+  onMounted(init)
   /**
    * 销毁地图，当使用 WebGL 渲染地图时，如果确认不再使用该地图实例，则需要
    * 调用本方法销毁 WebGL 上下文，否则频繁创建新地图实例会导致浏览器报：
    * too many WebGL context 的警告。
    */
-  onBeforeUnmount(() => {
-    map?.destroy()
+  onUnmounted(() => {
+    if (map) {
+      try {
+        map.destroy()
+      } catch (e: any) {
+        error('BMapGL SDK', e.message)
+      }
+    }
   })
   defineExpose({
     // 父组件获取map实例方法
@@ -555,7 +576,7 @@
     setDragging
   })
   provide('getMapInstance', () => map)
-  provide('parentUid', uid)
+  provide('parentComponentId', instanceId)
   provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) => setCenterAndZoom(_center))
   provide('baseMapSetDragging', (enableDragging: boolean) => setDragging(enableDragging))
   provide('getBaseMapOptions', () => props)

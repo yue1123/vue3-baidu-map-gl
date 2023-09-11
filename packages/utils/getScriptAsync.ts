@@ -1,16 +1,20 @@
+import { noop } from './helper'
+
 export interface Options {
   key: string
   src: string
   addCalToWindow: boolean
+  exportGetter?: () => any | undefined
 }
 
 export const BMapScriptLoaderWrapper: Record<string, Promise<any>> = {}
-function getScriptAsync({ key, src, addCalToWindow }: Options): Promise<any> {
+function getScriptAsync({ key, src, addCalToWindow, exportGetter = noop }: Options): Promise<any> {
+  const exported: any = exportGetter()
   if (!BMapScriptLoaderWrapper[key]) {
     BMapScriptLoaderWrapper[key] = new Promise<void>((resolve, reject) => {
       const script: HTMLScriptElement = document.createElement('script')
       const cal = () => {
-        resolve()
+        resolve(exportGetter())
         window.document.body.removeChild(script)
       }
       if (addCalToWindow) {
@@ -29,6 +33,8 @@ function getScriptAsync({ key, src, addCalToWindow }: Options): Promise<any> {
       script.onerror = reject
       document.body.appendChild(script)
     })
+  } else if (exported !== undefined) {
+    return Promise.resolve(exported)
   }
   return BMapScriptLoaderWrapper[key]
 }

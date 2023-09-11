@@ -1,8 +1,7 @@
 <template></template>
 
 <script setup lang="ts">
-  import useLifeCycle from '../../../hooks/useLifeCycle'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { type Callback, type DistrictType, bindEvents, error } from '../../../utils'
   import { watch } from 'vue'
   export interface DistrictLayerProps {
@@ -47,7 +46,6 @@
     onMouseover?: Callback
     onMouseout?: Callback
   }
-  const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<DistrictLayerProps>(), {
     kind: 0,
     visible: true,
@@ -58,7 +56,7 @@
   })
   let districtLayer: BMapGL.DistrictLayer
   const vueEmits = defineEmits(['initd', 'unload', 'mouseover', 'mouseout', 'click'])
-  useBaseMapEffect((map) => {
+  const { ready } = useParentComponentEffect((map) => {
     if (!props.name) return error('BDistrictLayer', 'DistrictLayer props.name is required')
     const { visible, name, kind, fillColor, fillOpacity, strokeColor, viewport } = props
     districtLayer = new BMapGL.DistrictLayer({

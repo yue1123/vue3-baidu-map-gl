@@ -2,8 +2,7 @@
 
 <script setup lang="ts">
   import { watch } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { type ControlAnchor } from '../../../utils'
   export interface PanoramaControlProps {
     /**
@@ -22,7 +21,6 @@
      */
     visible?: boolean
   }
-  const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<PanoramaControlProps>(), {
     anchor: 'BMAP_ANCHOR_TOP_RIGHT',
     offset: () => ({ x: 10, y: 10 }),
@@ -30,7 +28,7 @@
   })
   let panoramaControl: BMapGL.PanoramaControl
   defineEmits(['initd', 'unload'])
-  useBaseMapEffect((map) => {
+  const { ready } = useParentComponentEffect((map) => {
     const { visible, offset, anchor } = props
     panoramaControl = new BMapGL.PanoramaControl()
     panoramaControl.setOffset(new BMapGL.Size(offset.x, offset.y))

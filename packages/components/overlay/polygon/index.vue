@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
   import { inject, watch, nextTick, provide } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import {
     bindEvents,
     Callback,
@@ -119,18 +118,18 @@
     'remove',
     'lineupdate'
   ])
-  const { ready } = useLifeCycle()
   const injectBaseMapSetCenterAndZoom = inject('baseMapSetCenterAndZoom') as (center: {
     lng: number
     lat: number
   }) => void
   let polygon: BMapGL.Polygon
-  useBaseMapEffect((map: BMapGL.Map) => {
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const cal = () => {
       polygon && map.removeOverlay(polygon)
     }
     const init = () => {
       if (!props.path) return __DEV__ && warn('BPolygon', 'path is required')
+      if (!props.path.length) return
       const {
         path,
         strokeColor,
@@ -163,9 +162,9 @@
         clip
       })
       visible && map.addOverlay(polygon)
+      visible && syncMapCenter()
       bindEvents(props, vueEmits, polygon)
       ready(map, polygon)
-      syncMapCenter()
       // 监听值变化, 初始为空时不会初始化, 不为空值时初始化
       watch(() => props.strokeColor, setStrokeColor)
       watch(() => props.strokeOpacity, setStrokeOpacity)
@@ -179,6 +178,7 @@
         () => props.visible,
         (n) => {
           map[n ? 'addOverlay' : 'removeOverlay'](polygon)
+          n && syncMapCenter()
         }
       )
     }
@@ -203,8 +203,11 @@
       if (props.autoCenter) {
         // 获取中心点
         try {
-          const center = polygon.getBounds()?.getCenter()
-          injectBaseMapSetCenterAndZoom(center)
+          const bounds = polygon.getBounds()
+          if (bounds) {
+            const center = bounds.getCenter()
+            center && injectBaseMapSetCenterAndZoom(center)
+          }
         } catch (e) {
           console.warn('BPolygon', 'auto set center error', e)
         }

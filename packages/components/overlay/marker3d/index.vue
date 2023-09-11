@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
   import { provide, watch } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { bindEvents, Callback, callWhenDifferentValue, warn, type Point } from '../../../utils'
 
   export type Marker3dCustomIcon = {
@@ -94,10 +93,9 @@
     'remove',
     'rightclick'
   ])
-  const { ready } = useLifeCycle()
   let marker3d: BMapGL.Marker3D
 
-  useBaseMapEffect((map: BMapGL.Map) => {
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const cal = () => {
       map.removeOverlay(marker3d)
     }

@@ -2,8 +2,7 @@
 
 <script setup lang="ts">
   import { watch } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { ControlAnchor } from '../../../utils'
   export interface CityListProps {
     /**
@@ -27,7 +26,6 @@
     visible?: boolean
   }
 
-  const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<CityListProps>(), {
     anchor: 'BMAP_ANCHOR_TOP_LEFT',
     offset: () => ({ x: 18, y: 18 }),
@@ -36,7 +34,7 @@
   })
   let cityListControl: BMapGL.CityListControl
   defineEmits(['initd', 'unload'])
-  useBaseMapEffect((map) => {
+  const { ready } = useParentComponentEffect((map) => {
     const { visible, expand, offset, anchor } = props
     cityListControl = new BMapGL.CityListControl({
       expand: expand,

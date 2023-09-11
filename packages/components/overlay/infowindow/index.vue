@@ -8,8 +8,7 @@
 
 <script setup lang="ts">
   import { ref, watch, onUpdated, nextTick, computed, provide, watchEffect } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { bindEvents, Callback, callWhenDifferentValue, type Point, warnOnce } from '../../../utils'
   export interface InfoWindowProps {
     /**
@@ -63,7 +62,6 @@
     set: (value) => vueEmits('update:show', value)
   })
   const infoWindowContainer = ref<HTMLElement>()
-  const { ready } = useLifeCycle()
   let infoWindow: BMapGL.InfoWindow
   let _map: BMapGL.Map
   watchEffect(() => {
@@ -71,7 +69,7 @@
       warnOnce('BInfoWindow', '`v-model` is deprecated, please use `v-model:show` instead.')
     }
   })
-  useBaseMapEffect((map: BMapGL.Map) => {
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     _map = map
     const clear = () => {
       infoWindow && map.removeOverlay(infoWindow)

@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
   import { nextTick, provide, Ref, watch } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { bindEvents, Callback, error, callWhenDifferentValue, type Point, warn } from '../../../utils'
   export type GroundOverlayUrl =
     | string
@@ -36,9 +35,8 @@
     visible: true
   })
   const vueEmits = defineEmits(['initd', 'unload', 'click', 'dblclick', 'mousemove', 'mouseover', 'mouseout'])
-  const { ready } = useLifeCycle()
   let groundOverlay: BMapGL.GroundOverlay
-  useBaseMapEffect((map) => {
+  const { ready } = useParentComponentEffect((map) => {
     const clear = () => {
       groundOverlay && map.removeOverlay(groundOverlay)
     }
