@@ -5,13 +5,26 @@ lang: zh-CN
 
 # 配置
 
-本章节将为你讲述如何配置 ak 与插件以及更换资源链接，并实现一个自定义插件
+本章节将为你讲述如何配置 ak、apiUrl 与插件以及更换资源链接，并实现一个自定义插件
+
+## 配置方式
 
 ::: tip
-`ak` 、`plugins`和`pluginsSourceLink`都支持两种来源（全局注册配置和组件 `props` 提供），当同时指定的时候，会优先就近原则，从组件 `props` 中获取。如果全局注册配置和组件 `props` 都提供了，则会尝试合并两个配置
+如果你是**全局注册**使用方式，那么`ak`、`apiUrl`、`plugins` 和 `pluginsSourceLink` 都支持两种来源（全局注册配置和组件 `props` 提供），当同时指定的时候，会优先就近原则，从组件 `props` 中获取。如果全局注册配置和组件 `props` 都提供了，则会尝试合并两个配置。
+
+如果你是**按需加载**使用方式，则只支持组件 `props` 方式
 :::
 
-## 通过全局注册配置 ak 与 插件
+### 1. 通过全局注册配置 ak 与 插件
+
+全局注册 Options
+
+| 属性              | 说明                                             | 类型                                                                    | 可选值 | 默认值 | 版本                               |
+| ----------------- | ------------------------------------------------ | ----------------------------------------------------------------------- | ------ | ------ | ---------------------------------- |
+| ak                | 百度地图 [ak](../guide/quick-start#申请-ak-密钥) | `string`                                                                | -      | -      | -                                  |
+| apiUrl            | 自建地图 api 资源地址（一般用于离线地图）        | `string`                                                                | -      | -      | <Badge type="tip" text="^2.3.0" /> |
+| plugins           | 需要注册的插件                                   | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvThree']`                     | -      | -      | -                                  |
+| pluginsSourceLink | 自定义插件资源地址                               | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvThree', string>` | -      | -      | -                                  |
 
 ```ts{7,8}
 import { createApp } from 'vue'
@@ -26,11 +39,11 @@ app.use(baiduMap, {
 app.mount('#app')
 ```
 
-## 组件 `Map` 传入 `props` 配置
+### 组件 `BMap` 传入 [`props`](/zh-CN/components/map#%E9%9D%99%E6%80%81%E7%BB%84%E4%BB%B6-props) 配置
 
 <!-- prettier-ignore -->
 ```html{2,3}
-<Map
+<BMap
   ak='百度地图ak'
   :plugins="['TrackAnimation']"
 />
@@ -55,7 +68,7 @@ app.use(baiduMap, {
 
 <!-- prettier-ignore -->
 ```html{2-5}
-<Map
+<BMap
   :plugins=['TrackAnimation']
   :pluginsSourceLink="{
     TrackAnimation: '自建或其他地址的资源链接'
@@ -92,5 +105,5 @@ app.use(baiduMap, {
 
 <!-- prettier-ignore -->
 ```html
-<Map :plugins="[customPlugin]" />
+<BMap :plugins="[customPlugin]" />
 ```

@@ -124,16 +124,17 @@ map/theme2
 
 ## 静态组件 props
 
-| 属性              | 说明                                                     | 类型                                                                    | 可选值 | 默认值                 | 版本                               |
-| ----------------- | -------------------------------------------------------- | ----------------------------------------------------------------------- | ------ | ---------------------- | ---------------------------------- |
-| ak                | 百度地图 ak [申请 ak](../guide/quick-start#申请-ak-密钥) | `string`                                                                | -      | -                      | -                                  |
-| minZoom           | 地图允许展示的最小级别                                   | `number`                                                                | `0-21` | `0`                    | -                                  |
-| maxZoom           | 地图允许展示的最大级别                                   | `number`                                                                | `0-21` | `21`                   | -                                  |
-| backgroundColor   | 地图背景颜色, rgba 数组                                  | ` number[]`                                                             | -      | `[245, 245, 245, 100]` | <Badge type="tip" text="^2.1.0" /> |
-| showControls      | 是否显示室内图                                           | `boolean`                                                               | -      | `false`                | -                                  |
-| restrictCenter    | 是否限制中心                                             | `boolean`                                                               | -      | `true`                 | <Badge type="tip" text="^1.1.3" /> |
-| plugins           | 需要注册的插件                                           | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvThree']`                     | -      | -                      | -                                  |
-| pluginsSourceLink | 自定义插件资源地址                                       | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvThree', string>` | -      | -                      | -                                  |
+| 属性              | 说明                                             | 类型                                                                    | 可选值 | 默认值                 | 版本                               |
+| ----------------- | ------------------------------------------------ | ----------------------------------------------------------------------- | ------ | ---------------------- | ---------------------------------- |
+| ak                | 百度地图 [ak](../guide/quick-start#申请-ak-密钥) | `string`                                                                | -      | -                      | -                                  |
+| apiUrl            | 自建地图 api 资源地址（一般用于离线地图）        | `string`                                                                | -      | -                      | <Badge type="tip" text="^2.3.0" /> |
+| minZoom           | 地图允许展示的最小级别                           | `number`                                                                | `0-21` | `0`                    | -                                  |
+| maxZoom           | 地图允许展示的最大级别                           | `number`                                                                | `0-21` | `21`                   | -                                  |
+| backgroundColor   | 地图背景颜色, rgba 数组                          | ` number[]`                                                             | -      | `[245, 245, 245, 100]` | <Badge type="tip" text="^2.1.0" /> |
+| showControls      | 是否显示室内图                                   | `boolean`                                                               | -      | `false`                | -                                  |
+| restrictCenter    | 是否限制中心                                     | `boolean`                                                               | -      | `true`                 | <Badge type="tip" text="^1.1.3" /> |
+| plugins           | 需要注册的插件                                   | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvThree']`                     | -      | -                      | -                                  |
+| pluginsSourceLink | 自定义插件资源地址                               | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvThree', string>` | -      | -                      | -                                  |
 
 ## 动态组件 Props
 
