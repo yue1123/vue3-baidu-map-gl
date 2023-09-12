@@ -2,8 +2,7 @@
 
 <script setup lang="ts">
   import { watch } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { ControlAnchor } from '../../../utils'
   export interface ZoomProps {
     /**
@@ -27,10 +26,9 @@
     offset: () => ({ x: 83, y: 18 }),
     visible: true
   })
-  const { ready } = useLifeCycle()
   let zoomControl: BMapGL.ZoomControl
   defineEmits(['initd', 'unload'])
-  useBaseMapEffect((map) => {
+  const { ready } = useParentComponentEffect((map) => {
     const { visible, offset, anchor } = props
     zoomControl = new BMapGL.ZoomControl({
       offset: new BMapGL.Size(offset.x, offset.y),

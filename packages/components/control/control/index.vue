@@ -7,9 +7,8 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted, watch } from 'vue'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
+  import { ref, watch } from 'vue'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { ControlAnchor, warn } from '../../../utils'
   export interface ControlOptions {
     /**
@@ -29,39 +28,36 @@
     visible?: boolean
   }
   const controlContainer = ref<HTMLDivElement>()
-  const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<ControlOptions>(), {
     anchor: 'BMAP_ANCHOR_TOP_LEFT',
     offset: () => ({ x: 83, y: 18 }),
     visible: true
   })
-  defineEmits(['initd', 'unload'])
-  onMounted(() => {
-    useBaseMapEffect((map: BMapGL.Map) => {
-      if (!controlContainer.value) {
-        if (__DEV__) {
-          warn('BControl', 'container el render error')
-        }
-        return
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
+    if (!controlContainer.value) {
+      if (__DEV__) {
+        warn('BControl', 'container el render error')
       }
-      const { offset, anchor, visible } = props
-      const customControl = new BMapGL.Control()
-      customControl.defaultAnchor = window[anchor]
-      customControl.defaultOffset = new BMapGL.Size(offset.x, offset.y)
-      customControl.initialize = (_map: BMapGL.Map) => {
-        return _map.getContainer().appendChild(controlContainer.value as Node) as HTMLElement
+      return
+    }
+    const { offset, anchor, visible } = props
+    const customControl = new BMapGL.Control()
+    customControl.defaultAnchor = window[anchor]
+    customControl.defaultOffset = new BMapGL.Size(offset.x, offset.y)
+    customControl.initialize = (_map: BMapGL.Map) => {
+      return _map.getContainer().appendChild(controlContainer.value as Node) as HTMLElement
+    }
+    visible && map.addControl(customControl)
+    ready(map, customControl)
+    watch(
+      () => props.visible,
+      (n) => {
+        map[n ? 'addControl' : 'removeControl'](customControl)
       }
-      visible && map.addControl(customControl)
-      ready(map, customControl)
-      watch(
-        () => props.visible,
-        (n) => {
-          map[n ? 'addControl' : 'removeControl'](customControl)
-        }
-      )
-      return () => map.removeControl(customControl)
-    })
+    )
+    return () => map.removeControl(customControl)
   })
+  defineEmits(['initd', 'unload'])
   defineOptions({
     name: 'BControl',
     inheritAttrs: false

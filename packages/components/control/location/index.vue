@@ -2,8 +2,7 @@
 
 <script setup lang="ts">
   import { watch } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { bindEvents, Callback, ControlAnchor } from '../../../utils'
   export interface LocationProps {
     /**
@@ -24,7 +23,6 @@
     onLocationError?: Callback
     onLocationSuccess?: Callback
   }
-  const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<LocationProps>(), {
     anchor: 'BMAP_ANCHOR_BOTTOM_RIGHT',
     offset: () => ({ x: 18, y: 18 }),
@@ -32,7 +30,7 @@
   })
   let locationControl: BMapGL.LocationControl
   const vueEmits = defineEmits(['initd', 'unload', 'locationSuccess', 'locationError'])
-  useBaseMapEffect((map) => {
+  const { ready } = useParentComponentEffect((map) => {
     const { visible, offset, anchor } = props
     locationControl = new BMapGL.LocationControl({
       offset: new BMapGL.Size(offset.x, offset.y),

@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
   import { provide, watch } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { bindEvents, Callback, isDef, callWhenDifferentValue, type Point, warn } from '../../../utils/index'
   export type LabelStyle = {
     [k in keyof CSSStyleDeclaration]?: any
@@ -75,9 +74,8 @@
     'remove',
     'rightclick'
   ])
-  const { ready } = useLifeCycle()
   let label: BMapGL.Label
-  useBaseMapEffect((map: BMapGL.Map) => {
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const cal = () => {
       label && map.removeOverlay(label)
     }

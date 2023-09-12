@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
   import { watch, provide } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import {
     bindEvents,
     Callback,
@@ -104,9 +103,8 @@
     'remove',
     'lineupdate'
   ])
-  const { ready } = useLifeCycle()
   let polyline: BMapGL.Polyline
-  useBaseMapEffect((map: BMapGL.Map) => {
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const clear = () => {
       polyline && map.removeOverlay(polyline)
     }

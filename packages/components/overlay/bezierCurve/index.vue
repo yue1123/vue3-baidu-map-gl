@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
   import { watch, provide } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import {
     bindEvents,
     Callback,
@@ -80,9 +79,8 @@
     'remove',
     'lineupdate'
   ])
-  const { ready } = useLifeCycle()
   let bezierCurve: BMapGL.BezierCurve
-  useBaseMapEffect((map: BMapGL.Map) => {
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const cal = () => {
       map.removeOverlay(bezierCurve)
     }
@@ -175,6 +173,6 @@
     bezierCurve.setStrokeStyle(style)
   }
   function setMassClear(enableMassClear: boolean): void {
-    enableMassClear ? bezierCurve!.enableMassClear() : bezierCurve!.disableMassClear()
+    enableMassClear ? bezierCurve.enableMassClear() : bezierCurve.disableMassClear()
   }
 </script>

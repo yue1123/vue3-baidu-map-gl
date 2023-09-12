@@ -2,8 +2,7 @@
 
 <script setup lang="ts">
   import { inject, watch } from 'vue'
-  import useBaseMapEffect from '../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../hooks/useParentComponentEffect'
   import { bindEvents, Callback, isString, callWhenDifferentValue } from '../../utils'
   export interface ContextMenuItem {
     text: string
@@ -28,9 +27,8 @@
   })
   const getParentInstance = inject('getOverlayInstance', () => null)
   const vueEmits = defineEmits(['initd', 'unload', 'open', 'close'])
-  const { ready } = useLifeCycle()
   let contextMenu: BMapGL.ContextMenu
-  useBaseMapEffect((map: BMapGL.Map) => {
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const target = getParentInstance() || map
     const cal = () => {
       contextMenu && target.removeContextMenu(contextMenu)
@@ -90,10 +88,9 @@
     // 在地图上添加点标记
     return cal
   })
-</script>
 
-<script lang="ts">
-  export default {
-    name: 'BContextMenu'
-  }
+  defineOptions({
+    name: 'BContextMenu',
+    inheritAttrs: false
+  })
 </script>

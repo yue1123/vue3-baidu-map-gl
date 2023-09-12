@@ -2,8 +2,7 @@
 
 <script setup lang="ts">
   import { watch } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { type ControlAnchor, type LengthUnit } from '../../../utils'
   export interface ScaleProps {
     /**
@@ -26,7 +25,6 @@
      */
     visible?: boolean
   }
-  const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<ScaleProps>(), {
     anchor: 'BMAP_ANCHOR_BOTTOM_LEFT',
     offset: () => ({ x: 83, y: 18 }),
@@ -35,7 +33,7 @@
   })
   let scaleCtrl: BMapGL.ScaleControl
   defineEmits(['initd', 'unload'])
-  useBaseMapEffect((map) => {
+  const { ready } = useParentComponentEffect((map) => {
     const { visible, offset, anchor } = props
     scaleCtrl = new BMapGL.ScaleControl({
       offset: new BMapGL.Size(offset.x, offset.y),

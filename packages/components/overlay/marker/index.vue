@@ -4,9 +4,8 @@
 
 <script setup lang="ts">
   import { provide, watch } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { bindEvents, Callback, isString, callWhenDifferentValue, isDef, Point, warn } from '../../../utils/index'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
   import { MarkerIcons, useDefaultMarkerIcons } from '../../../hooks/useDefaultMarkerIcons'
 
   export interface MarkerOffset {
@@ -125,10 +124,9 @@
     'dragend',
     'rightclick'
   ])
-  const { ready } = useLifeCycle()
   let marker: BMapGL.Marker
 
-  useBaseMapEffect((map: BMapGL.Map) => {
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const cal = () => {
       marker && map.removeOverlay(marker)
     }

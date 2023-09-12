@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
   import { inject, watch, nextTick, provide } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { bindEvents, Callback, callWhenDifferentValue, warn, type Point, pathPointsToMapPoints } from '../../../utils'
   export interface PrismProps {
     /**
@@ -82,14 +81,13 @@
     'remove',
     'lineupdate'
   ])
-  const { ready } = useLifeCycle()
   const injectBaseMapSetCenterAndZoom = inject('baseMapSetCenterAndZoom') as (center: {
     lng: number
     lat: number
   }) => void
 
   let prism: BMapGL.Prism
-  useBaseMapEffect((map: BMapGL.Map) => {
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const clear = () => {
       prism && map.removeOverlay(prism)
     }

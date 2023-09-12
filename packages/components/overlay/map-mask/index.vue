@@ -3,8 +3,7 @@
 </template>
 
 <script setup lang="ts">
-  import useLifeCycle from '../../../hooks/useLifeCycle'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import {
     warn,
     type Callback,
@@ -51,7 +50,6 @@
     onMouseover?: Callback
     onRightclick?: Callback
   }
-  const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<MapMaskProps>(), {
     showRegion: 'inside',
     isBuildingMask: false,
@@ -71,7 +69,7 @@
     'mouseover',
     'rightclick'
   ])
-  useBaseMapEffect((map) => {
+  const { ready } = useParentComponentEffect((map) => {
     const clear = () => {
       mapMask && map.removeOverlay(mapMask)
     }

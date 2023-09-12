@@ -4,8 +4,7 @@
 
 <script setup lang="ts">
   import { provide, watch } from 'vue'
-  import useBaseMapEffect from '../../../hooks/useBaseMapEffect'
-  import useLifeCycle from '../../../hooks/useLifeCycle'
+  import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
   import { bindEvents, Callback, callWhenDifferentValue, StrokeStyle, type Point, warn } from '../../../utils'
   export interface CircleProps {
     /**
@@ -106,15 +105,16 @@
     'remove',
     'lineupdate'
   ])
-  const { ready } = useLifeCycle()
   let circle: BMapGL.Circle
-  useBaseMapEffect((map: BMapGL.Map) => {
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const cal = () => {
       map.removeOverlay(circle)
     }
     const init = () => {
-      if (!props.center) return __DEV__ && warn('BCircle', 'center props is required')
-      else if (!props.radius) return __DEV__ && warn('BCircle', 'radius props is required')
+      if (__DEV__) {
+        if (!props.center) return warn('BCircle', 'center props is required')
+        if (!props.radius) return warn('BCircle', 'radius props is required')
+      }
       const {
         center,
         radius,
@@ -145,6 +145,7 @@
         fillOpacity,
         fillColor
       })
+
       visible && map.addOverlay(circle)
       bindEvents(props, vueEmits, circle)
       ready(map, circle)

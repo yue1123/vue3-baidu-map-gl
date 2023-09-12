@@ -3,9 +3,8 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted, watch } from 'vue'
-  import useLifeCycle from '../../hooks/useLifeCycle'
-  import useBaseMapEffect from '../../hooks/useBaseMapEffect'
+  import { ref, watch } from 'vue'
+  import useParentComponentEffect from '../../hooks/useParentComponentEffect'
   import { Callback, Point, bindEvents, getPoint, warn } from '../../utils'
   export interface AutocompleteProps {
     /**
@@ -23,44 +22,41 @@
     onConfirm?: Callback
   }
   const autoCompleteInput = ref<HTMLInputElement>()
-  const { ready } = useLifeCycle()
   const props = withDefaults(defineProps<AutocompleteProps>(), {})
   const vueEmits = defineEmits(['initd', 'unload', 'searchComplete', 'highlight', 'confirm'])
   let autoComplete: BMapGL.Autocomplete
-  onMounted(() =>
-    useBaseMapEffect((map: BMapGL.Map) => {
-      if (!autoCompleteInput.value) warn('BAutoComplete', 'render error')
-      const { location, types } = props
-      let _location: string | BMapGL.Point | BMapGL.Map = map
-      if (typeof location === 'object' && (location as Point).lat && (location as Point).lng) {
-        _location = getPoint(location as Point)
-      }
-      autoComplete = new BMapGL.Autocomplete({
-        location: _location,
-        onSearchComplete: (e) => vueEmits('searchComplete', e),
-        input: autoCompleteInput.value,
-        types
-      })
-      bindEvents(props, vueEmits, autoComplete)
-      ready(map, autoComplete)
-      watch(
-        () => props.location,
-        (n) => {
-          let _location: string | BMapGL.Point | BMapGL.Map = map
-          if (typeof n === 'object' && (n as Point).lat && (n as Point).lng) {
-            _location = getPoint(n as Point)
-          }
-          autoComplete.setLocation(_location)
-        }
-      )
-      watch(
-        () => props.types,
-        (n) => {
-          n && autoComplete.setTypes(n)
-        }
-      )
+  const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
+    if (!autoCompleteInput.value) warn('BAutoComplete', 'render error')
+    const { location, types } = props
+    let _location: string | BMapGL.Point | BMapGL.Map = map
+    if (typeof location === 'object' && (location as Point).lat && (location as Point).lng) {
+      _location = getPoint(location as Point)
+    }
+    autoComplete = new BMapGL.Autocomplete({
+      location: _location,
+      onSearchComplete: (e) => vueEmits('searchComplete', e),
+      input: autoCompleteInput.value,
+      types
     })
-  )
+    bindEvents(props, vueEmits, autoComplete)
+    ready(map, autoComplete)
+    watch(
+      () => props.location,
+      (n) => {
+        let _location: string | BMapGL.Point | BMapGL.Map = map
+        if (typeof n === 'object' && (n as Point).lat && (n as Point).lng) {
+          _location = getPoint(n as Point)
+        }
+        autoComplete.setLocation(_location)
+      }
+    )
+    watch(
+      () => props.types,
+      (n) => {
+        n && autoComplete.setTypes(n)
+      }
+    )
+  })
   defineOptions({
     name: 'BAutoComplete'
   })
