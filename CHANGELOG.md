@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.2.4...v2.3.0) (2023-09-12)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* uid 在 getCurrentInstance 返回 null 时无法获取 ([2c4fc95](https://github.com/yue1123/vue3-baidu-map-gl/commit/2c4fc953c0616408c72da19fa4df8022e2d259ba)), closes [#44](https://github.com/yue1123/vue3-baidu-map-gl/issues/44)
+* uid 在 getCurrentInstance 返回 null 时无法获取 ([#46](https://github.com/yue1123/vue3-baidu-map-gl/issues/46)) ([579c8f3](https://github.com/yue1123/vue3-baidu-map-gl/commit/579c8f3346fe2221617641ddb7eff183401ccf7c))
+
+
+### ✨ Features | 新功能
+
+* 离线地图自建地图api资源地址支持 [#47](https://github.com/yue1123/vue3-baidu-map-gl/issues/47) [#45](https://github.com/yue1123/vue3-baidu-map-gl/issues/45) ([a93e231](https://github.com/yue1123/vue3-baidu-map-gl/commit/a93e2315f2beb54c47eeab7429b4b1cde608fa17))
+
+
+### ✏️ Documentation | 文档
+
+* 更新 apiUrl 和配置相关内容 ([e512c65](https://github.com/yue1123/vue3-baidu-map-gl/commit/e512c65bd00f3a2349da8fc85e9a3d1fc5dce96c))
+* update playground demo ([02c0757](https://github.com/yue1123/vue3-baidu-map-gl/commit/02c0757f2c5d6530892f9ea3d733255ae02f86b3))
+
 ### [2.2.4](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.2.3...v2.2.4) (2023-08-30)
 
 
