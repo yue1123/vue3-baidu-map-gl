@@ -3,14 +3,14 @@ import { noop } from './helper'
 export interface Options {
   key: string
   src: string
-  addCalToWindow: boolean
+  addCalToWindow?: boolean
   exportGetter?: () => any | undefined
 }
 
 export const BMapScriptLoaderWrapper: Record<string, Promise<any>> = {}
-function getScriptAsync({ key, src, addCalToWindow, exportGetter = noop }: Options): Promise<any> {
+function getScriptAsync({ key, src, addCalToWindow = false, exportGetter = noop }: Options): Promise<any> {
   const exported: any = exportGetter()
-  if (!BMapScriptLoaderWrapper[key]) {
+  if (!BMapScriptLoaderWrapper[key] && !exported) {
     BMapScriptLoaderWrapper[key] = new Promise<void>((resolve, reject) => {
       const script: HTMLScriptElement = document.createElement('script')
       const cal = () => {

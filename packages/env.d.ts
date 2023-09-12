@@ -26,5 +26,6 @@ declare module 'vue' {
     $baiduMapAk: string
     $baiduMapPlugins: UserPlugins
     $baiduMapPluginsSourceLink: PluginsSourceLink
+    $baiduMapApiUrl: string
   }
 }

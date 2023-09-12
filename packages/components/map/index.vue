@@ -78,8 +78,15 @@
     skyColors?: [string, string]
   }
   export interface MapProps {
+    /**
+     * api key
+     */
     ak?: string
-    /**sss
+    /**
+     * 自建 api url, 一般用于离线地图
+     */
+    apiUrl?: string
+    /**
      * 地图显示宽度
      */
     width?: string | number
@@ -325,8 +332,12 @@
     if (!shouldRender) return
     const { proxy } = instance
     const ak = props.ak || (proxy && proxy.$baiduMapAk)
-
-    if (!ak) __DEV__ && warn('BMap', 'ak is required')
+    const apiUrl = props.apiUrl || (proxy && proxy.$baiduMapApiUrl)
+    if (__DEV__) {
+      if (!ak && !apiUrl) {
+        return warn('BMap', 'ak or apiUrl is required')
+      }
+    }
 
     const plugins =
       props.plugins && proxy!.$baiduMapPlugins
@@ -337,10 +348,12 @@
       props.pluginsSourceLink && proxy!.$baiduMapPluginsSourceLink
         ? Object.assign(proxy!.$baiduMapPluginsSourceLink, props.pluginsSourceLink)
         : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
-    const scriptKey = `_initBMap_${ak}`
+    const scriptKey = apiUrl || `_initBMap_${ak}`
+
+    // load sdk
     getScriptAsync({
-      src: `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=${scriptKey}`,
-      addCalToWindow: true,
+      src: apiUrl ? apiUrl : `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=${scriptKey}`,
+      addCalToWindow: !apiUrl,
       key: scriptKey,
       exportGetter: () => window.BMapGL
     })
