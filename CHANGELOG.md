@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.3.0...v2.3.1) (2023-11-10)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 轨迹动画延迟执行状态更新不正确 [#55](https://github.com/yue1123/vue3-baidu-map-gl/issues/55) ([2a3ab9a](https://github.com/yue1123/vue3-baidu-map-gl/commit/2a3ab9ae093723e045f20de8cc9f2d1790d2d61a))
+
 ## [2.3.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.2.4...v2.3.0) (2023-09-12)
 
 
