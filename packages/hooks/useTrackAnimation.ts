@@ -1,5 +1,5 @@
 import { onUnmounted, ref, watch } from 'vue'
-import { type Point } from '../utils'
+import { type Point, proxyValue } from '../utils'
 
 export type UseTrackAnimationOptions = {
   /**
@@ -46,7 +46,8 @@ export function useTrackAnimation(map: any, options?: UseTrackAnimationOptions) 
   let mapComponentInstance: any
   let mapInstance: BMapGL.Map
   const status = ref<AnimationStatus>('INITIAL')
-  options = options || {}
+  const _options = options || {}
+  let prevStartTimeStamp: number | void = undefined
   watch(
     () => map.value,
     (n) => {
@@ -56,7 +57,8 @@ export function useTrackAnimation(map: any, options?: UseTrackAnimationOptions) 
   const init = () => {
     if (!instance) {
       mapInstance = mapComponentInstance.getMapInstance()
-      instance = new BMapGLLib.TrackAnimation(mapInstance, pl!, options)
+      instance = new BMapGLLib.TrackAnimation(mapInstance, pl!, _options)
+      proxyValue(instance, '_status', instance._status, syncState)
     }
   }
   const setPath = (path: Point[]) => {
@@ -64,41 +66,37 @@ export function useTrackAnimation(map: any, options?: UseTrackAnimationOptions) 
     pl = new BMapGL.Polyline(point)
     init()
   }
+
   const start = () => {
-    if (instance && status.value === 'INITIAL') {
+    const now = performance.now()
+    const _prevStartTimeStamp = prevStartTimeStamp || 0
+    const _delay = _options.delay || 0
+    if (instance && now - _prevStartTimeStamp > _delay && status.value === 'INITIAL') {
       instance.start()
-      syncState()
-      setTimeout(() => {
-        instance._viewAni.addEventListener('animationend', syncState)
-      })
     }
+    prevStartTimeStamp = performance.now()
   }
 
   const cancel = () => {
     if (instance) {
       instance.cancel()
-      syncState()
     }
   }
   const stop = () => {
     if (instance) {
       instance.pause()
-      syncState()
     }
   }
   const proceed = () => {
     if (instance) {
       instance.continue()
-      syncState()
     }
   }
 
   const syncState = () => {
-    setTimeout(() => {
-      if (instance) {
-        status.value = statusMap[instance._status]
-      }
-    })
+    if (instance) {
+      status.value = statusMap[instance._status]
+    }
   }
   onUnmounted(() => {
     if (instance && status.value !== 'INITIAL') {
