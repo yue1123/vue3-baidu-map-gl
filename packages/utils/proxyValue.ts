@@ -1,5 +1,5 @@
 export function proxyValue<T>(target: T, key: string, defaultValue: any, callback?: (defaultValue: any) => any) {
-  Object.defineProperty(target, '_status', {
+  Object.defineProperty(target, key, {
     get() {
       return defaultValue
     },
