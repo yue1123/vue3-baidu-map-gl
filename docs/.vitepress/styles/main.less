@@ -1,20 +1,12 @@
 :root {
   --vp-layout-max-width: 1620px;
-  --vp-home-hero-image-background-image: -webkit-radial-gradient(
-    rgba(96, 137, 241, 0.4) 40%,
-    rgba(66, 211, 146, 0.35) 60%
-  );
+  --vp-home-hero-image-background-image: -webkit-radial-gradient(rgba(96, 137, 241, 0.4) 40%,
+      rgba(66, 211, 146, 0.35) 60%);
   --vp-home-hero-image-background-image: radial-gradient(rgba(96, 137, 241, 0.4) 40%, rgba(66, 211, 146, 0.35) 60%);
   --vp-home-hero-image-filter: blur(50px);
   --vp-sidebar-width: 282px;
 }
 
-/* grid background */
-.VPContent.is-home {
-  background-color: var(--vp-c-bg);
-  background-image: radial-gradient(circle, var(--vp-c-divider) 1px, var(--vp-c-bg) 1px);
-  background-size: 1rem 1rem;
-}
 
 .image-bg {
   position: absolute;
@@ -31,7 +23,7 @@
   opacity: 0.6 !important;
 }
 
-.image-bg + img {
+.image-bg+img {
   -webkit-user-drag: none;
   -moz-user-drag: none;
   -ms-user-drag: none;

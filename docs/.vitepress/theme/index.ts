@@ -1,9 +1,7 @@
 import { watch } from 'vue'
 import defaultTheme from 'vitepress/theme'
 import baiduMapInit from 'vue3-baidu-map-gl'
-import '../styles/main.css'
-import '../styles/code.css'
-import '../styles/cardAnimation.less'
+import '../styles/index.less'
 
 import Demo from '../components/vp-demo.vue'
 import tooltipDirective from '../components/Tooltip/directive'
