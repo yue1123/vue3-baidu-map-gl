@@ -40,7 +40,7 @@
 
 <!-- - 虚位以待... -->
 
-| 昵称            | 充电 ☕️ |
+| <div style="display:flex;justify-content:flex-start;gap:5px;"><span>昵称</span> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Partying%20Face.png" alt="Partying Face" width="25" height="25" /></div>            | <div style="display:flex;justify-content:flex-start;gap:5px"><span>充电</span> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/High%20Voltage.png" alt="High Voltage" width="25" height="25" /></div> |
 | --------------- | -------- |
 | 友\*\*\_A       | 10¥      |
 | Song 丶\*\*成眷 | 88.88¥   |
