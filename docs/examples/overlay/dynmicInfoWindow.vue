@@ -7,12 +7,12 @@
       @click="() => handleClick(item)"
       enableClicking
     />
-    <BInfoWindow :show="true" :position="position" :title="title" enableAutoPan enableCloseOnClick />
+    <BInfoWindow v-model:show="show" :position="position" :title="title" enableAutoPan enableCloseOnClick />
   </BMap>
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
+  import { ref, type UnwrapRef } from 'vue'
   import { BMap, BMarker, BInfoWindow } from 'vue3-baidu-map-gl'
   let markers = ref([
     {
@@ -26,8 +26,10 @@
   ])
   const title = ref(markers.value[0].title)
   const position = ref(markers.value[0].position)
-  function handleClick(item) {
+  const show = ref<boolean>(true)
+  function handleClick(item: UnwrapRef<typeof markers>[0]) {
     position.value = item.position
     title.value = item.title
+    show.value = true
   }
 </script>
