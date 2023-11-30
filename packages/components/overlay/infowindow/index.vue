@@ -120,7 +120,6 @@
       callWhenDifferentValue((position) => setPosition(position)),
       { deep: true }
     )
-    watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
     watch(() => props.title, setTitle)
     watch(() => props.width, setWidth)
     watch(() => props.height, setHeight)
@@ -201,9 +200,6 @@
   }
   function setContent(content: string | HTMLElement): void {
     infoWindow.setContent(content)
-  }
-  function setOffset(offset: { x: number; y: number }): void {
-    infoWindow.setOffset(new BMapGL.Size(offset.x, offset.y))
   }
   defineOptions({
     name: 'BInfoWindow'
