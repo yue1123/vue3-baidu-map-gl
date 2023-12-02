@@ -5,7 +5,15 @@
 <script setup lang="ts">
   import { provide, watch } from 'vue'
   import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
-  import { bindEvents, Callback, isDef, callWhenDifferentValue, type Point, warn } from '../../../utils/index'
+  import {
+    bindEvents,
+    Callback,
+    isDef,
+    callWhenDifferentValue,
+    type Point,
+    warn,
+    conditionalCall
+  } from '../../../utils'
   export type LabelStyle = {
     [k in keyof CSSStyleDeclaration]?: any
   }
@@ -75,6 +83,7 @@
     'rightclick'
   ])
   let label: BMapGL.Label
+  const hasLabel = () => !!label
   const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const cal = () => {
       label && map.removeOverlay(label)
@@ -96,28 +105,30 @@
       visible && map.addOverlay(label)
       isDef(zIndex) && setZIndex(zIndex)
       bindEvents(props, vueEmits, label)
+      watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
+      watch(() => props.style, callWhenDifferentValue(setStyle), { deep: true })
+      watch(() => props.enableMassClear, setMassClear)
+      watch(() => props.zIndex, setZIndex)
+      watch(
+        () => props.visible,
+        (n) => {
+          map[n ? 'addOverlay' : 'removeOverlay'](label)
+        }
+      )
     }
 
     init()
     ready(map, label)
     // 监听值变化
-    watch(() => props.position, callWhenDifferentValue(setPosition), { deep: true })
-    watch(() => props.offset, callWhenDifferentValue(setOffset), { deep: true })
-    watch(() => props.style, callWhenDifferentValue(setStyle), { deep: true })
-    watch(() => props.content, setContent)
-    watch(() => props.zIndex, setZIndex)
-    watch(() => props.enableMassClear, setMassClear)
-    watch(
-      () => props.visible,
-      (n) => {
-        map[n ? 'addOverlay' : 'removeOverlay'](label)
-      }
-    )
+    watch(() => props.position, callWhenDifferentValue(conditionalCall(hasLabel, setPosition, init)), { deep: true })
+    watch(() => props.content, conditionalCall(hasLabel, setContent, init))
     return cal
   })
 
   provide('getOverlayInstance', () => label)
-
+  defineOptions({
+    name: 'BLabel'
+  })
   function setZIndex(zIndex?: number) {
     isDef(zIndex) && label.setZIndex(zIndex)
   }
@@ -136,7 +147,4 @@
   function setMassClear(enableMassClear: boolean): void {
     enableMassClear ? label!.enableMassClear() : label!.disableMassClear()
   }
-  defineOptions({
-    name: 'BLabel'
-  })
 </script>

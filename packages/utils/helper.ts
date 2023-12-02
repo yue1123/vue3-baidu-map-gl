@@ -1,14 +1,3 @@
-/**
- * watch 回调辅助前置判断
- * @param cal watch 处理函数
- * @returns (nv: T, ov: T) => void
- */
-export function callWhenDifferentValue<T>(cal: (v: T) => void): (nv: T, ov: T) => void {
-  return (nv: T, ov: T) => {
-    if (nv === ov || (nv !== ov && JSON.stringify(nv) !== JSON.stringify(ov))) cal(nv)
-  }
-}
-
 export const notNullish = <T = any>(val?: T | null | undefined): val is T => val != null
 export const assert = (condition: boolean, ...infos: any[]) => {
   if (!condition) console.warn(...infos)
@@ -27,5 +16,3 @@ export const rand = (min: number, max: number) => {
 }
 export const hasOwn = <T extends object, K extends keyof T>(val: T, key: K): key is K =>
   Object.prototype.hasOwnProperty.call(val, key)
-
-export const getInitEventKey = (id: string) => `__initd__${id}`

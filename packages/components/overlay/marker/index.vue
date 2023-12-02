@@ -92,7 +92,6 @@
     onDragend?: Callback
     onRightClick?: Callback
   }
-
   const props = withDefaults(defineProps<MarkerProps>(), {
     offset: () => ({
       x: 0,
@@ -194,6 +193,7 @@
   })
 
   provide('getOverlayInstance', () => marker)
+  defineOptions({ name: 'BMarker' })
 
   // 获取图标配置
   function getIconConfig(): BMapGL.Icon {
@@ -240,5 +240,4 @@
   function setRotation(rotation: number) {
     rotation !== undefined && marker.setRotation(rotation)
   }
-  defineOptions({ name: 'BMarker' })
 </script>

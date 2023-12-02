@@ -17,6 +17,7 @@ interface ImportMeta {
   readonly env: ImportMetaEnv
 }
 declare global {
+  /** 是否是开发环境 */
   const __DEV__: boolean
 }
 
