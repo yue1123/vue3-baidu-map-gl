@@ -30,7 +30,7 @@ const { get, location, isLoading } = useIpLocation(cal)
 
 ### 返回值
 
-| 返回值      | 描述                                                   | 类型                                         |
+| 返回值    | 描述                                                   | 类型                                         |
 | --------- | ------------------------------------------------------ | -------------------------------------------- |
 | isLoading | 是否在获取中                                           | `boolean`                                    |
 | location  | 定位信息                                               | `{ point: Point code: number name: string }` |

@@ -47,7 +47,7 @@ const { setKeyFrames, start, cancel, stop, proceed, status } = useViewAnimation(
 
 ### 返回值
 
-| 返回值          | 描述                                                                     | 类型                                                                  |
+| 返回值        | 描述                                                                     | 类型                                                                  |
 | ------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------- |
 | viewAnimation | 视角动画实例                                                             | `BMapGL.ViewAnimation`                                                |
 | setKeyFrames  | 设置动画关键帧函数，需要在`Map`组件`initd`事件触发后才可调用             | [`(path: ViewAnimationKeyFrames[]) => void`](#viewanimationkeyframes) |

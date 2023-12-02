@@ -1,6 +1,6 @@
 # Vue3 BaiduMap Gl
 
-<div style="display:flex;justify-content:flex-start;margin-top:15px;gap:10px;">
+<div style="width: 100%; display:flex;justify-content:flex-start;flex-wrap:wrap; margin-top:15px;gap:10px;">
 <img src="https://img.shields.io/github/license/yue1123/img-previewer?style=flat-square" alt="" />
 <img src="https://img.shields.io/github/package-json/v/yue1123/vue3-baidu-map-gl?color=f90&style=flat-square" alt="GitHub package.json version (subfolder of monorepo)"/>
 <img alt="npm" src="https://img.shields.io/npm/dm/vue3-baidu-map-gl?logo=npm&style=flat-square" />

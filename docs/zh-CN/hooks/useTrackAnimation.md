@@ -48,7 +48,7 @@ const { setPath, start, cancel, stop, proceed, status } = useTrackAnimation(map,
 
 ### 返回值
 
-| 返回值    | 描述                                                            | 类型                                        |
+| 返回值  | 描述                                                            | 类型                                        |
 | ------- | --------------------------------------------------------------- | ------------------------------------------- |
 | setPath | 设置路径动画路径，需要在`Map`组件`initd`事件触发后才可调用      | [`(path: PathPoint[]) => void`](#pathpoint) |
 | start   | 开始动画，`setPath` 设置路径后且 `status` 为 `INITIAL` 才可调用 | `() => void`                                |

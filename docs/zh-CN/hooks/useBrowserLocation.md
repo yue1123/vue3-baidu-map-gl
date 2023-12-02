@@ -48,7 +48,7 @@ const { get, location, isLoading, isError, status } = useBrowserLocation(options
 
 ### 返回值
 
-| 返回值      | 描述                                                   | 类型                    |
+| 返回值    | 描述                                                   | 类型                    |
 | --------- | ------------------------------------------------------ | ----------------------- |
 | isLoading | 是否在获取中                                           | `boolean`               |
 | location  | 定位信息                                               | [`Location`](#location) |

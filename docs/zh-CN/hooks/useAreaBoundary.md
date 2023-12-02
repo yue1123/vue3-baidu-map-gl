@@ -30,7 +30,7 @@ const { isLoading, boundaries, get } = useAreaBoundary(cal)
 
 ### 返回值
 
-| 返回值       | 描述                                              | 类型                 |
+| 返回值     | 描述                                              | 类型                 |
 | ---------- | ------------------------------------------------- | -------------------- |
 | isLoading  | 是否加载中                                        | `boolean`            |
 | boundaries | 区域边界数据，默认为空数组，`get`方法调用后才可用 | `Ref<string[]>`      |
