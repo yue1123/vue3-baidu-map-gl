@@ -28,6 +28,7 @@
   const getParentInstance = inject('getOverlayInstance', () => null)
   const vueEmits = defineEmits(['initd', 'unload', 'open', 'close'])
   let contextMenu: BMapGL.ContextMenu
+
   const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     const target = getParentInstance() || map
     const cal = () => {

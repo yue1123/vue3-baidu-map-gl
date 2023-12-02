@@ -35,10 +35,10 @@
     warn,
     type MapType,
     type Point,
-    nanoid,
-    getInitEventKey,
     isClient
   } from '../../utils'
+  import { useInstanceId } from '../../hooks'
+
   export interface MapDisplayOptions {
     /**
      * 是否显示地图上的地点标识
@@ -282,7 +282,7 @@
   // 是否初始化
   let initd = ref<boolean>(false)
   const instance = getCurrentInstance()
-  const instanceId = nanoid(8)
+  const instanceId = useInstanceId()
   // 地图初始化的发布
   const { emit } = usePubSub()
   const width = computed(() => (isString(props.width) ? props.width : `${props.width}px`))
@@ -401,7 +401,7 @@
           instance,
           BMapGL: window.BMapGL
         }
-        emit(getInitEventKey(instanceId), event)
+        emit(instanceId, event)
         vueEmits('initd', event)
         initd.value = true
       })
@@ -589,7 +589,6 @@
     setDragging
   })
   provide('getMapInstance', () => map)
-  provide('parentComponentId', instanceId)
   provide('baseMapSetCenterAndZoom', (_center: { lng: number; lat: number }) => setCenterAndZoom(_center))
   provide('baseMapSetDragging', (enableDragging: boolean) => setDragging(enableDragging))
   provide('getBaseMapOptions', () => props)
