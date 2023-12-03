@@ -1,0 +1,7 @@
+import{Y as v}from"./framework.aeLSa5ZG.js";function _(u={}){const{immediate:g=!1,onNeedRefresh:r,onOfflineReady:i,onRegistered:o,onRegisteredSW:d,onRegisterError:l}=u;let e,c,s;const m=async(p=!0)=>{await c,await(s==null?void 0:s())};async function w(){if("serviceWorker"in navigator){const{Workbox:p}=await v(()=>import("./workbox-window.prod.es5.prqDwDSL.js"),__vite__mapDeps([]));e=new p("/vue3-baidu-map-gl/sw.js",{scope:"/vue3-baidu-map-gl/",type:"classic"}),s=async()=>{await(e==null?void 0:e.messageSkipWaiting())};{let t=!1;const n=()=>{t=!0,e==null||e.addEventListener("controlling",a=>{a.isUpdate&&window.location.reload()}),r==null||r()};e.addEventListener("installed",a=>{typeof a.isUpdate>"u"?typeof a.isExternal<"u"?a.isExternal?n():!t&&(i==null||i()):a.isExternal?window.location.reload():!t&&(i==null||i()):a.isUpdate||i==null||i()}),e.addEventListener("waiting",n),e.addEventListener("externalwaiting",n)}e.register({immediate:g}).then(t=>{d?d("/vue3-baidu-map-gl/sw.js",t):o==null||o(t)}).catch(t=>{l==null||l(t)})}}return c=w(),m}export{_ as registerSW};
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = []
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}
