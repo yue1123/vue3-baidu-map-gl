@@ -24,7 +24,7 @@ lang: zh-CN
 | ak                | 百度地图 [ak](../guide/quick-start#申请-ak-密钥) | `string`                                                                | -      | -      | -                                  |
 | apiUrl            | 自建地图 api 资源地址（一般用于离线地图）        | `string`                                                                | -      | -      | <Badge type="tip" text="^2.3.0" /> |
 | plugins           | 需要注册的插件                                   | `['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvThree']`                     | -      | -      | -                                  |
-| pluginsSourceLink | 自定义插件资源地址                               | `Record<'TrackAnimation' \| 'Mapvgl' \| 'Mapv' \| 'MapvThree', string>` | -      | -      | -                                  |
+| pluginsSourceLink | 自定义插件资源地址                               | `Record<'TrackAnimation' \| 'Mapvgl' \| 'MapvglThreeLayers'  \| 'Mapv' \| 'MapvThree', string>` | -      | -      | -                                  |
 
 ```ts{7,8}
 import { createApp } from 'vue'

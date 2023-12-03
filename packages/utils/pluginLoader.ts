@@ -2,7 +2,7 @@
 
 import getScriptAsync from './getScriptAsync'
 
-export type PluginsList = ['TrackAnimation', 'Mapvgl', 'Mapv', 'MapvThree']
+export type PluginsList = ['TrackAnimation', 'Mapvgl', 'MapvglThreeLayers', 'Mapv', 'MapvThree']
 export type PluginsUnion = PluginsList[number]
 export type PluginsSourceLink = Record<PluginsUnion, string>
 export type PluginsLoader = (...args: any[]) => Promise<any>
@@ -10,9 +10,10 @@ export type UserPlugins = (PluginsUnion | PluginsLoader)[]
 
 export const DEFAULT_PLUGINS_SOURCE_LINK: PluginsSourceLink = {
   TrackAnimation: '//mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js',
-  Mapvgl: 'https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.159/dist/mapvgl.min.js',
-  Mapv: 'https://mapv.baidu.com/build/mapv.min.js',
-  MapvThree: 'https://unpkg.com/mapv-three@1.0.1/dist/mapvthree.umd.js'
+  Mapvgl: 'https://unpkg.com/mapvgl/dist/mapvgl.min.js',
+  MapvglThreeLayers: 'https://unpkg.com/mapvgl/dist/mapvgl.threelayers.min.js',
+  Mapv: 'https://unpkg.com/mapv/build/mapv.min.js',
+  MapvThree: 'https://unpkg.com/mapv-three/dist/mapvthree.umd.js'
 } as const
 
 export const pluginLoaderMap: Record<PluginsUnion, (customSourceLink?: string) => Promise<any>> = {
@@ -27,6 +28,12 @@ export const pluginLoaderMap: Record<PluginsUnion, (customSourceLink?: string) =
       src: customSourceLink || DEFAULT_PLUGINS_SOURCE_LINK['Mapvgl'],
       addCalToWindow: false,
       key: 'Mapvgl'
+    }),
+  MapvglThreeLayers: (customSourceLink?: string) =>
+    getScriptAsync({
+      src: customSourceLink || DEFAULT_PLUGINS_SOURCE_LINK['MapvglThreeLayers'],
+      addCalToWindow: false,
+      key: 'MapvglThreeLayers'
     }),
   Mapv: (customSourceLink?: string) =>
     getScriptAsync({
