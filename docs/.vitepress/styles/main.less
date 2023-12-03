@@ -5,6 +5,18 @@
   --vp-home-hero-image-background-image: radial-gradient(rgba(96, 137, 241, 0.4) 40%, rgba(66, 211, 146, 0.25) 60%);
   --vp-home-hero-image-filter: blur(50px);
   --vp-sidebar-width: 282px;
+  --vp-c-brand-1: #10b981;
+  --vp-c-brand-2: #059669;
+  --vp-c-indigo-3: #10b981;
+  --vp-c-warning-1: #EAB306;
+  --vp-c-danger-1: #fff;
+  --vp-c-danger-soft: #660000;
+  --pwa-border: #ffffff75;
+  --vp-c-indigo-soft: rgba(16, 185, 129, .05);
+  --vp-home-hero-name-background: linear-gradient(-347deg, #10b981 20%, #32475b);
+  --vp-home-hero-name-color: transparent;
+  --vp-badge-tip-border: #059669;
+  --vp-custom-block-info-border: rgba(82, 82, 89, .68);
 }
 
 
@@ -27,7 +39,6 @@
   -webkit-user-drag: none;
   -moz-user-drag: none;
   -ms-user-drag: none;
-  user-drag: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -127,6 +138,11 @@ img.resizable-img {
   padding: 5px 15px;
   text-decoration: none;
   margin: 16px 16px 16px 0;
+  transition: opacity .2s ease-in-out;
+
+  &:active {
+    opacity: .6;
+  }
 }
 
 .myButton.no-m-t {

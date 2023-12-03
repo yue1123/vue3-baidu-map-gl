@@ -6,7 +6,7 @@ import consola from 'consola'
 
 // prism is listed as actual dep so it's ok to require
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const loadLanguages = require('prismjs/components/index')
+import loadLanguages from 'prismjs/components/index'
 
 // required to make embedded highlighting work...
 loadLanguages(['markup', 'css', 'javascript'])

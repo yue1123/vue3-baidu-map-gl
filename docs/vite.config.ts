@@ -1,9 +1,14 @@
 import { defineConfig } from 'vite'
 
-export default defineConfig({
-  server: {
-    fs: {
-      allow: ['..']
+export default defineConfig(() => {
+  return {
+    optimizeDeps: {
+      exclude: ['@vueuse/core', 'vitepress']
+    },
+    server: {
+      fs: {
+        allow: ['..']
+      }
     }
   }
 })
