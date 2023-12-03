@@ -3,10 +3,12 @@
   "scripts": {
     "dev": "vitepress dev .",
     "build": "prettier -w ./zh-CN/* && vitepress build .",
+    "preview": "vitepress preview .",
     "fix-dot": "fixdot ./zh-CN/base/* ./zh-CN/control/* ./zh-CN/guide/* ./zh-CN/overlay/* ./index.md -d -p",
     "format": "prettier -w ./zh-CN/*"
   },
   "devDependencies": {
+    "@vite-pwa/vitepress": "^0.3.1",
     "consola": "^2.15.3",
     "escape-html": "^1.0.3",
     "less": "^4.1.3",
@@ -14,13 +16,17 @@
     "markdown-it-container": "^3.0.0",
     "prismjs": "^1.29.0",
     "vanilla-tilt": "^1.8.0",
+    "vite-plugin-pwa": "^0.17.2",
     "vue3-baidu-map-gl": "workspace:*"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "bmap-draw": "^1.0.19",
     "mapv-three": "^1.0.12",
     "prism-theme-vars": "^0.2.4",
     "three": "^0.147.0",
-    "vitepress": "1.0.0-beta.2"
+    "vitepress": "1.0.0-rc.31"
   }
 }

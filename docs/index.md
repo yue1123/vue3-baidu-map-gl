@@ -1,9 +1,9 @@
 ---
 layout: home
-title: Vue3 BaiduMap GL
+title: Vue3 Baidu Map Gl 
 
 hero:
-  name: Vue3 BaiduMap GL
+  name: Vue3 Baidu Map Gl 
   text: Vue3 & BMapGL 组件库 + hooks 库
   tagline: 易用 & 完整 & 性能不错
   image:

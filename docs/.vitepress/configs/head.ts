@@ -1,6 +1,8 @@
 import type { HeadConfig } from 'vitepress'
 
+
 export const head: HeadConfig[] = [
+  ['link', { rel: 'dns-prefetch', href: '//api.map.baidu.com' }],
   [
     'link',
     {

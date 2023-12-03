@@ -46,15 +46,15 @@
 
 推荐使用 pnpm 安装
 
-```shell
-# with npm
-npm install vue3-baidu-map-gl@latest
+```bash
+# with pnpm
+pnpm add vue3-baidu-map-gl
 
 # or with yarn
-yarn add vue3-baidu-map-gl@latest
+yarn add vue3-baidu-map-gl
 
-# or with pnpm
-pnpm add vue3-baidu-map-gl@latest
+# or with npm
+npm install vue3-baidu-map-gl
 ```
 
 ## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png" alt="Open Book" width="25" height="25" /> 文档

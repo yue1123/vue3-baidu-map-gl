@@ -1,5 +1,29 @@
 {
   "compilerOptions": {
-    "types": ["vue3-baidu-map-gl/volar"]
-  }
+    "incremental": false,
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "types": [
+      "node",
+      "vitepress",
+      "vue",
+      "vite/client",
+      "vue3-baidu-map-gl/volar",
+      "vite-plugin-pwa/client",
+      "vite-plugin-pwa/vanillajs",
+      "vite-plugin-pwa/vue"
+    ]
+  },
+  "include": ["env.d.ts", "**/*.vue", "**/*.ts", "**/*.d.ts"],
+  "exclude": ["node_modules"]
 }
