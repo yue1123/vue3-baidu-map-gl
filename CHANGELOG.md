@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.2](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.3.0...v2.3.2) (2023-12-04)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 轨迹动画延迟执行状态更新不正确 [#55](https://github.com/yue1123/vue3-baidu-map-gl/issues/55) ([2a3ab9a](https://github.com/yue1123/vue3-baidu-map-gl/commit/2a3ab9ae093723e045f20de8cc9f2d1790d2d61a))
+* **BLabel:** 修复组件动态参数监听错误 ([e87cbd2](https://github.com/yue1123/vue3-baidu-map-gl/commit/e87cbd26f43bd0a10a3d705c86796a55459b5ca0))
+
+
+### ✨ Features | 新功能
+
+* 优化组件之间初始化的发布订阅模式 ([4dbcd9c](https://github.com/yue1123/vue3-baidu-map-gl/commit/4dbcd9ca66f85fba98505441c4bd93b35cb4672c))
+* 增加MapvglThreeLayers插件 ([004cecc](https://github.com/yue1123/vue3-baidu-map-gl/commit/004cecc82c9143abed068e81ad34c9569e79e695))
+* proxyValue use user key ([37ac9f7](https://github.com/yue1123/vue3-baidu-map-gl/commit/37ac9f78ebe17e7548de569f5ae7e96cc1fdb315))
+* remove dynamic offset props ([abf2ea3](https://github.com/yue1123/vue3-baidu-map-gl/commit/abf2ea338410134de1bbc7f61abb61113486baeb))
+
+
+### ✏️ Documentation | 文档
+
+* 对内容调整，增加 breaking-change 和 FQA ([a1741aa](https://github.com/yue1123/vue3-baidu-map-gl/commit/a1741aa455ccdd1c7dc3f15cf7ba64cf875a68ec))
+* 更新赞助名单 ([941effd](https://github.com/yue1123/vue3-baidu-map-gl/commit/941effd85d82b553894eac796c1e3f6a78bcde96))
+* 文档排版优化 ([517f07d](https://github.com/yue1123/vue3-baidu-map-gl/commit/517f07dd6135b7fd68f3b22ac7ebb77e5b65e3c9))
+* 文档升级 ([a5a0103](https://github.com/yue1123/vue3-baidu-map-gl/commit/a5a0103fa5659d4453d5b6eeb8f556d0a672f994))
+* 修复中文站点根路径404 ([540cbc9](https://github.com/yue1123/vue3-baidu-map-gl/commit/540cbc9aec442b3b0ecfa7479aa37775d9f03c18))
+* 优化文档样式代码结构 ([e77766e](https://github.com/yue1123/vue3-baidu-map-gl/commit/e77766e32bc680a60406c2589e637f3012156812))
+* **ContextMenu:** 更新demo示例 ([e5edb2f](https://github.com/yue1123/vue3-baidu-map-gl/commit/e5edb2f08b309358a9612275e2dfe8ddc860d675))
+* **infoWindow:** 修正文档示例中 bug ([092df03](https://github.com/yue1123/vue3-baidu-map-gl/commit/092df03e57ba578704e37caf34cc0d764ba066ca))
+* **infoWindow:** update infoWindow demo code, ([6632ded](https://github.com/yue1123/vue3-baidu-map-gl/commit/6632ded521d574f056f015c9c70174e465bf2930)), closes [#58](https://github.com/yue1123/vue3-baidu-map-gl/issues/58)
+* update ([dc681e3](https://github.com/yue1123/vue3-baidu-map-gl/commit/dc681e384546a33a469304098ae9e109544996d0))
+* update README content layout ([4a3c010](https://github.com/yue1123/vue3-baidu-map-gl/commit/4a3c010bb4ab04e4489451a931fa662091b471b0))
+
 ### [2.3.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.3.0...v2.3.1) (2023-11-10)
 
 
