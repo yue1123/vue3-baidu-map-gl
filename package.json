@@ -42,8 +42,8 @@
     "release-major": "standard-version --release-as major --tag-prefix v && pnpm run build",
     "release-minor": "standard-version --release-as minor --tag-prefix v && pnpm run build",
     "release-patch": "standard-version --release-as patch --tag-prefix v && pnpm run build",
-    "lint": "eslint --ext .js,.ts,.tsx,.vue",
-    "lint:fix": "eslint --ext .js,.ts,.tsx,.vue --fix"
+    "lint": "eslint -f mo --ext .js,.ts,.tsx,.vue ./packages",
+    "lint:fix": "eslint -f mo --ext .js,.ts,.tsx,.vue --fix ./packages"
   },
   "dependencies": {
     "mitt": "^3.0.0",
@@ -67,6 +67,7 @@
     "deepmerge": "^4.2.2",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-formatter-mo": "^1.2.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.6.0",
     "fast-glob": "^3.2.12",
@@ -108,17 +109,17 @@
     "vue3-bmap-gl"
   ],
   "lint-staged": {
-    "*.{js,ts?(x)}": [
-      "eslint"
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint -f mo"
     ],
-    "*.vue": [
-      "eslint"
+    "**/*.vue": [
+      "eslint -f mo"
     ],
     "**/*.css": [
       "prettier --write"
     ],
     "**/*.md": [
-      "eslint"
+      "eslint -f mo"
     ]
   }
 }

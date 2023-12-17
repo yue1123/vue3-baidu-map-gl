@@ -5,7 +5,7 @@
 <script setup lang="ts">
   import { nextTick, provide, Ref, watch } from 'vue'
   import useParentComponentEffect from '../../../hooks/useParentComponentEffect'
-  import { bindEvents, Callback, error, callWhenDifferentValue, type Point, warn } from '../../../utils'
+  import { bindEvents, Callback, callWhenDifferentValue, type Point, warn } from '../../../utils'
   export type GroundOverlayUrl =
     | string
     | HTMLCanvasElement
