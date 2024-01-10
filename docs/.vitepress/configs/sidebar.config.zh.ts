@@ -85,7 +85,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
         },
         {
           text: 'BContextMenu 上下文菜单',
-          link: '/zh-CN/components/context-menu'
+          link: 'context-menu'
         }
       ]
     },
