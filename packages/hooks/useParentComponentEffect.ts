@@ -13,7 +13,7 @@ import { useInstanceId } from './useInstanceId'
  * - 比如下面的组件层级:
  * ```text
  * |___Map 发布
- * |___|__Circle 订阅 / 发布
+ * |___|___Circle 订阅 / 发布
  * |___|___Marker 订阅 / 发布
  * |___|___|___ContextMenu 订阅
  * ```
