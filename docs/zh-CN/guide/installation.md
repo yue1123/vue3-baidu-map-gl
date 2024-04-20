@@ -51,7 +51,7 @@ npm install vue3-baidu-map-gl
 :::
 
 ::: tip 提示
-我们建议使用 CDN 引入 Vue3 BaiduMap GL 的用户在链接地址上锁定版本，以免将来 ElementPlus 升级时受到非兼容性更新的影响
+我们建议使用 CDN 引入 Vue3 BaiduMap GL 的用户在链接地址上锁定版本，以免将来 Vue3BaiduMapGL 升级时受到非兼容性更新的影响
 :::
 
 ## Hello World
