@@ -21,12 +21,16 @@
       x: number
       y: number
     }
-    imageSize: {
+    imageSize?: {
       width: number
       height: number
     }
     imageUrl: string
     printImageUrl?: string
+    size: {
+      width: number
+      height: number
+    }
   }
   export interface MarkerProps {
     position: Point
@@ -203,9 +207,12 @@
       return defaultIcons[icon as string]
     } else {
       // @ts-ignore
-      const { anchor, imageOffset, imageSize, imageUrl, printImageUrl } = icon as MarkerCustomIcon
+      const { anchor, imageOffset, imageSize, imageUrl, printImageUrl, size } = icon as MarkerCustomIcon
       const iconOptions: BMapGL.IconOptions = {
-        imageSize: new BMapGL.Size(imageSize.width, imageSize.height)
+        size: new BMapGL.Size(size.width, size.height)
+      }
+      if (imageSize) {
+        iconOptions.imageSize = new BMapGL.Size(imageSize.width, imageSize.height)
       }
       if (anchor) {
         iconOptions.anchor = new BMapGL.Size(anchor.x, anchor.y)
@@ -216,7 +223,7 @@
       if (printImageUrl) {
         iconOptions.printImageUrl = printImageUrl
       }
-      return new BMapGL.Icon(imageUrl, new BMapGL.Size(imageSize.width, imageSize.height), iconOptions)
+      return new BMapGL.Icon(imageUrl, new BMapGL.Size(size.width, size.height), iconOptions)
     }
   }
   function setZIndex(zIndex: number) {
