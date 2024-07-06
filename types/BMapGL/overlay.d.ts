@@ -463,6 +463,7 @@ declare namespace BMapGL {
   type SizeType = number
   interface IconOptions {
     offset?: Size
+    size?: Size
     anchor?: Size
     imageOffset?: Size
     imageSize?: Size
