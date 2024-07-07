@@ -1,24 +1,23 @@
 <template>
-  <div :id="instanceId">
-    <template v-if="shouldRender">
-      <div
-        class="baidu-map-container"
-        ref="mapContainer"
-        :style="{ width: width, height: height, background: props.loadingBgColor }"
-        style="position: relative; overflow: hidden"
-      >
-        <slot name="loading">
-          <div
-            :style="{ color: props.loadingTextColor }"
-            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)"
-          >
-            {{ !initd ? 'map loading...' : '' }}
-          </div>
-        </slot>
-      </div>
+  <template v-if="shouldRender">
+    <div
+      :id="instanceId"
+      class="baidu-map-container"
+      ref="mapContainer"
+      :style="{ width: width, height: height, background: props.loadingBgColor }"
+      style="position: relative; overflow: hidden"
+    >
+      <slot name="loading">
+        <div
+          :style="{ color: props.loadingTextColor }"
+          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)"
+        >
+          {{ !initd ? 'map loading...' : '' }}
+        </div>
+      </slot>
       <slot></slot>
-    </template>
-  </div>
+    </div>
+  </template>
 </template>
 
 <script setup lang="ts">
@@ -377,7 +376,7 @@
           restrictCenter,
           minZoom,
           maxZoom,
-          mapType: window[mapType],
+          mapType: window[mapType as any] as any,
           enableAutoResize,
           showControls,
           displayOptions
@@ -518,7 +517,7 @@
   }
   // 设置地图类型
   function setMapType(mapType: MapType): void {
-    window[mapType] !== undefined && map!.setMapType(window[mapType])
+    window[mapType as any] !== undefined && map!.setMapType(window[mapType as any] as any)
   }
   function setHeading(heading: number): void {
     map!.setHeading(heading)
