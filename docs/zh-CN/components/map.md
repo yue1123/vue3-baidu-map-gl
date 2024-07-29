@@ -188,7 +188,7 @@ map/theme2
 | layer     | 是否显示叠加图层，地球模式暂不支持                | `boolean`          | `true` |
 | building  | 是否显示 3D 建筑物（仅支持 WebGL 方式渲染的地图） | `boolean`          | `true` |
 | street    | 是否显示路网（只对卫星图和地球模式有效）          | `boolean`          | `true` |
-| skyColors | 是否显示路网（只对卫星图和地球模式有效）          | `[string, string]` | -      |
+| skyColors | 配置天空的颜色，数组中首个元素表示地面颜色，第二个元素表示天空颜色。从而形成渐变，支持只传入一个元素  | `[string, string]` | -      |
 
 ## 组件方法
 
