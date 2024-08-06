@@ -94,7 +94,7 @@
     onDragstart?: Callback
     onDragging?: Callback
     onDragend?: Callback
-    onRightClick?: Callback
+    onRightclick?: Callback
   }
   const props = withDefaults(defineProps<MarkerProps>(), {
     offset: () => ({

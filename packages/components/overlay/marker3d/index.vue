@@ -70,7 +70,7 @@
     onMouseout?: Callback
     onMouseover?: Callback
     onRemove?: Callback
-    onRightClick?: Callback
+    onRightclick?: Callback
   }
 
   const props = withDefaults(defineProps<Marker3dProps>(), {
