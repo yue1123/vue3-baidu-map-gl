@@ -107,7 +107,7 @@
         size,
         fillColor,
         fillOpacity,
-        shape: window[shape]
+        shape: window[shape as any] as unknown as number
       }
       if (icon) {
         options.icon = getIconConfig()

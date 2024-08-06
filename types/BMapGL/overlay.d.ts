@@ -150,7 +150,7 @@ declare namespace BMapGL {
 
   interface Marker3DOptions {
     size?: number
-    shape?: 'BMAP_SHAPE_CIRCLE' | 'BMAP_SHAPE_RECT'
+    shape?: number
     fillColor?: string
     fillOpacity?: number
     icon?: Icon
