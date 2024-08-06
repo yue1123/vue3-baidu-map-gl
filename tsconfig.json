@@ -12,6 +12,7 @@
     "declaration": true,
     "declarationDir": "./es",
     "emitDeclarationOnly": true,
+    "noImplicitAny": false,
     "skipLibCheck": true, // TODO https://github.com/vuejs/core/issues/6554
     "lib": ["ESNext", "dom", "ESNext.Promise"],
     "types": ["node", "vite/client"],
