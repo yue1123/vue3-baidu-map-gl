@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.5](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.3.2...v2.3.5) (2024-08-06)
+
+
+### ✨ Features | 新功能
+
+* **BMap:** 优化渲染结构，高度可继承组件外层容器 ([5297a8e](https://github.com/yue1123/vue3-baidu-map-gl/commit/5297a8e6e15686044dce847bf50f3d6944a23e6c)), closes [#70](https://github.com/yue1123/vue3-baidu-map-gl/issues/70)
+
+
+### ✏️ Documentation | 文档
+
+*  Revised skyColors description ([6cc44e6](https://github.com/yue1123/vue3-baidu-map-gl/commit/6cc44e66b07b35636eda83f60d61bd4e9187f873))
+*  Revised skyColors description ([#75](https://github.com/yue1123/vue3-baidu-map-gl/issues/75)) ([4f4c87d](https://github.com/yue1123/vue3-baidu-map-gl/commit/4f4c87db77e6ddeac23d34ac9a1992f9c9c01a0f))
+* 修复文档错误内容 ([8724769](https://github.com/yue1123/vue3-baidu-map-gl/commit/87247690c500f342bcc422eb2dad4c8e50461ffe))
+* 修复context-menu文档404 ([c42b8c8](https://github.com/yue1123/vue3-baidu-map-gl/commit/c42b8c891e6875e96466c0dd15fed861948178e1))
+* marker 增加 size 属性 ([3900850](https://github.com/yue1123/vue3-baidu-map-gl/commit/3900850e0c740b994aee6157b29087ee70e71247)), closes [#73](https://github.com/yue1123/vue3-baidu-map-gl/issues/73)
+* **marker:** 自定义图标渲染尺寸修改 ([f91fba9](https://github.com/yue1123/vue3-baidu-map-gl/commit/f91fba970a1bf4c20eb0f3c34dc17302b45eb803))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* fixed rightclick event can not fire ([761b962](https://github.com/yue1123/vue3-baidu-map-gl/commit/761b9624939083703950b6167c352ca64df86cd5))
+* **marker3d:** type error ([3c224d4](https://github.com/yue1123/vue3-baidu-map-gl/commit/3c224d421e92de1a1bb081d22028fc4d8e85882b))
+* MarkerCustomIcon缺少了size属性 ([47f6ae5](https://github.com/yue1123/vue3-baidu-map-gl/commit/47f6ae51d9aa325cf958632d6d544330035481ab))
+* MarkerCustomIcon缺少了size属性 ([#73](https://github.com/yue1123/vue3-baidu-map-gl/issues/73)) ([10e9b59](https://github.com/yue1123/vue3-baidu-map-gl/commit/10e9b591919172e0c99eb384149e7b01c81b6914))
+
 ### [2.3.2](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.3.0...v2.3.2) (2023-12-04)
 
 
