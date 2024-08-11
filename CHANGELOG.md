@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.3.5...v2.4.0) (2024-08-11)
+
+
+### ✏️ Documentation | 文档
+
+* fix sidebar display width ([b16f4ba](https://github.com/yue1123/vue3-baidu-map-gl/commit/b16f4baef7dbcb7c052c32ad87f3c98c0d17e22e))
+
+
+### ✨ Features | 新功能
+
+* **BDistrictLayer:** add stroke-opacity and stroke-weight props ([9a34d5b](https://github.com/yue1123/vue3-baidu-map-gl/commit/9a34d5b1fb488b349a978c5264bd841cbe477544)), closes [#79](https://github.com/yue1123/vue3-baidu-map-gl/issues/79)
+
 ### [2.3.5](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.3.2...v2.3.5) (2024-08-06)
 
 
