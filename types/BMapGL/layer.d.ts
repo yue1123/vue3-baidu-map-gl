@@ -64,11 +64,13 @@ declare namespace BMapGL {
     kind: number
     fillColor: string
     fillOpacity: number
+    strokeOpacity: number
+    strokeWeight: number
     strokeColor: string
     viewport: boolean
   }
   class DistrictLayer extends TileLayer {
-    constructor(opts: DistrictLayerOptions)
+    constructor(opts: DistrictLayerOptions, callback?: (...args: any[]) => any)
   }
 }
 

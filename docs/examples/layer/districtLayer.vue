@@ -13,11 +13,11 @@
 <script lang="ts" setup>
   import { DistrictType } from 'vue3-baidu-map-gl'
 
-  function handleMouseover(e) {
+  function handleMouseover(e: any) {
     e.currentTarget.setFillColor('#9169db')
   }
 
-  function handleMouseout(e) {
+  function handleMouseout(e: any) {
     e.currentTarget.setFillColor(e.currentTarget.style.fillColor)
   }
 </script>

@@ -14,14 +14,16 @@ layer/districtLayer
 
 ## 静态组件 Props
 
-| 属性        | 说明             | 类型                            | 可选值 | 默认值                 |
-| ----------- | ---------------- | ------------------------------- | ------ | ---------------------- |
-| name        | 行政区名字       | `string`                        | -      | `required`             |
-| kind        | 行政区类型       | [`DistrictType`](#districttype) | -      | `DistrictType['AREA']` |
-| fillColor   | 填充颜色         | `string`                        | -      | `#fdfd27`              |
-| fillOpacity | 填充透明度       | `number`                        | -      | `1`                    |
-| strokeColor | 线条颜色         | `string`                        | -      | `#231cf8`              |
-| viewport    | 自动聚焦地图中心 | `boolean`                       | -      | `false`                |
+| 属性          | 说明             | 类型                            | 可选值 | 默认值                 | 版本                               |
+| ------------- | ---------------- | ------------------------------- | ------ | ---------------------- | ---------------------------------- |
+| name          | 行政区名字       | `string`                        | -      | `required`             |                                    |
+| kind          | 行政区类型       | [`DistrictType`](#districttype) | -      | `DistrictType['AREA']` |                                    |
+| fillColor     | 填充颜色         | `string`                        | -      | `#fdfd27`              |                                    |
+| fillOpacity   | 填充透明度       | `number`                        | -      | `1`                    |                                    |
+| strokeColor   | 描边线条颜色     | `string`                        | -      | `#231cf8`              |                                    |
+| strokeWeight  | 描边线条粗细     | `number`                        | -      | `1`                    | <Badge type="tip" text="^2.4.0" /> |
+| strokeOpacity | 描边线透明度     | `number`                        | -      | `1`                    | <Badge type="tip" text="^2.4.0" /> |
+| viewport      | 自动聚焦地图中心 | `boolean`                       | -      | `false`                |                                    |
 
 ## 动态组件 Props
 

@@ -34,6 +34,16 @@
      */
     strokeColor?: string
     /**
+     * @default 1
+     * 描边线粗细
+     */
+    strokeWeight?: number
+    /**
+     * @default 1
+     * 描边线透明度
+     */
+    strokeOpacity?: number
+    /**
      * @default false
      * 自动聚焦地图中心
      */
@@ -51,6 +61,8 @@
     visible: true,
     fillColor: '#fdfd27',
     fillOpacity: 1,
+    strokeWeight: 1,
+    strokeOpacity: 1,
     strokeColor: '#231cf8',
     viewport: false
   })
@@ -58,15 +70,18 @@
   const vueEmits = defineEmits(['initd', 'unload', 'mouseover', 'mouseout', 'click'])
   const { ready } = useParentComponentEffect((map) => {
     if (!props.name) return error('BDistrictLayer', 'DistrictLayer props.name is required')
-    const { visible, name, kind, fillColor, fillOpacity, strokeColor, viewport } = props
+    const { visible, name, kind, fillColor, fillOpacity, strokeColor, strokeOpacity, strokeWeight, viewport } = props
     districtLayer = new BMapGL.DistrictLayer({
       name: `(${name})`,
       kind,
       fillColor,
       fillOpacity,
       strokeColor,
+      strokeOpacity,
+      strokeWeight,
       viewport
     })
+
     visible && map.addDistrictLayer(districtLayer)
 
     bindEvents(props, vueEmits, districtLayer)
