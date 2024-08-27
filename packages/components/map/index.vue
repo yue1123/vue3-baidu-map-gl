@@ -388,8 +388,8 @@
         bindEvents(props, vueEmits, map)
         if (plugins) {
           initPlugins(plugins, pluginsSourceLink)
-            .then(() => {
-              vueEmits('pluginReady', map)
+            .then((res) => {
+              vueEmits('pluginReady', map, res)
             })
             .catch((err) => {
               error('BMap', 'plugins error: ' + err)

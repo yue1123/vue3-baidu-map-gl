@@ -19,7 +19,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
           link: 'quick-start'
         },
         {
-          text: '配置',
+          text: '配置与插件',
           link: 'config'
         },
         {
@@ -48,7 +48,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '控件组件',
-      collapsed: true,
+      collapsed: false,
       base: '/zh-CN/components/control/',
       items: [
         {
@@ -91,7 +91,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '覆盖物组件',
-      collapsed: true,
+      collapsed: false,
       base: '/zh-CN/components/overlay/',
       items: [
         {
@@ -142,7 +142,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '图层组件',
-      collapsed: true,
+      collapsed: false,
       base: '/zh-CN/components/layer/',
       items: [
         {
@@ -157,7 +157,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '检索组件',
-      collapsed: true,
+      collapsed: false,
       base: '/zh-CN/components/autoComplete/',
       items: [
         {
@@ -168,7 +168,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: 'Hooks',
-      collapsed: true,
+      collapsed: false,
       base: '/zh-CN/hooks/',
       items: [
         {
@@ -215,7 +215,7 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
     },
     {
       text: '扩展',
-      collapsed: true,
+      collapsed: false,
       base: '/zh-CN/expand/',
       items: [
         {

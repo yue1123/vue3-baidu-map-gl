@@ -205,7 +205,7 @@ map/theme2
 | --------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------- |
 | initd           | 组件初始化后会触发此事件，返回一个地图实例                                                  | `{ map, BmapGL, instance }`              |
 | unload          | 组件卸载时会触发此事件                                                                      | -                                        |
-| pluginReady     | 插件加载完毕会触发此事件                                                                    | `{map}`                                  |
+| pluginReady     | 插件加载完毕会触发此事件                                                                    | `{map, pluginRecord}`                                  |
 | click           | 左键单击地图时触发此事件。 当双击时，产生的事件序列为： click click dblclick                | `{type, target, latlng, pixel, overlay}` |
 | dblclick        | 鼠标双击地图时会触发此事件                                                                  | `{type, target, pixel, point}`           |
 | rightclick      | 右键单击地图时触发此事件。 当双击时，产生的事件序列为： rightclick rightclick rightdblclick | `{type, target, latlng, pixel, overlay}` |

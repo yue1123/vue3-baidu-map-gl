@@ -81,6 +81,21 @@ declare namespace BMapGLLib {
     _status: 1 | 2 | 3
     _viewAni: any
   }
+  class GeoUtils {
+    constructor(map: BMapGL.Map, options: any)
+  }
+  class AreaRestriction {
+    constructor(map: BMapGL.Map, options: any)
+  }
+  class InfoBox {
+    constructor(map: BMapGL.Map, options: any)
+  }
+  class LuShu {
+    constructor(map: BMapGL.Map, options: any)
+  }
+  class RichMarker {
+    constructor(map: BMapGL.Map, options: any)
+  }
 }
 
 declare const BMAP_DRAWING_MARKER: BMapGL.DrawingType

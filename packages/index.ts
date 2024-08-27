@@ -13,13 +13,14 @@ export * from './hooks'
 export * from './components/index'
 // types
 export * from './utils/types'
+export { default as getScriptAsync } from './utils/getScriptAsync'
 // global register
 const vue3BaiduMapGl = {
   install: (app: App, options?: Vue3BaiduMapGlOptions) => {
     const { ak, apiUrl, plugins: p, pluginsSourceLink: psl } = options || {}
     const appProp = app.config.globalProperties
     for (const component of componentsList) {
-      const name = component.name
+      const name = component.name!
       app.component(name, component)
     }
     ak && (appProp.$baiduMapAk = ak)

@@ -9,12 +9,18 @@ export interface Options {
 
 export const BMapScriptLoaderWrapper: Record<string, Promise<any>> = {}
 function getScriptAsync({ key, src, addCalToWindow = false, exportGetter = noop }: Options): Promise<any> {
-  const exported: any = exportGetter()
+  let exported: any
+  try {
+    exported = exportGetter()
+  } catch (e) {
+    //
+  }
+
   if (!BMapScriptLoaderWrapper[key] && !exported) {
-    BMapScriptLoaderWrapper[key] = new Promise<void>((resolve, reject) => {
+    BMapScriptLoaderWrapper[key] = new Promise<{ [x: string]: any }>((resolve, reject) => {
       const script: HTMLScriptElement = document.createElement('script')
       const cal = () => {
-        resolve(exportGetter())
+        resolve({ [key]: exportGetter() })
         window.document.body.removeChild(script)
       }
       if (addCalToWindow) {
@@ -34,7 +40,7 @@ function getScriptAsync({ key, src, addCalToWindow = false, exportGetter = noop 
       document.body.appendChild(script)
     })
   } else if (exported !== undefined) {
-    return Promise.resolve(exported)
+    return Promise.resolve({ [key]: exported })
   }
   return BMapScriptLoaderWrapper[key]
 }
