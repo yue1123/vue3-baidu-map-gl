@@ -27,6 +27,6 @@
     "mapv-three": "^1.0.12",
     "prism-theme-vars": "^0.2.4",
     "three": "^0.147.0",
-    "vitepress": "1.0.0-rc.31"
+    "vitepress": "1.3.4"
   }
 }

@@ -9,10 +9,10 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "strictNullChecks": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
+    "noImplicitAny": false,
     "types": [
       "node",
       "vitepress",
@@ -24,6 +24,6 @@
       "vite-plugin-pwa/vue"
     ]
   },
-  "include": ["env.d.ts", "**/*.vue", "**/*.ts", "**/*.d.ts"],
+  "include": ["./env.d.ts", "**/*.vue", "**/*.ts", "**/*.d.ts"],
   "exclude": ["node_modules"]
 }
