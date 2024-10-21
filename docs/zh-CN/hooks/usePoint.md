@@ -1,6 +1,6 @@
 # usePoint
 
-通过该 hooks 可获取一个地图实例点(BMapGL.Point)。
+通过该 hooks 可获取一个地图实例点 (BMapGL.Point)。
 
 ```ts
 import { usePoint } from 'vue3-baidu-map-gl'
@@ -13,7 +13,7 @@ const { point, set } = usePoint()
 ```
 
 :::tip
-该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `set` 方法后数据才可用
+该 hooks 依赖于 `BMapGL`，所以需要在 `Map` 组件初始化完毕调用 `set` 方法后数据才可用
 :::
 
 ### 参数

@@ -14,7 +14,7 @@ hooks/usePointGeocoder/index
 :::
 
 :::tip
-在 Ts 中使用批量解析坐标点时，使用泛型`PointGeocoderResult`内部可推断`result`为可推断为`PointGeocoderResult`，从而避免读取值时 ts 的报错。
+在 Ts 中使用批量解析坐标点时，使用泛型 `PointGeocoderResult` 内部可推断 `result` 为可推断为 `PointGeocoderResult`，从而避免读取值时 ts 的报错。
 
 ```ts
 import { usePointGeocoder, PointGeocoderResult } from 'vue3-baidu-map-gl'
@@ -31,7 +31,7 @@ hooks/usePointGeocoder/batch
 :::
 
 :::tip
-在 Ts 中使用批量解析坐标点时，使用泛型`PointGeocoderResult[]`内部可推断`result`为可推断为`PointGeocoderResult[]`，从而避免遍历时 ts 的报错。
+在 Ts 中使用批量解析坐标点时，使用泛型 `PointGeocoderResult[]` 内部可推断 `result` 为可推断为 `PointGeocoderResult[]`，从而避免遍历时 ts 的报错。
 
 ```ts
 import { usePointGeocoder, PointGeocoderResult } from 'vue3-baidu-map-gl'
@@ -47,7 +47,7 @@ const { get, result, isLoading, isEmpty } = usePointGeocoder(options, cal)
 ```
 
 :::tip
-该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
+该 hooks 依赖于 `BMapGL`，所以需要在 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
 :::
 
 ### 参数

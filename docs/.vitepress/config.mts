@@ -25,8 +25,8 @@ export default withPwa(
       returnToTopLabel: 'top',
       logo: '/logo.svg',
       nav,
-      outlineTitle: 'ON THIS PAGE',
-      outline: [1, 5],
+      outlineTitle: '目录',
+      outline: [2, 5],
       search: {
         provider: 'local'
         // provider: 'algolia',

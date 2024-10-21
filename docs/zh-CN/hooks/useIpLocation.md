@@ -19,7 +19,7 @@ const { get, location, isLoading } = useIpLocation(cal)
 ```
 
 :::tip
-该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
+该 hooks 依赖于 `BMapGL`，所以需要在 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
 :::
 
 ### 参数

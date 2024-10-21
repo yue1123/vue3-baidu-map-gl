@@ -2,7 +2,7 @@
 
 ## 使用包管理器
 
-我们建议您使用包管理器（如 NPM、Yarn 或 pnpm）安装 Vue3 BaiduMap GL，然后您就可以使用打包工具，例如 Vite 或 webpack。
+我们建议您使用包管理器 (如 NPM、Yarn 或 pnpm) 安装 Vue3 BaiduMap GL，然后您就可以使用打包工具，例如 Vite 或 webpack。
 
 ::: code-group
 
@@ -24,7 +24,7 @@ npm install vue3-baidu-map-gl
 
 直接通过浏览器的 HTML 标签导入 Vue3 BaiduMap GL，然后就可以使用全局变量 `Vue3baiduMapGl` 了。
 
-不同的 CDN 提供商有不同的引入方式， 我们在这里以 [unpkg](https://unpkg.com) 和 [jsDelivr](https://www.jsdelivr.com) 举例。 你也可以使用其它的 CDN 供应商。
+不同的 CDN 提供商有不同的引入方式，我们在这里以 [unpkg](https://unpkg.com) 和 [jsDelivr](https://www.jsdelivr.com) 举例。你也可以使用其它的 CDN 供应商。
 
 ::: code-group
 

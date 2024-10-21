@@ -1,6 +1,6 @@
 # useBrowserLocation <Badge type="tip" text="^0.0.33" />
 
-用于获取用户所在的城市位置信息(根据浏览器原生定位或者结合安卓定位 SDK 辅助定位)，相比[Ip 定位](./useIpLocation)获取的信息更丰富，但稳定性并不高，有时候很精准，有时候飘半个中国。
+用于获取用户所在的城市位置信息 (根据浏览器原生定位或者结合安卓定位 SDK 辅助定位)，相比 [Ip 定位](./useIpLocation)获取的信息更丰富，但稳定性并不高，有时候很精准，有时候飘半个中国。
 
 ```ts
 import { useBrowserLocation } from 'vue3-baidu-map-gl'
@@ -9,8 +9,8 @@ import { useBrowserLocation } from 'vue3-baidu-map-gl'
 :::warning 注意
 
 1. 由于 Chrome、iOS10 以上系统等已不再支持非安全域的浏览器定位请求，为保证定位成功率和精度，请尽快升级您的站点到 HTTPS。
-2. iOS15 系统浏览器默认关闭位置请求，需要用户设置手机为允许/询问后方可获取精确的定位,定位权限的开启方式请参见 iOS15 定位问题。
-3. 由于浏览器原生定位成功率并不高，可以尝试 [Ip 定位](./useIpLocation) 和 [安卓 SDK 定位](https://lbsyun.baidu.com/index.php?title=android-locsdk/guide/addition-func/assistant-h5) 进行辅助，如果定位精准在城市级别，可联系百度地图提供 ak 以提高定位精准度。
+2. iOS15 系统浏览器默认关闭位置请求，需要用户设置手机为允许/询问后方可获取精确的定位，定位权限的开启方式请参见 iOS15 定位问题。
+3. 由于浏览器原生定位成功率并不高，可以尝试 [Ip 定位](./useIpLocation)和[安卓 SDK 定位](https://lbsyun.baidu.com/index.php?title=android-locsdk/guide/addition-func/assistant-h5)进行辅助，如果定位精准在城市级别，可联系百度地图提供 ak 以提高定位精准度。
 
 :::
 
@@ -27,7 +27,7 @@ const { get, location, isLoading, isError, status } = useBrowserLocation(options
 ```
 
 :::tip
-该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
+该 hooks 依赖于 `BMapGL`，所以需要在 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
 :::
 
 ### 参数

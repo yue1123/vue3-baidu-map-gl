@@ -7,7 +7,7 @@ import { BInfoWindow } from 'vue3-baidu-map-gl'
 ```
 
 ::: tip 提示
-地图上只能同时显示一个`infoWindow`，所以当地图上有多个`infoWindow`组件同时绑定`v-model="true"`，只有最后一个 `infoWindow`组件会在地图上显示。
+地图上只能同时显示一个 `infoWindow`，所以当地图上有多个 `infoWindow` 组件同时绑定 `v-model="true"`，只有最后一个 `infoWindow` 组件会在地图上显示。
 :::
 
 ## 组件示例

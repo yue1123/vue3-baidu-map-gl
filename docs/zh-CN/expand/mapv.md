@@ -4,13 +4,13 @@ MapVGL，是一款基于 WebGL 的地理信息可视化库，可以用来展示�
 
 本章节将演示一下通过插件的形式和 npm 形式加载 `mapv` 相关资源，并展示几个示例。
 
-## 结合方式:
+## 结合方式：
 
-与 `mapv` 相关资源结合有如下两种方式:
+与 `mapv` 相关资源结合有如下两种方式：
 
-### 1. 通过组件库提供的插件形式（内部以 cdn 方式加载）
+### 1。通过组件库提供的插件形式 (内部以 cdn 方式加载)
 
-全局配置插件:
+全局配置插件：
 
 ```ts
 // ...
@@ -19,7 +19,7 @@ app.use(baiduMap, {
 })
 ```
 
-或者通过组件配置插件:
+或者通过组件配置插件：
 
 ```vue
 <template>
@@ -40,7 +40,7 @@ app.use(baiduMap, {
 </script>
 ```
 
-### 2. 通过 npm
+### 2。通过 npm
 
 安装
 
@@ -75,7 +75,7 @@ mapv、mapvgl、mapvThree 均使用 umd 格式打包，而非 esm。所以通过
 
 ## 示例
 
-> 以下示例均来自于 `mapv` 官方示例。更多示例见及文档请参考: https://mapv.baidu.com/gl/docs/index.html
+> 以下示例均来自于 `mapv` 官方示例。更多示例见及文档请参考：https://mapv.baidu.com/gl/docs/index.html
 
 ### PointLayer 基础点层图
 

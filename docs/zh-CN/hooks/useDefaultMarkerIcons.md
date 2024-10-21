@@ -1,12 +1,12 @@
 # useDefaultMarkerIcons
 
-通过该 hooks 可获取一些内置的地图图标(BMapGL.Icon)。
+通过该 hooks 可获取一些内置的地图图标 (BMapGL.Icon)。
 
 ```ts
 import { useDefaultMarkerIcons } from 'vue3-baidu-map-gl'
 ```
 
-> 参考: [marker 图标可选值](/zh-CN/components/overlay/marker#默认图标可选值)
+> 参考：[marker 图标可选值](/zh-CN/components/overlay/marker#默认图标可选值)
 
 ## 用法
 
@@ -15,7 +15,7 @@ const icons = useDefaultMarkerIcons()
 ```
 
 :::tip
-该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `set` 方法后数据才可用
+该 hooks 依赖于 `BMapGL`，所以需要在 `Map` 组件初始化完毕调用 `set` 方法后数据才可用
 :::
 
 ### 参数

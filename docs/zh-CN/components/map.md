@@ -24,17 +24,17 @@ map/multiInstance
 
 ## 个性化地图
 
-通过指定 `Map` 组件的 `mapStyleId`或者`mapStyleJson`来展示个性化地图，如果同时指定，`mapStyleId`会优先生效。
+通过指定 `Map` 组件的 `mapStyleId` 或者 `mapStyleJson` 来展示个性化地图，如果同时指定，`mapStyleId` 会优先生效。
 
 ::: tip 提示
 
-1. 如果个性化地图没有生效，请先检查`mapStyleId`或`mapStyleJson`是否正确。如果是通过`mapStyleId`实现，还需要检查是否与 `ak`申请的账号一致
-2. 以下示例使用的 `mapStyleId` 均与 ak 和 域名绑定，无法直接复制使用。可根据示例主题名字到[百度地图个性化编辑器](https://lbsyun.baidu.com/apiconsole/custommap)创建后使用
+1. 如果个性化地图没有生效，请先检查 `mapStyleId` 或 `mapStyleJson` 是否正确。如果是通过 `mapStyleId` 实现，还需要检查是否与 `ak` 申请的账号一致
+2. 以下示例使用的 `mapStyleId` 均与 ak 和域名绑定，无法直接复制使用。可根据示例主题名字到[百度地图个性化编辑器](https://lbsyun.baidu.com/apiconsole/custommap)创建后使用
    :::
 
 ### 获取资源
 
-> mapStyleId 和 mapStyleJson 获取以及相关注意事项，请访问 [百度地图个性化地图相关文档](https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/custom#service-page-anchor3) 知悉
+> mapStyleId 和 mapStyleJson 获取以及相关注意事项，请访问[百度地图个性化地图相关文档](https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/custom#service-page-anchor3)知悉
 
 ### 出行主题示例
 
@@ -50,7 +50,7 @@ map/theme2
 
 ## 自定义地图加载中
 
-默认情况下，地图加载中效果是`map loading...`文字居中。如果不能满足你的需求，你可以通过提供`loading`具名插槽来自定义地图加载中显示效果。
+默认情况下，地图加载中效果是 `map loading...` 文字居中。如果不能满足你的需求，你可以通过提供 `loading` 具名插槽来自定义地图加载中显示效果。
 
 :::details 显示代码
 
@@ -173,7 +173,7 @@ map/theme2
 | BMAP_SATELLITE_MAP | 普通卫星地图 |
 
 ::: warning 注意
-地球模式（BMAP_EARTH_MAP）下能支持的地图交互操作有限，如您需要卫星地图支持和标准地图（BMAP_NORMAL_MAP）一致的交互体验，请使用普通卫星图模式（BMAP_SATELLITE_MAP）
+地球模式 (BMAP_EARTH_MAP) 下能支持的地图交互操作有限，如您需要卫星地图支持和标准地图 (BMAP_NORMAL_MAP) 一致的交互体验，请使用普通卫星图模式 (BMAP_SATELLITE_MAP)
 :::
 
 ## displayOptions

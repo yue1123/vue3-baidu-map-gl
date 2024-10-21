@@ -26,7 +26,7 @@ const { setKeyFrames, start, cancel, stop, proceed, status } = useViewAnimation(
 ```
 
 :::tip
-该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `setKeyFrames` 方法后其他方法和数据才可用
+该 hooks 依赖于 `BMapGL`，所以需要在 `Map` 组件初始化完毕调用 `setKeyFrames` 方法后其他方法和数据才可用
 :::
 
 ### 参数
@@ -96,7 +96,7 @@ type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
 
 ### 事件监听
 
-调用`useViewAnimation`后，即可通过`viewAnimation`返回值来添加事件监听，无需等待`setKeyFrames`方法调用
+调用 `useViewAnimation` 后，即可通过 `viewAnimation` 返回值来添加事件监听，无需等待 `setKeyFrames` 方法调用
 
 | 事件                | 参数 | 描述                                                                          |
 | ------------------- | ---- | ----------------------------------------------------------------------------- |
@@ -107,11 +107,11 @@ type AnimationStatus = 'PLAYING' | 'STOPPING' | 'INITIAL'
 
 ## FAQ
 
-### 为什么事件监听可以同步，而其他方法需要等到 `setKeyFrames` 方法调用后才可以使用 ？
+### 为什么事件监听可以同步，而其他方法需要等到 `setKeyFrames` 方法调用后才可以使用？
 
-之所以事件监听可以同步，是因为`useViewAnimation`hooks 内部做了处理，先缓存了视角动画初始化前的事件监听，等到`setKeyFrames`方法调用后，再由内部添加监听到视角动画实例上。
+之所以事件监听可以同步，是因为 `useViewAnimation` hooks 内部做了处理，先缓存了视角动画初始化前的事件监听，等到 `setKeyFrames` 方法调用后，再由内部添加监听到视角动画实例上。
 
-这只是为了使用开发者使用体验更好，这和你等到`setKeyFrames`调用时，在后面添加监听，是一样的效果。
+这只是为了使用开发者使用体验更好，这和你等到 `setKeyFrames` 调用时，在后面添加监听，是一样的效果。
 
 ## TS 类型定义参考
 

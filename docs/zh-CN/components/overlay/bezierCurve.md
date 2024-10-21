@@ -7,7 +7,7 @@ import { BBezierCurve } from 'vue3-baidu-map-gl'
 ```
 
 ::: tip 提示
-不了解贝塞尔曲线的小伙伴可以先学习一下: https://zh-CN.javascript.info/bezier-curve
+不了解贝塞尔曲线的小伙伴可以先学习一下：https://zh-CN.javascript.info/bezier-curve
 :::
 
 ## 组件示例

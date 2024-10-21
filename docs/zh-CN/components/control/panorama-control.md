@@ -7,12 +7,12 @@ import { BPanoramaControl } from 'vue3-baidu-map-gl'
 ```
 
 :::tip
-全景地图服务属于百度地图高级服务，需要向 [百度地图申请](https://lbs.baidu.com/apiconsole/fankui#?typeOne=%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82&typeTwo=%E9%AB%98%E7%BA%A7%E6%9C%8D%E5%8A%A1&typeThree=JS%20API%E5%85%A8%E6%99%AF%E5%9B%BE) 才可以使用
+全景地图服务属于百度地图高级服务，需要向[百度地图申请](https://lbs.baidu.com/apiconsole/fankui#?typeOne=%E4%BA%A7%E5%93%81%E9%9C%80%E6%B1%82&typeTwo=%E9%AB%98%E7%BA%A7%E6%9C%8D%E5%8A%A1&typeThree=JS%20API%E5%85%A8%E6%99%AF%E5%9B%BE)才可以使用
 :::
 
 ## 组件示例
 
-单独使用该组件不会显示全景地图覆盖情况，还需要搭配`BPanoramaCoverageLayer`组件使用。
+单独使用该组件不会显示全景地图覆盖情况，还需要搭配 `BPanoramaCoverageLayer` 组件使用。
 
 :::demo
 control/panoramaControl

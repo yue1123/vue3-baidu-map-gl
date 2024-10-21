@@ -5,7 +5,8 @@
     "build": "prettier -w ./zh-CN/* && vitepress build .",
     "preview": "vitepress preview .",
     "fix-dot": "fixdot ./zh-CN/base/* ./zh-CN/control/* ./zh-CN/guide/* ./zh-CN/overlay/* ./index.md -d -p",
-    "format": "prettier -w ./zh-CN/*"
+    "format": "prettier -w ./zh-CN/*",
+    "lint:zh": "pnpm zhlint '**/*.md' --fix"
   },
   "devDependencies": {
     "@vite-pwa/vitepress": "^0.3.1",
@@ -17,7 +18,8 @@
     "prismjs": "^1.29.0",
     "vanilla-tilt": "^1.8.0",
     "vite-plugin-pwa": "^0.17.2",
-    "vue3-baidu-map-gl": "workspace:*"
+    "vue3-baidu-map-gl": "workspace:*",
+    "zhlint": "^0.8.2"
   },
   "engines": {
     "node": ">=18.0.0"

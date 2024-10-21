@@ -14,7 +14,7 @@ overlay/marker
 
 ## 动态渲染
 
-有时候需要根据动态数据,渲染 marker,点击更新按钮查看效果.
+有时候需要根据动态数据，渲染 marker，点击更新按钮查看效果。
 :::demo class="p-bottom"
 overlay/dyynmicMaker
 :::
@@ -45,11 +45,11 @@ overlay/dyynmicMaker
 
 simple_red , simple_blue , loc_red , loc_blue , start , end , location
 
-红色图标: red1 , red2 , red3 , red4 , red5 , red6 , red7 , red8 , red9 , red10
+红色图标：red1，red2，red3，red4，red5，red6，red7，red8，red9，red10
 
-蓝色图标: blue1 , blue2 , blue3 , blue4 , blue5 , blue6 , blue7 , blue8 , blue9 , blue10
+蓝色图标：blue1，blue2，blue3，blue4，blue5，blue6，blue7，blue8，blue9，blue10
 
-其余图标可根据下图自行定位裁切:
+其余图标可根据下图自行定位裁切：
 
 ![https://mapopen.bj.bcebos.com/cms/react-bmap/markers_new2x_fbb9e99.png](https://mapopen.bj.bcebos.com/cms/react-bmap/markers_new2x_fbb9e99.png)
 

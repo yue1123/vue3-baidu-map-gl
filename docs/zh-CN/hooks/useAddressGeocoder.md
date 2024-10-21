@@ -14,7 +14,7 @@ hooks/useAddressGeocoder/index
 :::
 
 :::tip
-在 Ts 中使用单个解析地址时，使用泛型`Point`内部可推断`point`为可推断为`Point`，从而避免读取值时 ts 的报错。
+在 Ts 中使用单个解析地址时，使用泛型 `Point` 内部可推断 `point` 为可推断为 `Point`，从而避免读取值时 ts 的报错。
 
 ```ts
 import { Point } from 'vue3-baidu-map-gl'
@@ -31,7 +31,7 @@ hooks/useAddressGeocoder/batch
 :::
 
 :::tip
-在 Ts 中使用批量解析地址时，使用泛型`Point[]`内部可推断`point`为可推断为`Point[]`，从而避免遍历时 ts 的报错。
+在 Ts 中使用批量解析地址时，使用泛型 `Point[]` 内部可推断 `point` 为可推断为 `Point[]`，从而避免遍历时 ts 的报错。
 
 ```ts
 import { Point } from 'vue3-baidu-map-gl'
@@ -47,7 +47,7 @@ const { get, point, isLoading, isEmpty } = useAddressGeocoder(cal)
 ```
 
 :::tip
-该 hooks 依赖于 `BMapGL` ，所以需要在 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
+该 hooks 依赖于 `BMapGL`，所以需要在 `Map` 组件初始化完毕调用 `get` 方法后数据才可用
 :::
 
 ### 参数
