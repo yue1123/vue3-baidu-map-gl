@@ -15,8 +15,8 @@
           {{ !initd ? 'map loading...' : '' }}
         </div>
       </slot>
-      <slot></slot>
     </div>
+    <slot></slot>
   </template>
 </template>
 
