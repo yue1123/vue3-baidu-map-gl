@@ -25,6 +25,7 @@
   const props = withDefaults(defineProps<AutocompleteProps>(), {})
   const vueEmits = defineEmits(['initd', 'unload', 'searchComplete', 'highlight', 'confirm'])
   let autoComplete: BMapGL.Autocomplete
+
   const { ready } = useParentComponentEffect((map: BMapGL.Map) => {
     if (!autoCompleteInput.value) warn('BAutoComplete', 'render error')
     const { location, types } = props
