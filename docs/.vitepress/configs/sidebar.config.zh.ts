@@ -219,6 +219,10 @@ export const sidebarConfigZh: DefaultTheme.Sidebar = {
       base: '/zh-CN/expand/',
       items: [
         {
+          text: '离线地图',
+          link: 'offline-map'
+        },
+        {
           text: 'mapv 可视化',
           link: 'mapv'
         },
