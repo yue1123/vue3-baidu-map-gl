@@ -1,7 +1,7 @@
 <template>
   <BMap v-bind="$attrs" @initd="handleInitd" :center="googlePoint">
     <template v-if="!isLoading && !isError">
-      <template v-for="(point, index) in result">
+      <template v-for="(point) in result">
         <BMarker :position="point"></BMarker>
         <BLabel :position="point" style="color: #333; font-size: 9px" content="转换后的百度标注（正确）"></BLabel>
       </template>
