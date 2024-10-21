@@ -347,12 +347,12 @@
       props.pluginsSourceLink && proxy!.$baiduMapPluginsSourceLink
         ? Object.assign(proxy!.$baiduMapPluginsSourceLink, props.pluginsSourceLink)
         : props.pluginsSourceLink || proxy!.$baiduMapPluginsSourceLink || {}
-    const scriptKey = apiUrl || `_initBMap_${ak}`
+    const scriptKey = apiUrl ? `_initBMap_` : `_initBMap_${ak}`
 
     // load sdk
     getScriptAsync({
       src: apiUrl ? apiUrl : `//api.map.baidu.com/api?type=webgl&v=1.0&ak=${ak}&callback=${scriptKey}`,
-      addCalToWindow: !apiUrl,
+      addCalToWindow: true,
       key: scriptKey,
       exportGetter: () => window.BMapGL
     })
