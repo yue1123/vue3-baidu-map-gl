@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.5.0...v2.6.0) (2024-10-21)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 修复 autoComplete 报错和地址搜索错误 ([a7c40e7](https://github.com/yue1123/vue3-baidu-map-gl/commit/a7c40e76b7d6b5e2cd5bfb9f1337621ed70da3dd)), closes [#101](https://github.com/yue1123/vue3-baidu-map-gl/issues/101)
+
+
+### ✨ Features | 新功能
+
+* 离线地图固定初始化调用回调 ([4e0156b](https://github.com/yue1123/vue3-baidu-map-gl/commit/4e0156b9beb5b6ff959210e13e5655f0b24febed))
+* slot 节点移到外层, 避免动态更新元素报错 ([00f1438](https://github.com/yue1123/vue3-baidu-map-gl/commit/00f1438419bfcaba3748ea0f3ae176ada6ea4130)), closes [#103](https://github.com/yue1123/vue3-baidu-map-gl/issues/103) [#102](https://github.com/yue1123/vue3-baidu-map-gl/issues/102)
+
+
+### ✏️ Documentation | 文档
+
+* 修复中英文标点符号 ([cef042d](https://github.com/yue1123/vue3-baidu-map-gl/commit/cef042ddef39cde9217ffac3fa233f466dd697e3))
+* 增加动态渲染marker示例 ([a95b848](https://github.com/yue1123/vue3-baidu-map-gl/commit/a95b84897d209935ec47504269a2707512d56e08)), closes [#103](https://github.com/yue1123/vue3-baidu-map-gl/issues/103)
+* 增加离线地图说明 ([0acaac4](https://github.com/yue1123/vue3-baidu-map-gl/commit/0acaac4bfdb863e4189955f3aff4986f6e453f12))
+
 ## [2.5.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.3.5...v2.5.0) (2024-08-27)
 
 
