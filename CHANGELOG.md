@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.1](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.6.0...v2.6.1) (2024-10-29)
+
+
+### ✏️ Documentation | 文档
+
+* 更新赞助列表 ([80ee01e](https://github.com/yue1123/vue3-baidu-map-gl/commit/80ee01e593b5c9cd8d1f4e828e8324f44f3b3445))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 地址转换错误时错误状态获取 ([ad93625](https://github.com/yue1123/vue3-baidu-map-gl/commit/ad93625c84c1a637aead59ee19ff45e509aa2b6b)), closes [#111](https://github.com/yue1123/vue3-baidu-map-gl/issues/111)
+
 ## [2.6.0](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.5.0...v2.6.0) (2024-10-21)
 
 
