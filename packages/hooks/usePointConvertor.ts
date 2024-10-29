@@ -74,8 +74,10 @@ export function usePointConvertor() {
         status.value = res.status as UsePointConvertorStatus
         isError.value = false
       })
-      .catch((status) => {
-        status.value = status as UsePointConvertorStatus
+      .catch((error) => {
+        if (error) {
+          status.value = error as UsePointConvertorStatus
+        }
         isError.value = true
       })
       .finally(() => {
