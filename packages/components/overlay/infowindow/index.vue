@@ -73,8 +73,8 @@
     _map = map
     const clear = () => {
       if (!infoWindow) return
-      infoWindow.hide();
-      map.removeOverlay(infoWindow);
+      infoWindow.hide()
+      map.removeOverlay(infoWindow)
     }
     const init = () => {
       const { title, width, height, enableAutoPan, maxWidth, offset, enableCloseOnClick } = props
@@ -105,8 +105,8 @@
         nextTick(() => {
           open()
           nextTick(() => {
-            if ('_visible' in infoWindow) !infoWindow._visible && (visible.value = false);
-            else !infoWindow.isOpen() && (visible.value = false);
+            if ('_visible' in infoWindow) !infoWindow._visible && (visible.value = false)
+            else !infoWindow.isOpen() && (visible.value = false)
           })
         })
       }
