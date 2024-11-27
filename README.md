@@ -79,6 +79,9 @@ cd ./vue3-baidu-map-gl
 # install
 pnpm install
 
+# 运行 dev, 实时构建组件库
+pnpm dev
+
 # 运行文档站点，用来测试组件，预览文档
 pnpm docs:dev
 ```
