@@ -81,8 +81,8 @@ export const pluginLoaderMap: Record<PluginsUnion, (customSourceLink?: string) =
     }),
   LuShu: (customSourceLink?: string) =>
     getScriptAsync({
-      src: customSourceLink || DEFAULT_PLUGINS_SOURCE_LINK['Lushu'],
-      key: 'Lushu',
+      src: customSourceLink || DEFAULT_PLUGINS_SOURCE_LINK['LuShu'],
+      key: 'LuShu',
       exportGetter: () => window.BMapGLLib.LuShu
     }),
   Mapvgl: (customSourceLink?: string) =>
