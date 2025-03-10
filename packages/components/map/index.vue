@@ -261,7 +261,6 @@
     restrictCenter: true,
     noAnimation: false,
     showControls: false,
-    backgroundColor: () => [245, 245, 245, 100],
     loadingBgColor: '#f1f1f1',
     loadingTextColor: '#999',
     enableTraffic: false,
