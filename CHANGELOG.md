@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.5](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.6.4...v2.6.5) (2025-03-10)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 修复地图背景颜色默认值导致自定义样式无法生效 ([c867c32](https://github.com/yue1123/vue3-baidu-map-gl/commit/c867c32a9d7ab94005099071d55e4b372caea8d3)), closes [#125](https://github.com/yue1123/vue3-baidu-map-gl/issues/125)
+
 ### [2.6.4](https://github.com/yue1123/vue3-baidu-map-gl/compare/v2.6.3...v2.6.4) (2024-12-23)
 
 
