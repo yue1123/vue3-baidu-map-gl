@@ -34,7 +34,7 @@ const { point, set } = usePoint()
 <Map @initd="handleInitd"></Map>
 
 <script setup lang="ts">
-  import { useAreaBoundary } from 'vue3-baidu-map-gl'
+  import { usePoint } from 'vue3-baidu-map-gl'
 
   const { point, set } = usePoint()
 
